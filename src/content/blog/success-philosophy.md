@@ -1,6 +1,7 @@
 ---
 title: "The Philosophy of Success"
 pubDate: 2025-06-26
+heroImage: "/success.webp"
 description: "Exploring the mindset and principles that drive true success."
 ---
 
