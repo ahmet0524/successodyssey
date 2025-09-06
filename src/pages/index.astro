@@ -10,3 +10,387 @@
 		<h1>Astro</h1>
 	</body>
 </html>
+
+---
+import Layout from "../layouts/Layout.astro";
+import Banner from "../components/Banner.astro";
+import BlogCard from "../components/BlogCard.astro";
+import ProductCard from "../components/ProductCard.astro";
+import card1 from "../assets/mental-models.webp";
+import card2 from "../assets/card2.jpg";
+import card3 from "../assets/card3.jpg";
+---
+
+<Layout
+  title="Success Odyssey - Transform Your Life with Proven Strategies"
+  description="Discover mental models, stoicism, and success philosophy. Transform your life with proven strategies and timeless wisdom for personal development."
+  keywords="success, philosophy, stoicism, mental models, personal development, mindfulness, self improvement"
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Transform Your Life with Proven Strategies</h1>
+      <p>Discover the power of mental models, ancient wisdom, and success philosophy to unlock your potential and create lasting change.</p>
+      <a href="#featured" class="cta-button">
+        Explore Articles
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Banner -->
+  <div class="container">
+    <Banner />
+  </div>
+
+  <!-- Featured Articles -->
+  <section id="featured" class="featured-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Articles</h2>
+        <p>Explore our most popular insights on personal development and success</p>
+      </div>
+
+      <div class="cards fade-in">
+        <BlogCard
+          title="Mental Models for Better Decisions"
+          summary="Discover powerful thinking frameworks that help you navigate complex problems and make smarter choices in life and business."
+          image={card1.src || card1}
+          link="/blog/mental-models"
+        />
+        <BlogCard
+          title="The Philosophy of Success"
+          summary="Learn timeless principles and daily habits that successful people use to achieve their goals and maintain long-term fulfillment."
+          image={card2.src || card2}
+          link="/blog/success-philosophy"
+        />
+        <BlogCard
+          title="Stoic Wisdom for Modern Life"
+          summary="Apply ancient Stoic teachings to build resilience, find inner peace, and maintain clarity in our fast-paced modern world."
+          image={card3.src || card3}
+          link="/blog/stoicism"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Products Section -->
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Premium Resources</h2>
+        <p>Transform your life with our carefully crafted digital products</p>
+      </div>
+
+      <div class="cards fade-in">
+        <ProductCard
+          title="The Success Mindset eBook"
+          description="A comprehensive guide to developing the mental frameworks that drive extraordinary results. 150+ pages of actionable strategies."
+          price="29.99"
+          originalPrice="49.99"
+          image={card1}
+          link="https://gumroad.com/l/success-mindset-ebook"
+          badge="Bestseller"
+        />
+        <ProductCard
+          title="Mental Clarity Service"
+          description="Personalized 1-on-1 coaching session to identify your mental blocks and create a clear path to your goals."
+          price="149.99"
+          originalPrice="199.99"
+          image={card2}
+          link="https://calendly.com/successodyssey/mental-clarity"
+          badge="Limited"
+        />
+        <ProductCard
+          title="Digital Life Planner"
+          description="Interactive Notion template with goal tracking, habit formation, and reflection frameworks. Lifetime updates included."
+          price="19.99"
+          originalPrice="39.99"
+          image={card3}
+          link="https://gumroad.com/l/digital-life-planner"
+          badge="New"
+        />
+      </div>
+
+      <div class="view-all-products">
+        <a href="/products" class="view-all-button">
+          View All Products
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-preview">
+    <div class="container">
+      <div class="about-content">
+        <h2>Your Journey to Success Starts Here</h2>
+        <p>Success Odyssey combines timeless wisdom with modern insights to help you build a meaningful and successful life. Our carefully curated content focuses on practical strategies that create real, lasting change.</p>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Proven Strategies</h3>
+            <p>Evidence-based approaches backed by research and real-world results.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Practical Wisdom</h3>
+            <p>Actionable insights you can apply immediately to see positive changes.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M12.5 7C12.5 9.20914 10.7091 11 8.5 11C6.29086 11 4.5 9.20914 4.5 7C4.5 4.79086 6.29086 3 8.5 3C10.7091 3 12.5 4.79086 12.5 7ZM20 8V14M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Personal Growth</h3>
+            <p>Comprehensive approach to developing both mindset and practical skills.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Updated</h2>
+        <p>Get the latest insights on personal development and success strategies delivered to your inbox.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style lang="scss">
+// Products Section Styles
+.products-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h2 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .view-all-products {
+    text-align: center;
+    margin-top: 3rem;
+
+    .view-all-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: var(--transition);
+
+      &:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+    }
+  }
+}
+
+// Newsletter Section Styles
+.newsletter {
+  background: var(--primary-color);
+  color: white;
+  padding: 4rem 0;
+
+  &-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+
+    h2 {
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+    }
+  }
+
+  &-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+
+    input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+
+      &:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+      }
+    }
+
+    button {
+      padding: 1rem 2rem;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+
+      &:hover {
+        background: #d97706;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &-form {
+      flex-direction: column;
+
+      button {
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+// About Preview Section
+.about-preview {
+  padding: 4rem 0;
+
+  .about-content {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    > p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+
+      .feature {
+        text-align: center;
+        padding: 1.5rem;
+
+        &-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 60px;
+          height: 60px;
+          background: var(--bg-tertiary);
+          border-radius: 50%;
+          color: var(--primary-color);
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          margin-bottom: 0.75rem;
+          color: var(--text-primary);
+        }
+
+        p {
+          color: var(--text-light);
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}
+
+// Featured Section
+.featured-section {
+  padding: 2rem 0 4rem;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .products-section,
+  .featured-section {
+    padding: 2rem 0;
+  }
+
+  .about-preview {
+    padding: 2rem 0;
+
+    .about-content .features {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+}
+</style>
+

@@ -2,11 +2,51 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-<<<<<<< HEAD
 export default defineConfig({
-  base: '/',
   site: 'https://successodyssey.netlify.app',
+
+  build: {
+    assets: '_assets',
+    inlineStylesheets: 'auto',
+  },
+
+  image: {
+    domains: ['successodyssey.netlify.app'],
+  },
+
+  markdown: {
+    shikiConfig: {
+      theme: 'github-light',
+      wrap: true,
+    },
+  },
+
+  vite: {
+    build: {
+      rollupOptions: {
+        external: [],
+      },
+      cssCodeSplit: true,
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
+    },
+    css: {
+      devSourcemap: true,
+    },
+    optimizeDeps: {
+      exclude: ['@astrojs/image'],
+    },
+  },
+
+  server: {
+    port: 4321,
+    host: true,
+  },
+
+  integrations: [],
 });
-=======
-export default defineConfig({});
->>>>>>> 0e761fb (Initial commit from Astro)

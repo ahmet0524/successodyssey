@@ -1,0 +1,441 @@
+---
+// components/Newsletter.astro - Enhanced with validation and accessibility
+const {
+  title = "Stay Updated",
+  description = "Get the latest insights on personal development and success strategies delivered to your inbox.",
+  placeholder = "Enter your email address",
+  buttonText = "Subscribe",
+  disclaimer = "Join 5,000+ readers. No spam, unsubscribe anytime."
+} = Astro.props;
+---
+
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2 id="newsletter-title">{title}</h2>
+      <p>{description}</p>
+
+      <form class="newsletter-form" id="newsletter-form" novalidate>
+        <div class="form-group">
+          <label for="email-input" class="visually-hidden">Email Address</label>
+          <input
+            type="email"
+            id="email-input"
+            name="email"
+            placeholder={placeholder}
+            required
+            autocomplete="email"
+            aria-describedby="email-error newsletter-disclaimer"
+            class="email-input"
+          />
+          <button type="submit" class="subscribe-btn" aria-describedby="newsletter-disclaimer">
+            <span class="btn-text">{buttonText}</span>
+            <span class="btn-loading" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+                <path d="M12 1a11 11 0 1 0 11 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Subscribing...
+            </span>
+            <span class="btn-success" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Subscribed!
+            </span>
+          </button>
+        </div>
+
+        <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+        <div class="success-message" role="alert" aria-live="polite"></div>
+      </form>
+
+      <p id="newsletter-disclaimer" class="newsletter-disclaimer">{disclaimer}</p>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+.newsletter {
+  background: var(--primary-color);
+  color: white;
+  padding: var(--spacing-3xl) 0;
+
+  &-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+
+    h2 {
+      margin-bottom: var(--spacing-md);
+      color: white;
+    }
+
+    p {
+      margin-bottom: var(--spacing-xl);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+    }
+  }
+
+  &-form {
+    margin-bottom: var(--spacing-md);
+
+    .form-group {
+      display: flex;
+      gap: var(--spacing-md);
+      max-width: 400px;
+      margin: 0 auto var(--spacing-sm);
+      position: relative;
+
+      .email-input {
+        flex: 1;
+        padding: var(--spacing-md);
+        border: 2px solid transparent;
+        border-radius: var(--radius);
+        font-size: 1rem;
+        background: white;
+        color: var(--text-primary);
+        transition: var(--transition);
+
+        &:focus {
+          outline: none;
+          border-color: var(--accent-color);
+          box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+
+        &:invalid {
+          border-color: #ef4444;
+        }
+
+        &:valid {
+          border-color: #10b981;
+        }
+
+        &::placeholder {
+          color: var(--text-light);
+        }
+      }
+
+      .subscribe-btn {
+        padding: var(--spacing-md) var(--spacing-lg);
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: var(--radius);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        min-width: 120px;
+        overflow: hidden;
+
+        &:hover:not(:disabled) {
+          background: var(--accent-dark);
+          transform: translateY(-2px);
+        }
+
+        &:focus {
+          outline: 2px solid white;
+          outline-offset: 2px;
+        }
+
+        &:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+          transform: none;
+        }
+
+        .btn-text,
+        .btn-loading,
+        .btn-success {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--spacing-xs);
+          transition: var(--transition);
+        }
+
+        .btn-loading,
+        .btn-success {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: inherit;
+          transform: translateY(100%);
+
+          svg {
+            animation: spin 1s linear infinite;
+          }
+        }
+
+        .btn-success {
+          background: #10b981;
+
+          svg {
+            animation: none;
+          }
+        }
+
+        &.loading {
+          .btn-text {
+            transform: translateY(-100%);
+          }
+
+          .btn-loading {
+            transform: translateY(0);
+          }
+        }
+
+        &.success {
+          .btn-text {
+            transform: translateY(-100%);
+          }
+
+          .btn-success {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+
+    .error-message {
+      color: #fecaca;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: var(--radius-sm);
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 0.875rem;
+      margin-top: var(--spacing-sm);
+      text-align: left;
+      display: none;
+
+      &.show {
+        display: block;
+      }
+    }
+
+    .success-message {
+      color: #86efac;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-sm);
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 0.875rem;
+      margin-top: var(--spacing-sm);
+      text-align: center;
+      display: none;
+
+      &.show {
+        display: block;
+      }
+    }
+  }
+
+  &-disclaimer {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    &-form .form-group {
+      flex-direction: column;
+
+      .subscribe-btn {
+        padding: var(--spacing-md);
+      }
+    }
+  }
+}
+
+// Visually hidden label for accessibility
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
+
+<script>
+class NewsletterForm {
+  constructor() {
+    this.form = document.getElementById('newsletter-form');
+    this.emailInput = document.getElementById('email-input');
+    this.submitBtn = this.form?.querySelector('.subscribe-btn');
+    this.errorDiv = document.getElementById('email-error');
+    this.successDiv = this.form?.querySelector('.success-message');
+
+    if (this.form) {
+      this.init();
+    }
+  }
+
+  init() {
+    this.form.addEventListener('submit', this.handleSubmit.bind(this));
+    this.emailInput.addEventListener('input', this.clearErrors.bind(this));
+    this.emailInput.addEventListener('blur', this.validateEmail.bind(this));
+  }
+
+  async handleSubmit(e) {
+    e.preventDefault();
+
+    if (!this.validateEmail()) {
+      return;
+    }
+
+    const email = this.emailInput.value.trim();
+
+    // Show loading state
+    this.setButtonState('loading');
+    this.clearMessages();
+
+    try {
+      // Simulate API call (replace with actual newsletter service)
+      await this.subscribeToNewsletter(email);
+
+      // Show success state
+      this.setButtonState('success');
+      this.showSuccess('Thank you for subscribing! Check your email for confirmation.');
+      this.form.reset();
+
+      // Reset button after 3 seconds
+      setTimeout(() => {
+        this.setButtonState('default');
+      }, 3000);
+
+      // Track conversion event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'newsletter_signup', {
+          event_category: 'engagement',
+          event_label: 'footer_newsletter'
+        });
+      }
+
+    } catch (error) {
+      this.setButtonState('default');
+      this.showError('Something went wrong. Please try again.');
+      console.error('Newsletter subscription error:', error);
+    }
+  }
+
+  async subscribeToNewsletter(email) {
+    // Replace this with your actual newsletter service API
+    // Example: ConvertKit, Mailchimp, etc.
+
+    const response = await fetch('/api/newsletter', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  validateEmail() {
+    const email = this.emailInput.value.trim();
+
+    if (!email) {
+      this.showError('Email address is required.');
+      this.emailInput.focus();
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      this.showError('Please enter a valid email address.');
+      this.emailInput.focus();
+      return false;
+    }
+
+    // Check for disposable email domains
+    const disposableDomains = ['10minutemail', 'tempmail', 'guerrillamail', 'mailinator'];
+    const domain = email.split('@')[1]?.toLowerCase();
+    if (disposableDomains.some(d => domain?.includes(d))) {
+      this.showError('Please use a permanent email address.');
+      return false;
+    }
+
+    this.clearErrors();
+    return true;
+  }
+
+  setButtonState(state) {
+    if (!this.submitBtn) return;
+
+    this.submitBtn.classList.remove('loading', 'success');
+    this.submitBtn.disabled = false;
+
+    switch (state) {
+      case 'loading':
+        this.submitBtn.classList.add('loading');
+        this.submitBtn.disabled = true;
+        break;
+      case 'success':
+        this.submitBtn.classList.add('success');
+        this.submitBtn.disabled = true;
+        break;
+      default:
+        // Default state - no additional classes needed
+        break;
+    }
+  }
+
+  showError(message) {
+    if (this.errorDiv) {
+      this.errorDiv.textContent = message;
+      this.errorDiv.classList.add('show');
+      this.emailInput.setAttribute('aria-invalid', 'true');
+    }
+  }
+
+  showSuccess(message) {
+    if (this.successDiv) {
+      this.successDiv.textContent = message;
+      this.successDiv.classList.add('show');
+    }
+  }
+
+  clearErrors() {
+    if (this.errorDiv) {
+      this.errorDiv.classList.remove('show');
+      this.emailInput.setAttribute('aria-invalid', 'false');
+    }
+  }
+
+  clearMessages() {
+    this.clearErrors();
+    if (this.successDiv) {
+      this.successDiv.classList.remove('show');
+    }
+  }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new NewsletterForm();
+});
+</script>
