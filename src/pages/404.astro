@@ -1,0 +1,320 @@
+---
+// pages/404.astro - Custom 404 Error Page
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Page Not Found | Success Odyssey"
+  description="The page you're looking for doesn't exist. Explore our articles on personal development and success strategies instead."
+  noindex={true}
+>
+  <div class="error-page">
+    <div class="container">
+      <div class="error-content">
+        <h1>404</h1>
+        <h2>Oops! Page Not Found</h2>
+        <p>
+          The page you're looking for seems to have wandered off on its own success journey.
+          Don't worry though - there's plenty of valuable content waiting for you!
+        </p>
+
+        <div class="error-actions">
+          <a href="/" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Go Home
+          </a>
+          <a href="/blog" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 3H8C9.06087 3 10.0783 3.42143 10.8284 4.17157C11.5786 4.92172 12 5.93913 12 7V21C12 20.2044 11.6839 19.4413 11.1213 18.8787C10.5587 18.3161 9.79565 18 9 18H2V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 3H16C14.9391 3 13.9217 3.42143 13.1716 4.17157C12.4214 4.92172 12 5.93913 12 7V21C12 20.2044 12.3161 19.4413 12.8787 18.8787C13.4413 18.3161 14.2044 18 15 18H22V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Browse Articles
+          </a>
+          <button onclick="history.back()" class="btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Go Back
+          </button>
+        </div>
+      </div>
+
+      <!-- Popular Content Section -->
+      <div class="popular-content">
+        <h3>Popular Articles</h3>
+        <div class="popular-grid">
+          <a href="/blog/mental-models" class="popular-item">
+            <h4>Mental Models for Better Decisions</h4>
+            <p>Discover powerful thinking frameworks for smarter choices.</p>
+          </a>
+          <a href="/blog/stoicism" class="popular-item">
+            <h4>Stoic Wisdom for Modern Life</h4>
+            <p>Apply ancient teachings to build resilience and clarity.</p>
+          </a>
+          <a href="/blog/success-philosophy" class="popular-item">
+            <h4>The Philosophy of Success</h4>
+            <p>Learn timeless principles for achieving your goals.</p>
+          </a>
+          <a href="/blog/habits-discipline-momentum" class="popular-item">
+            <h4>Habits, Discipline, and Momentum</h4>
+            <p>Build systems that create unstoppable progress.</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Search Section -->
+      <div class="search-section">
+        <h3>Looking for something specific?</h3>
+        <div class="search-form">
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Search articles, products, or topics..."
+            autocomplete="off"
+          />
+          <button type="button" onclick="performSearch()" class="search-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+              <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Search
+          </button>
+        </div>
+        <div class="search-suggestions">
+          <span>Popular searches:</span>
+          <button onclick="searchFor('productivity')" class="suggestion-tag">Productivity</button>
+          <button onclick="searchFor('mental models')" class="suggestion-tag">Mental Models</button>
+          <button onclick="searchFor('stoicism')" class="suggestion-tag">Stoicism</button>
+          <button onclick="searchFor('habits')" class="suggestion-tag">Habits</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+.error-page {
+  padding: var(--spacing-3xl) 0;
+  min-height: 60vh;
+
+  .error-content {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+
+    h1 {
+      font-size: clamp(4rem, 15vw, 12rem);
+      color: var(--primary-color);
+      margin-bottom: var(--spacing-md);
+      font-weight: 800;
+      line-height: 0.8;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      margin-bottom: var(--spacing-lg);
+      color: var(--text-primary);
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: var(--spacing-xl);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-secondary);
+    }
+
+    .error-actions {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  .popular-content {
+    margin-bottom: var(--spacing-3xl);
+    text-align: center;
+
+    h3 {
+      margin-bottom: var(--spacing-xl);
+      color: var(--text-primary);
+    }
+
+    .popular-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .popular-item {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: var(--spacing-lg);
+      text-decoration: none;
+      transition: var(--transition);
+      text-align: left;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-color);
+      }
+
+      h4 {
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+        font-size: 1.1rem;
+      }
+
+      p {
+        color: var(--text-light);
+        margin-bottom: 0;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .search-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+
+    h3 {
+      margin-bottom: var(--spacing-lg);
+      color: var(--text-primary);
+    }
+
+    .search-form {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+
+      input {
+        flex: 1;
+        padding: var(--spacing-md);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+      }
+
+      .search-btn {
+        @extend .btn-primary;
+        white-space: nowrap;
+      }
+    }
+
+    .search-suggestions {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+
+      span {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-right: var(--spacing-sm);
+      }
+
+      .suggestion-tag {
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+        border: none;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: var(--transition);
+
+        &:hover {
+          background: var(--primary-color);
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .error-page {
+    padding: var(--spacing-xl) 0;
+
+    .error-content {
+      .error-actions {
+        flex-direction: column;
+        align-items: center;
+
+        .btn-primary,
+        .btn-secondary,
+        .btn-outline {
+          width: 100%;
+          max-width: 250px;
+        }
+      }
+    }
+
+    .popular-content .popular-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .search-section .search-form {
+      flex-direction: column;
+    }
+
+    .search-suggestions {
+      flex-direction: column;
+      align-items: flex-start;
+
+      span {
+        margin-bottom: var(--spacing-sm);
+      }
+    }
+  }
+}
+</style>
+
+<script>
+function performSearch() {
+  const searchInput = document.getElementById('search-input');
+  const searchTerm = searchInput.value.trim();
+
+  if (searchTerm) {
+    // Redirect to blog page with search query
+    window.location.href = `/blog?search=${encodeURIComponent(searchTerm)}`;
+  }
+}
+
+function searchFor(term) {
+  const searchInput = document.getElementById('search-input');
+  searchInput.value = term;
+  performSearch();
+}
+
+// Enable search on Enter key press
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+  }
+});
+</script>

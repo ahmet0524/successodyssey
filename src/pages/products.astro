@@ -1,0 +1,555 @@
+---
+// pages/products.astro - Kart genişlikleri düzeltilmiş versiyon
+import Layout from "../layouts/Layout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import card1 from "../assets/card1.jpg";
+import card2 from "../assets/card2.jpg";
+import card3 from "../assets/card3.jpg";
+---
+
+<Layout
+  title="Premium Success Resources | Success Odyssey"
+  description="Transform your life with our curated collection of digital products, courses, and mental health resources. Affiliate partnerships with top-rated providers."
+  keywords="digital products, online courses, life coaching, mental health, productivity tools, success resources"
+>
+  <!-- Hero Section -->
+  <section class="products-hero">
+    <div class="container">
+      <h1>Premium Resources for Your Success Journey</h1>
+      <p>Carefully curated tools, courses, and services from industry leaders. Transform your life with proven strategies.</p>
+    </div>
+  </section>
+
+  <!-- Product Categories -->
+  <section class="products-main">
+    <div class="container">
+
+      <!-- Own Digital Products -->
+      <div class="category-section">
+        <div class="category-header">
+          <h2>Our Digital Products</h2>
+          <p>Created with love and expertise for your transformation</p>
+        </div>
+
+        <div class="products-grid">
+          <ProductCard
+            title="The Success Mindset eBook"
+            description="150+ pages of mental models, frameworks, and actionable strategies. Instant download with lifetime updates."
+            price="29.99"
+            originalPrice="49.99"
+            image={card1}
+            link="https://gumroad.com/l/success-mindset-ebook?ref=successodyssey"
+            badge="Bestseller"
+            isAffiliate={false}
+            category="Digital Products"
+          />
+          <ProductCard
+            title="Digital Life Planner 2025"
+            description="Interactive Notion template with goal tracking, habit formation, and reflection frameworks. 50+ templates included."
+            price="19.99"
+            originalPrice="39.99"
+            image={card3}
+            link="https://etsy.com/listing/success-digital-planner"
+            badge="New"
+            isAffiliate={false}
+            category="Digital Products"
+          />
+          <ProductCard
+            title="Productivity Toolkit Bundle"
+            description="Complete collection of productivity templates, checklists, and systems. Perfect for busy professionals."
+            price="39.99"
+            originalPrice="79.99"
+            image={card2}
+            link="https://gumroad.com/l/productivity-toolkit-bundle"
+            badge="Bundle"
+            isAffiliate={false}
+            category="Digital Products"
+          />
+        </div>
+      </div>
+
+      <!-- Online Courses (Affiliate) -->
+      <div class="category-section">
+        <div class="category-header">
+          <h2>Premium Online Courses</h2>
+          <p>Transform your skills with world-class education</p>
+        </div>
+
+        <div class="products-grid">
+          <ProductCard
+            title="Mindvalley Masterclass"
+            description="Access 100+ transformational courses on personal growth, meditation, and success from top experts worldwide."
+            price="399"
+            originalPrice="699"
+            image={card1}
+            link="https://mindvalley.com/?ref=successodyssey&utm_source=affiliate"
+            badge="Partner"
+            isAffiliate={true}
+            category="Online Courses"
+          />
+          <ProductCard
+            title="MasterClass All-Access"
+            description="Learn from the world's best minds. 150+ classes on leadership, creativity, and personal development."
+            price="180"
+            originalPrice="240"
+            image={card2}
+            link="https://masterclass.com/?ref=successodyssey"
+            badge="Popular"
+            isAffiliate={true}
+            category="Online Courses"
+          />
+          <ProductCard
+            title="Coursera Plus Annual"
+            description="Unlimited access to 7,000+ courses from top universities. Certificates included for career advancement."
+            price="399"
+            originalPrice="499"
+            image={card3}
+            link="https://coursera.org/courseraplus?utm_source=successodyssey"
+            badge="Academic"
+            isAffiliate={true}
+            category="Online Courses"
+          />
+        </div>
+      </div>
+
+      <!-- Life Coaching & Mental Health (Affiliate) -->
+      <div class="category-section">
+        <div class="category-header">
+          <h2>Professional Coaching & Mental Health</h2>
+          <p>Get personalized support from licensed professionals</p>
+        </div>
+
+        <div class="products-grid">
+          <ProductCard
+            title="BetterHelp Therapy Sessions"
+            description="Connect with licensed therapists online. Flexible scheduling, secure messaging, and video sessions available 24/7."
+            price="260"
+            originalPrice="320"
+            image={card2}
+            link="https://betterhelp.com/successodyssey/?utm_source=affiliate"
+            badge="Licensed"
+            isAffiliate={true}
+            category="Mental Health"
+          />
+          <ProductCard
+            title="Tony Robbins Coaching"
+            description="Work with certified Tony Robbins coaches. Breakthrough limiting beliefs and achieve extraordinary results."
+            price="497"
+            originalPrice="697"
+            image={card1}
+            link="https://tonyrobbins.com/coaching/?ref=successodyssey"
+            badge="Premium"
+            isAffiliate={true}
+            category="Life Coaching"
+          />
+          <ProductCard
+            title="Headspace Premium"
+            description="Meditation and mindfulness app with specialized programs for stress, sleep, focus, and anxiety management."
+            price="69.99"
+            originalPrice="99.99"
+            image={card3}
+            link="https://headspace.com/buy/premium?utm_source=successodyssey"
+            badge="Wellness"
+            isAffiliate={true}
+            category="Mental Health"
+          />
+        </div>
+      </div>
+
+      <!-- Productivity & Business Tools (Affiliate) -->
+      <div class="category-section">
+        <div class="category-header">
+          <h2>Productivity & Business Tools</h2>
+          <p>Streamline your workflow and boost efficiency</p>
+        </div>
+
+        <div class="products-grid">
+          <ProductCard
+            title="Notion Pro Workspace"
+            description="All-in-one workspace for notes, docs, and project management. Perfect for entrepreneurs and creatives."
+            price="96"
+            originalPrice="120"
+            image={card1}
+            link="https://notion.so/?r=successodyssey"
+            badge="Essential"
+            isAffiliate={true}
+            category="Productivity"
+          />
+          <ProductCard
+            title="ConvertKit Email Marketing"
+            description="Professional email marketing platform designed for creators. Advanced automation and landing page builder."
+            price="348"
+            originalPrice="468"
+            image={card2}
+            link="https://convertkit.com?lmref=successodyssey"
+            badge="Creator"
+            isAffiliate={true}
+            category="Business Tools"
+          />
+          <ProductCard
+            title="Canva Pro Design Suite"
+            description="Professional design tool with 100M+ premium stock photos, videos, and templates. Perfect for content creators."
+            price="119.99"
+            originalPrice="179.99"
+            image={card3}
+            link="https://canva.com/pro/?utm_source=successodyssey"
+            badge="Design"
+            isAffiliate={true}
+            category="Business Tools"
+          />
+        </div>
+      </div>
+
+      <!-- Books & Audio Content (Affiliate) -->
+      <div class="category-section">
+        <div class="category-header">
+          <h2>Books & Audio Learning</h2>
+          <p>Expand your knowledge with bestselling content</p>
+        </div>
+
+        <div class="products-grid">
+          <ProductCard
+            title="Audible Premium Plus"
+            description="Unlimited access to thousands of audiobooks and Audible Originals. Perfect for learning on-the-go."
+            price="149.50"
+            originalPrice="179.40"
+            image={card1}
+            link="https://audible.com/premium-plus?ref=successodyssey"
+            badge="Audio"
+            isAffiliate={true}
+            category="Books & Audio"
+          />
+          <ProductCard
+            title="Blinkist Premium"
+            description="Key insights from 5,000+ non-fiction books in 15-minute reads. Perfect for busy professionals."
+            price="79.99"
+            originalPrice="99.99"
+            image={card2}
+            link="https://blinkist.com/premium?utm_source=successodyssey"
+            badge="Insights"
+            isAffiliate={true}
+            category="Books & Audio"
+          />
+          <ProductCard
+            title="Scribd Unlimited"
+            description="Access millions of ebooks, audiobooks, magazines, and documents. The Netflix of reading."
+            price="95.88"
+            originalPrice="119.88"
+            image={card3}
+            link="https://scribd.com/subscribe?utm_source=successodyssey"
+            badge="Unlimited"
+            isAffiliate={true}
+            category="Books & Audio"
+          />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Affiliate Disclosure -->
+  <section class="affiliate-disclosure">
+    <div class="container">
+      <div class="disclosure-content">
+        <h3>Affiliate Partnership Disclosure</h3>
+        <p>Success Odyssey is a participant in various affiliate programs. When you purchase through our links, we may earn a commission at no additional cost to you. We only recommend products and services we genuinely believe in and use ourselves. Your support helps us continue creating valuable content.</p>
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <span class="badge-icon">🛡️</span>
+            <span>Trusted Partners</span>
+          </div>
+          <div class="trust-badge">
+            <span class="badge-icon">💰</span>
+            <span>Best Prices</span>
+          </div>
+          <div class="trust-badge">
+            <span class="badge-icon">⭐</span>
+            <span>Quality Guaranteed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>Why do you recommend these specific products?</h4>
+          <p>Every product we recommend has been personally tested or researched by our team. We only partner with companies that align with our values and deliver real results.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Are there any hidden costs?</h4>
+          <p>No hidden costs! The prices shown are exactly what you'll pay. Any affiliate commissions we earn don't increase your price.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What if I'm not satisfied with a purchase?</h4>
+          <p>Most of our partners offer money-back guarantees. Check each product page for specific refund policies, or contact us for assistance.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Do you offer customer support?</h4>
+          <p>Yes! While we don't provide direct support for third-party products, we're happy to help you find the right resources and connect you with the appropriate support teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style lang="scss">
+.products-hero {
+  background: linear-gradient(135deg, var(--primary-color, #3b82f6) 0%, var(--primary-dark, #2563eb) 100%);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 1rem;
+    color: white;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+}
+
+.products-main {
+  padding: 4rem 0;
+}
+
+.category-section {
+  margin-bottom: 4rem;
+
+  .category-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h2 {
+      color: var(--text-primary, #111827);
+      margin-bottom: 1rem;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+    }
+
+    p {
+      color: var(--text-light, #6b7280);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+/* KART GENİŞLİKLERİ DÜZELTİLDİ */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* 3'lü grid için maksimum genişlik kontrolü */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.affiliate-disclosure {
+  background: var(--bg-secondary, #f8fafc);
+  padding: 3rem 0;
+  border-top: 1px solid var(--border-color, #e5e7eb);
+
+  .disclosure-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+
+    h3 {
+      color: var(--text-primary, #111827);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    p {
+      color: var(--text-secondary, #4b5563);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+  }
+
+  .trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: white;
+      border-radius: var(--radius, 8px);
+      box-shadow: var(--shadow, 0 2px 4px rgba(0,0,0,0.1));
+      font-weight: 600;
+      color: var(--text-primary, #111827);
+      min-width: 140px;
+      justify-content: center;
+
+      .badge-icon {
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 768px) {
+        min-width: auto;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.faq-section {
+  padding: 4rem 0;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary, #111827);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .faq-item {
+    background: var(--bg-primary, #ffffff);
+    padding: 2rem;
+    border-radius: var(--radius, 8px);
+    box-shadow: var(--shadow, 0 2px 4px rgba(0,0,0,0.1));
+    border: 1px solid var(--border-color, #e5e7eb);
+    transition: var(--transition, all 0.3s ease);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg, 0 10px 15px rgba(0,0,0,0.1));
+    }
+
+    h4 {
+      color: var(--primary-color, #3b82f6);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary, #4b5563);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+  }
+}
+
+/* Container genişlik kontrolü */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 768px) {
+  .products-hero {
+    padding: 2rem 0;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .products-main {
+    padding: 2rem 0;
+  }
+
+  .category-section {
+    margin-bottom: 3rem;
+
+    .category-header {
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    .trust-badge {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+
+  .affiliate-disclosure {
+    padding: 2rem 0;
+  }
+
+  .faq-section {
+    padding: 3rem 0;
+  }
+}
+</style>

@@ -1,10 +1,181 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from "../../layouts/Layout.astro";
+import card2 from "../../assets/card2.jpg";
 ---
-<Layout>
-  <div class="container">
-    <h1>Blog Post 1</h1>
-    <img src="/assets/blog-placeholder.jpg" alt="Blog 1" />
-    <p>Full content of blog post 1...</p>
-  </div>
-</Layout
+
+<Layout
+  title="Stoic Wisdom for Modern Life | Success Odyssey"
+  description="Learn how ancient Stoic philosophy can help you build resilience, find inner peace, and maintain clarity in our fast-paced modern world."
+  keywords="stoicism, philosophy, resilience, inner peace, mental strength, Marcus Aurelius, Seneca"
+  image="/assets/card2.jpg"
+>
+  <article class="blog-page">
+    <header class="article-header">
+      <h1>Stoic Wisdom for Modern Life</h1>
+      <div class="article-meta">
+        <time datetime="2025-01-12">January 12, 2025</time>
+        <span class="reading-time">6 min read</span>
+        <div class="tags">
+          <span class="tag">Stoicism</span>
+          <span class="tag">Philosophy</span>
+          <span class="tag">Resilience</span>
+        </div>
+      </div>
+    </header>
+
+    <img src={card2.src || card2} alt="Stoic Philosophy" class="hero-image" />
+
+    <div class="content">
+      <p class="lead">
+        In a world of constant change and uncertainty, ancient Stoic philosophy offers timeless wisdom for navigating life's challenges with grace, resilience, and inner peace.
+      </p>
+
+      <h2>The Foundation of Stoicism</h2>
+      <p>
+        Stoicism teaches us to focus on what we can control and accept what we cannot. This fundamental principle, when truly understood and applied, becomes a powerful tool for reducing anxiety, improving decision-making, and finding contentment regardless of external circumstances.
+      </p>
+
+      <h2>Key Stoic Principles</h2>
+      <p>
+        <strong>The Dichotomy of Control:</strong> Understanding the difference between what is "up to us" and what is "not up to us" is the cornerstone of Stoic thinking. Our thoughts, judgments, desires, and actions are within our control—everything else is not.
+      </p>
+
+      <p>
+        <strong>Virtue as the Highest Good:</strong> The Stoics believed that virtue—wisdom, justice, courage, and temperance—is the only true good. External things like wealth, fame, or even health are "indifferent" when it comes to living a good life.
+      </p>
+
+      <p>
+        <strong>Present Moment Awareness:</strong> Marcus Aurelius reminds us that "the present moment is the only time over which we have dominion." By focusing on the here and now, we can respond thoughtfully rather than react emotionally.
+      </p>
+
+      <h2>Practical Applications</h2>
+      <p>
+        Start each day by reminding yourself of what you can and cannot control. When faced with challenges, ask: "Is this within my power to change?" If yes, take action. If no, practice acceptance and focus your energy elsewhere.
+      </p>
+
+      <p>
+        Practice negative visualization—imagining loss or setbacks—not to invite negativity, but to appreciate what you have and build resilience for when difficulties arise.
+      </p>
+
+      <blockquote>
+        "You have power over your mind—not outside events. Realize this, and you will find strength." - Marcus Aurelius
+      </blockquote>
+
+      <p>
+        Stoicism isn't about suppressing emotions or becoming indifferent to life. It's about developing the wisdom to respond rather than react, finding peace in any circumstance, and building unshakeable inner strength.
+      </p>
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+.article-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+
+    time {
+      font-weight: 500;
+    }
+
+    .reading-time {
+      color: var(--primary-color);
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.5rem;
+
+      .tag {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.content {
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  h2 {
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--bg-secondary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+}
+
+@media (max-width: 768px) {
+  .article-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .content {
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+</style>

@@ -1,10 +1,201 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from "../../layouts/Layout.astro";
+import card3 from "../../assets/card3.jpg";
 ---
-<Layout>
-  <div class="container">
-    <h1>Blog Post 1</h1>
-    <img src="/assets/blog-placeholder.jpg" alt="Blog 1" />
-    <p>Full content of blog post 1...</p>
-  </div>
-</Layout
+
+<Layout
+  title="The Philosophy of Success | Success Odyssey"
+  description="Discover timeless principles and daily habits that successful people use to achieve their goals and maintain long-term fulfillment."
+  keywords="success philosophy, personal development, goal achievement, success mindset, habits, discipline"
+  image="/assets/card3.jpg"
+>
+  <article class="blog-page">
+    <header class="article-header">
+      <h1>The Philosophy of Success</h1>
+      <div class="article-meta">
+        <time datetime="2025-01-10">January 10, 2025</time>
+        <span class="reading-time">7 min read</span>
+        <div class="tags">
+          <span class="tag">Success</span>
+          <span class="tag">Philosophy</span>
+          <span class="tag">Personal Development</span>
+        </div>
+      </div>
+    </header>
+
+    <img src={card3.src || card3} alt="Success Philosophy" class="hero-image" />
+
+    <div class="content">
+      <p class="lead">
+        True success isn't just about achieving goals—it's about developing a philosophy that guides your decisions, shapes your character, and creates lasting fulfillment.
+      </p>
+
+      <h2>Redefining Success</h2>
+      <p>
+        Success is often misunderstood as merely the accumulation of wealth, status, or recognition. However, a deeper philosophy of success recognizes that true achievement encompasses personal growth, meaningful relationships, contribution to others, and alignment with your core values.
+      </p>
+
+      <p>
+        The most successful individuals throughout history have understood that external achievements are byproducts of internal development. They focus on becoming the type of person capable of creating the results they desire.
+      </p>
+
+      <h2>The Four Pillars of Success Philosophy</h2>
+
+      <h3>1. Clarity of Purpose</h3>
+      <p>
+        Without a clear sense of purpose, success becomes arbitrary. Define what success means to you personally, not what society or others expect. This requires deep self-reflection and honest assessment of your values, strengths, and the impact you want to make.
+      </p>
+
+      <h3>2. Disciplined Action</h3>
+      <p>
+        Success is built through consistent, disciplined action over time. It's not about grand gestures or sporadic bursts of activity, but rather the compound effect of daily habits and decisions that align with your goals.
+      </p>
+
+      <h3>3. Continuous Learning</h3>
+      <p>
+        The world evolves rapidly, and successful people adapt by maintaining a growth mindset. They view failures as learning opportunities, seek feedback actively, and invest in developing new skills and knowledge throughout their lives.
+      </p>
+
+      <h3>4. Resilient Mindset</h3>
+      <p>
+        Setbacks are inevitable on any meaningful journey. A success philosophy includes frameworks for maintaining motivation during difficult times, recovering from failures quickly, and using obstacles as stepping stones rather than roadblocks.
+      </p>
+
+      <h2>Building Your Success Framework</h2>
+      <p>
+        Start by defining your personal mission statement. What do you want to be remembered for? What impact do you want to have? Write this down and review it regularly to ensure your actions align with your deeper purpose.
+      </p>
+
+      <p>
+        Develop systems, not just goals. While goals provide direction, systems create the conditions for consistent progress. Focus on building daily and weekly routines that support your long-term vision.
+      </p>
+
+      <blockquote>
+        "Success is not a destination, but a way of traveling. It's not about what you achieve, but who you become in the process."
+      </blockquote>
+
+      <p>
+        Remember that success is deeply personal. Your definition should reflect your unique circumstances, values, and aspirations. Don't let others dictate what success should look like for you—create your own meaningful path forward.
+      </p>
+
+      <h2>The Long-Term View</h2>
+      <p>
+        True success philosophy takes a long-term perspective. It's about building something sustainable rather than seeking quick wins. This means making decisions based on their long-term consequences, investing in relationships and skills that compound over time, and staying committed to your path even when progress seems slow.
+      </p>
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+.article-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+
+    time {
+      font-weight: 500;
+    }
+
+    .reading-time {
+      color: var(--primary-color);
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.5rem;
+
+      .tag {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.content {
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  h2 {
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: var(--text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--accent-color);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--bg-secondary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+}
+
+@media (max-width: 768px) {
+  .article-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .content {
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+</style>
