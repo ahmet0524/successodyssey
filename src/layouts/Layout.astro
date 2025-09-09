@@ -1,5 +1,5 @@
 ---
-// layouts/Layout.astro - Enhanced SEO Version with Performance Optimizations
+// layouts/Layout.astro - Enhanced SEO Version with improvements
 import '../styles/main.scss';
 
 export interface Props {
@@ -20,9 +20,9 @@ export interface Props {
 }
 
 const {
-  title = "Success Odyssey - Transform Your Life with Proven Strategies",
+  title = "Success Odyssey Hub - Transform Your Life with Proven Strategies",
   description = "Discover mental models, stoicism, and success philosophy. Transform your life with proven strategies and timeless wisdom for personal development.",
-  image = "/assets/banner.jpg",
+  image = "/assets/images/banner.webp",
   keywords = "success, philosophy, stoicism, mental models, personal development, mindfulness, self improvement",
   type = 'website',
   price,
@@ -31,12 +31,12 @@ const {
   category,
   publishedDate,
   modifiedDate,
-  author = "Success Odyssey",
+  author = "Success Odyssey Hub",
   noindex = false,
   alternateLanguages = []
 } = Astro.props;
 
-// Canonical URL - Astro.site kullanımı
+// Canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site).toString();
 const currentDate = new Date().toISOString();
@@ -77,7 +77,7 @@ const mainSchema = {
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Success Odyssey",
+    "name": "Success Odyssey Hub",
     "url": Astro.site,
     "logo": {
       "@type": "ImageObject",
@@ -116,19 +116,6 @@ if (type === 'article') {
 
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<!-- Performance Optimizations -->
-<!-- Preconnect for external resources -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="dns-prefetch" href="//www.google-analytics.com" />
-<link rel="dns-prefetch" href="//googletagmanager.com" />
-
-<!-- Critical Font Preload -->
-<link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin />
-
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -136,6 +123,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-T34WMXZC');</script>
 <!-- End Google Tag Manager -->
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Basic SEO -->
 <title>{title}</title>
@@ -157,7 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Open Graph -->
 <meta property="og:type" content={type} />
-<meta property="og:site_name" content="Success Odyssey" />
+<meta property="og:site_name" content="Success Odyssey Hub" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL.toString()} />
@@ -187,8 +177,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@successodyssey" />
-<meta name="twitter:creator" content="@successodyssey" />
+<meta name="twitter:site" content="@successodysseyhub" />
+<meta name="twitter:creator" content="@successodysseyhub" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageURL} />
@@ -198,6 +188,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
+
+<!-- DNS Prefetch & Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -219,13 +214,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Success Odyssey",
+  "name": "Success Odyssey Hub",
   "url": Astro.site,
   "logo": new URL('/favicon.svg', Astro.site).toString(),
   "sameAs": [
-    "https://twitter.com/successodyssey",
-    "https://facebook.com/successodyssey",
-    "https://linkedin.com/company/successodyssey"
+    "https://twitter.com/successodysseyhub",
+    "https://facebook.com/successodysseyhub",
+    "https://linkedin.com/company/successodysseyhub"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
@@ -233,7 +228,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "availableLanguage": "English"
   }
 })} />
-
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -252,7 +246,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
 </svg>
-<span itemprop="name">Success Odyssey</span>
+<span itemprop="name">Success Odyssey Hub</span>
 </a>
 <ul class="nav-links">
 <li><a href="/" itemprop="url">Home</a></li>
@@ -274,7 +268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="footer-container">
 <div class="footer-content">
 <div class="footer-section">
-<h3>Success Odyssey</h3>
+<h3>Success Odyssey Hub</h3>
 <p>Transform your life with proven strategies and timeless wisdom.</p>
 </div>
 <div class="footer-section">
@@ -298,7 +292,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </div>
 <div class="footer-bottom">
-<p>&copy; 2025 Success Odyssey. All rights reserved.</p>
+<p>&copy; 2025 Success Odyssey Hub. All rights reserved.</p>
 </div>
 </div>
 </footer>
