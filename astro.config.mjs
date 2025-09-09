@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://successodyssey.com',
+  site: 'https://successodysseyhub.com',
 
   integrations: [
     sitemap({
@@ -24,7 +24,7 @@ export default defineConfig({
       // Custom page priorities
       serialize: (item) => {
         // Ana sayfa - en yüksek öncelik
-        if (item.url === 'https://successodyssey.com/') {
+        if (item.url === 'https://successodysseyhub.com/') {
           return {
             ...item,
             priority: 1.0,
@@ -75,7 +75,7 @@ export default defineConfig({
   },
 
   image: {
-    domains: ['successodyssey.com'],
+    domains: ['successodysseyhub.com'],
   },
 
   markdown: {
