@@ -1,5 +1,5 @@
 ---
-// layouts/Layout.astro - Optimized for Performance
+// layouts/Layout.astro - Enhanced SEO Version with Performance Optimizations
 import '../styles/main.scss';
 
 export interface Props {
@@ -36,9 +36,9 @@ const {
   alternateLanguages = []
 } = Astro.props;
 
-// Canonical URL - Updated domain
-const canonicalURL = new URL(Astro.url.pathname, 'https://successodyssey.com');
-const imageURL = new URL(image, 'https://successodyssey.com').toString();
+// Canonical URL - Astro.site kullanımı
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image, Astro.site).toString();
 const currentDate = new Date().toISOString();
 
 // Breadcrumb structured data
@@ -51,13 +51,13 @@ const breadcrumbList = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://successodyssey.com"
+      "item": Astro.site
     },
     ...pathSegments.map((segment, index) => ({
       "@type": "ListItem",
       "position": index + 2,
       "name": segment.charAt(0).toUpperCase() + segment.slice(1).replace('-', ' '),
-      "item": new URL(pathSegments.slice(0, index + 1).join('/'), 'https://successodyssey.com').toString()
+      "item": new URL(pathSegments.slice(0, index + 1).join('/'), Astro.site).toString()
     }))
   ]
 };
@@ -73,15 +73,15 @@ const mainSchema = {
   "author": {
     "@type": "Organization",
     "name": author,
-    "url": "https://successodyssey.com"
+    "url": Astro.site
   },
   "publisher": {
     "@type": "Organization",
     "name": "Success Odyssey",
-    "url": "https://successodyssey.com",
+    "url": Astro.site,
     "logo": {
       "@type": "ImageObject",
-      "url": "https://successodyssey.com/favicon.svg"
+      "url": new URL('/favicon.svg', Astro.site).toString()
     }
   }
 };
@@ -119,131 +119,23 @@ if (type === 'article') {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Critical CSS - Above the fold styles -->
-<style>
-/* Critical font loading */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2) format('woff2');
-}
-
-/* Critical layout styles */
-body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  color: #1a202c;
-  background-color: #ffffff;
-}
-
-.header {
-  position: relative;
-  z-index: 100;
-  background: #fff;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  color: #4a5568;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.nav-links a:hover {
-  color: #2563eb;
-}
-
-.main {
-  min-height: calc(100vh - 200px);
-}
-
-.skip-to-main {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: #2563eb;
-  color: white;
-  padding: 8px;
-  border-radius: 0 0 4px 4px;
-  text-decoration: none;
-  z-index: 1000;
-}
-
-.skip-to-main:focus {
-  top: 0;
-}
-
-/* Loading skeleton for better perceived performance */
-.loading-skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-  border-radius: 4px;
-}
-
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-@media (max-width: 768px) {
-  .nav {
-    flex-wrap: wrap;
-  }
-  .nav-links {
-    width: 100%;
-    justify-content: center;
-    margin-top: 1rem;
-    gap: 1rem;
-  }
-  .nav-links a {
-    font-size: 0.9rem;
-  }
-}
-</style>
-
+<!-- Performance Optimizations -->
 <!-- Preconnect for external resources -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="dns-prefetch" href="//www.google-analytics.com">
-<link rel="dns-prefetch" href="//googletagmanager.com">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//googletagmanager.com" />
 
-<!-- Preload critical resources -->
-<link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Critical Font Preload -->
+<link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin />
 
-<!-- Load Google Fonts asynchronously -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T34WMXZC');</script>
+<!-- End Google Tag Manager -->
 
 <!-- Basic SEO -->
 <title>{title}</title>
@@ -307,6 +199,9 @@ body {
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
 <!-- Theme -->
 <meta name="theme-color" content="#2563eb" />
 <meta name="msapplication-TileColor" content="#2563eb" />
@@ -325,8 +220,8 @@ body {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Success Odyssey",
-  "url": "https://successodyssey.com",
-  "logo": "https://successodyssey.com/favicon.svg",
+  "url": Astro.site,
+  "logo": new URL('/favicon.svg', Astro.site).toString(),
   "sameAs": [
     "https://twitter.com/successodyssey",
     "https://facebook.com/successodyssey",
@@ -339,55 +234,13 @@ body {
   }
 })} />
 
-<!-- Load non-critical CSS asynchronously -->
-<script>
-// Async CSS loader
-function loadCSS(href, media = 'all') {
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = href;
-  link.media = media;
-  document.head.appendChild(link);
-
-  // Switch to 'all' media when loaded
-  link.onload = function() {
-    this.media = 'all';
-  };
-}
-
-// Load non-critical CSS after DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    requestIdleCallback(() => {
-      // Load additional CSS files here if needed
-      // loadCSS('/css/non-critical.css');
-    });
-  });
-} else {
-  // DOM is already ready
-  requestIdleCallback(() => {
-    // Load additional CSS files here if needed
-  });
-}
-</script>
-
-<!-- Google Analytics - Load asynchronously -->
-<script>
-// Load Google Analytics asynchronously
-(function() {
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
-  document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
-})();
-</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T34WMXZC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <!-- Skip to main content for accessibility -->
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
@@ -449,23 +302,43 @@ if (document.readyState === 'loading') {
 </div>
 </div>
 </footer>
-
-<!-- Load footer styles asynchronously -->
-<script>
-// Load footer CSS when footer becomes visible
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Footer is visible, load footer-specific CSS if needed
-      observer.unobserve(entry.target);
-    }
-  });
-});
-
-const footer = document.querySelector('.footer');
-if (footer) {
-  observer.observe(footer);
-}
-</script>
 </body>
 </html>
+
+<style lang="scss">
+.skip-to-main {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  border-radius: 0 0 4px 4px;
+  text-decoration: none;
+  z-index: 1000;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Responsive navigation for mobile
+@media (max-width: 768px) {
+  .nav {
+    &-container {
+      flex-wrap: wrap;
+    }
+
+    &-links {
+      width: 100%;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+
+      a {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+</style>
