@@ -1,9 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://successodyssey.netlify.app',
+  site: 'https://successodyssey.com', // Domain güncellendi
+
+  integrations: [
+    sitemap() // Sitemap entegrasyonu eklendi
+  ],
 
   build: {
     assets: '_assets',
@@ -11,7 +16,7 @@ export default defineConfig({
   },
 
   image: {
-    domains: ['successodyssey.netlify.app'],
+    domains: ['successodyssey.com'], // Domain güncellendi
   },
 
   markdown: {
@@ -47,6 +52,10 @@ export default defineConfig({
     port: 4321,
     host: true,
   },
+<<<<<<< HEAD
 
   integrations: [],
 });
+=======
+});
+>>>>>>> 64d9820 (update content)
