@@ -1,31 +1,88 @@
 ---
-// pages/products.astro - Kart genişlikleri düzeltilmiş versiyon
+// pages/products.astro - Kişisel hizmetler eklendi
 import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import card1 from "../assets/mental-models.webp";
 import card2 from "../assets/success-philosophy.webp";
 import card3 from "../assets/stoic-wisdom.webp";
-import card3 from "../assets/stoic-wisdom.webp";
 import digitalPlannerImage from "../assets/2026-planner.webp";
 import successMindsetImage from "../assets/success-mindset.webp";
+// Yeni hizmet görselleri için
+import graphicDesignImage from "../assets/graphic-design-service.webp";
+import videoEditingImage from "../assets/video-editing-service.webp";
 ---
 
 <Layout
   title="Premium Success Resources | Success Odyssey"
-  description="Transform your life with our curated collection of digital products, courses, and mental health resources. Affiliate partnerships with top-rated providers."
-  keywords="digital products, online courses, life coaching, mental health, productivity tools, success resources"
+  description="Transform your life with our curated collection of digital products, courses, and mental health resources. Plus professional design services."
+  keywords="digital products, online courses, life coaching, mental health, productivity tools, success resources, graphic design, video editing"
 >
   <!-- Hero Section -->
   <section class="products-hero">
     <div class="container">
       <h1>Premium Resources for Your Success Journey</h1>
-      <p style="color: rgba(255, 255, 255, 0.9);"> Carefully curated tools, courses, and services from industry leaders. Transform your life with proven strategies.</p>
+      <p style="color: rgba(255, 255, 255, 0.9);">Carefully curated tools, courses, services, and professional design solutions. Transform your life and brand with proven strategies.</p>
     </div>
   </section>
 
   <!-- Product Categories -->
   <section class="products-main">
     <div class="container">
+
+      <!-- Professional Services - YENİ KATEGORİ -->
+      <div class="category-section">
+        <div class="category-header">
+          <h2>🎨 Professional Services</h2>
+          <p>Complete digital solutions - from design to development</p>
+        </div>
+
+        <div class="products-grid">
+          <ProductCard
+            title="Professional Graphic Design"
+            description="Custom logo design, branding, social media graphics, and print materials. Fast turnaround with unlimited revisions until perfect."
+            price="Starting at $25"
+            originalPrice=""
+            image={graphicDesignImage}
+            link="https://www.fiverr.com/s/6YgoVlP"
+            badge="Featured"
+            isAffiliate={false}
+            category="Design Services"
+          />
+          <ProductCard
+            title="Video Editing & Motion Graphics"
+            description="Professional video editing for YouTube, social media, and business. Color grading, animations, and custom transitions included."
+            price="Starting at $35"
+            originalPrice=""
+            image={videoEditingImage}
+            link="https://www.upwork.com/freelancers/~0153a460183dfe8a41?mp_source=share"
+            badge="Pro"
+            isAffiliate={false}
+            category="Video Services"
+          />
+          <ProductCard
+            title="Web Development & Programming"
+            description="Custom websites, web applications, and programming solutions. Modern, responsive designs with clean code and SEO optimization."
+            price="Starting at $50"
+            originalPrice=""
+            image={card3}
+            link="https://www.freelancer.com/u/ayavuz0524?sb=t"
+            badge="Developer"
+            isAffiliate={false}
+            category="Development"
+          />
+          <ProductCard
+            title="Complete Brand Package"
+            description="Logo + Brand Guidelines + Social Media Kit + Business Card Design. Everything you need to launch your brand professionally."
+            price="Contact for Quote"
+            originalPrice=""
+            image={card1}
+            link="https://www.fiverr.com/s/6YgoVlP"
+            badge="Bundle"
+            isAffiliate={false}
+            category="Branding"
+          />
+        </div>
+      </div>
 
       <!-- Own Digital Products -->
       <div class="category-section">
@@ -250,12 +307,43 @@ import successMindsetImage from "../assets/success-mindset.webp";
     </div>
   </section>
 
-  <!-- Affiliate Disclosure -->
+  <!-- Service Highlight Banner - YENİ BÖLÜM -->
+  <section class="service-highlight">
+    <div class="container">
+      <div class="highlight-content">
+        <div class="highlight-text">
+          <h3>Need Professional Services?</h3>
+          <p>From brand identity to web development, I personally handle every project with attention to detail and expertise. Full-stack solutions for your business needs!</p>
+          <div class="cta-buttons">
+            <a href="https://www.fiverr.com/s/6YgoVlP" class="btn btn-primary">Design Services</a>
+            <a href="https://www.upwork.com/freelancers/~0153a460183dfe8a41?mp_source=share" class="btn btn-secondary">Video Services</a>
+            <a href="https://www.freelancer.com/u/ayavuz0524?sb=t" class="btn btn-secondary">Development</a>
+          </div>
+        </div>
+        <div class="highlight-stats">
+          <div class="stat">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">5⭐</span>
+            <span class="stat-label">Average Rating</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">24h</span>
+            <span class="stat-label">Fast Delivery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliate Disclosure - GÜNCELLENECEK -->
   <section class="affiliate-disclosure">
     <div class="container">
       <div class="disclosure-content">
-        <h3>Affiliate Partnership Disclosure</h3>
-        <p>Success Odyssey is a participant in various affiliate programs. When you purchase through our links, we may earn a commission at no additional cost to you. We only recommend products and services we genuinely believe in and use ourselves. Your support helps us continue creating valuable content.</p>
+        <h3>Partnership & Service Disclosure</h3>
+        <p>Success Odyssey features both affiliate partnerships and our own professional services. When you purchase through affiliate links, we may earn a commission at no additional cost to you. Our design and video services are provided directly by our team. We only recommend products and services we genuinely believe in and use ourselves.</p>
         <div class="trust-badges">
           <div class="trust-badge">
             <span class="badge-icon">🛡️</span>
@@ -269,12 +357,16 @@ import successMindsetImage from "../assets/success-mindset.webp";
             <span class="badge-icon">⭐</span>
             <span>Quality Guaranteed</span>
           </div>
+          <div class="trust-badge">
+            <span class="badge-icon">🎨</span>
+            <span>Custom Services</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- FAQ Section - GÜNCELLENMİŞ -->
   <section class="faq-section">
     <div class="container">
       <h2>Frequently Asked Questions</h2>
@@ -284,16 +376,24 @@ import successMindsetImage from "../assets/success-mindset.webp";
           <p>Every product we recommend has been personally tested or researched by our team. We only partner with companies that align with our values and deliver real results.</p>
         </div>
         <div class="faq-item">
+          <h4>What's included in your design services?</h4>
+          <p>Our design services include unlimited revisions, source files, commercial usage rights, and fast 24-48 hour delivery. Each project is handled personally with attention to detail.</p>
+        </div>
+        <div class="faq-item">
           <h4>Are there any hidden costs?</h4>
           <p>No hidden costs! The prices shown are exactly what you'll pay. Any affiliate commissions we earn don't increase your price.</p>
         </div>
         <div class="faq-item">
-          <h4>What if I'm not satisfied with a purchase?</h4>
-          <p>Most of our partners offer money-back guarantees. Check each product page for specific refund policies, or contact us for assistance.</p>
+          <h4>Do you offer customer support?</h4>
+          <p>Yes! For all services, you get direct communication with me throughout the project. For third-party products, we help you find the right resources and connect with appropriate support teams.</p>
         </div>
         <div class="faq-item">
-          <h4>Do you offer customer support?</h4>
-          <p>Yes! While we don't provide direct support for third-party products, we're happy to help you find the right resources and connect you with the appropriate support teams.</p>
+          <h4>What development services do you offer?</h4>
+          <p>I provide web development, custom applications, automation scripts, and API integrations. All projects include clean code, documentation, and ongoing support.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What are your turnaround times?</h4>
+          <p>Design projects: 24-48 hours. Video editing: 2-3 days. Web development: 3-7 days depending on complexity. All timelines discussed and agreed upon before starting.</p>
         </div>
       </div>
     </div>
@@ -315,7 +415,7 @@ import successMindsetImage from "../assets/success-mindset.webp";
 
   p {
     font-size: 1.2rem;
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
     opacity: 0.9;
     line-height: 1.6;
@@ -375,6 +475,121 @@ import successMindsetImage from "../assets/success-mindset.webp";
   }
 }
 
+/* YENİ SERVICE HIGHLIGHT BÖLÜMÜ */
+.service-highlight {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 0;
+  margin: 4rem 0;
+
+  .highlight-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+  }
+
+  .highlight-text {
+    h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+
+      &.btn-primary {
+        background: white;
+        color: #667eea;
+
+        &:hover {
+          background: #f1f5f9;
+          transform: translateY(-2px);
+        }
+      }
+
+      &.btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+
+        &:hover {
+          background: white;
+          color: #667eea;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .highlight-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+
+      .stat-number {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
 .affiliate-disclosure {
   background: var(--bg-secondary, #f8fafc);
   padding: 3rem 0;
@@ -382,7 +597,7 @@ import successMindsetImage from "../assets/success-mindset.webp";
 
   .disclosure-content {
     text-align: center;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 
     h3 {
@@ -402,7 +617,7 @@ import successMindsetImage from "../assets/success-mindset.webp";
   .trust-badges {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
 
     .trust-badge {
@@ -415,7 +630,7 @@ import successMindsetImage from "../assets/success-mindset.webp";
       box-shadow: var(--shadow, 0 2px 4px rgba(0,0,0,0.1));
       font-weight: 600;
       color: var(--text-primary, #111827);
-      min-width: 140px;
+      min-width: 120px;
       justify-content: center;
 
       .badge-icon {
@@ -445,11 +660,15 @@ import successMindsetImage from "../assets/success-mindset.webp";
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     @media (max-width: 767px) {
@@ -536,15 +755,9 @@ import successMindsetImage from "../assets/success-mindset.webp";
     }
   }
 
-  .trust-badges {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-
-    .trust-badge {
-      width: 100%;
-      max-width: 200px;
-    }
+  .service-highlight {
+    padding: 3rem 0;
+    margin: 2rem 0;
   }
 
   .affiliate-disclosure {
