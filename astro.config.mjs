@@ -23,48 +23,19 @@ export default defineConfig({
 
       // Custom page priorities
       serialize: (item) => {
-        // Ana sayfa - en yüksek öncelik
         if (item.url === 'https://successodysseyhub.com/') {
-          return {
-            ...item,
-            priority: 1.0,
-            changefreq: 'daily'
-          };
+          return { ...item, priority: 1.0, changefreq: 'daily' };
         }
-
-        // Ürün sayfaları - yüksek öncelik
         if (item.url.includes('/products/')) {
-          return {
-            ...item,
-            priority: 0.9,
-            changefreq: 'weekly'
-          };
+          return { ...item, priority: 0.9, changefreq: 'weekly' };
         }
-
-        // Blog yazıları - orta-yüksek öncelik
         if (item.url.includes('/blog/')) {
-          return {
-            ...item,
-            priority: 0.8,
-            changefreq: 'monthly'
-          };
+          return { ...item, priority: 0.8, changefreq: 'monthly' };
         }
-
-        // Ana kategori sayfaları
         if (item.url.match(/\/(products|blog|about|contact)$/)) {
-          return {
-            ...item,
-            priority: 0.7,
-            changefreq: 'weekly'
-          };
+          return { ...item, priority: 0.7, changefreq: 'weekly' };
         }
-
-        // Diğer sayfalar
-        return {
-          ...item,
-          priority: 0.5,
-          changefreq: 'monthly'
-        };
+        return { ...item, priority: 0.5, changefreq: 'monthly' };
       }
     })
   ],
@@ -90,7 +61,7 @@ export default defineConfig({
       rollupOptions: {
         external: [],
       },
-      cssCodeSplit: false, // Tek CSS dosyası için
+      cssCodeSplit: false,
       minify: 'terser',
       terserOptions: {
         compress: {
@@ -111,10 +82,4 @@ export default defineConfig({
     port: 4321,
     host: true,
   },
-<<<<<<< HEAD
-
-  integrations: [],
 });
-=======
-});
->>>>>>> 64d9820 (update content)
