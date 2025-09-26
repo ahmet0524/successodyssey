@@ -1,0 +1,83 @@
+<!-- components/JsonLD.astro -->
+---
+export interface Props {
+  type: 'website' | 'article' | 'blog';
+  title: string;
+  description: string;
+  image?: string;
+  keywords?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+const {
+  type = 'website',
+  title,
+  description,
+  image = '/assets/banner.jpg',
+  keywords = 'success, philosophy, personal development',
+  datePublished,
+  dateModified
+} = Astro.props;
+
+const baseSchema = {
+  '@context': 'https://schema.org',
+  '@type': type === 'website' ? 'WebSite' : 'BlogPosting',
+  name: title,
+  description,
+  url: Astro.url.toString(),
+  image: new URL(image, Astro.site).toString(),
+  author: {
+    '@type': 'Organization',
+    name: 'Success Odyssey',
+    url: 'https://successodyssey.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/favicon.svg', Astro.site).toString()
+    }
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Success Odyssey',
+    url: 'https://successodyssey.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/favicon.svg', Astro.site).toString(),
+      width: 60,
+      height: 60
+    }
+  }
+};
+
+if (type === 'article' || type === 'blog') {
+  baseSchema['@type'] = 'BlogPosting';
+  baseSchema.headline = title;
+  baseSchema.articleSection = 'Personal Development';
+  baseSchema.keywords = keywords;
+
+  if (datePublished) {
+    baseSchema.datePublished = datePublished;
+    baseSchema.dateModified = dateModified || datePublished;
+  }
+
+  baseSchema.mainEntityOfPage = {
+    '@type': 'WebPage',
+    '@id': Astro.url.toString()
+  };
+
+  // Estimated reading time (rough calculation)
+  const wordCount = description.split(' ').length * 10; // Assuming description is a snippet
+  baseSchema.wordCount = wordCount;
+}
+
+// Add WebSite schema for homepage
+if (type === 'website') {
+  baseSchema.potentialAction = {
+    '@type': 'SearchAction',
+    target: 'https://successodyssey.com/search?q={search_term_string}',
+    'query-input': 'required name=search_term_string'
+  };
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
