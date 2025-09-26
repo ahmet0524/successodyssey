@@ -20,6 +20,7 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
+const fullTitle = title === 'Success Odyssey' ? title : `${title} | Success Odyssey`;
 ---
 
 <!-- Basic Meta Tags -->
@@ -28,6 +29,9 @@ const imageURL = new URL(image, Astro.site);
 <meta name="description" content={description} />
 <meta name="keywords" content={keywords} />
 <meta name="author" content="Success Odyssey" />
+<meta name="generator" content={Astro.generator} />
+<meta name="language" content="en" />
+<meta name="revisit-after" content="7 days" />
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Robots -->
@@ -40,19 +44,29 @@ const imageURL = new URL(image, Astro.site);
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:image" content={imageURL} />
 <meta property="og:image:alt" content={title} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
 <meta property="og:site_name" content="Success Odyssey" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:author" content="Success Odyssey" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageURL} />
+<meta name="twitter:image:alt" content={title} />
+<meta name="twitter:site" content="@SuccessOdyssey" />
+<meta name="twitter:creator" content="@SuccessOdyssey" />
 
 <!-- Additional SEO -->
 <meta name="theme-color" content="#2563eb" />
 <meta name="msapplication-TileColor" content="#2563eb" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-<title>{title}</title>
+<title>{fullTitle}</title>
 
 <!-- components/JsonLD.astro -->
 ---
@@ -61,6 +75,7 @@ export interface Props {
   title: string;
   description: string;
   image?: string;
+  keywords?: string;
   datePublished?: string;
   dateModified?: string;
 }
@@ -70,6 +85,7 @@ const {
   title,
   description,
   image = '/assets/banner.jpg',
+  keywords = 'success, philosophy, personal development',
   datePublished,
   dateModified
 } = Astro.props;
@@ -83,24 +99,53 @@ const baseSchema = {
   image: new URL(image, Astro.site).toString(),
   author: {
     '@type': 'Organization',
-    name: 'Success Odyssey'
-  },
-  publisher: {
-    '@type': 'Organization',
     name: 'Success Odyssey',
+    url: 'https://successodyssey.com',
     logo: {
       '@type': 'ImageObject',
       url: new URL('/favicon.svg', Astro.site).toString()
     }
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Success Odyssey',
+    url: 'https://successodyssey.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/favicon.svg', Astro.site).toString(),
+      width: 60,
+      height: 60
+    }
   }
 };
 
-if (type === 'article' && datePublished) {
-  baseSchema.datePublished = datePublished;
-  baseSchema.dateModified = dateModified || datePublished;
+if (type === 'article' || type === 'blog') {
+  baseSchema['@type'] = 'BlogPosting';
+  baseSchema.headline = title;
+  baseSchema.articleSection = 'Personal Development';
+  baseSchema.keywords = keywords;
+
+  if (datePublished) {
+    baseSchema.datePublished = datePublished;
+    baseSchema.dateModified = dateModified || datePublished;
+  }
+
   baseSchema.mainEntityOfPage = {
     '@type': 'WebPage',
     '@id': Astro.url.toString()
+  };
+
+  // Estimated reading time (rough calculation)
+  const wordCount = description.split(' ').length * 10; // Assuming description is a snippet
+  baseSchema.wordCount = wordCount;
+}
+
+// Add WebSite schema for homepage
+if (type === 'website') {
+  baseSchema.potentialAction = {
+    '@type': 'SearchAction',
+    target: 'https://successodyssey.com/search?q={search_term_string}',
+    'query-input': 'required name=search_term_string'
   };
 }
 ---
@@ -110,36 +155,22 @@ if (type === 'article' && datePublished) {
 <!-- public/robots.txt -->
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /.netlify/
+Disallow: /api/
 
-Sitemap: https://successodyssey.com/sitemap.xml
+# Crawl delay (optional)
+Crawl-delay: 1
 
-<!-- public/sitemap.xml -->
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://successodyssey.netlify.app/</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://successodyssey.netlify.app/blog/mental-models</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://successodyssey.netlify.app/blog/stoicism</loc>
-    <lastmod>2025-01-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://successodyssey.netlify.app/blog/success-philosophy</loc>
-    <lastmod>2025-01-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-</urlset>
+# Sitemap location
+Sitemap: https://successodyssey.com/sitemap-index.xml
 
-<!-- components/ImageOptimized.
+# Block AI crawlers (optional)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /

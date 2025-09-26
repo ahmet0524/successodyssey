@@ -1,0 +1,50 @@
+<!-- layouts/BaseLayout.astro -->
+---
+import SEO from '../components/SEO.astro';
+import JsonLD from '../components/JsonLD.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  keywords?: string;
+  type?: 'website' | 'article' | 'blog';
+  datePublished?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  keywords,
+  type = 'website',
+  datePublished,
+  noindex = false
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <SEO
+    title={title}
+    description={description}
+    image={image}
+    keywords={keywords}
+    type={type}
+    noindex={noindex}
+  />
+  <JsonLD
+    type={type}
+    title={title}
+    description={description}
+    image={image}
+    keywords={keywords}
+    datePublished={datePublished}
+  />
+</head>
+<body>
+  <slot />
+</body>
+</html>
