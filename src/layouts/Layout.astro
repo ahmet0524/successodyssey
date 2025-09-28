@@ -1,5 +1,5 @@
 ---
-// layouts/Layout.astro - Domain güncellenmiş ve düzeltilmiş versiyon
+// layouts/Layout.astro - Enhanced version with BaseLayout features
 import '../styles/main.scss';
 
 export interface Props {
@@ -13,7 +13,9 @@ export interface Props {
   availability?: 'InStock' | 'OutOfStock' | 'PreOrder';
   category?: string;
   publishedDate?: string;
+  datePublished?: string; // BaseLayout compatibility
   modifiedDate?: string;
+  dateModified?: string;   // BaseLayout compatibility
   author?: string;
   noindex?: boolean;
   alternateLanguages?: Array<{lang: string, url: string}>;
@@ -30,18 +32,24 @@ const {
   availability = 'InStock',
   category,
   publishedDate,
+  datePublished, // BaseLayout compatibility
   modifiedDate,
+  dateModified,  // BaseLayout compatibility
   author = "Success Odyssey Hub",
   noindex = false,
   alternateLanguages = []
 } = Astro.props;
+
+// Handle date compatibility between Layout and BaseLayout
+const finalPublishedDate = publishedDate || datePublished;
+const finalModifiedDate = modifiedDate || dateModified;
 
 // Canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site).toString();
 const currentDate = new Date().toISOString();
 
-// Breadcrumb structured data
+// Enhanced breadcrumb structured data
 const pathSegments = Astro.url.pathname.split('/').filter(segment => segment);
 const breadcrumbList = {
   "@context": "https://schema.org",
@@ -51,7 +59,7 @@ const breadcrumbList = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": Astro.site
+      "item": Astro.site?.toString()
     },
     ...pathSegments.map((segment, index) => ({
       "@type": "ListItem",
@@ -62,26 +70,34 @@ const breadcrumbList = {
   ]
 };
 
-// Main structured data
+// Enhanced main structured data
 const mainSchema = {
   "@context": "https://schema.org",
   "@type": type === 'product' ? 'Product' : (type === 'article' ? 'BlogPosting' : 'WebSite'),
   "name": title,
+  "headline": title, // Important for articles
   "description": description,
   "url": canonicalURL.toString(),
-  "image": imageURL,
+  "image": {
+    "@type": "ImageObject",
+    "url": imageURL,
+    "width": 1200,
+    "height": 630
+  },
   "author": {
     "@type": "Organization",
     "name": author,
-    "url": Astro.site
+    "url": Astro.site?.toString()
   },
   "publisher": {
     "@type": "Organization",
     "name": "Success Odyssey Hub",
-    "url": Astro.site,
+    "url": Astro.site?.toString(),
     "logo": {
       "@type": "ImageObject",
-      "url": new URL('/favicon.svg', Astro.site).toString()
+      "url": new URL('/favicon.svg', Astro.site).toString(),
+      "width": 60,
+      "height": 60
     }
   }
 };
@@ -101,15 +117,37 @@ if (type === 'product' && price) {
   }
 }
 
-// Add article-specific data
+// Add article-specific data (enhanced)
 if (type === 'article') {
-  if (publishedDate) mainSchema.datePublished = publishedDate;
-  if (modifiedDate) mainSchema.dateModified = modifiedDate;
-  else mainSchema.dateModified = currentDate;
+  if (finalPublishedDate) {
+    mainSchema.datePublished = finalPublishedDate;
+    mainSchema.dateModified = finalModifiedDate || finalPublishedDate;
+  } else {
+    mainSchema.dateModified = currentDate;
+  }
 
   mainSchema.mainEntityOfPage = {
     "@type": "WebPage",
     "@id": canonicalURL.toString()
+  };
+
+  // Enhanced article properties
+  mainSchema.articleSection = "Personal Development";
+  if (keywords) {
+    mainSchema.keywords = keywords.split(', ');
+  }
+
+  // Estimated reading time (rough calculation)
+  const wordCount = description.split(' ').length * 50; // Assuming description is a snippet
+  mainSchema.wordCount = wordCount;
+}
+
+// Enhanced WebSite schema for homepage
+if (type === 'website' && Astro.url.pathname === '/') {
+  mainSchema.potentialAction = {
+    "@type": "SearchAction",
+    "target": "https://successodysseyhub.com/blog?search={search_term_string}",
+    "query-input": "required name=search_term_string"
   };
 }
 ---
@@ -128,12 +166,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
 
-<!-- Basic SEO -->
+<!-- Enhanced SEO -->
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="keywords" content={keywords} />
 <meta name="author" content={author} />
+<meta name="language" content="en" />
+<meta name="revisit-after" content="7 days" />
 
 <!-- Robots & Indexing -->
 {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -147,7 +188,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang={lang} href={url} />
 ))}
 
-<!-- Open Graph -->
+<!-- Enhanced Open Graph -->
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content="Success Odyssey Hub" />
 <meta property="og:title" content={title} />
@@ -169,15 +210,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 )}
 
 <!-- Article-specific OG tags -->
-{type === 'article' && publishedDate && (
+{type === 'article' && finalPublishedDate && (
 <>
-<meta property="article:published_time" content={publishedDate} />
-<meta property="article:modified_time" content={modifiedDate || currentDate} />
+<meta property="article:published_time" content={finalPublishedDate} />
+<meta property="article:modified_time" content={finalModifiedDate || currentDate} />
 <meta property="article:author" content={author} />
+<meta property="article:section" content="Personal Development" />
+{keywords && keywords.split(', ').slice(0, 3).map(keyword => (
+  <meta property="article:tag" content={keyword.trim()} />
+))}
 </>
 )}
 
-<!-- Twitter Card -->
+<!-- Enhanced Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@successodyssey" />
 <meta name="twitter:creator" content="@successodyssey" />
@@ -208,16 +253,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="format-detection" content="telephone=no" />
 
-<!-- Structured Data -->
+<!-- Enhanced Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(mainSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
 
-<!-- Organization Structured Data -->
+<!-- Enhanced Organization Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Success Odyssey Hub",
-  "url": Astro.site,
+  "url": Astro.site?.toString(),
   "logo": new URL('/favicon.svg', Astro.site).toString(),
   "sameAs": [
     "https://twitter.com/successodyssey",
@@ -228,6 +273,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "@type": "ContactPoint",
     "contactType": "customer service",
     "availableLanguage": "English"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US"
   }
 })} />
 </head>
