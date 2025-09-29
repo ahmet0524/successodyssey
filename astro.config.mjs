@@ -2,39 +2,40 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://successodysseyhub.com',
 
   integrations: [
     sitemap({
-      // Sitemap konfigürasyonu
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
 
-      // İstemediğin sayfaları filtrele
-      filter: (page) => {
-        return !page.includes('/admin') &&
-               !page.includes('/private') &&
-               !page.includes('/404') &&
-               !page.includes('/api/');
-      },
+      // Sadece gerçek sorunlu sayfaları filtrele
+      filter: (page) => !page.includes('/404'),
 
-      // Custom page priorities
       serialize: (item) => {
+        // Homepage
         if (item.url === 'https://successodysseyhub.com/') {
           return { ...item, priority: 1.0, changefreq: 'daily' };
         }
+
+        // Products section
         if (item.url.includes('/products/')) {
           return { ...item, priority: 0.9, changefreq: 'weekly' };
         }
-        if (item.url.includes('/blog/')) {
+
+        // Blog posts
+        if (item.url.includes('/blog/') && item.url.split('/').length > 4) {
           return { ...item, priority: 0.8, changefreq: 'monthly' };
         }
-        if (item.url.match(/\/(products|blog|about|contact)$/)) {
+
+        // Main sections (products, blog, about pages)
+        if (item.url.match(/\/(products|blog|about)\/?$/)) {
           return { ...item, priority: 0.7, changefreq: 'weekly' };
         }
+
+        // Other pages
         return { ...item, priority: 0.5, changefreq: 'monthly' };
       }
     })
@@ -65,16 +66,13 @@ export default defineConfig({
       minify: 'terser',
       terserOptions: {
         compress: {
-          drop_console: true,
+          drop_console: process.env.NODE_ENV === 'production',
           drop_debugger: true,
         },
       },
     },
     css: {
       devSourcemap: true,
-    },
-    optimizeDeps: {
-      exclude: ['@astrojs/image'],
     },
   },
 

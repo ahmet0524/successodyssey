@@ -13,9 +13,9 @@ export interface Props {
   availability?: 'InStock' | 'OutOfStock' | 'PreOrder';
   category?: string;
   publishedDate?: string;
-  datePublished?: string; // BaseLayout compatibility
+  datePublished?: string;
   modifiedDate?: string;
-  dateModified?: string;   // BaseLayout compatibility
+  dateModified?: string;
   author?: string;
   noindex?: boolean;
   alternateLanguages?: Array<{lang: string, url: string}>;
@@ -32,9 +32,9 @@ const {
   availability = 'InStock',
   category,
   publishedDate,
-  datePublished, // BaseLayout compatibility
+  datePublished,
   modifiedDate,
-  dateModified,  // BaseLayout compatibility
+  dateModified,
   author = "Success Odyssey Hub",
   noindex = false,
   alternateLanguages = []
@@ -46,7 +46,12 @@ const finalModifiedDate = modifiedDate || dateModified;
 
 // Canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const imageURL = new URL(image, Astro.site).toString();
+
+// Handle image URL - support both relative and Astro-optimized paths
+const imageURL = (image.startsWith('http') || image.startsWith('//') || image.startsWith('/_astro') || image.startsWith('/_assets'))
+  ? image
+  : new URL(image, Astro.site).toString();
+
 const currentDate = new Date().toISOString();
 
 // Enhanced breadcrumb structured data
@@ -75,7 +80,7 @@ const mainSchema = {
   "@context": "https://schema.org",
   "@type": type === 'product' ? 'Product' : (type === 'article' ? 'BlogPosting' : 'WebSite'),
   "name": title,
-  "headline": title, // Important for articles
+  "headline": title,
   "description": description,
   "url": canonicalURL.toString(),
   "image": {
@@ -95,9 +100,9 @@ const mainSchema = {
     "url": Astro.site?.toString(),
     "logo": {
       "@type": "ImageObject",
-      "url": new URL('/favicon.svg', Astro.site).toString(),
-      "width": 60,
-      "height": 60
+      "url": new URL('/assets/logo.png', Astro.site).toString(),
+      "width": 120,
+      "height": 120
     }
   }
 };
@@ -123,6 +128,7 @@ if (type === 'article') {
     mainSchema.datePublished = finalPublishedDate;
     mainSchema.dateModified = finalModifiedDate || finalPublishedDate;
   } else {
+    mainSchema.datePublished = currentDate;
     mainSchema.dateModified = currentDate;
   }
 
@@ -132,13 +138,15 @@ if (type === 'article') {
   };
 
   // Enhanced article properties
+  mainSchema.inLanguage = "en-US";
   mainSchema.articleSection = "Personal Development";
+
   if (keywords) {
     mainSchema.keywords = keywords.split(', ');
   }
 
-  // Estimated reading time (rough calculation)
-  const wordCount = description.split(' ').length * 50; // Assuming description is a snippet
+  // Estimated reading time
+  const wordCount = description.split(' ').length * 50;
   mainSchema.wordCount = wordCount;
 }
 
@@ -263,7 +271,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "@type": "Organization",
   "name": "Success Odyssey Hub",
   "url": Astro.site?.toString(),
-  "logo": new URL('/favicon.svg', Astro.site).toString(),
+  "logo": new URL('/assets/logo.png', Astro.site).toString(),
   "sameAs": [
     "https://twitter.com/successodyssey",
     "https://facebook.com/successodyssey",
@@ -321,7 +329,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="footer-section">
 <h3>Success Odyssey Hub</h3>
 <p>Transform your life with proven strategies and timeless wisdom.</p>
-<!-- SOSYAL MEDYA LİNKLERİ -->
 <div class="social-links">
 <a href="https://twitter.com/successodyssey" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -385,7 +392,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 }
 
-// Social media links styling
 .social-links {
   display: flex;
   gap: 1.5rem;
@@ -417,7 +423,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 }
 
-// Responsive navigation for mobile
 @media (max-width: 768px) {
   .nav {
     &-container {
