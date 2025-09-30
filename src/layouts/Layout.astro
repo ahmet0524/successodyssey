@@ -47,10 +47,10 @@ const finalModifiedDate = modifiedDate || dateModified;
 // Canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-// Handle image URL - support both relative and Astro-optimized paths
-const imageURL = (image.startsWith('http') || image.startsWith('//') || image.startsWith('/_astro') || image.startsWith('/_assets'))
+// // Handle image URL - support both relative and Astro-optimized paths
+const imageURL = (typeof image === 'string' && (image.startsWith('http') || image.startsWith('//') || image.startsWith('/_astro') || image.startsWith('/_assets')))
   ? image
-  : new URL(image, Astro.site).toString();
+  : new URL(image || '/assets/images/banner.webp', Astro.site).toString();
 
 const currentDate = new Date().toISOString();
 
