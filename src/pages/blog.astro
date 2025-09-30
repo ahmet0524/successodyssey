@@ -21,7 +21,7 @@ const allBlogPosts = [
   {
     title: "The Philosophy of Happiness and Success",
     summary: "Discover Earl Nightingale's timeless wisdom on finding true happiness through purposeful work, service to others, and living in the present moment.",
-    image: happinessPhilosophyImage,
+    image: happinessPhilosophyImage.src,
     link: "/blog/happiness-philosophy",
     category: "Philosophy",
     readTime: "15 min read",
@@ -30,7 +30,7 @@ const allBlogPosts = [
   {
     title: "Rethinking Success: A Scientific and Philosophical Exploration",
     summary: "Challenge conventional definitions of success through neuroscience, positive psychology, and philosophical frameworks. Discover evidence-based approaches to meaningful achievement.",
-    image: rethinkingSuccessImage,
+    image: rethinkingSuccessImage.src,
     link: "/blog/rethinking-success",
     category: "Philosophy",
     readTime: "9 min read",
@@ -39,7 +39,7 @@ const allBlogPosts = [
   {
     title: "Habits, Discipline, and Momentum: The Engine of Sustainable Success",
     summary: "Uncover the science behind habit formation and learn how to build disciplined systems that create unstoppable momentum toward your goals.",
-    image: engineOfSuccessImage,
+    image: engineOfSuccessImage.src,
     link: "/blog/habits-discipline-momentum",
     category: "Habits",
     readTime: "8 min read",
@@ -48,7 +48,7 @@ const allBlogPosts = [
   {
     title: "From Vision to Reality: The Art and Science of Execution",
     summary: "Bridge the gap between dreams and reality with proven execution frameworks. Learn how successful people turn visions into tangible results.",
-    image: artOfExecutionImage,
+    image: artOfExecutionImage.src,
     link: "/blog/vision-to-reality",
     category: "Execution",
     readTime: "10 min read",
@@ -57,7 +57,7 @@ const allBlogPosts = [
   {
     title: "Overcoming Resistance: Building Resilience in the Face of Failure",
     summary: "Transform setbacks into stepping stones. Discover psychological strategies and practical tools for building unshakeable resilience.",
-    image: overcomingResistanceImage,
+    image: overcomingResistanceImage.src,
     link: "/blog/overcoming-resistance",
     category: "Resilience",
     readTime: "7 min read",
@@ -66,7 +66,7 @@ const allBlogPosts = [
   {
     title: "15 Best Productivity Tools for 2025 (Tested by Experts)",
     summary: "Discover the most effective productivity tools for 2025. From Notion templates to time tracking apps, find the perfect tools to boost your efficiency.",
-    image: productivityToolsImage,
+    image: productivityToolsImage.src,
     link: "/blog/best-productivity-tools-2025",
     category: "Productivity",
     readTime: "12 min read",
@@ -75,7 +75,7 @@ const allBlogPosts = [
   {
     title: "Mental Models for Better Decision Making",
     summary: "Discover powerful thinking frameworks that help you navigate complex problems and make smarter choices in life and business.",
-    image: mentalModelsImage,
+    image: mentalModelsImage.src,
     link: "/blog/mental-models",
     category: "Mental Models",
     readTime: "8 min read",
@@ -84,7 +84,7 @@ const allBlogPosts = [
   {
     title: "Stoic Wisdom for Modern Life",
     summary: "Apply ancient Stoic teachings to build resilience, find inner peace, and maintain clarity in our fast-paced modern world.",
-    image: stoicWisdomImage,
+    image: stoicWisdomImage.src,
     link: "/blog/stoicism",
     category: "Philosophy",
     readTime: "6 min read",
@@ -93,7 +93,7 @@ const allBlogPosts = [
   {
     title: "The Philosophy of Success",
     summary: "Learn timeless principles and daily habits that successful people use to achieve their goals and maintain long-term fulfillment.",
-    image: philosophyOfSuccess,
+    image: philosophyOfSuccess.src,
     link: "/blog/success-philosophy",
     category: "Success",
     readTime: "7 min read",
@@ -102,7 +102,7 @@ const allBlogPosts = [
   {
     title: "AI-Amplified Mental Models: The Thinking Revolution That's Changing Everything",
     summary: "This article reveals how combining Charlie Munger's mental models with AI can compress decades of cognitive development into months, giving you unprecedented decision-making speed and accuracy through systematic thinking frameworks.",
-    image: aiMagnifiedMentalModels2,
+    image: aiMagnifiedMentalModels2.src,
     link: "/blog/ai-amplified-mental-models",
     category: "Success",
     readTime: "8 min read",
@@ -146,7 +146,7 @@ const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
 
       <article class="featured-card">
         <div class="featured-image">
-          <img src={allBlogPosts[0].image.src || allBlogPosts[0].image} alt={allBlogPosts[0].title} />
+          <img src={allBlogPosts[0].image} alt={allBlogPosts[0].title} />
           <div class="featured-badge">Latest</div>
         </div>
         <div class="featured-content">
@@ -180,7 +180,7 @@ const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
         {allBlogPosts.slice(1).map((post) => (
           <article class="horizontal-blog-card" data-category={post.category}>
             <div class="card-image">
-              <img src={post.image.src || post.image} alt={post.title} />
+              <img src={post.image} alt={post.title} />
             </div>
             <div class="card-content">
               <div class="card-meta">
