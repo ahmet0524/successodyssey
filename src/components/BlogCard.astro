@@ -3,7 +3,13 @@ const { title, summary, image, link } = Astro.props;
 ---
 
 <article class="blog-card">
-  <img src={image.src || image} alt={title} />
+  <img
+    src={image.src || image}
+    alt={title}
+    loading="lazy"
+    width="346"
+    height="240"
+  />
   <div class="blog-card-content">
     <h2>{title}</h2>
     <p>{summary}</p>

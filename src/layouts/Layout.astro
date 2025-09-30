@@ -1,5 +1,5 @@
 ---
-// layouts/Layout.astro - Enhanced version with BaseLayout features
+// layouts/Layout.astro - Performance Optimized
 import '../styles/main.scss';
 
 export interface Props {
@@ -40,21 +40,18 @@ const {
   alternateLanguages = []
 } = Astro.props;
 
-// Handle date compatibility between Layout and BaseLayout
 const finalPublishedDate = publishedDate || datePublished;
 const finalModifiedDate = modifiedDate || dateModified;
-
-// Canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-// // Handle image URL - support both relative and Astro-optimized paths
-const imageURL = (typeof image === 'string' && (image.startsWith('http') || image.startsWith('//') || image.startsWith('/_astro') || image.startsWith('/_assets')))
-  ? image
-  : new URL(image || '/assets/images/banner.webp', Astro.site).toString();
+// Handle image URL - support both relative and Astro-optimized paths
+const imageSrc = typeof image === 'object' && image !== null && 'src' in image ? image.src : image;
+const imageURL = (typeof imageSrc === 'string' && (imageSrc.startsWith('http') || imageSrc.startsWith('//') || imageSrc.startsWith('/_astro') || imageSrc.startsWith('/_assets')))
+  ? imageSrc
+  : new URL(imageSrc || '/assets/images/banner.webp', Astro.site).toString();
 
 const currentDate = new Date().toISOString();
 
-// Enhanced breadcrumb structured data
 const pathSegments = Astro.url.pathname.split('/').filter(segment => segment);
 const breadcrumbList = {
   "@context": "https://schema.org",
@@ -75,7 +72,6 @@ const breadcrumbList = {
   ]
 };
 
-// Enhanced main structured data
 const mainSchema = {
   "@context": "https://schema.org",
   "@type": type === 'product' ? 'Product' : (type === 'article' ? 'BlogPosting' : 'WebSite'),
@@ -107,7 +103,6 @@ const mainSchema = {
   }
 };
 
-// Add product-specific data
 if (type === 'product' && price) {
   mainSchema.offers = {
     "@type": "Offer",
@@ -116,13 +111,9 @@ if (type === 'product' && price) {
     "availability": `https://schema.org/${availability}`,
     "url": canonicalURL.toString()
   };
-
-  if (category) {
-    mainSchema.category = category;
-  }
+  if (category) mainSchema.category = category;
 }
 
-// Add article-specific data (enhanced)
 if (type === 'article') {
   if (finalPublishedDate) {
     mainSchema.datePublished = finalPublishedDate;
@@ -131,26 +122,16 @@ if (type === 'article') {
     mainSchema.datePublished = currentDate;
     mainSchema.dateModified = currentDate;
   }
-
   mainSchema.mainEntityOfPage = {
     "@type": "WebPage",
     "@id": canonicalURL.toString()
   };
-
-  // Enhanced article properties
   mainSchema.inLanguage = "en-US";
   mainSchema.articleSection = "Personal Development";
-
-  if (keywords) {
-    mainSchema.keywords = keywords.split(', ');
-  }
-
-  // Estimated reading time
-  const wordCount = description.split(' ').length * 50;
-  mainSchema.wordCount = wordCount;
+  if (keywords) mainSchema.keywords = keywords.split(', ');
+  mainSchema.wordCount = description.split(' ').length * 50;
 }
 
-// Enhanced WebSite schema for homepage
 if (type === 'website' && Astro.url.pathname === '/') {
   mainSchema.potentialAction = {
     "@type": "SearchAction",
@@ -160,18 +141,9 @@ if (type === 'website' && Astro.url.pathname === '/') {
 }
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T34WMXZC');</script>
-<!-- End Google Tag Manager -->
-
-<meta name='impact-site-verification' value='bb9478d3-9161-4f57-ac16-eb1684e8d317'>
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
@@ -196,6 +168,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang={lang} href={url} />
 ))}
 
+<!-- Favicon -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- DNS Prefetch & Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+
+<!-- Fonts - Preload and async load -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
+
 <!-- Enhanced Open Graph -->
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content="Success Odyssey Hub" />
@@ -208,7 +195,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:image:alt" content={title} />
 <meta property="og:locale" content="en_US" />
 
-<!-- Product-specific OG tags -->
 {type === 'product' && price && (
 <>
 <meta property="product:price:amount" content={price} />
@@ -217,7 +203,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </>
 )}
 
-<!-- Article-specific OG tags -->
 {type === 'article' && finalPublishedDate && (
 <>
 <meta property="article:published_time" content={finalPublishedDate} />
@@ -239,19 +224,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:image" content={imageURL} />
 <meta name="twitter:image:alt" content={title} />
 
-<!-- Favicon -->
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
-
-<!-- DNS Prefetch & Preconnect -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="dns-prefetch" href="//www.googletagmanager.com" />
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
 <!-- Theme -->
 <meta name="theme-color" content="#2563eb" />
 <meta name="msapplication-TileColor" content="#2563eb" />
@@ -264,8 +236,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Enhanced Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(mainSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
-
-<!-- Enhanced Organization Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -287,17 +257,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "addressCountry": "US"
   }
 })} />
+
+<meta name='impact-site-verification' value='bb9478d3-9161-4f57-ac16-eb1684e8d317'>
+
+<!-- Google Tag Manager - Deferred -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Load GTM after page load
+  window.addEventListener('load', function() {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T34WMXZC');
+  });
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T34WMXZC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
-<!-- Skip to main content for accessibility -->
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
-<!-- Navigation -->
 <header class="header">
 <nav class="nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
 <div class="nav-container">
@@ -317,12 +301,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 </header>
 
-<!-- Main Content -->
 <main id="main-content" class="main">
 <slot />
 </main>
 
-<!-- Footer -->
 <footer class="footer" itemscope itemtype="https://schema.org/WPFooter">
 <div class="footer-container">
 <div class="footer-content">

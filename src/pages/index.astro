@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Banner from "../components/Banner.astro";
 import BlogCard from "../components/BlogCard.astro";
 import ProductCard from "../components/ProductCard.astro";
+import { Image } from 'astro:assets';
 import mentalModelsImage from "../assets/mental-models.webp";
 import card1 from "../assets/mental-models.webp";
 import card2 from "../assets/success-philosophy.webp";
@@ -12,21 +13,8 @@ import mentalClarityImage from "../assets/mental-clarity.webp";
 import digitalPlannerImage from "../assets/2026-planner.webp";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Success Odyssey Hub</title>
-	</head>
-
-</html>
-
-
-
 <Layout
-  title="Success Odyssey - Transform Your Life with Proven Strategies"
+  title="Success Odyssey Hub - Transform Your Life with Proven Strategies"
   description="Discover mental models, stoicism, and success philosophy. Transform your life with proven strategies and timeless wisdom for personal development."
   keywords="success, philosophy, stoicism, mental models, personal development, mindfulness, self improvement"
 >
@@ -61,19 +49,19 @@ import digitalPlannerImage from "../assets/2026-planner.webp";
         <BlogCard
           title="Mental Models for Better Decisions"
           summary="Discover powerful thinking frameworks that help you navigate complex problems and make smarter choices in life and business."
-          image={mentalModelsImage.src || mentalModelsImage}
+          image={mentalModelsImage.src}
           link="/blog/mental-models"
         />
         <BlogCard
           title="The Philosophy of Success"
           summary="Learn timeless principles and daily habits that successful people use to achieve their goals and maintain long-term fulfillment."
-          image={card2.src || card2}
+          image={card2.src}
           link="/blog/success-philosophy"
         />
         <BlogCard
           title="Stoic Wisdom for Modern Life"
           summary="Apply ancient Stoic teachings to build resilience, find inner peace, and maintain clarity in our fast-paced modern world."
-          image={card3.src || card3}
+          image={card3.src}
           link="/blog/stoicism"
         />
       </div>
@@ -397,4 +385,3 @@ import digitalPlannerImage from "../assets/2026-planner.webp";
   }
 }
 </style>
-
