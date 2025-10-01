@@ -1,9 +1,18 @@
 ---
+import { Image } from 'astro:assets';
 import bannerImg from "../assets/banner.webp";
 ---
 
 <section class="banner">
-  <img src={bannerImg.src || bannerImg} alt="Success Odyssey Banner" />
+  <Image
+    src={bannerImg}
+    alt="Success Odyssey Hub - Personal Development and Productivity"
+    widths={[346, 720, 1080]}
+    sizes="(max-width: 600px) 346px, (max-width: 1024px) 720px, 1080px"
+    format="webp"
+    quality={80}
+    loading="eager"
+  />
 </section>
 
 <style lang="scss">
