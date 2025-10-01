@@ -147,7 +147,17 @@ if (type === 'website' && Astro.url.pathname === '/') {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
+ <!-- Font Preload -->
 
+
+  <!-- Banner Image Preload (LCP Optimizasyonu) -->
+  <link
+    rel="preload"
+    href="/src/assets/banner.webp"
+    as="image"
+    type="image/webp"
+    fetchpriority="high"
+  />
 <!-- Enhanced SEO -->
 <title>{title}</title>
 <meta name="description" content={description} />
