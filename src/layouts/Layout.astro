@@ -43,6 +43,9 @@ const {
 const finalPublishedDate = publishedDate || datePublished;
 const finalModifiedDate = modifiedDate || dateModified;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+if (!canonicalURL.pathname.endsWith('/')) {
+  canonicalURL.pathname += '/';
+}
 
 const imageSrc = typeof image === 'object' && image !== null && 'src' in image ? image.src : image;
 const imageURL = (typeof imageSrc === 'string' && (imageSrc.startsWith('http') || imageSrc.startsWith('//') || imageSrc.startsWith('/_astro') || imageSrc.startsWith('/_assets')))
