@@ -1,80 +1,122 @@
 <!-- components/JsonLD.astro -->
 ---
 export interface Props {
-  type: 'website' | 'article' | 'blog';
+  type: 'website' | 'article' | 'blog' | 'product';
   title: string;
   description: string;
   image?: string;
   keywords?: string;
   datePublished?: string;
   dateModified?: string;
+  author?: string;
+  wordCount?: number;
+  price?: string;
+  currency?: string;
+  availability?: string;
 }
 
 const {
   type = 'website',
   title,
   description,
-  image = '/assets/banner.jpg',
+  image = '/assets/images/banner.webp',
   keywords = 'success, philosophy, personal development',
   datePublished,
-  dateModified
+  dateModified,
+  author = 'Success Odyssey Hub',
+  wordCount,
+  price,
+  currency = 'USD',
+  availability = 'InStock'
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageSrc = typeof image === 'object' && image !== null && 'src' in image ? image.src : image;
+const imageURL = (typeof imageSrc === 'string' && (imageSrc.startsWith('http') || imageSrc.startsWith('//') || imageSrc.startsWith('/_astro') || imageSrc.startsWith('/_assets')))
+  ? imageSrc
+  : new URL(imageSrc, Astro.site).toString();
+
+const currentDate = new Date().toISOString();
 
 const baseSchema = {
   '@context': 'https://schema.org',
-  '@type': type === 'website' ? 'WebSite' : 'BlogPosting',
+  '@type': type === 'product' ? 'Product' : (type === 'article' || type === 'blog' ? 'BlogPosting' : 'WebSite'),
   name: title,
   description,
-  url: Astro.url.toString(),
-  image: new URL(image, Astro.site).toString(),
+  url: canonicalURL.toString(),
+  image: {
+    '@type': 'ImageObject',
+    url: imageURL,
+    width: 1200,
+    height: 630
+  },
   author: {
     '@type': 'Organization',
-    name: 'Success Odyssey',
-    url: 'https://successodyssey.com',
-    logo: {
-      '@type': 'ImageObject',
-      url: new URL('/favicon.svg', Astro.site).toString()
-    }
+    name: author,
+    url: Astro.site?.toString()
   },
   publisher: {
     '@type': 'Organization',
-    name: 'Success Odyssey',
-    url: 'https://successodyssey.com',
+    name: 'Success Odyssey Hub',
+    url: Astro.site?.toString(),
     logo: {
       '@type': 'ImageObject',
-      url: new URL('/favicon.svg', Astro.site).toString(),
-      width: 60,
-      height: 60
+      url: new URL('/assets/logo.png', Astro.site).toString(),
+      width: 120,
+      height: 120
     }
   }
 };
 
+// Article/Blog specific schema
 if (type === 'article' || type === 'blog') {
   baseSchema['@type'] = 'BlogPosting';
   baseSchema.headline = title;
   baseSchema.articleSection = 'Personal Development';
-  baseSchema.keywords = keywords;
+  baseSchema.inLanguage = 'en-US';
+
+  if (keywords) {
+    baseSchema.keywords = keywords.split(', ');
+  }
 
   if (datePublished) {
     baseSchema.datePublished = datePublished;
     baseSchema.dateModified = dateModified || datePublished;
+  } else {
+    baseSchema.datePublished = currentDate;
+    baseSchema.dateModified = currentDate;
   }
 
   baseSchema.mainEntityOfPage = {
     '@type': 'WebPage',
-    '@id': Astro.url.toString()
+    '@id': canonicalURL.toString()
   };
 
-  // Estimated reading time (rough calculation)
-  const wordCount = description.split(' ').length * 10; // Assuming description is a snippet
-  baseSchema.wordCount = wordCount;
+  // Word count
+  if (wordCount) {
+    baseSchema.wordCount = wordCount;
+  } else {
+    // Estimate based on description
+    baseSchema.wordCount = description.split(' ').length * 50;
+  }
 }
 
-// Add WebSite schema for homepage
-if (type === 'website') {
+// Product specific schema
+if (type === 'product' && price) {
+  baseSchema.offers = {
+    '@type': 'Offer',
+    price: price,
+    priceCurrency: currency,
+    availability: `https://schema.org/${availability}`,
+    url: canonicalURL.toString()
+  };
+}
+
+// Website specific schema
+if (type === 'website' && Astro.url.pathname === '/') {
   baseSchema.potentialAction = {
     '@type': 'SearchAction',
-    target: 'https://successodyssey.com/search?q={search_term_string}',
+    target: `${Astro.site}blog?search={search_term_string}`,
     'query-input': 'required name=search_term_string'
   };
 }

@@ -1,34 +1,53 @@
 ---
 import BaseLayout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
 import card2 from "../../assets/card2.jpg";
 ---
 
 <BaseLayout
-  title="Stoic Wisdom for Modern Life"
+  title="Stoic Wisdom for Modern Life | Success Odyssey Hub"
   description="Learn how ancient Stoic philosophy can help you build resilience, find inner peace, and maintain clarity in our fast-paced modern world."
-  keywords="stoicism, philosophy, resilience, inner peace, mental strength, Marcus Aurelius, Seneca"
-  image={card2.src}
+  keywords="stoicism, philosophy, resilience, inner peace, mental strength, Marcus Aurelius, Seneca, stoic principles, dichotomy of control"
+  image={card2}
   type="article"
   datePublished="2025-01-12T00:00:00Z"
   dateModified="2025-01-12T00:00:00Z"
+  author="Success Odyssey Hub"
 >
-  <article class="blog-page">
+  <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
     <header class="article-header">
-      <h1>Stoic Wisdom for Modern Life</h1>
+      <h1 itemprop="headline">Stoic Wisdom for Modern Life</h1>
       <div class="article-meta">
-        <time datetime="2025-01-12">January 12, 2025</time>
-        <span class="reading-time">6 min read</span>
+        <time datetime="2025-01-12" itemprop="datePublished">January 12, 2025</time>
+        <meta itemprop="dateModified" content="2025-01-12T00:00:00Z" />
+        <span class="reading-time" itemprop="timeRequired" content="PT6M">6 min read</span>
         <div class="tags">
-          <span class="tag">Stoicism</span>
-          <span class="tag">Philosophy</span>
-          <span class="tag">Resilience</span>
+          <span class="tag" itemprop="keywords">Stoicism</span>
+          <span class="tag" itemprop="keywords">Philosophy</span>
+          <span class="tag" itemprop="keywords">Resilience</span>
         </div>
       </div>
     </header>
 
-    <img src={card2.src} alt="Stoic Philosophy" class="hero-image" />
+    <!-- Optimized hero image with Astro Image component -->
+    <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card2}
+        alt="Ancient Stoic philosophy symbolized by a serene marble column against a blue sky, representing wisdom, resilience and inner peace"
+        class="hero-image"
+        width={900}
+        height={200}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={85}
+      />
+      <meta itemprop="url" content={new URL(card2.src, Astro.site).toString()} />
+      <meta itemprop="width" content="900" />
+      <meta itemprop="height" content="200" />
+    </figure>
 
-    <div class="content">
+    <div class="content" itemprop="articleBody">
       <p class="lead">
         In a world of constant change and uncertainty, ancient Stoic philosophy offers timeless wisdom for navigating life's challenges with grace, resilience, and inner peace.
       </p>
@@ -60,7 +79,7 @@ import card2 from "../../assets/card2.jpg";
         Practice negative visualization—imagining loss or setbacks—not to invite negativity, but to appreciate what you have and build resilience for when difficulties arise.
       </p>
 
-      <blockquote>
+      <blockquote itemprop="citation">
         "You have power over your mind—not outside events. Realize this, and you will find strength." - Marcus Aurelius
       </blockquote>
 
@@ -69,43 +88,78 @@ import card2 from "../../assets/card2.jpg";
       </p>
     </div>
 
-    <!-- Author Info -->
-    <div class="author-info" itemscope itemtype="https://schema.org/Organization">
-      <img src="/assets/author-avatar.webp" alt="Success Odyssey Team" />
+    <!-- Author Info with proper Schema.org markup -->
+    <div class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 12px;">
+        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
+      </svg>
       <div class="author-details">
-        <h4 itemprop="name">Success Odyssey Team</h4>
+        <h4 itemprop="name">Success Odyssey Hub</h4>
+        <meta itemprop="url" content={Astro.site?.toString()} />
         <p>We explore ancient wisdom and modern applications for building resilience and living a meaningful life.</p>
       </div>
     </div>
 
-    <!-- Related Articles -->
-    <section class="related-articles">
+    <!-- Related Articles with proper semantic markup -->
+    <nav class="related-articles" aria-label="Related articles">
       <h3>Related Articles</h3>
       <div class="related-grid">
-        <a href="/blog/success-philosophy">The Philosophy of Success</a>
-        <a href="/blog/mental-models">Mental Models for Better Decision Making</a>
-        <a href="/blog/vision-to-reality">From Vision to Reality: The Art of Execution</a>
+        <a href="/blog/success-philosophy" rel="related">
+          <span>The Philosophy of Success</span>
+        </a>
+        <a href="/blog/mental-models" rel="related">
+          <span>Mental Models for Better Decision Making</span>
+        </a>
+        <a href="/blog/vision-to-reality" rel="related">
+          <span>From Vision to Reality: The Art of Execution</span>
+        </a>
       </div>
-    </section>
+    </nav>
+
+    <!-- Breadcrumb for better navigation -->
+    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border, #e5e7eb);">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <span style="margin: 0 0.5rem;">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/blog">
+            <span itemprop="name">Blog</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <span style="margin: 0 0.5rem;">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name">Stoic Wisdom for Modern Life</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </nav>
   </article>
 
   <style>
-    /* Hero image - Fixed compact size */
-    .hero-image {
+    /* Hero image - Works with Astro Image component */
+    :global(.hero-image) {
       width: 100%;
       height: 200px !important;
-      max-height: 200px !important;
       object-fit: cover;
       border-radius: 8px;
-      margin: 2rem 0;
       display: block;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    figure {
+      margin: 2rem 0;
+      padding: 0;
+    }
+
     @media (max-width: 768px) {
-      .hero-image {
+      :global(.hero-image) {
         height: 150px !important;
-        max-height: 150px !important;
       }
     }
 
@@ -219,17 +273,11 @@ import card2 from "../../assets/card2.jpg";
     .author-info {
       display: flex;
       gap: 1rem;
+      align-items: center;
       padding: 2rem;
       background: var(--color-accent-light, #f8fafc);
       border-radius: 8px;
       margin-top: 3rem;
-    }
-
-    .author-info img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      flex-shrink: 0;
     }
 
     .author-details {
@@ -239,6 +287,7 @@ import card2 from "../../assets/card2.jpg";
     .author-details h4 {
       margin-bottom: 0.5rem;
       color: var(--color-text-primary, #1a1a1a);
+      font-size: 1.1rem;
     }
 
     .author-details p {
@@ -312,11 +361,6 @@ import card2 from "../../assets/card2.jpg";
 
       .author-info {
         padding: 1.5rem;
-      }
-
-      .author-info img {
-        width: 50px;
-        height: 50px;
       }
 
       .related-grid {

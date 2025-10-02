@@ -43,6 +43,7 @@ export default defineConfig({
 
   build: {
     assets: '_assets',
+    // Auto-inline small stylesheets for better performance
     inlineStylesheets: 'auto',
   },
 
@@ -61,18 +62,49 @@ export default defineConfig({
     build: {
       rollupOptions: {
         external: [],
+        output: {
+          // Optimize chunk naming for better caching
+          assetFileNames: (assetInfo) => {
+            const info = assetInfo.name.split('.');
+            const ext = info[info.length - 1];
+
+            if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico|webp)$/i.test(assetInfo.name)) {
+              return `_assets/images/[name]-[hash][extname]`;
+            }
+            if (/\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)) {
+              return `_assets/fonts/[name]-[hash][extname]`;
+            }
+            if (ext === 'css') {
+              return `_assets/[name]-[hash][extname]`;
+            }
+            return `_assets/[name]-[hash][extname]`;
+          },
+          chunkFileNames: '_assets/[name]-[hash].js',
+        },
       },
-      cssCodeSplit: false,
+      // Enable CSS code splitting for better caching
+      cssCodeSplit: true,
+      // Use terser for better minification
       minify: 'terser',
       terserOptions: {
         compress: {
           drop_console: process.env.NODE_ENV === 'production',
           drop_debugger: true,
+          pure_funcs: process.env.NODE_ENV === 'production' ? ['console.log', 'console.info', 'console.debug'] : [],
+        },
+        format: {
+          comments: false,
         },
       },
+      // Optimize chunk size
+      chunkSizeWarningLimit: 1000,
     },
     css: {
       devSourcemap: true,
+    },
+    // Optimize dependencies
+    optimizeDeps: {
+      include: [],
     },
   },
 
