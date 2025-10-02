@@ -45,7 +45,7 @@ export default defineConfig({
   build: {
     assets: '_assets',
     // Auto-inline small stylesheets for better performance
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
 
   image: {
@@ -84,7 +84,7 @@ export default defineConfig({
         },
       },
       // Enable CSS code splitting for better caching
-      cssCodeSplit: true,
+      cssCodeSplit: false,
       // Use terser for better minification
       minify: 'terser',
       terserOptions: {
