@@ -1,45 +1,55 @@
 ---
 import BaseLayout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
 import card1 from "../../assets/card1.jpg";
 ---
 
 <BaseLayout
-  title="15 Best Productivity Tools for 2025 (Tested by Experts)"
+  title="15 Best Productivity Tools for 2025 (Tested by Experts) | Success Odyssey Hub"
   description="Discover the most effective productivity tools for 2025. From Notion templates to time tracking apps, find the perfect tools to boost your efficiency."
-  keywords="productivity tools 2025, best productivity apps, notion templates, time management software, digital productivity, work efficiency tools"
-  image={card1.src}
+  keywords="productivity tools 2025, best productivity apps, notion templates, time management software, digital productivity, work efficiency tools, productivity software, task management"
+  image={card1}
   type="article"
   datePublished="2025-01-20T00:00:00Z"
   dateModified="2025-01-20T00:00:00Z"
+  author="Success Odyssey Hub"
 >
   <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
     <header class="article-header">
-      <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li>Best Productivity Tools 2025</li>
-        </ol>
-      </nav>
-
       <h1 itemprop="headline">15 Best Productivity Tools for 2025 (Tested by Experts)</h1>
       <div class="article-meta">
         <time datetime="2025-01-20" itemprop="datePublished">January 20, 2025</time>
-        <span class="reading-time">12 min read</span>
+        <meta itemprop="dateModified" content="2025-01-20T00:00:00Z" />
+        <span class="reading-time" itemprop="timeRequired" content="PT12M">12 min read</span>
         <div class="tags">
-          <span class="tag">Productivity</span>
-          <span class="tag">Tools</span>
-          <span class="tag">Reviews</span>
+          <span class="tag" itemprop="keywords">Productivity</span>
+          <span class="tag" itemprop="keywords">Tools</span>
+          <span class="tag" itemprop="keywords">Reviews</span>
         </div>
       </div>
     </header>
 
-    <img src={card1.src} alt="Best productivity tools for 2025" class="hero-image" itemprop="image" />
+    <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card1}
+        alt="Best productivity tools for 2025 featuring digital planners, time tracking apps, and project management software displayed on modern devices"
+        class="hero-image"
+        width={900}
+        height={200}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={85}
+      />
+      <meta itemprop="url" content={new URL(card1.src, Astro.site).toString()} />
+      <meta itemprop="width" content="900" />
+      <meta itemprop="height" content="200" />
+    </figure>
 
     <div class="content" itemprop="articleBody">
 
       <!-- Table of Contents for SEO -->
-      <div class="table-of-contents">
+      <nav class="table-of-contents" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
           <li><a href="#digital-planners">Digital Planners & Templates</a></li>
@@ -49,7 +59,7 @@ import card1 from "../../assets/card1.jpg";
           <li><a href="#automation">Automation Software</a></li>
           <li><a href="#conclusion">Final Recommendations</a></li>
         </ol>
-      </div>
+      </nav>
 
       <p class="lead">
         After testing over 50 productivity tools in 2025, our team has identified the 15 most effective solutions that actually deliver results. Whether you're a busy entrepreneur, student, or remote worker, these tools will transform how you organize your life and work.
@@ -114,7 +124,7 @@ import card1 from "../../assets/card1.jpg";
         <a href="https://obsidian.md/?ref=successodyssey" rel="nofollow sponsored" target="_blank">Obsidian</a> transforms note-taking into knowledge building through its unique linking system. Ideal for researchers, writers, and lifelong learners.
       </p>
 
-      <blockquote>
+      <blockquote itemprop="citation">
         "Since switching to Obsidian, I've connected ideas I never would have found otherwise. It's like having a second brain." - Sarah, Content Creator
       </blockquote>
 
@@ -176,40 +186,76 @@ import card1 from "../../assets/card1.jpg";
 
     <!-- Author Info -->
     <div class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
-      <img src="/assets/author-avatar.webp" alt="Success Odyssey Team" />
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 12px;">
+        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
+      </svg>
       <div class="author-details">
-        <h4 itemprop="name">Success Odyssey Team</h4>
+        <h4 itemprop="name">Success Odyssey Hub</h4>
+        <meta itemprop="url" content={Astro.site?.toString()} />
         <p>Our team of productivity experts has tested thousands of tools and strategies to bring you only the most effective solutions for personal and professional growth.</p>
       </div>
     </div>
 
     <!-- Related Articles -->
-    <section class="related-articles">
+    <nav class="related-articles" aria-label="Related articles">
       <h3>Related Articles</h3>
       <div class="related-grid">
-        <a href="/blog/habits-discipline-momentum">Habits, Discipline, and Momentum</a>
-        <a href="/blog/mental-models">Mental Models for Better Decision Making</a>
-        <a href="/blog/vision-to-reality">From Vision to Reality: The Art of Execution</a>
+        <a href="/blog/habits-discipline-momentum" rel="related">
+          <span>Habits, Discipline, and Momentum</span>
+        </a>
+        <a href="/blog/mental-models" rel="related">
+          <span>Mental Models for Better Decision Making</span>
+        </a>
+        <a href="/blog/vision-to-reality" rel="related">
+          <span>From Vision to Reality: The Art of Execution</span>
+        </a>
       </div>
-    </section>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border, #e5e7eb);">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <span style="margin: 0 0.5rem;">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/blog">
+            <span itemprop="name">Blog</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <span style="margin: 0 0.5rem;">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name">Best Productivity Tools 2025</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </nav>
   </article>
 
   <style>
-    /* Hero image - Fixed compact size */
-    .hero-image {
+    /* Hero image with Astro Image component */
+    :global(.hero-image) {
       width: 100%;
       height: 200px !important;
-      max-height: 200px !important;
       object-fit: cover;
       border-radius: 8px;
-      margin: 2rem 0;
       display: block;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    figure {
+      margin: 2rem 0;
+      padding: 0;
     }
 
     @media (max-width: 768px) {
-      .hero-image {
+      :global(.hero-image) {
         height: 150px !important;
-        max-height: 150px !important;
       }
     }
 
@@ -229,6 +275,7 @@ import card1 from "../../assets/card1.jpg";
     /* Article header */
     .article-header {
       margin-bottom: 2rem;
+      text-align: center;
     }
 
     .article-header h1 {
@@ -241,6 +288,7 @@ import card1 from "../../assets/card1.jpg";
 
     .article-meta {
       display: flex;
+      justify-content: center;
       align-items: center;
       gap: 1rem;
       margin-bottom: 1rem;
@@ -250,10 +298,11 @@ import card1 from "../../assets/card1.jpg";
     .article-meta time {
       color: var(--color-text-secondary, #6b7280);
       font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .reading-time {
-      color: var(--color-text-secondary, #6b7280);
+      color: var(--color-primary, #3b82f6);
       font-size: 0.9rem;
     }
 
@@ -264,10 +313,10 @@ import card1 from "../../assets/card1.jpg";
     }
 
     .tag {
-      background: var(--color-primary, #3b82f6);
-      color: white;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
+      background: var(--color-bg-tertiary, #f9fafb);
+      color: var(--color-text-primary, #1a1a1a);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
       font-size: 0.8rem;
       font-weight: 500;
     }
@@ -275,42 +324,8 @@ import card1 from "../../assets/card1.jpg";
     @media (max-width: 768px) {
       .article-meta {
         flex-direction: column;
-        align-items: flex-start;
         gap: 0.5rem;
       }
-    }
-
-    /* Breadcrumb navigation */
-    .breadcrumb {
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .breadcrumb ol {
-      list-style: none;
-      display: flex;
-      gap: 0.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    .breadcrumb li:not(:last-child)::after {
-      content: ' / ';
-      margin-left: 0.5rem;
-      color: var(--color-text-secondary, #bfd7ff);
-    }
-
-    .breadcrumb a {
-      color: var(--color-primary, #3b82f6);
-      text-decoration: none;
-    }
-
-    .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-
-    .breadcrumb li:last-child {
-      color: var(--color-text-secondary, #6b7280);
     }
 
     /* General content styles */
@@ -318,12 +333,12 @@ import card1 from "../../assets/card1.jpg";
       line-height: 1.7;
       max-width: 800px;
       margin: 0 auto;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     .content h2 {
       margin: 2.5rem 0 1rem 0;
-      color: var(--color-text-primary, #111827);
+      color: var(--color-primary, #3b82f6);
       font-size: 1.8rem;
       font-weight: 700;
     }
@@ -335,33 +350,44 @@ import card1 from "../../assets/card1.jpg";
       font-weight: 600;
     }
 
+    .content h4 {
+      margin: 1.5rem 0 1rem 0;
+      color: var(--color-text-primary, #111827);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
     .content p {
       margin-bottom: 1.5rem;
-      color: var(--color-text-secondary, #4b5563);
+      color: var(--color-text-primary, #1a1a1a);
       font-size: 1.1rem;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     .lead {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 500;
-      color: var(--color-text-primary, #111827);
+      color: var(--color-primary, #3b82f6);
       margin-bottom: 2rem;
+      text-align: center;
+      line-height: 1.6;
     }
 
     .content ul, .content ol {
       margin-bottom: 1.5rem;
-      padding-left: 1.5rem;
+      padding-left: 2rem;
     }
 
     .content li {
-      margin-bottom: 0.5rem;
-      color: var(--color-text-secondary, #4b5563);
+      margin-bottom: 0.8rem;
+      color: var(--color-text-primary, #1a1a1a);
+      line-height: 1.7;
     }
 
     .content a {
       color: var(--color-primary, #3b82f6);
       text-decoration: none;
+      font-weight: 500;
     }
 
     .content a:hover {
@@ -375,13 +401,13 @@ import card1 from "../../assets/card1.jpg";
 
     blockquote {
       border-left: 4px solid var(--color-primary, #3b82f6);
-      padding-left: 1.5rem;
+      padding: 1rem 1.5rem;
       margin: 2rem 0;
       font-style: italic;
-      color: var(--color-text-secondary, #4b5563);
+      color: var(--color-text-primary, #1a1a1a);
       background: var(--color-accent-light, #f8fafc);
-      padding: 1.5rem;
       border-radius: 0 8px 8px 0;
+      font-size: 1.1rem;
     }
 
     /* Table of contents */
@@ -395,29 +421,35 @@ import card1 from "../../assets/card1.jpg";
 
     .table-of-contents h2 {
       font-size: 1.2rem;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem 0;
       color: var(--color-primary, #3b82f6);
     }
 
     .table-of-contents ol {
-      line-height: 1.6;
+      line-height: 1.8;
       margin: 0;
       padding-left: 1.5rem;
     }
 
+    .table-of-contents li {
+      margin-bottom: 0.5rem;
+    }
+
     .table-of-contents a {
-      color: var(--color-text-secondary, #4b5563);
+      color: var(--color-text-primary, #1a1a1a);
       text-decoration: none;
+      font-size: 1rem;
     }
 
     .table-of-contents a:hover {
       color: var(--color-primary, #3b82f6);
+      text-decoration: underline;
     }
 
     /* Product highlights */
     .product-highlight {
       background: linear-gradient(135deg, var(--color-accent-light, #f8fafc) 0%, #e2e8f0 100%);
-      border: 1px solid var(--color-primary, #3b82f6);
+      border: 2px solid var(--color-primary, #3b82f6);
       border-radius: 8px;
       padding: 2rem;
       margin: 2rem 0;
@@ -425,7 +457,7 @@ import card1 from "../../assets/card1.jpg";
 
     .product-highlight h4 {
       color: var(--color-primary, #3b82f6);
-      margin-bottom: 1rem;
+      margin: 0 0 1rem 0;
     }
 
     .product-highlight ul {
@@ -439,7 +471,7 @@ import card1 from "../../assets/card1.jpg";
 
     .affiliate-cta {
       display: inline-block;
-      background: var(--color-primary, #c5d9fa);
+      background: var(--color-primary, #3b82f6);
       color: white;
       padding: 1rem 2rem;
       border-radius: 8px;
@@ -452,6 +484,7 @@ import card1 from "../../assets/card1.jpg";
     .affiliate-cta:hover {
       background: var(--color-primary-dark, #2563eb);
       transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
     }
 
     .affiliate-notice {
@@ -459,6 +492,7 @@ import card1 from "../../assets/card1.jpg";
       color: var(--color-text-secondary, #6b7280);
       font-size: 0.8rem;
       margin-top: 0.5rem;
+      font-style: italic;
     }
 
     /* Pros and cons section */
@@ -479,10 +513,11 @@ import card1 from "../../assets/card1.jpg";
     .pros, .cons {
       padding: 1.5rem;
       border-radius: 8px;
+      border: 2px solid;
     }
 
     .pros h4, .cons h4 {
-      margin-bottom: 1rem;
+      margin: 0 0 1rem 0;
       font-size: 1.1rem;
     }
 
@@ -497,7 +532,7 @@ import card1 from "../../assets/card1.jpg";
 
     .pros {
       background: #ecfdf5;
-      border: 1px solid #10b981;
+      border-color: #10b981;
     }
 
     .pros h4 {
@@ -506,7 +541,7 @@ import card1 from "../../assets/card1.jpg";
 
     .cons {
       background: #fef2f2;
-      border: 1px solid #ef4444;
+      border-color: #ef4444;
     }
 
     .cons h4 {
@@ -516,6 +551,7 @@ import card1 from "../../assets/card1.jpg";
     /* Automation examples */
     .automation-examples {
       background: var(--color-bg-tertiary, #f9fafb);
+      border: 1px solid var(--color-border, #e5e7eb);
       padding: 1.5rem;
       border-radius: 8px;
       margin: 1.5rem 0;
@@ -523,7 +559,7 @@ import card1 from "../../assets/card1.jpg";
 
     .automation-examples h4 {
       color: var(--color-primary, #3b82f6);
-      margin-bottom: 1rem;
+      margin: 0 0 1rem 0;
     }
 
     .automation-examples ul {
@@ -537,7 +573,7 @@ import card1 from "../../assets/card1.jpg";
 
     /* Action section */
     .action-section {
-      background: linear-gradient(135deg, var(--color-primary, #87b0f5), var(--color-primary-dark, #2563eb));
+      background: linear-gradient(135deg, var(--color-primary, #3b82f6), var(--color-primary-dark, #2563eb));
       color: white;
       text-align: center;
       padding: 3rem;
@@ -547,12 +583,13 @@ import card1 from "../../assets/card1.jpg";
 
     .action-section h3 {
       color: white;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem 0;
     }
 
     .action-section p {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.95);
       margin-bottom: 2rem;
+      font-size: 1.1rem;
     }
 
     .main-cta {
@@ -563,12 +600,14 @@ import card1 from "../../assets/card1.jpg";
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
+      font-size: 1.1rem;
       transition: all 0.3s ease;
     }
 
     .main-cta:hover {
       background: #d97706;
       transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
     }
 
     @media (max-width: 768px) {
@@ -576,8 +615,13 @@ import card1 from "../../assets/card1.jpg";
         padding: 2rem;
       }
 
+      .action-section p {
+        font-size: 1rem;
+      }
+
       .main-cta {
         padding: 0.75rem 1.5rem;
+        font-size: 1rem;
       }
     }
 
@@ -585,17 +629,11 @@ import card1 from "../../assets/card1.jpg";
     .author-info {
       display: flex;
       gap: 1rem;
+      align-items: center;
       padding: 2rem;
       background: var(--color-accent-light, #f8fafc);
       border-radius: 8px;
       margin-top: 3rem;
-    }
-
-    .author-info img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      flex-shrink: 0;
     }
 
     .author-details {
@@ -605,6 +643,7 @@ import card1 from "../../assets/card1.jpg";
     .author-details h4 {
       margin-bottom: 0.5rem;
       color: var(--color-text-primary, #111827);
+      font-size: 1.1rem;
     }
 
     .author-details p {
@@ -617,11 +656,6 @@ import card1 from "../../assets/card1.jpg";
     @media (max-width: 768px) {
       .author-info {
         padding: 1.5rem;
-      }
-
-      .author-info img {
-        width: 50px;
-        height: 50px;
       }
     }
 

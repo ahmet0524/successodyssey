@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
 import card2 from "../../assets/card2.jpg";
 ---
 
@@ -7,31 +8,46 @@ import card2 from "../../assets/card2.jpg";
   title="Habits, Discipline, and Momentum: The Engine of Sustainable Success"
   description="Uncover the science behind habit formation and learn how to build disciplined systems that create unstoppable momentum toward your goals."
   keywords="habit formation, discipline, momentum, behavioral psychology, atomic habits, willpower, self-control, success systems"
-  image={card2.src}
+  image={card2}
   type="article"
   datePublished="2025-01-22T00:00:00Z"
   dateModified="2025-01-22T00:00:00Z"
+  author="Success Odyssey Hub"
 >
   <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
     <header class="article-header">
       <h1 itemprop="headline">Habits, Discipline, and Momentum: The Engine of Sustainable Success</h1>
       <div class="article-meta">
         <time datetime="2025-01-22" itemprop="datePublished">January 22, 2025</time>
-        <span class="reading-time">8 min read</span>
+        <span class="reading-time" itemprop="timeRequired" content="PT12M">8 min read</span>
         <div class="tags">
-          <span class="tag">Habits</span>
-          <span class="tag">Discipline</span>
-          <span class="tag">Psychology</span>
+          <span class="tag" itemprop="keywords">Habits</span>
+          <span class="tag" itemprop="keywords">Discipline</span>
+          <span class="tag" itemprop="keywords">Psychology</span>
         </div>
       </div>
     </header>
 
-    <img src={card2.src} alt="Building habits and discipline for success" class="hero-image" itemprop="image" />
+    <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card2}
+        alt="Building habits and discipline for success"
+        class="hero-image"
+        width={900}
+        height={200}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={85}
+      />
+      <meta itemprop="url" content={new URL(card2.src, Astro.site).toString()} />
+      <meta itemprop="width" content="900" />
+      <meta itemprop="height" content="200" />
+    </figure>
 
     <div class="content" itemprop="articleBody">
-
       <!-- Table of Contents -->
-      <div class="table-of-contents">
+      <nav class="table-of-contents" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
           <li><a href="#foundation">The Foundation: Understanding Your Brain's Autopilot</a></li>
@@ -41,7 +57,7 @@ import card2 from "../../assets/card2.jpg";
           <li><a href="#building-system">Building Your Success Engine</a></li>
           <li><a href="#troubleshooting">Troubleshooting Common Problems</a></li>
         </ol>
-      </div>
+      </nav>
 
       <p class="lead">
         Success isn't built on moments of inspiration or bursts of motivation. It's constructed through the quiet accumulation of disciplined habits that compound over time, creating unstoppable momentum toward your goals.
@@ -112,7 +128,7 @@ import card2 from "../../assets/card2.jpg";
         Modern research adds a fourth element: craving. The anticipation of the reward, not the reward itself, drives behavior. This explains why habits can feel compulsive—your brain begins craving the reward as soon as it encounters the cue.
       </p>
 
-      <blockquote>
+      <blockquote itemprop="citation">
         "Habits are the compound interest of self-improvement. Getting 1% better every day counts for a lot in the long run." - James Clear
       </blockquote>
 
@@ -498,30 +514,63 @@ import card2 from "../../assets/card2.jpg";
           Success is not a destination you arrive at—it's a process you commit to. It's not about having perfect days—it's about having systems that work imperfectly but consistently. The magic happens not in moments of inspiration, but in the mundane repetition of beneficial behaviors that compound over time into extraordinary results.
         </p>
       </div>
-
     </div>
 
     <!-- Author Info -->
     <div class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
-      <img src="/assets/author-avatar.webp" alt="Success Odyssey Team" />
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 12px;">
+        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
+      </svg>
       <div class="author-details">
-        <h4 itemprop="name">Success Odyssey Team</h4>
-        <p>Our team combines insights from behavioral psychology, neuroscience, and practical experience to help you build habits that create lasting success.</p>
+        <h4 itemprop="name">Success Odyssey Hub</h4>
+        <meta itemprop="url" content={Astro.site?.toString()} />
+        <p>Our team of productivity experts has tested thousands of tools and strategies to bring you only the most effective solutions for personal and professional growth.</p>
       </div>
     </div>
 
     <!-- Related Articles -->
-    <section class="related-articles">
+    <nav class="related-articles" aria-label="Related articles">
       <h3>Related Articles</h3>
       <div class="related-grid">
-        <a href="/blog/mental-models">Mental Models for Better Decision Making</a>
-        <a href="/blog/rethinking-success">Rethinking Success: A Scientific Exploration</a>
-        <a href="/blog/overcoming-resistance">Overcoming Resistance: Building Resilience</a>
+        <a href="/blog/mental-models" rel="related">
+          <span>Mental Models for Better Decision Making</span>
+        </a>
+        <a href="/blog/rethinking-success" rel="related">
+          <span>Rethinking Success: A Scientific Exploration</span>
+        </a>
+        <a href="/blog/overcoming-resistance" rel="related">
+          <span>Overcoming Resistance: Building Resilience</span>
+        </a>
       </div>
-    </section>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border, #e5e7eb);">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <span style="margin: 0 0.5rem;">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/blog">
+            <span itemprop="name">Blog</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <span style="margin: 0 0.5rem;">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name">Habits, Discipline, and Momentum</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </nav>
   </article>
 
-  <style>
+  </style>
+</BaseLayout>
     /* Hero image - Fixed compact size */
     .hero-image {
       width: 100%;
@@ -985,10 +1034,7 @@ import card2 from "../../assets/card2.jpg";
       margin-top: 3rem;
     }
 
-    .author-info img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
+    .author-info svg {
       flex-shrink: 0;
     }
 
@@ -1090,11 +1136,6 @@ import card2 from "../../assets/card2.jpg";
 
       .author-info {
         padding: 1.5rem;
-      }
-
-      .author-info img {
-        width: 50px;
-        height: 50px;
       }
 
       .related-grid {
