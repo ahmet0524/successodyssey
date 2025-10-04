@@ -1,37 +1,56 @@
 ---
 import BaseLayout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
 import card1 from "../../assets/card1.jpg";
 ---
 
 <BaseLayout
-  title="Overcoming Resistance: Building Resilience in the Face of Failure"
+  title="Overcoming Resistance: Building Resilience in the Face of Failure | Success Odyssey Hub"
   description="Transform setbacks into stepping stones. Discover psychological strategies and practical tools for building unshakeable resilience when facing challenges and failures."
-  keywords="resilience, overcoming failure, psychological resilience, mental toughness, setback recovery, growth mindset, adversity, perseverance"
-  image={card1.src}
+  keywords="resilience, overcoming failure, psychological resilience, mental toughness, setback recovery, growth mindset, adversity, perseverance, building resilience, emotional strength"
+  image={card1}
   type="article"
   datePublished="2025-01-18T00:00:00Z"
   dateModified="2025-01-18T00:00:00Z"
+  author="Success Odyssey Hub"
 >
-  <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
+
+ <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
     <header class="article-header">
       <h1 itemprop="headline">Overcoming Resistance: Building Resilience in the Face of Failure</h1>
       <div class="article-meta">
         <time datetime="2025-01-18" itemprop="datePublished">January 18, 2025</time>
-        <span class="reading-time">7 min read</span>
+        <meta itemprop="dateModified" content="2025-01-18T00:00:00Z" />
+        <span class="reading-time" itemprop="timeRequired" content="PT7M">7 min read</span>
         <div class="tags">
-          <span class="tag">Resilience</span>
-          <span class="tag">Psychology</span>
-          <span class="tag">Growth</span>
+          <span class="tag" itemprop="keywords">Resilience</span>
+          <span class="tag" itemprop="keywords">Psychology</span>
+          <span class="tag" itemprop="keywords">Growth</span>
         </div>
       </div>
     </header>
 
-    <img src={card1.src} alt="Building resilience and overcoming resistance" class="hero-image" itemprop="image" />
+        <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card1}
+        alt="Person building psychological resilience and overcoming resistance through mental strength training and growth mindset development"
+        class="hero-image"
+        width={900}
+        height={200}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={85}
+      />
+      <meta itemprop="url" content={new URL(card1.src, Astro.site).toString()} />
+      <meta itemprop="width" content="900" />
+      <meta itemprop="height" content="200" />
+    </figure>
 
     <div class="content" itemprop="articleBody">
 
       <!-- Table of Contents -->
-      <div class="table-of-contents">
+      <nav class="table-of-contents" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
           <li><a href="#understanding-resistance">Understanding the Nature of Resistance</a></li>
@@ -41,9 +60,9 @@ import card1 from "../../assets/card1.jpg";
           <li><a href="#bouncing-back">The Art of Bouncing Back</a></li>
           <li><a href="#long-term-strength">Developing Long-Term Mental Strength</a></li>
         </ol>
-      </div>
+      </nav>
 
-      <p class="lead">
+          <p class="lead">
         Resistance isn't your enemy—it's your teacher. Every setback, failure, and obstacle contains valuable information about your path forward. The difference between those who succeed and those who don't isn't the absence of failure, but the ability to transform resistance into resilience.
       </p>
 

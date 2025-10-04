@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
 import rethinkingSuccessBanner from "../../assets/rethinking-success-banner.webp";
 ---
 
@@ -7,7 +8,7 @@ import rethinkingSuccessBanner from "../../assets/rethinking-success-banner.webp
   title="Rethinking Success: A Scientific and Philosophical Exploration"
   description="Challenge conventional definitions of success through neuroscience, positive psychology, and philosophical frameworks. Discover evidence-based approaches to meaningful achievement."
   keywords="success definition, positive psychology, neuroscience, eudaimonia, authentic success, wellbeing science, philosophical success"
-  image={rethinkingSuccessBanner.src}
+  image={rethinkingSuccessBanner}
   type="article"
   datePublished="2025-01-25T00:00:00Z"
   dateModified="2025-01-25T00:00:00Z"
@@ -16,22 +17,38 @@ import rethinkingSuccessBanner from "../../assets/rethinking-success-banner.webp
     <header class="article-header">
       <h1 itemprop="headline">Rethinking Success: A Scientific and Philosophical Exploration</h1>
       <div class="article-meta">
-        <time datetime="2025-01-25" itemprop="datePublished">January 25, 2025</time>
-        <span class="reading-time">9 min read</span>
+        <time itemprop="datePublished" datetime="2025-01-25T00:00:00Z">January 25, 2025</time>
+        <meta itemprop="dateModified" content="2025-01-25T00:00:00Z" />
+        <span class="reading-time" itemprop="timeRequired" content="PT9M">9 min read</span>
         <div class="tags">
-          <span class="tag">Philosophy</span>
-          <span class="tag">Science</span>
-          <span class="tag">Success</span>
+          <span class="tag"  itemprop="keywords">Philosophy</span>
+          <span class="tag"  itemprop="keywords">Science</span>
+          <span class="tag"  itemprop="keywords">Success</span>
         </div>
       </div>
     </header>
 
-    <img src={rethinkingSuccessBanner.src} alt="Rethinking success through science and philosophy" class="hero-image" itemprop="image" />
+<figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+  <Image
+    src={rethinkingSuccessBanner}
+    alt="Scientific and philosophical exploration of success through neuroscience, positive psychology, and ancient wisdom frameworks"
+    class="hero-image"
+    width={900}
+    height={200}
+    loading="eager"
+    fetchpriority="high"
+    format="webp"
+    quality={85}
+  />
+  <meta itemprop="url" content={new URL(rethinkingSuccessBanner.src, Astro.site).toString()} />
+  <meta itemprop="width" content="900" />
+  <meta itemprop="height" content="200" />
+</figure>
 
     <div class="content" itemprop="articleBody">
 
       <!-- Table of Contents -->
-      <div class="table-of-contents">
+      <nav class="table-of-contents" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
           <li><a href="#conventional-trap">The Conventional Success Trap</a></li>
@@ -41,7 +58,7 @@ import rethinkingSuccessBanner from "../../assets/rethinking-success-banner.webp
           <li><a href="#sustainable-model">A Sustainable Model of Success</a></li>
           <li><a href="#implementation">Practical Implementation</a></li>
         </ol>
-      </div>
+       </nav>
 
       <p class="lead">
         Our culture's definition of success—wealth, status, recognition—may be fundamentally misguided. Recent advances in neuroscience and positive psychology, combined with ancient philosophical wisdom, reveal a more nuanced and fulfilling path to genuine achievement.
@@ -337,25 +354,55 @@ import rethinkingSuccessBanner from "../../assets/rethinking-success-banner.webp
     </div>
 
     <!-- Author Info -->
-    <div class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
-      <img src="/assets/author-avatar.webp" alt="Success Odyssey Team" />
-      <div class="author-details">
-        <h4 itemprop="name">Success Odyssey Team</h4>
-        <p>Our interdisciplinary team combines insights from neuroscience, positive psychology, and philosophy to explore what it means to live a truly successful life.</p>
-      </div>
-    </div>
+  <div class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 12px;">
+    <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
+  </svg>
+  <div class="author-details">
+    <h4 itemprop="name">Success Odyssey Hub</h4>
+    <meta itemprop="url" content={Astro.site?.toString()} />
+    <p>Our interdisciplinary team combines insights from neuroscience, positive psychology, and philosophy to explore what it means to live a truly successful life.</p>
+  </div>
+</div>
 
     <!-- Related Articles -->
-    <section class="related-articles">
-      <h3>Related Articles</h3>
-      <div class="related-grid">
-        <a href="/blog/mental-models">Mental Models for Better Decision Making</a>
-        <a href="/blog/stoicism">Stoic Wisdom for Modern Life</a>
-        <a href="/blog/success-philosophy">The Philosophy of Success</a>
-      </div>
-    </section>
+   <nav class="related-articles" aria-label="Related articles">
+  <h3>Related Articles</h3>
+  <div class="related-grid">
+    <a href="/blog/mental-models" rel="related">
+      <span>Mental Models for Better Decision Making</span>
+    </a>
+    <a href="/blog/stoicism" rel="related">
+      <span>Stoic Wisdom for Modern Life</span>
+    </a>
+    <a href="/blog/success-philosophy" rel="related">
+      <span>The Philosophy of Success</span>
+    </a>
+  </div>
+</nav>
+<nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border, #e5e7eb);">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1" />
+      <span style="margin: 0 0.5rem;">/</span>
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/blog">
+        <span itemprop="name">Blog</span>
+      </a>
+      <meta itemprop="position" content="2" />
+      <span style="margin: 0 0.5rem;">/</span>
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name">Rethinking Success</span>
+      <meta itemprop="position" content="3" />
+    </li>
+  </ol>
+</nav>
   </article>
-
   <style>
     /* Hero image - Fixed compact size */
     .hero-image {
