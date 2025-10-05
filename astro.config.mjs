@@ -13,7 +13,9 @@ export default defineConfig({
       lastmod: new Date(),
 
       // Sadece gerçek sorunlu sayfaları filtrele
-      filter: (page) => !page.includes('/404'),
+       filter: (page) => !page.includes('/404') &&
+                        !page.includes('/_') &&
+                        !page.endsWith('.xml'),
 
       serialize: (item) => {
         // Homepage
