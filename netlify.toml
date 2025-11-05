@@ -25,18 +25,12 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# HTTP to HTTPS redirects
-[[redirects]]
-  from = "http://successodysseyhub.com/*"
-  to = "https://successodysseyhub.com/:splat"
-  status = 301
-  force = true
-
+# WWW to non-WWW redirect (WITHOUT force=true)
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
   status = 301
-  force = true
+  force = false
 
-# CRITICAL: SPA fallback KALDIRIN veya sadece gerçek 404'ler için kullanın
-# Astro zaten statik sayfalar oluşturuyor, SPA fallback'e ihtiyaç yok
+# HTTP to HTTPS redirect (handled by Netlify automatically)
+# Remove manual HTTP redirect - Netlify handles this with HTTPS enforcement
