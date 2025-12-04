@@ -12,12 +12,6 @@ import philosophyOfSuccess from "../assets/philosophy-of-success.webp";
 import aiMagnifiedMentalModels2 from "../assets/ai-magnified-mental-models-2.webp";
 import happinessPhilosophyImage from "../assets/happiness-hero.webp";
 
-import card1 from "../assets/card1.jpg";
-import card2 from "../assets/card2.jpg";
-import card3 from "../assets/card3.jpg";
-
-const canonicalURL = new URL('/blog', Astro.site || 'https://successodysseyhub.com').href;
-
 // Blog data with all articles
 const allBlogPosts = [
   {
@@ -112,8 +106,17 @@ const allBlogPosts = [
   }
 ];
 
+// Get search query from URL
+const url = new URL(Astro.request.url);
+const searchQuery = url.searchParams.get('search')?.toLowerCase().trim() || '';
+
 // Get unique categories
 const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
+
+// Canonical URL yapılandırması
+const canonicalURL = searchQuery
+  ? new URL(`/blog?search=${encodeURIComponent(searchQuery)}`, Astro.site)
+  : new URL('/blog/', Astro.site);
 ---
 
 <Layout
@@ -127,10 +130,35 @@ const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
       <h1>Insights for Your Success Journey</h1>
       <p>Evidence-based strategies, timeless wisdom, and practical tools for personal transformation and sustainable success.</p>
 
+      <!-- Search Bar -->
+      <div class="search-container">
+        <form action="/blog" method="get" class="search-form">
+          <input
+            type="search"
+            name="search"
+            placeholder="Search articles..."
+            value={searchQuery}
+            class="search-input"
+            aria-label="Search blog articles"
+          />
+          <button type="submit" class="search-btn" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+        {searchQuery && (
+          <div class="search-results-info">
+            <p>Search results for: <strong>"{searchQuery}"</strong></p>
+            <a href="/blog" class="clear-search">Clear search</a>
+          </div>
+        )}
+      </div>
+
       <!-- Category Filter -->
       <div class="category-filter">
         {categories.map((category) => (
-          <button class="filter-btn active" data-category={category}>
+          <button class="filter-btn" data-category={category}>
             {category}
           </button>
         ))}
@@ -138,70 +166,99 @@ const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
     </div>
   </section>
 
-  <!-- Featured Article Section -->
-  <section class="featured-article">
-    <div class="container">
-      <div class="section-header">
-        <h2>Featured Article</h2>
-        <p>Our latest deep-dive into success and personal development</p>
-      </div>
+  <!-- Featured Article Section (Only show if no search) -->
+  {!searchQuery && (
+    <section class="featured-article">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Article</h2>
+          <p>Our latest deep-dive into success and personal development</p>
+        </div>
 
-      <article class="featured-card">
-        <div class="featured-image">
-          <img src={allBlogPosts[0].image} alt={allBlogPosts[0].title} />
-          <div class="featured-badge">Latest</div>
-        </div>
-        <div class="featured-content">
-          <div class="featured-meta">
-            <span class="category-tag">{allBlogPosts[0].category}</span>
-            <time datetime={allBlogPosts[0].publishedDate}>{new Date(allBlogPosts[0].publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-            <span class="read-time">{allBlogPosts[0].readTime}</span>
+        <article class="featured-card">
+          <div class="featured-image">
+            <img src={allBlogPosts[0].image} alt={allBlogPosts[0].title} />
+            <div class="featured-badge">Latest</div>
           </div>
-          <h3>{allBlogPosts[0].title}</h3>
-          <p>{allBlogPosts[0].summary}</p>
-          <a href={allBlogPosts[0].link} class="read-more-btn">
-            Read Full Article
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-    </div>
-  </section>
+          <div class="featured-content">
+            <div class="featured-meta">
+              <span class="category-tag">{allBlogPosts[0].category}</span>
+              <time datetime={allBlogPosts[0].publishedDate}>{new Date(allBlogPosts[0].publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+              <span class="read-time">{allBlogPosts[0].readTime}</span>
+            </div>
+            <h3>{allBlogPosts[0].title}</h3>
+            <p>{allBlogPosts[0].summary}</p>
+            <a href={allBlogPosts[0].link} class="read-more-btn">
+              Read Full Article
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  )}
 
   <!-- All Articles Section -->
   <section class="all-articles">
     <div class="container">
       <div class="section-header">
-        <h2>All Articles</h2>
-        <p>Explore our complete collection of insights and strategies</p>
+        <h2>{searchQuery ? 'Search Results' : 'All Articles'}</h2>
+        <p>{searchQuery ? `Found ${allBlogPosts.filter(post =>
+          post.title.toLowerCase().includes(searchQuery) ||
+          post.summary.toLowerCase().includes(searchQuery) ||
+          post.category.toLowerCase().includes(searchQuery)
+        ).length} article(s)` : 'Explore our complete collection of insights and strategies'}</p>
       </div>
 
       <div class="blog-grid" id="blogGrid">
-        {allBlogPosts.slice(1).map((post) => (
-          <article class="horizontal-blog-card" data-category={post.category}>
-            <div class="card-image">
-              <img src={post.image} alt={post.title} />
-            </div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="category-tag">{post.category}</span>
-                <time datetime={post.publishedDate}>{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
-                <span class="read-time">{post.readTime}</span>
+        {allBlogPosts.slice(searchQuery ? 0 : 1).map((post) => {
+          // Filter by search query
+          const matchesSearch = !searchQuery ||
+            post.title.toLowerCase().includes(searchQuery) ||
+            post.summary.toLowerCase().includes(searchQuery) ||
+            post.category.toLowerCase().includes(searchQuery);
+
+          return matchesSearch ? (
+            <article class="horizontal-blog-card" data-category={post.category}>
+              <div class="card-image">
+                <img src={post.image} alt={post.title} />
               </div>
-              <h3>{post.title}</h3>
-              <p>{post.summary}</p>
-              <a href={post.link} class="card-link">
-                Read More
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </article>
-        ))}
+              <div class="card-content">
+                <div class="card-meta">
+                  <span class="category-tag">{post.category}</span>
+                  <time datetime={post.publishedDate}>{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+                  <span class="read-time">{post.readTime}</span>
+                </div>
+                <h3>{post.title}</h3>
+                <p>{post.summary}</p>
+                <a href={post.link} class="card-link">
+                  Read More
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ) : null;
+        })}
       </div>
+
+      {searchQuery && allBlogPosts.filter(post =>
+        post.title.toLowerCase().includes(searchQuery) ||
+        post.summary.toLowerCase().includes(searchQuery) ||
+        post.category.toLowerCase().includes(searchQuery)
+      ).length === 0 && (
+        <div class="no-results">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>No articles found</h3>
+          <p>Try adjusting your search terms or browse all articles</p>
+          <a href="/blog" class="btn-primary">View All Articles</a>
+        </div>
+      )}
     </div>
   </section>
 
@@ -222,6 +279,125 @@ const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
 </Layout>
 
 <style lang="scss">
+// Search Container
+.search-container {
+  max-width: 600px;
+  margin: 2rem auto 1.5rem;
+
+  .search-form {
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+
+    .search-input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--border-color);
+      border-radius: 2rem;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      &::placeholder {
+        color: var(--text-light);
+      }
+    }
+
+    .search-btn {
+      padding: 0 1.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .search-results-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius);
+
+    p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+
+      strong {
+        color: var(--primary-color);
+      }
+    }
+
+    .clear-search {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+
+      &:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// No Results
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+
+  svg {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: var(--transition);
+
+    &:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+  }
+}
+
 // Hero Section
 .blog-hero {
   background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
@@ -562,6 +738,26 @@ const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
 
 // Responsive Design
 @media (max-width: 768px) {
+  .search-container {
+    .search-form {
+      flex-direction: column;
+
+      .search-input {
+        padding: 0.875rem 1.25rem;
+      }
+
+      .search-btn {
+        padding: 0.875rem;
+      }
+    }
+
+    .search-results-info {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+
   .blog-hero {
     padding: 2rem 0;
 
@@ -608,10 +804,19 @@ const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
 </style>
 
 <script>
+// Get URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const searchQuery = urlParams.get('search')?.toLowerCase().trim();
+
 // Category filtering functionality
 document.addEventListener('DOMContentLoaded', function() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const blogCards = document.querySelectorAll('.horizontal-blog-card');
+
+  // Set active category filter
+  if (!searchQuery) {
+    filterButtons[0]?.classList.add('active');
+  }
 
   filterButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -639,7 +844,6 @@ document.addEventListener('DOMContentLoaded', function() {
     newsletterForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const email = this.querySelector('input[type="email"]').value;
-      // Add your newsletter subscription logic here
       alert('Thank you for subscribing! We\'ll send you our latest insights.');
       this.reset();
     });
