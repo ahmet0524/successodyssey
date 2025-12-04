@@ -5,6 +5,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://successodysseyhub.com',
 
+  // SADECE BU SATIRI EKLEYİN
+  trailingSlash: 'never',
 
   integrations: [
     sitemap({

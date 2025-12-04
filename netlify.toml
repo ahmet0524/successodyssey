@@ -2,6 +2,27 @@
   publish = "dist"
   command = "npm run build"
 
+# WWW to non-WWW redirect (WITH force=true for proper redirect)
+[[redirects]]
+  from = "https://www.successodysseyhub.com/*"
+  to = "https://successodysseyhub.com/:splat"
+  status = 301
+  force = true
+
+# Trailing slash redirect - remove trailing slashes
+[[redirects]]
+  from = "/*/"
+  to = "/:splat"
+  status = 301
+  force = false
+
+# Search parameter redirect - block indexing
+[[redirects]]
+  from = "/blog?search=*"
+  to = "/blog"
+  status = 301
+  force = false
+
 # Security Headers
 [[headers]]
   for = "/*"
@@ -24,13 +45,3 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
-# WWW to non-WWW redirect (WITHOUT force=true)
-[[redirects]]
-  from = "https://www.successodysseyhub.com/*"
-  to = "https://successodysseyhub.com/:splat"
-  status = 301
-  force = false
-
-# HTTP to HTTPS redirect (handled by Netlify automatically)
-# Remove manual HTTP redirect - Netlify handles this with HTTPS enforcement

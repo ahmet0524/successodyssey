@@ -43,8 +43,9 @@ const {
 const finalPublishedDate = publishedDate || datePublished;
 const finalModifiedDate = modifiedDate || dateModified;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-if (!canonicalURL.pathname.endsWith('/')) {
-  canonicalURL.pathname += '/';
+// Trailing slash'i kaldır (ana sayfa hariç)
+if (canonicalURL.pathname.endsWith('/') && canonicalURL.pathname !== '/') {
+  canonicalURL.pathname = canonicalURL.pathname.slice(0, -1);
 }
 
 const imageSrc = typeof image === 'object' && image !== null && 'src' in image ? image.src : image;
