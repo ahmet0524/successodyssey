@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import habitsDisciplineMomentum from "../../assets/habits-discipline-and-momentum.webp";
 ---
 
-<BaseLayout
+<Layout
   title="Habits, Discipline, and Momentum: The Engine of Sustainable Success"
   description="Uncover the science behind habit formation and learn how to build disciplined systems that create unstoppable momentum toward your goals."
   keywords="habit formation, discipline, momentum, behavioral psychology, atomic habits, willpower, self-control, success systems"
@@ -1142,6 +1142,35 @@ import habitsDisciplineMomentum from "../../assets/habits-discipline-and-momentu
       .related-grid {
         grid-template-columns: 1fr;
       }
+        /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .table-of-contents {
+        background: var(--color-bg-secondary);
+      }
+
+      blockquote {
+        background: var(--color-bg-tertiary);
+      }
+
+      .product-highlight {
+        background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+      }
+
+      .automation-examples {
+        background: var(--color-bg-secondary);
+      }
+
+      .author-info {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a:hover {
+        background: var(--color-bg-tertiary);
+      }
     }
     </style>
-</BaseLayout>
+</Layout>

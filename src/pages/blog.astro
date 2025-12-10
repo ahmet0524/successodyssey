@@ -1,5 +1,4 @@
 ---
-// pages/blog.astro
 import Layout from "../layouts/Layout.astro";
 import rethinkingSuccessImage from "../assets/rethinking-success.webp";
 import engineOfSuccessImage from "../assets/engine-of-success.webp";
@@ -12,7 +11,6 @@ import philosophyOfSuccess from "../assets/philosophy-of-success.webp";
 import aiMagnifiedMentalModels2 from "../assets/ai-magnified-mental-models-2.webp";
 import happinessPhilosophyImage from "../assets/happiness-hero.webp";
 
-// Blog data with all articles
 const allBlogPosts = [
   {
     title: "The Philosophy of Happiness and Success",
@@ -25,7 +23,7 @@ const allBlogPosts = [
   },
   {
     title: "Rethinking Success: A Scientific and Philosophical Exploration",
-    summary: "Challenge conventional definitions of success through neuroscience, positive psychology, and philosophical frameworks. Discover evidence-based approaches to meaningful achievement.",
+    summary: "Challenge conventional definitions of success through neuroscience, positive psychology, and philosophical frameworks.",
     image: rethinkingSuccessImage.src,
     link: "/blog/rethinking-success",
     category: "Philosophy",
@@ -34,7 +32,7 @@ const allBlogPosts = [
   },
   {
     title: "Habits, Discipline, and Momentum: The Engine of Sustainable Success",
-    summary: "Uncover the science behind habit formation and learn how to build disciplined systems that create unstoppable momentum toward your goals.",
+    summary: "Uncover the science behind habit formation and learn how to build disciplined systems that create unstoppable momentum.",
     image: engineOfSuccessImage.src,
     link: "/blog/habits-discipline-momentum",
     category: "Habits",
@@ -43,7 +41,7 @@ const allBlogPosts = [
   },
   {
     title: "From Vision to Reality: The Art and Science of Execution",
-    summary: "Bridge the gap between dreams and reality with proven execution frameworks. Learn how successful people turn visions into tangible results.",
+    summary: "Bridge the gap between dreams and reality with proven execution frameworks.",
     image: artOfExecutionImage.src,
     link: "/blog/vision-to-reality",
     category: "Execution",
@@ -52,7 +50,7 @@ const allBlogPosts = [
   },
   {
     title: "Overcoming Resistance: Building Resilience in the Face of Failure",
-    summary: "Transform setbacks into stepping stones. Discover psychological strategies and practical tools for building unshakeable resilience.",
+    summary: "Transform setbacks into stepping stones with psychological strategies for building unshakeable resilience.",
     image: overcomingResistanceImage.src,
     link: "/blog/overcoming-resistance",
     category: "Resilience",
@@ -61,7 +59,7 @@ const allBlogPosts = [
   },
   {
     title: "15 Best Productivity Tools for 2025 (Tested by Experts)",
-    summary: "Discover the most effective productivity tools for 2025. From Notion templates to time tracking apps, find the perfect tools to boost your efficiency.",
+    summary: "Discover the most effective productivity tools for 2025. From Notion templates to time tracking apps.",
     image: productivityToolsImage.src,
     link: "/blog/best-productivity-tools-2025",
     category: "Productivity",
@@ -70,7 +68,7 @@ const allBlogPosts = [
   },
   {
     title: "Mental Models for Better Decision Making",
-    summary: "Discover powerful thinking frameworks that help you navigate complex problems and make smarter choices in life and business.",
+    summary: "Discover powerful thinking frameworks that help you navigate complex problems and make smarter choices.",
     image: mentalModelsImage.src,
     link: "/blog/mental-models",
     category: "Mental Models",
@@ -79,7 +77,7 @@ const allBlogPosts = [
   },
   {
     title: "Stoic Wisdom for Modern Life",
-    summary: "Apply ancient Stoic teachings to build resilience, find inner peace, and maintain clarity in our fast-paced modern world.",
+    summary: "Apply ancient Stoic teachings to build resilience, find inner peace, and maintain clarity.",
     image: stoicWisdomImage.src,
     link: "/blog/stoicism",
     category: "Philosophy",
@@ -88,7 +86,7 @@ const allBlogPosts = [
   },
   {
     title: "The Philosophy of Success",
-    summary: "Learn timeless principles and daily habits that successful people use to achieve their goals and maintain long-term fulfillment.",
+    summary: "Learn timeless principles and daily habits that successful people use to achieve their goals.",
     image: philosophyOfSuccess.src,
     link: "/blog/success-philosophy",
     category: "Success",
@@ -96,39 +94,31 @@ const allBlogPosts = [
     publishedDate: "2025-01-10"
   },
   {
-    title: "AI-Amplified Mental Models: The Thinking Revolution That's Changing Everything",
-    summary: "This article reveals how combining Charlie Munger's mental models with AI can compress decades of cognitive development into months, giving you unprecedented decision-making speed and accuracy through systematic thinking frameworks.",
+    title: "AI-Amplified Mental Models: The Thinking Revolution",
+    summary: "Combining Charlie Munger's mental models with AI to compress decades of cognitive development into months.",
     image: aiMagnifiedMentalModels2.src,
     link: "/blog/ai-amplified-mental-models",
-    category: "Success",
+    category: "AI & Technology",
     readTime: "8 min read",
-    publishedDate: "2025-09-24"
+    publishedDate: "2025-01-15"
   }
 ];
 
-// Get search query from URL
 const url = new URL(Astro.request.url);
 const searchQuery = url.searchParams.get('search')?.toLowerCase().trim() || '';
-
-// Get unique categories
 const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
-
-// Canonical URL yapılandırması
-const canonicalURL = searchQuery
-  ? new URL(`/blog?search=${encodeURIComponent(searchQuery)}`, Astro.site)
-  : new URL('/blog/', Astro.site);
 ---
 
 <Layout
-  title="Blog - Personal Development and Success Strategies | Success Odyssey"
-  description="Explore our comprehensive collection of articles on personal development, success philosophy, mental models, stoicism, and productivity. Evidence-based strategies for transformation."
-  keywords="personal development blog, success strategies, mental models, stoicism, productivity, philosophy, habits, resilience, execution"
+  title="Blog - Personal Development and Success Strategies | Success Odyssey Hub"
+  description="Explore our comprehensive collection of articles on personal development, success philosophy, mental models, stoicism, and productivity."
+  keywords="personal development blog, success strategies, mental models, stoicism, productivity, philosophy, habits, resilience"
 >
   <!-- Hero Section -->
   <section class="blog-hero">
     <div class="container">
       <h1>Insights for Your Success Journey</h1>
-      <p>Evidence-based strategies, timeless wisdom, and practical tools for personal transformation and sustainable success.</p>
+      <p>Evidence-based strategies, timeless wisdom, and practical tools for personal transformation.</p>
 
       <!-- Search Bar -->
       <div class="search-container">
@@ -166,7 +156,7 @@ const canonicalURL = searchQuery
     </div>
   </section>
 
-  <!-- Featured Article Section (Only show if no search) -->
+  <!-- Featured Article -->
   {!searchQuery && (
     <section class="featured-article">
       <div class="container">
@@ -177,7 +167,7 @@ const canonicalURL = searchQuery
 
         <article class="featured-card">
           <div class="featured-image">
-            <img src={allBlogPosts[0].image} alt={allBlogPosts[0].title} />
+            <img src={allBlogPosts[0].image} alt={allBlogPosts[0].title} loading="eager" />
             <div class="featured-badge">Latest</div>
           </div>
           <div class="featured-content">
@@ -189,10 +179,7 @@ const canonicalURL = searchQuery
             <h3>{allBlogPosts[0].title}</h3>
             <p>{allBlogPosts[0].summary}</p>
             <a href={allBlogPosts[0].link} class="read-more-btn">
-              Read Full Article
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              Read Full Article →
             </a>
           </div>
         </article>
@@ -209,12 +196,11 @@ const canonicalURL = searchQuery
           post.title.toLowerCase().includes(searchQuery) ||
           post.summary.toLowerCase().includes(searchQuery) ||
           post.category.toLowerCase().includes(searchQuery)
-        ).length} article(s)` : 'Explore our complete collection of insights and strategies'}</p>
+        ).length} article(s)` : 'Explore our complete collection of insights'}</p>
       </div>
 
       <div class="blog-grid" id="blogGrid">
         {allBlogPosts.slice(searchQuery ? 0 : 1).map((post) => {
-          // Filter by search query
           const matchesSearch = !searchQuery ||
             post.title.toLowerCase().includes(searchQuery) ||
             post.summary.toLowerCase().includes(searchQuery) ||
@@ -223,7 +209,7 @@ const canonicalURL = searchQuery
           return matchesSearch ? (
             <article class="horizontal-blog-card" data-category={post.category}>
               <div class="card-image">
-                <img src={post.image} alt={post.title} />
+                <img src={post.image} alt={post.title} loading="lazy" />
               </div>
               <div class="card-content">
                 <div class="card-meta">
@@ -234,10 +220,7 @@ const canonicalURL = searchQuery
                 <h3>{post.title}</h3>
                 <p>{post.summary}</p>
                 <a href={post.link} class="card-link">
-                  Read More
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  Read More →
                 </a>
               </div>
             </article>
@@ -251,8 +234,8 @@ const canonicalURL = searchQuery
         post.category.toLowerCase().includes(searchQuery)
       ).length === 0 && (
         <div class="no-results">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+            <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2"/>
           </svg>
           <h3>No articles found</h3>
           <p>Try adjusting your search terms or browse all articles</p>
@@ -267,9 +250,9 @@ const canonicalURL = searchQuery
     <div class="container">
       <div class="newsletter-content">
         <h2>Never Miss an Insight</h2>
-        <p>Get our latest articles on success, philosophy, and personal development delivered to your inbox.</p>
+        <p>Get our latest articles delivered to your inbox.</p>
         <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email address" required />
+          <input type="email" placeholder="Enter your email address" required aria-label="Email address" />
           <button type="submit">Subscribe</button>
         </form>
         <p class="newsletter-disclaimer">Join 5,000+ readers. No spam, unsubscribe anytime.</p>
@@ -279,7 +262,6 @@ const canonicalURL = searchQuery
 </Layout>
 
 <style lang="scss">
-// Search Container
 .search-container {
   max-width: 600px;
   margin: 2rem auto 1.5rem;
@@ -292,27 +274,27 @@ const canonicalURL = searchQuery
     .search-input {
       flex: 1;
       padding: 1rem 1.5rem;
-      border: 2px solid var(--border-color);
+      border: 2px solid var(--color-border);
       border-radius: 2rem;
       font-size: 1rem;
       transition: var(--transition);
-      background: var(--bg-primary);
-      color: var(--text-primary);
+      background: var(--color-bg-primary);
+      color: var(--color-text-primary);
 
       &:focus {
         outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
       }
 
       &::placeholder {
-        color: var(--text-light);
+        color: var(--color-text-tertiary);
       }
     }
 
     .search-btn {
       padding: 0 1.5rem;
-      background: var(--primary-color);
+      background: var(--color-primary);
       color: white;
       border: none;
       border-radius: 2rem;
@@ -323,7 +305,7 @@ const canonicalURL = searchQuery
       justify-content: center;
 
       &:hover {
-        background: var(--primary-dark);
+        background: var(--color-primary-dark);
         transform: translateY(-2px);
       }
     }
@@ -335,78 +317,74 @@ const canonicalURL = searchQuery
     align-items: center;
     margin-top: 1rem;
     padding: 0.75rem 1rem;
-    background: var(--bg-tertiary);
+    background: var(--color-bg-tertiary);
     border-radius: var(--radius);
 
     p {
       margin: 0;
-      color: var(--text-secondary);
+      color: var(--color-text-secondary);
       font-size: 0.95rem;
 
       strong {
-        color: var(--primary-color);
+        color: var(--color-primary);
       }
     }
 
     .clear-search {
-      color: var(--primary-color);
+      color: var(--color-primary);
       font-weight: 600;
       font-size: 0.9rem;
-      transition: var(--transition);
 
       &:hover {
-        color: var(--primary-dark);
         text-decoration: underline;
       }
     }
   }
 }
 
-// No Results
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
 
   svg {
-    color: var(--text-light);
+    color: var(--color-text-tertiary);
     margin-bottom: 1.5rem;
   }
 
   h3 {
-    color: var(--text-primary);
+    color: var(--color-text-primary);
     margin-bottom: 0.5rem;
   }
 
   p {
-    color: var(--text-secondary);
+    color: var(--color-text-secondary);
     margin-bottom: 2rem;
   }
 
   .btn-primary {
     display: inline-block;
     padding: 0.875rem 2rem;
-    background: var(--primary-color);
+    background: var(--color-primary);
     color: white;
     border-radius: var(--radius);
     font-weight: 600;
     transition: var(--transition);
 
     &:hover {
-      background: var(--primary-dark);
+      background: var(--color-primary-dark);
       transform: translateY(-2px);
     }
   }
 }
 
-// Hero Section
 .blog-hero {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
   padding: 4rem 0 2rem;
   text-align: center;
 
   h1 {
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -414,7 +392,7 @@ const canonicalURL = searchQuery
 
   p {
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: var(--color-text-secondary);
     max-width: 600px;
     margin: 0 auto 2rem;
   }
@@ -427,9 +405,9 @@ const canonicalURL = searchQuery
 
     .filter-btn {
       padding: 0.5rem 1rem;
-      border: 1px solid var(--border-color);
-      background: var(--bg-primary);
-      color: var(--text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-primary);
+      color: var(--color-text-secondary);
       border-radius: 2rem;
       cursor: pointer;
       transition: var(--transition);
@@ -437,41 +415,26 @@ const canonicalURL = searchQuery
 
       &:hover,
       &.active {
-        background: var(--primary-color);
+        background: var(--color-primary);
         color: white;
-        border-color: var(--primary-color);
+        border-color: var(--color-primary);
       }
     }
   }
 }
 
-// Featured Article
 .featured-article {
   padding: 4rem 0;
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-
-    h2 {
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      color: var(--text-light);
-    }
-  }
 
   .featured-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    background: var(--bg-primary);
+    background: var(--color-bg-primary);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
     overflow: hidden;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border);
 
     .featured-image {
       position: relative;
@@ -488,7 +451,7 @@ const canonicalURL = searchQuery
         position: absolute;
         top: 1rem;
         left: 1rem;
-        background: var(--accent-color);
+        background: var(--color-accent);
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 2rem;
@@ -513,12 +476,12 @@ const canonicalURL = searchQuery
         gap: 1rem;
         margin-bottom: 1rem;
         font-size: 0.9rem;
-        color: var(--text-light);
+        color: var(--color-text-tertiary);
         flex-wrap: wrap;
 
         .category-tag {
-          background: var(--bg-tertiary);
-          color: var(--primary-color);
+          background: var(--color-bg-tertiary);
+          color: var(--color-primary);
           padding: 0.25rem 0.75rem;
           border-radius: 1rem;
           font-weight: 600;
@@ -527,13 +490,13 @@ const canonicalURL = searchQuery
 
       h3 {
         font-size: 1.75rem;
-        color: var(--text-primary);
+        color: var(--color-text-primary);
         margin-bottom: 1rem;
         line-height: 1.3;
       }
 
       p {
-        color: var(--text-secondary);
+        color: var(--color-text-secondary);
         font-size: 1.1rem;
         line-height: 1.6;
         margin-bottom: 1.5rem;
@@ -543,7 +506,7 @@ const canonicalURL = searchQuery
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        background: var(--primary-color);
+        background: var(--color-primary);
         color: white;
         padding: 0.875rem 1.5rem;
         border-radius: var(--radius);
@@ -551,7 +514,7 @@ const canonicalURL = searchQuery
         transition: var(--transition);
 
         &:hover {
-          background: var(--primary-dark);
+          background: var(--color-primary-dark);
           transform: translateY(-2px);
           box-shadow: var(--shadow-lg);
         }
@@ -560,24 +523,9 @@ const canonicalURL = searchQuery
   }
 }
 
-// All Articles Section
 .all-articles {
   padding: 4rem 0;
-  background: var(--bg-secondary);
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-
-    h2 {
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      color: var(--text-light);
-    }
-  }
+  background: var(--color-bg-secondary);
 
   .blog-grid {
     display: grid;
@@ -586,16 +534,15 @@ const canonicalURL = searchQuery
     margin: 0 auto;
   }
 
-  // Horizontal Blog Card
   .horizontal-blog-card {
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 1.5rem;
-    background: var(--bg-primary);
+    background: var(--color-bg-primary);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border);
     transition: var(--transition);
 
     &:hover {
@@ -629,11 +576,11 @@ const canonicalURL = searchQuery
         gap: 0.75rem;
         margin-bottom: 0.75rem;
         font-size: 0.85rem;
-        color: var(--text-light);
+        color: var(--color-text-tertiary);
 
         .category-tag {
-          background: var(--bg-tertiary);
-          color: var(--primary-color);
+          background: var(--color-bg-tertiary);
+          color: var(--color-primary);
           padding: 0.2rem 0.6rem;
           border-radius: 1rem;
           font-weight: 600;
@@ -643,13 +590,13 @@ const canonicalURL = searchQuery
 
       h3 {
         font-size: 1.25rem;
-        color: var(--text-primary);
+        color: var(--color-text-primary);
         margin-bottom: 0.75rem;
         line-height: 1.3;
       }
 
       p {
-        color: var(--text-secondary);
+        color: var(--color-text-secondary);
         line-height: 1.5;
         margin-bottom: 1rem;
         flex-grow: 1;
@@ -659,13 +606,12 @@ const canonicalURL = searchQuery
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        color: var(--primary-color);
+        color: var(--color-primary);
         font-weight: 600;
         transition: var(--transition);
-        align-self: flex-start;
 
         &:hover {
-          color: var(--primary-dark);
+          color: var(--color-primary-dark);
           transform: translateX(4px);
         }
       }
@@ -673,10 +619,9 @@ const canonicalURL = searchQuery
   }
 }
 
-// Newsletter Section
 .newsletter-section {
   padding: 4rem 0;
-  background: var(--primary-color);
+  background: var(--color-primary);
   color: white;
   text-align: center;
 
@@ -689,9 +634,6 @@ const canonicalURL = searchQuery
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.1rem;
     margin-bottom: 2rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .newsletter-form {
@@ -708,14 +650,14 @@ const canonicalURL = searchQuery
       font-size: 1rem;
 
       &:focus {
-        outline: 2px solid var(--accent-color);
+        outline: 2px solid var(--color-accent);
         outline-offset: 2px;
       }
     }
 
     button {
       padding: 1rem 2rem;
-      background: var(--accent-color);
+      background: var(--color-accent);
       color: white;
       border: none;
       border-radius: var(--radius);
@@ -724,7 +666,7 @@ const canonicalURL = searchQuery
       transition: var(--transition);
 
       &:hover {
-        background: #d97706;
+        background: var(--color-accent-dark);
         transform: translateY(-2px);
       }
     }
@@ -736,101 +678,42 @@ const canonicalURL = searchQuery
   }
 }
 
-// Responsive Design
 @media (max-width: 768px) {
-  .search-container {
-    .search-form {
-      flex-direction: column;
-
-      .search-input {
-        padding: 0.875rem 1.25rem;
-      }
-
-      .search-btn {
-        padding: 0.875rem;
-      }
-    }
-
-    .search-results-info {
-      flex-direction: column;
-      gap: 0.5rem;
-      text-align: center;
-    }
-  }
-
-  .blog-hero {
-    padding: 2rem 0;
-
-    .category-filter {
-      gap: 0.25rem;
-
-      .filter-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-      }
-    }
-  }
-
   .featured-article .featured-card {
     grid-template-columns: 1fr;
-    gap: 0;
-
-    .featured-content {
-      padding: 1.5rem;
-    }
   }
 
   .horizontal-blog-card {
-    grid-template-columns: 1fr;
-    gap: 0;
+    grid-template-columns: 1fr !important;
 
     .card-image img {
       height: 200px;
-    }
-
-    .card-content {
-      padding: 1rem;
     }
   }
 
   .newsletter-section .newsletter-form {
     flex-direction: column;
-
-    button {
-      padding: 1rem;
-    }
   }
 }
 </style>
 
 <script>
-// Get URL parameters
-const urlParams = new URLSearchParams(window.location.search);
-const searchQuery = urlParams.get('search')?.toLowerCase().trim();
-
-// Category filtering functionality
 document.addEventListener('DOMContentLoaded', function() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const blogCards = document.querySelectorAll('.horizontal-blog-card');
 
-  // Set active category filter
-  if (!searchQuery) {
-    filterButtons[0]?.classList.add('active');
-  }
+  filterButtons[0]?.classList.add('active');
 
   filterButtons.forEach(button => {
     button.addEventListener('click', function() {
       const category = this.getAttribute('data-category');
 
-      // Update active button
       filterButtons.forEach(btn => btn.classList.remove('active'));
       this.classList.add('active');
 
-      // Filter articles
       blogCards.forEach(card => {
         if (category === 'All' || card.getAttribute('data-category') === category) {
           card.style.display = 'grid';
-          card.style.animation = 'fadeIn 0.5s ease-in';
         } else {
           card.style.display = 'none';
         }
@@ -838,13 +721,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Newsletter form handling
   const newsletterForm = document.querySelector('.newsletter-form');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const email = this.querySelector('input[type="email"]').value;
-      alert('Thank you for subscribing! We\'ll send you our latest insights.');
+      alert('Thank you for subscribing!');
       this.reset();
     });
   }

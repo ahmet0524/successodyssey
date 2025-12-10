@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import card1 from "../../assets/card1.jpg";
 ---
 
-<BaseLayout
+<Layout
   title="Overcoming Resistance: Building Resilience in the Face of Failure | Success Odyssey Hub"
   description="Transform setbacks into stepping stones. Discover psychological strategies and practical tools for building unshakeable resilience when facing challenges and failures."
   keywords="resilience, overcoming failure, psychological resilience, mental toughness, setback recovery, growth mindset, adversity, perseverance, building resilience, emotional strength"
@@ -1157,6 +1157,35 @@ import card1 from "../../assets/card1.jpg";
       .related-grid {
         grid-template-columns: 1fr;
       }
+        /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .table-of-contents {
+        background: var(--color-bg-secondary);
+      }
+
+      blockquote {
+        background: var(--color-bg-tertiary);
+      }
+
+      .product-highlight {
+        background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+      }
+
+      .automation-examples {
+        background: var(--color-bg-secondary);
+      }
+
+      .author-info {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a:hover {
+        background: var(--color-bg-tertiary);
+      }
     }
   </style>
-</BaseLayout>
+</Layout>

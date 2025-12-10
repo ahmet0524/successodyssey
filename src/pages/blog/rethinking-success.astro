@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import rethinkingSuccessBanner from "../../assets/rethinking-success-banner.webp";
 ---
 
-<BaseLayout
+<Layout
   title="Rethinking Success: A Scientific and Philosophical Exploration"
   description="Challenge conventional definitions of success through neuroscience, positive psychology, and philosophical frameworks. Discover evidence-based approaches to meaningful achievement."
   keywords="success definition, positive psychology, neuroscience, eudaimonia, authentic success, wellbeing science, philosophical success"
@@ -906,6 +906,35 @@ import rethinkingSuccessBanner from "../../assets/rethinking-success-banner.webp
       .related-grid {
         grid-template-columns: 1fr;
       }
+        /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .table-of-contents {
+        background: var(--color-bg-secondary);
+      }
+
+      blockquote {
+        background: var(--color-bg-tertiary);
+      }
+
+      .product-highlight {
+        background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+      }
+
+      .automation-examples {
+        background: var(--color-bg-secondary);
+      }
+
+      .author-info {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a:hover {
+        background: var(--color-bg-tertiary);
+      }
     }
   </style>
-</BaseLayout>
+</Layout>

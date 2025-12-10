@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import card1 from "../../assets/card1.jpg";
 ---
 
-<BaseLayout
+<Layout
   title="15 Best Productivity Tools for 2025 (Tested by Experts) | Success Odyssey Hub"
   description="Discover the most effective productivity tools for 2025. From Notion templates to time tracking apps, find the perfect tools to boost your efficiency."
   keywords="productivity tools 2025, best productivity apps, notion templates, time management software, digital productivity, work efficiency tools, productivity software, task management"
@@ -213,7 +213,7 @@ import card1 from "../../assets/card1.jpg";
     </nav>
 
     <!-- Breadcrumb Navigation -->
-    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border, #e5e7eb);">
+    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
       <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a itemprop="item" href="/">
@@ -243,9 +243,9 @@ import card1 from "../../assets/card1.jpg";
       width: 100%;
       height: 200px !important;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: var(--radius);
       display: block;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-md);
     }
 
     figure {
@@ -282,7 +282,7 @@ import card1 from "../../assets/card1.jpg";
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1.2;
       margin: 1rem 0;
-      color: var(--color-text-primary, #111827);
+      color: var(--color-text-primary);
       font-weight: 700;
     }
 
@@ -296,13 +296,13 @@ import card1 from "../../assets/card1.jpg";
     }
 
     .article-meta time {
-      color: var(--color-text-secondary, #6b7280);
+      color: var(--color-text-secondary);
       font-size: 0.9rem;
       font-weight: 500;
     }
 
     .reading-time {
-      color: var(--color-primary, #3b82f6);
+      color: var(--color-primary);
       font-size: 0.9rem;
     }
 
@@ -313,8 +313,8 @@ import card1 from "../../assets/card1.jpg";
     }
 
     .tag {
-      background: var(--color-bg-tertiary, #f9fafb);
-      color: var(--color-text-primary, #1a1a1a);
+      background: var(--color-bg-tertiary);
+      color: var(--color-text-primary);
       padding: 0.25rem 0.75rem;
       border-radius: 1rem;
       font-size: 0.8rem;
@@ -338,28 +338,28 @@ import card1 from "../../assets/card1.jpg";
 
     .content h2 {
       margin: 2.5rem 0 1rem 0;
-      color: var(--color-primary, #3b82f6);
+      color: var(--color-primary);
       font-size: 1.8rem;
       font-weight: 700;
     }
 
     .content h3 {
       margin: 2rem 0 1rem 0;
-      color: var(--color-text-primary, #111827);
+      color: var(--color-text-primary);
       font-size: 1.4rem;
       font-weight: 600;
     }
 
     .content h4 {
       margin: 1.5rem 0 1rem 0;
-      color: var(--color-text-primary, #111827);
+      color: var(--color-text-primary);
       font-size: 1.2rem;
       font-weight: 600;
     }
 
     .content p {
       margin-bottom: 1.5rem;
-      color: var(--color-text-primary, #1a1a1a);
+      color: var(--color-text-primary);
       font-size: 1.1rem;
       line-height: 1.8;
     }
@@ -367,7 +367,7 @@ import card1 from "../../assets/card1.jpg";
     .lead {
       font-size: 1.25rem;
       font-weight: 500;
-      color: var(--color-primary, #3b82f6);
+      color: var(--color-primary);
       margin-bottom: 2rem;
       text-align: center;
       line-height: 1.6;
@@ -380,12 +380,12 @@ import card1 from "../../assets/card1.jpg";
 
     .content li {
       margin-bottom: 0.8rem;
-      color: var(--color-text-primary, #1a1a1a);
+      color: var(--color-text-primary);
       line-height: 1.7;
     }
 
     .content a {
-      color: var(--color-primary, #3b82f6);
+      color: var(--color-primary);
       text-decoration: none;
       font-weight: 500;
     }
@@ -395,26 +395,26 @@ import card1 from "../../assets/card1.jpg";
     }
 
     .content strong {
-      color: var(--color-text-primary, #111827);
+      color: var(--color-text-primary);
       font-weight: 600;
     }
 
     blockquote {
-      border-left: 4px solid var(--color-primary, #3b82f6);
+      border-left: 4px solid var(--color-primary);
       padding: 1rem 1.5rem;
       margin: 2rem 0;
       font-style: italic;
-      color: var(--color-text-primary, #1a1a1a);
-      background: var(--color-accent-light, #f8fafc);
-      border-radius: 0 8px 8px 0;
+      color: var(--color-text-primary);
+      background: var(--color-accent-light);
+      border-radius: 0 var(--radius) var(--radius) 0;
       font-size: 1.1rem;
     }
 
     /* Table of contents */
     .table-of-contents {
-      background: var(--color-accent-light, #f8fafc);
-      border: 1px solid var(--color-border, #e5e7eb);
-      border-radius: 8px;
+      background: var(--color-accent-light);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
       padding: 1.5rem;
       margin: 2rem 0;
     }
@@ -422,7 +422,7 @@ import card1 from "../../assets/card1.jpg";
     .table-of-contents h2 {
       font-size: 1.2rem;
       margin: 0 0 1rem 0;
-      color: var(--color-primary, #3b82f6);
+      color: var(--color-primary);
     }
 
     .table-of-contents ol {
@@ -436,27 +436,27 @@ import card1 from "../../assets/card1.jpg";
     }
 
     .table-of-contents a {
-      color: var(--color-text-primary, #1a1a1a);
+      color: var(--color-text-primary);
       text-decoration: none;
       font-size: 1rem;
     }
 
     .table-of-contents a:hover {
-      color: var(--color-primary, #3b82f6);
+      color: var(--color-primary);
       text-decoration: underline;
     }
 
     /* Product highlights */
     .product-highlight {
-      background: linear-gradient(135deg, var(--color-accent-light, #f8fafc) 0%, #e2e8f0 100%);
-      border: 2px solid var(--color-primary, #3b82f6);
-      border-radius: 8px;
+      background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-bg-tertiary) 100%);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius);
       padding: 2rem;
       margin: 2rem 0;
     }
 
     .product-highlight h4 {
-      color: var(--color-primary, #3b82f6);
+      color: var(--color-primary);
       margin: 0 0 1rem 0;
     }
 
@@ -471,25 +471,25 @@ import card1 from "../../assets/card1.jpg";
 
     .affiliate-cta {
       display: inline-block;
-      background: var(--color-primary, #3b82f6);
+      background: var(--color-primary);
       color: white;
       padding: 1rem 2rem;
-      border-radius: 8px;
+      border-radius: var(--radius);
       text-decoration: none;
       font-weight: 600;
       margin-bottom: 0.5rem;
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
 
     .affiliate-cta:hover {
-      background: var(--color-primary-dark, #2563eb);
+      background: var(--color-primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+      box-shadow: var(--shadow-lg);
     }
 
     .affiliate-notice {
       display: block;
-      color: var(--color-text-secondary, #6b7280);
+      color: var(--color-text-secondary);
       font-size: 0.8rem;
       margin-top: 0.5rem;
       font-style: italic;
@@ -512,7 +512,7 @@ import card1 from "../../assets/card1.jpg";
 
     .pros, .cons {
       padding: 1.5rem;
-      border-radius: 8px;
+      border-radius: var(--radius);
       border: 2px solid;
     }
 
@@ -550,15 +550,15 @@ import card1 from "../../assets/card1.jpg";
 
     /* Automation examples */
     .automation-examples {
-      background: var(--color-bg-tertiary, #f9fafb);
-      border: 1px solid var(--color-border, #e5e7eb);
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
       padding: 1.5rem;
-      border-radius: 8px;
+      border-radius: var(--radius);
       margin: 1.5rem 0;
     }
 
     .automation-examples h4 {
-      color: var(--color-primary, #3b82f6);
+      color: var(--color-primary);
       margin: 0 0 1rem 0;
     }
 
@@ -573,11 +573,11 @@ import card1 from "../../assets/card1.jpg";
 
     /* Action section */
     .action-section {
-      background: linear-gradient(135deg, var(--color-primary, #3b82f6), var(--color-primary-dark, #2563eb));
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
       color: white;
       text-align: center;
       padding: 3rem;
-      border-radius: 8px;
+      border-radius: var(--radius);
       margin: 3rem 0;
     }
 
@@ -594,20 +594,20 @@ import card1 from "../../assets/card1.jpg";
 
     .main-cta {
       display: inline-block;
-      background: var(--color-accent, #f59e0b);
+      background: var(--color-accent);
       color: white;
       padding: 1rem 2rem;
-      border-radius: 8px;
+      border-radius: var(--radius);
       text-decoration: none;
       font-weight: 600;
       font-size: 1.1rem;
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
 
     .main-cta:hover {
-      background: #d97706;
+      background: var(--color-accent-dark);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      box-shadow: var(--shadow-lg);
     }
 
     @media (max-width: 768px) {
@@ -631,8 +631,8 @@ import card1 from "../../assets/card1.jpg";
       gap: 1rem;
       align-items: center;
       padding: 2rem;
-      background: var(--color-accent-light, #f8fafc);
-      border-radius: 8px;
+      background: var(--color-accent-light);
+      border-radius: var(--radius);
       margin-top: 3rem;
     }
 
@@ -642,12 +642,12 @@ import card1 from "../../assets/card1.jpg";
 
     .author-details h4 {
       margin-bottom: 0.5rem;
-      color: var(--color-text-primary, #111827);
+      color: var(--color-text-primary);
       font-size: 1.1rem;
     }
 
     .author-details p {
-      color: var(--color-text-secondary, #6b7280);
+      color: var(--color-text-secondary);
       font-size: 0.9rem;
       margin: 0;
       line-height: 1.5;
@@ -663,12 +663,12 @@ import card1 from "../../assets/card1.jpg";
     .related-articles {
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid var(--color-border, #e5e7eb);
+      border-top: 1px solid var(--color-border);
     }
 
     .related-articles h3 {
       margin-bottom: 1.5rem;
-      color: var(--color-text-primary, #111827);
+      color: var(--color-text-primary);
     }
 
     .related-grid {
@@ -680,18 +680,18 @@ import card1 from "../../assets/card1.jpg";
     .related-grid a {
       display: block;
       padding: 1rem;
-      background: var(--color-accent-light, #f8fafc);
-      border: 1px solid var(--color-border, #e5e7eb);
-      border-radius: 8px;
+      background: var(--color-accent-light);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
       text-decoration: none;
-      color: var(--color-text-primary, #111827);
-      transition: all 0.3s ease;
+      color: var(--color-text-primary);
+      transition: var(--transition);
     }
 
     .related-grid a:hover {
-      background: var(--color-bg-tertiary, #f3f4f6);
+      background: var(--color-bg-tertiary);
       transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-md);
     }
 
     @media (max-width: 768px) {
@@ -699,5 +699,36 @@ import card1 from "../../assets/card1.jpg";
         grid-template-columns: 1fr;
       }
     }
+
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .table-of-contents {
+        background: var(--color-bg-secondary);
+      }
+
+      blockquote {
+        background: var(--color-bg-tertiary);
+      }
+
+      .product-highlight {
+        background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+      }
+
+      .automation-examples {
+        background: var(--color-bg-secondary);
+      }
+
+      .author-info {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a:hover {
+        background: var(--color-bg-tertiary);
+      }
+    }
   </style>
-</BaseLayout>
+</Layout>

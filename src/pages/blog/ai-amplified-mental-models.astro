@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import aiAmplifiedMentalModel from "../../assets/ai-amplified-mental-model.webp";
 ---
 
-<BaseLayout
+<Layout
   title="AI-Amplified Mental Models: The Thinking Revolution | Success Odyssey Hub"
   description="Discover how combining Charlie Munger's legendary mental frameworks with artificial intelligence creates unprecedented cognitive leverage for better decision making."
   keywords="mental models, AI thinking, decision making, critical thinking, problem solving, cognitive frameworks, Charlie Munger, artificial intelligence, cognitive leverage, strategic thinking"
@@ -805,6 +805,35 @@ Identify any cognitive biases that might affect my thinking."</pre>
       .related-grid {
         grid-template-columns: 1fr;
       }
+        /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .table-of-contents {
+        background: var(--color-bg-secondary);
+      }
+
+      blockquote {
+        background: var(--color-bg-tertiary);
+      }
+
+      .product-highlight {
+        background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+      }
+
+      .automation-examples {
+        background: var(--color-bg-secondary);
+      }
+
+      .author-info {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a:hover {
+        background: var(--color-bg-tertiary);
+      }
     }
   </style>
-    </BaseLayout>
+    </Layout>

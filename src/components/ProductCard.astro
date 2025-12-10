@@ -1,11 +1,10 @@
 ---
-// components/ProductCard.astro
 const { title, description, price, originalPrice, image, link, badge } = Astro.props;
 ---
 
 <article class="product-card">
   {badge && <div class="product-badge">{badge}</div>}
-  <img src={image.src || image} alt={title} />
+  <img src={image.src || image} alt={title} loading="lazy" width="346" height="240" />
   <div class="product-card-content">
     <h3>{title}</h3>
     <p>{description}</p>
@@ -21,24 +20,24 @@ const { title, description, price, originalPrice, image, link, badge } = Astro.p
 
 <style lang="scss">
 .product-card {
-  background: var(--bg-primary);
+  background: var(--color-bg-primary);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: var(--transition);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--color-border);
   position: relative;
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-xl);
   }
 
   .product-badge {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: var(--accent-color);
+    background: var(--color-accent);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 2rem;
@@ -64,11 +63,11 @@ const { title, description, price, originalPrice, image, link, badge } = Astro.p
     h3 {
       font-size: 1.25rem;
       margin-bottom: 0.75rem;
-      color: var(--text-primary);
+      color: var(--color-text-primary);
     }
 
     p {
-      color: var(--text-light);
+      color: var(--color-text-tertiary);
       margin-bottom: 1rem;
       line-height: 1.6;
       font-size: 0.95rem;
@@ -81,13 +80,13 @@ const { title, description, price, originalPrice, image, link, badge } = Astro.p
       margin-bottom: 1.5rem;
 
       .original-price {
-        color: var(--text-light);
+        color: var(--color-text-tertiary);
         text-decoration: line-through;
         font-size: 0.9rem;
       }
 
       .current-price {
-        color: var(--primary-color);
+        color: var(--color-primary);
         font-size: 1.25rem;
         font-weight: 700;
       }
@@ -100,7 +99,7 @@ const { title, description, price, originalPrice, image, link, badge } = Astro.p
       font-weight: 600;
       color: white;
       padding: 0.875rem 1.75rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      background: var(--gradient-primary);
       border-radius: var(--radius);
       transition: var(--transition);
       width: 100%;
@@ -108,7 +107,7 @@ const { title, description, price, originalPrice, image, link, badge } = Astro.p
       text-align: center;
 
       &:hover {
-        background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
         transform: translateY(-2px);
         box-shadow: var(--shadow-lg);
         color: white;

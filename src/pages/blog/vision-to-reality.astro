@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import card3 from "../../assets/card3.jpg";
 ---
 
-<BaseLayout
+<Layout
   title="From Vision to Reality: The Art and Science of Execution"
   description="Bridge the gap between dreams and reality with proven execution frameworks. Learn how successful people turn visions into tangible results through strategic planning and disciplined action."
   keywords="execution, strategic planning, goal achievement, vision to reality, project management, strategic thinking, implementation, results"
@@ -1345,6 +1345,35 @@ import card3 from "../../assets/card3.jpg";
       .related-grid {
         grid-template-columns: 1fr;
       }
+        /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .table-of-contents {
+        background: var(--color-bg-secondary);
+      }
+
+      blockquote {
+        background: var(--color-bg-tertiary);
+      }
+
+      .product-highlight {
+        background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+      }
+
+      .automation-examples {
+        background: var(--color-bg-secondary);
+      }
+
+      .author-info {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a {
+        background: var(--color-bg-secondary);
+      }
+
+      .related-grid a:hover {
+        background: var(--color-bg-tertiary);
+      }
     }
   </style>
-</BaseLayout>
+</Layout>
