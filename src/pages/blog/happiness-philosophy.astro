@@ -182,7 +182,7 @@ import card3 from "../../assets/happiness-hero.webp";
     </nav>
 
     <!-- Breadcrumb Navigation -->
-    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border, #e5e7eb);">
+    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
       <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a itemprop="item" href="/">
@@ -207,6 +207,12 @@ import card3 from "../../assets/happiness-hero.webp";
   </article>
 
   <style>
+    /* Force light mode colors - Override dark mode */
+    .blog-page {
+      color-scheme: light !important;
+      background-color: #ffffff !important;
+    }
+
     /* Hero image with Astro Image component */
     :global(.hero-image) {
       width: 100%;
@@ -242,7 +248,7 @@ import card3 from "../../assets/happiness-hero.webp";
     }
 
     .article-header h1 {
-      background: linear-gradient(135deg, var(--color-primary, #3b82f6), var(--color-accent, #f59e0b));
+      background: linear-gradient(135deg, #2563eb, #f59e0b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -259,17 +265,18 @@ import card3 from "../../assets/happiness-hero.webp";
       gap: 1rem;
       flex-wrap: wrap;
       font-size: 0.9rem;
-      color: var(--color-text-secondary, #666);
+      color: #4b5563 !important;
       margin-bottom: 1rem;
     }
 
     .article-meta time {
       font-weight: 500;
-      color: var(--color-text-secondary, #666);
+      color: #4b5563 !important;
     }
 
     .reading-time {
-      color: var(--color-primary, #3b82f6);
+      color: #2563eb !important;
+      font-weight: 600;
     }
 
     .tags {
@@ -278,15 +285,15 @@ import card3 from "../../assets/happiness-hero.webp";
     }
 
     .tag {
-      background: var(--color-bg-tertiary, #f9fafb);
-      color: var(--color-text-primary, #1a1a1a);
+      background: #f3f4f6;
+      color: #111827 !important;
       padding: 0.25rem 0.75rem;
       border-radius: 1rem;
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    /* Content styling */
+    /* Content styling - FORCE DARK COLORS */
     .content {
       max-width: 800px;
       margin: 0 auto;
@@ -296,15 +303,15 @@ import card3 from "../../assets/happiness-hero.webp";
 
     .lead {
       font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--color-primary, #2563eb);
+      font-weight: 600;
+      color: #1d4ed8 !important;
       margin-bottom: 2rem;
       line-height: 1.6;
       text-align: center;
     }
 
     .content h2 {
-      color: var(--color-primary, #2563eb);
+      color: #1d4ed8 !important;
       margin-top: 2rem;
       margin-bottom: 1rem;
       font-size: 1.8rem;
@@ -312,40 +319,40 @@ import card3 from "../../assets/happiness-hero.webp";
     }
 
     .content h3 {
-      color: var(--color-text-primary, #111827);
+      color: #111827 !important;
       margin-top: 1.5rem;
       margin-bottom: 0.75rem;
       font-size: 1.25rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .content p {
       font-size: 1.1rem;
       line-height: 1.8;
       margin-bottom: 1.5rem;
-      color: var(--color-text-primary, #111827);
+      color: #111827 !important;
     }
 
     .content strong {
-      color: var(--color-text-primary, #111827);
-      font-weight: 600;
+      color: #0f172a !important;
+      font-weight: 700;
     }
 
     .content em {
       font-style: italic;
-      color: var(--color-primary, #2563eb);
-      font-weight: 500;
+      color: #1d4ed8 !important;
+      font-weight: 600;
     }
 
     blockquote {
-      border-left: 4px solid var(--color-accent, #f59e0b);
+      border-left: 4px solid #f59e0b;
       padding: 1rem 1.5rem;
       margin: 2rem 0;
-      background: var(--color-accent-light, #fef3c7);
+      background: #fef3c7;
       border-radius: 0 8px 8px 0;
       font-style: italic;
       font-size: 1.1rem;
-      color: var(--color-text-primary, #111827);
+      color: #111827 !important;
       font-weight: 500;
     }
 
@@ -355,7 +362,7 @@ import card3 from "../../assets/happiness-hero.webp";
       gap: 1rem;
       align-items: center;
       padding: 2rem;
-      background: var(--color-accent-light, #f8fafc);
+      background: #f8fafc;
       border-radius: 8px;
       margin-top: 3rem;
     }
@@ -366,12 +373,13 @@ import card3 from "../../assets/happiness-hero.webp";
 
     .author-details h4 {
       margin-bottom: 0.5rem;
-      color: var(--color-text-primary, #111827);
+      color: #111827 !important;
       font-size: 1.1rem;
+      font-weight: 700;
     }
 
     .author-details p {
-      color: var(--color-text-secondary, #4b5563);
+      color: #374151 !important;
       font-size: 0.9rem;
       margin: 0;
       line-height: 1.5;
@@ -381,12 +389,13 @@ import card3 from "../../assets/happiness-hero.webp";
     .related-articles {
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid var(--color-border, #e5e7eb);
+      border-top: 1px solid #e5e7eb;
     }
 
     .related-articles h3 {
       margin-bottom: 1.5rem;
-      color: var(--color-text-primary, #111827);
+      color: #111827 !important;
+      font-weight: 700;
     }
 
     .related-grid {
@@ -398,25 +407,26 @@ import card3 from "../../assets/happiness-hero.webp";
     .related-grid a {
       display: block;
       padding: 1rem;
-      background: var(--color-accent-light, #f8fafc);
-      border: 1px solid var(--color-border, #e5e7eb);
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
       border-radius: 8px;
       text-decoration: none;
-      color: var(--color-text-primary, #111827);
+      color: #111827 !important;
       transition: all 0.3s ease;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .related-grid a:hover {
-      background: var(--color-bg-tertiary, #f3f4f6);
+      background: #f3f4f6;
       transform: translateY(-2px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    /* Mobile responsive - Enhanced contrast */
+    /* Mobile responsive - Maximum contrast */
     @media (max-width: 768px) {
       .blog-page {
         padding: 1rem;
+        background-color: #ffffff !important;
       }
 
       .article-meta {
@@ -429,98 +439,75 @@ import card3 from "../../assets/happiness-hero.webp";
       }
 
       .lead {
-        font-size: 1.15rem;
-        color: var(--color-primary, #1d4ed8);
-        font-weight: 600;
+        font-size: 1.2rem;
+        color: #1e40af !important;
+        font-weight: 700;
       }
 
       .content h2 {
         font-size: 1.6rem;
-        color: var(--color-primary, #1d4ed8);
+        color: #1e40af !important;
+        font-weight: 700;
       }
 
       .content h3 {
-        font-size: 1.2rem;
-        color: #0f172a;
+        font-size: 1.3rem;
+        color: #0f172a !important;
+        font-weight: 700;
       }
 
       .content p {
         font-size: 1.05rem;
-        color: #0f172a;
-        line-height: 1.7;
+        color: #0f172a !important;
+        line-height: 1.75;
+        font-weight: 400;
       }
 
       .content strong {
-        color: #0f172a;
+        color: #020617 !important;
+        font-weight: 800;
+      }
+
+      .content em {
+        color: #1e40af !important;
         font-weight: 700;
       }
 
       blockquote {
         background: #fef3c7;
-        color: #0f172a;
-        font-weight: 500;
+        color: #0f172a !important;
+        font-weight: 600;
         font-size: 1.05rem;
+        border-left-width: 5px;
       }
 
       .author-info {
         padding: 1.5rem;
+        background: #f8fafc;
       }
 
       .author-details p {
-        color: #374151;
+        color: #1f2937 !important;
+        font-weight: 500;
       }
 
       .related-grid {
         grid-template-columns: 1fr;
       }
-    }
-
-    /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-      .lead {
-        color: var(--color-primary, #60a5fa);
-      }
-
-      .content h2 {
-        color: var(--color-primary, #60a5fa);
-      }
-
-      .content h3 {
-        color: var(--color-text-primary, #f9fafb);
-      }
-
-      .content p {
-        color: var(--color-text-primary, #e5e7eb);
-      }
-
-      .content strong {
-        color: var(--color-text-primary, #f9fafb);
-      }
-
-      .content em {
-        color: var(--color-primary, #60a5fa);
-      }
-
-      blockquote {
-        background: var(--color-bg-tertiary, #374151);
-        color: var(--color-text-primary, #e5e7eb);
-      }
-
-      .author-info {
-        background: var(--color-bg-secondary, #1f2937);
-      }
-
-      .author-details p {
-        color: var(--color-text-secondary, #9ca3af);
-      }
 
       .related-grid a {
-        background: var(--color-bg-secondary, #1f2937);
-        color: var(--color-text-primary, #f9fafb);
+        color: #0f172a !important;
+        font-weight: 700;
       }
 
-      .related-grid a:hover {
-        background: var(--color-bg-tertiary, #374151);
+      /* Force breadcrumb colors */
+      nav[aria-label="Breadcrumb"] {
+        border-top-color: #e5e7eb !important;
+      }
+
+      nav[aria-label="Breadcrumb"] a,
+      nav[aria-label="Breadcrumb"] span {
+        color: #374151 !important;
       }
     }
   </style>
