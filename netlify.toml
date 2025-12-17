@@ -2,6 +2,19 @@
   publish = "dist"
   command = "npm run build"
 
+# Favicon - prevent redirect loop (MUST BE BEFORE other redirects)
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.svg"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/favicon.svg"
+  to = "/favicon.svg"
+  status = 200
+  force = false
+
 # WWW to non-WWW redirect (WITH force=true for proper redirect)
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
@@ -23,6 +36,19 @@
   status = 301
   force = false
 
+# Favicon - prevent redirect loop (MUST BE BEFORE /* redirects)
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.svg"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/favicon.svg"
+  to = "/favicon.svg"
+  status = 200
+  force = false
+
 # Security Headers
 [[headers]]
   for = "/*"
@@ -34,6 +60,19 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
     X-XSS-Protection = "1; mode=block"
+
+# Favicon specific headers - prevent redirect loop
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/x-icon"
+
+[[headers]]
+  for = "/favicon.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/svg+xml"
 
 # Cache static assets
 [[headers]]
