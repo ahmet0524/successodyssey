@@ -1,26 +1,81 @@
 ---
+
 import Layout from "../../layouts/Layout.astro";
+import JsonLD from "../../components/JsonLD.astro";
 import { Image } from 'astro:assets';
 import card3 from "../../assets/card3.jpg";
+
+const datePublished = "2025-01-10T00:00:00Z";
+const dateModified = "2025-01-10T00:00:00Z";
+const author = "Success Odyssey Hub";
+const heroImage = card3;
+const siteUrl = Astro.site?.toString() || "https://successodysseyhub.com";
 ---
 
 <Layout
-  title="The Philosophy of Success | Success Odyssey Hub"
-  description="Discover timeless principles and daily habits that successful people use to achieve their goals and maintain long-term fulfillment."
-  keywords="success philosophy, personal development, goal achievement, success mindset, habits, discipline"
+  title="The Philosophy of Success: Timeless Wisdom for Modern Achievement"
+  description="Discover timeless principles and daily habits that successful people use to achieve their goals. Learn from Earl Nightingale, Alain de Botton, and ancient wisdom to create lasting fulfillment."
+  keywords="success philosophy, personal development, goal achievement, success mindset, habits, discipline, Earl Nightingale, strangest secret, meritocracy"
   image={card3}
   type="article"
-  datePublished="2025-01-10T00:00:00Z"
-  dateModified="2025-01-10T00:00:00Z"
-  author="Success Odyssey Hub"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
 >
+  <!-- Schema.org JSON-LD - Complete -->
+  <JsonLD
+    type="article"
+    title="The Philosophy of Success: Timeless Wisdom for Modern Achievement"
+    description="Discover timeless principles and daily habits that successful people use to achieve their goals."
+    image={heroImage}
+    keywords="success philosophy, personal development, goal achievement, success mindset, habits, discipline"
+    datePublished={datePublished}
+    dateModified={dateModified}
+    author={author}
+  />
+
+  <!-- Additional Schema.org for Publisher -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The Philosophy of Success: Timeless Wisdom for Modern Achievement",
+      "image": "{siteUrl}/assets/card3.jpg",
+      "datePublished": "{datePublished}",
+      "dateModified": "{dateModified}",
+      "author": {
+        "@type": "Organization",
+        "name": "Success Odyssey Hub",
+        "url": "{siteUrl}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Success Odyssey Hub",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{siteUrl}/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{siteUrl}/blog/philosophy-of-success"
+      }
+    }
+  </script>
+
   <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <!-- ============================================
+         HEADER: Sadece başlık ve meta bilgiler
+         ============================================ -->
     <header class="article-header">
       <h1 itemprop="headline">The Philosophy of Success</h1>
+
       <div class="article-meta">
         <time datetime="2025-01-10" itemprop="datePublished">January 10, 2025</time>
         <meta itemprop="dateModified" content="2025-01-10T00:00:00Z" />
-        <span class="reading-time" itemprop="timeRequired" content="PT7M">7 min read</span>
+        <span class="reading-time" itemprop="timeRequired" content="PT12M">12 min read</span>
+
         <div class="tags">
           <span class="tag" itemprop="keywords">Success</span>
           <span class="tag" itemprop="keywords">Philosophy</span>
@@ -29,126 +84,507 @@ import card3 from "../../assets/card3.jpg";
       </div>
     </header>
 
+    <!-- ============================================
+         HERO IMAGE
+         ============================================ -->
     <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
       <Image
         src={card3}
-        alt="Philosophy of success concept showing strategic thinking, goal achievement, and personal development frameworks"
+        alt="Strategic planning and goal achievement visualization"
         class="hero-image"
         width={900}
-        height={200}
+        height={250}
         loading="eager"
         fetchpriority="high"
         format="webp"
-        quality={85}
+        quality={90}
       />
       <meta itemprop="url" content={new URL(card3.src, Astro.site).toString()} />
       <meta itemprop="width" content="900" />
-      <meta itemprop="height" content="200" />
+      <meta itemprop="height" content="250" />
     </figure>
 
+    <!-- ============================================
+         MAIN CONTENT
+         ============================================ -->
     <div class="content" itemprop="articleBody">
+
+      <!-- Table of Contents -->
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#redefining-success">Redefining Success</a></li>
+          <li><a href="#strangest-secret">The Strangest Secret: We Become What We Think About</a></li>
+          <li><a href="#kinder-philosophy">A Kinder, Gentler Philosophy of Success</a></li>
+          <li><a href="#four-pillars">The Four Pillars of Success Philosophy</a></li>
+          <li><a href="#success-framework">Building Your Success Framework</a></li>
+          <li><a href="#30-day-test">The 30-Day Success Challenge</a></li>
+          <li><a href="#long-term-view">The Long-Term View</a></li>
+        </ol>
+      </nav>
+
       <p class="lead">
         True success isn't just about achieving goals—it's about developing a philosophy that guides your decisions, shapes your character, and creates lasting fulfillment.
       </p>
 
-      <h2>Redefining Success</h2>
+      <!-- ============================================
+           SECTION 1: REDEFINING SUCCESS
+           ============================================ -->
+      <h2 id="redefining-success">Redefining Success</h2>
+
       <p>
         Success is often misunderstood as merely the accumulation of wealth, status, or recognition. However, a deeper philosophy of success recognizes that true achievement encompasses personal growth, meaningful relationships, contribution to others, and alignment with your core values.
       </p>
 
       <p>
-        The most successful individuals throughout history have understood that external achievements are byproducts of internal development. They focus on becoming the type of person capable of creating the results they desire.
+        The most successful individuals throughout history have understood that external achievements are byproducts of internal development. They focus on becoming the type of person capable of creating the results they desire. This connects deeply with <a href="/blog/vision-to-reality" rel="noopener">the art of execution</a>—turning vision into tangible reality through consistent action.
       </p>
 
-      <h2>The Four Pillars of Success Philosophy</h2>
+      <div class="insight-box">
+        <h3>Earl Nightingale's Definition of Success</h3>
+        <p>
+          In his transformative recording <strong>"The Strangest Secret,"</strong> <a href="https://www.nightingale.com/articles/the-strangest-secret/" target="_blank" rel="noopener noreferrer">Earl Nightingale</a> provided what he believed to be the best definition of success ever formulated:
+        </p>
+        <blockquote class="highlight-quote">
+          "Success is the progressive realization of a worthy ideal."
+        </blockquote>
+        <p>
+          If you're working toward a predetermined goal and know where you're going, you are successful. If you're not doing that, according to Nightingale, you're failing—regardless of your income or status.
+        </p>
+      </div>
 
-      <h3>1. Clarity of Purpose</h3>
+      <!-- ============================================
+           SECTION 2: THE STRANGEST SECRET
+           ============================================ -->
+      <h2 id="strangest-secret">The Strangest Secret: We Become What We Think About</h2>
+
       <p>
-        Without a clear sense of purpose, success becomes arbitrary. Define what success means to you personally, not what society or others expect. This requires deep self-reflection and honest assessment of your values, strengths, and the impact you want to make.
+        Throughout history, the great wise teachers, philosophers, and prophets have disagreed on many things. But on one point, they are in complete and unanimous agreement:
       </p>
 
-      <h3>2. Disciplined Action</h3>
+      <blockquote class="central-truth">
+        "We become what we think about."
+      </blockquote>
+
       <p>
-        Success is built through consistent, disciplined action over time. It's not about grand gestures or sporadic bursts of activity, but rather the compound effect of daily habits and decisions that align with your goals.
+        This single idea—what Nightingale called "the strangest secret in the world"—has been echoed by Marcus Aurelius ("A man's life is what his thoughts make of it"), Ralph Waldo Emerson ("A man is what he thinks about all day long"), and William James ("The greatest discovery of my generation is that human beings can alter their lives by altering their attitudes of mind").
       </p>
 
-      <h3>3. Continuous Learning</h3>
+      <div class="wisdom-grid">
+        <div class="wisdom-card">
+          <h4>Benjamin Disraeli</h4>
+          <p>"Everything comes if a man will only wait... A human being with a settled purpose must accomplish it, and nothing can resist a will that will stake even existence for its fulfillment."</p>
+        </div>
+
+        <div class="wisdom-card">
+          <h4>William Shakespeare</h4>
+          <p>"Our doubts are traitors and make us lose the good we oft might win by fearing to attempt."</p>
+        </div>
+
+        <div class="wisdom-card">
+          <h4>George Bernard Shaw</h4>
+          <p>"People are always blaming their circumstances for what they are. I don't believe in circumstances. The people who get on in this world are the people who get up and look for the circumstances they want, and if they can't find them, make them."</p>
+        </div>
+
+        <div class="wisdom-card">
+          <h4>Dr. Norman Vincent Peale</h4>
+          <p>"If you think in negative terms, you will get negative results. If you think in positive terms, you will achieve positive results. Believe and succeed."</p>
+        </div>
+      </div>
+
+      <h3>The Mind as Fertile Ground</h3>
+
       <p>
-        The world evolves rapidly, and successful people adapt by maintaining a growth mindset. They view failures as learning opportunities, seek feedback actively, and invest in developing new skills and knowledge throughout their lives.
+        Nightingale compared the human mind to fertile farmland. Just as land doesn't care what seed you plant—it will return corn or poison with equal abundance—your mind doesn't discriminate. It will manifest whatever thoughts you consistently plant within it.
       </p>
 
-      <h3>4. Resilient Mindset</h3>
       <p>
-        Setbacks are inevitable on any meaningful journey. A success philosophy includes frameworks for maintaining motivation during difficult times, recovering from failures quickly, and using obstacles as stepping stones rather than roadblocks.
+        This understanding transforms <a href="/blog/habits-discipline-momentum" rel="noopener">how we approach daily habits and discipline</a>. Your habitual thoughts become your reality, whether you consciously choose them or not.
       </p>
 
-      <h2>Building Your Success Framework</h2>
+      <!-- ============================================
+           SECTION 3: A KINDER PHILOSOPHY
+           ============================================ -->
+      <h2 id="kinder-philosophy">A Kinder, Gentler Philosophy of Success</h2>
+
+      <p>
+        Philosopher <a href="https://www.alaindebotton.com/" target="_blank" rel="noopener noreferrer">Alain de Botton</a>, in his insightful TED talk "<a href="https://www.ted.com/talks/alain_de_botton_a_kinder_gentler_philosophy_of_success" target="_blank" rel="noopener noreferrer">A Kinder, Gentler Philosophy of Success</a>," challenges our modern obsession with achievement and status anxiety. He argues that we live in an age of unprecedented career crises—not because we lack opportunities, but because our expectations have never been higher.
+      </p>
+
+      <div class="debotton-insights">
+        <h3>The Problem with Modern Meritocracy</h3>
+
+        <div class="insight">
+          <h4>The Snobbery Problem</h4>
+          <p>
+            De Botton identifies <strong>job snobbery</strong> as a global phenomenon. Within minutes at a party, you're asked, "What do you do?" Your answer determines whether people are delighted to see you or quickly make their excuses. We've pegged emotional rewards to material acquisition—not because we're materialistic, but because we're desperately seeking love and respect.
+          </p>
+        </div>
+
+        <div class="insight">
+          <h4>The Envy Epidemic</h4>
+          <p>
+            In our egalitarian society, envy has become the dominant emotion. We don't envy the Queen of England—she's too different. But we envy our school friends, colleagues, and neighbors. The spirit of equality combined with deep inequalities creates tremendous stress.
+          </p>
+          <blockquote>
+            "It's perhaps easier now than ever before to make a good living. It's perhaps harder than ever before to stay calm, to be free of career anxiety."
+          </blockquote>
+        </div>
+
+        <div class="insight">
+          <h4>The Dark Side of Meritocracy</h4>
+          <p>
+            While politicians celebrate meritocracy, de Botton reveals its psychological cost: <strong>if you truly believe those at the top deserve their success, you must also believe those at the bottom deserve their failure.</strong> This makes failure crushing rather than circumstantial.
+          </p>
+          <p>
+            In medieval England, a poor person was called "an unfortunate"—someone not blessed by fortune. Today, especially in America, they're called "a loser." This linguistic shift represents 400 years of evolution in who we believe is responsible for our lives.
+          </p>
+        </div>
+      </div>
+
+      <h3>Finding Balance: Sympathy Over Judgment</h3>
+
+      <p>
+        De Botton advocates for a return to <strong>tragic art's wisdom</strong>—recognizing that people can fail while maintaining dignity and deserving sympathy. The difference between tabloid headlines ("Shopaholic Adulteress Swallows Arsenic") and tragic literature (Madame Bovary) is the level of human understanding and compassion we bring to failure.
+      </p>
+
+      <p>
+        As Saint Augustine wrote: "It's a sin to judge any man by his post." Your job title doesn't define your worth. This wisdom helps us develop <a href="/blog/overcoming-resistance" rel="noopener">resilience against both external judgment and internal resistance</a>.
+      </p>
+
+
+      <h2 id="four-pillars">The Four Pillars of Success Philosophy</h2>
+
+      <div class="pillars-section">
+        <div class="pillar">
+          <h3>1. Clarity of Purpose</h3>
+          <p>
+            Without a clear sense of purpose, success becomes arbitrary. Define what success means to you personally, not what society or others expect. As Nightingale emphasized, you must have a <strong>definite goal</strong>—a specific destination that gives your daily actions meaning.
+          </p>
+          <div class="pillar-action">
+            <strong>Action Step:</strong> Write down your goal on a card. Make it specific. Carry it with you and look at it several times daily. This simple act programs your subconscious mind to work toward that goal continuously.
+          </div>
+        </div>
+
+        <div class="pillar">
+          <h3>2. Disciplined Action</h3>
+          <p>
+            Success is built through consistent, disciplined action over time. It's not about grand gestures or sporadic bursts of activity, but rather the compound effect of daily habits and decisions that align with your goals.
+          </p>
+          <p>
+            Nightingale's research revealed a startling statistic: Out of 100 people who start working at age 25, by age 65, only <strong>one will be rich, four will be financially independent, five will still be working, and 54 will be broke.</strong> The difference? Goals and consistent action toward them.
+          </p>
+          <div class="pillar-action">
+            <strong>Action Step:</strong> Develop systems, not just goals. Create daily and weekly routines that support your long-term vision. As we explore in <a href="/blog/habits-discipline-momentum" rel="noopener">our guide to habits and momentum</a>, consistency beats intensity.
+          </div>
+        </div>
+
+        <div class="pillar">
+          <h3>3. Continuous Learning</h3>
+          <p>
+            The world evolves rapidly, and successful people adapt by maintaining a growth mindset. They view failures as learning opportunities, seek feedback actively, and invest in developing new skills throughout their lives.
+          </p>
+          <p>
+            Universities have proven that most of us operate on about <strong>10% or less of our abilities.</strong> Your mind is the last great unexplored continent on Earth, containing riches beyond your wildest dreams.
+          </p>
+          <div class="pillar-action">
+            <strong>Action Step:</strong> Commit to becoming a lifelong learner. Read widely, seek mentors, and embrace challenges that stretch your capabilities. Apply <a href="/blog/mental-models" rel="noopener">mental models</a> to accelerate your learning.
+          </div>
+        </div>
+
+        <div class="pillar">
+          <h3>4. Resilient Mindset</h3>
+          <p>
+            Setbacks are inevitable on any meaningful journey. A success philosophy includes frameworks for maintaining motivation during difficult times, recovering from failures quickly, and using obstacles as stepping stones.
+          </p>
+          <blockquote>
+            "For every action, there is an equal and opposite reaction." — Isaac Newton
+          </blockquote>
+          <p>
+            You cannot achieve anything without paying the price. But as Nightingale reminds us, it's far easier to pay the price of success than to endure the cost of failure and regret.
+          </p>
+          <div class="pillar-action">
+            <strong>Action Step:</strong> When negative thoughts arise, immediately replace them with your positive goal. This practice, maintained for 30 days, can completely transform your mental patterns.
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================
+           SECTION 5: SUCCESS FRAMEWORK
+           ============================================ -->
+      <h2 id="success-framework">Building Your Success Framework</h2>
+
       <p>
         Start by defining your personal mission statement. What do you want to be remembered for? What impact do you want to have? Write this down and review it regularly to ensure your actions align with your deeper purpose.
       </p>
 
+      <div class="framework-steps">
+        <div class="step">
+          <h4>Step 1: Own Your Definition</h4>
+          <p>
+            As de Botton emphasizes, make sure your ideas of success are <strong>truly your own.</strong> Too often, we inherit our ambitions from parents, absorb them from media, or adopt them from peer pressure. It's bad enough not getting what you want—it's worse to achieve something and realize it wasn't what you wanted all along.
+          </p>
+        </div>
+
+        <div class="step">
+          <h4>Step 2: Accept Trade-offs</h4>
+          <p>
+            You can't have it all. Work-life balance? Nonsense, says de Botton. Any wise life accepts that success in one area may mean sacrifice in another. The question isn't whether you'll make trade-offs, but whether you'll make them consciously and own your choices.
+          </p>
+        </div>
+
+        <div class="step">
+          <h4>Step 3: Control Your Thoughts</h4>
+          <p>
+            Your mind will think about only what you permit it to think. As Nightingale discovered, the human mind works like that giant earth-moving machine—immensely powerful but requiring constant guidance. Will you sit back and let it run into a ditch, or will you keep both hands firmly on the wheel?
+          </p>
+        </div>
+
+        <div class="step">
+          <h4>Step 4: Render Service</h4>
+          <p>
+            Success is not the result of making money—making money is the result of success. And success is in direct proportion to your service. Most people have this law backwards.
+          </p>
+          <blockquote>
+            "No man can enrich himself unless he first enriches others."
+          </blockquote>
+          <p>
+            Your financial return will be in direct proportion to the quality and quantity of service you render. There are no exceptions to this law.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================
+           SECTION 6: 30-DAY CHALLENGE
+           ============================================ -->
+      <h2 id="30-day-test">The 30-Day Success Challenge</h2>
+
       <p>
-        Develop systems, not just goals. While goals provide direction, systems create the conditions for consistent progress. Focus on building daily and weekly routines that support your long-term vision.
+        Earl Nightingale proposed a practical test to prove the power of controlled thinking. For 30 days, follow these steps with complete commitment:
       </p>
 
-      <blockquote itemprop="citation">
-        "Success is not a destination, but a way of traveling. It's not about what you achieve, but who you become in the process."
-      </blockquote>
+      <div class="challenge-container">
+        <h3>Your 30-Day Transformation Plan</h3>
 
-      <p>
-        Remember that success is deeply personal. Your definition should reflect your unique circumstances, values, and aspirations. Don't let others dictate what success should look like for you—create your own meaningful path forward.
-      </p>
+        <div class="challenge-step">
+          <h4>Day 1: Write Your Goal</h4>
+          <p>
+            On a card, write what you want more than anything else. Be specific. It might be doubling your income, getting a promotion, building a business, or creating a harmonious family. Make it a <strong>single, clearly defined goal.</strong>
+          </p>
+          <p>
+            Carry this card with you. Look at it when you wake up, throughout the day, and before bed. As you look at it, remember: <em>you must become what you think about.</em>
+          </p>
+        </div>
 
-      <h2>The Long-Term View</h2>
+        <div class="challenge-step">
+          <h4>Days 1-30: Control Your Thoughts</h4>
+          <p>
+            This is the difficult part. Each time a fearful or negative thought enters your consciousness, <strong>immediately replace it</strong> with a mental picture of your positive goal.
+          </p>
+          <p>
+            There will be times when you feel like giving up. It's easier for humans to think negatively than positively. That's why only 5% are successful. You must now place yourself in that group.
+          </p>
+        </div>
+
+        <div class="challenge-step">
+          <h4>Daily Practice: Give More</h4>
+          <p>
+            Each day, do more than you have to do. Give of yourself more than ever before, knowing that your returns in life must be in direct proportion to what you give.
+          </p>
+          <p>
+            If you're a salesperson, approach your work with calm, cheerful assurance. If you're a homemaker, give completely without thinking of return. No matter your job, do it as you've never done before.
+          </p>
+        </div>
+
+        <div class="challenge-step">
+          <h4>Remember: Act as Though It Were Impossible to Fail</h4>
+          <p>
+            This phrase from Dorothea Brande's book <em>"Wake Up and Live"</em> captures the essence of the challenge. Demonstrate faith through persistence.
+          </p>
+          <p>
+            If you fail during your first 30 days—if negative thoughts overwhelm you—start over. Count 30 more days from that point. Gradually, your new habit will form until you join that wonderful minority to whom virtually nothing is impossible.
+          </p>
+        </div>
+
+        <div class="challenge-reminder">
+          <h4>On Your Card, Write:</h4>
+          <p><strong>Front:</strong> Your specific goal</p>
+          <p><strong>Back:</strong> "Ask, and it shall be given you. Seek, and ye shall find. Knock, and it shall be opened unto you."</p>
+        </div>
+      </div>
+
+      <!-- ============================================
+           SECTION 7: LONG-TERM VIEW
+           ============================================ -->
+      <h2 id="long-term-view">The Long-Term View</h2>
+
       <p>
         True success philosophy takes a long-term perspective. It's about building something sustainable rather than seeking quick wins. This means making decisions based on their long-term consequences, investing in relationships and skills that compound over time, and staying committed to your path even when progress seems slow.
       </p>
+
+      <div class="long-term-principles">
+        <h3>Principles for Sustained Success</h3>
+
+        <div class="principle">
+          <h4>1. Think Beyond the Self</h4>
+          <p>
+            De Botton argues that modern society's problem is that we have nothing non-human at its center. We're the first society living in a world where we worship nothing but ourselves. This creates anxiety and isolation.
+          </p>
+          <p>
+            Successful people maintain connection with something transcendent—nature, spirituality, art, or causes larger than themselves. This provides perspective during setbacks and prevents the crushing weight of self-absorption.
+          </p>
+        </div>
+
+        <div class="principle">
+          <h4>2. Save and Invest in Yourself</h4>
+          <p>
+            Nightingale's fourth principle: <strong>Save at least 10% of every dollar you earn.</strong> This habit, maintained consistently, ensures financial independence and demonstrates self-respect.
+          </p>
+          <p>
+            But invest in more than money. Invest in your mind, your health, your relationships. Remember: everything worthwhile came to us free—our minds, our souls, our hopes, our dreams. The things that cost money can be replaced. The free gifts cannot.
+          </p>
+        </div>
+
+        <div class="principle">
+          <h4>3. Embrace Your Limitations</h4>
+          <p>
+            You can't be successful at everything. As de Botton reminds us, work-life balance is largely a myth. Accept that your vision of success will involve elements of loss. A wise life acknowledges where it's not succeeding and makes peace with those trade-offs.
+          </p>
+        </div>
+
+        <div class="principle">
+          <h4>4. Practice Courage Over Conformity</h4>
+          <p>
+            Rollo May, the distinguished psychiatrist, wrote: <em>"The opposite of courage in our society is not cowardice—it is conformity."</em>
+          </p>
+          <p>
+            Why do 95% of people fail to achieve their goals? They conform. They act like everyone else without knowing why or where they're going. They believe their lives are shaped by circumstances rather than choices.
+          </p>
+          <p>
+            Success requires the courage to be different, to pursue your unique worthy ideal even when others don't understand. This connects directly with <a href="/blog/overcoming-resistance" rel="noopener">overcoming the resistance</a> that conformity creates.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================
+           INTEGRATION & CONCLUSION
+           ============================================ -->
+      <h2>The Integration of Wisdom</h2>
+
+      <p>
+        Success philosophy isn't about choosing between Earl Nightingale's optimistic goal-setting and Alain de Botton's compassionate realism. It's about integrating both perspectives:
+      </p>
+
+      <div class="integration-box">
+        <ul class="integration-list">
+          <li><strong>Be ambitious</strong> about your goals while <strong>being compassionate</strong> about your failures.</li>
+          <li><strong>Control your thoughts</strong> deliberately while <strong>accepting</strong> that not everything is within your control.</li>
+          <li><strong>Pursue success</strong> relentlessly while <strong>defining success</strong> on your own terms.</li>
+          <li><strong>Serve others</strong> abundantly while <strong>maintaining boundaries</strong> that protect your well-being.</li>
+          <li><strong>Think positively</strong> about possibilities while <strong>thinking realistically</strong> about trade-offs.</li>
+        </ul>
+      </div>
+
+      <blockquote class="final-wisdom">
+        "Life should be an exciting adventure. It should never be a bore. A man should be glad to get out of bed in the morning, doing a job he likes because he does it well." — Earl Nightingale
+      </blockquote>
+
+      <p>
+        The philosophy of success, properly understood, frees you from the tyranny of others' expectations while empowering you to achieve your authentic ambitions. It recognizes that you become what you think about while acknowledging that failure doesn't make you a loser. It demands discipline while offering compassion.
+      </p>
+
+      <p>
+        Most importantly, it reminds us that success is not a destination but a journey—the progressive realization of a worthy ideal. The moment you decide on a goal and begin working toward it, you become successful. You join that rare 5% who know where they're going.
+      </p>
+
+      <!-- ============================================
+           CALL TO ACTION
+           ============================================ -->
+      <div class="action-call">
+        <h3>Your Next Steps</h3>
+        <ol>
+          <li>Write your worthy ideal on a card today</li>
+          <li>Begin your 30-day mental discipline challenge</li>
+          <li>Define success in your own terms, free from others' expectations</li>
+          <li>Commit to serving others abundantly</li>
+          <li>Save 10% of everything you earn</li>
+          <li>Replace every negative thought with your positive goal</li>
+          <li>Read <a href="/blog/vision-to-reality" rel="noopener">how to turn your vision into reality</a></li>
+          <li>Build <a href="/blog/habits-discipline-momentum" rel="noopener">sustainable habits that compound</a></li>
+        </ol>
+      </div>
+
+      <p class="closing-truth">
+        Remember: You have nothing to lose by making this test, and everything you could possibly want to gain. Your life is waiting. The strangest secret is no longer secret to you. Now, it's time to act.
+      </p>
+
     </div>
 
-    <!-- Author Info -->
+    <!-- ============================================
+         AUTHOR INFO - Schema.org Complete
+         ============================================ -->
     <div class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
-      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 12px;">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
       </svg>
       <div class="author-details">
         <h4 itemprop="name">Success Odyssey Hub</h4>
         <meta itemprop="url" content={Astro.site?.toString()} />
-        <p>We explore timeless principles and modern strategies for personal development and meaningful success.</p>
+        <p>We explore timeless principles and modern strategies for personal development and meaningful success, integrating wisdom from thought leaders like Earl Nightingale and Alain de Botton.</p>
       </div>
     </div>
 
-    <!-- Related Articles -->
+    <!-- ============================================
+         RELATED ARTICLES
+         ============================================ -->
     <nav class="related-articles" aria-label="Related articles">
       <h3>Related Articles</h3>
       <div class="related-grid">
-        <a href="/blog/mental-models" rel="related">
+        <a href="/blog/mental-models" rel="noopener">
           <span>Mental Models for Better Decision Making</span>
         </a>
-        <a href="/blog/vision-to-reality" rel="related">
+        <a href="/blog/vision-to-reality" rel="noopener">
           <span>From Vision to Reality: The Art of Execution</span>
         </a>
-        <a href="/blog/stoicism" rel="related">
-          <span>The Stoic Path to Success</span>
+        <a href="/blog/habits-discipline-momentum" rel="noopener">
+          <span>Habits, Discipline, and Momentum</span>
+        </a>
+        <a href="/blog/overcoming-resistance" rel="noopener">
+          <span>Overcoming Resistance: Building Resilience</span>
         </a>
       </div>
     </nav>
 
-    <!-- Breadcrumb Navigation -->
-    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
-      <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
+    <!-- ============================================
+         EXTERNAL RESOURCES
+         ============================================ -->
+    <div class="external-resources">
+      <h3>Further Reading & Resources</h3>
+      <ul>
+        <li><a href="https://www.nightingale.com/articles/the-strangest-secret/" target="_blank" rel="noopener noreferrer">Earl Nightingale: The Strangest Secret (Full Audio & Text)</a></li>
+        <li><a href="https://www.ted.com/talks/alain_de_botton_a_kinder_gentler_philosophy_of_success" target="_blank" rel="noopener noreferrer">Alain de Botton: A Kinder, Gentler Philosophy of Success (TED Talk)</a></li>
+        <li><a href="https://www.alaindebotton.com/" target="_blank" rel="noopener noreferrer">Alain de Botton Official Website</a></li>
+      </ul>
+    </div>
+
+    <!-- ============================================
+         BREADCRUMB NAVIGATION - Schema.org
+         ============================================ -->
+    <nav aria-label="Breadcrumb">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a itemprop="item" href="/">
             <span itemprop="name">Home</span>
           </a>
           <meta itemprop="position" content="1" />
-          <span style="margin: 0 0.5rem;">/</span>
+          <span aria-hidden="true"> / </span>
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a itemprop="item" href="/blog">
             <span itemprop="name">Blog</span>
           </a>
           <meta itemprop="position" content="2" />
-          <span style="margin: 0 0.5rem;">/</span>
+          <span aria-hidden="true"> / </span>
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <span itemprop="name">The Philosophy of Success</span>
@@ -156,17 +592,31 @@ import card3 from "../../assets/card3.jpg";
         </li>
       </ol>
     </nav>
+
   </article>
 
+  <!-- ============================================
+       CSS STYLES - WCAG AAA + Mobil Optimized
+       ============================================ -->
   <style>
-    /* Hero image - Fixed compact size */
-    :global(.hero-image) {
+    /* ===== BASE & RESET ===== */
+    .blog-page {
+      color-scheme: light dark;
+      background-color: var(--color-bg-primary, #ffffff);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      line-height: 1.7;
+    }
+
+    /* ===== HERO IMAGE - Mobil Optimize ===== */
+    .hero-image {
       width: 100%;
-      height: 200px !important;
+      height: 250px;
       object-fit: cover;
-      border-radius: var(--radius);
+      border-radius: 12px;
       display: block;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     figure {
@@ -175,132 +625,529 @@ import card3 from "../../assets/card3.jpg";
     }
 
     @media (max-width: 768px) {
-      :global(.hero-image) {
-        height: 150px !important;
+      .hero-image {
+        height: 200px;
+        border-radius: 8px;
       }
     }
 
-    /* Article structure */
-    .blog-page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      line-height: 1.7;
-    }
-
+    /* ===== ARTICLE HEADER ===== */
     .article-header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .article-header h1 {
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.75rem, 4vw, 3rem);
       line-height: 1.2;
-      font-weight: 700;
+      margin: 1rem 0 1.5rem;
+      color: #0a0a0a;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .article-meta {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
+      font-size: 0.95rem;
       margin-bottom: 1rem;
     }
 
     .article-meta time {
-      font-weight: 500;
-      color: var(--color-text-secondary);
+      font-weight: 600;
+      color: #374151;
     }
 
     .reading-time {
-      color: var(--color-primary);
-    }
-
-    .tags {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      background: var(--color-bg-tertiary);
-      color: var(--color-text-primary);
-      padding: 0.25rem 0.75rem;
-      border-radius: 1rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    /* Content styling */
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .lead {
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--color-primary);
-      margin-bottom: 2rem;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .content h2 {
-      color: var(--color-primary);
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-
-    .content h3 {
-      color: var(--color-text-primary);
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-size: 1.25rem;
+      color: #1e40af;
       font-weight: 600;
     }
 
-    .content p {
-      font-size: 1.1rem;
+    /* ===== TAGS - Touch Target Fix ===== */
+    .tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: #1e40af;
+      color: white;
+      padding: 0.5rem 1rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 24px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(30, 64, 175, 0.3);
+    }
+
+    /* ===== TABLE OF CONTENTS ===== */
+    .table-of-contents {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin: 2.5rem 0;
+    }
+
+    .table-of-contents h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
+      color: #1e40af;
+      font-weight: 800;
+    }
+
+    .table-of-contents ol {
       line-height: 1.8;
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    .table-of-contents li {
+      margin-bottom: 0.5rem;
+    }
+
+    .table-of-contents a {
+      color: #374151;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      min-height: 44px;
+      display: inline-block;
+      padding: 0.25rem 0;
+    }
+
+    .table-of-contents a:hover {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+
+    /* ===== CONTENT TYPOGRAPHY ===== */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+
+    .content p {
       margin-bottom: 1.5rem;
-      color: var(--color-text-primary);
+      color: #1f2937;
+      font-weight: 450;
     }
 
+    .content a {
+      color: #1e40af;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      text-underline-offset: 2px;
+    }
+
+    .content a:hover {
+      color: #1e3a8a;
+    }
+
+    .content a:focus {
+      outline: 3px solid #93c5fd;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .lead {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #1e40af;
+      text-align: center;
+      margin: 2.5rem 0;
+      line-height: 1.6;
+    }
+
+    .content h2 {
+      color: #0a0a0a;
+      margin-top: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.875rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      scroll-margin-top: 100px;
+    }
+
+    .content h3 {
+      color: #1f2937;
+      margin-top: 2.5rem;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .content h4 {
+      color: #1e40af;
+      font-weight: 700;
+      margin-top: 1.75rem;
+      margin-bottom: 0.875rem;
+      font-size: 1.25rem;
+    }
+
+    .content strong {
+      font-weight: 700;
+      color: #0a0a0a;
+    }
+
+    /* ===== BLOCKQUOTES ===== */
     blockquote {
-      border-left: 4px solid var(--color-accent);
-      padding: 1rem 1.5rem;
-      margin: 2rem 0;
-      background: var(--color-accent-light);
-      border-radius: 0 var(--radius) var(--radius) 0;
+      border-left: 5px solid #d97706;
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: #fef3c7;
+      border-radius: 8px;
       font-style: italic;
-      font-size: 1.1rem;
-      color: var(--color-text-primary);
+      font-size: 1.125rem;
+      color: #78350f;
+      font-weight: 500;
     }
 
-    /* Author info */
+    .central-truth {
+      text-align: center;
+      font-size: 1.5rem;
+      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+      color: white;
+      border: none;
+      font-weight: 800;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(30, 64, 175, 0.2);
+    }
+
+    .highlight-quote {
+      background: #ecfdf5;
+      border-left-color: #10b981;
+      color: #065f46;
+      font-weight: 600;
+    }
+
+    .final-wisdom {
+      background: #f8fafc;
+      border-left-color: #1e40af;
+      color: #1f2937;
+      font-size: 1.2rem;
+    }
+
+    /* ===== COMPONENT BOXES ===== */
+    .insight-box,
+    .debotton-insights,
+    .pillars-section,
+    .framework-steps,
+    .long-term-principles {
+      margin: 3rem 0;
+    }
+
+    .insight-box {
+      background: #eff6ff;
+      border: 2px solid #3b82f6;
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .insight-box h3 {
+      color: #1e40af;
+      margin-top: 0;
+      font-weight: 800;
+    }
+
+    /* ===== WISDOM GRID ===== */
+    .wisdom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .wisdom-card {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .wisdom-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .wisdom-card h4 {
+      color: #1e40af;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .wisdom-card p {
+      color: #374151;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ===== DE BOTTON INSIGHTS ===== */
+    .debotton-insights h3 {
+      color: #7c3aed;
+      margin-bottom: 2rem;
+      font-weight: 800;
+    }
+
+    .insight {
+      background: white;
+      border-left: 5px solid #7c3aed;
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      border-radius: 8px;
+      border: 2px solid #e9d5ff;
+      border-left: 5px solid #7c3aed;
+    }
+
+    .insight h4 {
+      color: #7c3aed;
+      margin-top: 0;
+      font-weight: 800;
+    }
+
+    /* ===== PILLARS ===== */
+    .pillar {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .pillar h3 {
+      color: #1e40af;
+      margin-top: 0;
+      font-weight: 800;
+    }
+
+    .pillar-action {
+      background: #dbeafe;
+      border: 2px solid #3b82f6;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .pillar-action strong {
+      color: #1e3a8a;
+    }
+
+    /* ===== FRAMEWORK STEPS ===== */
+    .step {
+      background: white;
+      border-left: 5px solid #d97706;
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      border-radius: 8px;
+      border: 2px solid #fde68a;
+      border-left: 5px solid #d97706;
+    }
+
+    .step h4 {
+      color: #d97706;
+      margin-top: 0;
+      font-weight: 800;
+    }
+
+    /* ===== 30-DAY CHALLENGE ===== */
+    .challenge-container {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #d97706;
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      box-shadow: 0 8px 16px rgba(217, 119, 6, 0.15);
+    }
+
+    .challenge-container h3 {
+      color: #92400e;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      font-weight: 800;
+      font-size: 1.75rem;
+    }
+
+    .challenge-step {
+      background: white;
+      border: 2px solid #d97706;
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s ease;
+    }
+
+    .challenge-step:hover {
+      transform: translateX(4px);
+    }
+
+    .challenge-step h4 {
+      color: #d97706;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .challenge-reminder {
+      background: #065f46;
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .challenge-reminder h4 {
+      color: #ecfdf5;
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      font-weight: 800;
+    }
+
+    .challenge-reminder p {
+      color: white;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* ===== LONG-TERM PRINCIPLES ===== */
+    .long-term-principles h3 {
+      color: #10b981;
+      margin-bottom: 2rem;
+      font-weight: 800;
+    }
+
+    .principle {
+      background: #f0fdf4;
+      border: 2px solid #10b981;
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .principle h4 {
+      color: #065f46;
+      margin-top: 0;
+      font-weight: 800;
+    }
+
+    /* ===== INTEGRATION BOX ===== */
+    .integration-box {
+      background: #eff6ff;
+      border: 3px solid #3b82f6;
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+    }
+
+    .integration-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .integration-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid #bfdbfe;
+      color: #1f2937;
+      font-weight: 500;
+      font-size: 1.075rem;
+    }
+
+    .integration-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* ===== ACTION CALL ===== */
+    .action-call {
+      background: linear-gradient(135deg, #1e40af, #1e3a8a);
+      color: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      margin: 3rem 0;
+      box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
+    }
+
+    .action-call h3 {
+      color: white;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      font-size: 1.75rem;
+    }
+
+    .action-call ol {
+      color: white;
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    .action-call li {
+      color: white;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .action-call a {
+      color: #fde68a;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .action-call a:hover {
+      color: #fef3c7;
+    }
+
+    .closing-truth {
+      text-align: center;
+      font-size: 1.25rem;
+      color: #1f2937;
+      font-weight: 600;
+      margin: 3rem 0;
+      padding: 2.5rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 2px solid #cbd5e1;
+      line-height: 1.6;
+    }
+
+    /* ===== AUTHOR INFO ===== */
     .author-info {
       display: flex;
-      gap: 1rem;
-      padding: 2rem;
-      background: var(--color-accent-light);
-      border-radius: var(--radius);
-      margin-top: 3rem;
+      gap: 1.5rem;
+      padding: 2.5rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      margin-top: 4rem;
+      border: 2px solid #cbd5e1;
     }
 
     .author-info svg {
       flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 14px;
     }
 
     .author-details {
@@ -308,109 +1155,602 @@ import card3 from "../../assets/card3.jpg";
     }
 
     .author-details h4 {
-      margin-bottom: 0.5rem;
-      color: var(--color-text-primary);
+      margin-bottom: 0.75rem;
+      color: #0a0a0a;
+      font-weight: 800;
+      font-size: 1.25rem;
     }
 
     .author-details p {
-      color: var(--color-text-secondary);
-      font-size: 0.9rem;
+      color: #374151;
+      font-size: 0.95rem;
       margin: 0;
-      line-height: 1.5;
+      line-height: 1.6;
+      font-weight: 500;
     }
 
-    /* Related articles */
+    /* ===== RELATED ARTICLES ===== */
     .related-articles {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--color-border);
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 2px solid #cbd5e1;
     }
 
     .related-articles h3 {
-      margin-bottom: 1.5rem;
-      color: var(--color-text-primary);
+      margin-bottom: 1.75rem;
+      color: #0a0a0a;
+      font-weight: 800;
+      font-size: 1.5rem;
     }
 
     .related-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .related-grid a {
       display: block;
-      padding: 1rem;
-      background: var(--color-accent-light);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius);
+      padding: 1.25rem;
+      min-height: 44px;
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
       text-decoration: none;
-      color: var(--color-text-primary);
-      transition: var(--transition);
+      color: #1e40af;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 1rem;
     }
 
     .related-grid a:hover {
-      background: var(--color-bg-tertiary);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      background: #e0e7ff;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      border-color: #1e40af;
     }
 
-    /* Mobile responsive */
+    .related-grid a:focus {
+      outline: 3px solid #93c5fd;
+      outline-offset: 2px;
+    }
+
+    /* ===== EXTERNAL RESOURCES ===== */
+    .external-resources {
+      background: #fefce8;
+      border: 2px solid #facc15;
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .external-resources h3 {
+      color: #854d0e;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      font-size: 1.375rem;
+    }
+
+    .external-resources ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .external-resources li {
+      margin-bottom: 1rem;
+    }
+
+    .external-resources a {
+      color: #1e40af;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-block;
+      min-height: 44px;
+      padding: 0.25rem 0;
+    }
+
+    .external-resources a:hover {
+      color: #1e3a8a;
+      text-decoration: underline;
+    }
+
+    /* ===== BREADCRUMB ===== */
+    nav[aria-label="Breadcrumb"] {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 2px solid #cbd5e1;
+    }
+
+    nav[aria-label="Breadcrumb"] ol {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    nav[aria-label="Breadcrumb"] a {
+      color: #374151;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0;
+    }
+
+    nav[aria-label="Breadcrumb"] a:hover {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+
+    nav[aria-label="Breadcrumb"] span[aria-hidden="true"] {
+      margin: 0 0.5rem;
+      color: #94a3b8;
+    }
+
+    /* ===== DARK MODE - WCAG AAA Compliant ===== */
+    @media (prefers-color-scheme: dark) {
+      .blog-page {
+        background-color: #0f172a;
+        color: #f1f5f9;
+      }
+
+      .article-header h1 {
+        color: #f1f5f9;
+      }
+
+      .article-meta time {
+        color: #cbd5e1;
+      }
+
+      .reading-time {
+        color: #93c5fd;
+      }
+
+      .tag {
+        background: #3b82f6;
+        color: white;
+      }
+
+      .hero-image {
+        opacity: 0.92;
+      }
+
+      .table-of-contents {
+        background: #1e293b;
+        border-color: #475569;
+      }
+
+      .table-of-contents h2 {
+        color: #93c5fd;
+      }
+
+      .table-of-contents a {
+        color: #cbd5e1;
+      }
+
+      .table-of-contents a:hover {
+        color: #93c5fd;
+      }
+
+      .content p {
+        color: #e2e8f0;
+      }
+
+      .content a {
+        color: #93c5fd;
+      }
+
+      .content a:hover {
+        color: #bfdbfe;
+      }
+
+      .lead {
+        color: #93c5fd;
+      }
+
+      .content h2,
+      .content h3 {
+        color: #f1f5f9;
+      }
+
+      .content h4 {
+        color: #93c5fd;
+      }
+
+      .content strong {
+        color: #f8fafc;
+      }
+
+      blockquote {
+        background: #1e293b;
+        border-left-color: #f59e0b;
+        color: #fde68a;
+      }
+
+      .central-truth {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+      }
+
+      .highlight-quote {
+        background: #064e3b;
+        border-left-color: #10b981;
+        color: #a7f3d0;
+      }
+
+      .final-wisdom {
+        background: #1e293b;
+        border-left-color: #3b82f6;
+        color: #e2e8f0;
+      }
+
+      .insight-box {
+        background: #1e293b;
+        border-color: #3b82f6;
+      }
+
+      .insight-box h3 {
+        color: #93c5fd;
+      }
+
+      .wisdom-card {
+        background: #1e293b;
+        border-color: #475569;
+      }
+
+      .wisdom-card h4 {
+        color: #93c5fd;
+      }
+
+      .wisdom-card p {
+        color: #cbd5e1;
+      }
+
+      .debotton-insights h3 {
+        color: #c084fc;
+      }
+
+      .insight {
+        background: #1e293b;
+        border-color: #7c3aed;
+      }
+
+      .insight h4 {
+        color: #c084fc;
+      }
+
+      .insight p {
+        color: #e2e8f0;
+      }
+
+      .pillar {
+        background: #1e293b;
+        border-color: #475569;
+      }
+
+      .pillar h3 {
+        color: #93c5fd;
+      }
+
+      .pillar-action {
+        background: #1e3a8a;
+        border-color: #3b82f6;
+      }
+
+      .pillar-action strong {
+        color: #bfdbfe;
+      }
+
+      .step {
+        background: #1e293b;
+        border-color: #f59e0b;
+      }
+
+      .step h4 {
+        color: #fbbf24;
+      }
+
+      .challenge-container {
+        background: linear-gradient(135deg, #78350f, #92400e);
+        border-color: #f59e0b;
+      }
+
+      .challenge-container h3 {
+        color: #fef3c7;
+      }
+
+      .challenge-step {
+        background: #1e293b;
+        border-color: #f59e0b;
+      }
+
+      .challenge-step h4 {
+        color: #fbbf24;
+      }
+
+      .challenge-reminder {
+        background: #064e3b;
+        color: white;
+      }
+
+      .challenge-reminder h4 {
+        color: #d1fae5;
+      }
+
+      .principle {
+        background: #064e3b;
+        border-color: #10b981;
+      }
+
+      .principle h4 {
+        color: #6ee7b7;
+      }
+
+      .integration-box {
+        background: #1e293b;
+        border-color: #3b82f6;
+      }
+
+      .integration-list li {
+        border-bottom-color: #334155;
+        color: #e2e8f0;
+      }
+
+      .action-call {
+        background: linear-gradient(135deg, #1e3a8a, #1e40af);
+      }
+
+      .closing-truth {
+        background: #1e293b;
+        border-color: #475569;
+        color: #e2e8f0;
+      }
+
+      .author-info {
+        background: #1e293b;
+        border-color: #475569;
+      }
+
+      .author-details h4 {
+        color: #f1f5f9;
+      }
+
+      .author-details p {
+        color: #cbd5e1;
+      }
+
+      .related-articles {
+        border-top-color: #475569;
+      }
+
+      .related-articles h3 {
+        color: #f1f5f9;
+      }
+
+      .related-grid a {
+        background: #1e293b;
+        border-color: #475569;
+        color: #93c5fd;
+      }
+
+      .related-grid a:hover {
+        background: #1e3a8a;
+        border-color: #3b82f6;
+      }
+
+      .external-resources {
+        background: #422006;
+        border-color: #f59e0b;
+      }
+
+      .external-resources h3 {
+        color: #fde68a;
+      }
+
+      .external-resources a {
+        color: #93c5fd;
+      }
+
+      .external-resources a:hover {
+        color: #bfdbfe;
+      }
+
+      nav[aria-label="Breadcrumb"] {
+        border-top-color: #475569;
+      }
+
+      nav[aria-label="Breadcrumb"] a {
+        color: #cbd5e1;
+      }
+
+      nav[aria-label="Breadcrumb"] a:hover {
+        color: #93c5fd;
+      }
+
+      nav[aria-label="Breadcrumb"] span[aria-hidden="true"] {
+        color: #64748b;
+      }
+    }
+
+    /* ===== MOBILE RESPONSIVE - Touch Optimized ===== */
     @media (max-width: 768px) {
       .blog-page {
-        padding: 1rem;
+        padding: 1.5rem 1rem;
+      }
+
+      .article-header h1 {
+        font-size: 1.75rem;
       }
 
       .article-meta {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .tags {
+        justify-content: center;
       }
 
       .content {
-        font-size: 1rem;
+        font-size: 1.0625rem;
+        line-height: 1.75;
       }
 
       .lead {
-        font-size: 1.125rem;
-      }
-
-      .content h2 {
-        font-size: 1.6rem;
-      }
-
-      .content h3 {
         font-size: 1.2rem;
       }
 
-      .content p {
-        font-size: 1rem;
+      .content h2 {
+        font-size: 1.625rem;
+        margin-top: 3rem;
+      }
+
+      .content h3 {
+        font-size: 1.375rem;
+      }
+
+      .content h4 {
+        font-size: 1.125rem;
+      }
+
+      blockquote {
+        padding: 1.25rem 1.5rem;
+        font-size: 1.0625rem;
+      }
+
+      .central-truth {
+        font-size: 1.3rem;
+        padding: 2rem 1.5rem;
+      }
+
+      .wisdom-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .table-of-contents,
+      .insight-box,
+      .challenge-container,
+      .integration-box,
+      .action-call {
+        padding: 1.5rem;
       }
 
       .author-info {
-        padding: 1.5rem;
+        flex-direction: column;
+        padding: 1.75rem;
+        text-align: center;
+      }
+
+      .author-info svg {
+        margin: 0 auto;
       }
 
       .related-grid {
         grid-template-columns: 1fr;
       }
+
+      .external-resources {
+        padding: 1.75rem;
+      }
+
+      nav[aria-label="Breadcrumb"] ol {
+        font-size: 0.85rem;
+      }
     }
 
-    /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-      blockquote {
-        background: var(--color-bg-tertiary);
+    /* ===== TABLET RESPONSIVE ===== */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .blog-page {
+        padding: 2rem 1.5rem;
       }
 
-      .author-info {
-        background: var(--color-bg-secondary);
+      .wisdom-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .related-grid a {
-        background: var(--color-bg-secondary);
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      .blog-page {
+        max-width: 100%;
+        padding: 0;
       }
 
-      .related-grid a:hover {
-        background: var(--color-bg-tertiary);
+      .hero-image {
+        height: auto;
+        max-height: 300px;
+      }
+
+      .tag {
+        border: 1px solid #1e40af;
+        background: transparent;
+        color: #1e40af;
+      }
+
+      .related-articles,
+      .external-resources,
+      nav[aria-label="Breadcrumb"] {
+        display: none;
+      }
+
+      .action-call,
+      .challenge-container {
+        border: 2px solid #000;
+        background: transparent;
+      }
+
+      a {
+        color: #000;
+        text-decoration: underline;
+      }
+
+      a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+      }
+    }
+
+    /* ===== ACCESSIBILITY - Reduced Motion ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ===== HIGH CONTRAST MODE ===== */
+    @media (prefers-contrast: high) {
+      .blog-page {
+        border: 2px solid currentColor;
+      }
+
+      .tag,
+      .btn-primary {
+        border: 2px solid currentColor;
+      }
+
+      a {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
       }
     }
   </style>
+
 </Layout>
