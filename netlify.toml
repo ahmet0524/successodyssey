@@ -2,52 +2,26 @@
   publish = "dist"
   command = "npm run build"
 
-# Favicon - prevent redirect loop (MUST BE BEFORE other redirects)
-[[redirects]]
-  from = "/favicon.ico"
-  to = "/favicon.svg"
-  status = 301
-  force = false
-
-[[redirects]]
-  from = "/favicon.svg"
-  to = "/favicon.svg"
-  status = 200
-  force = false
-
-# WWW to non-WWW redirect (WITH force=true for proper redirect)
+# WWW to non-WWW redirect (MUST BE FIRST)
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
   status = 301
   force = true
 
-# Trailing slash redirect - remove trailing slashes
+# Favicon redirects (consolidated, no duplicates)
 [[redirects]]
-  from = "/*/"
-  to = "/:splat"
+  from = "/favicon.ico"
+  to = "/favicon.svg"
   status = 301
-  force = false
+  force = true
 
-# Search parameter redirect - block indexing
+# Block search parameter indexing
 [[redirects]]
   from = "/blog?search=*"
   to = "/blog"
   status = 301
-  force = false
-
-# Favicon - prevent redirect loop (MUST BE BEFORE /* redirects)
-[[redirects]]
-  from = "/favicon.ico"
-  to = "/favicon.svg"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/favicon.svg"
-  to = "/favicon.svg"
-  status = 200
-  force = false
+  force = true
 
 # Security Headers
 [[headers]]
@@ -61,13 +35,7 @@
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
     X-XSS-Protection = "1; mode=block"
 
-# Favicon specific headers - prevent redirect loop
-[[headers]]
-  for = "/favicon.ico"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-    Content-Type = "image/x-icon"
-
+# Favicon specific headers
 [[headers]]
   for = "/favicon.svg"
   [headers.values]
