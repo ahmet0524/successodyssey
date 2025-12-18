@@ -249,7 +249,7 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Newsletter Section - ÇALIŞAN VERSİYON -->
+  <!-- Newsletter Section -->
   <section class="newsletter-section" aria-labelledby="newsletter-title">
     <div class="container">
       <div class="newsletter">
@@ -532,7 +532,7 @@ const structuredData = {
   }
 }
 
-/* Newsletter Section - DÜZELTİLMİŞ */
+/* Newsletter Section */
 .newsletter-section {
   padding: 4rem 0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -837,7 +837,7 @@ class NewsletterHandler {
       return;
     }
 
-    // API Key kontrolü
+    // API Key check
     if (!this.API_KEY) {
       console.error('ConvertKit API Key is missing!');
       this.showError('Configuration error. Please contact support.');
@@ -867,7 +867,7 @@ class NewsletterHandler {
         this.showSuccess();
         this.form.reset();
 
-        // Analytics tracking (opsiyonel)
+        // Analytics tracking (optional)
         if (typeof gtag !== 'undefined') {
           gtag('event', 'newsletter_signup', {
             event_category: 'engagement',
@@ -930,7 +930,7 @@ class NewsletterHandler {
 
     this.submitBtn?.classList.add('success');
 
-    // Success state'i 3 saniye sonra kaldır
+    // Reset success state after 3 seconds
     setTimeout(() => {
       this.submitBtn?.classList.remove('success');
       this.successMsg?.classList.remove('show');
