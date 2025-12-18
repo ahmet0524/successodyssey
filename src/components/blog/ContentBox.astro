@@ -1,0 +1,131 @@
+---
+// components/blog/ContentBox.astro - Reusable Content Components
+
+export interface BoxProps {
+  type?: 'info' | 'highlight' | 'tip' | 'quote' | 'warning';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const icons = {
+  info: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>',
+  highlight: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
+  tip: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>',
+  quote: '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path></svg>',
+  warning: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>'
+};
+
+const titles = {
+  info: 'Key Information',
+  highlight: 'Important Highlight',
+  tip: 'Pro Tip',
+  quote: 'Quote',
+  warning: 'Important Note'
+};
+---
+
+<div class={`content-box content-box-${type}`}>
+  <div class="content-box-header">
+    <Fragment set:html={icons[type]} />
+    <h4>{title || titles[type]}</h4>
+  </div>
+  <div class="content-box-content">
+    <slot />
+  </div>
+</div>
+
+<style lang="scss">
+.content-box {
+  margin: var(--spacing-2xl) 0;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 2px solid;
+  transition: var(--transition);
+
+  &:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+  }
+
+  &-content {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Type Variants
+  &-info {
+    background: rgba(59, 130, 246, 0.05);
+    border-color: #3B82F6;
+
+    .content-box-header {
+      color: #3B82F6;
+    }
+  }
+
+  &-highlight {
+    background: rgba(245, 158, 11, 0.05);
+    border-color: var(--color-accent);
+
+    .content-box-header {
+      color: var(--color-accent);
+    }
+  }
+
+  &-tip {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: var(--color-success);
+
+    .content-box-header {
+      color: var(--color-success);
+    }
+  }
+
+  &-quote {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-primary);
+    font-style: italic;
+
+    .content-box-header {
+      color: var(--color-primary);
+    }
+  }
+
+  &-warning {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: var(--color-error);
+
+    .content-box-header {
+      color: var(--color-error);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content-box {
+    padding: var(--spacing-md);
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+</style>

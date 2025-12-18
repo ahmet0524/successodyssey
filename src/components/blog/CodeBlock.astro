@@ -1,0 +1,92 @@
+---
+// components/blog/CodeBlock.astro - Enhanced Code Display
+export interface CodeProps {
+  lang?: string;
+  title?: string;
+  showLineNumbers?: boolean;
+}
+
+const { lang = 'text', title, showLineNumbers = false } = Astro.props;
+---
+
+<div class="code-block">
+  {title && (
+    <div class="code-block-header">
+      <span class="code-block-title">{title}</span>
+      <span class="code-block-lang">{lang}</span>
+    </div>
+  )}
+  <div class={`code-block-content ${showLineNumbers ? 'line-numbers' : ''}`}>
+    <slot />
+  </div>
+</div>
+
+<style lang="scss">
+.code-block {
+  margin: var(--spacing-2xl) 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+
+    .code-block-title {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .code-block-lang {
+      font-size: 0.875rem;
+      color: var(--color-text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  &-content {
+    padding: var(--spacing-lg);
+    overflow-x: auto;
+
+    pre {
+      margin: 0;
+      background: transparent;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    code {
+      background: transparent;
+      padding: 0;
+      color: var(--color-text-primary);
+      font-family: 'Fira Code', 'Courier New', monospace;
+    }
+
+    &.line-numbers {
+      counter-reset: line;
+
+      pre {
+        padding-left: 3.5em;
+        position: relative;
+
+        &::before {
+          content: counter(line);
+          counter-increment: line;
+          position: absolute;
+          left: 0;
+          padding-right: 1em;
+          text-align: right;
+          color: var(--color-text-tertiary);
+          width: 2.5em;
+        }
+      }
+    }
+  }
+}
+</style>

@@ -1,0 +1,44 @@
+---
+// components/blog/ContentGrid.astro - Multi-column Content Grid
+export interface GridProps {
+  columns?: 2 | 3;
+  gap?: 'sm' | 'md' | 'lg';
+}
+
+const { columns = 2, gap = 'md' } = Astro.props;
+---
+
+<div class={`content-grid content-grid-${columns} gap-${gap}`}>
+  <slot />
+</div>
+
+<style lang="scss">
+.content-grid {
+  display: grid;
+  margin: var(--spacing-2xl) 0;
+
+  &-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &.gap-sm {
+    gap: var(--spacing-md);
+  }
+
+  &.gap-md {
+    gap: var(--spacing-lg);
+  }
+
+  &.gap-lg {
+    gap: var(--spacing-xl);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>

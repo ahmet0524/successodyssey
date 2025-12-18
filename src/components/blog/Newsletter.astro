@@ -1,0 +1,111 @@
+---
+// components/blog/Newsletter.astro - Inline Newsletter Signup
+---
+
+<aside class="inline-newsletter">
+  <div class="newsletter-icon">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+  </div>
+  <div class="newsletter-content">
+    <h3>Never Miss an Insight</h3>
+    <p>Get actionable strategies delivered to your inbox weekly.</p>
+    <form class="newsletter-form" action="https://successodysseyhub.us10.list-manage.com/subscribe/post?u=YOUR_USER_ID&id=YOUR_LIST_ID" method="post">
+      <input
+        type="email"
+        name="EMAIL"
+        placeholder="Enter your email"
+        required
+        aria-label="Email address"
+      />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</aside>
+
+<style lang="scss">
+.inline-newsletter {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: center;
+  margin: var(--spacing-3xl) 0;
+  padding: var(--spacing-2xl);
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  color: white;
+
+  .newsletter-icon {
+    flex-shrink: 0;
+
+    svg {
+      opacity: 0.9;
+    }
+  }
+
+  .newsletter-content {
+    flex: 1;
+
+    h3 {
+      margin-bottom: var(--spacing-sm);
+      color: white;
+    }
+
+    p {
+      margin-bottom: var(--spacing-md);
+      opacity: 0.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: var(--spacing-sm);
+
+      input {
+        flex: 1;
+        padding: var(--spacing-md);
+        border: none;
+        border-radius: var(--radius);
+        font-size: 1rem;
+
+        &:focus {
+          outline: 2px solid white;
+          outline-offset: 2px;
+        }
+      }
+
+      button {
+        padding: var(--spacing-md) var(--spacing-xl);
+        background: white;
+        color: var(--color-primary);
+        border: none;
+        border-radius: var(--radius);
+        font-weight: 700;
+        cursor: pointer;
+        transition: var(--transition);
+        white-space: nowrap;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-lg);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+
+    .newsletter-content {
+      .newsletter-form {
+        flex-direction: column;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+</style>

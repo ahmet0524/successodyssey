@@ -1,0 +1,58 @@
+---
+// components/blog/ImageWithCaption.astro - Optimized Image Component
+export interface ImageProps {
+  src: string;
+  alt: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  src,
+  alt,
+  caption,
+  width = 800,
+  height = 450,
+  loading = 'lazy'
+} = Astro.props;
+---
+
+<figure class="blog-image">
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style lang="scss">
+.blog-image {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-xl);
+    }
+  }
+
+  figcaption {
+    margin-top: var(--spacing-md);
+    font-size: 0.9rem;
+    color: var(--color-text-tertiary);
+    font-style: italic;
+  }
+}
+</style>
