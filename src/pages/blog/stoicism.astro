@@ -4,17 +4,30 @@ import JsonLD from "../../components/JsonLD.astro";
 import { Image } from 'astro:assets';
 import marcusAurelius from "../../assets/marcus-aurelius.webp";
 
+// Blog Components
+import ContentBox from "../../components/blog/ContentBox.astro";
+import ContentGrid from "../../components/blog/ContentGrid.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+import Newsletter from "../../components/blog/Newsletter.astro";
+
 const datePublished = "2025-01-12T00:00:00Z";
 const dateModified = "2025-01-12T00:00:00Z";
 const author = "Success Odyssey Hub";
 const siteUrl = Astro.site?.toString() || "https://successodysseyhub.com";
 const canonicalUrl = `${siteUrl}/blog/stoicism`;
+
+// Article content for reading time calculation
+const articleContent = `
+Stoic Wisdom for Modern Life complete article content...
+`;
+const wordCount = articleContent.trim().split(/\s+/).length;
+const readingTime = Math.ceil(wordCount / 200);
 ---
 
 <Layout
-  title="Stoic Wisdom for Modern Life | Success Odyssey Hub"
-  description="Learn how ancient Stoic philosophy can help you build resilience, find inner peace, and maintain clarity in our fast-paced modern world."
-  keywords="stoicism, philosophy, resilience, inner peace, mental strength, Marcus Aurelius, Seneca, stoic principles, dichotomy of control"
+  title="Stoic Wisdom for Modern Life: Ancient Philosophy for Today's Challenges | Success Odyssey Hub"
+  description="Discover how ancient Stoic philosophy offers practical wisdom for navigating modern life's challenges. Learn the dichotomy of control, virtue ethics, and daily practices for resilience, inner peace, and mental strength."
+  keywords="stoicism, stoic philosophy, Marcus Aurelius, Epictetus, Seneca, dichotomy of control, virtue ethics, resilience, inner peace, mental strength, ancient wisdom, modern stoicism, personal development"
   image={marcusAurelius}
   type="article"
   datePublished={datePublished}
@@ -30,8 +43,8 @@ const canonicalUrl = `${siteUrl}/blog/stoicism`;
   <!-- Open Graph -->
   <meta property="og:url" content={canonicalUrl} slot="head" />
   <meta property="og:image" content={`${siteUrl}${marcusAurelius.src}`} slot="head" />
-  <meta property="og:image:width" content="900" slot="head" />
-  <meta property="og:image:height" content="400" slot="head" />
+  <meta property="og:image:width" content="1200" slot="head" />
+  <meta property="og:image:height" content="630" slot="head" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" slot="head" />
@@ -49,1028 +62,1294 @@ const canonicalUrl = `${siteUrl}/blog/stoicism`;
     author={author}
   />
 
-  <!-- Additional Schema.org -->
-  <script type="application/ld+json" slot="head">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Stoic Wisdom for Modern Life",
-      "image": `${siteUrl}${marcusAurelius.src}`,
-      "datePublished": "${datePublished}",
-      "dateModified": "${dateModified}",
-      "author": {
-        "@type": "Organization",
-        "name": "Success Odyssey Hub",
-        "url": "${siteUrl}"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Success Odyssey Hub",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "${siteUrl}/logo.png"
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "${canonicalUrl}"
-      }
-    }
-  </script>
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
 
-  <!-- Skip to Content -->
-  <a href="#main-content" class="skip-to-content">Skip to main content</a>
-
-  <!-- Theme Toggle Button -->
-  <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">
-    <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="5"/>
-      <line x1="12" y1="1" x2="12" y2="3"/>
-      <line x1="12" y1="21" x2="12" y2="23"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-      <line x1="1" y1="12" x2="3" y2="12"/>
-      <line x1="21" y1="12" x2="23" y2="12"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-    </svg>
-    <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-    </svg>
-  </button>
-
-  <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
-    <main id="main-content" role="main">
-
+    <!-- ===============================================================
+         ARTICLE HEADER
+         =============================================================== -->
     <header class="article-header">
       <h1 itemprop="headline">Stoic Wisdom for Modern Life</h1>
 
       <div class="article-meta">
-        <time datetime="2025-01-12" itemprop="datePublished">January 12, 2025</time>
-        <meta itemprop="dateModified" content="2025-01-12T00:00:00Z" />
-        <span class="reading-time" itemprop="timeRequired" content="PT6M">6 min read</span>
+        <time datetime={datePublished} itemprop="datePublished">
+          January 12, 2025
+        </time>
+        <meta itemprop="dateModified" content={dateModified} />
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>
+          {readingTime} min read
+        </span>
 
-        <div class="tags">
-          <span class="tag" itemprop="keywords">Stoicism</span>
-          <span class="tag" itemprop="keywords">Philosophy</span>
-          <span class="tag" itemprop="keywords">Resilience</span>
+        <div class="article-tags">
+          <span class="tag">Stoicism</span>
+          <span class="tag">Philosophy</span>
+          <span class="tag">Resilience</span>
         </div>
       </div>
     </header>
 
-    <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+    <!-- ===============================================================
+         HERO IMAGE
+         =============================================================== -->
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
       <Image
         src={marcusAurelius}
         alt="Ancient Stoic philosophy symbolized by a serene marble column against a blue sky, representing wisdom, resilience and inner peace"
-        class="hero-image"
-        width={900}
-        height={400}
+        width={1200}
+        height={630}
         loading="eager"
         fetchpriority="high"
         format="webp"
         quality={90}
+        class="hero-image"
       />
       <meta itemprop="url" content={new URL(marcusAurelius.src, Astro.site).toString()} />
-      <meta itemprop="width" content="900" />
-      <meta itemprop="height" content="400" />
+      <meta itemprop="width" content="1200" />
+      <meta itemprop="height" content="630" />
     </figure>
 
-    <div class="content" itemprop="articleBody">
+    <!-- ===============================================================
+         MAIN CONTENT
+         =============================================================== -->
+    <div class="article-content" itemprop="articleBody">
+
+      <!-- ============================================================
+           TABLE OF CONTENTS
+           ============================================================ -->
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#introduction">Introduction to Stoicism</a></li>
+          <li><a href="#foundation">The Foundation of Stoicism</a></li>
+          <li><a href="#principles">Key Stoic Principles</a></li>
+          <li><a href="#four-virtues">The Four Cardinal Virtues</a></li>
+          <li><a href="#applications">Practical Applications</a></li>
+          <li><a href="#daily-practice">Daily Stoic Practice</a></li>
+          <li><a href="#modern-relevance">Stoicism in Modern Life</a></li>
+        </ol>
+      </nav>
+
+      <!-- ============================================================
+           LEAD PARAGRAPH
+           ============================================================ -->
       <p class="lead">
-        In a world of constant change and uncertainty, ancient Stoic philosophy offers timeless wisdom for navigating life's challenges with grace, resilience, and inner peace.
+        In a world of constant change and uncertainty, ancient Stoic philosophy offers timeless wisdom for navigating life's challenges with grace, resilience, and inner peace. Discovered over 2,300 years ago, these principles remain as relevant today as they were in ancient Athens and Rome.
       </p>
 
-      <section id="foundation">
-        <h2>The Foundation of Stoicism</h2>
+      <!-- ============================================================
+           INTRODUCTION
+           ============================================================ -->
+      <section id="introduction">
+        <h2>What is Stoicism?</h2>
+
         <p>
-          Stoicism teaches us to focus on what we can control and accept what we cannot. This fundamental principle, when truly understood and applied, becomes a powerful tool for reducing anxiety, improving decision-making, and finding contentment regardless of external circumstances.
+          Stoicism is an ancient Greek philosophy founded by <strong>Zeno of Citium</strong> around 300 BCE in Athens. Unlike many philosophical traditions that focus on abstract theories, Stoicism is intensely practical—it's a philosophy designed for living. The Stoics believed that philosophy should help us live better lives, not just understand the universe better.
         </p>
+
+        <p>
+          The name "Stoicism" comes from the <em>Stoa Poikile</em> (Painted Porch), a colonnade in Athens where Zeno taught his students. From these humble beginnings, Stoicism spread throughout the ancient world, eventually becoming the dominant philosophy of the Roman Empire.
+        </p>
+
+        <ContentBox type="highlight" title="The Stoic Legacy">
+          <p>
+            While most early Stoic writings were lost, we're fortunate to have the works of three prominent Roman Stoics who lived 300 years after the school's founding:
+          </p>
+          <ul class="wisdom-list">
+            <li><strong>Seneca (4 BCE - 65 CE):</strong> Statesman, dramatist, and advisor to Emperor Nero</li>
+            <li><strong>Epictetus (50 - 135 CE):</strong> Former slave who became one of the most influential philosophers</li>
+            <li><strong>Marcus Aurelius (121 - 180 CE):</strong> Roman Emperor and author of "Meditations"</li>
+          </ul>
+        </ContentBox>
       </section>
 
+      <!-- ============================================================
+           FOUNDATION
+           ============================================================ -->
+      <section id="foundation">
+        <h2>The Foundation of Stoicism</h2>
+
+        <p>
+          At its core, Stoicism teaches us a simple but profound truth: <strong>we cannot control what happens to us, but we can control how we respond</strong>. This fundamental principle, when truly understood and applied, becomes a powerful tool for reducing anxiety, improving decision-making, and finding contentment regardless of external circumstances.
+        </p>
+
+        <p>
+          The Stoics defined happiness as <em>eudaimonia</em>—a "good flow of life." According to Zeno, happiness comes from "living in accordance with nature," which means acting rationally and in harmony with reality. When we live this way, we experience what the Stoics called <em>ataraxia</em>: tranquility and freedom from emotional disturbance.
+        </p>
+
+        <ContentBox type="info" title="Living According to Nature">
+          <p>
+            For the Stoics, living according to nature means two things:
+          </p>
+          <ol class="numbered-list">
+            <li><strong>Living in harmony with our nature:</strong> We are distinguished from other animals by our ability to reason. Therefore, living according to our nature means living rationally.</li>
+            <li><strong>Living in harmony with the universe:</strong> This means accepting reality as it is—including things we cannot control—without internal struggle.</li>
+          </ol>
+        </ContentBox>
+
+        <blockquote class="central-quote">
+          "The happiness of your life depends upon the quality of your thoughts."
+          <cite>— Marcus Aurelius</cite>
+        </blockquote>
+      </section>
+
+      <!-- ============================================================
+           KEY PRINCIPLES
+           ============================================================ -->
       <section id="principles">
         <h2>Key Stoic Principles</h2>
 
-        <div class="principle-box">
-          <h3>The Dichotomy of Control</h3>
-          <p>
-            Understanding the difference between what is "up to us" and what is "not up to us" is the cornerstone of Stoic thinking. Our thoughts, judgments, desires, and actions are within our control—everything else is not.
-          </p>
-        </div>
-
-        <div class="principle-box">
-          <h3>Virtue as the Highest Good</h3>
-          <p>
-            The Stoics believed that virtue—wisdom, justice, courage, and temperance—is the only true good. External things like wealth, fame, or even health are "indifferent" when it comes to living a good life.
-          </p>
-        </div>
-
-        <div class="principle-box">
-          <h3>Present Moment Awareness</h3>
-          <p>
-            Marcus Aurelius reminds us that "the present moment is the only time over which we have dominion." By focusing on the here and now, we can respond thoughtfully rather than react emotionally.
-          </p>
-        </div>
-      </section>
-
-      <section id="applications">
-        <h2>Practical Applications</h2>
-        <p>
-          Start each day by reminding yourself of what you can and cannot control. When faced with challenges, ask: "Is this within my power to change?" If yes, take action. If no, practice acceptance and focus your energy elsewhere.
-        </p>
+        <h3>The Dichotomy of Control</h3>
 
         <p>
-          Practice negative visualization—imagining loss or setbacks—not to invite negativity, but to appreciate what you have and build resilience for when difficulties arise.
+          The dichotomy of control is perhaps the most fundamental concept in Stoicism. <strong>Epictetus</strong> opens his <em>Enchiridion</em> (Handbook) with this principle:
         </p>
 
-        <blockquote itemprop="citation">
-          "You have power over your mind—not outside events. Realize this, and you will find strength." <cite>— Marcus Aurelius</cite>
+        <blockquote>
+          "Some things are within our power, while others are not. Within our power are opinion, motivation, desire, aversion, and, in a word, whatever is of our own doing; not within our power are our body, our property, reputation, office, and, in a word, whatever is not of our own doing."
+          <cite>— Epictetus, Enchiridion 1</cite>
+        </blockquote>
+
+        <ContentGrid columns={2} gap="lg">
+          <ContentBox type="tip" title="What We Control">
+            <ul class="bullet-list">
+              <li>Our thoughts and judgments</li>
+              <li>Our desires and aversions</li>
+              <li>Our actions and choices</li>
+              <li>Our values and principles</li>
+              <li>Our effort and attitude</li>
+            </ul>
+          </ContentBox>
+
+          <ContentBox type="warning" title="What We Don't Control">
+            <ul class="bullet-list">
+              <li>Other people's thoughts and actions</li>
+              <li>Our reputation and what others think</li>
+              <li>External events and circumstances</li>
+              <li>The outcomes of our actions</li>
+              <li>The past and the future</li>
+            </ul>
+          </ContentBox>
+        </ContentGrid>
+
+        <p>
+          Understanding this distinction is liberating. When we focus our energy on what we can control and accept what we cannot, we free ourselves from unnecessary suffering. As <strong>Marcus Aurelius</strong> wrote in his <em>Meditations</em>: "You have power over your mind—not outside events. Realize this, and you will find strength."
+        </p>
+
+        <h3>Our Thoughts Create Our Reality</h3>
+
+        <p>
+          The Stoics understood something that modern psychology has only recently rediscovered: <strong>it's not events themselves that disturb us, but our judgments about them</strong>. This insight forms the basis of modern Cognitive Behavioral Therapy (CBT).
+        </p>
+
+        <blockquote>
+          "People are not disturbed by things, but by the views they take of them."
+          <cite>— Epictetus, Enchiridion 5</cite>
         </blockquote>
 
         <p>
-          Stoicism isn't about suppressing emotions or becoming indifferent to life. It's about developing the wisdom to respond rather than react, finding peace in any circumstance, and building unshakeable inner strength.
+          Consider this example: Two people experience the same traffic jam. One becomes angry and frustrated, ruining their entire morning. The other accepts the situation, listens to a podcast, and arrives at work in a good mood. The external event (the traffic) was the same—what differed was their judgment about it.
+        </p>
+
+        <ContentBox type="highlight" title="The Stoic Model of Emotions">
+          <p>
+            The Stoics taught a four-step process for how emotions arise:
+          </p>
+          <ol class="numbered-list">
+            <li><strong>Impression:</strong> Something happens (e.g., someone insults you)</li>
+            <li><strong>Judgment:</strong> You interpret the event ("This is terrible! I've been wronged!")</li>
+            <li><strong>Emotion:</strong> Your judgment creates an emotion (anger, hurt)</li>
+            <li><strong>Action:</strong> Your emotion drives your behavior (retaliation, sulking)</li>
+          </ol>
+          <p>
+            The key insight: We can pause between steps 1 and 2 to examine our judgments before they create negative emotions.
+          </p>
+        </ContentBox>
+
+        <h3>Acceptance and Amor Fati</h3>
+
+        <p>
+          Beyond simply accepting what we cannot control, the Stoics encouraged us to embrace it. They called this <em>amor fati</em>—love of fate. This doesn't mean we become passive or stop trying to improve things. Rather, it means we accept what has already happened and what is happening now, while still taking appropriate action where we can.
+        </p>
+
+        <blockquote>
+          "Don't seek for everything to happen as you wish it would, but rather wish that everything happens as it actually will—then your life will flow well."
+          <cite>— Epictetus, Enchiridion 8</cite>
+        </blockquote>
+
+        <p>
+          <strong>Marcus Aurelius</strong> practiced this daily, reminding himself: "When you wake up in the morning, tell yourself: The people I deal with today will be meddling, ungrateful, arrogant, dishonest, jealous, and surly. They are like this because they can't tell good from evil."
+        </p>
+
+        <p>
+          This wasn't pessimism—it was preparation. By expecting challenges, Marcus wasn't disappointed by them. More importantly, he didn't blame others for being who they were.
         </p>
       </section>
 
-      <div class="practice-box">
-        <h3>Daily Stoic Practice</h3>
-        <ol>
-          <li>Morning meditation on what you can control</li>
-          <li>Evening reflection on your actions and judgments</li>
-          <li>Practice gratitude for what you have</li>
-          <li>Visualize challenges before they occur</li>
-          <li>Focus on virtue in all decisions</li>
-        </ol>
-      </div>
-    </div>
+      <!-- ============================================================
+           NEWSLETTER INSERT
+           ============================================================ -->
+      <Newsletter />
 
-    </main>
+      <!-- ============================================================
+           FOUR VIRTUES
+           ============================================================ -->
+      <section id="four-virtues">
+        <h2>The Four Cardinal Virtues</h2>
 
-    <aside class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
-      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
-      </svg>
-      <div class="author-details">
-        <h4 itemprop="name">Success Odyssey Hub</h4>
-        <meta itemprop="url" content={Astro.site?.toString()} />
-        <p>We explore ancient wisdom and modern applications for building resilience and living a meaningful life.</p>
-      </div>
-    </aside>
+        <p>
+          The Stoics believed that to live well, we need to develop four essential qualities or "virtues." These aren't abstract ideals but practical skills that can be cultivated through daily practice. Together, they form the foundation of Stoic ethics and provide a framework for making decisions and responding to life's challenges.
+        </p>
 
-    <nav class="related-articles" aria-label="Related articles">
-      <h3>Related Articles</h3>
-      <div class="related-grid">
-        <a href="/blog/success-philosophy" rel="noopener">
-          <span>The Philosophy of Success</span>
-        </a>
-        <a href="/blog/mental-models" rel="noopener">
-          <span>Mental Models for Better Decision Making</span>
-        </a>
-        <a href="/blog/vision-to-reality" rel="noopener">
-          <span>From Vision to Reality: The Art of Execution</span>
-        </a>
-        <a href="/blog/overcoming-resistance" rel="noopener">
-          <span>Overcoming Resistance: Building Resilience</span>
-        </a>
-      </div>
-    </nav>
+        <div class="principle-box">
+          <h3>1. Wisdom (Sophia)</h3>
+          <p>
+            Wisdom is the ability to navigate complex situations, make sound judgments, and understand what truly matters. It's knowing what to do, what not to do, and when each is appropriate. The Stoics saw wisdom as the master virtue—the foundation upon which the others rest.
+          </p>
+          <p>
+            <strong>In practice:</strong> Wisdom means pausing before reacting, examining your impressions, distinguishing what you control from what you don't, and making decisions based on reason rather than emotion. It's asking yourself: "Is this true? Is this helpful? Is this necessary?"
+          </p>
+          <blockquote>
+            "The wise person is neither injured nor injures others; does not give way to anger; is free of all emotional disturbance."
+            <cite>— Seneca</cite>
+          </blockquote>
+        </div>
 
-    <nav aria-label="Breadcrumb">
-      <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="/">
-            <span itemprop="name">Home</span>
-          </a>
-          <meta itemprop="position" content="1" />
-          <span aria-hidden="true"> / </span>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="/blog">
-            <span itemprop="name">Blog</span>
-          </a>
-          <meta itemprop="position" content="2" />
-          <span aria-hidden="true"> / </span>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name">Stoic Wisdom for Modern Life</span>
-          <meta itemprop="position" content="3" />
-        </li>
+        <div class="principle-box">
+          <h3>2. Justice (Dikaiosyne)</h3>
+          <p>
+            Justice is about treating others fairly, giving them their due, and acting with integrity. The Stoics emphasized that we are social beings—we exist in relationship with others and have obligations to our fellow humans. Justice extends beyond avoiding harm to actively promoting the common good.
+          </p>
+          <p>
+            <strong>In practice:</strong> Justice means being honest in your dealings, fulfilling your commitments, treating others with respect regardless of their status, and contributing to your community. It's recognizing that what harms the whole ultimately harms you.
+          </p>
+          <blockquote>
+            "What is not good for the beehive cannot be good for the bee."
+            <cite>— Marcus Aurelius, Meditations 6.54</cite>
+          </blockquote>
+        </div>
+
+        <div class="principle-box">
+          <h3>3. Courage (Andreia)</h3>
+          <p>
+            Courage isn't just physical bravery—it's the strength to face our fears, endure hardship, and do what's right even when it's difficult. It's standing up for our principles, accepting harsh truths, and persevering through challenges.
+          </p>
+          <p>
+            <strong>In practice:</strong> Courage means speaking up when you see wrongdoing, having difficult conversations, facing your fears of failure or rejection, and accepting mortality. It's doing what you know is right even when you're afraid.
+          </p>
+          <blockquote>
+            "You have power over your mind—not outside events. Realize this, and you will find strength."
+            <cite>— Marcus Aurelius, Meditations 8.32</cite>
+          </blockquote>
+        </div>
+
+        <div class="principle-box">
+          <h3>4. Moderation (Sophrosyne)</h3>
+          <p>
+            Moderation, also called temperance or self-discipline, is about exercising restraint and avoiding excess. It's the ability to resist temptation, delay gratification, and maintain balance in all things. The Stoics weren't ascetics—they enjoyed life's pleasures—but they never let pleasure become their master.
+          </p>
+          <p>
+            <strong>In practice:</strong> Moderation means knowing when enough is enough, resisting the urge to overindulge, maintaining discipline in your habits, and not letting desires control your behavior. It's enjoying pleasures without depending on them for happiness.
+          </p>
+          <blockquote>
+            "It is the power of the mind to be unconquerable."
+            <cite>— Seneca, On the Firmness of the Wise Person</cite>
+          </blockquote>
+        </div>
+
+        <ContentBox type="highlight" title="The Interconnected Virtues">
+          <p>
+            These four virtues don't exist in isolation—they support and reinforce each other. You need <strong>wisdom</strong> to know what's just, <strong>courage</strong> to act justly even when it's hard, and <strong>moderation</strong> to resist the temptation of personal gain over fairness.
+          </p>
+          <p>
+            As the Stoics said, "The virtues are all connected; if you have one, you have them all."
+          </p>
+        </ContentBox>
+      </section>
+
+      <!-- ============================================================
+           PRACTICAL APPLICATIONS
+           ============================================================ -->
+      <section id="applications">
+        <h2>Practical Applications for Modern Life</h2>
+
+        <p>
+          Stoicism isn't just a theoretical philosophy—it's meant to be practiced. Here's how you can apply Stoic principles to common modern challenges:
+        </p>
+
+        <h3>Dealing with Stress and Anxiety</h3>
+
+        <p>
+          Much of our stress comes from worrying about things outside our control. The Stoic approach is to identify what you can control (your preparation, your attitude, your effort) and focus your energy there, while accepting what you cannot control (the outcome, others' opinions, unexpected obstacles).
+        </p>
+
+        <ContentBox type="tip" title="The Stoic Stress Test">
+          <p>
+            When you feel stressed or anxious, ask yourself three questions:
+          </p>
+          <ol class="action-list">
+            <li><strong>Is this within my control?</strong> If not, practice acceptance.</li>
+            <li><strong>Is my judgment accurate?</strong> Am I catastrophizing or assuming the worst?</li>
+            <li><strong>What can I do right now?</strong> Take the next small step you can control.</li>
+          </ol>
+        </ContentBox>
+
+        <h3>Handling Criticism and Rejection</h3>
+
+        <p>
+          When someone criticizes you, the Stoics would ask: Is the criticism true? If yes, thank them for the feedback and work on improving. If no, why let false opinions disturb you? Either way, you win—you either learn something valuable or practice indifference to external judgments.
+        </p>
+
+        <blockquote>
+          "If someone can prove me wrong and show me my mistake in any thought or action, I shall gladly change. I seek the truth, which never harmed anyone: the harm is to persist in one's own self-deception and ignorance."
+          <cite>— Marcus Aurelius, Meditations 6.21</cite>
+        </blockquote>
+
+        <h3>Managing Anger and Conflict</h3>
+
+        <p>
+          <strong>Seneca</strong> wrote extensively about anger, calling it "temporary madness." The Stoic approach is to pause before reacting. Remember that others act according to their own understanding of good and bad—they're not trying to harm you; they're trying to help themselves.
+        </p>
+
+        <ContentBox type="warning" title="Seneca's Anger Management">
+          <p>
+            When you feel anger rising, Seneca recommended:
+          </p>
+          <ul class="bullet-list">
+            <li><strong>Delay:</strong> Wait 24 hours before responding to the provocation</li>
+            <li><strong>Reframe:</strong> Consider alternative explanations for their behavior</li>
+            <li><strong>Reflect:</strong> Remember times when you made similar mistakes</li>
+            <li><strong>Visualize:</strong> Imagine how a wise person would respond</li>
+          </ul>
+        </ContentBox>
+
+        <h3>Coping with Loss and Grief</h3>
+
+        <p>
+          The Stoics practiced <em>premeditatio malorum</em>—contemplating potential misfortunes—not to be pessimistic, but to prepare emotionally and appreciate what we have. When Epictetus kissed his children goodnight, he reminded himself: "Tomorrow you could be dead." This made every moment precious.
+        </p>
+
+        <p>
+          When loss occurs, the Stoics acknowledged the pain but didn't add unnecessary suffering through denial or resistance. <strong>Marcus Aurelius</strong> lost several children and wrote: "Loss is nothing but change, and change is nature's delight."
+        </p>
+
+        <h3>Finding Meaning and Purpose</h3>
+
+        <p>
+          The Stoics believed we each have a role to play in the larger whole. Finding meaning comes from fulfilling our nature as rational, social beings—by developing our character, contributing to society, and living according to our values.
+        </p>
+
+        <blockquote class="final-quote">
+          "Waste no more time arguing what a good person should be. Be one."
+          <cite>— Marcus Aurelius, Meditations 10.16</cite>
+        </blockquote>
+      </section>
+
+      <!-- ============================================================
+           DAILY PRACTICE
+           ============================================================ -->
+      <section id="daily-practice">
+        <h2>Daily Stoic Practices</h2>
+
+        <p>
+          Knowledge without practice is useless. The ancient Stoics developed specific exercises to train their minds and build Stoic "muscles." Here are some practices you can incorporate into your daily routine:
+        </p>
+
+        <StepsList title="Morning Meditation">
+          <li>
+            <h4>Step 1: Prepare Your Mind</h4>
+            <p>
+              Begin each day by mentally preparing for challenges. Marcus Aurelius practiced this daily: "When you wake up in the morning, tell yourself: The people I deal with today will be meddling, ungrateful, arrogant, dishonest, jealous, and surly."
+            </p>
+            <p>
+              This isn't pessimism—it's preparation. By expecting difficulties, you won't be caught off guard or disappointed.
+            </p>
+          </li>
+
+          <li>
+            <h4>Step 2: Set Your Intentions</h4>
+            <p>
+              Remind yourself of what's within your control today (your efforts, your attitude, your choices) and what isn't (outcomes, others' behavior, external events). Commit to focusing only on what you control.
+            </p>
+          </li>
+
+          <li>
+            <h4>Step 3: Review Your Values</h4>
+            <p>
+              Briefly reflect on the four virtues and how you'll practice them today. How will you demonstrate wisdom, justice, courage, and moderation?
+            </p>
+          </li>
+        </StepsList>
+
+        <StepsList title="Evening Reflection">
+          <li>
+            <h4>Step 1: Review Your Day</h4>
+            <p>
+              Seneca recommended a daily self-examination: "When the light has been removed and my wife has fallen silent, aware of this habit that's now mine, I examine my entire day and go back over what I've done and said, hiding nothing from myself, passing nothing by."
+            </p>
+          </li>
+
+          <li>
+            <h4>Step 2: Identify What Went Well</h4>
+            <p>
+              Acknowledge moments when you acted with wisdom, justice, courage, or moderation. Celebrate your progress, no matter how small.
+            </p>
+          </li>
+
+          <li>
+            <h4>Step 3: Learn from Mistakes</h4>
+            <p>
+              Identify moments when you were carried away by emotion, when you worried about things outside your control, or when you failed to act according to your values. Be honest but compassionate with yourself.
+            </p>
+            <p>
+              Ask: What would I do differently next time? How can I better prepare for similar situations?
+            </p>
+          </li>
+
+          <li>
+            <h4>Step 4: Express Gratitude</h4>
+            <p>
+              End by reflecting on what you're grateful for. The Stoics regularly practiced gratitude as an antidote to always wanting more.
+            </p>
+          </li>
+        </StepsList>
+
+        <div class="practice-box">
+          <h3>Additional Daily Practices</h3>
+          <ol>
+            <li><strong>View from Above:</strong> Zoom out mentally to see your problems in cosmic perspective</li>
+            <li><strong>Voluntary Discomfort:</strong> Occasionally practice cold showers, fasting, or simple living to build resilience</li>
+            <li><strong>Memento Mori:</strong> Regularly contemplate your mortality to appreciate each day</li>
+            <li><strong>Negative Visualization:</strong> Imagine losing what you value to increase gratitude</li>
+            <li><strong>Journaling:</strong> Write about your thoughts, challenges, and progress in Stoic practice</li>
+          </ol>
+        </div>
+
+        <ContentBox type="highlight" title="The Two Handles">
+          <p>
+            Epictetus taught that every situation has two "handles"—one that makes it unbearable and one that makes it manageable. When faced with a challenge, consciously choose the handle that serves you.
+          </p>
+          <p>
+            Example: Your coworker criticizes you unfairly. One handle: "They're attacking me! This is outrageous!" (leads to anger). Another handle: "They must be having a difficult day. I'll respond with kindness." (leads to compassion).
+          </p>
+        </ContentBox>
+      </section>
+
+      <!-- ============================================================
+           MODERN RELEVANCE
+           ============================================================ -->
+      <section id="modern-relevance">
+        <h2>Stoicism in Modern Life</h2>
+
+        <p>
+          Far from being an ancient relic, Stoicism has experienced a remarkable revival in the 21st century. From Silicon Valley CEOs to professional athletes, military personnel to therapists, people are rediscovering the practical wisdom of this ancient philosophy.
+        </p>
+
+        <h3>Stoicism and Modern Psychology</h3>
+
+        <p>
+          The Stoic insight that our thoughts create our emotions forms the foundation of <strong>Cognitive Behavioral Therapy (CBT)</strong>, one of the most effective forms of modern psychotherapy. CBT's creator, Aaron Beck, acknowledged the influence of Stoic philosophy on his work.
+        </p>
+
+        <p>
+          Similarly, <strong>Rational Emotive Behavior Therapy (REBT)</strong>, developed by Albert Ellis, was explicitly inspired by Epictetus's teaching that "people are disturbed not by things, but by the views they take of them."
+        </p>
+
+        <h3>Stoicism in Professional Life</h3>
+
+        <p>
+          Modern business leaders have found Stoic principles invaluable for decision-making, leadership, and resilience:
+        </p>
+
+        <ContentGrid columns={2} gap="md">
+          <ContentBox type="tip" title="For Entrepreneurs">
+            <p>
+              Focus on what you control (product quality, customer service, your effort) rather than what you don't (market conditions, competitors' actions, media coverage).
+            </p>
+          </ContentBox>
+
+          <ContentBox type="tip" title="For Leaders">
+            <p>
+              Practice the four virtues: wisdom in strategy, justice in treatment of employees, courage in difficult decisions, moderation in success.
+            </p>
+          </ContentBox>
+
+          <ContentBox type="tip" title="For Athletes">
+            <p>
+              Control your preparation and effort, not the outcome or your opponents' performance. This reduces performance anxiety and increases focus.
+            </p>
+          </ContentBox>
+
+          <ContentBox type="tip" title="For Students">
+            <p>
+              Focus on learning and effort rather than grades or comparisons with others. This creates intrinsic motivation and reduces test anxiety.
+            </p>
+          </ContentBox>
+        </ContentGrid>
+
+        <h3>Common Misconceptions About Stoicism</h3>
+
+        <p>
+          Before we conclude, let's address some common misunderstandings about Stoicism:
+        </p>
+
+        <ContentBox type="warning" title="What Stoicism Is NOT">
+          <ul class="bullet-list">
+            <li><strong>Emotionless:</strong> Stoics feel emotions—they just don't let destructive emotions control them</li>
+            <li><strong>Passive:</strong> Stoics take action where they can; they accept only what they truly cannot change</li>
+            <li><strong>Cold or Uncaring:</strong> Stoics value relationships and social contribution highly</li>
+            <li><strong>Pessimistic:</strong> Stoics are realists who prepare for difficulties while hoping for the best</li>
+            <li><strong>Repressive:</strong> Stoics acknowledge feelings; they simply examine them rationally</li>
+          </ul>
+        </ContentBox>
+
+        <blockquote class="central-quote">
+          "The Stoic is not a stock or a stone, but a human being who has learned to govern themselves and who seeks to help others do the same."
+        </blockquote>
+      </section>
+
+      <!-- ============================================================
+           CONCLUSION
+           ============================================================ -->
+      <section id="conclusion">
+        <h2>Your Stoic Journey: Getting Started</h2>
+
+        <p>
+          You don't need to become a perfect Stoic sage (the Stoics themselves admitted this was probably impossible). The goal is progress, not perfection. Every day you practice these principles, you become more resilient, more tranquil, and more free.
+        </p>
+
+        <ContentBox type="highlight">
+          <h4>Key Takeaways: Your StoicFoundation</h4>
+<ul class="wisdom-list">
+<li><strong>Focus on what you control:</strong> Your thoughts, judgments, actions, and reactions</li>
+<li><strong>Accept what you don't control:</strong> Other people, external events, outcomes</li>
+<li><strong>Develop the four virtues:</strong> Wisdom, justice, courage, and moderation</li>
+<li><strong>Practice daily:</strong> Morning preparation, evening reflection, mindful awareness</li>
+<li><strong>Remember it's your thoughts, not events:</strong> That create your emotional experience</li>
+<li><strong>Start small:</strong> Apply these principles to minor frustrations before major challenges</li>
+</ul>
+</ContentBox>
+    <h3>Recommended Reading</h3>
+
+    <p>
+      If you want to dive deeper into Stoicism, start with these accessible ancient texts:
+    </p>
+
+    <ol class="numbered-list">
+      <li><strong>"Meditations" by Marcus Aurelius:</strong> Personal reflections of a Roman Emperor practicing Stoicism</li>
+      <li><strong>"Letters from a Stoic" by Seneca:</strong> 124 letters offering practical Stoic advice</li>
+      <li><strong>"Enchiridion" by Epictetus:</strong> A short handbook of essential Stoic teachings</li>
+      <li><strong>"How to Be a Stoic When You Don't Know How" by Chuck Chakrapani:</strong> A modern 10-week training program in Stoic philosophy</li>
+    </ol>
+
+    <ContentBox type="tip" title="Your First Week as a Stoic">
+      <ol class="action-list">
+        <li><strong>Day 1-2:</strong> Notice when you're worrying about things outside your control</li>
+        <li><strong>Day 3-4:</strong> Practice the morning meditation—prepare for the day ahead</li>
+        <li><strong>Day 5-6:</strong> When you feel upset, pause and examine your judgment</li>
+        <li><strong>Day 7:</strong> Do an evening reflection—review your week honestly but kindly</li>
       </ol>
-    </nav>
+    </ContentBox>
 
+    <blockquote class="final-quote">
+      "Waste no more time arguing about what a good person should be. Be one."
+      <cite>— Marcus Aurelius, Meditations 10.16</cite>
+    </blockquote>
+
+    <p class="closing-statement">
+      The ancient Stoics showed us that a good life—a life of tranquility, resilience, and meaning—is always within reach, regardless of our circumstances. It begins with a simple choice: to focus on what we control and let go of what we don't. Start today. Your Stoic journey awaits.
+    </p>
+  </section>
+
+</div>
+
+<!-- ===============================================================
+     AUTHOR BIO
+     =============================================================== -->
+<aside class="author-bio" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+  <div class="author-avatar">
+    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+    </svg>
+  </div>
+  <div class="author-info">
+    <h3 itemprop="name">Success Odyssey Hub</h3>
+    <p>
+      We explore ancient wisdom and modern applications for building resilience and living a meaningful life. Our mission is to make timeless philosophical principles accessible and practical for today's challenges.
+    </p>
+  </div>
+</aside>
+
+<!-- ===============================================================
+     RELATED ARTICLES
+     =============================================================== -->
+<nav class="related-articles" aria-label="Related articles">
+  <h3>Continue Your Philosophical Journey</h3>
+  <div class="related-grid">
+    <a href="/blog/success-philosophy" class="related-card">
+      <h4>The Philosophy of Success</h4>
+      <p>Discover the ancient principles that lead to lasting achievement and fulfillment</p>
+    </a>
+    <a href="/blog/mental-models" class="related-card">
+      <h4>Mental Models for Better Thinking</h4>
+      <p>Learn powerful frameworks that improve your decision-making and problem-solving</p>
+    </a>
+    <a href="/blog/vision-to-reality" class="related-card">
+      <h4>From Vision to Reality</h4>
+      <p>Transform your aspirations into tangible results through deliberate action</p>
+    </a>
+    <a href="/blog/overcoming-resistance" class="related-card">
+      <h4>Overcoming Resistance</h4>
+      <p>Build resilience and overcome the obstacles that stand between you and your goals</p>
+    </a>
+  </div>
+</nav>
+
+<!-- ===============================================================
+     EXTERNAL RESOURCES
+     =============================================================== -->
+<aside class="external-resources">
+  <h3>Further Reading & Resources</h3>
+  <ul>
+    <li>
+      <a href="https://donaldrobertson.name/" target="_blank" rel="noopener noreferrer">
+        Donald Robertson - Stoicism & Cognitive Behavioral Therapy
+      </a>
+    </li>
+    <li>
+      <a href="https://modernstoicism.com/" target="_blank" rel="noopener noreferrer">
+        Modern Stoicism - Annual Stoic Week & Resources
+      </a>
+    </li>
+    <li>
+      <a href="https://dailystoic.com/" target="_blank" rel="noopener noreferrer">
+        Daily Stoic - Daily Stoic Wisdom and Practices
+      </a>
+    </li>
+    <li>
+      <a href="https://www.thestoicgym.com/" target="_blank" rel="noopener noreferrer">
+        The Stoic Gym - Training Programs and Publications
+      </a>
+    </li>
+  </ul>
+</aside>
+
+<!-- ===============================================================
+     BREADCRUMB
+     =============================================================== -->
+<nav aria-label="Breadcrumb">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1" />
+      <span aria-hidden="true"> / </span>
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/blog">
+        <span itemprop="name">Blog</span>
+      </a>
+      <meta itemprop="position" content="2" />
+      <span aria-hidden="true"> / </span>
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name">Stoic Wisdom for Modern Life</span>
+      <meta itemprop="position" content="3" />
+    </li>
+  </ol>
+</nav>
   </article>
+</Layout>
+<style lang="scss">
+/* Bu stiller blog-template.astro'dan inherit edilir */
+/* Sadece sayfa-spesifik stiller burada */
 
-  <!-- Theme Toggle Script -->
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
+.blog-article {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
 
-    const getInitialTheme = () => {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
+.article-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
 
-    const setTheme = (theme) => {
-      html.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      const sunIcon = themeToggle?.querySelector('.sun-icon');
-      const moonIcon = themeToggle?.querySelector('.moon-icon');
-      if (theme === 'dark') {
-        sunIcon?.classList.add('hidden');
-        moonIcon?.classList.remove('hidden');
-      } else {
-        sunIcon?.classList.remove('hidden');
-        moonIcon?.classList.add('hidden');
-      }
-    };
+  h1 {
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-    setTheme(getInitialTheme());
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
 
-    themeToggle?.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        setTheme(e.matches ? 'dark' : 'light');
-      }
-    });
-  </script>
-
-  <style>
-    /* ===== BASE & VARIABLES ===== */
-    :root {
-      --color-bg-light: #ffffff;
-      --color-bg-dark: #1a1f2e;
-      --color-text-light: #1f2937;
-      --color-text-dark: #e5e7eb;
-      --color-primary: #1e40af;
-      --color-primary-dark: #2563eb;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    html[data-theme="dark"] {
-      color-scheme: dark;
-    }
-
-    /* ===== SKIP TO CONTENT ===== */
-    .skip-to-content {
-      position: absolute;
-      top: -100px;
-      left: 0;
-      background: #1e40af;
-      color: white;
-      padding: 1rem 2rem;
-      font-weight: 700;
-      text-decoration: none;
-      z-index: 9999;
-      border-radius: 0 0 12px 0;
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-      transition: top 0.3s ease;
-    }
-
-    .skip-to-content:focus {
-      top: 0;
-      outline: 4px solid #fbbf24;
-      outline-offset: 2px;
-    }
-
-    /* ===== THEME TOGGLE ===== */
-    .theme-toggle {
-      position: fixed;
-      top: 2rem;
-      right: 2rem;
-      z-index: 1000;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-      transition: var(--transition);
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
-    }
-
-    .theme-toggle:focus {
-      outline: 4px solid #60a5fa;
-      outline-offset: 4px;
-    }
-
-    .theme-toggle svg {
-      width: 24px;
-      height: 24px;
-      color: white;
-    }
-
-    .theme-toggle .moon-icon,
-    .theme-toggle .hidden {
-      display: none;
-    }
-
-    html[data-theme="dark"] .theme-toggle {
-      background: #2563eb;
-    }
-
-    html[data-theme="dark"] .theme-toggle .sun-icon {
-      display: none;
-    }
-
-    html[data-theme="dark"] .theme-toggle .moon-icon {
-      display: block;
-    }
-
-    /* ===== BLOG PAGE ===== */
-    .blog-page {
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-      line-height: 1.7;
-      min-height: 100vh;
-      background-color: var(--color-bg-light);
-      color: var(--color-text-light);
-      transition: var(--transition);
-    }
-
-    /* ===== HERO IMAGE ===== */
-    .hero-image {
-      width: 100%;
-      max-width: 1200px;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 16px;
-      display: block;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      margin: 0 auto;
-      transition: var(--transition);
-    }
-
-    figure {
-      margin: 3rem 0;
-      padding: 0;
-      max-width: 1200px;
-      width: 100%;
-    }
-
-    /* ===== ARTICLE HEADER ===== */
-    .article-header {
-      text-align: center;
-      margin-bottom: 3rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .article-header h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.15;
-      margin: 1.5rem 0 2rem;
-      background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .article-meta {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .article-meta time {
+    time {
       font-weight: 600;
-      color: #374151;
     }
 
     .reading-time {
-      color: #1e40af;
+      color: var(--color-primary);
       font-weight: 600;
     }
+  }
 
-    /* ===== TAGS ===== */
-    .tags {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .article-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
 
     .tag {
-      background: linear-gradient(135deg, #1e40af, #1e3a8a);
+      background: var(--gradient-primary);
       color: white;
-      padding: 0.625rem 1.25rem;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      border-radius: 24px;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: 20px;
       font-size: 0.875rem;
-      font-weight: 700;
-      transition: var(--transition);
-      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
-    }
-
-    .tag:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
-    }
-
-    /* ===== CONTENT ===== */
-    .content {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.125rem;
-      line-height: 1.8;
-    }
-
-    .lead {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #0c2d6b;
-      text-align: center;
-      margin: 3rem 0;
-      padding: 2rem;
-      line-height: 1.6;
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border-radius: 16px;
-      border: 2px solid #93c5fd;
-    }
-
-    .content section {
-      scroll-margin-top: 100px;
-      margin: 3rem 0;
-    }
-
-    .content h2 {
-      color: #1e40af;
-      margin-top: 4rem;
-      margin-bottom: 1.75rem;
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-    }
-
-    .content h3 {
-      color: #1f2937;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .content p {
-      font-size: 1.125rem;
-      line-height: 1.8;
-      margin-bottom: 1.75rem;
-      color: #1f2937;
-      font-weight: 450;
-    }
-
-    .content strong {
-      color: #0a0a0a;
-      font-weight: 700;
-    }
-
-    .content a {
-      color: #1e40af;
-      text-decoration: underline;
       font-weight: 600;
       transition: var(--transition);
-      text-underline-offset: 3px;
-      text-decoration-thickness: 2px;
-    }
 
-    .content a:hover {
-      color: #1e3a8a;
-      text-decoration-thickness: 3px;
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
     }
+  }
+}
 
-    .content a:focus {
-      outline: 3px solid #93c5fd;
-      outline-offset: 4px;
-      border-radius: 4px;
-    }
+.hero-figure {
+  margin: 0 0 var(--spacing-3xl);
 
-    /* ===== BLOCKQUOTE ===== */
-    blockquote {
-      border-left: 5px solid #7c3aed;
-      padding: 1.75rem 2rem;
-      margin: 3rem 0;
-      background: linear-gradient(135deg, #faf5ff, #f3e8ff);
-      border-radius: 12px;
-      font-style: italic;
-      font-size: 1.25rem;
-      color: #5b21b6;
-      font-weight: 500;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
-    }
+  .hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+  }
+}
 
-    blockquote cite {
+.article-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+
+  section {
+    margin-bottom: var(--spacing-3xl);
+    scroll-margin-top: 100px;
+  }
+
+  h2 {
+    margin: var(--spacing-3xl) 0 var(--spacing-xl);
+    color: var(--color-primary);
+    font-weight: 800;
+    font-size: 2rem;
+  }
+
+  h3 {
+    margin: var(--spacing-2xl) 0 var(--spacing-lg);
+    color: var(--color-text-primary);
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    margin: var(--spacing-xl) 0 var(--spacing-md);
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  .lead {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+    margin: var(--spacing-2xl) 0;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  blockquote {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius);
+    font-style: italic;
+
+    cite {
       display: block;
-      margin-top: 0.75rem;
-      font-size: 1rem;
-      color: #7c3aed;
+      margin-top: var(--spacing-sm);
+      font-size: 0.95rem;
+      color: var(--color-primary);
       font-weight: 600;
     }
 
-    /* ===== PRINCIPLE BOX ===== */
-    .principle-box {
-      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-      border: 2px solid #cbd5e1;
-      border-left: 6px solid #1e40af;
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      transition: var(--transition);
-    }
-
-    .principle-box:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      border-left-color: #7c3aed;
-    }
-
-    .principle-box h3 {
-      color: #1e40af;
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
-
-    .principle-box p {
-      margin: 0;
-    }
-
-    /* ===== PRACTICE BOX ===== */
-    .practice-box {
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-      border: 3px solid #d97706;
-      border-radius: 16px;
-      padding: 2.5rem;
-      margin: 3rem 0;
-      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.15);
-    }
-
-    .practice-box h3 {
-      color: #92400e;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-      font-weight: 800;
+    &.central-quote {
+      text-align: center;
       font-size: 1.5rem;
+      font-weight: 600;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: var(--spacing-2xl);
+      border-radius: var(--radius-lg);
+      font-style: normal;
+
+      cite {
+        color: rgba(255, 255, 255, 0.9);
+        margin-top: var(--spacing-md);
+      }
     }
 
-    .practice-box ol {
-      margin: 0;
-      padding-left: 1.5rem;
-      line-height: 1.9;
+    &.final-quote {
+      font-size: 1.25rem;
+      background: var(--color-bg-tertiary);
+      border-left-color: var(--color-primary);
+    }
+  }
+
+  .numbered-list,
+  .bullet-list {
+    margin: var(--spacing-lg) 0;
+    padding-left: var(--spacing-xl);
+
+    li {
+      margin-bottom: var(--spacing-md);
+      line-height: 1.7;
+    }
+  }
+
+  .wisdom-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: var(--spacing-md) 0;
+      border-bottom: 1px solid var(--color-border);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      strong {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .action-list {
+    padding-left: var(--spacing-xl);
+
+    li {
+      margin-bottom: var(--spacing-md);
+      line-height: 1.7;
+
+      strong {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .closing-statement {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    margin: var(--spacing-2xl) 0;
+    font-weight: 500;
+    border: 2px solid var(--color-primary);
+  }
+}
+
+.table-of-contents {
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-2xl) 0;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+  }
+
+  ol {
+    padding-left: var(--spacing-lg);
+    line-height: 1.8;
+
+    li {
+      margin-bottom: var(--spacing-sm);
     }
 
-    .practice-box li {
+    a {
+      color: var(--color-text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: var(--transition);
+      font-weight: 500;
+
+      &:hover {
+        color: var(--color-primary);
+        border-bottom-color: var(--color-primary);
+      }
+    }
+  }
+}
+
+.principle-box {
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-tertiary));
+  border: 2px solid var(--color-border);
+  border-left: 6px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateX(4px);
+  }
+
+  h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-weight: 800;
+  }
+
+  p {
+    margin-bottom: var(--spacing-md);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  blockquote {
+    margin-top: var(--spacing-lg);
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.practice-box {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 3px solid #d97706;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  margin: var(--spacing-2xl) 0;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.15);
+
+  h3 {
+    color: #92400e;
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 800;
+    font-size: 1.5rem;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: var(--spacing-xl);
+    line-height: 1.9;
+
+    li {
       color: #78350f;
-      margin-bottom: 0.75rem;
+      margin-bottom: var(--spacing-md);
       font-weight: 500;
       font-size: 1.125rem;
-    }
 
-    /* ===== AUTHOR INFO ===== */
-    .author-info {
-      display: flex;
-      gap: 2rem;
-      padding: 3rem;
-      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-      border-radius: 16px;
-      margin-top: 5rem;
-      border: 2px solid #cbd5e1;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      strong {
+        color: #92400e;
+      }
     }
+  }
+}
 
-    .author-info svg {
-      flex-shrink: 0;
+.author-bio {
+  display: flex;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-3xl) 0;
+  border: 2px solid var(--color-border);
+
+  .author-avatar {
+    flex-shrink: 0;
+
+    svg {
+      width: 60px;
+      height: 60px;
+      padding: var(--spacing-md);
+      background: var(--gradient-primary);
       border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 16px;
+      color: white;
     }
+  }
 
-    .author-details {
-      flex: 1;
-    }
-
-    .author-details h4 {
-      margin-bottom: 1rem;
-      color: #0a0a0a;
-      font-weight: 800;
-      font-size: 1.375rem;
+  .author-info {
+    h3 {
       margin-top: 0;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-text-primary);
     }
 
-    .author-details p {
-      color: #374151;
-      font-size: 1rem;
+    p {
       margin: 0;
-      line-height: 1.7;
-      font-weight: 500;
+      color: var(--color-text-secondary);
     }
+  }
+}
 
-    /* ===== RELATED ARTICLES ===== */
-    .related-articles {
-      margin-top: 5rem;
-      padding-top: 3rem;
-      border-top: 3px solid #cbd5e1;
-    }
+.related-articles {
+  margin: var(--spacing-3xl) 0;
+  padding-top: var(--spacing-2xl);
+  border-top: 3px solid var(--color-border);
 
-    .related-articles h3 {
-      margin-bottom: 2rem;
-      color: #0a0a0a;
-      font-weight: 800;
-      font-size: 1.75rem;
-    }
+  h3 {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    color: var(--color-text-primary);
+    font-weight: 800;
+  }
 
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
 
-    .related-grid a {
-      display: flex;
-      align-items: center;
-      padding: 1.5rem;
-      min-height: 80px;
-      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-      border: 2px solid #cbd5e1;
-      border-radius: 16px;
-      text-decoration: none;
-      color: #1e40af;
-      transition: var(--transition);
-      font-weight: 600;
-      font-size: 1.05rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
+  .related-card {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: var(--transition);
+    display: block;
 
-    .related-grid a:hover {
-      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+    &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      border-color: #1e40af;
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-primary);
     }
 
-    .related-grid a:focus {
-      outline: 4px solid #93c5fd;
-      outline-offset: 4px;
+    h4 {
+      color: var(--color-text-primary);
+      margin-top: 0;
+      margin-bottom: var(--spacing-sm);
+      font-weight: 700;
     }
 
-    /* ===== BREADCRUMB ===== */
-    nav[aria-label="Breadcrumb"] {
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 3px solid #cbd5e1;
-    }
-
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      gap: 0.5rem;
-      list-style: none;
-      padding: 0;
+    p {
+      color: var(--color-text-secondary);
+      margin: 0;
       font-size: 0.95rem;
-      flex-wrap: wrap;
+      line-height: 1.5;
+    }
+  }
+}
+
+.external-resources {
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-2xl) 0;
+  border: 2px solid var(--color-border);
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-primary);
+    font-weight: 800;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: var(--spacing-md);
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: var(--transition);
+        font-weight: 500;
+
+        &:hover {
+          border-bottom-color: var(--color-primary);
+        }
+
+        &:focus {
+          outline: 2px solid var(--color-primary);
+          outline-offset: 2px;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .article-header h1 {
+    background: linear-gradient(135deg, #8B9CFF 0%, #9367BD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .article-content {
+    .lead {
+      background: var(--color-bg-tertiary);
+      border-left-color: var(--color-primary);
+      color: var(--color-text-primary);
     }
 
-    nav[aria-label="Breadcrumb"] a {
-      color: #374151;
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0.5rem 0;
-    }
+    blockquote {
+      background: var(--color-bg-tertiary);
 
-    nav[aria-label="Breadcrumb"] a:hover {
-      color: #1e40af;
-      text-decoration: underline;
+      &.central-quote {
+        background: var(--gradient-primary);
+      }
     }
+  }
 
-    nav[aria-label="Breadcrumb"] span[aria-hidden="true"] {
-      margin: 0 0.5rem;
-      color: #94a3b8;
+  .principle-box {
+    background: var(--color-bg-tertiary);
+    border-color: var(--color-border);
+
+    blockquote {
+      background: rgba(0, 0, 0, 0.2);
     }
+  }
 
-    /* ===== DARK MODE ===== */
-    html[data-theme="dark"] .blog-page {
-      background-color: #1a1f2e;
-      color: #e5e7eb;
-    }
+  .practice-box {
+    background: linear-gradient(135deg, #92400e, #b45309);
+    border-color: #f59e0b;
 
-    html[data-theme="dark"] .article-header h1 {
-      background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    html[data-theme="dark"] .article-meta time {
-      color: #e2e8f0;
-    }
-
-    html[data-theme="dark"] .reading-time {
-      color: #60a5fa;
-    }
-
-    html[data-theme="dark"] .tag {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
-    }
-
-    html[data-theme="dark"] .hero-image {
-      opacity: 0.95;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    html[data-theme="dark"] .lead {
-      color: #60a5fa;
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(59, 130, 246, 0.1));
-      border-color: #2563eb;
-    }
-
-    html[data-theme="dark"] .content h2 {
-      color: #60a5fa;
-    }
-
-    html[data-theme="dark"] .content h3 {
-      color: #f8fafc;
-    }
-
-    html[data-theme="dark"] .content p {
-      color: #e5e7eb;
-    }
-
-    html[data-theme="dark"] .content strong {
-      color: #fafafa;
-    }
-
-    html[data-theme="dark"] .content a {
-      color: #60a5fa;
-    }
-
-    html[data-theme="dark"] .content a:hover {
-      color: #93c5fd;
-    }
-
-    html[data-theme="dark"] blockquote {
-      background: linear-gradient(135deg, #2d1b4e, #3b2667);
-      border-left-color: #c084fc;
-      color: #e9d5ff;
-      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
-    }
-
-    html[data-theme="dark"] blockquote cite {
-      color: #c084fc;
-    }
-
-    html[data-theme="dark"] .principle-box {
-      background: linear-gradient(135deg, #242b3d, #2d3548);
-      border-color: #374151;
-      border-left-color: #2563eb;
-    }
-
-    html[data-theme="dark"] .principle-box h3 {
-      color: #60a5fa;
-    }
-
-    html[data-theme="dark"] .practice-box {
-      background: linear-gradient(135deg, #92400e, #b45309);
-      border-color: #f59e0b;
-    }
-
-    html[data-theme="dark"] .practice-box h3 {
+    h3 {
       color: #fef3c7;
     }
 
-    html[data-theme="dark"] .practice-box li {
+    li {
       color: #fde68a;
-    }
 
-    html[data-theme="dark"] .author-info {
-      background: linear-gradient(135deg, #242b3d, #2d3548);
-      border-color: #374151;
-    }
-
-    html[data-theme="dark"] .author-details h4 {
-      color: #f8fafc;
-    }
-
-    html[data-theme="dark"] .author-details p {
-      color: #d1d5db;
-    }
-
-    html[data-theme="dark"] .related-articles {
-      border-top-color: #374151;
-    }
-
-    html[data-theme="dark"] .related-articles h3 {
-      color: #f8fafc;
-    }
-
-    html[data-theme="dark"] .related-grid a {
-      background: linear-gradient(135deg, #242b3d, #2d3548);
-      border-color: #374151;
-      color: #60a5fa;
-    }
-
-    html[data-theme="dark"] .related-grid a:hover {
-      background: linear-gradient(135deg, #1e40af, #2563eb);
-      border-color: #2563eb;
-    }
-
-    html[data-theme="dark"] nav[aria-label="Breadcrumb"] {
-      border-top-color: #374151;
-    }
-
-    html[data-theme="dark"] nav[aria-label="Breadcrumb"] a {
-      color: #e2e8f0;
-    }
-
-    html[data-theme="dark"] nav[aria-label="Breadcrumb"] a:hover {
-      color: #60a5fa;
-    }
-
-    html[data-theme="dark"] nav[aria-label="Breadcrumb"] span[aria-hidden="true"] {
-      color: #64748b;
-    }
-
-    /* ===== MOBILE RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .blog-page {
-        padding: 2rem 1rem;
-      }
-
-      .theme-toggle {
-        top: 1rem;
-        right: 1rem;
-        width: 48px;
-        height: 48px;
-      }
-
-      .theme-toggle svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      .hero-image {
-        height: 250px;
-        border-radius: 12px;
-      }
-
-      .article-header h1 {
-        font-size: 2rem;
-      }
-
-      .article-meta {
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-
-      .content {
-        font-size: 1.0625rem;
-      }
-
-      .lead {
-        font-size: 1.2rem;
-        padding: 1.5rem;
-      }
-
-      .content h2 {
-        font-size: 1.625rem;
-      }
-
-      .content h3 {
-        font-size: 1.375rem;
-      }
-
-      blockquote {
-        padding: 1.25rem 1.5rem;
-        font-size: 1.0625rem;
-      }
-
-      .principle-box,
-      .practice-box {
-        padding: 1.5rem;
-      }
-
-      .author-info {
-        flex-direction: column;
-        padding: 1.75rem;
-        text-align: center;
-      }
-
-      .author-info svg {
-        margin: 0 auto;
-      }
-
-      .related-grid {
-        grid-template-columns: 1fr;
+      strong {
+        color: #fef3c7;
       }
     }
+  }
+}
 
-    /* ===== TABLET RESPONSIVE ===== */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .blog-page {
-        padding: 2.5rem 2rem;
-      }
+// Responsive design
+@media (max-width: 768px) {
+  .blog-article {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
 
-      .hero-image {
-        height: 350px;
-      }
-
-      .related-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+  .article-header {
+    .article-meta {
+      flex-direction: column;
+      gap: var(--spacing-sm);
     }
 
-    /* ===== LARGE DESKTOP ===== */
-    @media (min-width: 1440px) {
-      .blog-page {
-        max-width: 1400px;
-        padding: 4rem 3rem;
-      }
+    h1 {
+      font-size: 2rem;
+    }
+  }
 
-      .hero-image {
-        height: 500px;
-      }
+  .hero-figure .hero-image {
+    height: 250px;
+    object-fit: cover;
+  }
 
-      .content {
-        font-size: 1.1875rem;
-      }
+  .author-bio {
+    flex-direction: column;
+    text-align: center;
+
+    .author-avatar svg {
+      margin: 0 auto;
+    }
+  }
+
+  .related-articles .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-content {
+    font-size: 1.0625rem;
+
+    .lead {
+      font-size: 1.2rem;
+      padding: var(--spacing-lg);
     }
 
-    /* ===== PRINT STYLES ===== */
-    @media print {
-      .theme-toggle,
-      .skip-to-content {
-        display: none;
-      }
-
-      .blog-page {
-        padding: 0;
-      }
-
-      .hero-image {
-        height: auto;
-        max-height: 300px;
-      }
-
-      .related-articles,
-      nav[aria-label="Breadcrumb"] {
-        display: none;
-      }
+    h2 {
+      font-size: 1.625rem;
     }
 
-    /* ===== REDUCED MOTION ===== */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
+    h3 {
+      font-size: 1.375rem;
     }
 
-    /* ===== HIGH CONTRAST ===== */
-    @media (prefers-contrast: high) {
-      .blog-page {
-        border: 3px solid currentColor;
-      }
-
-      a {
-        text-decoration: underline;
-        text-decoration-thickness: 3px;
-      }
-
-      html[data-theme="dark"] .content p,
-      html[data-theme="dark"] .content h2,
-      html[data-theme="dark"] .content h3 {
-        color: #ffffff;
-      }
+    blockquote.central-quote {
+      font-size: 1.25rem;
+      padding: var(--spacing-xl);
     }
-  </style>
-</Layout>
+  }
+
+  .principle-box,
+  .practice-box {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .blog-article {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+
+  .hero-figure .hero-image {
+    height: 400px;
+  }
+
+  .related-articles .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Print styles
+@media print {
+  .article-header .article-tags,
+  .author-bio,
+  .related-articles,
+  .external-resources,
+  nav[aria-label="Breadcrumb"] {
+    display: none;
+  }
+
+  .hero-figure .hero-image {
+    max-height: 300px;
+  }
+
+  .article-content {
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+}
+</style>
