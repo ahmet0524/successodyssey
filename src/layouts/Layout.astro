@@ -150,15 +150,8 @@ if (type === 'website' && Astro.url.pathname === '/') {
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- ✅ FIXED Content Security Policy - All endpoints included -->
-<meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://successodysseyhub.kit.com https://f.convertkit.com;
-  connect-src 'self' https://api.convertkit.com https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com;
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
-  img-src 'self' data: https:;
-">
+<!-- ✅ FIXED Content Security Policy - Single line format -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://successodysseyhub.kit.com https://f.convertkit.com; connect-src 'self' https://api.convertkit.com https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:;">
 
 <!-- Critical CSS Inlined -->
 <style>
