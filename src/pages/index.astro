@@ -97,7 +97,7 @@ const structuredData = {
     <link rel="preload" as="image" href={mentalModelsImage.src} />
   </Fragment>
 
-  <!-- Hero Section - Enhanced -->
+  <!-- Hero Section -->
   <section class="hero" itemscope itemtype="https://schema.org/WPHeader">
     <div class="hero-background"></div>
     <div class="container">
@@ -121,7 +121,6 @@ const structuredData = {
             View Products
           </a>
         </div>
-
       </div>
     </div>
   </section>
@@ -250,18 +249,60 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Newsletter Signup - WORKING VERSION -->
- <section class="newsletter-section">
-  <div class="container">
-    <script is:inline async data-uid="e6d21394ce" src="https://successodysseyhub.kit.com/e6d21394ce/index.js"></script>
-    <div id="ck-form-container"></div>
-  </div>
-</section>
+  <!-- Newsletter Section - ÇALIŞAN VERSİYON -->
+  <section class="newsletter-section" aria-labelledby="newsletter-title">
+    <div class="container">
+      <div class="newsletter">
+        <div class="newsletter-content">
+          <div class="newsletter-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="newsletter-text">
+            <h2 id="newsletter-title">Join Our Community</h2>
+            <p>Get weekly insights on success, mindset, and personal growth delivered to your inbox.</p>
+          </div>
+        </div>
+
+        <form id="newsletter-form" class="newsletter-form">
+          <div class="form-wrapper">
+            <label for="email-input" class="visually-hidden">Email address</label>
+            <input
+              type="email"
+              id="email-input"
+              class="email-input"
+              placeholder="Enter your email"
+              required
+              autocomplete="email"
+            />
+            <button type="submit" class="subscribe-btn">
+              <span class="btn-text">Subscribe</span>
+              <span class="btn-loading">
+                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2V6M12 18V22M6 12H2M22 12H18M19.07 19.07L16.24 16.24M19.07 4.93L16.24 7.76M4.93 19.07L7.76 16.24M4.93 4.93L7.76 7.76" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Subscribing...
+              </span>
+              <span class="btn-success">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Subscribed!
+              </span>
+            </button>
+          </div>
+          <div id="email-error" class="message error-message"></div>
+          <div class="message success-message"></div>
+        </form>
+      </div>
+    </div>
+  </section>
 
 </Layout>
 
 <style lang="scss">
-/* Hero Section - Enhanced */
+/* Hero Section */
 .hero {
   position: relative;
   padding: 6rem 0 4rem;
@@ -315,7 +356,6 @@ const structuredData = {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
 
     .cta-button {
       display: inline-flex;
@@ -349,31 +389,6 @@ const structuredData = {
           color: var(--color-primary);
           transform: translateY(-3px);
         }
-      }
-    }
-  }
-
-  &-stats {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.2);
-
-    .stat {
-      text-align: center;
-
-      strong {
-        display: block;
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-      }
-
-      span {
-        font-size: 0.9rem;
-        opacity: 0.9;
       }
     }
   }
@@ -517,10 +532,13 @@ const structuredData = {
   }
 }
 
-/* Newsletter Section - WORKING VERSION */
-.newsletter {
+/* Newsletter Section - DÜZELTİLMİŞ */
+.newsletter-section {
   padding: 4rem 0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.newsletter {
   color: white;
   position: relative;
   overflow: hidden;
@@ -530,12 +548,13 @@ const structuredData = {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
   }
 
   &-content {
     position: relative;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 2rem;
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 2rem;
@@ -565,7 +584,9 @@ const structuredData = {
   }
 
   &-form {
-    grid-column: 1 / -1;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
 
     .form-wrapper {
       display: flex;
@@ -734,14 +755,6 @@ const structuredData = {
   .hero {
     padding: 4rem 0 3rem;
 
-    &-stats {
-      gap: 2rem;
-
-      .stat strong {
-        font-size: 1.5rem;
-      }
-    }
-
     &-cta {
       flex-direction: column;
 
@@ -789,7 +802,7 @@ const structuredData = {
 </style>
 
 <script>
-// Newsletter Form Handler - ConvertKit Integration (Fixed)
+// Newsletter Form Handler - ConvertKit Integration
 class NewsletterHandler {
   constructor() {
     this.form = document.getElementById('newsletter-form');
@@ -800,7 +813,6 @@ class NewsletterHandler {
 
     // ConvertKit configuration
     this.FORM_ID = 'e6d21394ce';
-    // API Key'i import.meta.env'den alıyoruz (Astro için)
     this.API_KEY = import.meta.env.PUBLIC_CONVERTKIT_API_KEY;
     this.API_URL = `https://api.convertkit.com/v3/forms/${this.FORM_ID}/subscribe`;
 
@@ -842,17 +854,14 @@ class NewsletterHandler {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          api_key: this.API_KEY,  // ← API KEY EKLENDİ
+          api_key: this.API_KEY,
           email: email,
-          // İsteğe bağlı alanlar:
-          // first_name: 'User Name',
-          // tags: [123456]  // Tag ID'leri ekleyebilirsiniz
         })
       });
 
       const data = await response.json();
 
-      console.log('ConvertKit response:', data); // Debug için
+      console.log('ConvertKit response:', data);
 
       if (response.ok && data.subscription) {
         this.showSuccess();
@@ -866,7 +875,6 @@ class NewsletterHandler {
           });
         }
       } else {
-        // ConvertKit hata mesajlarını göster
         const errorMessage = data.error || data.message || 'Subscription failed. Please try again.';
         console.error('ConvertKit error:', errorMessage);
         this.showError(errorMessage);
