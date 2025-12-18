@@ -249,7 +249,7 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Newsletter Section -->
+  <!-- Newsletter Section - Kit.com v4 API -->
   <section class="newsletter-section" aria-labelledby="newsletter-title">
     <div class="container">
       <div class="newsletter">
@@ -275,6 +275,7 @@ const structuredData = {
               placeholder="Enter your email"
               required
               autocomplete="email"
+              aria-describedby="email-error"
             />
             <button type="submit" class="subscribe-btn">
               <span class="btn-text">Subscribe</span>
@@ -292,8 +293,8 @@ const structuredData = {
               </span>
             </button>
           </div>
-          <div id="email-error" class="message error-message"></div>
-          <div class="message success-message"></div>
+          <div id="email-error" class="message error-message" role="alert" aria-live="polite"></div>
+          <div class="message success-message" role="alert" aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -629,7 +630,7 @@ const structuredData = {
       cursor: pointer;
       transition: var(--transition);
       position: relative;
-      min-width: 140px;
+      min-width: 150px;
       overflow: hidden;
       font-size: 1rem;
 
@@ -661,6 +662,7 @@ const structuredData = {
         left: 0;
         right: 0;
         bottom: 0;
+        background: inherit;
         transform: translateY(100%);
       }
 
@@ -802,19 +804,23 @@ const structuredData = {
 </style>
 
 <script>
-// Newsletter Form Handler - ConvertKit Integration
+/**
+ * Newsletter Form Handler - Kit.com v4 API
+ * Using public endpoint - NO API KEY REQUIRED!
+ * Form ID: e6d21394ce
+ */
 class NewsletterHandler {
   constructor() {
+    // DOM Elements
     this.form = document.getElementById('newsletter-form');
     this.emailInput = document.getElementById('email-input');
     this.submitBtn = this.form?.querySelector('.subscribe-btn');
     this.errorMsg = document.getElementById('email-error');
     this.successMsg = this.form?.querySelector('.success-message');
 
-    // ConvertKit configuration
+    // Kit.com v4 API Configuration
     this.FORM_ID = 'e6d21394ce';
-    this.API_KEY = import.meta.env.PUBLIC_CONVERTKIT_API_KEY;
-    this.API_URL = `https://api.convertkit.com/v3/forms/${this.FORM_ID}/subscribe`;
+    this.API_URL = `https://api.kit.com/v4/forms/${this.FORM_ID}/subscribe`;
 
     this.init();
   }
@@ -833,7 +839,7 @@ class NewsletterHandler {
 
     // Email validation
     if (!this.validateEmail(email)) {
-      this.showError('Please enter a valid email address');
+      this.showError('Please')
       return;
     }
 
