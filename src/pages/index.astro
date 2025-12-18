@@ -829,7 +829,7 @@ const structuredData = {
 </style>
 
 <script>
-// Newsletter Form Handler - ConvertKit Integration
+// Newsletter Form Handler - ConvertKit Integration (Fixed)
 class NewsletterHandler {
   constructor() {
     this.form = document.getElementById('newsletter-form');
@@ -838,8 +838,10 @@ class NewsletterHandler {
     this.errorMsg = document.getElementById('email-error');
     this.successMsg = this.form?.querySelector('.success-message');
 
-    // ConvertKit form ID - e6d21394ce değerinden alınmıştır
+    // ConvertKit configuration
     this.FORM_ID = 'e6d21394ce';
+    // API Key'i import.meta.env'den alıyoruz (Astro için)
+    this.API_KEY = import.meta.env.PUBLIC_CONVERTKIT_API_KEY;
     this.API_URL = `https://api.convertkit.com/v3/forms/${this.FORM_ID}/subscribe`;
 
     this.init();
@@ -863,6 +865,13 @@ class NewsletterHandler {
       return;
     }
 
+    // API Key kontrolü
+    if (!this.API_KEY) {
+      console.error('ConvertKit API Key is missing!');
+      this.showError('Configuration error. Please contact support.');
+      return;
+    }
+
     // Show loading state
     this.setLoading(true);
 
@@ -873,13 +882,17 @@ class NewsletterHandler {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          api_key: this.API_KEY,  // ← API KEY EKLENDİ
           email: email,
-          // İsteğe bağlı: first_name ekleyebilirsiniz
-          // first_name: 'User Name'
+          // İsteğe bağlı alanlar:
+          // first_name: 'User Name',
+          // tags: [123456]  // Tag ID'leri ekleyebilirsiniz
         })
       });
 
       const data = await response.json();
+
+      console.log('ConvertKit response:', data); // Debug için
 
       if (response.ok && data.subscription) {
         this.showSuccess();
@@ -895,6 +908,7 @@ class NewsletterHandler {
       } else {
         // ConvertKit hata mesajlarını göster
         const errorMessage = data.error || data.message || 'Subscription failed. Please try again.';
+        console.error('ConvertKit error:', errorMessage);
         this.showError(errorMessage);
       }
     } catch (error) {
