@@ -42,46 +42,6 @@ const structuredData = {
         "https://facebook.com/successodyssey",
         "https://linkedin.com/company/successodyssey"
       ]
-    },
-    {
-      "@type": "ItemList",
-      "@id": "https://successodysseyhub.com/#featured-articles",
-      "name": "Featured Articles",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@type": "Article",
-            "headline": "Mental Models for Better Decisions",
-            "description": "Discover powerful thinking frameworks",
-            "url": "https://successodysseyhub.com/blog/mental-models",
-            "image": "https://successodysseyhub.com" + mentalModelsImage.src
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@type": "Article",
-            "headline": "The Philosophy of Success",
-            "description": "Learn timeless principles and daily habits",
-            "url": "https://successodysseyhub.com/blog/success-philosophy",
-            "image": "https://successodysseyhub.com" + successPhilosophyImage.src
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "item": {
-            "@type": "Article",
-            "headline": "Stoic Wisdom for Modern Life",
-            "description": "Apply ancient Stoic teachings",
-            "url": "https://successodysseyhub.com/blog/stoicism",
-            "image": "https://successodysseyhub.com" + stoicWisdomImage.src
-          }
-        }
-      ]
     }
   ]
 };
@@ -301,7 +261,6 @@ const structuredData = {
   </section>
 
 </Layout>
-
 <style lang="scss">
 /* Hero Section */
 .hero {
@@ -736,7 +695,6 @@ const structuredData = {
   }
 }
 
-/* Fade-in animation */
 .fade-in {
   animation: fadeIn 0.8s ease-in;
 }
@@ -752,7 +710,6 @@ const structuredData = {
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero {
     padding: 4rem 0 3rem;
@@ -805,20 +762,19 @@ const structuredData = {
 
 <script>
 /**
- * Newsletter Form Handler - Kit.com v4 API
- * Using public endpoint - NO API KEY REQUIRED!
+ * ✅ Kit.com v4 API Newsletter Handler
  * Form ID: e6d21394ce
+ * Public endpoint - NO API KEY REQUIRED
  */
 class NewsletterHandler {
   constructor() {
-    // DOM Elements
     this.form = document.getElementById('newsletter-form');
     this.emailInput = document.getElementById('email-input');
     this.submitBtn = this.form?.querySelector('.subscribe-btn');
     this.errorMsg = document.getElementById('email-error');
     this.successMsg = this.form?.querySelector('.success-message');
 
-    // Kit.com v4 API Configuration
+    // ✅ Kit.com v4 Public API
     this.FORM_ID = 'e6d21394ce';
     this.API_URL = `https://api.kit.com/v4/forms/${this.FORM_ID}/subscribe`;
 
@@ -827,7 +783,6 @@ class NewsletterHandler {
 
   init() {
     if (!this.form) return;
-
     this.form.addEventListener('submit', (e) => this.handleSubmit(e));
     this.emailInput?.addEventListener('input', () => this.clearError());
   }
@@ -839,18 +794,10 @@ class NewsletterHandler {
 
     // Email validation
     if (!this.validateEmail(email)) {
-      this.showError('Please')
+      this.showError('Please enter a valid email address.');
       return;
     }
 
-    // API Key check
-    if (!this.API_KEY) {
-      console.error('ConvertKit API Key is missing!');
-      this.showError('Configuration error. Please contact support.');
-      return;
-    }
-
-    // Show loading state
     this.setLoading(true);
 
     try {
@@ -860,16 +807,13 @@ class NewsletterHandler {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          api_key: this.API_KEY,
-          email: email,
+          email_address: email,
         })
       });
 
       const data = await response.json();
 
-      console.log('ConvertKit response:', data);
-
-      if (response.ok && data.subscription) {
+      if (response.ok) {
         this.showSuccess();
         this.form.reset();
 
@@ -877,12 +821,12 @@ class NewsletterHandler {
         if (typeof gtag !== 'undefined') {
           gtag('event', 'newsletter_signup', {
             event_category: 'engagement',
-            event_label: 'convertkit_form'
+            event_label: 'kit_v4_api'
           });
         }
       } else {
-        const errorMessage = data.error || data.message || 'Subscription failed. Please try again.';
-        console.error('ConvertKit error:', errorMessage);
+        const errorMessage = data.error?.message || data.message || 'Subscription failed. Please try again.';
+        console.error('Kit.com error:', errorMessage);
         this.showError(errorMessage);
       }
     } catch (error) {
@@ -936,7 +880,6 @@ class NewsletterHandler {
 
     this.submitBtn?.classList.add('success');
 
-    // Reset success state after 3 seconds
     setTimeout(() => {
       this.submitBtn?.classList.remove('success');
       this.successMsg?.classList.remove('show');
