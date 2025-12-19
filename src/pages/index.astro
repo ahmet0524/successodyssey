@@ -274,14 +274,15 @@ const structuredData = {
 <!-- ✅ Part 1 ve Part 2'den gelen tüm stiller buraya eklenir -->
 <style lang="scss">
 /* ========================================
-   PART 1: HERO SECTION - DÜZELTİLMİŞ
+   HERO SECTION - SAFE OVERRIDE (SCSS)
+   main.scss'e dokunmadan çakışmayı çözer
    ======================================== */
 
 .hero {
   position: relative;
   padding: 6rem 0 4rem;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
 
   &-background {
     position: absolute;
@@ -304,15 +305,25 @@ const structuredData = {
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 1.5rem;
-      text-shadow: 0 3px 20px rgba(0,0,0,0.4); // ✅ Daha güçlü gölge
+
+      // ✅ main.scss'teki gradient'i override et
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      background-clip: unset !important;
+
+      // ✅ Beyaz renk uygula
+      color: rgba(255, 255, 255, 0.95) !important;
+      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
 
       .gradient-text {
-        // ✅ Altın sarısı - mavi arka planda çok daha iyi görünür
+        // ✅ Sadece bu span'a gradient uygula
+        display: inline-block;
         background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4)); // ✅ Ekstra gölge
+        filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
       }
     }
 
@@ -320,11 +331,11 @@ const structuredData = {
       font-size: clamp(1.1rem, 2vw, 1.3rem);
       line-height: 1.8;
       margin-bottom: 2.5rem;
-      opacity: 0.98; // ✅ Biraz daha opak
+      color: rgba(255, 255, 255, 0.95);
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.2); // ✅ Hafif gölge
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -348,11 +359,11 @@ const structuredData = {
       &.primary {
         background: white;
         color: var(--color-primary);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
         &:hover {
           transform: translateY(-3px);
-          box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
       }
 
@@ -377,7 +388,7 @@ const structuredData = {
 }
 
 /* ========================================
-   NEWSLETTER SECTION - ORTALANMIŞ
+   NEWSLETTER SECTION - CENTERED
    ======================================== */
 
 .newsletter-section {
@@ -432,19 +443,17 @@ const structuredData = {
 
   &-form {
     position: relative;
-    max-width: 800px;
-    margin: 0 auto; // ✅ Form ortalandı
+    max-width: 600px;
+    margin: 0 auto;
 
     .form-wrapper {
       display: flex;
       gap: 0.75rem;
       margin-bottom: 0.75rem;
-      justify-content: center; // ✅ İçerik ortalandı
     }
 
     .email-input {
       flex: 1;
-      max-width: 500px; // ✅ Çok geniş olmasın
       padding: 1rem 1.25rem;
       border: 2px solid transparent;
       border-radius: var(--radius);
@@ -481,6 +490,7 @@ const structuredData = {
       min-width: 150px;
       overflow: hidden;
       font-size: 1rem;
+      white-space: nowrap;
 
       &:hover:not(:disabled) {
         background: #d97706;
@@ -532,7 +542,7 @@ const structuredData = {
       font-size: 0.9rem;
       display: none;
       animation: slideDown 0.3s ease;
-      text-align: center; // ✅ Mesajlar ortalandı
+      text-align: center;
 
       &.show {
         display: block;
@@ -554,52 +564,9 @@ const structuredData = {
 }
 
 /* ========================================
-   MOBILE RESPONSIVE
+   OTHER SECTIONS
    ======================================== */
 
-@media (max-width: 768px) {
-  .hero {
-    padding: 4rem 0 3rem;
-
-    &-cta {
-      flex-direction: column;
-
-      .cta-button {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  }
-
-  .newsletter {
-    &-content {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-
-    &-icon {
-      margin: 0 auto;
-    }
-
-    &-form .form-wrapper {
-      flex-direction: column;
-
-      .email-input {
-        max-width: 100%; // ✅ Mobile'da tam genişlik
-      }
-
-      .subscribe-btn {
-        width: 100%;
-        padding: 1rem;
-      }
-    }
-  }
-}
-  /* ========================================
-   PART 2: PRODUCTS & ABOUT SECTIONS
-   ======================================== */
-
-/* Products Section */
 .products-section {
   padding: 4rem 0;
   background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
@@ -648,7 +615,6 @@ const structuredData = {
   }
 }
 
-/* About Preview Section */
 .about-preview {
   padding: 4rem 0;
 
@@ -711,7 +677,6 @@ const structuredData = {
   }
 }
 
-/* Featured Section */
 .featured-section {
   padding: 2rem 0 4rem;
 
@@ -732,7 +697,6 @@ const structuredData = {
   }
 }
 
-/* Utility Classes */
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -780,8 +744,52 @@ const structuredData = {
   }
 }
 
-/* Mobile Responsive */
+/* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
 @media (max-width: 768px) {
+  .hero {
+    padding: 4rem 0 3rem;
+
+    &-cta {
+      flex-direction: column;
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+
+  .newsletter {
+    &-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    &-icon {
+      margin: 0 auto;
+    }
+
+    &-form {
+      padding: 0 1rem;
+
+      .form-wrapper {
+        flex-direction: column;
+
+        .email-input,
+        .subscribe-btn {
+          width: 100%;
+        }
+
+        .subscribe-btn {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+
   .products-section,
   .featured-section {
     padding: 2rem 0;
