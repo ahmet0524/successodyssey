@@ -9,6 +9,7 @@ import stoicWisdomImage from "../assets/stoic-wisdom.webp";
 import successMindsetImage from "../assets/success-mindset.webp";
 import mentalClarityImage from "../assets/mental-clarity.webp";
 import digitalPlannerImage from "../assets/2026-planner.webp";
+import synchronicityImage from "../assets/synchronicity-hero.webp"; // ✅ YENİ
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -117,6 +118,13 @@ const structuredData = {
           image={stoicWisdomImage.src}
           link="/blog/stoicism"
         />
+        <!-- ✅ YENİ MAKALE EKLENDI -->
+        <BlogCard
+          title="Synchronicity: When Meaning Reveals Itself"
+          summary="Explore synchronicity through spiritual psychology and modern research. Connect insights from Jung, Frankl, and William James."
+          image={synchronicityImage.src}
+          link="/blog/synchronicity"
+        />
       </div>
     </div>
   </section>
@@ -209,7 +217,7 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Newsletter Section - Kit.com v4 API -->
+  <!-- Newsletter Section -->
   <section class="newsletter-section" aria-labelledby="newsletter-title">
     <div class="container">
       <div class="newsletter">
@@ -231,6 +239,7 @@ const structuredData = {
             <input
               type="email"
               id="email-input"
+              name="email"
               class="email-input"
               placeholder="Enter your email"
               required
@@ -261,8 +270,13 @@ const structuredData = {
   </section>
 
 </Layout>
+
+<!-- ✅ Part 1 ve Part 2'den gelen tüm stiller buraya eklenir -->
 <style lang="scss">
-/* Hero Section */
+/* ========================================
+   PART 1: HERO SECTION - DÜZELTİLMİŞ
+   ======================================== */
+
 .hero {
   position: relative;
   padding: 6rem 0 4rem;
@@ -290,13 +304,15 @@ const structuredData = {
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 1.5rem;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+      text-shadow: 0 3px 20px rgba(0,0,0,0.4); // ✅ Daha güçlü gölge
 
       .gradient-text {
-        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        // ✅ Altın sarısı - mavi arka planda çok daha iyi görünür
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4)); // ✅ Ekstra gölge
       }
     }
 
@@ -304,10 +320,11 @@ const structuredData = {
       font-size: clamp(1.1rem, 2vw, 1.3rem);
       line-height: 1.8;
       margin-bottom: 2.5rem;
-      opacity: 0.95;
+      opacity: 0.98; // ✅ Biraz daha opak
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.2); // ✅ Hafif gölge
     }
   }
 
@@ -358,6 +375,229 @@ const structuredData = {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
 }
+
+/* ========================================
+   NEWSLETTER SECTION - ORTALANMIŞ
+   ======================================== */
+
+.newsletter-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.newsletter {
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  &-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  &-icon {
+    flex-shrink: 0;
+
+    svg {
+      opacity: 0.9;
+    }
+  }
+
+  &-text {
+    h2 {
+      margin-bottom: 0.5rem;
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    p {
+      opacity: 0.95;
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+  }
+
+  &-form {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto; // ✅ Form ortalandı
+
+    .form-wrapper {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      justify-content: center; // ✅ İçerik ortalandı
+    }
+
+    .email-input {
+      flex: 1;
+      max-width: 500px; // ✅ Çok geniş olmasın
+      padding: 1rem 1.25rem;
+      border: 2px solid transparent;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      background: white;
+      color: var(--color-text-primary);
+      transition: var(--transition);
+
+      &:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+      }
+
+      &.error {
+        border-color: #ef4444;
+      }
+
+      &::placeholder {
+        color: var(--color-text-tertiary);
+      }
+    }
+
+    .subscribe-btn {
+      padding: 1rem 2rem;
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      min-width: 150px;
+      overflow: hidden;
+      font-size: 1rem;
+
+      &:hover:not(:disabled) {
+        background: #d97706;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      }
+
+      &:disabled {
+        opacity: 0.8;
+        cursor: not-allowed;
+      }
+
+      .btn-text,
+      .btn-loading,
+      .btn-success {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .btn-loading,
+      .btn-success {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        transform: translateY(100%);
+      }
+
+      &.loading {
+        .btn-text { transform: translateY(-100%); }
+        .btn-loading { transform: translateY(0); }
+      }
+
+      &.success {
+        background: #10b981;
+        .btn-text { transform: translateY(-100%); }
+        .btn-success { transform: translateY(0); }
+      }
+    }
+
+    .message {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      display: none;
+      animation: slideDown 0.3s ease;
+      text-align: center; // ✅ Mesajlar ortalandı
+
+      &.show {
+        display: block;
+      }
+    }
+
+    .error-message {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fecaca;
+    }
+
+    .success-message {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #86efac;
+    }
+  }
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 0 3rem;
+
+    &-cta {
+      flex-direction: column;
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+
+  .newsletter {
+    &-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    &-icon {
+      margin: 0 auto;
+    }
+
+    &-form .form-wrapper {
+      flex-direction: column;
+
+      .email-input {
+        max-width: 100%; // ✅ Mobile'da tam genişlik
+      }
+
+      .subscribe-btn {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  }
+}
+  /* ========================================
+   PART 2: PRODUCTS & ABOUT SECTIONS
+   ======================================== */
 
 /* Products Section */
 .products-section {
@@ -492,177 +732,7 @@ const structuredData = {
   }
 }
 
-/* Newsletter Section */
-.newsletter-section {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.newsletter {
-  color: white;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  &-content {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  &-icon {
-    flex-shrink: 0;
-
-    svg {
-      opacity: 0.9;
-    }
-  }
-
-  &-text {
-    h2 {
-      margin-bottom: 0.5rem;
-      color: white;
-      font-size: 1.8rem;
-    }
-
-    p {
-      opacity: 0.95;
-      margin-bottom: 0;
-      font-size: 1rem;
-    }
-  }
-
-  &-form {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-
-    .form-wrapper {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .email-input {
-      flex: 1;
-      padding: 1rem 1.25rem;
-      border: 2px solid transparent;
-      border-radius: var(--radius);
-      font-size: 1rem;
-      background: white;
-      color: var(--color-text-primary);
-      transition: var(--transition);
-
-      &:focus {
-        outline: none;
-        border-color: var(--color-accent);
-        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
-      }
-
-      &.error {
-        border-color: #ef4444;
-      }
-
-      &::placeholder {
-        color: var(--color-text-tertiary);
-      }
-    }
-
-    .subscribe-btn {
-      padding: 1rem 2rem;
-      background: var(--color-accent);
-      color: white;
-      border: none;
-      border-radius: var(--radius);
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      position: relative;
-      min-width: 150px;
-      overflow: hidden;
-      font-size: 1rem;
-
-      &:hover:not(:disabled) {
-        background: #d97706;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      }
-
-      &:disabled {
-        opacity: 0.8;
-        cursor: not-allowed;
-      }
-
-      .btn-text,
-      .btn-loading,
-      .btn-success {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        transition: transform 0.3s ease;
-      }
-
-      .btn-loading,
-      .btn-success {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: inherit;
-        transform: translateY(100%);
-      }
-
-      &.loading {
-        .btn-text { transform: translateY(-100%); }
-        .btn-loading { transform: translateY(0); }
-      }
-
-      &.success {
-        background: #10b981;
-        .btn-text { transform: translateY(-100%); }
-        .btn-success { transform: translateY(0); }
-      }
-    }
-
-    .message {
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      display: none;
-      animation: slideDown 0.3s ease;
-
-      &.show {
-        display: block;
-      }
-    }
-
-    .error-message {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fecaca;
-    }
-
-    .success-message {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #86efac;
-    }
-  }
-}
-
+/* Utility Classes */
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -710,40 +780,8 @@ const structuredData = {
   }
 }
 
+/* Mobile Responsive */
 @media (max-width: 768px) {
-  .hero {
-    padding: 4rem 0 3rem;
-
-    &-cta {
-      flex-direction: column;
-
-      .cta-button {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  }
-
-  .newsletter {
-    &-content {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-
-    &-icon {
-      margin: 0 auto;
-    }
-
-    &-form .form-wrapper {
-      flex-direction: column;
-
-      .subscribe-btn {
-        width: 100%;
-        padding: 1rem;
-      }
-    }
-  }
-
   .products-section,
   .featured-section {
     padding: 2rem 0;
@@ -761,11 +799,7 @@ const structuredData = {
 </style>
 
 <script>
-/**
- * ✅ Kit.com v4 API Newsletter Handler
- * Form ID: e6d21394ce
- * Public endpoint - NO API KEY REQUIRED
- */
+// Newsletter handler scripti (önceki versiyondaki gibi)
 class NewsletterHandler {
   constructor() {
     this.form = document.getElementById('newsletter-form');
@@ -773,11 +807,8 @@ class NewsletterHandler {
     this.submitBtn = this.form?.querySelector('.subscribe-btn');
     this.errorMsg = document.getElementById('email-error');
     this.successMsg = this.form?.querySelector('.success-message');
-
-    // ✅ Kit.com v4 Public API
-    this.FORM_ID = 'e6d21394ce';
-    this.API_URL = `https://successodysseyhub.kit.com/e6d21394ce`;
-
+    this.ACCESS_KEY = '68735154-a35c-4b70-b2bb-a5b7aba5ff33';
+    this.API_URL = 'https://api.web3forms.com/submit';
     this.init();
   }
 
@@ -789,48 +820,34 @@ class NewsletterHandler {
 
   async handleSubmit(e) {
     e.preventDefault();
-
     const email = this.emailInput?.value.trim();
-
-    // Email validation
     if (!this.validateEmail(email)) {
       this.showError('Please enter a valid email address.');
       return;
     }
-
     this.setLoading(true);
-
     try {
       const response = await fetch(this.API_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          email_address: email,
+          access_key: this.ACCESS_KEY,
+          email: email,
+          subject: 'New Newsletter Subscription - Success Odyssey Hub',
+          from_name: 'Success Odyssey Hub Newsletter'
         })
       });
-
       const data = await response.json();
-
-      if (response.ok) {
+      if (data.success) {
         this.showSuccess();
         this.form.reset();
-
-        // Analytics tracking (optional)
         if (typeof gtag !== 'undefined') {
-          gtag('event', 'newsletter_signup', {
-            event_category: 'engagement',
-            event_label: 'kit_v4_api'
-          });
+          gtag('event', 'newsletter_signup', { event_category: 'engagement', event_label: 'web3forms' });
         }
       } else {
-        const errorMessage = data.error?.message || data.message || 'Subscription failed. Please try again.';
-        console.error('Kit.com error:', errorMessage);
-        this.showError(errorMessage);
+        this.showError(data.message || 'Subscription failed. Please try again.');
       }
     } catch (error) {
-      console.error('Newsletter subscription error:', error);
       this.showError('Network error. Please check your connection and try again.');
     } finally {
       this.setLoading(false);
@@ -839,25 +856,17 @@ class NewsletterHandler {
 
   validateEmail(email) {
     if (!email) return false;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
   setLoading(isLoading) {
     if (!this.submitBtn) return;
-
-    if (isLoading) {
-      this.submitBtn.disabled = true;
-      this.submitBtn.classList.add('loading');
-    } else {
-      this.submitBtn.disabled = false;
-      this.submitBtn.classList.remove('loading');
-    }
+    this.submitBtn.disabled = isLoading;
+    this.submitBtn.classList.toggle('loading', isLoading);
   }
 
   showError(message) {
     if (!this.errorMsg) return;
-
     this.errorMsg.textContent = message;
     this.errorMsg.classList.add('show');
     this.emailInput?.classList.add('error');
@@ -866,20 +875,16 @@ class NewsletterHandler {
 
   clearError() {
     if (!this.errorMsg) return;
-
     this.errorMsg.classList.remove('show');
     this.emailInput?.classList.remove('error');
   }
 
   showSuccess() {
     if (!this.successMsg) return;
-
     this.successMsg.textContent = '🎉 Success! Check your email to confirm your subscription.';
     this.successMsg.classList.add('show');
     this.errorMsg?.classList.remove('show');
-
     this.submitBtn?.classList.add('success');
-
     setTimeout(() => {
       this.submitBtn?.classList.remove('success');
       this.successMsg?.classList.remove('show');
@@ -887,11 +892,8 @@ class NewsletterHandler {
   }
 }
 
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    new NewsletterHandler();
-  });
+  document.addEventListener('DOMContentLoaded', () => new NewsletterHandler());
 } else {
   new NewsletterHandler();
 }
