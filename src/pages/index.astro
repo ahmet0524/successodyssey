@@ -9,7 +9,7 @@ import stoicWisdomImage from "../assets/stoic-wisdom.webp";
 import successMindsetImage from "../assets/success-mindset.webp";
 import mentalClarityImage from "../assets/mental-clarity.webp";
 import digitalPlannerImage from "../assets/2026-planner.webp";
-import synchronicityImage from "../assets/synchronicity-hero.webp"; // ✅ YENİ
+import synchronicityImage from "../assets/synchronicity-hero.webp";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -118,7 +118,6 @@ const structuredData = {
           image={stoicWisdomImage.src}
           link="/blog/stoicism"
         />
-        <!-- ✅ YENİ MAKALE EKLENDI -->
         <BlogCard
           title="Synchronicity: When Meaning Reveals Itself"
           summary="Explore synchronicity through spiritual psychology and modern research. Connect insights from Jung, Frankl, and William James."
@@ -217,65 +216,128 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Newsletter Section -->
+  <!-- ✨ NEW MODERN NEWSLETTER SECTION -->
   <section class="newsletter-section" aria-labelledby="newsletter-title">
     <div class="container">
-      <div class="newsletter">
+      <div class="newsletter-wrapper">
+        <div class="newsletter-background"></div>
+
         <div class="newsletter-content">
-          <div class="newsletter-icon">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Icon -->
+          <div class="newsletter-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
           </div>
-          <div class="newsletter-text">
-            <h2 id="newsletter-title">Join Our Community</h2>
-            <p>Get weekly insights on success, mindset, and personal growth delivered to your inbox.</p>
+
+          <!-- Title -->
+          <h2 id="newsletter-title" class="newsletter-title">
+            Join 10,000+ Success Seekers
+          </h2>
+
+          <!-- Subtitle -->
+          <p class="newsletter-subtitle">
+            Get weekly insights, mental models, and actionable strategies delivered straight to your inbox. No spam, just value.
+          </p>
+
+          <!-- Form -->
+          <form id="newsletter-form" class="newsletter-form">
+            <div class="form-wrapper">
+              <div class="email-input-wrapper">
+                <svg class="email-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <label for="email-input" class="visually-hidden">Email address</label>
+                <input
+                  type="email"
+                  id="email-input"
+                  name="email"
+                  class="email-input"
+                  placeholder="Enter your best email"
+                  required
+                  autocomplete="email"
+                  aria-describedby="email-error"
+                />
+              </div>
+
+              <button type="submit" class="subscribe-btn">
+                <span class="btn-text btn-content">
+                  <span>Subscribe Free</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+                <span class="btn-loading btn-content">
+                  <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                  </svg>
+                  <span>Subscribing...</span>
+                </span>
+                <span class="btn-success btn-content">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Subscribed!</span>
+                </span>
+              </button>
+            </div>
+
+            <div id="email-error" class="message error-message" role="alert" aria-live="polite"></div>
+            <div class="message success-message" role="alert" aria-live="polite"></div>
+          </form>
+
+          <!-- Features -->
+          <div class="newsletter-features">
+            <div class="newsletter-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Free forever</span>
+            </div>
+            <div class="newsletter-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Unsubscribe anytime</span>
+            </div>
+            <div class="newsletter-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>No spam, ever</span>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-number">10K+</div>
+              <div class="stat-label">Subscribers</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">4.9★</div>
+              <div class="stat-label">Rating</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">52</div>
+              <div class="stat-label">Weekly Tips</div>
+            </div>
           </div>
         </div>
-
-        <form id="newsletter-form" class="newsletter-form">
-          <div class="form-wrapper">
-            <label for="email-input" class="visually-hidden">Email address</label>
-            <input
-              type="email"
-              id="email-input"
-              name="email"
-              class="email-input"
-              placeholder="Enter your email"
-              required
-              autocomplete="email"
-              aria-describedby="email-error"
-            />
-            <button type="submit" class="subscribe-btn">
-              <span class="btn-text">Subscribe</span>
-              <span class="btn-loading">
-                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2V6M12 18V22M6 12H2M22 12H18M19.07 19.07L16.24 16.24M19.07 4.93L16.24 7.76M4.93 19.07L7.76 16.24M4.93 4.93L7.76 7.76" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Subscribing...
-              </span>
-              <span class="btn-success">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Subscribed!
-              </span>
-            </button>
-          </div>
-          <div id="email-error" class="message error-message" role="alert" aria-live="polite"></div>
-          <div class="message success-message" role="alert" aria-live="polite"></div>
-        </form>
       </div>
     </div>
   </section>
 
 </Layout>
-
-<!-- ✅ Part 1 ve Part 2'den gelen tüm stiller buraya eklenir -->
+<!-- Part 2: SCSS Styles -->
 <style lang="scss">
 /* ========================================
    HERO SECTION - SAFE OVERRIDE (SCSS)
-   main.scss'e dokunmadan çakışmayı çözer
    ======================================== */
 
 .hero {
@@ -305,19 +367,14 @@ const structuredData = {
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 1.5rem;
-
-      // ✅ main.scss'teki gradient'i override et
       background: none !important;
       -webkit-background-clip: unset !important;
       -webkit-text-fill-color: unset !important;
       background-clip: unset !important;
-
-      // ✅ Beyaz renk uygula
       color: rgba(255, 255, 255, 0.95) !important;
       text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
 
       .gradient-text {
-        // ✅ Sadece bu span'a gradient uygula
         display: inline-block;
         background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
         -webkit-background-clip: text;
@@ -388,296 +445,316 @@ const structuredData = {
 }
 
 /* ========================================
-   NEWSLETTER SECTION - CENTERED
-   ======================================== */
-/* ========================================
-   HERO SECTION - SAFE OVERRIDE (SCSS)
-   main.scss'e dokunmadan çakışmayı çözer
-   ======================================== */
-
-.hero {
-  position: relative;
-  padding: 6rem 0 4rem;
-  overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-
-  &-background {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    animation: pulse 8s ease-in-out infinite;
-  }
-
-  &-content {
-    position: relative;
-    text-align: center;
-    color: white;
-    max-width: 900px;
-    margin: 0 auto;
-
-    h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-
-      // ✅ main.scss'teki gradient'i override et
-      background: none !important;
-      -webkit-background-clip: unset !important;
-      -webkit-text-fill-color: unset !important;
-      background-clip: unset !important;
-
-      // ✅ Beyaz renk uygula
-      color: rgba(255, 255, 255, 0.95) !important;
-      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-
-      .gradient-text {
-        // ✅ Sadece bu span'a gradient uygula
-        display: inline-block;
-        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
-      }
-    }
-
-    p {
-      font-size: clamp(1.1rem, 2vw, 1.3rem);
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-      color: rgba(255, 255, 255, 0.95);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  &-cta {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 2rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 1.1rem;
-
-      &.primary {
-        background: white;
-        color: var(--color-primary);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-      }
-
-      &.secondary {
-        background: transparent;
-        color: white;
-        border: 2px solid white;
-
-        &:hover {
-          background: white;
-          color: var(--color-primary);
-          transform: translateY(-3px);
-        }
-      }
-    }
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-/* ========================================
-   NEWSLETTER SECTION - CENTERED
+   MODERN NEWSLETTER SECTION
    ======================================== */
 
 .newsletter-section {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-bg-secondary);
 }
 
-.newsletter {
+.newsletter-wrapper {
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+}
+
+.newsletter-background {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.newsletter-content {
+  position: relative;
+  padding: 3rem;
+  text-align: center;
+}
+
+.newsletter-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    color: white;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.newsletter-title {
+  font-size: 2rem;
+  font-weight: 800;
   color: white;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.newsletter-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletter-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.email-input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.email-input {
+  width: 100%;
+  padding: 1.125rem 1.25rem;
+  padding-left: 3rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  color: #0f172a;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &::placeholder {
+    color: #94a3b8;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &.error {
+    border-color: #ef4444;
+    animation: shake 0.4s ease;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.email-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+}
+
+.subscribe-btn {
+  padding: 1.125rem 2.5rem;
+  background: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  white-space: nowrap;
 
   &::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    pointer-events: none;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
   }
 
-  &-content {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
+  &:hover:not(:disabled) {
+    background: #d97706;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.5);
 
-  &-icon {
-    flex-shrink: 0;
-
-    svg {
-      opacity: 0.9;
+    &::before {
+      left: 100%;
     }
   }
 
-  &-text {
-    h2 {
-      margin-bottom: 0.5rem;
-      color: white;
-      font-size: 1.8rem;
-    }
-
-    p {
-      opacity: 0.95;
-      margin-bottom: 0;
-      font-size: 1rem;
-    }
+  &:active:not(:disabled) {
+    transform: translateY(-1px);
   }
 
-  &-form {
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
-
-    .form-wrapper {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .email-input {
-      flex: 1;
-      padding: 1rem 1.25rem;
-      border: 2px solid transparent;
-      border-radius: var(--radius);
-      font-size: 1rem;
-      background: white;
-      color: var(--color-text-primary);
-      transition: var(--transition);
-
-      &:focus {
-        outline: none;
-        border-color: var(--color-accent);
-        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
-      }
-
-      &.error {
-        border-color: #ef4444;
-      }
-
-      &::placeholder {
-        color: var(--color-text-tertiary);
-      }
-    }
-
-    .subscribe-btn {
-      padding: 1rem 2rem;
-      background: var(--color-accent);
-      color: white;
-      border: none;
-      border-radius: var(--radius);
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      position: relative;
-      min-width: 150px;
-      overflow: hidden;
-      font-size: 1rem;
-      white-space: nowrap;
-
-      &:hover:not(:disabled) {
-        background: #d97706;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      }
-
-      &:disabled {
-        opacity: 0.8;
-        cursor: not-allowed;
-      }
-
-      .btn-text,
-      .btn-loading,
-      .btn-success {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        transition: transform 0.3s ease;
-      }
-
-      .btn-loading,
-      .btn-success {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: inherit;
-        transform: translateY(100%);
-      }
-
-      &.loading {
-        .btn-text { transform: translateY(-100%); }
-        .btn-loading { transform: translateY(0); }
-      }
-
-      &.success {
-        background: #10b981;
-        .btn-text { transform: translateY(-100%); }
-        .btn-success { transform: translateY(0); }
-      }
-    }
-
-    .message {
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      display: none;
-      animation: slideDown 0.3s ease;
-      text-align: center;
-
-      &.show {
-        display: block;
-      }
-    }
-
-    .error-message {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fecaca;
-    }
-
-    .success-message {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #86efac;
-    }
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
   }
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-text, .btn-loading, .btn-success {
+  transition: opacity 0.3s ease;
+}
+
+.btn-loading, .btn-success {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.subscribe-btn.loading .btn-text,
+.subscribe-btn.success .btn-text {
+  opacity: 0;
+}
+
+.subscribe-btn.loading .btn-loading {
+  opacity: 1;
+}
+
+.subscribe-btn.success .btn-success {
+  opacity: 1;
+}
+
+.subscribe-btn.success {
+  background: #10b981;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.message {
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  display: none;
+  animation: slideDown 0.3s ease;
+  text-align: center;
+
+  &.show {
+    display: block;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fecaca;
+  margin-top: 0.75rem;
+}
+
+.success-message {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #86efac;
+  margin-top: 0.75rem;
+}
+
+.newsletter-features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.newsletter-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: #fbbf24;
+  }
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* ========================================
@@ -826,26 +903,6 @@ const structuredData = {
   border: 0 !important;
 }
 
-.spinner {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .fade-in {
   animation: fadeIn 0.8s ease-in;
 }
@@ -879,32 +936,38 @@ const structuredData = {
     }
   }
 
-  .newsletter {
-    &-content {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
+  .newsletter-content {
+    padding: 2rem 1.5rem;
+  }
 
-    &-icon {
-      margin: 0 auto;
-    }
+  .newsletter-title {
+    font-size: 1.5rem;
+  }
 
-    &-form {
-      padding: 0 1rem;
+  .newsletter-subtitle {
+    font-size: 1rem;
+  }
 
-      .form-wrapper {
-        flex-direction: column;
+  .form-wrapper {
+    flex-direction: column;
+  }
 
-        .email-input,
-        .subscribe-btn {
-          width: 100%;
-        }
+  .subscribe-btn {
+    width: 100%;
+    padding: 1.125rem;
+  }
 
-        .subscribe-btn {
-          padding: 1rem;
-        }
-      }
-    }
+  .newsletter-features {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .stats {
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
   }
 
   .products-section,
@@ -922,9 +985,9 @@ const structuredData = {
   }
 }
 </style>
-
+<!-- Part 3: JavaScript -->
 <script>
-// Newsletter handler scripti (önceki versiyondaki gibi)
+// Newsletter handler script
 class NewsletterHandler {
   constructor() {
     this.form = document.getElementById('newsletter-form');
@@ -932,8 +995,11 @@ class NewsletterHandler {
     this.submitBtn = this.form?.querySelector('.subscribe-btn');
     this.errorMsg = document.getElementById('email-error');
     this.successMsg = this.form?.querySelector('.success-message');
+
+    // Web3Forms API Key (Sizin key'iniz)
     this.ACCESS_KEY = '68735154-a35c-4b70-b2bb-a5b7aba5ff33';
     this.API_URL = 'https://api.web3forms.com/submit';
+
     this.init();
   }
 
@@ -945,35 +1011,51 @@ class NewsletterHandler {
 
   async handleSubmit(e) {
     e.preventDefault();
+
     const email = this.emailInput?.value.trim();
+
     if (!this.validateEmail(email)) {
       this.showError('Please enter a valid email address.');
       return;
     }
+
     this.setLoading(true);
+
     try {
       const response = await fetch(this.API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify({
           access_key: this.ACCESS_KEY,
           email: email,
           subject: 'New Newsletter Subscription - Success Odyssey Hub',
-          from_name: 'Success Odyssey Hub Newsletter'
+          from_name: 'Success Odyssey Hub Newsletter',
+          message: `New subscriber: ${email}`
         })
       });
+
       const data = await response.json();
+
       if (data.success) {
         this.showSuccess();
         this.form.reset();
+
+        // Track event if analytics available
         if (typeof gtag !== 'undefined') {
-          gtag('event', 'newsletter_signup', { event_category: 'engagement', event_label: 'web3forms' });
+          gtag('event', 'newsletter_signup', {
+            event_category: 'engagement',
+            event_label: 'modern_newsletter'
+          });
         }
       } else {
         this.showError(data.message || 'Subscription failed. Please try again.');
       }
     } catch (error) {
       this.showError('Network error. Please check your connection and try again.');
+      console.error('Newsletter error:', error);
     } finally {
       this.setLoading(false);
     }
@@ -981,7 +1063,26 @@ class NewsletterHandler {
 
   validateEmail(email) {
     if (!email) return false;
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    // Email regex validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return false;
+    }
+
+    // Check for common disposable email domains
+    const disposableDomains = [
+      'tempmail', 'throwaway', 'guerrillamail', 'mailinator',
+      '10minutemail', 'trashmail', 'fakeinbox'
+    ];
+
+    const domain = email.split('@')[1]?.toLowerCase();
+    if (disposableDomains.some(d => domain?.includes(d))) {
+      this.showError('Please use a permanent email address.');
+      return false;
+    }
+
+    return true;
   }
 
   setLoading(isLoading) {
@@ -996,6 +1097,11 @@ class NewsletterHandler {
     this.errorMsg.classList.add('show');
     this.emailInput?.classList.add('error');
     this.successMsg?.classList.remove('show');
+
+    // Auto-hide error after 5 seconds
+    setTimeout(() => {
+      this.clearError();
+    }, 5000);
   }
 
   clearError() {
@@ -1009,7 +1115,10 @@ class NewsletterHandler {
     this.successMsg.textContent = '🎉 Success! Check your email to confirm your subscription.';
     this.successMsg.classList.add('show');
     this.errorMsg?.classList.remove('show');
+
     this.submitBtn?.classList.add('success');
+
+    // Reset button after 3 seconds
     setTimeout(() => {
       this.submitBtn?.classList.remove('success');
       this.successMsg?.classList.remove('show');
@@ -1017,9 +1126,189 @@ class NewsletterHandler {
   }
 }
 
+// Initialize when DOM is loaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new NewsletterHandler());
 } else {
   new NewsletterHandler();
 }
+
+// ========================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ========================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+
+    e.preventDefault();
+    const target = document.querySelector(href);
+
+    if (target) {
+      const offsetTop = target.offsetTop - 80; // 80px offset for fixed header
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// ========================================
+// INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS
+// ========================================
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Observe all cards
+document.querySelectorAll('.cards').forEach(card => {
+  observer.observe(card);
+});
+
+// ========================================
+// PERFORMANCE: LAZY LOAD IMAGES
+// ========================================
+if ('loading' in HTMLImageElement.prototype) {
+  const images = document.querySelectorAll('img[loading="lazy"]');
+  images.forEach(img => {
+    img.src = img.dataset.src || img.src;
+  });
+} else {
+  // Fallback for browsers that don't support lazy loading
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+  document.body.appendChild(script);
+}
+
+// ========================================
+// KEYBOARD ACCESSIBILITY
+// ========================================
+document.addEventListener('keydown', (e) => {
+  // ESC key to clear form errors
+  if (e.key === 'Escape') {
+    const newsletterHandler = window.newsletterHandler;
+    if (newsletterHandler) {
+      newsletterHandler.clearError();
+    }
+  }
+
+  // Focus visible for keyboard navigation
+  if (e.key === 'Tab') {
+    document.body.classList.add('user-is-tabbing');
+  }
+});
+
+document.addEventListener('mousedown', () => {
+  document.body.classList.remove('user-is-tabbing');
+});
+
+// ========================================
+// SCROLL TO TOP BUTTON (Optional Enhancement)
+// ========================================
+const createScrollToTop = () => {
+  const button = document.createElement('button');
+  button.innerHTML = '↑';
+  button.className = 'scroll-to-top';
+  button.setAttribute('aria-label', 'Scroll to top');
+  button.style.cssText = `
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+  `;
+
+  document.body.appendChild(button);
+
+  // Show/hide on scroll
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      button.style.opacity = '1';
+      button.style.visibility = 'visible';
+    } else {
+      button.style.opacity = '0';
+      button.style.visibility = 'hidden';
+    }
+  });
+
+  // Scroll to top on click
+  button.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Hover effect
+  button.addEventListener('mouseenter', () => {
+    button.style.transform = 'translateY(-5px)';
+    button.style.boxShadow = '0 6px 20px rgba(0,0,0,0.2)';
+  });
+
+  button.addEventListener('mouseleave', () => {
+    button.style.transform = 'translateY(0)';
+    button.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+  });
+};
+
+// Initialize scroll to top button
+createScrollToTop();
+
+// ========================================
+// PERFORMANCE MONITORING (Optional)
+// ========================================
+if ('PerformanceObserver' in window) {
+  try {
+    const perfObserver = new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        // Log Core Web Vitals
+        if (entry.entryType === 'largest-contentful-paint') {
+          console.log('LCP:', entry.renderTime || entry.loadTime);
+        }
+      }
+    });
+
+    perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+  } catch (e) {
+    // Fail silently
+  }
+}
+
+// ========================================
+// CONSOLE MESSAGE (Branding)
+// ========================================
+console.log(
+  '%c🚀 Success Odyssey Hub',
+  'font-size: 20px; font-weight: bold; color: #667eea;'
+);
+console.log(
+  '%cBuilt with Astro & Love 💜',
+  'font-size: 14px; color: #764ba2;'
+);
+console.log(
+  '%cInterested in the code? Visit our GitHub!',
+  'font-size: 12px; color: #94a3b8;'
+);
 </script>
