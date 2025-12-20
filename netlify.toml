@@ -2,32 +2,28 @@
   publish = "dist"
   command = "npm run build"
 
-# WWW to non-WWW redirect (MUST BE FIRST)
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
   status = 301
   force = true
 
-# Favicon redirects (consolidated, no duplicates)
 [[redirects]]
   from = "/favicon.ico"
   to = "/favicon.svg"
   status = 301
   force = true
 
-# Block search parameter indexing
 [[redirects]]
   from = "/blog?search=*"
   to = "/blog"
   status = 301
   force = true
 
-# Security Headers - ✅ MAILCHIMP ENABLED
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://s3.amazonaws.com https://cdn.jsdelivr.net https://ajax.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-images.mailchimp.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://api.convertkit.com https://api.kit.com https://api.web3forms.com https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.list-manage.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.convertkit.com https://api.kit.com https://api.web3forms.com https://formspree.io https://*.list-manage.com;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://s3.amazonaws.com https://cdn.jsdelivr.net https://ajax.googleapis.com https://downloads.mailchimp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-images.mailchimp.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-images.mailchimp.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://api.convertkit.com https://api.kit.com https://api.web3forms.com https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.list-manage.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.convertkit.com https://api.kit.com https://api.web3forms.com https://formspree.io https://*.list-manage.com;"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
@@ -35,14 +31,12 @@
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
     X-XSS-Protection = "1; mode=block"
 
-# Favicon specific headers
 [[headers]]
   for = "/favicon.svg"
   [headers.values]
     Cache-Control = "public, max-age=604800"
     Content-Type = "image/svg+xml"
 
-# Cache static assets
 [[headers]]
   for = "/_assets/*"
   [headers.values]
@@ -52,29 +46,3 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-```
-
----
-
-## 2️⃣ `_headers` Dosyasını Güncelle
-```
-/*
-  # Security Headers
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-
-  # Content Security Policy - ✅ MAILCHIMP + JQUERY ENABLED
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://successodysseyhub.kit.com https://f.convertkit.com https://s3.amazonaws.com https://cdn.jsdelivr.net https://ajax.googleapis.com; connect-src 'self' https://api.convertkit.com https://api.kit.com https://api.web3forms.com https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.list-manage.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-images.mailchimp.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-images.mailchimp.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.convertkit.com https://api.kit.com https://api.web3forms.com https://formspree.io https://*.list-manage.com;
-
-# Cache Control
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/_astro/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
