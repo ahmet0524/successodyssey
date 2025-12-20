@@ -216,7 +216,7 @@ const structuredData = {
     </div>
   </section>
 
-<!-- ✅ UPDATED MAILCHIMP NEWSLETTER FORM WITH f_id -->
+<!-- ✅ CLEAN MAILCHIMP FORM - NATIVE SUBMISSION -->
 <section class="newsletter-section" aria-labelledby="newsletter-title">
   <div class="container">
     <div class="newsletter-wrapper">
@@ -238,13 +238,14 @@ const structuredData = {
           Get weekly insights, mental models, and actionable strategies delivered straight to your inbox. No spam, just value.
         </p>
 
-        <!-- ✅ MAILCHIMP FORM - f_id PARAMETRESİ EKLENDİ -->
+        <!-- ✅ NATIVE MAILCHIMP FORM -->
         <form
           action="https://successodysseyhub.us17.list-manage.com/subscribe/post?u=5887c657589cfef5abc0d0a51&id=8457f8a68e&f_id=00f55de3f0"
           method="post"
           id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form"
           class="newsletter-form"
+          target="_self"
           novalidate
         >
           <div class="form-wrapper">
@@ -270,18 +271,12 @@ const structuredData = {
               <input type="text" name="b_5887c657589cfef5abc0d0a51_8457f8a68e" tabindex="-1" value="">
             </div>
 
-            <button type="submit" name="subscribe" class="subscribe-btn">
+            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="subscribe-btn">
               <span class="btn-text">Subscribe Free</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </button>
-          </div>
-
-          <!-- Response Messages -->
-          <div id="mce-responses">
-            <div id="mce-error-response" style="display:none;"></div>
-            <div id="mce-success-response" style="display:none;"></div>
           </div>
         </form>
 
@@ -575,7 +570,7 @@ const structuredData = {
     border-color: #ef4444;
   }
 
-  &:not(:placeholder-shown) {
+  &:valid:not(:placeholder-shown) {
     background: white;
     border-color: #10b981;
   }
@@ -620,50 +615,8 @@ const structuredData = {
     }
   }
 
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-
   &:active {
     transform: translateY(-1px);
-  }
-}
-
-#mce-responses {
-  margin-top: 1rem;
-}
-
-#mce-error-response,
-#mce-success-response {
-  padding: 1rem 1.25rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  margin: 0;
-  animation: slideDown 0.3s ease;
-  font-weight: 600;
-}
-
-#mce-error-response {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #fecaca;
-}
-
-#mce-success-response {
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #86efac;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -714,6 +667,60 @@ const structuredData = {
 .stat-label {
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .newsletter-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .newsletter-title {
+    font-size: 1.5rem;
+  }
+
+  .newsletter-subtitle {
+    font-size: 1rem;
+  }
+
+  .form-wrapper {
+    flex-direction: column;
+  }
+
+  .subscribe-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1.125rem;
+  }
+
+  .newsletter-features {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .stats {
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
 }
 
 /* ========================================
@@ -949,213 +956,12 @@ const structuredData = {
 </style>
 <!-- PART 3: JAVASCRIPT -->
 <script is:inline>
-// ✅ IMPROVED MAILCHIMP JSONP SUBMISSION
-(function() {
-  'use strict';
-
-  function init() {
-    const form = document.getElementById('mc-embedded-subscribe-form');
-    const emailInput = document.getElementById('mce-EMAIL');
-    const submitBtn = form?.querySelector('.subscribe-btn');
-    const btnText = submitBtn?.querySelector('.btn-text');
-    const errorDiv = document.getElementById('mce-error-response');
-    const successDiv = document.getElementById('mce-success-response');
-
-    if (!form || !emailInput || !submitBtn) {
-      console.error('Mailchimp form elements not found');
-      return;
-    }
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const email = emailInput.value.trim();
-
-      // Reset messages
-      errorDiv.style.display = 'none';
-      successDiv.style.display = 'none';
-      errorDiv.textContent = '';
-      successDiv.textContent = '';
-
-      // Email validation
-      if (!email || !isValidEmail(email)) {
-        showError('Please enter a valid email address.');
-        emailInput.focus();
-        return false;
-      }
-
-      // Show loading state
-      const originalText = btnText.textContent;
-      btnText.textContent = 'Subscribing...';
-      submitBtn.disabled = true;
-
-      // Submit to Mailchimp
-      submitToMailchimp(email, function(success, message) {
-        if (success) {
-          emailInput.value = '';
-          showSuccess(message);
-
-          // Analytics tracking
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'newsletter_signup', {
-              event_category: 'engagement',
-              event_label: 'mailchimp_success'
-            });
-          }
-        } else {
-          showError(message);
-        }
-
-        // Reset button
-        setTimeout(() => {
-          btnText.textContent = originalText;
-          submitBtn.disabled = false;
-        }, 3000);
+  document.getElementById('mc-embedded-subscribe-form')?.addEventListener('submit', function() {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'newsletter_signup', {
+        event_category: 'engagement',
+        event_label: 'mailchimp_form'
       });
-
-      return false;
-    });
-
-    function submitToMailchimp(email, callback) {
-      try {
-        const formAction = form.getAttribute('action');
-
-        if (!formAction) {
-          callback(false, 'Form configuration error. Please contact support.');
-          return;
-        }
-
-        console.log('Form action:', formAction);
-
-        // Convert to JSONP URL
-        let jsonpUrl;
-        if (formAction.includes('/post?')) {
-          jsonpUrl = formAction.replace('/post?', '/post-json?');
-        } else if (formAction.includes('/post-json?')) {
-          jsonpUrl = formAction;
-        } else {
-          callback(false, 'Invalid form URL format.');
-          return;
-        }
-
-        console.log('JSONP URL:', jsonpUrl);
-
-        // Create unique callback name
-        const callbackName = 'mcCallback' + Math.random().toString(36).substring(7);
-
-        // Create global callback
-        window[callbackName] = function(data) {
-          console.log('Mailchimp response:', data);
-
-          // Cleanup
-          try {
-            delete window[callbackName];
-            if (script && script.parentNode) {
-              document.body.removeChild(script);
-            }
-          } catch(e) {
-            console.error('Cleanup error:', e);
-          }
-
-          // Process response
-          if (data.result === 'success') {
-            callback(true, '🎉 Success! Please check your email to confirm your subscription.');
-          } else {
-            let errorMsg = data.msg || 'Subscription failed. Please try again.';
-            errorMsg = errorMsg.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-            errorMsg = errorMsg.replace(/^\d+\s*-\s*/, '');
-            callback(false, errorMsg);
-          }
-        };
-
-        // Build final URL with callback parameter
-        const separator = jsonpUrl.includes('?') ? '&' : '?';
-        const finalUrl = `${jsonpUrl}${separator}EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
-
-        console.log('Final request URL:', finalUrl);
-
-        // Create JSONP script
-        const script = document.createElement('script');
-        script.src = finalUrl;
-        script.async = true;
-
-        // Add timeout (10 seconds)
-        const timeout = setTimeout(() => {
-          if (window[callbackName]) {
-            delete window[callbackName];
-            if (script && script.parentNode) {
-              document.body.removeChild(script);
-            }
-            callback(false, 'Request timeout. Please check your connection and try again.');
-          }
-        }, 10000);
-
-        script.onerror = function() {
-          clearTimeout(timeout);
-          if (window[callbackName]) {
-            delete window[callbackName];
-          }
-          if (script && script.parentNode) {
-            document.body.removeChild(script);
-          }
-          callback(false, 'Network error. Please check your connection and try again.');
-        };
-
-        script.onload = function() {
-          clearTimeout(timeout);
-        };
-
-        // Append script to body
-        document.body.appendChild(script);
-
-      } catch(error) {
-        console.error('Submission error:', error);
-        callback(false, 'An unexpected error occurred. Please try again.');
-      }
     }
-
-    function isValidEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email.toLowerCase());
-    }
-
-    function showError(message) {
-      errorDiv.textContent = message;
-      errorDiv.style.display = 'block';
-      successDiv.style.display = 'none';
-
-      setTimeout(() => {
-        errorDiv.style.display = 'none';
-      }, 8000);
-    }
-
-    function showSuccess(message) {
-      successDiv.textContent = message;
-      successDiv.style.display = 'block';
-      errorDiv.style.display = 'none';
-
-      setTimeout(() => {
-        successDiv.style.display = 'none';
-      }, 10000);
-    }
-
-    // Clear validation on input
-    emailInput.addEventListener('input', function() {
-      errorDiv.style.display = 'none';
-      successDiv.style.display = 'none';
-      if (this.validity.valid) {
-        this.style.borderColor = '';
-      }
-    });
-  }
-
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
+  });
 </script>
-
