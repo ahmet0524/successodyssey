@@ -240,7 +240,7 @@ const structuredData = {
 
         <!-- ✅ MAILCHIMP FORM -->
         <form
-          action="https://successodysseyhub.us17.list-manage.com/subscribe/post?u=5887c657589cfef5abc0d0a51&id=8457f8a68e"
+          action="https://successodysseyhub.us17.list-manage.com/subscribe/post?u=5887c657589cfef5abc0d0a51&id=8457f8a68e&f_id=00f55de3f0"
           method="post"
           id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form"
@@ -331,6 +331,7 @@ const structuredData = {
 </Layout>
 
 <style lang="scss">
+
 /* ========================================
    HERO SECTION
    ======================================== */
@@ -347,7 +348,7 @@ const structuredData = {
     background:
       radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
       radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    animation: pulse 8s ease-in-out infinite;
+    animation: hero-pulse 8s ease-in-out infinite;
   }
 
   &-content {
@@ -434,10 +435,14 @@ const structuredData = {
   }
 }
 
-@keyframes pulse {
+@keyframes hero-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
 }
+
+/* ========================================
+   NEWSLETTER SECTION
+   ======================================== */
 
 .newsletter-section {
   padding: 4rem 0;
@@ -458,10 +463,10 @@ const structuredData = {
   background:
     radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-  animation: pulse 8s ease-in-out infinite;
+  animation: newsletter-pulse 8s ease-in-out infinite;
 }
 
-@keyframes pulse {
+@keyframes newsletter-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
 }
@@ -482,7 +487,7 @@ const structuredData = {
   backdrop-filter: blur(10px);
   border-radius: 20px;
   margin-bottom: 1.5rem;
-  animation: float 3s ease-in-out infinite;
+  animation: newsletter-float 3s ease-in-out infinite;
 
   svg {
     width: 40px;
@@ -491,7 +496,7 @@ const structuredData = {
   }
 }
 
-@keyframes float {
+@keyframes newsletter-float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
@@ -545,20 +550,22 @@ const structuredData = {
   width: 100%;
   padding: 1.125rem 1.25rem;
   padding-left: 3rem;
-  border: 2px solid transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   font-size: 1rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   color: #0f172a;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &::placeholder {
     color: #94a3b8;
+    opacity: 1;
   }
 
   &:focus {
     outline: none;
+    background: white;
     border-color: #f59e0b;
     box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
@@ -566,6 +573,11 @@ const structuredData = {
 
   &:invalid:not(:placeholder-shown) {
     border-color: #ef4444;
+  }
+
+  &:not(:placeholder-shown) {
+    background: white;
+    border-color: #10b981;
   }
 }
 
@@ -702,56 +714,6 @@ const structuredData = {
 .stat-label {
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.8);
-}
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-@media (max-width: 768px) {
-  .newsletter-content {
-    padding: 2rem 1.5rem;
-  }
-
-  .newsletter-title {
-    font-size: 1.5rem;
-  }
-
-  .newsletter-subtitle {
-    font-size: 1rem;
-  }
-
-  .form-wrapper {
-    flex-direction: column;
-  }
-
-  .subscribe-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 1.125rem;
-  }
-
-  .newsletter-features {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-  }
-
-  .stats {
-    gap: 1.5rem;
-  }
-
-  .stat-number {
-    font-size: 1.5rem;
-  }
 }
 
 /* ========================================
@@ -949,14 +911,16 @@ const structuredData = {
     flex-direction: column;
   }
 
-  #mc-embedded-subscribe {
-    width: 100% !important;
-    padding: 1.125rem !important;
+  .subscribe-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1.125rem;
   }
 
   .newsletter-features {
     flex-direction: column;
     gap: 0.75rem;
+    align-items: center;
   }
 
   .stats {
@@ -981,6 +945,7 @@ const structuredData = {
     }
   }
 }
+
 </style>
 <!-- PART 3: JAVASCRIPT -->
 <script is:inline>
@@ -1027,6 +992,7 @@ const structuredData = {
         // Get form data (use stored email value)
         const formData = new FormData();
         formData.append('EMAIL', email);
+        formData.append('f_id', '00f55de3f0');
         formData.append('b_5887c657589cfef5abc0d0a51_8457f8a68e', '');
 
         const params = new URLSearchParams(formData).toString();
