@@ -216,7 +216,7 @@ const structuredData = {
     </div>
   </section>
 
-<!-- ✅ WORKING MAILCHIMP NEWSLETTER SECTION -->
+<!-- ✅ UPDATED MAILCHIMP NEWSLETTER FORM WITH f_id -->
 <section class="newsletter-section" aria-labelledby="newsletter-title">
   <div class="container">
     <div class="newsletter-wrapper">
@@ -238,16 +238,9 @@ const structuredData = {
           Get weekly insights, mental models, and actionable strategies delivered straight to your inbox. No spam, just value.
         </p>
 
-        <!-- ✅ MAILCHIMP FORM -->
+        <!-- ✅ MAILCHIMP FORM - f_id PARAMETRESİ EKLENDİ -->
         <form
-        <form
-  action="https://successodysseyhub.us17.list-manage.com/subscribe/post?u=5887c657589cfef5abc0d0a51&id=8457f8a68e&f_id=00f55de3f0"
-  method="post"
-  id="mc-embedded-subscribe-form"
-  name="mc-embedded-subscribe-form"
-  class="newsletter-form"
-  novalidate
->
+          action="https://successodysseyhub.us17.list-manage.com/subscribe/post?u=5887c657589cfef5abc0d0a51&id=8457f8a68e&f_id=00f55de3f0"
           method="post"
           id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form"
@@ -956,7 +949,7 @@ const structuredData = {
 </style>
 <!-- PART 3: JAVASCRIPT -->
 <script is:inline>
-// ✅ DÜZELTILMIŞ MAILCHIMP JSONP SUBMISSION
+// ✅ IMPROVED MAILCHIMP JSONP SUBMISSION
 (function() {
   'use strict';
 
@@ -1026,7 +1019,6 @@ const structuredData = {
 
     function submitToMailchimp(email, callback) {
       try {
-        // Form action URL'ini al
         const formAction = form.getAttribute('action');
 
         if (!formAction) {
@@ -1034,9 +1026,9 @@ const structuredData = {
           return;
         }
 
-        console.log('Original form action:', formAction);
+        console.log('Form action:', formAction);
 
-        // post?u= veya post-json?u= format kontrolü
+        // Convert to JSONP URL
         let jsonpUrl;
         if (formAction.includes('/post?')) {
           jsonpUrl = formAction.replace('/post?', '/post-json?');
@@ -1049,10 +1041,10 @@ const structuredData = {
 
         console.log('JSONP URL:', jsonpUrl);
 
-        // Callback fonksiyonu adı (benzersiz olmalı)
+        // Create unique callback name
         const callbackName = 'mcCallback' + Math.random().toString(36).substring(7);
 
-        // Global callback oluştur
+        // Create global callback
         window[callbackName] = function(data) {
           console.log('Mailchimp response:', data);
 
@@ -1066,32 +1058,29 @@ const structuredData = {
             console.error('Cleanup error:', e);
           }
 
-          // Response'u işle
+          // Process response
           if (data.result === 'success') {
             callback(true, '🎉 Success! Please check your email to confirm your subscription.');
           } else {
-            // Mailchimp hata mesajını göster
             let errorMsg = data.msg || 'Subscription failed. Please try again.';
-            // HTML tag'lerini ve fazla boşlukları temizle
             errorMsg = errorMsg.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-            // "0 - " gibi başlangıçları temizle
             errorMsg = errorMsg.replace(/^\d+\s*-\s*/, '');
             callback(false, errorMsg);
           }
         };
 
-        // URL'e callback parametresini ekle
+        // Build final URL with callback parameter
         const separator = jsonpUrl.includes('?') ? '&' : '?';
         const finalUrl = `${jsonpUrl}${separator}EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
 
-        console.log('Final URL:', finalUrl);
+        console.log('Final request URL:', finalUrl);
 
-        // JSONP script oluştur
+        // Create JSONP script
         const script = document.createElement('script');
         script.src = finalUrl;
         script.async = true;
 
-        // Timeout ekle (10 saniye)
+        // Add timeout (10 seconds)
         const timeout = setTimeout(() => {
           if (window[callbackName]) {
             delete window[callbackName];
@@ -1117,7 +1106,7 @@ const structuredData = {
           clearTimeout(timeout);
         };
 
-        // Script'i ekle
+        // Append script to body
         document.body.appendChild(script);
 
       } catch(error) {
@@ -1146,7 +1135,6 @@ const structuredData = {
       successDiv.style.display = 'block';
       errorDiv.style.display = 'none';
 
-      // 10 saniye sonra başarı mesajını gizle
       setTimeout(() => {
         successDiv.style.display = 'none';
       }, 10000);
