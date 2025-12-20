@@ -53,12 +53,10 @@ const structuredData = {
   description="Discover mental models, stoicism, and success philosophy. Transform your life with proven strategies and timeless wisdom for personal development."
   keywords="success, philosophy, stoicism, mental models, personal development, mindfulness, self improvement"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <link rel="preload" as="image" href={mentalModelsImage.src} />
-    <!-- ✅ Mailchimp Validation Scripts -->
-    <script is:inline src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-  </Fragment>
+ <Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <link rel="preload" as="image" href={mentalModelsImage.src} />
+</Fragment>
 
   <!-- Hero Section -->
   <section class="hero" itemscope itemtype="https://schema.org/WPHeader">
@@ -218,7 +216,7 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- ✅ SIMPLE MAILCHIMP NEWSLETTER (CSP COMPLIANT) -->
+<!-- ✅ ULTRA SIMPLE MAILCHIMP NEWSLETTER (NO JQUERY, NO SCRIPTS) -->
 <section class="newsletter-section" aria-labelledby="newsletter-title">
   <div class="container">
     <div class="newsletter-wrapper">
@@ -240,7 +238,7 @@ const structuredData = {
           Get weekly insights, mental models, and actionable strategies delivered straight to your inbox. No spam, just value.
         </p>
 
-        <!-- ✅ SIMPLE MAILCHIMP FORM (target="_blank" bypasses CSP issues) -->
+        <!-- ✅ PURE HTML MAILCHIMP FORM - NO JAVASCRIPT NEEDED -->
         <form
           action="https://successodysseyhub.us17.list-manage.com/subscribe/post"
           method="post"
@@ -249,6 +247,7 @@ const structuredData = {
           target="_blank"
           class="newsletter-form"
         >
+          <!-- Hidden fields for Mailchimp -->
           <input type="hidden" name="u" value="5887c657589cfef5abc0d0a51">
           <input type="hidden" name="id" value="8457f8a68e">
 
@@ -267,15 +266,17 @@ const structuredData = {
                 placeholder="Enter your best email"
                 required
                 autocomplete="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Please enter a valid email address"
               >
             </div>
 
-            <!-- Honeypot (spam protection) -->
+            <!-- Real people should not fill this in (honeypot) -->
             <div style="position: absolute; left: -5000px;" aria-hidden="true">
               <input type="text" name="b_5887c657589cfef5abc0d0a51_8457f8a68e" tabindex="-1" value="">
             </div>
 
-            <button type="submit" name="subscribe" class="subscribe-btn">
+            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="subscribe-btn">
               <span class="btn-content">
                 <span>Subscribe Free</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -977,53 +978,71 @@ const structuredData = {
 
 <script>
 // ========================================
-// MAILCHIMP SIMPLE FORM HANDLING (NO JQUERY NEEDED)
+// MINIMAL CLIENT-SIDE VALIDATION (NO JQUERY)
 // ========================================
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('mc-embedded-subscribe-form');
   const emailInput = document.getElementById('mce-EMAIL');
+  const submitBtn = document.getElementById('mc-embedded-subscribe');
 
   if (!form || !emailInput) return;
 
-  // Client-side validation before submit
+  // Simple client-side validation
   form.addEventListener('submit', function(e) {
     const email = emailInput.value.trim();
 
-    // Basic validation
+    // Basic email validation
     if (!email || !isValidEmail(email)) {
       e.preventDefault();
-      alert('Please enter a valid email address.');
       emailInput.focus();
+      emailInput.setCustomValidity('Please enter a valid email address');
+      emailInput.reportValidity();
       return false;
     }
 
-    // Track submission with Google Analytics
+    // Track with Google Analytics
     if (typeof gtag !== 'undefined') {
-      gtag('event', 'newsletter_signup_attempt', {
+      gtag('event', 'newsletter_signup', {
         event_category: 'engagement',
-        event_label: 'mailchimp'
+        event_label: 'mailchimp_submit'
       });
     }
 
-    // Form will submit to Mailchimp in new tab (target="_blank")
-    console.log('✅ Submitting to Mailchimp...');
+    // Show loading state
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Subscribing...';
+    }
 
-    // Show success message after short delay
+    // Form will open in new tab, clear input after delay
     setTimeout(function() {
       emailInput.value = '';
-      emailInput.blur();
-      console.log('✅ Check email for confirmation link!');
-    }, 1000);
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span class="btn-content"><span>Subscribe Free</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>';
+      }
+    }, 2000);
   });
 
   // Email validation function
   function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email.toLowerCase());
   }
 
-  // Clear validation on input
+  // Clear custom validation message on input
   emailInput.addEventListener('input', function() {
     this.setCustomValidity('');
   });
+
+  // Real-time validation feedback
+  emailInput.addEventListener('blur', function() {
+    if (this.value && !isValidEmail(this.value)) {
+      this.setCustomValidity('Please enter a valid email address');
+    } else {
+      this.setCustomValidity('');
+    }
+  });
 });
+
 </script>
