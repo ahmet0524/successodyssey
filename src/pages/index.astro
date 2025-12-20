@@ -949,7 +949,7 @@ const structuredData = {
 </style>
 <!-- PART 3: JAVASCRIPT -->
 <script is:inline>
-// ✅ DOĞRU MAILCHIMP JSONP SUBMISSION
+// ✅ DÜZELTILMIŞ MAILCHIMP JSONP SUBMISSION
 (function() {
   'use strict';
 
@@ -961,7 +961,10 @@ const structuredData = {
     const errorDiv = document.getElementById('mce-error-response');
     const successDiv = document.getElementById('mce-success-response');
 
-    if (!form || !emailInput || !submitBtn) return;
+    if (!form || !emailInput || !submitBtn) {
+      console.error('Mailchimp form elements not found');
+      return;
+    }
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -972,6 +975,8 @@ const structuredData = {
       // Reset messages
       errorDiv.style.display = 'none';
       successDiv.style.display = 'none';
+      errorDiv.textContent = '';
+      successDiv.textContent = '';
 
       // Email validation
       if (!email || !isValidEmail(email)) {
@@ -985,10 +990,10 @@ const structuredData = {
       btnText.textContent = 'Subscribing...';
       submitBtn.disabled = true;
 
-      // ✅ JSONP ile Mailchimp'e gönder
+      // Submit to Mailchimp
       submitToMailchimp(email, function(success, message) {
         if (success) {
-          emailInput.value = ''; // Başarılı olduysa input'u temizle
+          emailInput.value = '';
           showSuccess(message);
 
           // Analytics tracking
@@ -1012,56 +1017,111 @@ const structuredData = {
       return false;
     });
 
-    // ✅ JSONP İLE MAILCHIMP SUBMISSION
     function submitToMailchimp(email, callback) {
-      // Form action URL'sini al
-      const formAction = form.action;
+      try {
+        // Form action URL'ini al
+        const formAction = form.getAttribute('action');
 
-      // post?u= -> post-json?u= olarak değiştir
-      const jsonpUrl = formAction.replace('/post?', '/post-json?');
-
-      // Parametreleri ekle
-      const params = new URLSearchParams({
-        'EMAIL': email,
-        'b_5887c657589cfef5abc0d0a51_8457f8a68e': '' // honeypot
-      });
-
-      // Callback fonksiyonu adı
-      const callbackName = 'mailchimpCallback_' + Date.now();
-
-      // Global callback oluştur
-      window[callbackName] = function(data) {
-        // Cleanup
-        delete window[callbackName];
-        document.body.removeChild(script);
-
-        // Response'u işle
-        if (data.result === 'success') {
-          callback(true, '🎉 Success! Please check your email to confirm your subscription.');
-        } else {
-          // Mailchimp hata mesajını göster
-          let errorMsg = data.msg || 'Subscription failed. Please try again.';
-          // HTML tag'lerini temizle
-          errorMsg = errorMsg.replace(/<[^>]*>/g, '');
-          callback(false, errorMsg);
+        if (!formAction) {
+          callback(false, 'Form configuration error. Please contact support.');
+          return;
         }
-      };
 
-      // JSONP script oluştur
-      const script = document.createElement('script');
-      script.src = `${jsonpUrl}&${params.toString()}&c=${callbackName}`;
-      script.onerror = function() {
-        delete window[callbackName];
-        document.body.removeChild(script);
-        callback(false, 'Network error. Please try again.');
-      };
+        console.log('Original form action:', formAction);
 
-      // Script'i ekle
-      document.body.appendChild(script);
+        // post?u= veya post-json?u= format kontrolü
+        let jsonpUrl;
+        if (formAction.includes('/post?')) {
+          jsonpUrl = formAction.replace('/post?', '/post-json?');
+        } else if (formAction.includes('/post-json?')) {
+          jsonpUrl = formAction;
+        } else {
+          callback(false, 'Invalid form URL format.');
+          return;
+        }
+
+        console.log('JSONP URL:', jsonpUrl);
+
+        // Callback fonksiyonu adı (benzersiz olmalı)
+        const callbackName = 'mcCallback' + Math.random().toString(36).substring(7);
+
+        // Global callback oluştur
+        window[callbackName] = function(data) {
+          console.log('Mailchimp response:', data);
+
+          // Cleanup
+          try {
+            delete window[callbackName];
+            if (script && script.parentNode) {
+              document.body.removeChild(script);
+            }
+          } catch(e) {
+            console.error('Cleanup error:', e);
+          }
+
+          // Response'u işle
+          if (data.result === 'success') {
+            callback(true, '🎉 Success! Please check your email to confirm your subscription.');
+          } else {
+            // Mailchimp hata mesajını göster
+            let errorMsg = data.msg || 'Subscription failed. Please try again.';
+            // HTML tag'lerini ve fazla boşlukları temizle
+            errorMsg = errorMsg.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+            // "0 - " gibi başlangıçları temizle
+            errorMsg = errorMsg.replace(/^\d+\s*-\s*/, '');
+            callback(false, errorMsg);
+          }
+        };
+
+        // URL'e callback parametresini ekle
+        const separator = jsonpUrl.includes('?') ? '&' : '?';
+        const finalUrl = `${jsonpUrl}${separator}EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
+
+        console.log('Final URL:', finalUrl);
+
+        // JSONP script oluştur
+        const script = document.createElement('script');
+        script.src = finalUrl;
+        script.async = true;
+
+        // Timeout ekle (10 saniye)
+        const timeout = setTimeout(() => {
+          if (window[callbackName]) {
+            delete window[callbackName];
+            if (script && script.parentNode) {
+              document.body.removeChild(script);
+            }
+            callback(false, 'Request timeout. Please check your connection and try again.');
+          }
+        }, 10000);
+
+        script.onerror = function() {
+          clearTimeout(timeout);
+          if (window[callbackName]) {
+            delete window[callbackName];
+          }
+          if (script && script.parentNode) {
+            document.body.removeChild(script);
+          }
+          callback(false, 'Network error. Please check your connection and try again.');
+        };
+
+        script.onload = function() {
+          clearTimeout(timeout);
+        };
+
+        // Script'i ekle
+        document.body.appendChild(script);
+
+      } catch(error) {
+        console.error('Submission error:', error);
+        callback(false, 'An unexpected error occurred. Please try again.');
+      }
     }
 
     function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.toLowerCase());
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email.toLowerCase());
     }
 
     function showError(message) {
@@ -1071,18 +1131,24 @@ const structuredData = {
 
       setTimeout(() => {
         errorDiv.style.display = 'none';
-      }, 5000);
+      }, 8000);
     }
 
     function showSuccess(message) {
       successDiv.textContent = message;
       successDiv.style.display = 'block';
       errorDiv.style.display = 'none';
+
+      // 10 saniye sonra başarı mesajını gizle
+      setTimeout(() => {
+        successDiv.style.display = 'none';
+      }, 10000);
     }
 
     // Clear validation on input
     emailInput.addEventListener('input', function() {
       errorDiv.style.display = 'none';
+      successDiv.style.display = 'none';
       if (this.validity.valid) {
         this.style.borderColor = '';
       }
