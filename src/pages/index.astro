@@ -1020,9 +1020,15 @@ const structuredData = {
       btnText.textContent = 'Subscribing...';
       submitBtn.disabled = true;
 
+      // Clear input immediately
+      emailInput.value = '';
+
       try {
-        // Get form data
-        const formData = new FormData(form);
+        // Get form data (use stored email value)
+        const formData = new FormData();
+        formData.append('EMAIL', email);
+        formData.append('b_5887c657589cfef5abc0d0a51_8457f8a68e', '');
+
         const params = new URLSearchParams(formData).toString();
 
         // Use JSONP endpoint - fix URL correctly
@@ -1042,7 +1048,6 @@ const structuredData = {
 
         // Show success
         showSuccess('🎉 Success! Please check your email to confirm your subscription.');
-        emailInput.value = '';
 
         // Track with Analytics
         if (typeof gtag !== 'undefined') {
@@ -1055,7 +1060,6 @@ const structuredData = {
       } catch (error) {
         console.error('Subscription error:', error);
         showSuccess('Thanks! Please check your email to confirm your subscription.');
-        emailInput.value = '';
       } finally {
         // Reset button
         setTimeout(() => {
