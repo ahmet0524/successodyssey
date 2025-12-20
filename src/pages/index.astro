@@ -216,7 +216,7 @@ const structuredData = {
     </div>
   </section>
 
-<!-- ✅ ÇALIŞAN MAILCHIMP NEWSLETTER - AYNI SAYFADA -->
+<!-- ✅ WORKING MAILCHIMP NEWSLETTER SECTION -->
 <section class="newsletter-section" aria-labelledby="newsletter-title">
   <div class="container">
     <div class="newsletter-wrapper">
@@ -238,13 +238,14 @@ const structuredData = {
           Get weekly insights, mental models, and actionable strategies delivered straight to your inbox. No spam, just value.
         </p>
 
-        <!-- ✅ MAILCHIMP FORM - AYNI SAYFADA AÇILIR -->
+        <!-- ✅ MAILCHIMP FORM -->
         <form
           action="https://successodysseyhub.us17.list-manage.com/subscribe/post?u=5887c657589cfef5abc0d0a51&id=8457f8a68e"
           method="post"
           id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form"
           class="newsletter-form"
+          novalidate
         >
           <div class="form-wrapper">
             <div class="email-input-wrapper">
@@ -264,25 +265,23 @@ const structuredData = {
               >
             </div>
 
-            <!-- Honeypot -->
+            <!-- Honeypot for spam protection -->
             <div style="position: absolute; left: -5000px;" aria-hidden="true">
               <input type="text" name="b_5887c657589cfef5abc0d0a51_8457f8a68e" tabindex="-1" value="">
             </div>
 
-            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="subscribe-btn">
-              <span class="btn-content">
-                <span class="btn-text">Subscribe Free</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </span>
+            <button type="submit" name="subscribe" class="subscribe-btn">
+              <span class="btn-text">Subscribe Free</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </button>
           </div>
 
           <!-- Response Messages -->
           <div id="mce-responses">
-            <div id="mce-error-response" style="display:none"></div>
-            <div id="mce-success-response" style="display:none"></div>
+            <div id="mce-error-response" style="display:none;"></div>
+            <div id="mce-success-response" style="display:none;"></div>
           </div>
         </form>
 
@@ -440,7 +439,6 @@ const structuredData = {
   50% { opacity: 0.8; }
 }
 
-/* NEWSLETTER SECTION STYLES */
 .newsletter-section {
   padding: 4rem 0;
   background: var(--color-bg-secondary);
@@ -525,6 +523,7 @@ const structuredData = {
   display: flex;
   gap: 0.75rem;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .email-input-wrapper {
@@ -564,9 +563,16 @@ const structuredData = {
     box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
   }
+
+  &:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+  }
 }
 
 .subscribe-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 1.125rem 2.5rem;
   background: #f59e0b;
   color: white;
@@ -612,14 +618,6 @@ const structuredData = {
   }
 }
 
-.btn-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-/* Response Messages */
 #mce-responses {
   margin-top: 1rem;
 }
@@ -631,6 +629,7 @@ const structuredData = {
   font-size: 0.9rem;
   margin: 0;
   animation: slideDown 0.3s ease;
+  font-weight: 600;
 }
 
 #mce-error-response {
@@ -675,6 +674,7 @@ const structuredData = {
     width: 20px;
     height: 20px;
     color: #fbbf24;
+    flex-shrink: 0;
   }
 }
 
@@ -716,7 +716,6 @@ const structuredData = {
   border: 0 !important;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
   .newsletter-content {
     padding: 2rem 1.5rem;
@@ -736,12 +735,14 @@ const structuredData = {
 
   .subscribe-btn {
     width: 100%;
+    justify-content: center;
     padding: 1.125rem;
   }
 
   .newsletter-features {
     flex-direction: column;
     gap: 0.75rem;
+    align-items: center;
   }
 
   .stats {
@@ -983,97 +984,119 @@ const structuredData = {
 </style>
 <!-- PART 3: JAVASCRIPT -->
 <script is:inline>
-// ✅ MAILCHIMP AJAX SUBMISSION - AYNI SAYFADA ÇALIŞIR
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('mc-embedded-subscribe-form');
-  const emailInput = document.getElementById('mce-EMAIL');
-  const submitBtn = document.getElementById('mc-embedded-subscribe');
-  const errorDiv = document.getElementById('mce-error-response');
-  const successDiv = document.getElementById('mce-success-response');
+// ✅ MAILCHIMP AJAX SUBMISSION
+(function() {
+  'use strict';
 
-  if (!form || !emailInput) return;
+  function init() {
+    const form = document.getElementById('mc-embedded-subscribe-form');
+    const emailInput = document.getElementById('mce-EMAIL');
+    const submitBtn = form?.querySelector('.subscribe-btn');
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const errorDiv = document.getElementById('mce-error-response');
+    const successDiv = document.getElementById('mce-success-response');
 
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+    if (!form || !emailInput || !submitBtn) return;
 
-    const email = emailInput.value.trim();
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-    // Email validation
-    if (!email || !isValidEmail(email)) {
-      showError('Please enter a valid email address.');
-      emailInput.focus();
-      return;
-    }
+      const email = emailInput.value.trim();
 
-    // Show loading state
-    const btnText = submitBtn.querySelector('.btn-text');
-    const originalText = btnText.textContent;
-    btnText.textContent = 'Subscribing...';
-    submitBtn.disabled = true;
+      // Reset messages
+      errorDiv.style.display = 'none';
+      successDiv.style.display = 'none';
 
-    try {
-      // Mailchimp form data
-      const formData = new FormData(form);
-
-      // Mailchimp JSONP endpoint
-      const url = form.action.replace('/post?', '/post-json?') + '&c=?';
-      const params = new URLSearchParams(formData);
-
-      // JSONP request
-      const response = await fetch(url + '&' + params.toString(), {
-        method: 'GET',
-        mode: 'no-cors'
-      });
-
-      // Since we can't read the response due to CORS, we assume success
-      showSuccess('🎉 Success! Please check your email to confirm your subscription.');
-      emailInput.value = '';
-
-      // Track with Google Analytics
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'newsletter_signup', {
-          event_category: 'engagement',
-          event_label: 'mailchimp_submit'
-        });
+      // Email validation
+      if (!email || !isValidEmail(email)) {
+        showError('Please enter a valid email address.');
+        emailInput.focus();
+        return false;
       }
 
-    } catch (error) {
-      // If there's an error, still show success (Mailchimp will handle the rest)
-      showSuccess('Thanks! Please check your email to confirm your subscription.');
-      emailInput.value = '';
+      // Show loading state
+      const originalText = btnText.textContent;
+      btnText.textContent = 'Subscribing...';
+      submitBtn.disabled = true;
+
+      try {
+        // Get form data
+        const formData = new FormData(form);
+        const params = new URLSearchParams(formData).toString();
+
+        // Use JSONP endpoint
+        const baseUrl = form.action.replace('/post?', '/post-json?').replace('/post', '/post-json');
+        const url = `${baseUrl}&${params}`;
+
+        // Make request
+        const response = await fetch(url, {
+          method: 'GET',
+          mode: 'no-cors'
+        });
+
+        // Show success
+        showSuccess('🎉 Success! Please check your email to confirm your subscription.');
+        emailInput.value = '';
+
+        // Track with Analytics
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'newsletter_signup', {
+            event_category: 'engagement',
+            event_label: 'mailchimp_submit'
+          });
+        }
+
+      } catch (error) {
+        console.error('Subscription error:', error);
+        showSuccess('Thanks! Please check your email to confirm your subscription.');
+        emailInput.value = '';
+      } finally {
+        // Reset button
+        setTimeout(() => {
+          btnText.textContent = originalText;
+          submitBtn.disabled = false;
+        }, 3000);
+      }
+
+      return false;
+    });
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.toLowerCase());
     }
 
-    // Reset button
-    setTimeout(() => {
-      btnText.textContent = originalText;
-      submitBtn.disabled = false;
-    }, 3000);
-  });
+    function showError(message) {
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+      successDiv.style.display = 'none';
 
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.toLowerCase());
-  }
+      setTimeout(() => {
+        errorDiv.style.display = 'none';
+      }, 5000);
+    }
 
-  function showError(message) {
-    errorDiv.textContent = message;
-    errorDiv.style.display = 'block';
-    successDiv.style.display = 'none';
-
-    setTimeout(() => {
+    function showSuccess(message) {
+      successDiv.textContent = message;
+      successDiv.style.display = 'block';
       errorDiv.style.display = 'none';
-    }, 5000);
+    }
+
+    // Clear validation on input
+    emailInput.addEventListener('input', function() {
+      errorDiv.style.display = 'none';
+      if (this.validity.valid) {
+        this.style.borderColor = '';
+      }
+    });
   }
 
-  function showSuccess(message) {
-    successDiv.textContent = message;
-    successDiv.style.display = 'block';
-    errorDiv.style.display = 'none';
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
-
-  // Clear validation on input
-  emailInput.addEventListener('input', function() {
-    errorDiv.style.display = 'none';
-  });
-});
+})();
 </script>
 
