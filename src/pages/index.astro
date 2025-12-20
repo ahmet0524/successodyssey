@@ -1025,9 +1025,14 @@ const structuredData = {
         const formData = new FormData(form);
         const params = new URLSearchParams(formData).toString();
 
-        // Use JSONP endpoint
-        const baseUrl = form.action.replace('/post?', '/post-json?').replace('/post', '/post-json');
-        const url = `${baseUrl}&${params}`;
+        // Use JSONP endpoint - fix URL correctly
+        let jsonpUrl = form.action;
+        if (jsonpUrl.includes('/post?')) {
+          jsonpUrl = jsonpUrl.replace('/post?', '/post-json?');
+        } else if (jsonpUrl.includes('/post')) {
+          jsonpUrl = jsonpUrl.replace('/post', '/post-json');
+        }
+        const url = `${jsonpUrl}&${params}`;
 
         // Make request
         const response = await fetch(url, {
