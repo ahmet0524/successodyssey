@@ -949,7 +949,7 @@ const structuredData = {
 </style>
 <!-- PART 3: JAVASCRIPT -->
 <script is:inline>
-// ✅ MAILCHIMP AJAX SUBMISSION
+// ✅ DOĞRU MAILCHIMP JSONP SUBMISSION
 (function() {
   'use strict';
 
@@ -963,7 +963,7 @@ const structuredData = {
 
     if (!form || !emailInput || !submitBtn) return;
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
       e.stopPropagation();
 
@@ -985,56 +985,80 @@ const structuredData = {
       btnText.textContent = 'Subscribing...';
       submitBtn.disabled = true;
 
-      // Clear input immediately
-      emailInput.value = '';
+      // ✅ JSONP ile Mailchimp'e gönder
+      submitToMailchimp(email, function(success, message) {
+        if (success) {
+          emailInput.value = ''; // Başarılı olduysa input'u temizle
+          showSuccess(message);
 
-      try {
-        // Get form data (use stored email value)
-        const formData = new FormData();
-        formData.append('EMAIL', email);
-        formData.append('b_5887c657589cfef5abc0d0a51_8457f8a68e', '');
-
-        const params = new URLSearchParams(formData).toString();
-
-        // Use JSONP endpoint - fix URL correctly
-        let jsonpUrl = form.action;
-        if (jsonpUrl.includes('/post?')) {
-          jsonpUrl = jsonpUrl.replace('/post?', '/post-json?');
-        } else if (jsonpUrl.includes('/post')) {
-          jsonpUrl = jsonpUrl.replace('/post', '/post-json');
-        }
-        const url = `${jsonpUrl}&${params}`;
-
-        // Make request
-        const response = await fetch(url, {
-          method: 'GET',
-          mode: 'no-cors'
-        });
-
-        // Show success
-        showSuccess('🎉 Success! Please check your email to confirm your subscription.');
-
-        // Track with Analytics
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'newsletter_signup', {
-            event_category: 'engagement',
-            event_label: 'mailchimp_submit'
-          });
+          // Analytics tracking
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'newsletter_signup', {
+              event_category: 'engagement',
+              event_label: 'mailchimp_success'
+            });
+          }
+        } else {
+          showError(message);
         }
 
-      } catch (error) {
-        console.error('Subscription error:', error);
-        showSuccess('Thanks! Please check your email to confirm your subscription.');
-      } finally {
         // Reset button
         setTimeout(() => {
           btnText.textContent = originalText;
           submitBtn.disabled = false;
         }, 3000);
-      }
+      });
 
       return false;
     });
+
+    // ✅ JSONP İLE MAILCHIMP SUBMISSION
+    function submitToMailchimp(email, callback) {
+      // Form action URL'sini al
+      const formAction = form.action;
+
+      // post?u= -> post-json?u= olarak değiştir
+      const jsonpUrl = formAction.replace('/post?', '/post-json?');
+
+      // Parametreleri ekle
+      const params = new URLSearchParams({
+        'EMAIL': email,
+        'b_5887c657589cfef5abc0d0a51_8457f8a68e': '' // honeypot
+      });
+
+      // Callback fonksiyonu adı
+      const callbackName = 'mailchimpCallback_' + Date.now();
+
+      // Global callback oluştur
+      window[callbackName] = function(data) {
+        // Cleanup
+        delete window[callbackName];
+        document.body.removeChild(script);
+
+        // Response'u işle
+        if (data.result === 'success') {
+          callback(true, '🎉 Success! Please check your email to confirm your subscription.');
+        } else {
+          // Mailchimp hata mesajını göster
+          let errorMsg = data.msg || 'Subscription failed. Please try again.';
+          // HTML tag'lerini temizle
+          errorMsg = errorMsg.replace(/<[^>]*>/g, '');
+          callback(false, errorMsg);
+        }
+      };
+
+      // JSONP script oluştur
+      const script = document.createElement('script');
+      script.src = `${jsonpUrl}&${params.toString()}&c=${callbackName}`;
+      script.onerror = function() {
+        delete window[callbackName];
+        document.body.removeChild(script);
+        callback(false, 'Network error. Please try again.');
+      };
+
+      // Script'i ekle
+      document.body.appendChild(script);
+    }
 
     function isValidEmail(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.toLowerCase());
