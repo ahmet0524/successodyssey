@@ -993,47 +993,27 @@ const structuredData = {
 
 </style>
 
-<!-- AJAX Submission Script with DEBUG -->
+<!-- Newsletter Submission Script - Netlify Function Version -->
 <script is:inline>
 (function() {
   const form = document.getElementById('mc-embedded-subscribe-form');
   const errorDiv = document.getElementById('mce-error-response');
   const successDiv = document.getElementById('mce-success-response');
   const submitBtn = document.getElementById('mc-embedded-subscribe');
-  const debugDiv = document.getElementById('debug-info');
-
-  // Mailchimp configuration
-  const MAILCHIMP_URL = 'https://successodysseyhub.us17.list-manage.com/subscribe/post-json';
-  const MAILCHIMP_U = '5887c657589cfef5abc0d0a51';
-  const MAILCHIMP_ID = '8457f8a68e';
-
-  function log(message, data) {
-    console.log('[Newsletter Debug]', message, data || '');
-    if (debugDiv) {
-      debugDiv.style.display = 'block';
-      debugDiv.innerHTML += `<div>${message} ${data ? JSON.stringify(data) : ''}</div>`;
-    }
-  }
 
   if (!form) {
-    log('ERROR: Form not found!');
+    console.error('[Newsletter] Form not found');
     return;
   }
 
-  log('Form initialized successfully');
-
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
-
-    log('Form submitted!');
 
     // Clear previous messages
     errorDiv.style.display = 'none';
     successDiv.style.display = 'none';
     errorDiv.textContent = '';
     successDiv.textContent = '';
-    debugDiv.innerHTML = '';
-    debugDiv.style.display = 'block';
 
     // Disable button
     submitBtn.disabled = true;
@@ -1042,14 +1022,9 @@ const structuredData = {
     // Get email
     const emailInput = document.getElementById('mce-EMAIL');
     const email = emailInput ? emailInput.value.trim() : '';
-    const honeypot = document.querySelector('input[name="b_5887c657589cfef5abc0d0a51_8457f8a68e"]').value;
-
-    log('Email:', email);
-    log('Honeypot:', honeypot);
 
     // Validate email
     if (!email || !email.includes('@')) {
-      log('ERROR: Invalid email');
       errorDiv.textContent = 'Please enter a valid email address.';
       errorDiv.style.display = 'block';
       submitBtn.disabled = false;
@@ -1057,49 +1032,25 @@ const structuredData = {
       return;
     }
 
-    // Check honeypot
-    if (honeypot) {
-      log('ERROR: Honeypot filled (spam detected)');
-      errorDiv.textContent = 'Spam detected. Please try again.';
-      errorDiv.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span class="btn-text">Subscribe Free</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-      return;
-    }
+    try {
+      // Call Netlify Function
+      const response = await fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      });
 
-    // Build JSONP URL
-    const params = new URLSearchParams({
-      u: MAILCHIMP_U,
-      id: MAILCHIMP_ID,
-      EMAIL: email,
-      'b_5887c657589cfef5abc0d0a51_8457f8a68e': '' // honeypot
-    });
-
-    const callbackName = 'mailchimpCallback_' + Date.now();
-    params.append('c', callbackName);
-
-    const url = MAILCHIMP_URL + '?' + params.toString();
-
-    log('Request URL:', url);
-
-    // Create JSONP callback
-    window[callbackName] = function(data) {
-      log('Response received:', data);
-
-      // Cleanup
-      const script = document.getElementById('mailchimp-jsonp-script');
-      if (script) {
-        document.body.removeChild(script);
-      }
-      delete window[callbackName];
+      const data = await response.json();
 
       // Re-enable button
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<span class="btn-text">Subscribe Free</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
 
-      if (data.result === 'success') {
-        log('SUCCESS!');
-        successDiv.textContent = '🎉 Almost there! Please check your email to confirm your subscription.';
+      if (data.success) {
+        // Success
+        successDiv.textContent = data.message;
         successDiv.style.display = 'block';
         form.reset();
 
@@ -1107,35 +1058,24 @@ const structuredData = {
         if (typeof gtag !== 'undefined') {
           gtag('event', 'newsletter_signup', {
             event_category: 'engagement',
-            event_label: 'mailchimp_form'
+            event_label: 'netlify_function'
           });
-          log('GA event sent');
         }
       } else {
-        log('ERROR from Mailchimp:', data.msg);
-        let errorMsg = data.msg || 'An error occurred. Please try again.';
-        errorMsg = errorMsg.replace(/<[^>]*>/g, '');
-        errorMsg = errorMsg.replace('0 - ', '');
-        errorDiv.textContent = errorMsg;
+        // Error
+        errorDiv.textContent = data.message;
         errorDiv.style.display = 'block';
       }
-    };
 
-    // Add script to page
-    const script = document.createElement('script');
-    script.id = 'mailchimp-jsonp-script';
-    script.src = url;
-    script.onerror = function() {
-      log('ERROR: Script loading failed');
+    } catch (error) {
+      console.error('[Newsletter] Error:', error);
       errorDiv.textContent = 'Connection error. Please try again.';
       errorDiv.style.display = 'block';
+
+      // Re-enable button
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<span class="btn-text">Subscribe Free</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-      delete window[callbackName];
-    };
-
-    log('Adding script to page...');
-    document.body.appendChild(script);
+    }
   });
 })();
 </script>
