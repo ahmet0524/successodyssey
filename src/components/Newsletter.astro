@@ -1,5 +1,5 @@
 ---
-// components/Newsletter.astro - Enhanced with validation and accessibility
+// components/Newsletter.astro - Mailchimp via Netlify Function
 const {
   title = "Stay Updated",
   description = "Get the latest insights on personal development and success strategies delivered to your inbox.",
@@ -251,7 +251,6 @@ const {
   }
 }
 
-// Visually hidden label for accessibility
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -308,51 +307,44 @@ class NewsletterForm {
     this.clearMessages();
 
     try {
-      // Simulate API call (replace with actual newsletter service)
-      await this.subscribeToNewsletter(email);
+      // Call Netlify Function
+      const response = await fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      // Show success state
-      this.setButtonState('success');
-      this.showSuccess('Thank you for subscribing! Check your email for confirmation.');
-      this.form.reset();
+      const data = await response.json();
 
-      // Reset button after 3 seconds
-      setTimeout(() => {
-        this.setButtonState('default');
-      }, 3000);
+      if (data.success) {
+        // Show success state
+        this.setButtonState('success');
+        this.showSuccess(data.message);
+        this.form.reset();
 
-      // Track conversion event
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'newsletter_signup', {
-          event_category: 'engagement',
-          event_label: 'footer_newsletter'
-        });
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          this.setButtonState('default');
+        }, 3000);
+
+        // Track conversion event
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'newsletter_signup', {
+            event_category: 'engagement',
+            event_label: 'footer_newsletter'
+          });
+        }
+      } else {
+        throw new Error(data.message || 'Subscription failed');
       }
 
     } catch (error) {
       this.setButtonState('default');
-      this.showError('Something went wrong. Please try again.');
+      this.showError(error.message || 'Something went wrong. Please try again.');
       console.error('Newsletter subscription error:', error);
     }
-  }
-
-  async subscribeToNewsletter(email) {
-    // Replace this with your actual newsletter service API
-    // Example: ConvertKit, Mailchimp, etc.
-
-    const response = await fetch('/api/newsletter', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    return response.json();
   }
 
   validateEmail() {
@@ -399,7 +391,6 @@ class NewsletterForm {
         this.submitBtn.disabled = true;
         break;
       default:
-        // Default state - no additional classes needed
         break;
     }
   }
