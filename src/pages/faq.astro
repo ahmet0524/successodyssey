@@ -1,0 +1,696 @@
+---
+// src/pages/faq.astro
+import Layout from "../layouts/Layout.astro";
+import JsonLD from "../components/JsonLD.astro";
+
+const title = "Frequently Asked Questions - Success Odyssey Hub";
+const description = "Find answers to common questions about personal development, success strategies, coaching services, and how to get the most from Success Odyssey Hub.";
+
+const faqs = [
+  {
+    category: "General",
+    questions: [
+      {
+        question: "What is Success Odyssey Hub?",
+        answer: "Success Odyssey Hub is a comprehensive platform dedicated to personal development, productivity, and success strategies. We provide evidence-based content, practical tools, and actionable insights to help you achieve your goals and unlock your full potential."
+      },
+      {
+        question: "Who is Success Odyssey Hub for?",
+        answer: "Our content is designed for anyone committed to personal growth—whether you're an entrepreneur, professional, student, or simply someone looking to improve their life. From beginners to advanced practitioners, we offer insights at every level."
+      },
+      {
+        question: "Is the content free?",
+        answer: "Yes! Most of our blog content, articles, and resources are completely free. We also offer premium products and services for those seeking deeper guidance and personalized support."
+      },
+      {
+        question: "How often is new content published?",
+        answer: "We publish new articles and insights regularly, typically 2-3 times per week. Subscribe to our newsletter to stay updated on the latest content and exclusive insights."
+      }
+    ]
+  },
+  {
+    category: "Content & Resources",
+    questions: [
+      {
+        question: "What topics do you cover?",
+        answer: "We cover a wide range of personal development topics including productivity systems, mental models, habit formation, goal setting, mindfulness, emotional intelligence, success philosophy, and practical life strategies."
+      },
+      {
+        question: "Are your articles research-based?",
+        answer: "Yes! We prioritize evidence-based approaches, drawing from psychology, neuroscience, behavioral economics, and philosophy. All claims are backed by research, expert insights, or practical case studies."
+      },
+      {
+        question: "Can I request specific topics?",
+        answer: "Absolutely! We welcome topic suggestions from our community. Send your ideas through our contact form, and we'll consider them for future content."
+      },
+      {
+        question: "Do you offer downloadable resources?",
+        answer: "Yes! Many of our articles include downloadable templates, worksheets, and guides. We also have a growing library of premium resources available in our products section."
+      }
+    ]
+  },
+  {
+    category: "Coaching & Services",
+    questions: [
+      {
+        question: "Do you offer personal coaching?",
+        answer: "Yes! We offer one-on-one coaching sessions for individuals seeking personalized guidance on their personal development journey. Contact us through the contact form to learn more about availability and pricing."
+      },
+      {
+        question: "What does coaching include?",
+        answer: "Our coaching sessions include personalized goal setting, accountability frameworks, custom strategies tailored to your situation, and ongoing support. Sessions are conducted via video call and can be scheduled based on your needs."
+      },
+      {
+        question: "Do you work with teams or organizations?",
+        answer: "Yes! We offer workshops, training sessions, and consulting services for teams and organizations looking to enhance productivity, leadership, and overall performance culture."
+      },
+      {
+        question: "How do I book a coaching session?",
+        answer: "Simply fill out the contact form selecting 'Coaching & Consultation' as your subject. We'll respond within 24-48 hours to discuss your needs and schedule a session."
+      }
+    ]
+  },
+  {
+    category: "Newsletter & Community",
+    questions: [
+      {
+        question: "What do I get with the newsletter?",
+        answer: "Our newsletter delivers exclusive insights, early access to new content, curated resources, practical tips, and special announcements directly to your inbox. It's completely free and you can unsubscribe anytime."
+      },
+      {
+        question: "How often are newsletters sent?",
+        answer: "We send newsletters weekly, typically on Sundays. Each edition is carefully crafted with value-packed content designed to start your week with clarity and motivation."
+      },
+      {
+        question: "Will you share my email address?",
+        answer: "Never! We respect your privacy completely. Your email is only used for our newsletter and will never be sold, shared, or used for any other purpose. See our privacy policy for full details."
+      },
+      {
+        question: "Can I unsubscribe at any time?",
+        answer: "Yes! Every newsletter includes an easy unsubscribe link at the bottom. You can opt out instantly with one click, no questions asked."
+      }
+    ]
+  },
+  {
+    category: "Products",
+    questions: [
+      {
+        question: "What products do you offer?",
+        answer: "We offer digital products including comprehensive guides, workbooks, templates, courses, and toolkit bundles designed to accelerate your personal development journey. Check our products page for current offerings."
+      },
+      {
+        question: "Are products one-time purchases?",
+        answer: "Yes! All our digital products are one-time purchases with lifetime access. Once you buy, it's yours forever with any future updates included at no additional cost."
+      },
+      {
+        question: "What payment methods do you accept?",
+        answer: "We accept all major credit cards, PayPal, and other secure payment methods through our payment processor. All transactions are encrypted and secure."
+      },
+      {
+        question: "Do you offer refunds?",
+        answer: "Yes! We offer a 30-day money-back guarantee on all digital products. If you're not satisfied for any reason, contact us within 30 days for a full refund."
+      }
+    ]
+  },
+  {
+    category: "Technical & Support",
+    questions: [
+      {
+        question: "I'm having technical issues with the website. What should I do?",
+        answer: "We're sorry to hear that! Please contact us through the contact form selecting 'Technical Support' as your subject. Include details about the issue and what device/browser you're using. We'll respond quickly to help resolve it."
+      },
+      {
+        question: "Can I share your content?",
+        answer: "Yes! We encourage sharing our articles on social media or linking to them from your website. However, please don't copy entire articles without permission. Always provide proper attribution and link back to the original."
+      },
+      {
+        question: "Do you accept guest posts?",
+        answer: "We occasionally accept high-quality guest contributions from experts in personal development, productivity, and related fields. Contact us with your proposal and writing samples for consideration."
+      },
+      {
+        question: "How can I report a problem or give feedback?",
+        answer: "We value all feedback! Use our contact form and select 'Feedback & Suggestions' as your subject. Whether it's positive feedback, constructive criticism, or bug reports, we want to hear from you."
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  keywords="faq, frequently asked questions, personal development help, success odyssey support"
+  type="website"
+>
+  <JsonLD
+    type="website"
+    title={title}
+    description={description}
+    keywords="faq, help, support, personal development"
+  />
+
+  <article class="faq-page">
+    <div class="faq-container">
+
+      <!-- Header Section -->
+      <header class="faq-header">
+        <h1>Frequently Asked Questions</h1>
+        <p class="lead">
+          Find quick answers to common questions about Success Odyssey Hub, our content, services, and how we can help you on your personal development journey.
+        </p>
+
+        <!-- Search Box -->
+        <div class="search-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input
+            type="search"
+            id="faq-search"
+            placeholder="Search for answers..."
+            aria-label="Search FAQ"
+          />
+        </div>
+      </header>
+
+      <!-- FAQ Categories -->
+      <div class="faq-content">
+        {faqs.map((category, categoryIndex) => (
+          <section class="faq-category" data-category={category.category.toLowerCase()}>
+            <h2 class="category-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 7h18M3 12h18M3 17h18"></path>
+              </svg>
+              {category.category}
+            </h2>
+
+            <div class="faq-items">
+              {category.questions.map((faq, index) => (
+                <div class="faq-item" data-faq-id={`${categoryIndex}-${index}`}>
+                  <button
+                    class="faq-question"
+                    aria-expanded="false"
+                    aria-controls={`answer-${categoryIndex}-${index}`}
+                  >
+                    <span>{faq.question}</span>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div
+                    class="faq-answer"
+                    id={`answer-${categoryIndex}-${index}`}
+                    role="region"
+                    aria-labelledby={`question-${categoryIndex}-${index}`}
+                  >
+                    <p>{faq.answer}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <!-- Still Have Questions CTA -->
+      <section class="contact-cta">
+        <div class="cta-content">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <h2>Still Have Questions?</h2>
+          <p>Can't find what you're looking for? We're here to help! Reach out to our team and we'll get back to you within 24-48 hours.</p>
+          <a href="/contact" class="contact-btn">
+            Contact Us
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</Layout>
+
+<style>
+/* Force light mode */
+.faq-page {
+  color-scheme: light !important;
+  background-color: #ffffff !important;
+  min-height: 100vh;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Header Section */
+.faq-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.faq-header h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #0f172a !important;
+  font-weight: 800 !important;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lead {
+  font-size: 1.15rem;
+  color: #475569 !important;
+  font-weight: 500 !important;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-box svg {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8 !important;
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #0f172a !important;
+  background: #ffffff !important;
+  transition: all 0.3s ease;
+  font-weight: 500 !important;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #1d4ed8 !important;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+}
+
+.search-box input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* FAQ Content */
+.faq-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Category Section */
+.faq-category {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.faq-category.hidden {
+  display: none;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.75rem;
+  color: #0f172a !important;
+  font-weight: 800 !important;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #e2e8f0;
+}
+
+.category-title svg {
+  color: #1d4ed8 !important;
+}
+
+/* FAQ Items */
+.faq-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: #ffffff !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item.hidden {
+  display: none;
+}
+
+.faq-item:hover {
+  border-color: #1d4ed8 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* FAQ Question Button */
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: #1e293b !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #f8fafc !important;
+}
+
+.faq-question span {
+  flex: 1;
+}
+
+.faq-question .chevron {
+  color: #1d4ed8 !important;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-item.active .faq-question .chevron {
+  transform: rotate(180deg);
+}
+
+/* FAQ Answer */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+}
+
+.faq-answer p {
+  padding: 0 1.5rem 1.5rem;
+  color: #475569 !important;
+  font-weight: 500 !important;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Contact CTA */
+.contact-cta {
+  margin-top: 4rem;
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+.cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-content svg {
+  margin: 0 auto 1.5rem;
+  color: white;
+}
+
+.cta-content h2 {
+  color: white !important;
+  font-weight: 800 !important;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500 !important;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #1d4ed8 !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn svg {
+  color: #1d4ed8 !important;
+}
+
+/* No Results Message */
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #f8fafc !important;
+  border: 2px dashed #cbd5e1 !important;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.no-results.show {
+  display: block;
+}
+
+.no-results svg {
+  color: #94a3b8 !important;
+  margin: 0 auto 1rem;
+}
+
+.no-results h3 {
+  color: #1e293b !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem;
+}
+
+.no-results p {
+  color: #64748b !important;
+  font-weight: 500 !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 2rem 1rem;
+  }
+
+  .faq-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .faq-header h1 {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .faq-answer p {
+    padding: 0 1.25rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-cta {
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+  }
+}
+</style>
+
+<script>
+class FAQPage {
+  constructor() {
+    this.searchInput = document.getElementById('faq-search');
+    this.faqItems = document.querySelectorAll('.faq-item');
+    this.categories = document.querySelectorAll('.faq-category');
+    this.noResultsMsg = this.createNoResultsMessage();
+
+    this.init();
+  }
+
+  init() {
+    // Setup accordion functionality
+    this.faqItems.forEach(item => {
+      const button = item.querySelector('.faq-question');
+      button.addEventListener('click', () => this.toggleFAQ(item));
+    });
+
+    // Setup search
+    if (this.searchInput) {
+      this.searchInput.addEventListener('input', (e) => this.handleSearch(e.target.value));
+    }
+
+    // Check URL hash to auto-open specific FAQ
+    this.checkURLHash();
+  }
+
+  toggleFAQ(item) {
+    const wasActive = item.classList.contains('active');
+
+    // Close all other items
+    this.faqItems.forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+
+    // Toggle current item
+    if (!wasActive) {
+      item.classList.add('active');
+      item.querySelector('.faq-question').setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  handleSearch(query) {
+    const searchTerm = query.toLowerCase().trim();
+    let hasResults = false;
+
+    if (!searchTerm) {
+      // Show all if search is empty
+      this.faqItems.forEach(item => item.classList.remove('hidden'));
+      this.categories.forEach(cat => cat.classList.remove('hidden'));
+      this.hideNoResults();
+      return;
+    }
+
+    // Search through all FAQ items
+    this.faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+      const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+
+      if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+        item.classList.remove('hidden');
+        hasResults = true;
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+
+    // Hide/show categories based on whether they have visible items
+    this.categories.forEach(category => {
+      const visibleItems = category.querySelectorAll('.faq-item:not(.hidden)');
+      if (visibleItems.length === 0) {
+        category.classList.add('hidden');
+      } else {
+        category.classList.remove('hidden');
+      }
+    });
+
+    // Show/hide no results message
+    if (!hasResults) {
+      this.showNoResults();
+    } else {
+      this.hideNoResults();
+    }
+  }
+
+  createNoResultsMessage() {
+    const existing = document.querySelector('.no-results');
+    if (existing) return existing;
+
+    const div = document.createElement('div');
+    div.className = 'no-results';
+    div.innerHTML = `
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      <h3>No Results Found</h3>
+      <p>We couldn't find any FAQs matching your search. Try different keywords or browse all categories above.</p>
+    `;
+
+    const content = document.querySelector('.faq-content');
+    content.appendChild(div);
+    return div;
+  }
+
+  showNoResults() {
+    this.noResultsMsg.classList.add('show');
+  }
+
+  hideNoResults() {
+    this.noResultsMsg.classList.remove('show');
+  }
+
+  checkURLHash() {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetId = hash.substring(1);
+      const targetItem = document.querySelector(`[data-faq-id="${targetId}"]`);
+      if (targetItem) {
+        setTimeout(() => {
+          this.toggleFAQ(targetItem);
+          targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    }
+  }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new FAQPage();
+});
+</script>
