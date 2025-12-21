@@ -995,19 +995,35 @@ const structuredData = {
 
 <!-- Newsletter Submission Script - Netlify Function Version -->
 <script is:inline>
+// Newsletter Submission Script - Enhanced Error Handling
+// Replace the <script is:inline> section in index.astro with this
+
 (function() {
   const form = document.getElementById('mc-embedded-subscribe-form');
   const errorDiv = document.getElementById('mce-error-response');
   const successDiv = document.getElementById('mce-success-response');
   const submitBtn = document.getElementById('mc-embedded-subscribe');
+  const debugDiv = document.getElementById('debug-info');
+
+  // Debug logging helper
+  function logDebug(message, data = {}) {
+    console.log(`[Newsletter] ${message}`, data);
+    if (debugDiv && window.location.search.includes('debug=true')) {
+      debugDiv.style.display = 'block';
+      debugDiv.innerHTML += `<div>${new Date().toLocaleTimeString()}: ${message} ${JSON.stringify(data)}</div>`;
+    }
+  }
 
   if (!form) {
     console.error('[Newsletter] Form not found');
     return;
   }
 
+  logDebug('Form initialized');
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
+    logDebug('Form submitted');
 
     // Clear previous messages
     errorDiv.style.display = 'none';
@@ -1017,22 +1033,29 @@ const structuredData = {
 
     // Disable button
     submitBtn.disabled = true;
+    const originalHTML = submitBtn.innerHTML;
     submitBtn.innerHTML = '<span class="btn-text">Submitting...</span>';
 
     // Get email
     const emailInput = document.getElementById('mce-EMAIL');
     const email = emailInput ? emailInput.value.trim() : '';
 
+    logDebug('Email entered', { email: email.substring(0, 3) + '***' });
+
     // Validate email
-    if (!email || !email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      logDebug('Invalid email format');
       errorDiv.textContent = 'Please enter a valid email address.';
       errorDiv.style.display = 'block';
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span class="btn-text">Subscribe Free</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      submitBtn.innerHTML = originalHTML;
       return;
     }
 
     try {
+      logDebug('Calling Netlify function...');
+
       // Call Netlify Function
       const response = await fetch('/.netlify/functions/subscribe', {
         method: 'POST',
@@ -1042,11 +1065,18 @@ const structuredData = {
         body: JSON.stringify({ email })
       });
 
+      logDebug('Response received', {
+        status: response.status,
+        ok: response.ok
+      });
+
+      // Parse response
       const data = await response.json();
+      logDebug('Response data', { success: data.success, message: data.message });
 
       // Re-enable button
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span class="btn-text">Subscribe Free</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      submitBtn.innerHTML = originalHTML;
 
       if (data.success) {
         // Success
@@ -1054,28 +1084,47 @@ const structuredData = {
         successDiv.style.display = 'block';
         form.reset();
 
+        logDebug('Subscription successful');
+
         // Google Analytics tracking
         if (typeof gtag !== 'undefined') {
           gtag('event', 'newsletter_signup', {
             event_category: 'engagement',
             event_label: 'netlify_function'
           });
+          logDebug('GA event sent');
         }
+
+        // Scroll to message
+        successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
       } else {
-        // Error
-        errorDiv.textContent = data.message;
+        // Error from server
+        logDebug('Server returned error');
+        errorDiv.textContent = data.message || 'An error occurred. Please try again.';
         errorDiv.style.display = 'block';
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
 
     } catch (error) {
-      console.error('[Newsletter] Error:', error);
-      errorDiv.textContent = 'Connection error. Please try again.';
+      logDebug('Network/Parse error', {
+        error: error.message,
+        stack: error.stack
+      });
+
+      errorDiv.textContent = 'Connection error. Please check your internet and try again.';
       errorDiv.style.display = 'block';
 
       // Re-enable button
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span class="btn-text">Subscribe Free</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      submitBtn.innerHTML = originalHTML;
     }
   });
+
+  // Initial debug check
+  if (window.location.search.includes('debug=true')) {
+    logDebug('Debug mode enabled');
+    debugDiv.style.display = 'block';
+  }
 })();
 </script>

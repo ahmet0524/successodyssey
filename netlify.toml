@@ -24,8 +24,8 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # ✅ UPDATED CSP - Netlify Functions + GA + Full Security
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.netlify.app https://*.netlify.com; frame-src https://www.googletagmanager.com; form-action 'self'; object-src 'none'; base-uri 'self';"
+    # ✅ FIXED CSP - Mailchimp API + Netlify Functions + GA
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.netlify.app https://*.netlify.com https://*.api.mailchimp.com; frame-src https://www.googletagmanager.com; form-action 'self'; object-src 'none'; base-uri 'self';"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
@@ -53,3 +53,7 @@
   for = "/.netlify/functions/*"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
+    # CORS headers for Netlify Functions
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type"
+    Access-Control-Allow-Methods = "POST, OPTIONS"
