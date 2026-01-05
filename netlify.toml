@@ -1,50 +1,38 @@
 [build]
   publish = "dist"
   command = "npm run build"
-  functions = "netlify/functions"
 
-[[redirects]]
-  from = "/*/"
-  to = "/:splat"
-  status = 301
-  force = true
-
+# WWW'den www olmayan versiyona yönlendirme
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
   status = 301
   force = true
 
+# Favicon yönlendirmesi
 [[redirects]]
   from = "/favicon.ico"
   to = "/favicon.svg"
-  status = 301
-  force = true
+  status = 200
 
+# Blog search parametresi temizleme
 [[redirects]]
   from = "/blog?search=*"
   to = "/blog"
   status = 301
-  force = true
 
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
-    # ✅ FIXED CSP - Mailchimp API + Netlify Functions + GA
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.netlify.app https://*.netlify.com https://*.api.mailchimp.com; frame-src https://www.googletagmanager.com; form-action 'self'; object-src 'none'; base-uri 'self';"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    X-Frame-Options = "DENY"
+    X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
     X-XSS-Protection = "1; mode=block"
 
-[[headers]]
-  for = "/favicon.svg"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-    Content-Type = "image/svg+xml"
-
+# Cache için asset headers
 [[headers]]
   for = "/_assets/*"
   [headers.values]
@@ -55,11 +43,9 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Favicon cache
 [[headers]]
-  for = "/.netlify/functions/*"
+  for = "/favicon.svg"
   [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
-    # CORS headers for Netlify Functions
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Headers = "Content-Type"
-    Access-Control-Allow-Methods = "POST, OPTIONS"
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/svg+xml"
