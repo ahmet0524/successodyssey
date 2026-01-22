@@ -6,10 +6,10 @@
   NODE_VERSION = "18"
 
 # ============================================
-# REDIRECTS (Sıralama ÖNEMLİ!)
+# REDIRECTS
 # ============================================
 
-# 1. WWW → non-WWW (en üstte olmalı)
+# 1. WWW → non-WWW
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
@@ -23,32 +23,20 @@
   status = 301
   force = true
 
-# 3. Trailing slash temizleme
-[[redirects]]
-  from = "https://successodysseyhub.com/*/index.html"
-  to = "https://successodysseyhub.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://successodysseyhub.com/*/"
-  to = "https://successodysseyhub.com/:splat"
-  status = 301
-  force = true
-
-# 4. Blog search parametresi temizleme
+# 3. Blog search parametresi temizleme
 [[redirects]]
   from = "/blog?search=*"
   to = "/blog"
   status = 301
+  force = false
 
-# 5. Favicon redirect
+# 4. Favicon
 [[redirects]]
   from = "/favicon.ico"
   to = "/favicon.svg"
   status = 200
 
-# 6. SPA fallback (en sonda olmalı)
+# 5. SPA fallback (Astro SSG için)
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -58,7 +46,6 @@
 # HEADERS
 # ============================================
 
-# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -68,7 +55,6 @@
     X-XSS-Protection = "1; mode=block"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
-# Asset caching
 [[headers]]
   for = "/_assets/*"
   [headers.values]
@@ -79,7 +65,6 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Favicon cache
 [[headers]]
   for = "/favicon.svg"
   [headers.values]
