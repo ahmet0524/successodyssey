@@ -148,10 +148,14 @@ if (type === 'article') {
   mainSchema.wordCount = description.split(' ').length * 50;
 }
 
+// ✅ YENİ - Düzeltilmiş versiyon:
 if (type === 'website' && Astro.url.pathname === '/') {
   mainSchema.potentialAction = {
     "@type": "SearchAction",
-    "target": "https://successodysseyhub.com/blog?search={search_term_string}",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://successodysseyhub.com/blog?q={search_term_string}"
+    },
     "query-input": "required name=search_term_string"
   };
 }

@@ -2,37 +2,73 @@
   publish = "dist"
   command = "npm run build"
 
-# WWW'den www olmayan versiyona yönlendirme
+[build.environment]
+  NODE_VERSION = "18"
+
+# ============================================
+# REDIRECTS (Sıralama ÖNEMLİ!)
+# ============================================
+
+# 1. WWW → non-WWW (en üstte olmalı)
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
   status = 301
   force = true
 
-# Favicon yönlendirmesi
+# 2. HTTP → HTTPS
 [[redirects]]
-  from = "/favicon.ico"
-  to = "/favicon.svg"
-  status = 200
+  from = "http://successodysseyhub.com/*"
+  to = "https://successodysseyhub.com/:splat"
+  status = 301
+  force = true
 
-# Blog search parametresi temizleme
+# 3. Trailing slash temizleme
+[[redirects]]
+  from = "https://successodysseyhub.com/*/index.html"
+  to = "https://successodysseyhub.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://successodysseyhub.com/*/"
+  to = "https://successodysseyhub.com/:splat"
+  status = 301
+  force = true
+
+# 4. Blog search parametresi temizleme
 [[redirects]]
   from = "/blog?search=*"
   to = "/blog"
   status = 301
 
+# 5. Favicon redirect
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.svg"
+  status = 200
+
+# 6. SPA fallback (en sonda olmalı)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ============================================
+# HEADERS
+# ============================================
+
 # Security headers
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;"
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-XSS-Protection = "1; mode=block"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
-# Cache için asset headers
+# Asset caching
 [[headers]]
   for = "/_assets/*"
   [headers.values]
