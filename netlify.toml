@@ -6,10 +6,10 @@
   NODE_VERSION = "18"
 
 # ============================================
-# REDIRECTS
+# REDIRECTS - SIRALAMA ÇOK ÖNEMLİ!
 # ============================================
 
-# 1. WWW → non-WWW (en yüksek öncelik)
+# 1. WWW → non-WWW (EN YÜKSEK ÖNCELİK)
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
@@ -23,7 +23,15 @@
   status = 301
   force = true
 
-# 3. Trailing slash'leri kaldır (homepage hariç)
+# 3. Blog post trailing slash redirectler (YÜKSEK ÖNCELİK)
+# Örnek: /blog/habits-discipline-momentum/ → /blog/habits-discipline-momentum
+[[redirects]]
+  from = "/blog/*/"
+  to = "/blog/:splat"
+  status = 301
+  force = true
+
+# 4. Ana sayfa trailing slash redirectler
 [[redirects]]
   from = "/blog/"
   to = "/blog"
@@ -60,7 +68,7 @@
   status = 301
   force = true
 
-# 4. Query parametrelerini temizle
+# 5. Query parametrelerini temizle
 [[redirects]]
   from = "/blog?*"
   to = "/blog"
@@ -73,7 +81,7 @@
   status = 301
   force = false
 
-# 5. Favicon redirect
+# 6. Favicon redirect
 [[redirects]]
   from = "/favicon.ico"
   to = "/favicon.svg"
