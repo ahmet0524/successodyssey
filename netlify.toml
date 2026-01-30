@@ -9,7 +9,7 @@
 # REDIRECTS
 # ============================================
 
-# 1. WWW → non-WWW
+# 1. WWW → non-WWW (en yüksek öncelik)
 [[redirects]]
   from = "https://www.successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
@@ -23,23 +23,60 @@
   status = 301
   force = true
 
-# 3. Blog search parametresi temizleme
+# 3. Trailing slash'leri kaldır (homepage hariç)
 [[redirects]]
-  from = "/blog?search=*"
+  from = "/blog/"
+  to = "/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products/"
+  to = "/products"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about/"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms/"
+  to = "/terms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy/"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact/"
+  to = "/contact"
+  status = 301
+  force = true
+
+# 4. Query parametrelerini temizle
+[[redirects]]
+  from = "/blog?*"
   to = "/blog"
   status = 301
   force = false
 
-# 4. Favicon
+[[redirects]]
+  from = "/products?*"
+  to = "/products"
+  status = 301
+  force = false
+
+# 5. Favicon redirect
 [[redirects]]
   from = "/favicon.ico"
   to = "/favicon.svg"
-  status = 200
-
-# 5. SPA fallback (Astro SSG için)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
   status = 200
 
 # ============================================
@@ -70,3 +107,11 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
     Content-Type = "image/svg+xml"
+
+# ============================================
+# CUSTOM 404 (Astro SSG için)
+# ============================================
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
