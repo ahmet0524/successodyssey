@@ -6,67 +6,93 @@
   NODE_VERSION = "18"
 
 # ============================================
-# REDIRECTS - SADECE PATH BAZLI!
+# REDIRECTS - PATH BAZLI + SSL FIX
 # ============================================
-# ÖNEMLİ: Domain bazlı redirect'ler (www, http→https)
-# Netlify Dashboard'dan yapılmalı, burada OLMAMALI!
 
-# 1. Blog post trailing slash redirectler
+# 1. HTTPS Enforcement (Cloudflare bypass için)
+[[redirects]]
+  from = "http://successodysseyhub.com/*"
+  to = "https://successodysseyhub.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.successodysseyhub.com/*"
+  to = "https://successodysseyhub.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.successodysseyhub.com/*"
+  to = "https://successodysseyhub.com/:splat"
+  status = 301
+  force = true
+
+# 2. Blog post trailing slash redirects (force ile)
 [[redirects]]
   from = "/blog/*/"
   to = "/blog/:splat"
   status = 301
+  force = true
 
-# 2. Ana sayfa trailing slash redirectler
+# 3. Ana sayfa trailing slash redirects (force ile)
 [[redirects]]
   from = "/blog/"
   to = "/blog"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/products/"
   to = "/products"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/about/"
   to = "/about"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/terms/"
   to = "/terms"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/privacy/"
   to = "/privacy"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/contact/"
   to = "/contact"
   status = 301
+  force = true
 
-# 3. Query parametrelerini temizle (force=false!)
+# 4. Query parametrelerini temizle (force ile!)
 [[redirects]]
   from = "/blog?*"
   to = "/blog"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/products?*"
   to = "/products"
   status = 301
+  force = true
 
-# 4. Favicon redirect
+# 5. Favicon redirect
 [[redirects]]
   from = "/favicon.ico"
   to = "/favicon.svg"
   status = 200
 
 # ============================================
-# HEADERS
+# HEADERS - SSL/TLS için optimize
 # ============================================
 
 [[headers]]
@@ -76,7 +102,9 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-XSS-Protection = "1; mode=block"
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # SSL için ek header
+    X-Forwarded-Proto = "https"
 
 [[headers]]
   for = "/_assets/*"
@@ -97,13 +125,8 @@
 # ============================================
 # NOT: Domain-level redirects
 # ============================================
-# ❌ BURAYA YAZILMAMALI:
-#    - www → non-www
-#    - http → https
-#    - Domain değişiklikleri
-#
-# ✅ NETLIFY DASHBOARD'DA YAPILMALI:
-#    Site Settings → Domain Management → Primary Domain
-#
-# Netlify otomatik olarak canonical domain'e yönlendirir.
-# Cloudflare proxy ile çakışma olmaz.
+# ⚠️ CLOUDFLARE AYARLARI:
+#    1. SSL/TLS → "Full" (NOT Full Strict)
+#    2. SSL/TLS → Always Use HTTPS: OFF
+#    3. Speed → Auto Minify: OFF (Netlify yapıyor)
+#    4. Caching → Browser Cache TTL: "Respect Existing Headers"
