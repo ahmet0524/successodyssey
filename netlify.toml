@@ -6,82 +6,60 @@
   NODE_VERSION = "18"
 
 # ============================================
-# REDIRECTS - SIRALAMA ÇOK ÖNEMLİ!
+# REDIRECTS - SADECE PATH BAZLI!
 # ============================================
+# ÖNEMLİ: Domain bazlı redirect'ler (www, http→https)
+# Netlify Dashboard'dan yapılmalı, burada OLMAMALI!
 
-# 1. WWW → non-WWW (EN YÜKSEK ÖNCELİK)
-[[redirects]]
-  from = "https://www.successodysseyhub.com/*"
-  to = "https://successodysseyhub.com/:splat"
-  status = 301
-  force = true
-
-# 2. HTTP → HTTPS
-[[redirects]]
-  from = "http://successodysseyhub.com/*"
-  to = "https://successodysseyhub.com/:splat"
-  status = 301
-  force = true
-
-# 3. Blog post trailing slash redirectler (YÜKSEK ÖNCELİK)
-# Örnek: /blog/habits-discipline-momentum/ → /blog/habits-discipline-momentum
+# 1. Blog post trailing slash redirectler
 [[redirects]]
   from = "/blog/*/"
   to = "/blog/:splat"
   status = 301
-  force = true
 
-# 4. Ana sayfa trailing slash redirectler
+# 2. Ana sayfa trailing slash redirectler
 [[redirects]]
   from = "/blog/"
   to = "/blog"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/products/"
   to = "/products"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/about/"
   to = "/about"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/terms/"
   to = "/terms"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/privacy/"
   to = "/privacy"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/contact/"
   to = "/contact"
   status = 301
-  force = true
 
-# 5. Query parametrelerini temizle
+# 3. Query parametrelerini temizle (force=false!)
 [[redirects]]
   from = "/blog?*"
   to = "/blog"
   status = 301
-  force = false
 
 [[redirects]]
   from = "/products?*"
   to = "/products"
   status = 301
-  force = false
 
-# 6. Favicon redirect
+# 4. Favicon redirect
 [[redirects]]
   from = "/favicon.ico"
   to = "/favicon.svg"
@@ -117,8 +95,15 @@
     Content-Type = "image/svg+xml"
 
 # ============================================
-# CUSTOM 404
+# NOT: Domain-level redirects
 # ============================================
-# Astro SSG otomatik olarak 404.html oluşturur
-# Netlify bulunamayan sayfalar için otomatik olarak kullanır
-# Ekstra redirect kuralına gerek YOK!
+# ❌ BURAYA YAZILMAMALI:
+#    - www → non-www
+#    - http → https
+#    - Domain değişiklikleri
+#
+# ✅ NETLIFY DASHBOARD'DA YAPILMALI:
+#    Site Settings → Domain Management → Primary Domain
+#
+# Netlify otomatik olarak canonical domain'e yönlendirir.
+# Cloudflare proxy ile çakışma olmaz.
