@@ -6,10 +6,10 @@
   NODE_VERSION = "18"
 
 # ============================================
-# REDIRECTS - PATH BAZLI + SSL FIX
+# REDIRECTS - Dikkatli force kullanımı
 # ============================================
 
-# 1. HTTPS Enforcement (Cloudflare bypass için)
+# 1. HTTPS Enforcement (force gerekli)
 [[redirects]]
   from = "http://successodysseyhub.com/*"
   to = "https://successodysseyhub.com/:splat"
@@ -28,49 +28,43 @@
   status = 301
   force = true
 
-# 2. Blog post trailing slash redirects (force ile)
+# 2. Blog trailing slash (force - blog dinamik)
 [[redirects]]
   from = "/blog/*/"
   to = "/blog/:splat"
   status = 301
   force = true
 
-# 3. Ana sayfa trailing slash redirects (force ile)
+# 3. Ana sayfa trailing slash (force KALDIRILDI - asıl sayfaları override etmesin)
 [[redirects]]
   from = "/blog/"
   to = "/blog"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/products/"
   to = "/products"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/about/"
   to = "/about"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/terms/"
   to = "/terms"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/privacy/"
   to = "/privacy"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/contact/"
   to = "/contact"
   status = 301
-  force = true
 
 # 4. Favicon redirect
 [[redirects]]
@@ -90,7 +84,6 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-XSS-Protection = "1; mode=block"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    X-Forwarded-Proto = "https"
 
 [[headers]]
   for = "/_assets/*"
@@ -109,10 +102,10 @@
     Content-Type = "image/svg+xml"
 
 # ============================================
-# NOT: Domain-level redirects
+# NOT: Cloudflare Ayarları
 # ============================================
-# ⚠️ CLOUDFLARE AYARLARI:
-#    1. SSL/TLS → "Full" (NOT Full Strict)
-#    2. SSL/TLS → Always Use HTTPS: OFF
-#    3. Speed → Auto Minify: OFF (Netlify yapıyor)
-#    4. Caching → Browser Cache TTL: "Respect Existing Headers"
+# 1. SSL/TLS → "Full" (NOT Full Strict)
+# 2. SSL/TLS → Always Use HTTPS: OFF
+# 3. Speed → Auto Minify: OFF
+# 4. Caching → Browser Cache TTL: "Respect Existing Headers"
+# 5. Page Rules → SSL: Full, Auto HTTPS Rewrites: Off
