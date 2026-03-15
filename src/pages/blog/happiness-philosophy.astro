@@ -296,7 +296,7 @@ import habitsDisciplineMomentum from "../../assets/habits-discipline-and-momentu
         </p>
 
         <div class="content-box content-box--highlight">
-          <h4 class="content-box__title">The Identity → Habit → Result Chain</h4>
+          <h4>The Identity → Habit → Result Chain</h4>
           <p>
             Most people try to change their habits by focusing on results (the outermost layer) or processes (the middle layer). Identity-based habit formation works from the inside out — starting with the identity, which naturally produces the processes, which naturally produce the results.
           </p>
@@ -328,21 +328,21 @@ import habitsDisciplineMomentum from "../../assets/habits-discipline-and-momentu
           The neurological basis for habit stacking is straightforward. Existing habits have already carved deep neural pathways — they run automatically with almost no friction. A new habit attached to an existing one can piggyback on that existing neural infrastructure, borrowing its momentum rather than having to generate its own from scratch.
         </p>
 
-        <div class="content-grid content-grid--2">
+        <div class="content-grid content-grid--2col">
           <div class="content-box content-box--info">
-            <h4 class="content-box__title">Morning stack example</h4>
+            <h4>Morning stack example</h4>
             <p>After I pour my morning coffee (existing habit), I will write in my journal for five minutes (new habit). After I journal, I will review my top three priorities for the day.</p>
           </div>
           <div class="content-box content-box--info">
-            <h4 class="content-box__title">Evening stack example</h4>
+            <h4>Evening stack example</h4>
             <p>After I brush my teeth (existing habit), I will do ten minutes of reading (new habit). After I read, I will write down one thing I am grateful for.</p>
           </div>
           <div class="content-box content-box--info">
-            <h4 class="content-box__title">Work stack example</h4>
+            <h4>Work stack example</h4>
             <p>After I sit down at my desk (existing habit), I will immediately open my most important task — not email (new habit). After I complete one focused session, I will check messages.</p>
           </div>
           <div class="content-box content-box--info">
-            <h4 class="content-box__title">Exercise stack example</h4>
+            <h4>Exercise stack example</h4>
             <p>After I put on my workout clothes (existing habit), I will do five minutes of mobility work (new habit). After mobility, I will move into the main workout automatically.</p>
           </div>
         </div>
@@ -371,7 +371,7 @@ import habitsDisciplineMomentum from "../../assets/habits-discipline-and-momentu
         </p>
 
         <div class="content-box content-box--highlight">
-          <h4 class="content-box__title">The Two-Sided Environment Strategy</h4>
+          <h4>The Two-Sided Environment Strategy</h4>
           <p>
             Effective environment design has two components that work together: <strong>reduce friction for desired behaviors</strong> and <strong>increase friction for undesired behaviors</strong>. Most people focus only on the first, and wonder why it does not work well enough. Both levers together are exponentially more powerful than either alone.
           </p>
@@ -1041,6 +1041,62 @@ import habitsDisciplineMomentum from "../../assets/habits-discipline-and-momentu
       margin-bottom: 1rem;
     }
 
+    /* ContentBox / ContentGrid replacements */
+    .content-grid {
+      margin: 2rem 0;
+    }
+
+    .content-grid--2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .content-grid--2col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .content-box {
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .content-box h4 {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .content-box p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .content-box--highlight {
+      background: linear-gradient(135deg, var(--color-primary, #3b82f6) 0%, #6366f1 100%);
+      color: white;
+    }
+
+    .content-box--highlight h4 {
+      color: white;
+    }
+
+    .content-box--highlight p {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .content-box--info {
+      background: var(--color-accent-light, #f0f9ff);
+      border-left: 4px solid var(--color-primary, #3b82f6);
+    }
+
+    .content-box--info h4 {
+      color: var(--color-primary, #3b82f6);
+    }
+
     .solution-box {
       background: #ecfdf5;
       border: 1px solid #10b981;
@@ -1210,62 +1266,6 @@ import habitsDisciplineMomentum from "../../assets/habits-discipline-and-momentu
     .final-insight h3 {
       color: var(--color-primary, #3b82f6);
       margin-bottom: 1.5rem;
-    }
-
-    /* ContentBox & ContentGrid replacements */
-    .content-grid {
-      display: grid;
-      gap: 1.25rem;
-      margin: 1.5rem 0;
-    }
-
-    .content-grid--2 {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .content-box {
-      padding: 1.25rem 1.5rem;
-      border-radius: 8px;
-      margin: 1.5rem 0;
-    }
-
-    .content-box--highlight {
-      background: linear-gradient(135deg, var(--color-primary, #3b82f6) 0%, #6366f1 100%);
-      color: white;
-      border-left: none;
-    }
-
-    .content-box--highlight p {
-      color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 0.75rem;
-    }
-
-    .content-box--highlight p:last-child {
-      margin-bottom: 0;
-    }
-
-    .content-box--info {
-      background: var(--color-bg-secondary, #f0f7ff);
-      border: 1px solid var(--color-border, #bfdbfe);
-    }
-
-    .content-box--info p {
-      color: var(--color-text-secondary, #374151);
-      margin: 0;
-    }
-
-    .content-box__title {
-      margin: 0 0 0.75rem 0;
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .content-box--highlight .content-box__title {
-      color: white;
-    }
-
-    .content-box--info .content-box__title {
-      color: var(--color-primary, #3b82f6);
     }
 
     .final-insight p {
