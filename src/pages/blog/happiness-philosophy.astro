@@ -2,202 +2,441 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import card3 from "../../assets/happiness-hero.webp";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import ContentGrid from "../../components/blog/ContentGrid.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2025-01-10T00:00:00Z";
+const dateModified = "2025-03-15T00:00:00Z";
+const author = "Success Odyssey Hub";
+const pageTitle = "The Philosophy of Happiness and Success";
+const pageDescription = "Discover Earl Nightingale's timeless wisdom on finding true happiness through purposeful work, service to others, and living in the present moment — backed by modern research.";
+const pageKeywords = "happiness philosophy, Earl Nightingale, success mindset, work purpose, personal fulfillment, living in the present, John Stuart Mill, true happiness, meaningful work, positive psychology happiness";
+const readingTime = 20;
 ---
 
 <Layout
-  title="The Philosophy of Happiness and Success | Success Odyssey Hub"
-  description="Discover Earl Nightingale's timeless wisdom on finding true happiness through purposeful work, service to others, and living in the present moment."
-  keywords="happiness philosophy, Earl Nightingale, success mindset, work purpose, personal fulfillment, living in the present, John Stuart Mill, true happiness, meaningful work"
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
   image={card3}
   type="article"
-  datePublished="2025-01-10T00:00:00Z"
-  dateModified="2025-01-10T00:00:00Z"
-  author="Success Odyssey Hub"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
   canonicalUrl="https://successodysseyhub.com/blog/happiness-philosophy"
 >
-  <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
+  <link rel="preload" as="image" href={card3.src} slot="head" />
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
     <header class="article-header">
-      <h1 itemprop="headline">The Philosophy of Happiness and Success</h1>
+      <h1 itemprop="headline">{pageTitle}</h1>
       <div class="article-meta">
-        <time datetime="2025-01-10" itemprop="datePublished">January 10, 2025</time>
-        <meta itemprop="dateModified" content="2025-01-10T00:00:00Z" />
-        <span class="reading-time" itemprop="timeRequired" content="PT15M">15 min read</span>
-        <div class="tags">
-          <span class="tag" itemprop="keywords">Happiness</span>
-          <span class="tag" itemprop="keywords">Philosophy</span>
-          <span class="tag" itemprop="keywords">Life Wisdom</span>
+        <time datetime={datePublished} itemprop="datePublished">January 10, 2025</time>
+        <meta itemprop="dateModified" content={dateModified} />
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>{readingTime} min read</span>
+        <div class="article-tags">
+          <span class="tag">Happiness</span>
+          <span class="tag">Philosophy</span>
+          <span class="tag">Life Wisdom</span>
         </div>
       </div>
     </header>
 
-    <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
       <Image
         src={card3}
-        alt="Philosophy of happiness concept with person finding fulfillment through meaningful work and living in the present moment"
-        class="hero-image"
-        width={900}
-        height={200}
+        alt="Philosophy of happiness — finding fulfillment through meaningful work, purpose, and living in the present moment"
+        width={1200}
+        height={600}
         loading="eager"
         fetchpriority="high"
         format="webp"
-        quality={85}
+        quality={90}
+        class="hero-image"
       />
       <meta itemprop="url" content={new URL(card3.src, Astro.site).toString()} />
-      <meta itemprop="width" content="900" />
-      <meta itemprop="height" content="200" />
     </figure>
 
-    <div class="content" itemprop="articleBody">
-      <p class="lead">
-        True happiness isn't found by seeking it directly—it emerges naturally when we fix our minds on something greater than ourselves and pursue work that gives our life meaning.
-      </p>
+    <div class="article-content" itemprop="articleBody">
 
-      <h2>The Master Word: Work</h2>
-      <p>
-        The master word that will transform your life is surprisingly simple: <em>work</em>. As Sir William Osler noted, though little, this word looms large in meaning. It is the open sesame to every portal, the great equalizer that transmutes all the base metal of humanity into gold.
-      </p>
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#master-word">The Master Word: Work</a></li>
+          <li><a href="#mill-definition">John Stuart Mill's Definition of Happiness</a></li>
+          <li><a href="#paradox">The Paradox of Direct Pursuit</a></li>
+          <li><a href="#true-course">Finding Your True Course</a></li>
+          <li><a href="#science-of-happiness">What Science Reveals About Happiness</a></li>
+          <li><a href="#present-moment">Living in the Present</a></li>
+          <li><a href="#serendipity">Serendipity: The Art of Happy Accidents</a></li>
+          <li><a href="#happiness-success-relationship">The Happiness-Success Relationship</a></li>
+          <li><a href="#practical-philosophy">A Practical Philosophy of Happiness</a></li>
+          <li><a href="#ultimate-wisdom">The Ultimate Wisdom</a></li>
+        </ol>
+      </nav>
 
-      <p>
-        Work brings hope to youth, confidence to the middle-aged, and repose to the elderly. Yet we have a perverse tendency to take the best parts of life for granted. The excitement of meaningful work can fade until it becomes as mundane as everyday routine—unless we consciously maintain our awareness and appreciation.
-      </p>
-
-      <h2>John Stuart Mill's Definition of Happiness</h2>
-      <p>
-        John Stuart Mill, believed to have perhaps the highest IQ of any person who ever lived, discovered the true nature of happiness. His definition is worth remembering:
-      </p>
-
-      <blockquote itemprop="citation">
-        "Those only are happy who have their minds fixed on some object other than their own happiness—on the happiness of others, on the improvement of mankind, even on some art or pursuit followed not as a means, but as itself an ideal. Aiming thus at something else, they find happiness by the way."
-      </blockquote>
-
-      <p>
-        This is the only true and lasting path to meaningful happiness. The happiest people are usually the busiest people—those whose work consists of serving others in some way. By losing themselves in what they're doing and where they're going, happiness quietly joins them and becomes part of them.
-      </p>
-
-      <h2>The Paradox of Direct Pursuit</h2>
-      <p>
-        Dr. Jay Wallace Hamilton explains: "The clearest law on which there is fundamental agreement is that this inner music of a soul which we've named happiness is essentially and inevitably a byproduct—it comes invariably by indirection. To pursue it, to pounce upon it, to go directly after it is the surest way not to obtain it."
-      </p>
-
-      <p>
-        People who make a mission of seeking happiness miss it. Those who talk loudly about the right to be happy seldom are. Happiness is a byproduct, an agreeable thing added in the pursuit of something else.
-      </p>
-
-      <h3>The Misery Formula</h3>
-      <p>
-        Want to be miserable? Here's the formula: Get wrapped up in yourself and your problems. Become an island surrounded on every side by yourself. Turn all your thoughts inward. The outside world will disappear into fog, and you'll find yourself in a vacuum, inventing problems like "the world is against me"—when in reality, the world doesn't even know you exist.
-      </p>
-
-      <h2>Finding Your True Course</h2>
-      <p>
-        Like a great iceberg moving through Antarctic waters, seemingly against the wind, you should have your roots deep in a great moving current—a stream of conscious direction that keeps you on course toward your chosen destination, regardless of surface winds.
-      </p>
-
-      <p>
-        In such a life, there's no great hurry, no frantic running about, no doubt or confusion. Each day you move steadily along your course. In one day, you may not seem to make much headway, but return in a year and you'll have covered marvelous distance.
-      </p>
-
-      <h3>The Four Prescriptions for Renewal</h3>
-      <p>
-        When feeling lost or overwhelmed, try these four prescriptions:
-      </p>
-
-      <p>
-        <strong>1. Listen:</strong> Take time to truly hear the world around you—the wind, the sounds of nature, the rhythm of life.
-      </p>
-
-      <p>
-        <strong>2. Reach Back:</strong> Remember your past, the happy times, the struggles, and the successes that made you who you are.
-      </p>
-
-      <p>
-        <strong>3. Reexamine Your Motives:</strong> Clarify and restate your goals. Why are you doing what you're doing?
-      </p>
-
-      <p>
-        <strong>4. Write Your Worries in the Sand:</strong> Let the tide of perspective wash away your anxieties.
-      </p>
-
-      <h2>Living in the Present</h2>
-      <p>
-        From ancient Sanskrit wisdom, 4,500 years old: "Look well to this one day, for it and it alone is life. In the brief course of this one day lie all the verities and realities of your existence—the pride of growth, the glory of action, the splendor of beauty."
-      </p>
-
-      <p>
-        Yesterday is only a dream, and tomorrow is but a vision. Yet each day well-lived makes every yesterday a dream of happiness and each tomorrow a vision of hope.
-      </p>
-
-      <blockquote itemprop="citation">
-        "If one advances confidently in the direction of his dreams and endeavors to live the life which he has imagined, he will meet with a success unexpected in common hours." — Henry David Thoreau
-      </blockquote>
-
-      <h2>Serendipity: The Art of Happy Accidents</h2>
-      <p>
-        Serendipity means the faculty of making happy and unexpected discoveries by accident—the good things that almost always happen to a person following a bold course of action. But here's the key: you wouldn't make serendipitous discoveries if you hadn't been looking for something else in the first place.
-      </p>
-
-      <p>
-        Luck is what happens when preparedness meets opportunity. It won't happen unless you're prepared for it. Take bold, positive action toward what you truly want, and watch how serendipity enters your life.
-      </p>
-
-      <h2>The Ultimate Wisdom</h2>
-      <p>
-        Greatness, peace, and happiness are not proper ends for any human soul to set for itself. They are the byproducts of a life that has held steady, like a ship at sea, to some true course worth sailing.
-      </p>
-
-      <p>
-        Find your true course—something in which you can lose yourself completely, dedicate yourself fully—and the greatness, peace, and happiness will come naturally. Remember: it's not how much we have, but how much we enjoy that makes happiness.
-      </p>
-
-      <blockquote itemprop="citation">
-        "Abraham Lincoln said that people are about as happy as they make up their minds to be. Happiness should not be just a reaction to outside stimulus—it should be a state of mind, a regular condition."
-      </blockquote>
-    </div>
-
-    <!-- Author Info -->
-    <div class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
-      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 12px;">
-        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
-      </svg>
-      <div class="author-details">
-        <h4 itemprop="name">Success Odyssey Hub</h4>
-        <meta itemprop="url" content={Astro.site?.toString()} />
-        <p>Exploring timeless wisdom from Earl Nightingale and other great thinkers on success, happiness, and personal development. Bringing you insights that transform lives.</p>
+      <!-- AD 1: TOC sonrası -->
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
+
+      <p class="lead">
+        True happiness isn't found by seeking it directly — it emerges naturally when we fix our minds on something greater than ourselves and pursue work that gives our life meaning.
+      </p>
+
+      <section id="master-word">
+        <h2>The Master Word: Work</h2>
+        <p>
+          The master word that will transform your life is surprisingly simple: <em>work</em>. As Sir William Osler noted, though little, this word looms large in meaning. It is the open sesame to every portal, the great equalizer that transmutes all the base metal of humanity into gold.
+        </p>
+        <p>
+          Work brings hope to youth, confidence to the middle-aged, and repose to the elderly. Yet we have a perverse tendency to take the best parts of life for granted. The excitement of meaningful work can fade until it becomes as mundane as everyday routine — unless we consciously maintain our awareness and appreciation.
+        </p>
+        <p>
+          The key word here is <em>meaningful</em>. Not all work produces the same effect on wellbeing. Work that is chosen, that involves genuine challenge, and that connects to something the worker values — this kind of work is one of the most reliable sources of sustained happiness that researchers have ever identified. This is what Earl Nightingale understood intuitively, and what the science of positive psychology has since confirmed with extraordinary consistency.
+        </p>
+      </section>
+
+      <section id="mill-definition">
+        <h2>John Stuart Mill's Definition of Happiness</h2>
+        <p>
+          John Stuart Mill, believed by many historians to have perhaps the highest IQ of any person who ever lived, discovered the true nature of happiness through his own experience of profound depression in his early twenties — and through the philosophical reasoning that emerged from it.
+        </p>
+
+        <ContentBox type="highlight" title="Mill's Central Insight">
+          <blockquote itemprop="citation">
+            "Those only are happy who have their minds fixed on some object other than their own happiness — on the happiness of others, on the improvement of mankind, even on some art or pursuit followed not as a means, but as itself an ideal. Aiming thus at something else, they find happiness by the way."
+          </blockquote>
+        </ContentBox>
+
+        <p>
+          This is the only true and lasting path to meaningful happiness. The happiest people are usually the busiest people — those whose work consists of serving others in some way. By losing themselves in what they're doing and where they're going, happiness quietly joins them and becomes part of them.
+        </p>
+        <p>
+          What makes Mill's insight remarkable is that it came from direct experience. At age twenty, having been educated with extraordinary intensity by his father to become a thinking machine, Mill found himself in a complete emotional collapse — having achieved everything his education had aimed at, and finding it meaningless. His recovery came through poetry, music, and eventually through redirecting his attention from himself to causes larger than himself. The philosophy he built from that experience is essentially a first-person account of happiness rediscovered.
+        </p>
+      </section>
+
+      <section id="paradox">
+        <h2>The Paradox of Direct Pursuit</h2>
+        <p>
+          Dr. Jay Wallace Hamilton explains: "The clearest law on which there is fundamental agreement is that this inner music of a soul which we've named happiness is essentially and inevitably a byproduct — it comes invariably by indirection. To pursue it, to pounce upon it, to go directly after it is the surest way not to obtain it."
+        </p>
+        <p>
+          People who make a mission of seeking happiness miss it. Those who talk loudly about the right to be happy seldom are. Happiness is a byproduct, an agreeable thing added in the pursuit of something else.
+        </p>
+
+        <ContentBox type="warning" title="The Misery Formula">
+          <p>
+            Want to be miserable? Here's the formula: get wrapped up in yourself and your problems. Become an island surrounded on every side by yourself. Turn all your thoughts inward. The outside world will disappear into fog, and you'll find yourself in a vacuum, inventing problems like "the world is against me" — when in reality, the world doesn't even know you exist.
+          </p>
+          <p>
+            This is not hyperbole. Research on rumination — the tendency to focus attention on the self and its problems — consistently identifies it as one of the strongest predictors of depression and unhappiness. The direction of attention matters more than the content of circumstances.
+          </p>
+        </ContentBox>
+
+        <p>
+          The philosopher Viktor Frankl, writing from his experience in Nazi concentration camps, arrived at the same conclusion from the most extreme possible circumstances: "Happiness cannot be pursued; it must ensue. One must have a reason to be happy." Happiness is the consequence of meaning, not the object of pursuit. This connects directly to <a href="/blog/success-philosophy">the philosophy of success</a> — the insight that meaningful achievement and genuine happiness are not in tension but are expressions of the same underlying orientation toward life.
+        </p>
+      </section>
+
+      <section id="true-course">
+        <h2>Finding Your True Course</h2>
+        <p>
+          Like a great iceberg moving through Antarctic waters, seemingly against the wind, you should have your roots deep in a great moving current — a stream of conscious direction that keeps you on course toward your chosen destination, regardless of surface winds.
+        </p>
+        <p>
+          In such a life, there's no great hurry, no frantic running about, no doubt or confusion. Each day you move steadily along your course. In one day, you may not seem to make much headway, but return in a year and you'll have covered marvelous distance.
+        </p>
+
+        <StepsList title="The Four Prescriptions for Renewal">
+          <li>
+            <h4>Listen</h4>
+            <p>Take time to truly hear the world around you — the wind, the sounds of nature, the rhythm of life. Genuine listening requires a quality of attention that is increasingly rare in a world optimized for constant stimulation. It is also, neurologically, one of the most reliable techniques for returning the nervous system to a state of calm presence.</p>
+          </li>
+          <li>
+            <h4>Reach Back</h4>
+            <p>Remember your past — the happy times, the struggles, and the successes that made you who you are. Not to dwell there, but to remind yourself of your own resilience and capability. Every difficulty you have already survived is evidence that you can survive future ones. Memory, used wisely, is a source of strength rather than regret.</p>
+          </li>
+          <li>
+            <h4>Reexamine Your Motives</h4>
+            <p>Clarify and restate your goals. Why are you doing what you're doing? This question, asked honestly and regularly, is one of the most powerful corrective forces available. Many people find, when they stop to examine their motives, that they have been pursuing goals that belong to someone else — goals inherited from parents, culture, or social comparison rather than genuinely chosen.</p>
+          </li>
+          <li>
+            <h4>Write Your Worries in the Sand</h4>
+            <p>Let the tide of perspective wash away your anxieties. Most of what we worry about either never happens, or happens and is far more manageable than the worry anticipated. The Stoic practice of negative visualization — imagining the worst, accepting it, then returning to the present — produces a similar effect: worries, once faced directly, tend to dissolve rather than grow.</p>
+          </li>
+        </StepsList>
+      </section>
+
+      <!-- AD 2: İçerik ortası -->
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="4827765044"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- NEW SECTION -->
+      <section id="science-of-happiness">
+        <h2>What Science Reveals About Happiness</h2>
+
+        <p>
+          The philosophical insights of Mill, Nightingale, and Frankl have been subjected to rigorous empirical testing over the past four decades, and the findings are remarkably consistent: the intuitions of the great thinkers were largely correct, and the conventional assumptions of modern culture are largely wrong.
+        </p>
+
+        <p>
+          The most important finding is about the relationship between external circumstances and subjective wellbeing. Research by Ed Diener, Sonja Lyubomirsky, and others suggests that roughly 50% of individual happiness is determined by a "set point" — a genetically influenced baseline to which people return after positive and negative life events. About 10% is determined by life circumstances (income, marital status, health). The remaining 40% is determined by intentional activity — the choices, practices, and ways of engaging with life that are within conscious control.
+        </p>
+
+        <ContentBox type="highlight" title="The 50-10-40 Finding">
+          <p>
+            The practical implication of this research is both humbling and empowering. Humbling: changing your circumstances — getting the promotion, buying the house, achieving the goal — accounts for at most 10% of your happiness. Empowering: 40% is within your intentional control, and the activities that use that 40% most effectively are well-identified.
+          </p>
+          <p>
+            The activities that consistently and reliably increase sustained happiness: expressing gratitude regularly, practicing kindness and generosity, cultivating close relationships, engaging in meaningful work with flow states, practicing mindfulness and present-moment awareness, and pursuing personally meaningful goals. Notice that none of these are circumstances — they are all practices.
+          </p>
+        </ContentBox>
+
+        <p>
+          The second important finding concerns the relationship between happiness and achievement. The conventional assumption is that success leads to happiness — that once you achieve the goal, you will feel better. The research suggests the causation more often runs in the opposite direction: happiness tends to precede and produce success, rather than following from it.
+        </p>
+
+        <p>
+          Psychologist Barbara Fredrickson's "broaden and build" theory explains the mechanism: positive emotional states literally expand the cognitive resources available for problem-solving, creativity, and relationship-building — the very capacities that drive achievement. People in positive emotional states are more creative, more resilient, more open to new information, and better at building the social connections that support long-term success. The happiness is not the reward for the achievement; it is the foundation that makes the achievement possible.
+        </p>
+
+        <p>
+          This finding has a radical practical implication: if you want to be more successful, one of the most direct routes is to become happier first — not by waiting for circumstances to change, but by deliberately practicing the activities that research has identified as reliably increasing positive emotion. This is the philosophical insight of Nightingale expressed in the language of behavioral science.
+        </p>
+      </section>
+
+      <section id="present-moment">
+        <h2>Living in the Present</h2>
+        <p>
+          From ancient Sanskrit wisdom, 4,500 years old: "Look well to this one day, for it and it alone is life. In the brief course of this one day lie all the verities and realities of your existence — the pride of growth, the glory of action, the splendor of beauty."
+        </p>
+        <p>
+          Yesterday is only a dream, and tomorrow is but a vision. Yet each day well-lived makes every yesterday a dream of happiness and each tomorrow a vision of hope.
+        </p>
+
+        <ContentBox type="quote">
+          <p>"If one advances confidently in the direction of his dreams and endeavors to live the life which he has imagined, he will meet with a success unexpected in common hours." — Henry David Thoreau</p>
+        </ContentBox>
+
+        <p>
+          The research on mindfulness — the practice of deliberate present-moment awareness — consistently shows it to be one of the most effective interventions for improving wellbeing, reducing anxiety, and increasing the quality of engagement with daily experience. A Harvard study by Killingsworth and Gilbert, which tracked people's moment-to-moment happiness using smartphone reports, found that people were less happy when their minds were wandering than when they were engaged with what they were doing — regardless of what they were doing. The quality of presence mattered more than the pleasantness of the activity.
+        </p>
+
+        <p>
+          This connects to <a href="/blog/stoicism">the Stoic practice of focusing on the present moment</a> — Marcus Aurelius's constant reminder to himself that the past is gone, the future is not yet real, and the present moment is the only place where life actually occurs.
+        </p>
+      </section>
+
+      <section id="serendipity">
+        <h2>Serendipity: The Art of Happy Accidents</h2>
+        <p>
+          Serendipity means the faculty of making happy and unexpected discoveries by accident — the good things that almost always happen to a person following a bold course of action. But here's the key: you wouldn't make serendipitous discoveries if you hadn't been looking for something else in the first place.
+        </p>
+        <p>
+          Luck is what happens when preparedness meets opportunity. It won't happen unless you're prepared for it. Take bold, positive action toward what you truly want, and watch how serendipity enters your life.
+        </p>
+        <p>
+          The neuroscience of this phenomenon is real: when you are actively pursuing a meaningful goal, your reticular activating system — the brain's attention filter — becomes tuned to notice resources, connections, and opportunities related to that goal that were always present but previously invisible. What feels like luck is often selective attention operating below conscious awareness. For a deeper exploration of this mechanism, see <a href="/blog/extreme-mindset-neuroscience">the neuroscience of focused attention and the RAS</a>.
+        </p>
+      </section>
+
+      <!-- NEW SECTION -->
+      <section id="happiness-success-relationship">
+        <h2>The Happiness-Success Relationship: What the Research Actually Shows</h2>
+
+        <p>
+          One of the most consequential misunderstandings in modern achievement culture is the assumption that happiness is a reward for success — something to be earned after the goal is achieved, the business is built, the body is transformed. This assumption drives an enormous amount of human behavior, and the research suggests it is substantially wrong.
+        </p>
+
+        <p>
+          A landmark meta-analysis by Lyubomirsky, King, and Diener reviewed 225 studies involving 275,000 participants and found consistent evidence that happiness precedes many forms of success rather than following them. Happy people were more likely to get married and stay married, more likely to be highly rated by supervisors, more likely to earn higher incomes, more likely to show strong immune function, and more likely to live longer. The happiness was not the consequence of these outcomes — in longitudinal studies, it preceded them.
+        </p>
+
+        <ContentGrid columns={2}>
+          <ContentBox type="warning" title="The conventional model">
+            <p>Work hard → Achieve success → Then be happy. This model treats happiness as a destination reached after sufficient achievement. It keeps happiness perpetually in the future, contingent on outcomes not yet secured.</p>
+          </ContentBox>
+          <ContentBox type="highlight" title="What research shows">
+            <p>Cultivate positive emotion → Think more clearly, relate better, persist longer → Achieve more, across more domains. Happiness is an input to achievement, not primarily an output. This reversal changes everything about how to pursue a successful life.</p>
+          </ContentBox>
+        </ContentGrid>
+
+        <p>
+          The mechanism is well understood. Positive emotional states — what Fredrickson calls "positive affect" — literally expand the range of thoughts and actions available to you at any given moment. In a negative emotional state, attention narrows and options contract — the brain is in threat-management mode, good for immediate survival but poor for creative problem-solving, relationship-building, or long-range planning. In a positive emotional state, attention broadens, options expand, and the brain is in building mode — constructing the skills, relationships, and resources that will be needed in the future.
+        </p>
+
+        <p>
+          The practical implication is that investing in your own happiness — through gratitude practices, meaningful relationships, purposeful work, and present-moment engagement — is not indulgent or secondary to achievement. It is one of the most direct paths to it. Earl Nightingale understood this. Mill understood it. The research has now confirmed it with the kind of precision that philosophical intuition alone cannot provide.
+        </p>
+      </section>
+
+      <!-- NEW SECTION -->
+      <section id="practical-philosophy">
+        <h2>A Practical Philosophy of Happiness</h2>
+
+        <p>
+          Philosophy without practice is merely interesting. The insights of Mill, Nightingale, the Stoics, and the modern researchers converge on a set of practical orientations that, consistently maintained, produce genuine and lasting wellbeing. Here is what that philosophy looks like in practice.
+        </p>
+
+        <StepsList title="Six Principles of a Happiness Philosophy">
+          <li>
+            <h4>Fix your attention outside yourself</h4>
+            <p>
+              The direction of your attention is the most powerful variable you control. People who consistently direct attention outward — toward others, toward problems worth solving, toward craft worth developing — report substantially higher wellbeing than those who direct it primarily inward. This is Mill's central insight, Nightingale's core teaching, and one of the most replicated findings in positive psychology. Choose what you think about with the same intentionality you bring to choosing what you eat.
+            </p>
+          </li>
+          <li>
+            <h4>Pursue meaningful challenge, not comfort</h4>
+            <p>
+              Csikszentmihalyi's research on flow states consistently shows that people are most engaged, most alive, and most satisfied when they are operating at the edge of their current capability — challenged but not overwhelmed. Comfort, counterintuitively, tends to produce dissatisfaction over time. The pursuit of meaningful challenge — in work, in relationships, in creative endeavors — is a more reliable source of sustained happiness than the pursuit of ease.
+            </p>
+          </li>
+          <li>
+            <h4>Practice gratitude as a discipline, not a sentiment</h4>
+            <p>
+              Gratitude research by Robert Emmons and others consistently shows that people who regularly practice deliberate gratitude — writing down what they are grateful for, expressing appreciation to others, mentally savoring positive experiences — report higher wellbeing, better sleep, stronger relationships, and greater resilience. This is not a soft insight. It reflects a measurable change in cognitive and neurological patterns produced by systematic practice.
+            </p>
+          </li>
+          <li>
+            <h4>Invest in relationships before achievements</h4>
+            <p>
+              The Harvard Study of Adult Development — 85 years of tracking the same individuals — found that the quality of close relationships was the single strongest predictor of late-life health and happiness, more reliable than any other factor including wealth, education, or social class. Relationships are not the decorative element of a successful life. They are its foundation.
+            </p>
+          </li>
+          <li>
+            <h4>Treat the present moment as the only real time</h4>
+            <p>
+              Past and future exist only in thought. The present moment is where life actually occurs — where experience happens, where choices are made, where relationships are built or neglected. The capacity for present-moment engagement is a trainable skill, developed through the consistent practice of redirecting attention from mental time travel back to the actual texture of current experience.
+            </p>
+          </li>
+          <li>
+            <h4>Define happiness as a practice, not a state</h4>
+            <p>
+              The most important reorientation in a philosophy of happiness is from treating happiness as a destination — a stable state reached when circumstances align — to treating it as a practice: a set of habitual ways of engaging with life that consistently generate positive experience. This shift removes happiness from the realm of luck and circumstance and places it firmly within the domain of intentional action. As Lincoln said: people are about as happy as they make up their minds to be.
+            </p>
+          </li>
+        </StepsList>
+      </section>
+
+      <!-- AD 3: Final section öncesi -->
+      <div class="ad-unit ad-unit--bottom">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="ultimate-wisdom">
+        <h2>The Ultimate Wisdom</h2>
+        <p>
+          Greatness, peace, and happiness are not proper ends for any human soul to set for itself. They are the byproducts of a life that has held steady, like a ship at sea, to some true course worth sailing.
+        </p>
+        <p>
+          Find your true course — something in which you can lose yourself completely, dedicate yourself fully — and the greatness, peace, and happiness will come naturally. Remember: it's not how much we have, but how much we enjoy that makes happiness.
+        </p>
+
+        <ContentBox type="highlight" title="Abraham Lincoln on Happiness">
+          <p>
+            Abraham Lincoln said that people are about as happy as they make up their minds to be. Happiness should not be just a reaction to outside stimulus — it should be a state of mind, a regular condition. This is perhaps the most democratizing insight in the entire literature on happiness: it places the primary determinant of wellbeing not in circumstances, which are distributed unequally and largely outside our control, but in orientation — in the choice of where to direct attention, what to pursue, and how to engage with what is already present.
+          </p>
+        </ContentBox>
+
+        <p>
+          The philosophy of happiness, from Mill to Nightingale to modern positive psychology, converges on a single practical truth: happiness follows engagement, not achievement. It follows service, not accumulation. It follows presence, not arrival. And it follows the decision — made daily, in the texture of ordinary choices — to fix your attention on something worth attending to.
+        </p>
+      </section>
+
+      <ContentBox type="tip" title="Your Next Steps">
+        <ol class="action-list">
+          <li>Start a gratitude practice today — three specific things you genuinely appreciate, written down each morning</li>
+          <li>Identify the work in your life that generates the most genuine engagement and flow — and find ways to do more of it</li>
+          <li>Read <a href="/blog/rethinking-success">Rethinking Success</a> to understand how the conventional success model may be working against your wellbeing</li>
+          <li>Explore <a href="/blog/stoicism">Stoic Wisdom for Modern Life</a> for philosophical tools that complement this happiness framework</li>
+          <li>Study <a href="/blog/habits-discipline-momentum">Habits, Discipline, and Momentum</a> to build the daily practices that make these principles automatic</li>
+          <li>Apply <a href="/blog/vision-to-reality">From Vision to Reality</a> to translate your personal philosophy into concrete daily action</li>
+        </ol>
+      </ContentBox>
+
+      <p class="closing-statement">
+        Happiness is not what happens to you when the world aligns in your favor. It is what you practice when it doesn't.
+      </p>
+
     </div>
 
-    <!-- Related Articles -->
+    <aside class="author-bio" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+      <div class="author-avatar">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="author-info">
+        <h3 itemprop="name">Success Odyssey Hub</h3>
+        <p>Exploring timeless wisdom from Earl Nightingale, John Stuart Mill, and modern positive psychology on success, happiness, and personal development. Bringing you insights that transform lives.</p>
+      </div>
+    </aside>
+
     <nav class="related-articles" aria-label="Related articles">
-      <h3>Related Articles</h3>
+      <h3>Continue Your Journey</h3>
       <div class="related-grid">
-        <a href="/blog/success-philosophy" rel="related">
-          <span>The Philosophy of Success</span>
+        <a href="/blog/success-philosophy" class="related-card">
+          <h4>The Philosophy of Success</h4>
+          <p>Timeless wisdom for modern achievement</p>
         </a>
-        <a href="/blog/stoicism" rel="related">
-          <span>Stoic Wisdom for Modern Life</span>
+        <a href="/blog/rethinking-success" class="related-card">
+          <h4>Rethinking Success</h4>
+          <p>A scientific and philosophical exploration</p>
         </a>
-        <a href="/blog/mental-models" rel="related">
-          <span>Mental Models for Better Decision Making</span>
+        <a href="/blog/stoicism" class="related-card">
+          <h4>Stoic Wisdom for Modern Life</h4>
+          <p>Ancient philosophy for modern challenges</p>
+        </a>
+        <a href="/blog/mental-models-for-success" class="related-card">
+          <h4>15 Mental Models for Success</h4>
+          <p>Thinking frameworks of top performers</p>
         </a>
       </div>
     </nav>
 
-    <!-- Breadcrumb Navigation -->
-    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
-      <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
+    <aside class="external-resources">
+      <h3>Further Reading</h3>
+      <ul>
+        <li><a href="https://www.nightingale.com/articles/the-strangest-secret/" target="_blank" rel="noopener noreferrer">Earl Nightingale: The Strangest Secret (Full Text)</a></li>
+        <li><a href="https://www.ted.com/talks/dan_gilbert_the_surprising_science_of_happiness" target="_blank" rel="noopener noreferrer">Dan Gilbert: The Surprising Science of Happiness (TED Talk)</a></li>
+        <li><a href="https://www.adultdevelopmentstudy.org/" target="_blank" rel="noopener noreferrer">Harvard Study of Adult Development — 85 Years of Research</a></li>
+      </ul>
+    </aside>
+
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="/">
-            <span itemprop="name">Home</span>
-          </a>
+          <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
-          <span style="margin: 0 0.5rem;">/</span>
+          <span>/</span>
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="/blog">
-            <span itemprop="name">Blog</span>
-          </a>
+          <a itemprop="item" href="/blog"><span itemprop="name">Blog</span></a>
           <meta itemprop="position" content="2" />
-          <span style="margin: 0 0.5rem;">/</span>
+          <span>/</span>
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <span itemprop="name">The Philosophy of Happiness and Success</span>
@@ -205,311 +444,158 @@ import card3 from "../../assets/happiness-hero.webp";
         </li>
       </ol>
     </nav>
+
   </article>
-
-  <style>
-    /* Force light mode colors - Override dark mode */
-    .blog-page {
-      color-scheme: light !important;
-      background-color: #ffffff !important;
-    }
-
-    /* Hero image with Astro Image component */
-    :global(.hero-image) {
-      width: 100%;
-      height: 200px !important;
-      object-fit: cover;
-      border-radius: 8px;
-      display: block;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    figure {
-      margin: 2rem 0;
-      padding: 0;
-    }
-
-    @media (max-width: 768px) {
-      :global(.hero-image) {
-        height: 150px !important;
-      }
-    }
-
-    /* Article structure */
-    .blog-page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      line-height: 1.7;
-    }
-
-    .article-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .article-header h1 {
-      background: linear-gradient(135deg, #2563eb, #f59e0b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.2;
-      font-weight: 700;
-    }
-
-    .article-meta {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      font-size: 0.9rem;
-      color: #4b5563 !important;
-      margin-bottom: 1rem;
-    }
-
-    .article-meta time {
-      font-weight: 500;
-      color: #4b5563 !important;
-    }
-
-    .reading-time {
-      color: #2563eb !important;
-      font-weight: 600;
-    }
-
-    .tags {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      background: #f3f4f6;
-      color: #111827 !important;
-      padding: 0.25rem 0.75rem;
-      border-radius: 1rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    /* Content styling - FORCE DARK COLORS */
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .lead {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1d4ed8 !important;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .content h2 {
-      color: #1d4ed8 !important;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-
-    .content h3 {
-      color: #111827 !important;
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-
-    .content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-      color: #111827 !important;
-    }
-
-    .content strong {
-      color: #0f172a !important;
-      font-weight: 700;
-    }
-
-    .content em {
-      font-style: italic;
-      color: #1d4ed8 !important;
-      font-weight: 600;
-    }
-
-    blockquote {
-      border-left: 4px solid #f59e0b;
-      padding: 1rem 1.5rem;
-      margin: 2rem 0;
-      background: #fef3c7;
-      border-radius: 0 8px 8px 0;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: #111827 !important;
-      font-weight: 500;
-    }
-
-    /* Author info */
-    .author-info {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      padding: 2rem;
-      background: #f8fafc;
-      border-radius: 8px;
-      margin-top: 3rem;
-    }
-
-    .author-details {
-      flex: 1;
-    }
-
-    .author-details h4 {
-      margin-bottom: 0.5rem;
-      color: #111827 !important;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .author-details p {
-      color: #374151 !important;
-      font-size: 0.9rem;
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    /* Related articles */
-    .related-articles {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid #e5e7eb;
-    }
-
-    .related-articles h3 {
-      margin-bottom: 1.5rem;
-      color: #111827 !important;
-      font-weight: 700;
-    }
-
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .related-grid a {
-      display: block;
-      padding: 1rem;
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #111827 !important;
-      transition: all 0.3s ease;
-      font-weight: 600;
-    }
-
-    .related-grid a:hover {
-      background: #f3f4f6;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Mobile responsive - Maximum contrast */
-    @media (max-width: 768px) {
-      .blog-page {
-        padding: 1rem;
-        background-color: #ffffff !important;
-      }
-
-      .article-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .content {
-        font-size: 1.05rem;
-      }
-
-      .lead {
-        font-size: 1.2rem;
-        color: #1e40af !important;
-        font-weight: 700;
-      }
-
-      .content h2 {
-        font-size: 1.6rem;
-        color: #1e40af !important;
-        font-weight: 700;
-      }
-
-      .content h3 {
-        font-size: 1.3rem;
-        color: #0f172a !important;
-        font-weight: 700;
-      }
-
-      .content p {
-        font-size: 1.05rem;
-        color: #0f172a !important;
-        line-height: 1.75;
-        font-weight: 400;
-      }
-
-      .content strong {
-        color: #020617 !important;
-        font-weight: 800;
-      }
-
-      .content em {
-        color: #1e40af !important;
-        font-weight: 700;
-      }
-
-      blockquote {
-        background: #fef3c7;
-        color: #0f172a !important;
-        font-weight: 600;
-        font-size: 1.05rem;
-        border-left-width: 5px;
-      }
-
-      .author-info {
-        padding: 1.5rem;
-        background: #f8fafc;
-      }
-
-      .author-details p {
-        color: #1f2937 !important;
-        font-weight: 500;
-      }
-
-      .related-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .related-grid a {
-        color: #0f172a !important;
-        font-weight: 700;
-      }
-
-      /* Force breadcrumb colors */
-      nav[aria-label="Breadcrumb"] {
-        border-top-color: #e5e7eb !important;
-      }
-
-      nav[aria-label="Breadcrumb"] a,
-      nav[aria-label="Breadcrumb"] span {
-        color: #374151 !important;
-      }
-    }
-  </style>
 </Layout>
+
+<style lang="scss">
+.ad-unit {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+  overflow: hidden;
+  &--top { margin-top: 0; margin-bottom: var(--spacing-2xl); }
+  &--mid { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: var(--spacing-lg) 0; }
+  &--bottom { border-top: 1px solid var(--color-border); padding-top: var(--spacing-lg); }
+}
+.blog-article {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+.article-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  h1 { margin-bottom: var(--spacing-lg); }
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    time { font-weight: 600; }
+    .reading-time { color: var(--color-primary); font-weight: 600; }
+  }
+  .article-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    .tag {
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+}
+.hero-figure {
+  margin: 0 0 var(--spacing-3xl);
+  .hero-image { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); }
+}
+.article-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  section { margin-bottom: var(--spacing-3xl); scroll-margin-top: 100px; }
+  h2 { margin: var(--spacing-3xl) 0 var(--spacing-xl); }
+  h3 { margin: var(--spacing-2xl) 0 var(--spacing-lg); }
+  h4 { margin: var(--spacing-xl) 0 var(--spacing-md); }
+  .lead {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+    margin: var(--spacing-2xl) 0;
+    font-weight: 500;
+  }
+  blockquote {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-bg-secondary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .action-list { padding-left: var(--spacing-xl); li { margin-bottom: var(--spacing-md); } }
+  .closing-statement {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    margin: var(--spacing-2xl) 0;
+    font-weight: 500;
+  }
+}
+.table-of-contents {
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-2xl) 0;
+  h2 { margin-top: 0; margin-bottom: var(--spacing-lg); color: var(--color-primary); }
+  ol {
+    padding-left: var(--spacing-lg);
+    line-height: 1.8;
+    li { margin-bottom: var(--spacing-sm); }
+    a { color: var(--color-text-primary); text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition); &:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); } }
+  }
+}
+.author-bio {
+  display: flex;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-3xl) 0;
+  .author-avatar { flex-shrink: 0; svg { width: 60px; height: 60px; padding: var(--spacing-md); background: var(--gradient-primary); border-radius: 50%; color: white; } }
+  .author-info { h3 { margin-top: 0; margin-bottom: var(--spacing-sm); } p { margin: 0; color: var(--color-text-secondary); } }
+}
+.related-articles {
+  margin: var(--spacing-3xl) 0;
+  h3 { margin-bottom: var(--spacing-xl); text-align: center; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); }
+  .related-card {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: var(--transition);
+    &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+    h4 { color: var(--color-text-primary); margin-top: 0; margin-bottom: var(--spacing-sm); }
+    p { color: var(--color-text-secondary); margin: 0; font-size: 0.95rem; }
+  }
+}
+.external-resources {
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-2xl) 0;
+  h3 { margin-top: 0; margin-bottom: var(--spacing-lg); }
+  ul { list-style: none; padding: 0; li { margin-bottom: var(--spacing-md); } }
+  a { color: var(--color-primary); text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition); &:hover { border-bottom-color: var(--color-primary); } }
+}
+.breadcrumb {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--color-border);
+  ol { display: flex; gap: var(--spacing-sm); list-style: none; padding: 0; font-size: 0.9rem; flex-wrap: wrap; }
+  a { color: var(--color-primary); text-decoration: none; &:hover { text-decoration: underline; } }
+  span { color: var(--color-text-secondary); }
+}
+@media (max-width: 768px) {
+  .blog-article { padding: var(--spacing-xl) var(--spacing-md); }
+  .article-header .article-meta { flex-direction: column; gap: var(--spacing-sm); }
+  .author-bio { flex-direction: column; text-align: center; }
+  .related-articles .related-grid { grid-template-columns: 1fr; }
+  .article-content { font-size: 1.0625rem; }
+}
+</style>
