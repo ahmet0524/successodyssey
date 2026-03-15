@@ -1,28 +1,24 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import JsonLD from "../../components/JsonLD.astro";
-
-// Hero image - add this file to your assets folder:
-// src/assets/dopamine-digital-hero.webp
+import ContentBox from "../../components/blog/ContentBox.astro";
+import ContentGrid from "../../components/blog/ContentGrid.astro";
+import StepsList from "../../components/blog/StepsList.astro";
 import heroImage from "../../assets/dopamine-digital-hero.webp";
 
-// Page metadata
-const title = "Dopamine: The Invisible Chains of the Digital Age | Success Odyssey Hub";
-const description =
-  "Discover how dopamine works at the molecular level, how Silicon Valley algorithms exploit your brain's reward system, and the science-backed protocol to reclaim your focus and motivation in the age of infinite scroll.";
-const keywords =
-  "dopamine neuroscience, digital addiction, social media psychology, dopamine detox, neuroplasticity, attention economy, behavioral psychology, dopamine receptors, motivation science, screen addiction, neurochemistry, mental health";
 const datePublished = "2025-02-13T00:00:00Z";
-const dateModified = "2025-02-13T00:00:00Z";
+const dateModified = "2025-03-15T00:00:00Z";
 const author = "Success Odyssey Hub";
-const readingTime = "PT18M";
+const pageTitle = "Dopamine: The Invisible Chains of the Digital Age";
+const pageDescription = "Discover how dopamine works at the molecular level, how Silicon Valley algorithms exploit your brain's reward system, and the science-backed protocol to reclaim your focus and motivation.";
+const pageKeywords = "dopamine neuroscience, digital addiction, social media psychology, dopamine detox, neuroplasticity, attention economy, dopamine receptors, motivation science, screen addiction, deep work dopamine";
+const readingTime = 24;
 ---
 
 <Layout
-  title={title}
-  description={description}
-  keywords={keywords}
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
   image={heroImage}
   type="article"
   datePublished={datePublished}
@@ -30,892 +26,599 @@ const readingTime = "PT18M";
   author={author}
   canonicalUrl="https://successodysseyhub.com/blog/dopamine-digital-age"
 >
-  <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
+  <link rel="preload" as="image" href={heroImage.src} slot="head" />
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
     <header class="article-header">
-      <h1 itemprop="headline">Dopamine: The Invisible Chains of the Digital Age</h1>
-
+      <h1 itemprop="headline">{pageTitle}</h1>
       <div class="article-meta">
-        <time datetime="2025-02-13" itemprop="datePublished">February 13, 2025</time>
+        <time datetime={datePublished} itemprop="datePublished">February 13, 2025</time>
         <meta itemprop="dateModified" content={dateModified} />
-        <span class="reading-time" itemprop="timeRequired" content={readingTime}>18 min read</span>
-
-        <div class="tags">
-          <span class="tag" itemprop="keywords">Neuroscience</span>
-          <span class="tag" itemprop="keywords">Psychology</span>
-          <span class="tag" itemprop="keywords">Digital Wellness</span>
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>{readingTime} min read</span>
+        <div class="article-tags">
+          <span class="tag">Neuroscience</span>
+          <span class="tag">Psychology</span>
+          <span class="tag">Digital Wellness</span>
         </div>
       </div>
     </header>
 
-    <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
       <Image
         src={heroImage}
-        alt="Neural dopamine pathways illuminated, representing the brain's reward system and digital addiction mechanisms"
-        class="hero-image"
-        width={900}
-        height={200}
+        alt="Neural dopamine pathways illuminated — how the brain's reward system is hijacked by digital algorithms, social media, and infinite scroll"
+        width={1200}
+        height={600}
         loading="eager"
         fetchpriority="high"
         format="webp"
-        quality={85}
+        quality={90}
+        class="hero-image"
       />
       <meta itemprop="url" content={new URL(heroImage.src, Astro.site).toString()} />
-      <meta itemprop="width" content="900" />
-      <meta itemprop="height" content="200" />
     </figure>
 
-    <!-- Two Column Layout -->
-    <div class="blog-container">
-      <!-- Main Content -->
-      <div class="main-content" itemprop="articleBody">
-        <p class="lead">
-          Your brain is running on ancient software in a modern world. Deep within your midbrain, a cluster of neurons no bigger than a pea controls nearly every decision you make, every goal you pursue, every relationship you form, and every compulsion you can't seem to break. This neural cluster releases a molecule called dopamine—and understanding how it works is the difference between being controlled by your impulses and becoming the architect of your own behavior.
-        </p>
+    <div class="article-content" itemprop="articleBody">
 
-        <h2 id="molecular-truth">What Dopamine Actually Is: The Molecular Truth</h2>
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#molecular-truth">What Dopamine Actually Is: The Molecular Truth</a></li>
+          <li><a href="#evolutionary-context">From Savannah to Screen: The Evolutionary Story</a></li>
+          <li><a href="#algorithmic-assault">How Silicon Valley Hacked Your Brain</a></li>
+          <li><a href="#behavioral-transformation">The Death of Delayed Gratification</a></li>
+          <li><a href="#symptoms">Symptoms of Dopamine Dysregulation</a></li>
+          <li><a href="#willpower-depletion">The Neuroscience of Willpower Depletion</a></li>
+          <li><a href="#dopamine-deep-work">Dopamine and Deep Work</a></li>
+          <li><a href="#recovery-protocol">The Science of Recovery: Dopamine Reset Protocol</a></li>
+          <li><a href="#long-game">The Long Game: Building a Dopamine-Optimized Life</a></li>
+          <li><a href="#uncomfortable-truth">The Uncomfortable Truth</a></li>
+          <li><a href="#choice">The Choice Before You</a></li>
+        </ol>
+      </nav>
+
+      <!-- AD 1: TOC sonrası -->
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <p class="lead">
+        Your brain is running on ancient software in a modern world. Deep within your midbrain, a cluster of neurons no bigger than a pea controls nearly every decision you make, every goal you pursue, every relationship you form, and every compulsion you can't seem to break. This neural cluster releases a molecule called dopamine — and understanding how it works is the difference between being controlled by your environment and becoming the architect of your own behavior.
+      </p>
+
+      <section id="molecular-truth">
+        <h2>What Dopamine Actually Is: The Molecular Truth</h2>
 
         <h3>The Neurochemical Architecture</h3>
         <p>
-          Dopamine (C₈H₁₁NO₂) is a catecholamine neurotransmitter synthesized from the amino acid L-tyrosine through a precise enzymatic pathway:
+          Dopamine (C₈H₁₁NO₂) is a catecholamine neurotransmitter synthesized from the amino acid L-tyrosine through a precise enzymatic pathway: L-Tyrosine → L-DOPA (via tyrosine hydroxylase) → Dopamine (via DOPA decarboxylase). This simple molecule is produced primarily in two brain regions: the Substantia Nigra, governing movement and motor control, and the Ventral Tegmental Area (VTA), the source of dopamine's role in motivation, reward prediction, and behavior reinforcement.
         </p>
-
-        <blockquote itemprop="citation">
-          "L-Tyrosine → L-DOPA (via tyrosine hydroxylase) → Dopamine (via DOPA decarboxylase)"
-        </blockquote>
-
-        <p>
-          This simple molecule is produced primarily in two brain regions: the Substantia Nigra (governing movement and motor control) and the Ventral Tegmental Area (VTA), the source of dopamine's role in motivation, reward prediction, and behavior reinforcement.
-        </p>
-
         <p>
           From the VTA, dopamine projects through several critical pathways:
         </p>
-
         <ul>
           <li><strong>Mesolimbic pathway</strong> → Nucleus accumbens (reward and reinforcement)</li>
           <li><strong>Mesocortical pathway</strong> → Prefrontal cortex (executive function and emotional regulation)</li>
           <li><strong>Nigrostriatal pathway</strong> → Dorsal striatum (habit formation and procedural learning)</li>
         </ul>
+        <p>
+          The critical — and widely misunderstood — point is that dopamine is not a pleasure chemical. It is an <em>anticipation and motivation</em> chemical. Kent Berridge's landmark research at the University of Michigan established the distinction between "wanting" and "liking": dopamine drives the wanting — the craving, the reaching, the compulsive seeking — while pleasure itself is mediated by opioid systems. You can have intense dopamine-driven desire for something that brings you no actual pleasure. Addicts demonstrate this clearly: the craving is overwhelming; the reward is increasingly hollow. Digital addiction follows the same pattern.
+        </p>
+
+        <ContentBox type="highlight" title="Receptor Dynamics — The Tolerance Mechanism">
+          <p>D1 and D5 receptors enhance motivation and working memory. D2, D3, and D4 receptors govern reward sensitivity and impulse control. When you chronically overstimulate your dopamine system through social media, processed foods, or pornography, your brain downregulates D2 receptors. Fewer D2 receptors means you need stronger stimuli to achieve the same response — the biological foundation of tolerance and addiction. This isn't a metaphor. It's measurable structural change in brain tissue, visible on neuroimaging.</p>
+        </ContentBox>
 
         <h3>The Neurochemical Network</h3>
         <p>
-          Dopamine doesn't operate in isolation. It functions within a complex neurochemical ecosystem:
+          Dopamine doesn't operate in isolation. It functions within a complex neurochemical ecosystem that digital environments systematically destabilize.
         </p>
-
         <p>
-          <strong>Serotonin Balance:</strong> Serotonin and dopamine exist in reciprocal relationship. High serotonin dampens dopamine-driven impulsivity, while dopamine depletion can trigger compensatory serotonin system activation. This is why people seeking dopamine hits often feel anxious afterward—serotonin systems attempt to restore equilibrium.
+          <strong>Serotonin Balance:</strong> Serotonin and dopamine exist in reciprocal relationship. High serotonin dampens dopamine-driven impulsivity, while dopamine depletion triggers compensatory serotonin system activation. This is why people seeking dopamine hits often feel anxious afterward — serotonin systems attempt to restore equilibrium but overshoot, producing the characteristic post-scroll emptiness.
         </p>
-
         <p>
-          <strong>Norepinephrine Conversion:</strong> Dopamine is the immediate precursor to norepinephrine. The enzyme dopamine β-hydroxylase converts dopamine to norepinephrine, which drives alertness and arousal. This is why dopamine-seeking behaviors often come with a "wired" feeling.
+          <strong>Norepinephrine Conversion:</strong> Dopamine is the immediate precursor to norepinephrine. The enzyme dopamine β-hydroxylase converts dopamine to norepinephrine, which drives alertness and arousal. This is why dopamine-seeking behaviors come with a "wired but tired" quality — norepinephrine is elevated while baseline dopamine is depleted.
         </p>
+      </section>
 
-        <div class="research-highlight">
-          <h4>Receptor Dynamics</h4>
-          <p>
-            Understanding dopamine requires understanding its receptors. D1 & D5 receptors enhance motivation and working memory. D2, D3 & D4 receptors govern reward sensitivity and impulse control. When you chronically overstimulate your dopamine system through social media, pornography, or processed foods, your brain downregulates D2 receptors. Fewer D2 receptors means you need stronger stimuli to achieve the same response—the biological foundation of tolerance and addiction.
-          </p>
-        </div>
-
-        <h2 id="evolutionary-context">From Savannah to Screen: The Evolutionary Story</h2>
+      <section id="evolutionary-context">
+        <h2>From Savannah to Screen: The Evolutionary Story</h2>
 
         <h3>The Hunter-Gatherer Dopamine System</h3>
         <p>
-          For 2.8 million years, the human dopamine system evolved in an environment of scarcity and unpredictability. Your ancestors experienced dopamine release in specific contexts:
+          For 2.8 million years, the human dopamine system evolved in an environment of scarcity and genuine unpredictability. Your ancestors experienced dopamine release in specific contexts that all shared three characteristics: effortful pursuit, genuine uncertainty, and meaningful stakes.
         </p>
-
         <p>
-          <strong>Foraging Success:</strong> Finding a fruit tree after hours of searching triggered massive dopamine release. The unpredictability was key—sometimes you found food, sometimes you didn't. This variable ratio reinforcement created the most robust learning.
+          Finding a fruit tree after hours of searching triggered massive dopamine release. The unpredictability was the key — sometimes you found food, sometimes you didn't. This variable ratio reinforcement created the most robust learning responses the nervous system is capable of. A successful hunt, tracking an animal for days before achieving a kill, flooded the system with dopamine — but crucially, the dopamine released during the anticipatory pursuit was higher than the dopamine released at the moment of reward. The brain learned to reward the effort and the uncertainty itself, not just the outcome.
         </p>
 
-        <p>
-          <strong>Successful Hunt:</strong> Tracking an animal for days, then achieving a kill, flooded the system with dopamine. But the reward was delayed and effortful. Your brain learned to release dopamine during the pursuit, not just the capture.
-        </p>
-
-        <blockquote itemprop="citation">
-          "Dopamine evolved to reward behaviors that increased survival through sustained effort, uncertainty, and delayed gratification. The system had natural rate limiters: rewards were spaced across days or weeks, effort was required before reward, and novelty was genuinely scarce."
-        </blockquote>
+        <ContentBox type="warning" title="The Evolutionary Mismatch">
+          <p>Dopamine evolved to reward behaviors that increased survival through sustained effort, uncertainty, and delayed gratification. The system had natural rate limiters: rewards were spaced across days or weeks, effort was required before reward, and novelty was genuinely scarce. Remove the effort requirement, eliminate the uncertainty, guarantee the reward, and make novelty infinite — and you've created a system that the dopamine circuit has no defense against. That's exactly what Silicon Valley built.</p>
+        </ContentBox>
 
         <h3>The Digital Explosion: Total Dysregulation</h3>
         <p>
-          Then came the internet. Social media. Smartphones. Streaming content. Infinite scroll.
+          For the first time in human evolutionary history, dopamine-triggering stimuli became simultaneously infinite (no natural stopping point), immediate (no delay between impulse and gratification), effortless (no energy expenditure required), personalized (algorithmically optimized to your specific vulnerabilities), and portable (accessible 24/7 in your pocket).
         </p>
-
         <p>
-          For the first time in human history, dopamine-triggering stimuli became:
+          The result is a neurochemical crisis without historical precedent. Your dopamine system — which evolved for an environment of scarcity and earned reward — now faces engineered abundance and guaranteed stimulation. The system doesn't adapt gracefully to this environment. It degrades.
         </p>
+      </section>
 
-        <ul>
-          <li><strong>Infinite:</strong> No natural stopping point</li>
-          <li><strong>Immediate:</strong> No delay between impulse and gratification</li>
-          <li><strong>Effortless:</strong> No energy expenditure required</li>
-          <li><strong>Personalized:</strong> Algorithmically optimized to your specific vulnerabilities</li>
-          <li><strong>Portable:</strong> Accessible 24/7 in your pocket</li>
-        </ul>
+      <section id="algorithmic-assault">
+        <h2>How Silicon Valley Hacked Your Brain</h2>
 
+        <h3>Variable Ratio Reinforcement: The Slot Machine Design</h3>
         <p>
-          This is a neurochemical crisis. Your dopamine system, which evolved for scarcity and effort, now faces abundance and ease.
+          The most addictive schedule of reinforcement known to behavioral psychology is the variable ratio schedule — the same mechanism that makes slot machines impossible to walk away from. You don't get rewarded every time you pull the lever; you get rewarded unpredictably. This produces the most persistent behavior and the most resistant-to-extinction learning.
         </p>
-
-        <h2 id="algorithmic-assault">The Last 30 Years: How Silicon Valley Hacked Your Brain</h2>
-
-        <h3>Variable Ratio Reinforcement</h3>
         <p>
-          This is the same mechanism that makes slot machines addictive. You don't get rewarded every time you pull the lever—you get rewarded unpredictably. Social media applies this perfectly:
-        </p>
-
-        <ul>
-          <li>Sometimes your post gets 100 likes</li>
-          <li>Sometimes it gets 3</li>
-          <li>You never know which it will be</li>
-          <li>So you keep posting, keep checking</li>
-        </ul>
-
-        <p>
-          The unpredictability itself triggers dopamine release. Your brain releases more dopamine in anticipation of uncertain reward than certain reward. The algorithm engineers know this.
+          Social media applies this principle with extraordinary precision. Sometimes your post gets 100 likes. Sometimes it gets 3. You never know which it will be. So you keep posting. Keep checking. The unpredictability itself triggers dopamine release — your brain releases more dopamine in anticipation of uncertain reward than certain reward. The algorithm engineers understand this. The variable ratio schedule is not an incidental feature of social platforms. It is the core design principle.
         </p>
 
         <h3>Infinite Scroll: Removing Stopping Cues</h3>
         <p>
-          In the natural world, everything has an end. A book has a final page. A meal fills your stomach. These are stopping cues—natural points where your dopamine system resets.
+          In the natural world, everything has an end. A book has a final page. A meal fills your stomach. A conversation reaches a natural conclusion. These are stopping cues — natural points where your dopamine system resets, where the brain gets the signal that the seeking episode has concluded.
         </p>
+        <p>
+          Infinite scroll eliminates stopping cues entirely. There is no endpoint, no natural pause, no completion signal. Your dopamine system never receives the closure it's designed to receive. The seeking loop stays open indefinitely. You experience this phenomenologically as "just one more scroll" — a state of mild compulsion that accumulates into hours of lost time.
+        </p>
+
+        <h3>Notification Batching: Engineering the Spike</h3>
+        <p>
+          You post a photo. Notifications don't arrive steadily — they come in bursts. Sometimes immediately, sometimes after a delay. Sometimes five at once, sometimes twenty. This isn't accidental. Platforms batch notifications to create larger dopamine spikes — one notification produces a small burst; twenty simultaneous notifications produce a surge that can interrupt sustained work from across the room.
+        </p>
+
+        <ContentBox type="warning" title="The Negativity Bias Exploitation">
+          <p>Your brain evolved to prioritize threats over rewards — a survival mechanism that made sense on the savannah. Algorithms leverage this by preferentially surfacing content that triggers outrage, conflict, and moral indignation. Research consistently shows angry content receives 6x more engagement than neutral content. The algorithm optimizes for engagement. Therefore, it optimizes for anger. The political division, the chronic low-grade outrage, the feeling that the world is getting worse — these are not byproducts of social media. They are its optimized output.</p>
+        </ContentBox>
 
         <p>
-          Infinite scroll eliminates stopping cues entirely. There is no endpoint, no natural pause. Your dopamine system never gets the signal that the activity has concluded. You experience this as "just one more scroll," which becomes 2 hours.
+          The neuroplastic consequences are measurable. Neuroimaging studies show heavy social media users have reduced connectivity between the prefrontal cortex and posterior parietal cortex — the networks governing sustained attention. Chronic overstimulation leads to downregulation of D2 receptors, reducing baseline dopamine tone. Normal life activities feel genuinely understimulating because they trigger less dopamine response than they used to. The platform hasn't just captured your attention. It has structurally reduced your capacity to attend.
         </p>
+      </section>
 
-        <h3>Notification Batching: Amplifying the Hit</h3>
+      <section id="behavioral-transformation">
+        <h2>The Death of Delayed Gratification</h2>
         <p>
-          You post a photo. Notifications don't arrive steadily—they come in bursts. Sometimes immediately, sometimes after a delay. Sometimes 5 at once, sometimes 20.
+          Consider what it takes to write a novel: thousands of hours of isolated effort, months or years before completion, deep uncertainty about quality, delayed social recognition, and a high probability of rejection. Every session requires choosing the difficult, uncertain, effortful thing over the immediate, certain, effortless alternative.
         </p>
-
         <p>
-          This isn't accidental. Platforms batch notifications to create larger dopamine spikes. One notification releases a small dopamine burst. Twenty simultaneous notifications create a surge.
+          Now consider what it takes to post a selfie: thirty seconds, immediate feedback, guaranteed dopamine, zero skill required. Your dopamine system doesn't slightly prefer the selfie. It massively prefers it — because your dopamine system is designed to maximize reward rate, and the selfie's reward rate per unit of effort is astronomically higher. The result is that sustained creative and intellectual work has never faced more neurochemical competition than it does right now.
         </p>
-
-        <h3>Negativity Bias Exploitation</h3>
         <p>
-          Your brain evolved to prioritize threats over rewards—a survival mechanism. Algorithms leverage this by preferentially showing you content that triggers outrage, arguments, and conflicts.
+          Dr. Andrew Huberman's research identifies a critical distinction between effort-based and effort-free dopamine. When you receive rewards without prior effort, your brain learns that effort is unnecessary — creating a catastrophic feedback loop in which the capacity for effortful pursuit progressively atrophies. The people who are building things — writing books, starting companies, creating art, developing expertise — aren't neurologically different from the people who aren't. They've made different choices about which dopamine sources to cultivate.
         </p>
-
-        <p>
-          Research shows that angry content receives 6x more engagement than neutral content. The algorithm optimizes for engagement. Therefore, it optimizes for anger.
-        </p>
-
-        <div class="research-highlight">
-          <h4>The Neuroplastic Consequences</h4>
-          <p>
-            <strong>Attention Span Degradation:</strong> Neuroimaging studies show that heavy social media users have measurably reduced connectivity between the prefrontal cortex and posterior parietal cortex—the networks governing sustained attention.
-          </p>
-          <p>
-            <strong>Baseline Dopamine Suppression:</strong> Chronic overstimulation leads to downregulation of dopamine receptors, particularly D2 receptors. This reduces your baseline dopamine tone. Normal life activities feel unstimulating because they genuinely trigger less dopamine response than they used to.
-          </p>
-        </div>
-
-        <h2 id="behavioral-transformation">The Death of Delayed Gratification</h2>
-
-        <p>
-          Consider what it takes to write a novel: thousands of hours of isolated effort, months or years before completion, uncertainty about quality, delayed social recognition.
-        </p>
-
-        <p>
-          Now consider what it takes to post a selfie: 30 seconds, immediate feedback, guaranteed dopamine, zero skill required, no rejection.
-        </p>
-
-        <p>
-          Your dopamine system prefers the selfie. Not slightly—massively. The immediate, certain reward overrides the delayed, uncertain reward every single time unless you consciously intervene.
-        </p>
-
-        <blockquote itemprop="citation">
-          "Dr. Andrew Huberman's research identifies a critical distinction: dopamine that arrives without effort is neurologically destructive. When you receive rewards without prior effort, your brain learns that effort is unnecessary. This creates a catastrophic feedback loop."
-        </blockquote>
 
         <h3>The Hedonic Treadmill Acceleration</h3>
         <p>
-          Adaptation is a feature of dopamine systems—you get used to rewards, requiring stronger stimuli for the same effect. This used to be a slow process. Ancient humans might find a particularly good hunting ground and feel excited for weeks before adaptation occurred.
+          Adaptation is a fundamental feature of dopamine systems — you habituate to rewards, requiring progressively stronger stimuli for the same response. In the natural world, this was a slow process. An exceptionally productive hunting ground would remain exciting for weeks before adaptation occurred. Now, adaptation happens in hours. What amazed you last month is boring this month. The excitement threshold constantly rises. This is not weakness or ingratitude. It is dopamine receptor downregulation operating at algorithmic speed.
         </p>
+      </section>
 
-        <p>
-          Now, adaptation happens in hours. You see a viral post, get excited, then feel nothing. The excitement threshold constantly rises. What amazed you last month is boring this month.
-        </p>
-
-        <h2 id="symptoms">The Neurochemical Prison: Symptoms of Dopamine Dysregulation</h2>
-
-        <h3>Motivational Symptoms</h3>
-        <ul>
-          <li>Difficulty starting tasks despite wanting to do them</li>
-          <li>Procrastination followed by frantic last-minute effort</li>
-          <li>Inability to sustain effort on long-term projects</li>
-          <li>Frequent project abandonment before completion</li>
-        </ul>
-
-        <h3>Emotional Symptoms</h3>
-        <ul>
-          <li>Baseline anhedonia (reduced capacity for pleasure)</li>
-          <li>Frequent boredom despite constant stimulation</li>
-          <li>Emotional flatness except during high-intensity experiences</li>
-          <li>Anxiety during periods without stimulation</li>
-        </ul>
-
-        <h3>Behavioral Symptoms</h3>
-        <ul>
-          <li>Compulsive phone checking (average: 96 times per day)</li>
-          <li>Reaching for device immediately upon waking</li>
-          <li>Inability to be alone without distraction</li>
-          <li>Reduced face-to-face social interaction</li>
-        </ul>
-
-        <p>
-          If you recognize 5+ of these, you likely have significant dopamine dysregulation.
-        </p>
-
-        <h2 id="recovery-protocol">The Science of Recovery: Dopamine Reset Protocol</h2>
-
-        <div class="protocol-framework">
-          <h3>Phase 1: Deprivation (Days 1-3)</h3>
-          <p><strong>Purpose:</strong> Allow downregulated D2 receptors to begin upregulating.</p>
-
-          <p><strong>Protocol:</strong></p>
-          <ul>
-            <li>Zero supernormal stimuli: no social media, no internet browsing, no video games, no streaming content, no junk food</li>
-            <li>Eliminate easy dopamine sources completely</li>
-            <li>Expect significant discomfort—this is receptor adaptation in progress</li>
-          </ul>
-
-          <p><strong>What's happening neurologically:</strong> Your brain, accustomed to constant stimulation, experiences this as deprivation. Without constant external dopamine triggers, your brain begins upregulating receptor expression—producing more D2 receptors to capture available dopamine more efficiently.</p>
-
-          <p><strong>Expect:</strong> Intense boredom, restlessness, mild depression, intrusive thoughts about checking devices, physical agitation. This is not weakness. This is neurochemical withdrawal.</p>
-        </div>
-
-        <div class="protocol-framework">
-          <h3>Phase 2: Recalibration (Days 4-14)</h3>
-          <p><strong>Purpose:</strong> Allow natural dopamine sensitivity to restore.</p>
-
-          <p><strong>Protocol:</strong></p>
-          <ul>
-            <li>Continue zero supernormal stimuli</li>
-            <li>Introduce effort-based dopamine activities: physical exercise, creative work, social interaction (in-person only), nature exposure, reading</li>
-          </ul>
-
-          <p><strong>What's happening neurologically:</strong> D2 receptor density is increasing. Your dopamine baseline is stabilizing at a healthier level. Activities that previously felt understimulating begin triggering appropriate dopamine response.</p>
-
-          <p><strong>Expect:</strong></p>
-          <ul>
-            <li>Days 4-7: Continued discomfort, slight mood improvement</li>
-            <li>Days 8-11: Noticeable increase in baseline mood</li>
-            <li>Days 12-14: Activities feel genuinely enjoyable again</li>
-          </ul>
-        </div>
-
-        <div class="protocol-framework">
-          <h3>Phase 3: Reinforcement (Days 15-30)</h3>
-          <p><strong>Purpose:</strong> Strengthen the new dopamine baseline and prevent regression.</p>
-
-          <p><strong>Protocol:</strong></p>
-          <ul>
-            <li>Maintain zero supernormal stimuli</li>
-            <li>Establish structured dopamine-generating routines: morning exercise, goal-directed project work (2+ hour blocks), regular social connection, deliberate skill acquisition</li>
-          </ul>
-
-          <p><strong>What's happening neurologically:</strong> Your dopamine system is learning that effort-based activities provide reliable, sustained reward. Neural pathways connecting effort → dopamine → pleasure are strengthening through repeated activation (neuroplasticity).</p>
-        </div>
-
-        <div class="protocol-framework">
-          <h3>The Neurochemical Strategy</h3>
-
-          <p><strong>Morning Protocol:</strong></p>
-          <ul>
-            <li>Upon waking: 10 minutes of morning light exposure (triggers cortisol rise, optimizes circadian dopamine rhythm)</li>
-            <li>Cold exposure (shower or outdoor cold): Triggers sustained dopamine elevation (2.5x baseline for hours)</li>
-            <li>High-protein breakfast: Provides tyrosine substrate for dopamine synthesis</li>
-          </ul>
-
-          <p><strong>Midday Protocol:</strong></p>
-          <ul>
-            <li>Physical activity: Intense exercise triggers endorphin release → enhanced dopamine sensitivity</li>
-            <li>Creative/focused work: Leverages morning dopamine peak for deep work</li>
-            <li>Social interaction: In-person contact maintains dopaminergic reinforcement</li>
-          </ul>
-
-          <p><strong>Evening Protocol:</strong></p>
-          <ul>
-            <li>Digital sunset (2+ hours before sleep): Allows dopamine to normalize</li>
-            <li>Low-intensity activities: Reading, conversation, reflection</li>
-            <li>No screens in bedroom: Eliminates pre-sleep dopamine spikes that fragment sleep</li>
-          </ul>
-        </div>
-
-        <h2 id="uncomfortable-truth">The Uncomfortable Truth</h2>
-
-        <p>
-          Here's what the research shows clearly but few want to acknowledge: <strong>Most people will not recover their dopamine systems while remaining connected to modern digital life as currently designed.</strong>
-        </p>
-
-        <p>
-          The platforms are too well-engineered. The dopamine hits too reliable. The algorithms too personalized. Your willpower is not defective—you're simply outmatched by systems designed by the world's best behavioral engineers with billion-dollar budgets.
-        </p>
-
-        <p>
-          You have three options:
-        </p>
-
-        <ol>
-          <li><strong>Total disconnection:</strong> Eliminate smartphones, social media, streaming services. Extremely effective. Socially difficult.</li>
-          <li><strong>Radical boundaries:</strong> Feature phone for calls, computer for necessary work only, zero social media, zero infinite scroll content. Very effective. Requires lifestyle redesign.</li>
-          <li><strong>Managed engagement:</strong> Strict time limits, app blockers, algorithmic feed elimination. Moderately effective. Requires constant vigilance.</li>
-        </ol>
-
-        <p>
-          Your brain cannot simultaneously maintain easy dopamine access and develop the capacity for sustained, effortful achievement. The neuroplasticity works in opposite directions.
-        </p>
-
-        <h2 id="choice">The Choice Before You</h2>
-
-        <p>
-          You've now seen the mechanism. You understand what dopamine is, how it works, what stimuli trigger it, how it interacts with other neurochemicals, and how modern technology exploits its circuitry for profit.
-        </p>
-
-        <blockquote itemprop="citation">
-          "Every time you unlock your phone for a dopamine hit, you're not weak—you're human. You're fighting 300 million years of evolution that shaped your reward system for a world that no longer exists. But now you know what's happening at the neurochemical level."
-        </blockquote>
-
-        <p>
-          The people building things—writing books, starting companies, creating art, developing expertise—they're not somehow immune to dopamine dysregulation. They've made a different choice about which dopamine sources to pursue.
-        </p>
-
-        <p>
-          They've chosen difficult dopamine over easy dopamine. Delayed over immediate. Uncertain over guaranteed. Effortful over automatic.
-        </p>
-
-        <p>
-          Their brains work the same way yours does. They've just trained their dopamine systems to reward different behaviors.
-        </p>
-
-        <p class="conclusion">
-          The question isn't whether you can do the same. The question is whether you will.
-        </p>
-
-        <p class="conclusion">
-          Your dopamine system is waiting for instructions. What will you teach it to want?
-        </p>
-
-        <div class="further-reading">
-          <h3>Further Reading</h3>
-          <ul>
-            <li>Schultz, W. (2015). "Neuronal Reward and Decision Signals: From Theories to Data." <em>Physiological Reviews</em></li>
-            <li>Berridge, K.C. & Robinson, T.E. (2016). "Liking, Wanting, and the Incentive-Sensitization Theory of Addiction." <em>American Psychologist</em></li>
-            <li>Huberman, A. (2021). "Controlling Your Dopamine For Motivation, Focus & Satisfaction." <em>Huberman Lab Podcast</em></li>
-            <li>Lembke, A. (2021). <em>Dopamine Nation: Finding Balance in the Age of Indulgence</em></li>
-          </ul>
-        </div>
+      <!-- AD 2: Ortası -->
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="4827765044"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <!-- Table of Contents -->
-        <div class="sidebar-section sidebar-toc">
-          <h3>Contents</h3>
-          <nav>
-            <a href="#molecular-truth">The Molecular Truth</a>
-            <a href="#evolutionary-context">Evolutionary Context</a>
-            <a href="#algorithmic-assault">Algorithmic Assault</a>
-            <a href="#behavioral-transformation">Behavioral Transformation</a>
-            <a href="#symptoms">Symptoms</a>
-            <a href="#recovery-protocol">Recovery Protocol</a>
-            <a href="#uncomfortable-truth">Uncomfortable Truth</a>
-            <a href="#choice">The Choice</a>
-          </nav>
-        </div>
+      <section id="symptoms">
+        <h2>Symptoms of Dopamine Dysregulation</h2>
+        <p>
+          Dopamine dysregulation produces a recognizable symptom cluster that most people attribute to personality, laziness, or modern stress rather than neurochemical dysregulation. Recognizing the biological substrate changes both the diagnosis and the treatment.
+        </p>
 
-        <!-- Related Articles -->
-        <div class="sidebar-section sidebar-related">
-          <h3>Related Articles</h3>
-          <div class="sidebar-links">
-            <a href="/blog/extreme-mindset-neuroscience" rel="related">The Neuroscience of Extreme</a>
-            <a href="/blog/habits-discipline-momentum" rel="related">Habits & Momentum</a>
-            <a href="/blog/mental-models" rel="related">Mental Models</a>
-          </div>
-        </div>
+        <ContentGrid columns={3}>
+          <ContentBox type="warning" title="Motivational Symptoms">
+            <p>Difficulty starting tasks despite genuinely wanting to complete them. Procrastination followed by frantic last-minute effort. Inability to sustain effort on long-term projects. Frequent project abandonment before completion. The inability to "get started" is often not a psychological problem — it's a dopamine signaling problem.</p>
+          </ContentBox>
+          <ContentBox type="warning" title="Emotional Symptoms">
+            <p>Baseline anhedonia — reduced capacity for pleasure from ordinary activities. Frequent boredom despite constant stimulation. Emotional flatness except during high-intensity experiences. Anxiety or restlessness during periods without stimulation. The anxiety of not checking is itself a withdrawal symptom.</p>
+          </ContentBox>
+          <ContentBox type="warning" title="Behavioral Symptoms">
+            <p>Compulsive phone checking (average: 96 times per day). Reaching for device immediately upon waking. Inability to tolerate being alone without distraction. Reduced capacity for face-to-face social connection. The compulsion is not a character flaw — it's the dopamine seeking loop operating below conscious awareness.</p>
+          </ContentBox>
+        </ContentGrid>
 
-        <!-- Newsletter Signup -->
-        <div class="sidebar-section sidebar-newsletter">
-          <h3>Stay Updated</h3>
-          <p>Get evidence-based strategies for peak performance delivered to your inbox.</p>
-          <form class="sidebar-form" action="/" method="post">
-            <input type="email" placeholder="Your email" required />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
+        <p>
+          If you recognize five or more of these consistently, you likely have significant dopamine dysregulation — not as a diagnosis, but as an accurate description of a neurochemical state that responds to specific interventions.
+        </p>
+      </section>
 
-        <!-- Share Section -->
-        <div class="sidebar-section sidebar-share">
-          <h3>Share Article</h3>
-          <div class="share-buttons">
-            <a href="#" class="share-btn twitter" aria-label="Share on Twitter">𝕏</a>
-            <a href="#" class="share-btn linkedin" aria-label="Share on LinkedIn">in</a>
-            <a href="#" class="share-btn facebook" aria-label="Share on Facebook">f</a>
-          </div>
-        </div>
-      </aside>
+      <section id="willpower-depletion">
+        <h2>The Neuroscience of Willpower Depletion</h2>
+        <p>
+          One of the most consequential — and least understood — effects of dopamine dysregulation is its direct impact on the prefrontal cortex's capacity for self-regulation. The relationship between dopamine and willpower is not metaphorical. It is mechanistic.
+        </p>
+        <p>
+          The prefrontal cortex (PFC) — the brain region governing executive function, delayed gratification, impulse control, and long-term planning — is heavily dependent on precise dopamine signaling. Too little dopamine in the PFC produces the kind of flat, demotivated, can't-get-started state that characterizes depression. Too much produces impulsive, scattered, unable-to-focus behavior. Peak PFC performance requires dopamine levels in a specific range — and that range is precisely what chronic digital overstimulation disrupts.
+        </p>
+
+        <ContentBox type="highlight" title="The PFC-Striatum Conflict">
+          <p>The prefrontal cortex and the striatum (which houses the nucleus accumbens, the reward center) are in constant competition for control of behavior. The PFC represents long-term goals and rational planning; the striatum represents immediate reward and habit execution. Dopamine dysregulation tips this competition toward the striatum — toward immediate reward, toward habit and impulse — and away from the PFC's long-term deliberation. Every hour of digital overstimulation makes this tipping slightly worse. This is why someone who spends three hours scrolling then struggles to make progress on the project they care about — it's not lack of desire, it's PFC suppression.</p>
+        </ContentBox>
+
+        <h3>Decision Fatigue and Dopamine</h3>
+        <p>
+          Roy Baumeister's research on ego depletion demonstrated that willpower is a depletable resource — making repeated decisions, resisting repeated temptations, and exercising self-control all draw from a finite pool that exhausts over the course of a day. Subsequent research suggests this resource is not simply mental but has a neurochemical substrate: the capacity for effortful self-regulation is linked to PFC dopamine availability.
+        </p>
+        <p>
+          When your dopamine system is chronically depleted by digital overstimulation, you start the day with a smaller reserve. The morning temptation to check your phone doesn't just cost you the time you spend scrolling. It depletes the PFC dopamine available for every subsequent act of self-regulation that day — the exercise you skip, the difficult conversation you avoid, the deep work session that never starts. The compulsive morning phone check is the first domino in a cascade that shapes the entire day's productivity.
+        </p>
+        <p>
+          This connects directly to the <a href="/blog/habits-discipline-momentum">science of habit formation and momentum</a> — the morning habits that successful people protect so carefully are, in neurochemical terms, protecting the PFC dopamine reserve before it can be depleted by digital stimulation. The "morning routine" that performance researchers consistently document isn't arbitrary ritual. It's neuroscience applied.
+        </p>
+
+        <h3>Stress Response Dysregulation</h3>
+        <p>
+          Chronic dopamine dysregulation interacts destructively with the cortisol stress response. Normally, mild stress triggers a cortisol spike that actually enhances PFC function — the Yerkes-Dodson inverted U curve that explains why moderate pressure improves performance. In a dopamine-dysregulated system, this relationship breaks down. Stress triggers cortisol, which further depletes PFC function, which increases impulsivity, which drives more digital seeking behavior, which further depletes dopamine — a degenerative feedback loop that many high-functioning people are caught in without recognizing it.
+        </p>
+      </section>
+
+      <section id="dopamine-deep-work">
+        <h2>Dopamine and Deep Work</h2>
+        <p>
+          Cal Newport's concept of deep work — the ability to focus without distraction on cognitively demanding tasks for extended periods — describes the activity that is most vulnerable to dopamine dysregulation and most valuable in the modern economy. The overlap is not coincidental. Deep work is rare precisely because it is neurochemically expensive in a high-stimulation environment.
+        </p>
+        <p>
+          Entering a genuine flow state — the state of absorbed, effortless-feeling deep engagement that Csikszentmihalyi documented across domains — requires the PFC to quiet the monitoring, self-conscious, distraction-seeking systems and engage the task fully. This transition is mediated by dopamine. Specifically, it requires a dopamine system that still responds robustly to the intrinsic rewards of challenging work — the pleasure of a problem yielding, the satisfaction of a sentence coming right, the engagement of a complex idea becoming clear.
+        </p>
+
+        <ContentBox type="highlight" title="The Deep Work Dopamine Threshold">
+          <p>When your dopamine system has been chronically overstimulated, the intrinsic rewards of intellectual work no longer clear the response threshold. The subtle satisfaction of a paragraph well-written is genuinely invisible to a dopamine system calibrated to social media engagement spikes. This is why people who used to love reading find they can't concentrate for more than five minutes — it's not attention deficit disorder; it's a calibration problem. The dopamine system no longer responds to low-intensity stimuli, and genuine intellectual reward is low-intensity stimuli by the standards of a social media-calibrated brain.</p>
+        </ContentBox>
+
+        <h3>The Creative Work Connection</h3>
+        <p>
+          Research on creative cognition identifies a specific phase — the preparation phase, during which a problem is absorbed and processed below conscious awareness — that requires extended periods of non-directed attention. Boredom, in this framework, is not the enemy of creativity but its precondition: the unoccupied mind is the mind in which unexpected connections form, problems resolve, and novel ideas emerge.
+        </p>
+        <p>
+          Eliminating boredom through constant stimulation eliminates the preparation phase. The person who cannot be alone without their phone is not merely distracted. They have systematically prevented the mental conditions under which their best thinking occurs. The dopamine reset protocol, described in the next section, is in part a restoration of the capacity for productive boredom — the understimulated state from which genuine creative work emerges. This connects to the <a href="/blog/overcoming-resistance">psychology of resistance and creative blocks</a> — what feels like procrastination or creative block is often a dopamine system that no longer recognizes the reward in sustained creative effort.
+        </p>
+
+        <h3>The Compounding Cost</h3>
+        <p>
+          The deepest cost of digital dopamine dysregulation is not the hours lost to scrolling. It's the compounding opportunity cost of deep work never done. The book unwritten. The skill unmastered. The business not built. The relationships not deepened through the kind of sustained presence that superficial digital connection systematically replaces. These are invisible costs — they appear nowhere in the accounting of time spent — but they are the most consequential effects of a dysregulated dopamine system operating over years.
+        </p>
+      </section>
+
+      <section id="recovery-protocol">
+        <h2>The Science of Recovery: Dopamine Reset Protocol</h2>
+
+        <ContentBox type="highlight" title="Phase 1: Deprivation (Days 1–3)">
+          <p><strong>Purpose:</strong> Allow downregulated D2 receptors to begin upregulating.</p>
+          <p><strong>Protocol:</strong> Zero supernormal stimuli — no social media, no internet browsing, no video games, no streaming content, no processed foods. Eliminate all engineered dopamine sources completely.</p>
+          <p><strong>What's happening neurologically:</strong> Your brain, accustomed to constant stimulation, experiences deprivation. Without continuous external triggers, the brain begins upregulating receptor expression — producing more D2 receptors to capture available dopamine more efficiently.</p>
+          <p><strong>Expect:</strong> Intense boredom, restlessness, mild depression, intrusive thoughts about checking devices, physical agitation. This is not weakness. This is neurochemical withdrawal proceeding correctly.</p>
+        </ContentBox>
+
+        <ContentBox type="highlight" title="Phase 2: Recalibration (Days 4–14)">
+          <p><strong>Purpose:</strong> Allow natural dopamine sensitivity to restore.</p>
+          <p><strong>Protocol:</strong> Continue zero supernormal stimuli. Introduce effort-based dopamine activities: physical exercise, creative work, in-person social interaction, nature exposure, reading physical books.</p>
+          <p><strong>What's happening neurologically:</strong> D2 receptor density is increasing. Your dopamine baseline is stabilizing at a healthier level. Activities that previously felt understimulating begin triggering appropriate dopamine response.</p>
+          <p>Days 4–7: Continued discomfort, slight mood improvement. Days 8–11: Noticeable increase in baseline mood and motivation. Days 12–14: Activities feel genuinely enjoyable again for the first time in months or years.</p>
+        </ContentBox>
+
+        <ContentBox type="highlight" title="Phase 3: Reinforcement (Days 15–30)">
+          <p><strong>Purpose:</strong> Strengthen the new dopamine baseline and prevent regression.</p>
+          <p><strong>Protocol:</strong> Establish structured dopamine-generating routines: morning exercise, goal-directed project work in 2+ hour blocks, regular in-person social connection, deliberate skill acquisition in a chosen domain.</p>
+          <p><strong>What's happening neurologically:</strong> Your dopamine system is learning that effort-based activities provide reliable, sustained reward. Neural pathways connecting effort → dopamine → satisfaction are strengthening through repeated activation — the neuroplasticity working in your direction for the first time.</p>
+        </ContentBox>
+
+        <h3>The Daily Neurochemical Protocol</h3>
+        <StepsList>
+          <li><strong>Upon waking:</strong> 10 minutes of morning light exposure — triggers cortisol rise and optimizes circadian dopamine rhythm. No phone until this is complete.</li>
+          <li><strong>Cold exposure:</strong> Cold shower or outdoor cold exposure triggers sustained dopamine elevation at roughly 2.5x baseline for several hours — among the most powerful natural dopamine interventions documented.</li>
+          <li><strong>High-protein breakfast:</strong> Provides tyrosine substrate for dopamine synthesis. Your brain cannot make dopamine without adequate precursor availability.</li>
+          <li><strong>Morning deep work block:</strong> Leverages the morning dopamine peak for sustained creative or intellectual work — this is the highest-value activity window of the day, and it's the window most commonly destroyed by morning phone use.</li>
+          <li><strong>Physical activity midday:</strong> Intense exercise triggers endorphin release and enhanced dopamine sensitivity. It also upregulates BDNF — brain-derived neurotrophic factor — which supports neuroplasticity.</li>
+          <li><strong>Digital sunset (2+ hours before sleep):</strong> Allows dopamine to normalize and sleep architecture to form correctly. Pre-sleep dopamine spikes from screen use fragment sleep, reducing the restorative quality that supports tomorrow's dopamine baseline.</li>
+        </StepsList>
+      </section>
+
+      <section id="long-game">
+        <h2>The Long Game: Building a Dopamine-Optimized Life</h2>
+        <p>
+          The 30-day reset is a necessary correction, not the destination. The deeper project is redesigning the architecture of daily life so that effort-based dopamine sources are the path of least resistance, and engineered dopamine sources require active choice to access. This is an environmental design problem as much as a willpower problem — and environmental design is a far more reliable intervention than relying on willpower in the moment.
+        </p>
+
+        <h3>Friction Engineering</h3>
+        <p>
+          James Clear's concept of friction — the resistance required to initiate a behavior — is the fundamental lever for dopamine system redesign. The goal is to maximize friction for engineered dopamine sources and minimize friction for effort-based sources.
+        </p>
+
+        <StepsList>
+          <li><strong>Delete social media apps from your phone.</strong> Keep accounts if needed, but access only via browser on a computer. The 30-second convenience barrier is enough to interrupt the unconscious reach-and-scroll pattern.</li>
+          <li><strong>Leave books in every room.</strong> Put your reading material precisely where you currently put your phone. Replace the default with the preferred.</li>
+          <li><strong>Physical workspace separation.</strong> The location where you do deep work should be free of all entertainment technology. The brain learns to associate locations with behaviors — a dedicated deep work space trains the brain to enter the deep work state on arrival.</li>
+          <li><strong>Notification architecture redesign.</strong> Turn off all notifications except direct messages from specific people. Every notification is a hijacking of your dopamine seeking loop — and the seeking loop, once activated, requires significant time and neurochemical cost to close again.</li>
+          <li><strong>Charging station outside the bedroom.</strong> The bedroom is a dopamine-free zone. Sleep is when the dopamine system recovers. Pre-sleep stimulation is the equivalent of eating sugar before trying to sleep — it disrupts the recovery process.</li>
+        </StepsList>
+
+        <h3>The Effort-Reward Calibration Practice</h3>
+        <p>
+          A key insight from dopamine research is that the dopamine released in anticipation of a reward is calibrated to the effort invested in earning it. Deliberately building effort into reward — making yourself work before allowing yourself to enjoy a pleasure — actively reshapes dopamine calibration over time. This is not asceticism for its own sake. It's systematic recalibration of the system that determines what you find motivating and satisfying.
+        </p>
+        <p>
+          Practical application: before any entertainment or leisure, complete a defined unit of meaningful work. The entertainment is not the reward for good behavior — it's the reset before the next work session. This pattern, practiced consistently, gradually restores the dopamine system's response to effort-based reward that chronic digital overstimulation has degraded. This connects to the <a href="/blog/rethinking-success">philosophy of redefining what you're optimizing for</a> — a dopamine-optimized life is not an ascetic life, it's a life where your reward system is aligned with your actual values rather than engineered to serve someone else's business model.
+        </p>
+
+        <h3>Long-Term Neuroplasticity: What Changes Over Months</h3>
+        <p>
+          Recovery from dopamine dysregulation is not just restoration of a prior state — it is the construction of a more robust neurochemical architecture than most people have ever experienced. Six months of consistent effort-based dopamine practice produces measurable changes in PFC thickness, in D2 receptor density, in the functional connectivity between the PFC and reward systems, and in the subjective experience of motivation and satisfaction.
+        </p>
+        <p>
+          The long-term practitioners — people who have maintained a dopamine-disciplined lifestyle for years — consistently report that the most significant change is not willpower or discipline but appetite. The desire for shallow stimulation genuinely diminishes, not because it's suppressed but because the brain no longer finds it rewarding relative to the richer satisfaction of effort-based achievement. The goal is not to be someone who resists the pull of the phone. It is to become someone for whom the phone's pull is genuinely weak compared to the pull of meaningful work.
+        </p>
+      </section>
+
+      <!-- AD 3: Final section öncesi -->
+      <div class="ad-unit ad-unit--bottom">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="uncomfortable-truth">
+        <h2>The Uncomfortable Truth</h2>
+        <p>
+          Here's what the research shows clearly but few want to acknowledge: most people will not recover their dopamine systems while remaining connected to modern digital life as currently designed. The platforms are too well-engineered. The dopamine hits too reliable. The algorithms too personalized and adaptive. Your willpower is not defective — you are simply outmatched by systems designed by the world's best behavioral engineers with billion-dollar research budgets and direct access to your neurochemistry.
+        </p>
+
+        <ContentBox type="warning" title="The Three Options">
+          <p><strong>Total disconnection:</strong> Eliminate smartphones, social media, streaming services. Extremely effective. Socially and professionally difficult, but not impossible — an increasing number of high performers are choosing this path.</p>
+          <p><strong>Radical boundaries:</strong> Feature phone for calls, computer-only internet access for necessary work, zero social media, zero infinite scroll content. Very effective. Requires lifestyle redesign and the social costs of being genuinely less digitally available.</p>
+          <p><strong>Managed engagement:</strong> Strict time limits, app blockers, algorithmic feed elimination, phone in another room during work. Moderately effective. Requires constant environmental management and is the most vulnerable to erosion over time.</p>
+        </ContentBox>
+
+        <p>
+          Your brain cannot simultaneously maintain easy dopamine access and develop the capacity for sustained, effortful achievement. The neuroplasticity works in opposite directions. Every hour spent in managed engagement with engineered stimulation is an hour of neurochemical competition with the capacity you're trying to build.
+        </p>
+      </section>
+
+      <section id="choice">
+        <h2>The Choice Before You</h2>
+        <p>
+          You've now seen the mechanism. You understand what dopamine is, how it works, what stimuli trigger it, how it interacts with other neurochemicals, how modern technology exploits its circuitry for profit, how that exploitation undermines the willpower and deep work capacity that meaningful achievement requires, and what it takes to restore a healthy system.
+        </p>
+        <p>
+          Every time you unlock your phone for a dopamine hit, you're not weak — you're human. You're contending with 300 million years of evolutionary programming designed for a world that no longer exists, reengineered by behavioral scientists to keep you engaged. But now you know what's happening at the neurochemical level. Knowledge doesn't eliminate the pull. It does mean that choosing to engage is no longer unconscious.
+        </p>
+        <p>
+          The people building things — writing books, starting companies, creating art, developing genuine expertise — aren't neurologically different from anyone else. They've made a different choice about which dopamine sources to cultivate. They've chosen difficult dopamine over easy dopamine. Delayed over immediate. Uncertain over guaranteed. Effortful over automatic. Their brains work the same way yours does. They've trained their dopamine systems to reward different behaviors. And so can you.
+        </p>
+
+        <ContentBox type="highlight" title="The Central Question">
+          <p>The question isn't whether you can do the same. The question is whether you will. Your dopamine system is waiting for instructions. The platforms have been giving it instructions for years. The instruction is simple and clear: seek the easy thing. You can override that instruction — but it requires deliberately building the architecture that makes the hard thing the default. Start with one morning. No phone until meaningful work is done. See what happens to the rest of the day.</p>
+        </ContentBox>
+      </section>
+
     </div>
+
+    <!-- Author Bio -->
+    <div class="author-bio" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+      <div class="author-avatar">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
+        </svg>
+      </div>
+      <div class="author-info">
+        <h3 itemprop="name">Success Odyssey Hub</h3>
+        <meta itemprop="url" content="https://successodysseyhub.com" />
+        <p>We explore the neuroscience and philosophy behind peak performance — translating research into practical frameworks for people building meaningful lives.</p>
+      </div>
+    </div>
+
+    <!-- Related Articles -->
+    <nav class="related-articles" aria-label="Related articles">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+        <a href="/blog/habits-discipline-momentum" class="related-card" rel="related">
+          <h4>Habits, Discipline, and Momentum</h4>
+          <p>How to build the behavioral systems that make the right action the path of least resistance.</p>
+        </a>
+        <a href="/blog/overcoming-resistance" class="related-card" rel="related">
+          <h4>Overcoming Resistance</h4>
+          <p>The psychology of creative and productive resistance — and how to move through it.</p>
+        </a>
+        <a href="/blog/ai-amplified-mental-models" class="related-card" rel="related">
+          <h4>AI-Amplified Mental Models</h4>
+          <p>Building the decision-making frameworks that compound over time.</p>
+        </a>
+        <a href="/blog/rethinking-success" class="related-card" rel="related">
+          <h4>Rethinking Success</h4>
+          <p>Redesigning what you're optimizing for — before the optimization takes over.</p>
+        </a>
+      </div>
+    </nav>
+
+    <!-- External Resources -->
+    <div class="external-resources">
+      <h3>Further Reading</h3>
+      <ul>
+        <li>Schultz, W. (2015). "Neuronal Reward and Decision Signals: From Theories to Data." <em>Physiological Reviews</em></li>
+        <li>Berridge, K.C. & Robinson, T.E. (2016). "Liking, Wanting, and the Incentive-Sensitization Theory of Addiction." <em>American Psychologist</em></li>
+        <li>Lembke, A. (2021). <em>Dopamine Nation: Finding Balance in the Age of Indulgence</em></li>
+        <li>Newport, C. (2016). <em>Deep Work: Rules for Focused Success in a Distracted World</em></li>
+      </ul>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <span>/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/blog"><span itemprop="name">Blog</span></a>
+          <meta itemprop="position" content="2" />
+          <span>/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name">Dopamine: The Invisible Chains</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </nav>
+
   </article>
-
-  <style>
-    /* Blog Page Styles - Matching Extreme Mindset Format */
-    .blog-page {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-
-    .article-header {
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 3rem;
-    }
-
-    .article-header h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: #1e293b;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      font-weight: 800;
-    }
-
-    .article-meta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      color: #64748b;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .reading-time {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .tags {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      background: #eff6ff;
-      color: #1e40af;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-
-    .hero-image {
-      width: 100%;
-      max-width: 900px;
-      height: auto;
-      border-radius: 12px;
-      margin: 0 auto 3rem;
-      display: block;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Two Column Layout */
-    .blog-container {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 3rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    /* Main Content */
-    .main-content {
-      max-width: 800px;
-      font-size: 1.125rem;
-      line-height: 1.8;
-      color: #334155;
-    }
-
-    .lead {
-      font-size: 1.35rem;
-      line-height: 1.7;
-      color: #475569;
-      margin-bottom: 2.5rem;
-      font-weight: 500;
-      border-left: 4px solid #3b82f6;
-      padding-left: 1.5rem;
-      font-style: italic;
-    }
-
-    .main-content h2 {
-      font-size: 2rem;
-      color: #1e293b;
-      margin-top: 3rem;
-      margin-bottom: 1.5rem;
-      font-weight: 800;
-      scroll-margin-top: 2rem;
-    }
-
-    .main-content h3 {
-      font-size: 1.5rem;
-      color: #334155;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .main-content h4 {
-      font-size: 1.25rem;
-      color: #475569;
-      margin-top: 2rem;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-
-    .main-content p {
-      margin-bottom: 1.5rem;
-    }
-
-    .main-content ul,
-    .main-content ol {
-      margin-bottom: 1.5rem;
-      padding-left: 1.5rem;
-    }
-
-    .main-content li {
-      margin-bottom: 0.75rem;
-      line-height: 1.7;
-    }
-
-    .main-content strong {
-      color: #1e293b;
-      font-weight: 700;
-    }
-
-    .main-content blockquote {
-      background: #f8fafc;
-      border-left: 4px solid #3b82f6;
-      padding: 1.5rem;
-      margin: 2rem 0;
-      font-style: italic;
-      color: #475569;
-      border-radius: 6px;
-    }
-
-    .research-highlight {
-      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-      border: 2px solid #93c5fd;
-      border-radius: 10px;
-      padding: 2rem;
-      margin: 2.5rem 0;
-    }
-
-    .research-highlight h4 {
-      color: #1e40af;
-      margin-top: 0;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-
-    .research-highlight p {
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-    }
-
-    .research-highlight p:last-child {
-      margin-bottom: 0;
-    }
-
-    .protocol-framework {
-      background: #f1f5f9;
-      border-left: 5px solid #10b981;
-      padding: 2rem;
-      margin: 2.5rem 0;
-      border-radius: 8px;
-    }
-
-    .protocol-framework h3 {
-      color: #059669;
-      margin-top: 0;
-      font-size: 1.4rem;
-    }
-
-    .conclusion {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #1e293b;
-      margin-top: 2.5rem;
-      padding: 1.5rem;
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border-left: 4px solid #f59e0b;
-      border-radius: 6px;
-    }
-
-    .further-reading {
-      background: #f8fafc;
-      padding: 2rem;
-      border-radius: 10px;
-      margin-top: 3rem;
-      border: 1px solid #e2e8f0;
-    }
-
-    .further-reading h3 {
-      color: #1e293b;
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-
-    .further-reading ul {
-      margin-bottom: 0;
-    }
-
-    .further-reading li {
-      font-size: 1rem;
-    }
-
-    /* Sidebar Styles */
-    .sidebar {
-      position: sticky;
-      top: 2rem;
-      height: fit-content;
-      max-height: calc(100vh - 4rem);
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .sidebar-section {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 1.5rem;
-    }
-
-    .sidebar-section h3 {
-      color: #1e293b;
-      font-size: 1.1rem;
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    /* Sidebar TOC */
-    .sidebar-toc nav {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .sidebar-toc a {
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-      display: block;
-      padding: 0.25rem 0;
-    }
-
-    .sidebar-toc a:hover {
-      color: #1e40af;
-    }
-
-    /* Sidebar Related Articles */
-    .sidebar-related {
-      background: #eff6ff;
-      border-radius: 10px;
-      padding: 1.5rem;
-    }
-
-    .sidebar-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .sidebar-links a {
-      color: #1e40af;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 0.75rem;
-      background: #ffffff;
-      border-radius: 6px;
-      transition: all 0.2s;
-      border: 1px solid #bfdbfe;
-    }
-
-    .sidebar-links a:hover {
-      background: #dbeafe;
-      transform: translateX(4px);
-    }
-
-    /* Sidebar Newsletter */
-    .sidebar-newsletter {
-      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-      color: #ffffff;
-      border-radius: 10px;
-      padding: 1.5rem;
-    }
-
-    .sidebar-newsletter h3 {
-      color: #ffffff !important;
-      margin-bottom: 0.75rem;
-    }
-
-    .sidebar-newsletter p {
-      font-size: 0.85rem;
-      color: #e0e7ff;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-
-    .sidebar-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .sidebar-form input {
-      padding: 0.75rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
-
-    .sidebar-form button {
-      padding: 0.75rem;
-      background: #ffffff;
-      color: #1e40af;
-      border: none;
-      border-radius: 6px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .sidebar-form button:hover {
-      background: #f0f9ff;
-      transform: translateY(-1px);
-    }
-
-    /* Sidebar Share */
-    .sidebar-share {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 1.5rem;
-    }
-
-    .share-buttons {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .share-btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem;
-      border-radius: 6px;
-      transition: all 0.2s;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .share-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .share-btn.twitter {
-      background: #1da1f2;
-      color: #ffffff;
-    }
-
-    .share-btn.linkedin {
-      background: #0a66c2;
-      color: #ffffff;
-    }
-
-    .share-btn.facebook {
-      background: #1877f2;
-      color: #ffffff;
-    }
-
-    /* Mobile responsive */
-    @media (max-width: 1024px) {
-      .blog-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .sidebar {
-        position: static;
-        max-height: none;
-        order: 2;
-      }
-
-      .main-content {
-        order: 1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .blog-page {
-        padding: 1rem;
-      }
-
-      .article-header h1 {
-        font-size: 1.75rem;
-      }
-
-      .article-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .main-content {
-        font-size: 1.05rem;
-      }
-
-      .lead {
-        font-size: 1.2rem;
-      }
-
-      .main-content h2 {
-        font-size: 1.6rem;
-      }
-
-      .main-content h3 {
-        font-size: 1.3rem;
-      }
-
-      .sidebar {
-        gap: 1.5rem;
-      }
-
-      .protocol-framework {
-        padding: 1.5rem;
-      }
-    }
-  </style>
 </Layout>
 
-<JsonLD
-  type="article"
-  title="Dopamine: The Invisible Chains of the Digital Age"
-  description="Discover how dopamine works at the molecular level, how Silicon Valley algorithms exploit your brain's reward system, and the science-backed protocol to reclaim your focus and motivation."
-  image={heroImage}
-  keywords="dopamine neuroscience, digital addiction, social media psychology, dopamine detox, neuroplasticity"
-  datePublished={datePublished}
-  dateModified={dateModified}
-  author={author}
-/>
+<style lang="scss">
+.ad-unit {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+  overflow: hidden;
+  &--top { margin-top: 0; margin-bottom: var(--spacing-2xl); }
+  &--mid { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: var(--spacing-lg) 0; }
+  &--bottom { border-top: 1px solid var(--color-border); padding-top: var(--spacing-lg); }
+}
+.blog-article {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+.article-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  h1 { margin-bottom: var(--spacing-lg); }
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    time { font-weight: 600; }
+    .reading-time { color: var(--color-primary); font-weight: 600; }
+  }
+  .article-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    .tag {
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+}
+.hero-figure {
+  margin: 0 0 var(--spacing-3xl);
+  .hero-image { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); }
+}
+.article-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  section { margin-bottom: var(--spacing-3xl); scroll-margin-top: 100px; }
+  h2 { margin: var(--spacing-3xl) 0 var(--spacing-xl); }
+  h3 { margin: var(--spacing-2xl) 0 var(--spacing-lg); }
+  .lead {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+    margin: var(--spacing-2xl) 0;
+    font-weight: 500;
+  }
+  blockquote {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-bg-secondary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+.table-of-contents {
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-2xl) 0;
+  h2 { margin-top: 0; margin-bottom: var(--spacing-lg); color: var(--color-primary); }
+  ol {
+    padding-left: var(--spacing-lg);
+    line-height: 1.8;
+    li { margin-bottom: var(--spacing-sm); }
+    a { color: var(--color-text-primary); text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition); &:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); } }
+  }
+}
+.author-bio {
+  display: flex;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-3xl) 0;
+  .author-avatar { flex-shrink: 0; svg { width: 60px; height: 60px; padding: var(--spacing-md); background: var(--gradient-primary); border-radius: 50%; color: white; } }
+  .author-info { h3 { margin-top: 0; margin-bottom: var(--spacing-sm); } p { margin: 0; color: var(--color-text-secondary); } }
+}
+.related-articles {
+  margin: var(--spacing-3xl) 0;
+  h3 { margin-bottom: var(--spacing-xl); text-align: center; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); }
+  .related-card {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: var(--transition);
+    &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+    h4 { color: var(--color-text-primary); margin-top: 0; margin-bottom: var(--spacing-sm); }
+    p { color: var(--color-text-secondary); margin: 0; font-size: 0.95rem; }
+  }
+}
+.external-resources {
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-2xl) 0;
+  h3 { margin-top: 0; margin-bottom: var(--spacing-lg); }
+  ul { list-style: none; padding: 0; li { margin-bottom: var(--spacing-md); } }
+  a { color: var(--color-primary); text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition); &:hover { border-bottom-color: var(--color-primary); } }
+}
+.breadcrumb {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--color-border);
+  ol { display: flex; gap: var(--spacing-sm); list-style: none; padding: 0; font-size: 0.9rem; flex-wrap: wrap; }
+  a { color: var(--color-primary); text-decoration: none; &:hover { text-decoration: underline; } }
+  span { color: var(--color-text-secondary); }
+}
+@media (max-width: 768px) {
+  .blog-article { padding: var(--spacing-xl) var(--spacing-md); }
+  .article-header .article-meta { flex-direction: column; gap: var(--spacing-sm); }
+  .author-bio { flex-direction: column; text-align: center; }
+  .related-articles .related-grid { grid-template-columns: 1fr; }
+  .article-content { font-size: 1.0625rem; }
+}
+</style>
