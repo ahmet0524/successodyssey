@@ -1,0 +1,523 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import card2 from "../../assets/card2.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import ContentGrid from "../../components/blog/ContentGrid.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2025-03-26T00:00:00Z";
+const dateModified = "2025-03-26T00:00:00Z";
+const author = "Success Odyssey Hub";
+const pageTitle = "Survivorship Bias: Why You Learn the Wrong Lessons";
+const pageDescription = "Master survivorship bias — the cognitive error that causes us to learn from winners while ignoring the far more numerous failures. Discover how it distorts success advice, business strategy, and everyday decisions.";
+const pageKeywords = "survivorship bias, survivorship bias examples, survivorship bias definition, Abraham Wald, survivorship bias business, how to avoid survivorship bias, selection bias, cognitive bias";
+const readingTime = 18;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={card2}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/survivorship-bias"
+>
+  <link rel="preload" as="image" href={card2.src} slot="head" />
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <header class="article-header">
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <div class="article-meta">
+        <time datetime={datePublished} itemprop="datePublished">March 26, 2025</time>
+        <meta itemprop="dateModified" content={dateModified} />
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>{readingTime} min read</span>
+        <div class="article-tags">
+          <span class="tag">Cognitive Biases</span>
+          <span class="tag">Decision Making</span>
+          <span class="tag">Critical Thinking</span>
+        </div>
+      </div>
+    </header>
+
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card2}
+        alt="Survivorship bias — learning only from survivors while ignoring failures, illustrated by Abraham Wald's WWII airplane bullet hole analysis"
+        width={1200}
+        height={600}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={90}
+        class="hero-image"
+      />
+      <meta itemprop="url" content={new URL(card2.src, Astro.site).toString()} />
+    </figure>
+
+    <div class="article-content" itemprop="articleBody">
+
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#wald-story">Abraham Wald and the Missing Bullet Holes</a></li>
+          <li><a href="#what-is-survivorship">What Is Survivorship Bias?</a></li>
+          <li><a href="#success-advice">Why Success Advice Is Systematically Misleading</a></li>
+          <li><a href="#business-strategy">Survivorship Bias in Business Strategy</a></li>
+          <li><a href="#investing">Survivorship Bias in Investing</a></li>
+          <li><a href="#everyday-life">Survivorship Bias in Everyday Life</a></li>
+          <li><a href="#historical-lessons">The Historical Lessons We Get Wrong</a></li>
+          <li><a href="#how-to-counteract">How to Counteract Survivorship Bias</a></li>
+          <li><a href="#building-practice">Building a Survivor-Aware Decision Practice</a></li>
+        </ol>
+      </nav>
+
+      <!-- AD 1: TOC sonrası -->
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <p class="lead">
+        You study the habits of successful people and conclude those habits cause success. You read business books about great companies and conclude their strategies caused their greatness. You take advice from wealthy investors and conclude their methods produce wealth. In every case, you may be learning exactly the wrong lesson — because the failures had the same habits, strategies, and methods, and you never studied them.
+      </p>
+
+      <section id="wald-story">
+        <h2>Abraham Wald and the Missing Bullet Holes</h2>
+        <p>
+          During World War II, the US military faced a practical problem: how to reinforce bomber aircraft without adding so much armor that the planes became too heavy to fly. They needed to put the armor where the planes were most vulnerable — but where was that?
+        </p>
+        <p>
+          The military's initial approach seemed sensible: examine the planes that returned from missions and note where they had been hit. The data showed clear patterns — certain areas of the fuselage had many bullet holes, while other areas had very few. The intuitive conclusion: reinforce the areas with the most bullet holes, since those are clearly the areas that get hit most frequently.
+        </p>
+
+        <ContentBox type="highlight" title="Wald's Insight">
+          <p>Abraham Wald, a Hungarian-born statistician working with the Statistical Research Group at Columbia University, saw the problem immediately. The planes being examined were the planes that made it back. The areas with many bullet holes were areas where planes could be hit and still return. The areas with few bullet holes were not areas that rarely got hit — they were areas where hits were so catastrophic that the plane never made it back to be counted.</p>
+          <p>The correct conclusion was precisely the opposite of the intuitive one: reinforce the areas with the fewest bullet holes, because those are the areas where damage is fatal. The data was giving clear guidance — but only to someone who noticed that the sample consisted entirely of survivors and asked what was missing from it.</p>
+        </ContentBox>
+
+        <p>
+          Wald's insight is the clearest illustration of survivorship bias in recorded history. The error is not subtle: the military was studying exactly the wrong sample and reaching exactly the wrong conclusion, and the error was invisible to everyone who hadn't noticed the selection process creating the sample.
+        </p>
+        <p>
+          The structural lesson generalizes immediately: whenever you are learning from a sample that consists of survivors — successful companies, successful people, successful strategies, successful investments — you are systematically missing the data from the non-survivors, and that missing data is often the most informative.
+        </p>
+      </section>
+
+      <section id="what-is-survivorship">
+        <h2>What Is Survivorship Bias?</h2>
+        <p>
+          Survivorship bias is a form of selection bias that occurs when analysis is performed on a group that has already passed some selection filter — the "survivors" — without accounting for the units that failed to pass the filter. The result is a systematically distorted picture, because the observed sample is not representative of the full population.
+        </p>
+        <p>
+          The bias is particularly insidious because the missing data is invisible by definition — the failures are not present in the sample, so they cannot be noticed by examining the sample. The only way to detect survivorship bias is to explicitly ask: what is not in this data, and why is it not there?
+        </p>
+
+        <ContentGrid columns={2}>
+          <ContentBox type="highlight" title="When Survivorship Bias Operates">
+            <p>Any analysis of a filtered sample: companies that are currently operating (not those that failed), investors with public track records (not those whose poor performance removed them from view), published research (not studies with null results), famous people (not those with similar talent who didn't become famous), dietary patterns of people who lived to 90 (not those who died at 60 following the same patterns).</p>
+          </ContentBox>
+          <ContentBox type="warning" title="The Common Error Pattern">
+            <p>Observe survivors → Identify their shared characteristics → Conclude those characteristics caused their survival → Recommend replicating those characteristics.</p>
+            <p>This logic is valid only if you know that the same characteristics are not equally common among non-survivors. Without that comparison, you've learned nothing about causation — only about the characteristics of people who survived a filter whose causal structure you don't understand.</p>
+          </ContentBox>
+        </ContentGrid>
+      </section>
+
+      <section id="success-advice">
+        <h2>Why Success Advice Is Systematically Misleading</h2>
+        <p>
+          The self-help and business book industry is built almost entirely on survivorship bias. The formula is consistent: study successful people, identify their habits and practices, and present those as the path to success. The problem is structural: the data source is the successful people — the survivors — and the failures are not studied.
+        </p>
+
+        <h3>The "Wake Up at 5 AM" Problem</h3>
+        <p>
+          A substantial portion of success literature recommends waking up early, because a large number of highly successful people wake up early. But to know whether waking up early contributes to success, you would need to compare the proportion of early risers among successful people to the proportion among unsuccessful people. If both groups have similar proportions of early risers, early rising does not discriminate between success and failure — it is a characteristic of the visible group (successful people) but not a causal factor.
+        </p>
+        <p>
+          The research on morning routines and success is consistent with this analysis: many highly successful people wake up late, and many unsuccessful people wake up early. The correlation between early rising and success in the visible sample of "successful people who have been studied" does not establish causation, and may not even establish correlation in the full population including non-survivors.
+        </p>
+
+        <ContentBox type="warning" title="The Survivor's Narrative Problem">
+          <p>Successful people tell compelling stories about why they succeeded. These stories are not fabricated — they are honest accounts of what the person believes caused their success. But the beliefs are formed from the inside of a survival story, with no comparison to the failure stories. A founder who attributes their success to their willingness to take bold risks may be right — or they may have exactly the same risk tolerance as 1,000 founders who failed, and their success may be primarily attributable to factors they're not even aware of. The survivorship bias doesn't make the survivor a liar. It makes their causal analysis unreliable.</p>
+        </ContentBox>
+
+        <h3>The Business Book Problem</h3>
+        <p>
+          Phil Rosenzweig's "The Halo Effect" documents a specific version of survivorship bias in business writing: when companies are performing well, observers attribute their success to their leadership, culture, and strategy. When the same companies perform poorly later, observers attribute the failure to those same characteristics — but describe them differently (the "bold vision" becomes "reckless overreach," the "disciplined focus" becomes "dangerous tunnel vision"). The characteristics haven't changed; only the performance has, and the performance retroactively shapes the narrative.
+        </p>
+        <p>
+          Jim Collins's "Good to Great" — one of the most influential business books of its era — selected companies that had moved from good to great performance and identified the characteristics that distinguished them. The methodology was criticized for exactly this reason: without comparing those companies to a matched sample of companies that tried similar strategies and failed, the identified characteristics cannot be distinguished from the characteristics of all companies that attempted greatness, successful or not.
+        </p>
+      </section>
+
+      <section id="business-strategy">
+        <h2>Survivorship Bias in Business Strategy</h2>
+        <p>
+          Business strategy is particularly vulnerable to survivorship bias because strategic decisions are high-stakes and irreversible — exactly the situations where good data matters most and where survivorship bias most corrupts the available data.
+        </p>
+
+        <h3>Industry Best Practices</h3>
+        <p>
+          "Best practices" in any industry are typically derived from studying the companies that have succeeded in that industry — the survivors. But industries regularly undergo structural changes that make historical best practices irrelevant or counterproductive. The companies that succeeded under the old structure become the reference cases precisely at the moment when their practices are becoming less applicable.
+        </p>
+        <p>
+          The newspapers that survived into the digital era were the ones that had built the strongest print franchises. Studying those survivors for guidance on digital strategy led many new entrants to replicate print-era practices in a digital context — because that's what the survivors were doing, without recognizing that the survivors were successful despite their digital strategy, not because of it.
+        </p>
+
+        <h3>Startup Advice from Successful Founders</h3>
+        <p>
+          The startup ecosystem generates enormous volumes of advice from successful founders. Much of this advice is genuinely useful — founders who have navigated company-building have real knowledge. But survivorship bias means the sample is systematically skewed: you hear from the founders whose companies survived, not from the larger population whose companies failed. And the factors that distinguish survivors from non-survivors — which include substantial luck, market timing, and circumstance beyond the founder's control — are rarely acknowledged in the survivor's narrative.
+        </p>
+        <p>
+          The practical implication is not to discount founder advice — it's to weight it appropriately, to actively seek out accounts from founders who failed (which are rarer but often more informative), and to be especially skeptical of confident causal claims about why the survivor succeeded. The <a href="/blog/inversion-mental-model">inversion framework</a> helps here: instead of asking what the successful founders did, ask what the failed founders did and whether the successful founders also did those things.
+        </p>
+      </section>
+
+      <!-- AD 2: Ortası -->
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="4827765044"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="investing">
+        <h2>Survivorship Bias in Investing</h2>
+        <p>
+          Survivorship bias in investing is well-documented and has concrete, measurable effects on the conclusions that can be drawn from historical data.
+        </p>
+
+        <h3>Mutual Fund Performance Data</h3>
+        <p>
+          Studies of mutual fund performance typically analyze the track records of funds that currently exist. But funds with poor performance are regularly merged with better-performing funds or closed — removing them from the data. This means performance databases systematically underrepresent poor performance and overrepresent good performance. Published average mutual fund returns are higher than the average fund investor actually receives, because the worst-performing funds — which many investors owned — are no longer in the database.
+        </p>
+        <p>
+          The practical implication is significant: the evidence that appears to show active management generating returns above the index is substantially a survivorship bias artifact. When researchers correct for survivorship bias — including the performance of closed funds — the evidence for active management outperformance essentially disappears.
+        </p>
+
+        <h3>Investment Strategy Backtests</h3>
+        <p>
+          Quantitative investment strategies are developed through backtesting — applying a strategy to historical data and measuring what the returns would have been. Survivorship bias contaminates backtests in two ways: first, the universe of securities used in the backtest typically excludes companies that went bankrupt or were delisted during the test period; second, the strategy being tested was selected because it showed good historical performance, among many strategies that were tried.
+        </p>
+        <p>
+          The second point — sometimes called "data mining bias" or "backtest overfitting" — is survivorship bias at the strategy level: you study many strategies, keep the ones that worked on historical data, and present those as validated. But without out-of-sample testing, you've created the investing equivalent of the military's bullet hole problem: the surviving strategies look good because you selected them for looking good.
+        </p>
+
+        <ContentBox type="highlight" title="Buffett and Survivorship Bias">
+          <p>Warren Buffett is sometimes presented as evidence that value investing works: he applied value investing principles consistently and achieved extraordinary returns. This is true. But Buffett himself has acknowledged the role of luck and circumstance — being born in the right country at the right time, having the specific temperament suited to the specific approach, operating in an era before the approach was widely replicated. The survivorship bias question is not whether Buffett's success is real but whether studying him tells you that applying his methods will produce similar results for you — a much harder claim to support.</p>
+        </ContentBox>
+      </section>
+
+      <section id="everyday-life">
+        <h2>Survivorship Bias in Everyday Life</h2>
+
+        <h3>Relationship Advice from Long Marriages</h3>
+        <p>
+          When researchers study couples who have been married for 50+ years and ask them the secret of their success, the couples provide thoughtful answers: communication, shared values, mutual respect, humor. The problem: couples who divorced after 5 years had many of these same qualities in the early years of their relationship. Without comparing the long-married couples to divorced couples on the same dimensions, you cannot identify what actually differentiates the two groups.
+        </p>
+        <p>
+          Additionally, some long marriages persist not because of quality but because of circumstance: financial dependency, social pressure, lack of alternatives, inertia. Studying survivors without accounting for the quality of their survival produces misleading advice.
+        </p>
+
+        <h3>The "They Don't Make Things Like They Used To" Fallacy</h3>
+        <p>
+          The perception that products were better in earlier eras is substantially a survivorship bias artifact. The products from earlier eras that survive to be evaluated are disproportionately the high-quality ones — the cheap and poorly made products from those eras have long since been discarded. Meanwhile, the current era's products are evaluated across the full range, including the cheap and poorly made. The comparison is between survivors from the past and the full distribution from the present.
+        </p>
+
+        <h3>Old Cities and Survivorship</h3>
+        <p>
+          Old buildings and old city layouts that we admire as examples of timeless design are the survivors of centuries of demolition, reconstruction, and selective preservation. The historical built environment we see is not representative of all historical built environments — it represents the subset that was considered worth preserving, which is systematically biased toward the exceptional. Concluding from old European city centers that historical urban design was uniformly excellent ignores the vast majority of historical built environment that was considered unworthy of preservation.
+        </p>
+      </section>
+
+      <section id="historical-lessons">
+        <h2>The Historical Lessons We Get Wrong</h2>
+        <p>
+          History is a survivorship bias machine. The events that are recorded, the figures who are remembered, and the lessons that are drawn are all shaped by a selection process that systematically overrepresents the remarkable at the expense of the representative.
+        </p>
+
+        <h3>Great Men and Great Ideas</h3>
+        <p>
+          The history of science, philosophy, and politics is written around the figures whose ideas proved influential. But for every idea that proved influential, there were many others — often indistinguishable in their time — that did not. The confidence with which we attribute historical progress to specific individuals is partly a survivorship artifact: we study the survivors of the idea selection process and conclude that they had qualities that distinguished them, without examining the non-survivors who may have had the same qualities.
+        </p>
+
+        <h3>The Danger of "What History Teaches"</h3>
+        <p>
+          When analysts invoke historical analogues — "this situation is like 1929" or "this policy worked in post-war Germany" — they are almost always drawing from the most memorable historical examples, which are memorable precisely because they were unusual. The full distribution of historical outcomes in similar situations may be very different from the vivid examples that come to mind. The <a href="/blog/second-order-thinking">second-order thinking framework</a> helps here: ask not just what happened in the famous historical example, but what the distribution of outcomes was across all similar historical situations, most of which are forgotten precisely because they were less dramatic.
+        </p>
+      </section>
+
+      <section id="how-to-counteract">
+        <h2>How to Counteract Survivorship Bias</h2>
+        <p>
+          Survivorship bias is difficult to counteract because the missing data is by definition not visible. You cannot observe what you cannot observe. But there are structural practices that make the bias less likely to corrupt analysis.
+        </p>
+
+        <StepsList>
+          <li>
+            <strong>Ask explicitly: what is not in this sample?</strong> Every time you're drawing lessons from a group of people, companies, strategies, or historical events, ask who or what would be in the sample if it included non-survivors. What would those cases look like? Are they fundamentally different from the survivors, or did they share the same characteristics?
+          </li>
+          <li>
+            <strong>Seek failure data actively.</strong> For every successful example you study, try to find equivalent examples that failed. This is harder — failures generate less publicity and less documentation — but it's often possible. Failure post-mortems, bankruptcy records, historical documents from defunct organizations, and accounts from people whose ventures failed are all sources of non-survivor data.
+          </li>
+          <li>
+            <strong>Distinguish correlation from causation carefully.</strong> Even when a characteristic is more common among survivors than in the general population, it doesn't follow that the characteristic caused survival. Ask whether non-survivors might also have had the characteristic. Ask whether the characteristic could be a consequence of success rather than a cause.
+          </li>
+          <li>
+            <strong>Consider base rates.</strong> Before concluding that a strategy works, ask what proportion of people who tried it succeeded. A strategy with a 5% success rate may produce highly successful survivors who attribute their success to the strategy — but the base rate tells you the strategy produces failure 95% of the time. The survivors are real; they're just not representative.
+          </li>
+          <li>
+            <strong>Apply the Wald inversion.</strong> When you find areas of apparent strength (lots of bullet holes), ask whether those might actually be areas of resilience (places where hits are survivable). The places with no evidence of problems may be exactly the places where problems are fatal — and therefore invisible in your surviving sample.
+          </li>
+        </StepsList>
+
+        <ContentBox type="tip" title="The Failure Interview">
+          <p>One of the most underused research practices in any domain: systematically interviewing people who failed at the thing you're trying to understand. Most research interviews successful people; failure interviews access the complementary data that survivorship-biased analysis misses. They're uncomfortable to seek out and uncomfortable to conduct, which is precisely why they're underused and why the information they contain is so valuable.</p>
+        </ContentBox>
+      </section>
+
+      <!-- AD 3: Final section öncesi -->
+      <div class="ad-unit ad-unit--bottom">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="building-practice">
+        <h2>Building a Survivor-Aware Decision Practice</h2>
+        <p>
+          Survivorship bias, like all cognitive biases, is not eliminated by knowing about it — it is reduced by building structural practices that compensate for it. The practices need to be active, because the bias operates passively: visible data automatically shapes conclusions, and invisible data automatically stays invisible unless you deliberately seek it out.
+        </p>
+
+        <h3>The Pre-Decision Survivorship Check</h3>
+        <p>
+          Before making a significant decision based on examples or case studies, run a survivorship check: are the examples I'm drawing from a filtered sample? What is the selection filter? What does the non-surviving population look like? This check takes five minutes and catches the most systematic form of the bias — using cherry-picked examples of success without accounting for the larger population of attempts.
+        </p>
+
+        <h3>The "Also Tried By" Question</h3>
+        <p>
+          When someone recommends a strategy based on successful examples — "Company X used this approach and succeeded" — ask: how many other companies tried the same approach? What was the success rate? The answer to this question converts a survivorship-biased recommendation into a base rate estimate that is actually informative about the strategy's likely effectiveness.
+        </p>
+
+        <h3>Asymmetric Publication Awareness</h3>
+        <p>
+          Be specifically aware that publication, publicity, and documentation are biased toward success. Books are written about successful companies, not failed ones. Studies with significant results are published more readily than null results. Success stories generate media coverage; failures generate silence. Every domain where you are learning from published sources is a domain where survivorship bias is actively shaping your information diet. Compensate by deliberately seeking out the unpublished, the undocumented, and the overlooked.
+        </p>
+
+        <ContentBox type="highlight" title="The Synthesis">
+          <p>Survivorship bias and <a href="/blog/confirmation-bias">confirmation bias</a> reinforce each other: confirmation bias makes you seek confirming evidence, and survivorship bias means the most visible evidence is systematically skewed toward confirmation. Together, they create a potent epistemic trap — you seek evidence that confirms your beliefs, and the available evidence is systematically weighted toward the survivors who appear to confirm them.</p>
+          <p>The antidote requires both structural debiasing strategies working together: actively seek disconfirming evidence (against confirmation bias) while actively seeking non-survivor data (against survivorship bias). Combined with <a href="/blog/second-order-thinking">second-order thinking</a> to see where these biases lead downstream and <a href="/blog/first-principles-thinking">first principles reasoning</a> to strip away the accumulated conclusions of biased samples, these practices produce the kind of reasoning that updates correctly when the world changes — rather than persisting in conclusions built from the evidence that happened to survive.</p>
+        </ContentBox>
+      </section>
+
+    </div>
+
+    <!-- Author Bio -->
+    <div class="author-bio" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+      <div class="author-avatar">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
+        </svg>
+      </div>
+      <div class="author-info">
+        <h3 itemprop="name">Success Odyssey Hub</h3>
+        <meta itemprop="url" content="https://successodysseyhub.com" />
+        <p>We explore the cognitive biases and reasoning errors that corrupt good judgment — and the specific practices that produce more accurate thinking.</p>
+      </div>
+    </div>
+
+    <!-- Related Articles -->
+    <nav class="related-articles" aria-label="Related articles">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+        <a href="/blog/confirmation-bias" class="related-card" rel="related">
+          <h4>Confirmation Bias</h4>
+          <p>The companion bias — together with survivorship bias, it creates a powerful epistemic trap.</p>
+        </a>
+        <a href="/blog/inversion-mental-model" class="related-card" rel="related">
+          <h4>The Inversion Mental Model</h4>
+          <p>Apply Wald's inversion: ask what the failures looked like, not just the survivors.</p>
+        </a>
+        <a href="/blog/second-order-thinking" class="related-card" rel="related">
+          <h4>Second-Order Thinking</h4>
+          <p>Trace where survivorship-biased conclusions lead when they compound through downstream decisions.</p>
+        </a>
+        <a href="/blog/mental-models-for-success" class="related-card" rel="related">
+          <h4>15 Mental Models for Success</h4>
+          <p>The complete framework library for thinking more accurately about success and failure.</p>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <span>/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/blog"><span itemprop="name">Blog</span></a>
+          <meta itemprop="position" content="2" />
+          <span>/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name">Survivorship Bias: Why You Learn the Wrong Lessons</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </nav>
+
+  </article>
+</Layout>
+
+<style lang="scss">
+.ad-unit {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+  overflow: hidden;
+  &--top { margin-top: 0; margin-bottom: var(--spacing-2xl); }
+  &--mid { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: var(--spacing-lg) 0; }
+  &--bottom { border-top: 1px solid var(--color-border); padding-top: var(--spacing-lg); }
+}
+.blog-article {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+.article-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  h1 { margin-bottom: var(--spacing-lg); }
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    time { font-weight: 600; }
+    .reading-time { color: var(--color-primary); font-weight: 600; }
+  }
+  .article-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    .tag {
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+}
+.hero-figure {
+  margin: 0 0 var(--spacing-3xl);
+  .hero-image { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); }
+}
+.article-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  section { margin-bottom: var(--spacing-3xl); scroll-margin-top: 100px; }
+  h2 { margin: var(--spacing-3xl) 0 var(--spacing-xl); }
+  h3 { margin: var(--spacing-2xl) 0 var(--spacing-lg); }
+  h4 { margin: var(--spacing-xl) 0 var(--spacing-md); }
+  .lead {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+    margin: var(--spacing-2xl) 0;
+    font-weight: 500;
+  }
+  blockquote {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-bg-secondary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+.table-of-contents {
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-2xl) 0;
+  h2 { margin-top: 0; margin-bottom: var(--spacing-lg); color: var(--color-primary); }
+  ol {
+    padding-left: var(--spacing-lg);
+    line-height: 1.8;
+    li { margin-bottom: var(--spacing-sm); }
+    a { color: var(--color-text-primary); text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition); &:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); } }
+  }
+}
+.author-bio {
+  display: flex;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-3xl) 0;
+  .author-avatar { flex-shrink: 0; svg { width: 60px; height: 60px; padding: var(--spacing-md); background: var(--gradient-primary); border-radius: 50%; color: white; } }
+  .author-info { h3 { margin-top: 0; margin-bottom: var(--spacing-sm); } p { margin: 0; color: var(--color-text-secondary); } }
+}
+.related-articles {
+  margin: var(--spacing-3xl) 0;
+  h3 { margin-bottom: var(--spacing-xl); text-align: center; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); }
+  .related-card {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: var(--transition);
+    &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+    h4 { color: var(--color-text-primary); margin-top: 0; margin-bottom: var(--spacing-sm); }
+    p { color: var(--color-text-secondary); margin: 0; font-size: 0.95rem; }
+  }
+}
+.breadcrumb {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--color-border);
+  ol { display: flex; gap: var(--spacing-sm); list-style: none; padding: 0; font-size: 0.9rem; flex-wrap: wrap; }
+  a { color: var(--color-primary); text-decoration: none; &:hover { text-decoration: underline; } }
+  span { color: var(--color-text-secondary); }
+}
+@media (max-width: 768px) {
+  .blog-article { padding: var(--spacing-xl) var(--spacing-md); }
+  .article-header .article-meta { flex-direction: column; gap: var(--spacing-sm); }
+  .author-bio { flex-direction: column; text-align: center; }
+  .related-articles .related-grid { grid-template-columns: 1fr; }
+  .article-content { font-size: 1.0625rem; }
+}
+</style>
