@@ -1,0 +1,466 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import card1 from '../../assets/card1.jpg';
+import ContentBox from '../../components/blog/ContentBox.astro';
+import ContentGrid from '../../components/blog/ContentGrid.astro';
+import StepsList from '../../components/blog/StepsList.astro';
+
+const datePublished = '2026-04-04T00:00:00Z';
+const dateModified  = '2026-04-04T00:00:00Z';
+const author        = 'Success Odyssey Hub';
+const pageTitle       = 'The Weekly Review: How High Performers Plan Their Week';
+const pageDescription = 'The weekly review is the single practice that separates reactive professionals from intentional ones. Discover the psychology of planning, the GTD framework, and how to build a review that actually changes your week.';
+const pageKeywords    = 'weekly review, weekly review system, weekly review productivity, GTD weekly review, how to do a weekly review, weekly review template, weekly planning system, high performer weekly routine, weekly reflection productivity, david allen weekly review';
+const readingTime     = 12;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={card1}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/weekly-review-system"
+>
+  <link rel="preload" as="image" href={card1.src} slot="head" />
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <header class="article-header">
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <div class="article-meta">
+        <time datetime={datePublished} itemprop="datePublished">April 4, 2026</time>
+        <meta itemprop="dateModified" content={dateModified} />
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>{readingTime} min read</span>
+        <div class="article-tags">
+          <span class="tag">Productivity</span>
+          <span class="tag">Planning</span>
+          <span class="tag">Habits</span>
+        </div>
+      </div>
+    </header>
+
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card1}
+        alt="Weekly review system — how high performers use structured weekly planning to close open loops, reset priorities, and maintain intentional direction across their work and life"
+        width={1200}
+        height={600}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={90}
+        class="hero-image"
+      />
+      <meta itemprop="url" content={new URL(card1.src, Astro.site).toString()} />
+    </figure>
+
+    <div class="article-content" itemprop="articleBody">
+
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#why-weekly">Why Weekly — Not Daily or Monthly — Is the Right Frequency</a></li>
+          <li><a href="#open-loops">The Open Loop Problem: What the Weekly Review Actually Solves</a></li>
+          <li><a href="#gtd-framework">The GTD Weekly Review: David Allen's Framework Examined</a></li>
+          <li><a href="#three-horizons">The Three Horizons: Connecting Weekly Plans to Longer Goals</a></li>
+          <li><a href="#psychology-of-review">The Psychology of Review: Why Reflection Improves Performance</a></li>
+          <li><a href="#what-to-include">What to Include and What to Cut: Designing the Right Review</a></li>
+          <li><a href="#how-to-apply">How to Apply This: A Complete Weekly Review Protocol</a></li>
+          <li><a href="#misconceptions">Common Misconceptions About the Weekly Review</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+      </nav>
+
+      <!-- AD 1: TOC sonrası -->
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <p class="lead">
+        Most professionals end their week with a vague sense that important things were left undone, that the week was reactive rather than intentional, and that next week will somehow be different. It rarely is — not because they lack effort or ability, but because they lack a mechanism for closing the week deliberately and opening the next one with clarity. The weekly review is that mechanism. It is the single practice that most reliably separates people who feel in control of their professional and personal trajectory from those who feel managed by it.
+      </p>
+
+      <section id="why-weekly">
+        <h2>Why Weekly — Not Daily or Monthly — Is the Right Frequency</h2>
+        <p>
+          The choice of weekly as the review cadence is not arbitrary. It reflects both the natural temporal structure of most professional and personal life — organized around the seven-day week — and the optimal interval for the cognitive functions the review is designed to serve.
+        </p>
+        <p>
+          Daily reviews are too granular. They lack the temporal distance needed to identify patterns, assess progress against meaningful goals, or make the kind of priority recalibrations that require stepping back from immediate pressures. A daily review of what you did today and what you plan to do tomorrow is a scheduling practice, not a strategic one. Monthly reviews are too infrequent. At monthly intervals, the details of specific commitments, conversations, and unresolved issues have faded from memory, and the lag between course correction and implementation becomes too long to be practically useful. The week provides the right combination of sufficient recency — you can still recall what happened with accuracy — and sufficient temporal elevation — enough has accumulated to identify patterns and make meaningful prioritization decisions.
+        </p>
+        <p>
+          Research on planning and goal pursuit by Gabriele Oettingen and Peter Gollwitzer at New York University provides relevant context. Their work on mental contrasting and implementation intentions — the WOOP framework (Wish, Outcome, Obstacle, Plan) — demonstrates that effective goal pursuit requires both forward projection (what do I want to achieve?) and backward reflection (what is preventing it?). A weekly cadence creates a regular opportunity to perform both operations with current information, maintaining the feedback loop between intention and reality that daily habit execution alone cannot provide. The weekly review is, in this sense, the meta-level management of the daily-level execution that the rest of the habit and productivity framework supports.
+        </p>
+
+        <ContentBox type="highlight" title="The Zeigarnik Effect and Why Open Loops Drain You">
+          <p>Russian psychologist Bluma Zeigarnik documented in 1927 that incomplete tasks are remembered better than completed ones — the brain maintains them in a kind of active working memory to prevent them from being forgotten before completion. This Zeigarnik effect is adaptive in short time horizons but costly in modern professional contexts, where dozens of open commitments, unprocessed inputs, and unresolved decisions compete simultaneously for mental bandwidth. Research by Roy Baumeister and colleagues extended this finding by showing that incomplete goals generate intrusive thoughts that consume attentional resources regardless of whether the person is working on the goal — the mere existence of an unresolved commitment taxes the cognitive system. The weekly review's primary psychological function is to close these loops systematically, transferring the maintenance burden from working memory to an external trusted system.</p>
+        </ContentBox>
+      </section>
+
+      <section id="open-loops">
+        <h2>The Open Loop Problem: What the Weekly Review Actually Solves</h2>
+        <p>
+          David Allen, in his foundational productivity system Getting Things Done (GTD), identifies what he calls "open loops" as the primary source of the low-level cognitive stress most professionals experience as background anxiety, restlessness, or the nagging sense that something important is being forgotten. An open loop is any commitment, project, task, or concern that exists in reality — that has been agreed to, thought of, or encountered — but has not been captured in a trusted external system with a clear next action identified.
+        </p>
+        <p>
+          The cognitive cost of open loops is precisely what the Zeigarnik effect research predicts: the brain treats each uncaptured commitment as an active responsibility, maintaining it in a form of vigilant working memory that consumes attentional resources regardless of whether the person is attending to it. A professional with 50 uncaptured open loops — typical for anyone with a moderately complex professional and personal life — is carrying a continuous background load equivalent to 50 simultaneous unresolved demands on their attentional system. This is the felt experience most people describe as "mental clutter" or "cognitive overwhelm," and it is not a personality trait or a stress tolerance problem. It is a systems problem with a systems solution.
+        </p>
+        <p>
+          The weekly review solves the open loop problem through a systematic capture-and-clarify process: gathering every uncaptured commitment from every source — email inboxes, physical inboxes, calendar, notes, meeting follow-ups, promises made in conversation — and processing each one to either a next action, a waiting-for item, a someday-maybe consideration, or a decision that it is no longer relevant. This processing does not complete the tasks; it closes the loops by ensuring that every commitment is either planned, deferred deliberately, or consciously abandoned. The cognitive relief that follows a thorough weekly review is the felt consequence of the Zeigarnik load being transferred from working memory to an external system.
+        </p>
+        <p>
+          The practical importance of this cannot be overstated. Research by Baumeister and Masicampo published in the <em>Journal of Personality and Social Psychology</em> found that making a specific plan for an unfinished goal — not completing it, merely planning it — was sufficient to reduce the intrusive thoughts generated by that goal. The weekly review's capture and clarify process produces exactly this effect at scale: each open loop that receives a clear next action and a trusted home in the external system generates a measurable reduction in the background cognitive load it was imposing. The cumulative effect of a thorough review is a cognitive clarity that makes the subsequent week's focused work qualitatively different from work performed under the weight of unprocessed open loops.
+        </p>
+      </section>
+
+      <section id="gtd-framework">
+        <h2>The GTD Weekly Review: David Allen's Framework Examined</h2>
+        <p>
+          Allen's GTD system prescribes the weekly review as "the critical success factor for making the GTD system work" — the practice without which the rest of the system gradually degrades as uncaptured commitments accumulate and trust in the external system erodes. His prescribed weekly review consists of several components: getting clear (gathering and processing all inputs from all collection points), getting current (reviewing and updating all project lists, next action lists, waiting-for lists, and calendar), and getting creative (reviewing longer-horizon goals and considering whether new projects or priorities should be initiated).
+        </p>
+        <p>
+          The GTD framework is the most comprehensive and most thoroughly tested weekly review system available, and its core logic is sound. However, Allen's prescribed review can run 60 to 90 minutes in full implementation, which creates a practical barrier for many people. The research on habit formation — particularly the finding from Phillippa Lally's UCL study that higher-complexity habits take significantly longer to automate than simple ones — suggests that a stripped-down weekly review performed consistently is far more valuable than a comprehensive one performed sporadically. The principles of the GTD review can be applied in as little as 20 to 30 minutes for most people, achieving the critical open loop resolution and next-week clarity functions without the full system overhead.
+        </p>
+
+        <h3>Adapting GTD for Practical Consistency</h3>
+        <p>
+          The most durable weekly reviews are those that are simple enough to perform under low-motivation conditions — on a Friday afternoon when the week has been demanding, or on a Sunday evening when the competing pull of relaxation is strong. Designing the review around a fixed checklist of five to eight questions, executable in 20 to 30 minutes, sacrifices some of GTD's comprehensiveness while dramatically improving consistency. The consistent 25-minute review performed every week produces far more cumulative benefit than the thorough 90-minute review performed monthly, because the open loop accumulation that the review addresses grows continuously and compounds in cognitive cost when left unaddressed. The <a href="/blog/consistency-over-intensity">consistency over intensity research</a> applies directly: frequency of the review is the primary variable, not depth of any individual session.
+        </p>
+      </section>
+
+      <section id="three-horizons">
+        <h2>The Three Horizons: Connecting Weekly Plans to Longer Goals</h2>
+        <p>
+          One of the most commonly neglected functions of the weekly review is its role as a bridge between daily task execution and longer-horizon goals. Without this bridge, the daily and weekly grind of task completion can proceed entirely disconnected from the goals that motivated the work in the first place — a phenomenon Allen describes as being so absorbed in clearing the runway that you forget to check whether the plane is heading in the right direction.
+        </p>
+        <p>
+          Allen's "six horizons of focus" model provides a framework for this connection, but for practical weekly review purposes, three horizons are sufficient. The first horizon is the week itself: what needs to happen this week given current commitments and priorities? The second horizon is the 90-day window: what is the trajectory of my key projects and goals over the next three months, and does this week's plan reflect that trajectory? The third horizon is the annual or life level: what are my most important long-term goals and values, and are my weekly priorities aligned with them?
+        </p>
+        <p>
+          Research on self-regulation and goal pursuit consistently finds that the connection between daily behavior and long-term goals is the primary driver of motivated, sustained performance. A 2016 study by Elliot and colleagues in the <em>Journal of Personality and Social Psychology</em> found that people who regularly reflected on how their current activities connected to meaningful long-term goals reported higher levels of intrinsic motivation, greater persistence through obstacles, and higher wellbeing compared to those who focused only on immediate task completion. The weekly review's three-horizon check is the mechanism that maintains this connection — ensuring that the urgent does not permanently displace the important. This is the behavioral implementation of what the <a href="/blog/time-blocking-method">time blocking research</a> prescribes at the scheduling level: protecting time for important, non-urgent work that daily reactive scheduling consistently sacrifices.
+        </p>
+      </section>
+
+      <section id="psychology-of-review">
+        <h2>The Psychology of Review: Why Reflection Improves Performance</h2>
+        <p>
+          Beyond the open loop resolution and priority alignment functions, the weekly review produces a performance improvement through a mechanism that is independent of its planning outputs: the act of deliberate reflection itself. Research on experiential learning and performance improvement consistently shows that reflection on past experience — structured, deliberate analysis of what happened, why it happened, and what would be different given the same situation — is the cognitive process that converts experience into learning.
+        </p>
+        <p>
+          A 2014 study by Giada Di Stefano and colleagues at Harvard Business School and HEC Paris tested this directly. Participants in a training program who spent 15 minutes at the end of each day writing reflections on what they had learned performed 23 percent better on a performance assessment at the end of the training period than those who spent the same time practicing additional tasks. The reflection group processed less material but learned more from it. The mechanism, as the researchers describe it, is that reflection produces the metacognitive clarity — understanding of what you know, what you do not know, and how you learn — that accelerates all subsequent learning. Applied to the weekly context, a weekly review that includes structured reflection on the past week's experience — what went well, what did not, what would be done differently — produces compounding performance improvements that accumulate across weeks and months.
+        </p>
+        <p>
+          This reflection function is what distinguishes the weekly review from a weekly planning session. Planning alone addresses the forward-looking question: what will I do? Reflection addresses the backward-looking question: what have I learned? Both are necessary for the continuous improvement cycle that transforms experience into accelerating performance. The connection to the <a href="/blog/1-percent-better">1% better framework</a> is direct: the weekly review is the mechanism through which marginal gains are identified, measured, and incorporated into the next week's practice.
+        </p>
+      </section>
+
+      <section id="what-to-include">
+        <h2>What to Include and What to Cut: Designing the Right Review</h2>
+        <p>
+          The most common failure mode in weekly review design is including too much. A review that attempts to cover every project, every goal, every area of life, and every possible planning consideration in a single session becomes a multi-hour ordeal that is psychologically aversive and practically unsustainable as a weekly habit. The design principle should be: what is the minimum viable review that closes the critical open loops, resets weekly priorities, and maintains the connection to longer-term goals?
+        </p>
+
+        <h3>The Five Core Review Elements</h3>
+        <p>
+          Based on the research on planning, open loops, and reflection, five elements reliably appear in the most effective weekly reviews. First, inbox zero across all collection points — processing every captured item to a next action, waiting-for, someday-maybe, or trash decision. Second, calendar review — scanning the past week for any uncaptured commitments and the coming week for any conflicts, preparation requirements, or scheduling decisions. Third, next actions review — confirming that every active project has a clear next physical action assigned. Fourth, weekly reflection — three minutes answering the questions: what went well this week, what did not, and what is the most important thing to do differently next week? Fifth, the big three — identifying the three most important outcomes for the coming week, aligned with 90-day priorities.
+        </p>
+        <p>
+          What to cut: detailed review of every someday-maybe item every week (monthly is sufficient), comprehensive area-of-life assessments (quarterly is appropriate), and detailed project planning that belongs in project-specific sessions rather than the weekly review. The weekly review is a meta-level navigation exercise, not a project management session. Conflating the two produces the bloated, unsustainable review format that most people eventually abandon.
+        </p>
+      </section>
+
+      <!-- AD 2: 7-8. section arası -->
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="4827765044"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="how-to-apply">
+        <h2>How to Apply This: A Complete Weekly Review Protocol</h2>
+        <p>The following protocol executes the five core review elements in approximately 25 to 35 minutes. It is designed to be performed at a fixed time each week — Friday afternoon or Sunday evening are the most common choices — and to be executable even under low-motivation conditions.</p>
+
+        <StepsList steps={[
+          {
+            number: 1,
+            title: "Schedule the review and protect it as a non-negotiable appointment",
+            description: "Choose a fixed weekly time for the review — the same time every week — and block it in your calendar as a recurring appointment with the same priority as an external meeting. Friday between 3 and 4 PM works well for most professionals because it allows the week to be fully processed before the weekend and the coming week to be opened with clarity. Sunday evening works well for those who prefer to begin the week with full clarity rather than ending the previous week with it. The specific time matters less than the consistency: the review derives its power from being performed every week without exception, not from being performed at the optimal moment."
+          },
+          {
+            number: 2,
+            title: "Capture and process all inboxes — physical and digital",
+            description: "Begin by processing every collection point: email inbox (process to zero or to a clear next action for each item), physical inbox or desk (process every loose paper, note, and object), notes app (review and assign next actions to every captured item), voicemails and messages, and any other collection point where inputs accumulate. For each item, make one of four decisions: do it now if it takes under two minutes, assign it a next action and project home if it requires more, delegate it with a waiting-for note, or trash it. Do not organize without deciding. The goal is that by the end of this step, every input in every collection point has been processed to a clear decision."
+          },
+          {
+            number: 3,
+            title: "Review the calendar: past week and coming two weeks",
+            description: "Scan the past week's calendar for any commitments, conversations, or events that generated tasks or follow-ups that were not captured during the week. Scan the coming two weeks for any appointments that require preparation, any conflicts that need to be resolved, and any open scheduling decisions that need to be made. Add any captured items to your task system with clear next actions. This calendar review typically surfaces three to five items per week that would otherwise remain as open loops until the deadline made them urgent — which is exactly the stress-generating, reactive pattern the weekly review is designed to prevent."
+          },
+          {
+            number: 4,
+            title: "Review project and next action lists: confirm currency",
+            description: "Scan every active project to confirm that each has a clear, specific next physical action assigned. A project without a next action is a stalled project — it has no mechanism for forward movement until someone notices the stall and adds one. This review step is the maintenance function that keeps the external trusted system current and reliable. If every project has a next action and every next action reflects the current state of the project, the system is functioning. If not — if some projects are vague, some next actions are outdated, some commitments have changed — update them now. This step typically takes five to ten minutes and prevents the system degradation that makes people abandon their task management tools."
+          },
+          {
+            number: 5,
+            title: "Complete the weekly reflection: three questions, three minutes",
+            description: "Answer these three questions in writing — brief answers, not essays: What went well this week and why? What did not go as planned, and what was the root cause? What is the single most important thing I would do differently next week? The Di Stefano research shows that written reflection produces stronger performance improvement than unwritten review. The three-question format ensures that the reflection covers both positive and negative experience — capturing successes for replication and failures for correction — while remaining brief enough to be completed without resistance. Write the answers in a dedicated weekly review log, not a disposable note. The accumulating log becomes a record of your own performance patterns over time, which is the raw material for the most valuable long-term insights the review produces."
+          },
+          {
+            number: 6,
+            title: "Set your big three: the week's most important outcomes",
+            description: "Identify the three most important outcomes for the coming week — not tasks, but outcomes. An outcome is the state of affairs that will exist when the most important work is done: not 'work on the project proposal' but 'complete the first draft of the project proposal.' Each outcome should be specific enough that you will know unambiguously whether it was achieved, and aligned with your 90-day priorities rather than merely the most urgent items in your inbox. Write these three outcomes prominently — in your planner, on a sticky note on your monitor, or as the header of your weekly task list. They are the navigational anchors that keep the week intentional when reactive demands attempt to colonize it."
+          }
+        ]} />
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions About the Weekly Review</h2>
+
+        <h3>Misconception 1: "I do not have enough going on to need a weekly review"</h3>
+        <p>
+          This is the most common reason people do not establish a weekly review practice, and it reflects a misunderstanding of what the review is for. The weekly review is not primarily a task management tool for people with high complexity. It is a cognitive hygiene practice for anyone who carries commitments across a weekly time horizon — which is virtually everyone with a professional life, a family, or personal projects. The person with 15 active commitments benefits from closing 15 open loops each week. The person with 50 commitments benefits from closing 50. The cognitive relief from the open loop resolution scales with the number of loops, not with any threshold of "busyness." People who believe they have too little going on to need a weekly review are almost universally discovering, when they first perform one, that they had significantly more uncaptured open loops than they realized.
+        </p>
+
+        <h3>Misconception 2: "The weekly review is the same as weekly planning"</h3>
+        <p>
+          Weekly planning is a subset of the weekly review — the forward-looking priority-setting component. The full weekly review also includes the backward-looking reflection component and the open loop closure component that planning alone does not address. A purely forward-looking weekly planning session — "what will I do next week?" — without the capture-and-clarify process leaves the week's uncaptured commitments as active cognitive loads. Without the reflection component, it fails to convert the past week's experience into performance improvement. The weekly review is architecturally different from weekly planning: it is a complete system maintenance operation, not a scheduling session.
+        </p>
+
+        <h3>Misconception 3: "Skipping one week does not matter much"</h3>
+        <p>
+          A skipped weekly review is not a neutral event. It means one week's worth of uncaptured open loops remain in working memory, one week's worth of unprocessed inputs accumulate in all collection points, and one week's worth of priority drift goes uncorrected. The following week begins without the cognitive clarity that the review would have established, which increases the reactive, urgent-driven task selection that the review is designed to prevent. Most importantly, the skipped week establishes the behavioral precedent for skipping — the habit's consistency record is broken, and the identity evidence that "I am someone who does a weekly review" is weakened. Per James Clear's "never miss twice" principle, one skipped review is recoverable; two consecutive skips begin building a competing habit of not reviewing. The week after a skip is the most important week to perform the review regardless of how truncated it needs to be.
+        </p>
+      </section>
+
+      <!-- AD 3: Final section'dan hemen önce -->
+      <div class="ad-unit ad-unit--bottom">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          The weekly review is the highest-leverage single productivity practice available to most knowledge workers — not because of any individual insight it produces, but because of the cumulative effect of performing it consistently over months and years. Every week it closes the open loops that would otherwise have generated background cognitive stress. Every week it realigns priorities with longer-term goals before reactive urgency makes the misalignment irreversible. Every week its reflection component converts experience into performance improvement. And every week it provides the cognitive clarity — the feeling of being in control rather than managed by circumstances — that makes the following week's focused work qualitatively different from work performed under the weight of accumulated unprocessed commitments.
+        </p>
+        <p>
+          The research on planning, reflection, and self-regulation converges on a simple conclusion: the gap between people who feel intentional about their lives and those who feel reactive is not primarily a gap in intelligence, talent, or effort. It is a gap in the presence or absence of a systematic mechanism for stepping back, closing open loops, aligning priorities, and beginning each new week with clarity rather than carryover. The weekly review is that mechanism.
+        </p>
+        <p>
+          It takes 25 minutes. It pays dividends across every other hour of the week it precedes. There is almost no productivity investment with a better return.
+        </p>
+      </section>
+
+      <ContentBox type="tip" title="Your Next Step">
+        <p>Schedule your first weekly review for this Friday or Sunday — block 30 minutes and protect it. Use the six-step protocol above. For the first session, focus only on steps two and six: process your inboxes and set your big three for next week. Add the other steps as the habit consolidates. The complete GTD framework that underlies this approach is documented in David Allen's <em>Getting Things Done</em>, and the habit formation principles that make the review stick are in James Clear's <em>Atomic Habits</em> (<a href="https://amzn.to/atomichabits" rel="nofollow sponsored" target="_blank">available here</a>). Start small. Start this week. The consistency is what compounds.</p>
+      </ContentBox>
+
+      <div class="author-bio">
+        <div class="author-bio__content">
+          <h3>About the Author</h3>
+          <p><strong>Success Odyssey Hub</strong> is an independent research-driven publication focused on the psychology of achievement, decision-making science, and evidence-based personal development. Our content synthesizes peer-reviewed research, philosophical frameworks, and practical application — written for people who take their growth seriously.</p>
+        </div>
+      </div>
+
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <a href="/blog/time-blocking-method" class="related-card">
+            <h4>Time Blocking: The Ultimate Productivity Method</h4>
+            <p>How to translate the priorities your weekly review identifies into a protected, structured weekly schedule.</p>
+          </a>
+          <a href="/blog/1-percent-better" class="related-card">
+            <h4>The 1% Better Rule: Small Improvements, Massive Results</h4>
+            <p>The weekly review is how marginal gains are identified — the mechanism that converts reflection into compound improvement.</p>
+          </a>
+          <a href="/blog/distraction-free-work" class="related-card">
+            <h4>How to Create a Distraction-Free Work Environment</h4>
+            <p>Once the weekly review sets your priorities, a distraction-free environment is what protects the time to execute them.</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="external-resources">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://gettingthingsdone.com/2020/08/episode-47-the-power-of-the-weekly-review/" target="_blank" rel="noopener">David Allen — The Power of the Weekly Review (GTD Podcast)</a> — The original GTD weekly review framework from David Allen, including the get clear, get current, get creative structure and its rationale.</li>
+          <li><a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=45803" target="_blank" rel="noopener">Di Stefano et al. (2014) — Learning by Thinking: How Reflection Improves Performance (Harvard Business School)</a> — The study showing that 15 minutes of daily reflection produced 23% better performance outcomes than additional practice time alone.</li>
+          <li><a href="https://psycnet.apa.org/record/2011-10938-001" target="_blank" rel="noopener">Baumeister &amp; Masicampo (2011) — Consider It Done: Plan-Making Can Eliminate the Cognitive Effects of Unfulfilled Goals (JPSP)</a> — The research demonstrating that making a specific plan for an unfinished goal reduces the intrusive thoughts it generates — the cognitive mechanism the weekly review exploits.</li>
+        </ul>
+      </div>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><span aria-hidden="true">›</span></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><span aria-hidden="true">›</span></li>
+          <li><span aria-current="page">The Weekly Review: How High Performers Plan Their Week</span></li>
+        </ol>
+      </nav>
+
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+.ad-unit {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+  overflow: hidden;
+  &--top { margin-top: 0; margin-bottom: var(--spacing-2xl); }
+  &--mid { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: var(--spacing-lg) 0; }
+  &--bottom { border-top: 1px solid var(--color-border); padding-top: var(--spacing-lg); }
+}
+.blog-article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+.article-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  h1 { margin-bottom: var(--spacing-lg); }
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    time { font-weight: 600; }
+    .reading-time { color: var(--color-primary); font-weight: 600; }
+  }
+  .article-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    .tag {
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+}
+.hero-figure {
+  margin: 0 0 var(--spacing-3xl);
+  .hero-image { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); }
+}
+.article-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  section { margin-bottom: var(--spacing-3xl); scroll-margin-top: 100px; }
+  h2 { margin: var(--spacing-3xl) 0 var(--spacing-xl); }
+  h3 { margin: var(--spacing-2xl) 0 var(--spacing-lg); }
+  h4 { margin: var(--spacing-xl) 0 var(--spacing-md); }
+  .lead {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+    margin: var(--spacing-2xl) 0;
+    font-weight: 500;
+  }
+  blockquote {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-bg-secondary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+.table-of-contents {
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-2xl) 0;
+  h2 { margin-top: 0; margin-bottom: var(--spacing-lg); color: var(--color-primary); }
+  ol {
+    padding-left: var(--spacing-lg);
+    line-height: 1.8;
+    li { margin-bottom: var(--spacing-sm); }
+    a { color: var(--color-text-primary); text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition); &:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); } }
+  }
+}
+.author-bio {
+  display: flex;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-3xl) 0;
+  .author-bio__content { h3 { margin-top: 0; margin-bottom: var(--spacing-sm); } p { margin: 0; color: var(--color-text-secondary); } }
+}
+.related-articles {
+  margin: var(--spacing-3xl) 0;
+  h3 { margin-bottom: var(--spacing-xl); text-align: center; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); }
+  .related-card {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: var(--transition);
+    &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+    h4 { color: var(--color-text-primary); margin-top: 0; margin-bottom: var(--spacing-sm); }
+    p { color: var(--color-text-secondary); margin: 0; font-size: 0.95rem; }
+  }
+}
+.external-resources {
+  margin: var(--spacing-3xl) 0;
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  h3 { margin-top: 0; margin-bottom: var(--spacing-lg); }
+  ul { padding-left: var(--spacing-lg); line-height: 2; }
+  a { color: var(--color-primary); font-weight: 600; }
+}
+.breadcrumb {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--color-border);
+  ol { display: flex; gap: var(--spacing-sm); list-style: none; padding: 0; font-size: 0.9rem; flex-wrap: wrap; }
+  a { color: var(--color-primary); text-decoration: none; &:hover { text-decoration: underline; } }
+  span { color: var(--color-text-secondary); }
+}
+@media (max-width: 768px) {
+  .blog-article { padding: var(--spacing-xl) var(--spacing-md); }
+  .article-header .article-meta { flex-direction: column; gap: var(--spacing-sm); }
+  .author-bio { flex-direction: column; text-align: center; }
+  .related-articles .related-grid { grid-template-columns: 1fr; }
+  .article-content { font-size: 1.0625rem; }
+}
+</style>
