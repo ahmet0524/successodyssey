@@ -1,0 +1,1721 @@
+---
+// src/pages/neuroplasticity.astro
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Neuroplasticity & Strategic Personal Development | Success Odyssey Hub";
+const pageDescription = "Discover the science of neuroplasticity — how your brain rewires itself for success. Evidence-based strategies on habit formation, dopamine, BDNF, and peak performance.";
+const pageKeywords = "neuroplasticity, brain rewiring, habit formation, dopamine, BDNF, neurogenesis, self-directed neuroplasticity, peak performance, growth mindset, synaptic plasticity, LTP, brain science, personal development neuroscience";
+const publishedDate = "2025-01-15T00:00:00Z";
+const modifiedDate  = "2025-07-10T00:00:00Z";
+
+const sidebarTopics = [
+  { id:"intro",          label:"What Is Neuroplasticity?" },
+  { id:"foundations",    label:"Historical Foundations"   },
+  { id:"mechanisms",     label:"Biological Mechanisms"    },
+  { id:"neurochemistry", label:"Neurochemistry of Success"},
+  { id:"habits",         label:"Habit Formation"          },
+  { id:"six-steps",      label:"6 Steps to Change"        },
+  { id:"principles",     label:"Kleim & Jones Principles" },
+  { id:"self-directed",  label:"Self-Directed NP"         },
+  { id:"lifestyle",      label:"Lifestyle & Biology"      },
+  { id:"simulator",      label:"Interactive Simulator"    },
+  { id:"faq",            label:"FAQ"                      },
+];
+
+const articleSchema = {
+  "@context":"https://schema.org","@type":"Article",
+  "headline":"Neuroplasticity & Strategic Personal Development: The Complete Scientific Guide",
+  "description":pageDescription,
+  "author":{"@type":"Organization","name":"Success Odyssey Hub","url":"https://successodysseyhub.com"},
+  "publisher":{"@type":"Organization","name":"Success Odyssey Hub"},
+  "datePublished":publishedDate,"dateModified":modifiedDate,
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://successodysseyhub.com/neuroplasticity"},
+  "keywords":pageKeywords,"articleSection":"Brain Science","inLanguage":"en-US"
+};
+
+const faqSchema = {
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is neuroplasticity?","acceptedAnswer":{"@type":"Answer","text":"Neuroplasticity is the brain's ability to reorganize and change its neural connections in response to experience, learning, injury, and environmental stimuli."}},
+    {"@type":"Question","name":"How long does it take to rewire the brain?","acceptedAnswer":{"@type":"Answer","text":"Research suggests an average of 66 days to form a stable new neural pathway, ranging from 21 to 254 days depending on complexity and individual factors."}},
+    {"@type":"Question","name":"What is BDNF?","acceptedAnswer":{"@type":"Answer","text":"BDNF (Brain-Derived Neurotrophic Factor) promotes new synaptic connections and protects existing neurons. It is dramatically boosted by aerobic exercise, quality sleep, and learning complex new skills."}},
+    {"@type":"Question","name":"Can adults grow new brain cells?","acceptedAnswer":{"@type":"Answer","text":"Yes. Adult neurogenesis occurs primarily in the hippocampus throughout life. These new neurons integrate more readily into existing networks, giving them a learning advantage."}}
+  ]
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  type="article"
+  datePublished={publishedDate}
+  dateModified={modifiedDate}
+  author="Success Odyssey Hub"
+  canonicalUrl="/neuroplasticity"
+>
+  <slot slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  </slot>
+
+  <div class="np-wrapper">
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="np-sidebar" aria-label="Article navigation">
+      <div class="sb-inner">
+        <div class="sb-head">Brain Science</div>
+        <nav>
+          <ul>
+            {sidebarTopics.map(t => (
+              <li>
+                <a class="sb-link" href={`#${t.id}`} data-target={t.id}>{t.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div class="sb-progress">
+          <div class="sb-prog-label">Reading progress</div>
+          <div class="sb-prog-track"><div class="sb-prog-fill" id="reading-progress"></div></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ══ MOBILE NAV ══ -->
+    <div class="mob-pill" id="mob-pill">
+      <button class="mob-pill-btn" id="mob-pill-toggle" aria-expanded="false">
+        <span id="mob-pill-label">Topics</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="mob-pill-menu" id="mob-pill-menu" hidden>
+        {sidebarTopics.map(t => (
+          <a class="mob-link" href={`#${t.id}`} data-target={t.id}>{t.label}</a>
+        ))}
+      </div>
+    </div>
+
+    <!-- ══ MAIN ══ -->
+    <main class="np-main">
+
+      <!-- ① INTRO -->
+      <section id="intro" class="np-sec">
+        <div class="eyebrow">Introduction</div>
+        <h1>Neuroplasticity &amp; <span class="grad">Strategic Personal Development</span></h1>
+        <p class="lead">Your brain is not fixed hardware — it is shapeable software. Every thought, habit, and decision physically reshapes its architecture. This is neuroplasticity: the biological engine beneath every meaningful transformation.</p>
+
+        <div class="stat-row">
+          <div class="stat"><span class="sn">86B</span><span class="sd">Neurons in the human brain</span></div>
+          <div class="stat"><span class="sn">100T</span><span class="sd">Synaptic connections capable of change</span></div>
+          <div class="stat"><span class="sn">66</span><span class="sd">Average days to form a new neural pathway</span></div>
+        </div>
+
+        <blockquote class="bq">
+          "Wellness is not just a feeling — it is a neurological structure. Positive habits physically change the architecture of your brain."
+          <cite>— Success Odyssey Hub</cite>
+        </blockquote>
+
+        <div class="node-stage" id="brain-sim" aria-label="Abstract neural network visualization" role="img">
+          <div class="node-label">
+            <strong>Neural Connection Model</strong>
+            <span>Abstract representation of brain networks</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ② FOUNDATIONS -->
+      <section id="foundations" class="np-sec">
+        <div class="eyebrow">Foundations</div>
+        <h2>Historical Foundations</h2>
+        <p class="body-text">For most of the 20th century, neuroscience held that the adult brain was a fixed, hard-wired machine. The discovery of neuroplasticity overturned this dogma entirely.</p>
+        <div class="timeline">
+          {[
+            {year:"1890", name:"William James", body:"First introduced the concept of neuroplasticity, arguing that behavior and mental processes could modify the nervous system — decades before imaging could confirm it."},
+            {year:"1894", name:"Santiago Ramón y Cajal", body:"Described non-pathological structural changes in adult brains. Pioneered the Neuron Doctrine — still the foundation of modern neuroscience."},
+            {year:"1949", name:'Donald Hebb — "Hebb\'s Law"', body:'"Neurons that fire together, wire together." This principle remains the single most important rule in the neuroscience of learning and the biological engine of every habit you have ever formed.'},
+            {year:"Today", name:"Modern Neuroscience", body:"Advanced fMRI and PET imaging confirms lifelong neuroplasticity, including adult hippocampal neurogenesis. Deliberate brain training is now a validated scientific intervention."},
+          ].map(t => (
+            <div class="tl-item">
+              <div class="tl-yr">{t.year}</div>
+              <div class="tl-body"><h3>{t.name}</h3><p>{t.body}</p></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ③ MECHANISMS -->
+      <section id="mechanisms" class="np-sec">
+        <div class="eyebrow">Mechanisms</div>
+        <h2>Biological Mechanisms of Neural Change</h2>
+        <p class="body-text">Neuroplasticity spans from molecular protein synthesis to large-scale cortical reorganization. These are the six core processes through which your brain physically changes.</p>
+        <div class="grid-3">
+          {[
+            {tag:"Structural",title:"Synaptogenesis",body:"The formation of new synaptic connections between neurons. Every new skill you practice triggers synaptogenesis in the relevant cortical region."},
+            {tag:"Structural",title:"Dendritic Arborization",body:"Neurons grow new dendritic branches to receive more input signals, physically expanding the brain's information-processing capacity."},
+            {tag:"Cellular",title:"Neurogenesis",body:"New neurons are born in the hippocampus throughout adulthood. These young cells are more excitable and integrate more readily — giving them a learning advantage."},
+            {tag:"Functional",title:"Long-Term Potentiation",body:"Repeated, high-frequency stimulation permanently strengthens synaptic connections. LTP is the cellular basis of memory and skill acquisition."},
+            {tag:"Functional",title:"Synaptic Pruning (LTD)",body:"Unused connections are weakened through Long-Term Depression. The brain optimizes itself by clearing inefficient pathways — use it or lose it at the cellular level."},
+            {tag:"Speed",title:"Myelination",body:"Repeated practice wraps neural pathways in myelin — a sheath that increases signal speed up to 100×, making skilled behaviors feel effortless and automatic."},
+          ].map(m => (
+            <article class="card">
+              <h3>{m.title}</h3>
+              <p>{m.body}</p>
+              <span class="tag">{m.tag}</span>
+            </article>
+          ))}
+        </div>
+        <div class="callout green">
+          <div>
+            <strong>Key Insight</strong>
+            <p>Old habits are never erased — new and stronger neural pathways are built that override them. This is why consistency outperforms intensity: you're constructing a new neural highway, not demolishing an old one.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ④ NEUROCHEMISTRY -->
+      <section id="neurochemistry" class="np-sec">
+        <div class="eyebrow">Neurochemistry</div>
+        <h2>Neurochemistry of Success</h2>
+        <p class="body-text">Three neurochemicals act as the primary drivers of neuroplasticity and peak performance. Understanding how to naturally optimize them is the foundation of any serious self-development strategy.</p>
+        <div class="nc-stack">
+          {[
+            {cls:"dopa",title:"Dopamine",role:"Motivation & Reward Architect",body:"Far more than a 'pleasure chemical,' dopamine drives motivation, decision-making, attention, and learning. Released when a behavior succeeds or a reward is anticipated, dopamine strengthens the associated neural pathway — making that behavior more likely to recur. It is the neurochemical engine of the entire habit loop.",tips:["Break goals into small milestones to trigger frequent dopamine pulses","Celebrate micro-wins immediately — delayed reward does not wire the brain","Protect baseline levels by limiting passive dopamine sources (doom scrolling, junk food)"]},
+            {cls:"ach",title:"Acetylcholine",role:"Attention & Focus Amplifier",body:"Acetylcholine is the neurochemical gatekeeper of learning. It increases the signal-to-noise ratio in the cortex, helping the brain lock onto relevant stimuli and filter out distraction. Research confirms that without adequate acetylcholine activity, LTP — the cellular mechanism of memory — cannot be triggered. Full attention is chemically required for learning.",tips:["Practice deep work in 90-minute focused blocks","Eliminate all digital interruptions during learning sessions","Consume choline-rich foods daily: eggs, liver, fatty fish"]},
+            {cls:"bdnf",title:"BDNF",role:"The Brain's Growth Fertilizer",body:"Brain-Derived Neurotrophic Factor (BDNF) promotes new synaptic connections and protects the health of existing neurons. Often called 'Miracle-Gro for the brain,' BDNF is the single most important molecule for neuroplasticity. Chronic stress and poor sleep suppress it. Aerobic exercise, learning, and quality sleep dramatically increase it.",tips:["150+ minutes of moderate aerobic exercise per week","7–9 hours of quality sleep — this is when BDNF consolidates learning","Continuously learn new complex skills to maintain high BDNF expression"]},
+          ].map(nc => (
+            <article class={`nc-card ${nc.cls}`}>
+              <div class="nc-head"><div><h3>{nc.title}</h3><span class="nc-role">{nc.role}</span></div></div>
+              <p>{nc.body}</p>
+              <div class="nc-tips"><strong>Optimize It:</strong><ul>{nc.tips.map(t=><li>{t}</li>)}</ul></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ⑤ HABITS -->
+      <section id="habits" class="np-sec">
+        <div class="eyebrow">Habits</div>
+        <h2>The Neuroscience of Habit Formation</h2>
+        <p class="body-text">Habits are the brain's energy-saving strategy. As behaviors become automatic, control shifts from the energy-intensive prefrontal cortex to the efficient basal ganglia — freeing cognitive resources for higher-order thinking.</p>
+        <div class="habit-loop-box">
+          <div class="hl-title">The Neural Habit Loop</div>
+          <div class="hl-steps">
+            {[
+              {n:"01",title:"Cue",body:"A trigger — time, place, emotion, or preceding action — activates the basal ganglia to initiate a stored behavioral sequence.",brain:"Sensory Cortex → Basal Ganglia"},
+              {n:"02",title:"Craving",body:"Dopamine is released in the nucleus accumbens in anticipation of the reward, creating the motivational drive to complete the action.",brain:"Nucleus Accumbens (Dopamine)"},
+              {n:"03",title:"Routine",body:"The automated behavioral sequence executes with minimal prefrontal involvement, making it feel effortless and largely unconscious.",brain:"Dorsal Striatum → Motor Cortex"},
+              {n:"04",title:"Reward",body:"Positive feedback consolidates the loop. The orbitofrontal cortex encodes the value, making future repetition increasingly likely.",brain:"Orbitofrontal Cortex → VTA"},
+            ].map(s=>(
+              <div class="hl-step">
+                <div class="hl-n">{s.n}</div>
+                <h4>{s.title}</h4><p>{s.body}</p>
+                <span class="hl-brain">{s.brain}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="grid-4">
+          {[
+            {title:"Start Micro",body:"Begin with the smallest possible version of the habit. The goal is to trigger the loop, not achieve perfection. A 2-minute version beats zero every time."},
+            {title:"Swap the Routine",body:"Keep the same cue and reward but replace the routine. This is neurologically the most efficient method — you're redirecting existing wiring."},
+            {title:"Stack Habits",body:'"After [current habit], I will [new habit]." This hijacks existing neural pathways as anchors for new behavior.'},
+            {title:"Never Miss Twice",body:"Missing one day does not erase the neural pathway — the infrastructure remains. Missing two days weakens the connection. Return immediately."},
+          ].map(t=>(
+            <div class="tip-card">
+              <h4>{t.title}</h4><p>{t.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ⑥ SIX STEPS -->
+      <section id="six-steps" class="np-sec">
+        <div class="eyebrow">6 Steps</div>
+        <h2>6 Steps to Neuroplastic Change</h2>
+        <p class="body-text">Building a habit from scratch — or dismantling a harmful one — follows a precise neurological sequence. Click each step to explore its science and application.</p>
+        <div class="steps-wrap">
+          <div class="steps-tabs" role="tablist">
+            {[
+              {n:1,label:"Awareness & Diagnosis",amber:false},
+              {n:2,label:"Micro Goals (Amygdala-Safe)",amber:false},
+              {n:3,label:"Low-Friction Environment",amber:false},
+              {n:4,label:"Conscious Repetition",amber:false},
+              {n:5,label:"Dopaminergic Reward",amber:false},
+              {n:6,label:"Wellness → Achievement",amber:true},
+            ].map(s=>(
+              <button class={`stab ${s.amber?'amber':''} ${s.n===1?'active':''}`} data-step={s.n} role="tab" aria-selected={s.n===1?"true":"false"} aria-controls={`sp-${s.n}`} id={`st-${s.n}`}>
+                <span class="stab-n">{s.n}</span>
+                <span>{s.label}</span>
+              </button>
+            ))}
+          </div>
+          <div class="steps-panel-area">
+            <div class="sp active" id="sp-1" role="tabpanel" aria-labelledby="st-1">
+              <div class="sp-badge teal">Step 1</div>
+              <h3>Awareness &amp; Diagnosis</h3>
+              <p>Change begins by switching off autopilot. The habit you want to change exists as a well-traveled neural highway in your basal ganglia. Without judgment, observe which triggers — stress, boredom, specific times or places — activate this old pathway. You cannot redirect a highway you cannot see.</p>
+              <p>This step activates your prefrontal cortex's meta-awareness function, creating a brief window between stimulus and response where change becomes possible.</p>
+              <div class="sp-action"><strong>Practice:</strong> Today, simply try to "catch" yourself the moment the old habit begins. No action required — pure observation builds the neural foundation for change.</div>
+            </div>
+            <div class="sp" id="sp-2" role="tabpanel" aria-labelledby="st-2" hidden>
+              <div class="sp-badge teal">Step 2</div>
+              <h3>Micro Goals — Bypassing Amygdala Resistance</h3>
+              <p>The brain's primitive threat-detection system, the amygdala, interprets large behavioral changes as a threat and generates resistance — experienced as procrastination, fatigue, or sudden apathy. This is a biological defense mechanism, not a character flaw.</p>
+              <p>The solution: make the goal ridiculously small. Instead of "meditate for 1 hour," start with "take 1 deep breath consciously." The amygdala does not resist tiny actions.</p>
+              <div class="sp-action"><strong>Practice:</strong> Reduce your target behavior to a version so small you genuinely cannot refuse it. The neural pathway is opened by any version of the action.</div>
+            </div>
+            <div class="sp" id="sp-3" role="tabpanel" aria-labelledby="st-3" hidden>
+              <div class="sp-badge teal">Step 3</div>
+              <h3>Low-Friction Environment Design</h3>
+              <p>Don't rely on willpower — design your environment. Willpower is a finite cognitive resource that depletes throughout the day. Environmental design is permanent and requires zero mental energy to maintain.</p>
+              <p>Reduce friction on the desired habit (new neural path): lay out your running shoes the night before, keep healthy food visible. Increase friction on the unwanted habit: hide your phone, delete social media apps, make junk food inconvenient.</p>
+              <div class="sp-action"><strong>Practice:</strong> Redesign one physical space today to make your target habit the path of least resistance.</div>
+            </div>
+            <div class="sp" id="sp-4" role="tabpanel" aria-labelledby="st-4" hidden>
+              <div class="sp-badge teal">Step 4</div>
+              <h3>Conscious Repetition — Firing the Neurons</h3>
+              <p>This is the heart of neuroplasticity. <strong>Frequency matters more than intensity.</strong> Each repetition thickens the myelin sheath around the neural pathway, accelerating signal transmission and making the behavior progressively more automatic.</p>
+              <p>The resistance you feel in the early days is your brain physically rewiring itself. It is not a sign of failure — it is the sensation of biological change in progress.</p>
+              <div class="sp-action"><strong>Practice:</strong> Don't break the chain. A badly executed day beats a missed day. The neural infrastructure you build is cumulative.</div>
+            </div>
+            <div class="sp" id="sp-5" role="tabpanel" aria-labelledby="st-5" hidden>
+              <div class="sp-badge teal">Step 5</div>
+              <h3>Dopaminergic Reward — Sealing the Loop</h3>
+              <p>The brain encodes and prioritizes rewarded behaviors. Immediately after completing a micro-action, trigger a positive neurochemical response — a genuine internal acknowledgment, a smile, or a brief physical celebration.</p>
+              <p>The timing is critical: delayed rewards do not wire the brain. The dopamine signal must arrive within seconds of the action to be associated with that specific behavior.</p>
+              <div class="sp-action"><strong>Practice:</strong> The instant you complete the action, celebrate. Make it genuine — performed enthusiasm does not release the same neurochemical response as real pride.</div>
+            </div>
+            <div class="sp sp-amber" id="sp-6" role="tabpanel" aria-labelledby="st-6" hidden>
+              <div class="sp-badge amber">Success Odyssey Signature Step</div>
+              <h3>Wellness → Achievement: The Bridge</h3>
+              <p>Pure discipline without psychological wellness leads to burnout. The cortisol released by chronic stress physically damages hippocampal neurons, suppresses BDNF, and atrophies the prefrontal cortex — destroying the very neural infrastructure you are trying to build.</p>
+              <p>The <strong>Success Odyssey approach</strong> places psychological wellness as the biological prerequisite for lasting achievement. Self-compassion, gratitude practices, and stress management are neurological interventions — they enlarge the hippocampus and create the optimal environment for learning and growth.</p>
+              <p>Build success by <em>healing your mind</em>, not by exhausting it.</p>
+              <div class="sp-action amber"><strong>Vision:</strong> Every habit built on genuine psychological wellness lasts exponentially longer than one built on fear, shame, or coercion.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⑦ PRINCIPLES -->
+      <section id="principles" class="np-sec">
+        <div class="eyebrow">Principles</div>
+        <h2>The 10 Kleim &amp; Jones Principles</h2>
+        <p class="body-text">Researchers Jeffrey Kleim and Theresa Jones identified 10 core principles that govern how the brain rewires itself — the operating rules for deliberate self-transformation.</p>
+        <div class="grid-3">
+          {[
+            {n:"01",title:"Use It or Lose It",body:"Neural circuits that aren't regularly activated progressively weaken. Skills require ongoing practice to maintain their cortical representation."},
+            {n:"02",title:"Use It and Improve It",body:"Consistent practice of a specific skill expands the neural territory dedicated to it and increases the efficiency of its processing circuits."},
+            {n:"03",title:"Specificity",body:"Plasticity is precisely targeted to the nature of training. To develop a skill, practice that exact skill — transfer effects are limited."},
+            {n:"04",title:"Repetition Matters",body:"Inducing durable LTP may require thousands of repetitions. Consistency over months beats intense short-term efforts every time."},
+            {n:"05",title:"Intensity Matters",body:"Training must push neural activity above a threshold to trigger lasting change. Passive exposure rarely produces structural plasticity."},
+            {n:"06",title:"Timing Matters",body:"Plasticity is time-sensitive. Early intervention after learning yields faster results. Sleep immediately consolidates new neural connections."},
+            {n:"07",title:"Salience Matters",body:"The brain prioritizes encoding information that is emotionally meaningful, novel, or directly tied to survival and success."},
+            {n:"08",title:"Age Matters",body:"Younger brains exhibit faster plasticity, but adult brains remain highly adaptable — they simply require greater focus and consistency."},
+            {n:"09",title:"Transference",body:"Gains in one skill can transfer to related skills sharing overlapping neural networks. Learning music enhances spatial reasoning."},
+            {n:"10",title:"Interference",body:"Maladaptive patterns — bad habits or incorrectly learned techniques — actively resist new learning. Unlearning is as important as learning."},
+          ].map(p=>(
+            <article class="card p-card">
+              <span class="p-num">{p.n}</span>
+              <h3>{p.title}</h3><p>{p.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ⑧ SELF-DIRECTED -->
+      <section id="self-directed" class="np-sec dark-sec">
+        <div class="eyebrow light">Self-Direction</div>
+        <h2 class="light-h">Self-Directed Neuroplasticity</h2>
+        <p class="body-text light-p">Self-Directed Neuroplasticity (SDN) is the deliberate, conscious practice of shaping your brain's architecture toward your chosen outcomes — becoming the architect of your mind, not its passive inhabitant.</p>
+        <div class="grid-3">
+          {[
+            {title:"Mental Rehearsal & Visualization",body:"The brain cannot fully distinguish between a vividly imagined and a real experience. During mental rehearsal, the same neural networks activated during physical practice are engaged. Elite athletes, surgeons, and executives use this technique to pre-wire their brains for high-stakes performance — reducing reaction time and decision errors before the real moment arrives.",action:"Spend 10 minutes daily rehearsing a key skill or challenge in first-person perspective. Engage all senses. Pair with physical practice for maximum neuroplastic effect."},
+            {title:"Mindfulness & Meditation",body:"Consistent mindfulness practice increases gray matter density in the prefrontal cortex (rational decision-making) and measurably reduces the size and reactivity of the amygdala (fear and stress responses). The result: you respond to challenges with deliberate reason instead of automatic emotional reaction.",action:"Begin with 10 minutes of focused breathing daily. Consistency over 8 weeks produces measurable structural brain changes in most published studies."},
+            {title:"Deliberate Practice & the Flow Zone",body:"There is an inverted-U relationship between cognitive load and neuroplasticity. Too easy and the brain stays in autopilot. Too hard and the system overloads. The optimal zone, just beyond current ability, maximizes the neurochemical cocktail that accelerates neural rewiring.",action:"Identify the skill ceiling in your domain and consistently work 1–2 levels above your comfort zone with focused, corrective feedback loops."},
+          ].map(s=>(
+            <div class="sdnp-card">
+              <h3>{s.title}</h3><p>{s.body}</p>
+              <div class="sdnp-act"><strong>Practice:</strong> {s.action}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ⑨ LIFESTYLE -->
+      <section id="lifestyle" class="np-sec">
+        <div class="eyebrow">Lifestyle</div>
+        <h2>Lifestyle &amp; Biology</h2>
+        <p class="body-text">Neural rewiring is an energetically expensive biological process. These lifestyle pillars determine whether your brain has the raw materials and cellular environment to change.</p>
+        <div class="lifestyle-stack">
+          {[
+            {title:"Sleep: The Neural Architect",body:"Sleep is neuroplasticity's most active phase. During slow-wave sleep, the brain consolidates the day's learning into long-term memory through synaptic homeostasis. The glymphatic system activates — flushing toxic metabolic waste and misfolded proteins. Chronic sleep deprivation suppresses BDNF and impairs both learning and decision-making.",tips:["7–9 hours nightly","Consistent sleep schedule","No screens 1hr before bed"]},
+            {title:"Exercise: The BDNF Trigger",body:"Aerobic exercise is the single most powerful tool for boosting BDNF levels naturally. Physical activity simultaneously increases hippocampal blood flow, promotes neurogenesis, reduces cortisol, and improves working memory and executive function. A single 20-minute run can measurably improve cognitive performance for hours afterward.",tips:["150+ min/week moderate cardio","Resistance training 2×/week","Daily movement breaks"]},
+            {title:"Nutrition: Neural Building Blocks",body:"The brain is 60% fat — and its plasticity depends on the quality of dietary fats consumed. Omega-3 fatty acids (EPA and DHA) are incorporated directly into neuronal membranes, increasing flexibility and signal conductance. Antioxidants neutralize oxidative stress that damages synaptic connections. Refined sugars and processed foods promote neuroinflammation.",tips:["Omega-3 rich foods daily","Antioxidant-rich diet","Minimize refined sugars"]},
+          ].map(l=>(
+            <article class="life-card">
+              <div>
+                <h3>{l.title}</h3><p>{l.body}</p>
+                <div class="pills">{l.tips.map(t=><span class="pill">{t}</span>)}</div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="callout red">
+          <div>
+            <strong>The #1 Enemy of Neuroplasticity: Chronic Stress</strong>
+            <p>Chronically elevated cortisol physically damages hippocampal neurons, suppresses BDNF, and atrophies the prefrontal cortex. Stress management is not a luxury — it is a biological prerequisite for brain change. No amount of deliberate practice overcomes a chronically cortisol-flooded brain.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⑩ SIMULATOR -->
+      <section id="simulator" class="np-sec">
+        <div class="eyebrow">Interactive</div>
+        <h2>Neural Habit Strength Simulator</h2>
+        <p class="body-text">Simulate what happens in your brain as you repeat a new behavior. Watch the new neural pathway grow stronger while the old habit weakens through disuse. Each click represents one day of consistent practice.</p>
+        <div class="sim-box">
+          <div class="chart-wrap"><canvas id="habitChart" role="img" aria-label="Line chart showing new habit strength increasing and old habit decreasing over time"></canvas></div>
+          <div class="sim-ctrl">
+            <div>
+              <div class="sim-stat-row">Status: <span id="sim-status" class="sim-badge starting">Starting Phase</span></div>
+              <div class="sim-day">Day / Repetition: <strong id="day-counter">1</strong></div>
+            </div>
+            <button id="btn-fire" class="btn-fire">Fire the Neurons — Repeat the Action</button>
+            <button id="btn-reset" class="btn-reset">Reset</button>
+          </div>
+        </div>
+        <div class="sim-legend">
+          <div><span class="dot teal"></span><span><strong>New Habit</strong> — Neural pathway grows logarithmically with repetition (LTP)</span></div>
+          <div><span class="dot amber"></span><span><strong>Old Habit</strong> — Existing pathway weakens through disuse (LTD / synaptic pruning)</span></div>
+        </div>
+      </section>
+
+      <!-- ⑪ FAQ -->
+      <section id="faq" class="np-sec">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          {[
+            {q:"What is neuroplasticity?",a:"Neuroplasticity is the brain's ability to reorganize and change its neural connections in response to experience, learning, injury, and environmental stimuli. It proves that the adult brain is not fixed — it can be deliberately shaped throughout life through consistent practice, focused attention, and supportive lifestyle habits."},
+            {q:"How long does it take to rewire the brain?",a:"Research indicates an average of 66 days to form a stable new neural pathway, ranging from 21 to 254 days depending on habit complexity and individual factors. Missing one day does not erase progress — the neural infrastructure remains. Consistency over months, not perfection over weeks, produces lasting change."},
+            {q:"Can adults actually grow new brain cells?",a:"Yes. Adult neurogenesis — the birth of new neurons — occurs primarily in the hippocampus throughout the human lifespan. These newly generated neurons are more excitable than mature ones and integrate more readily into existing networks, giving them a distinct learning advantage. Aerobic exercise is the most powerful known stimulator of adult hippocampal neurogenesis."},
+            {q:"What is BDNF and why does it matter?",a:"BDNF (Brain-Derived Neurotrophic Factor) functions as biological fertilizer for the brain. It promotes the growth of new synaptic connections, protects existing neuron health, and is essential for Long-Term Potentiation — the cellular mechanism of memory and learning. BDNF is dramatically elevated by aerobic exercise, quality sleep, and learning complex new skills."},
+            {q:"Can I change a bad habit using neuroplasticity?",a:"Yes, but understanding the mechanism is critical. Bad habits are never erased — their neural pathways persist. The effective strategy is to keep the same cue and reward but substitute a new, healthier routine. Over time, with enough repetition, the new pathway becomes dominant and the old one weakens through disuse (LTD / synaptic pruning)."},
+          ].map(f=>(
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="np-cta">
+        <h2>Start Rewiring Your Brain Today</h2>
+        <p>Every article, strategy, and tool on Success Odyssey Hub is built on the neuroscience you just explored. Your brain changes with every experience — make those experiences intentional.</p>
+        <div class="cta-btns">
+          <a href="/blog" class="cta-p">Explore Our Brain Science Blog</a>
+          <a href="/about" class="cta-s">Our Research Approach</a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</Layout>
+
+<style>
+/* ── Layout ── */
+.np-wrapper {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ── Sidebar ── */
+.np-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 68px;
+  height: calc(100vh - 68px);
+  overflow-y: auto;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  scrollbar-width: thin;
+}
+
+.sb-inner {
+  padding: 1.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sb-head {
+  padding: 0.75rem 1.1rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-secondary);
+}
+
+.np-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sb-link {
+  display: flex;
+  align-items: center;
+  padding: 0.55rem 1.1rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.83rem;
+  font-weight: 500;
+  line-height: 1.4;
+  border-left: 3px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.sb-link:hover {
+  color: var(--color-primary);
+  background: rgba(102, 126, 234, 0.06);
+  border-left-color: var(--color-primary-light);
+}
+
+.sb-link.active {
+  color: var(--color-primary);
+  background: rgba(102, 126, 234, 0.08);
+  border-left-color: var(--color-primary);
+  font-weight: 700;
+}
+
+.sb-progress {
+  padding: 1rem 1.1rem 0;
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.sb-prog-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 0.4rem;
+}
+
+.sb-prog-track {
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.sb-prog-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient-primary);
+  border-radius: 100px;
+  transition: width 0.3s;
+}
+
+/* ── Mobile pill ── */
+.mob-pill {
+  display: none;
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  background: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+}
+
+.mob-pill-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.mob-pill-menu {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.mob-link {
+  padding: 0.7rem 1rem;
+  font-size: 0.87rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-bg-secondary);
+  transition: background 0.15s;
+}
+
+.mob-link:hover,
+.mob-link.active {
+  background: rgba(102, 126, 234, 0.06);
+  color: var(--color-primary);
+}
+
+/* ── Main content ── */
+.np-main {
+  flex: 1;
+  min-width: 0;
+  padding: 0 2.25rem 4rem;
+}
+
+/* ── Section ── */
+.np-sec {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--color-border);
+  scroll-margin-top: 80px;
+}
+
+.np-sec:last-of-type {
+  border-bottom: none;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.eyebrow.light {
+  color: var(--color-primary-light);
+}
+
+.np-sec h1,
+.np-sec h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.np-sec h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.light-h { color: #fff; }
+
+.grad {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: 2.25rem;
+  max-width: 660px;
+}
+
+.body-text {
+  font-size: 0.97rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: 2.25rem;
+  max-width: 700px;
+}
+
+.light-p { color: rgba(255,255,255,0.75); }
+
+/* ── Stats ── */
+.stat-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.stat {
+  flex: 1;
+  min-width: 130px;
+  background: linear-gradient(135deg, #1e1b4b, #1e293b);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  color: #fff;
+}
+
+.sn {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #818cf8;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.sd {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* ── Blockquote ── */
+.bq {
+  background: var(--color-bg-secondary);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 2rem;
+  max-width: 580px;
+  font-size: 0.93rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.bq cite {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.77rem;
+  color: var(--color-text-tertiary);
+  font-style: normal;
+}
+
+/* ── Neural viz ── */
+.node-stage {
+  position: relative;
+  height: 130px;
+  width: 100%;
+  max-width: 520px;
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.node-label {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0.6rem;
+  background: rgba(255,255,255,0.9);
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  z-index: 2;
+}
+
+.node-label strong {
+  display: block;
+  font-size: 0.77rem;
+  color: var(--color-text-primary);
+}
+
+.node-label span {
+  font-size: 0.68rem;
+  color: var(--color-text-tertiary);
+}
+
+.nn-node {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent-dark);
+  border-radius: 50%;
+  transition: all 1.8s ease;
+  box-shadow: 0 0 0 3px rgba(217,119,6,0.18);
+}
+
+.nn-line {
+  position: absolute;
+  height: 2px;
+  background: var(--color-accent-dark);
+  transform-origin: left center;
+  opacity: 0.22;
+}
+
+/* ── Timeline ── */
+.timeline {
+  position: relative;
+  padding-left: 1.6rem;
+  max-width: 660px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+.tl-item {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.95rem;
+  top: 0.3rem;
+  width: 10px;
+  height: 10px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  border: 2px solid var(--color-bg-primary);
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+}
+
+.tl-yr {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  min-width: 48px;
+  padding-top: 0.1rem;
+}
+
+.tl-body h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 0.3rem;
+}
+
+.tl-body p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ── Grids ── */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.1rem;
+  margin-bottom: 1.75rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.card h3 {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 0.45rem;
+}
+
+.card p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0 0 0.65rem;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(102,126,234,0.1);
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.18rem 0.6rem;
+  border-radius: 100px;
+}
+
+/* Principle card */
+.p-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.p-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+}
+
+.p-num {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  margin-bottom: 0.35rem;
+}
+
+/* ── Callout ── */
+.callout {
+  display: flex;
+  gap: 1.1rem;
+  border-radius: var(--radius);
+  padding: 1.35rem;
+  align-items: flex-start;
+}
+
+.callout strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.callout p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.callout.green {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.callout.red {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ef4444;
+}
+
+.callout.red strong { color: #991b1b; }
+.callout.red p { color: #7f1d1d; }
+
+/* ── Neurochemistry ── */
+.nc-stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.nc-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.nc-card.dopa { border-top: 4px solid #f59e0b; }
+.nc-card.ach  { border-top: 4px solid #10b981; }
+.nc-card.bdnf { border-top: 4px solid #6366f1; }
+
+.nc-head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.nc-head h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0 0 0.15rem;
+}
+
+.nc-role {
+  font-size: 0.78rem;
+  color: var(--color-text-tertiary);
+}
+
+.nc-card > p {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
+  font-size: 0.93rem;
+}
+
+.nc-tips {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.1rem;
+}
+
+.nc-tips strong {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.nc-tips ul {
+  padding-left: 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ── Habit loop ── */
+.habit-loop-box {
+  background: linear-gradient(135deg, #1e1b4b, #1e293b);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  color: #fff;
+}
+
+.hl-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1.25rem;
+}
+
+.hl-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.9rem;
+}
+
+.hl-step {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.hl-n {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #818cf8;
+  letter-spacing: 1px;
+  margin-bottom: 0.35rem;
+}
+
+.hl-step h4 {
+  font-size: 0.97rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.hl-step p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  opacity: 0.72;
+  margin: 0 0 0.45rem;
+}
+
+.hl-brain {
+  display: block;
+  font-size: 0.67rem;
+  color: #818cf8;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* ── Tip card ── */
+.tip-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.tip-card h4 {
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 0.45rem;
+}
+
+.tip-card p {
+  font-size: 0.855rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── 6 Steps ── */
+.steps-wrap {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.steps-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stab {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+  cursor: pointer;
+  font-size: 0.845rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-align: left;
+  transition: var(--transition-fast);
+  line-height: 1.35;
+}
+
+.stab:hover {
+  border-color: var(--color-primary-light);
+  background: rgba(102,126,234,0.05);
+  color: var(--color-primary);
+}
+
+.stab.active {
+  background: rgba(102,126,234,0.08);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.stab.amber {
+  border-color: #fde68a;
+  background: #fffbeb;
+  color: #92400e;
+}
+
+.stab.amber.active {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  font-weight: 700;
+}
+
+.stab-n {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-top: 0.1rem;
+}
+
+.stab.active .stab-n {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.stab.amber.active .stab-n {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.steps-panel-area {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  min-height: 320px;
+}
+
+.sp { display: none; animation: fadeIn 0.3s ease; }
+.sp.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.sp h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0.5rem 0 0.85rem;
+  line-height: 1.25;
+}
+
+.sp p {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 0.9rem;
+  font-size: 0.92rem;
+}
+
+.sp-amber h3 { color: #78350f; }
+
+.sp-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.22rem 0.7rem;
+  border-radius: 100px;
+}
+
+.sp-badge.teal  { background: #dbeafe; color: #1d4ed8; }
+.sp-badge.amber { background: #fef3c7; color: #92400e; }
+
+.sp-action {
+  background: #f0fdf4;
+  border-left: 3px solid #10b981;
+  border-radius: 0 7px 7px 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.875rem;
+  color: #065f46;
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+.sp-action.amber {
+  background: #fffbeb;
+  border-color: #f59e0b;
+  color: #78350f;
+}
+
+/* ── Dark section ── */
+.dark-sec {
+  background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  margin: 0;
+  border-bottom: none;
+}
+
+.sdnp-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+}
+
+.sdnp-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.65rem;
+}
+
+.sdnp-card p {
+  color: rgba(255,255,255,0.72);
+  font-size: 0.875rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.sdnp-act {
+  background: rgba(129,140,248,0.12);
+  border: 1px solid rgba(129,140,248,0.25);
+  border-radius: 7px;
+  padding: 0.85rem 1rem;
+  font-size: 0.855rem;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.6;
+}
+
+.sdnp-act strong { color: #818cf8; }
+
+/* ── Lifestyle ── */
+.lifestyle-stack {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.life-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.life-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 0.55rem;
+}
+
+.life-card p {
+  color: var(--color-text-secondary);
+  line-height: 1.78;
+  font-size: 0.9rem;
+  margin-bottom: 0.85rem;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.pill {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.22rem 0.65rem;
+  border-radius: 100px;
+  border: 1px solid var(--color-border);
+}
+
+/* ── Simulator ── */
+.sim-box {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.chart-wrap {
+  position: relative;
+  height: 300px;
+  margin-bottom: 1.75rem;
+}
+
+.sim-ctrl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.sim-stat-row {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.sim-badge {
+  font-weight: 600;
+  padding: 0.18rem 0.7rem;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  margin-left: 0.4rem;
+}
+
+.sim-badge.starting  { background: var(--color-bg-tertiary); color: var(--color-text-tertiary); }
+.sim-badge.building  { background: #fef3c7; color: #92400e; }
+.sim-badge.wiring    { background: #dcfce7; color: #14532d; }
+.sim-badge.automated { background: #ede9fe; color: #4c1d95; }
+
+.sim-day { font-size: 0.85rem; color: var(--color-text-tertiary); }
+.sim-day strong { color: var(--color-text-primary); }
+
+.btn-fire {
+  background: var(--gradient-primary);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 0.7rem 1.6rem;
+  font-size: 0.93rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(102,126,234,0.3);
+}
+
+.btn-fire:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102,126,234,0.4);
+}
+
+.btn-reset {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.82rem;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-reset:hover {
+  border-color: var(--color-border-dark);
+  color: var(--color-text-secondary);
+}
+
+.sim-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sim-legend > div {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.845rem;
+  color: var(--color-text-secondary);
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot.teal  { background: #0f766e; }
+.dot.amber { background: #d97706; }
+
+/* ── FAQ ── */
+.faq-list {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 720px;
+}
+
+.faq-item {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  padding: 1rem 1.3rem;
+  font-weight: 700;
+  font-size: 0.93rem;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: background 0.15s;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after { content: '−'; }
+
+.faq-item summary:hover { background: var(--color-bg-secondary); }
+
+.faq-item p {
+  padding: 0 1.3rem 1.3rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ── CTA ── */
+.np-cta {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.np-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 800;
+  margin: 0 0 0.65rem;
+  color: #fff;
+}
+
+.np-cta p {
+  font-size: 0.97rem;
+  opacity: 0.9;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-btns {
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-p,
+.cta-s {
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.93rem;
+  transition: var(--transition-fast);
+}
+
+.cta-p { background: #fff; color: var(--color-secondary); }
+.cta-p:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+.cta-s { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+.cta-s:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .np-sidebar { width: 210px; }
+  .steps-wrap { grid-template-columns: 190px 1fr; }
+}
+
+@media (max-width: 768px) {
+  .np-sidebar { display: none; }
+  .mob-pill { display: block; }
+  .np-main { padding: 0 1rem 3rem; }
+  .np-sec { padding: 2.5rem 0; }
+  .dark-sec { padding: 2rem; margin: 0; }
+  .stat-row { flex-direction: column; }
+  .hl-steps,
+  .steps-wrap,
+  .grid-3,
+  .grid-4 { grid-template-columns: 1fr; }
+  .steps-wrap { gap: 1rem; }
+  .steps-tabs { flex-direction: column; }
+  .sim-ctrl { flex-direction: column; align-items: flex-start; }
+  .chart-wrap { height: 220px; }
+  .np-cta { padding: 2rem 1.25rem; }
+}
+</style>
+
+<script>
+/* ── Sidebar active tracking ── */
+(function(){
+  const links = document.querySelectorAll('.sb-link, .mob-link');
+  const fill  = document.getElementById('reading-progress');
+  const pilLbl = document.getElementById('mob-pill-label');
+  const map: Record<string, Element> = {};
+  links.forEach(l => { map[(l as HTMLElement).dataset.target!] = l; });
+
+  function setActive(id: string) {
+    links.forEach(l => l.classList.remove('active'));
+    if (map[id]) map[id].classList.add('active');
+    if (pilLbl && map[id]) {
+      pilLbl.textContent = map[id].textContent?.trim() || 'Topics';
+    }
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: '-15% 0px -60% 0px' });
+
+  document.querySelectorAll('.np-sec[id]').forEach(s => obs.observe(s));
+
+  window.addEventListener('scroll', () => {
+    if (!fill) return;
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    (fill as HTMLElement).style.width = Math.min(100, pct * 100) + '%';
+  }, { passive: true });
+
+  links.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.getElementById((a as HTMLElement).dataset.target!);
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const menu = document.getElementById('mob-pill-menu');
+      if (menu) menu.hidden = true;
+      const btn = document.getElementById('mob-pill-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const btn  = document.getElementById('mob-pill-toggle');
+  const menu = document.getElementById('mob-pill-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      (menu as HTMLElement).hidden = open;
+    });
+  }
+})();
+
+/* ── 6-Step tab switcher ── */
+(function(){
+  const tabs   = document.querySelectorAll('.stab');
+  const panels = document.querySelectorAll('.sp');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const step = (tab as HTMLElement).dataset.step;
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      panels.forEach(p => { p.classList.remove('active'); (p as HTMLElement).hidden = true; });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      const panel = document.getElementById('sp-' + step);
+      if (panel) { panel.classList.add('active'); panel.hidden = false; }
+    });
+  });
+})();
+
+/* ── Neural node animation ── */
+(function(){
+  const stage = document.getElementById('brain-sim');
+  if (!stage) return;
+  const NUM = 7;
+  const nodes: HTMLElement[] = [];
+
+  for (let i = 0; i < NUM; i++) {
+    const n = document.createElement('div');
+    n.className = 'nn-node';
+    n.style.left = (10 + Math.random() * 78) + '%';
+    n.style.top  = (10 + Math.random() * 62) + '%';
+    stage.appendChild(n);
+    nodes.push(n);
+  }
+
+  const lines: { el: HTMLElement; a: HTMLElement; b: HTMLElement }[] = [];
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      if (Math.random() > 0.45) {
+        const l = document.createElement('div');
+        l.className = 'nn-line';
+        stage.appendChild(l);
+        lines.push({ el: l, a: nodes[i], b: nodes[j] });
+      }
+    }
+  }
+
+  function posLine(item: { el: HTMLElement; a: HTMLElement; b: HTMLElement }) {
+    const r  = stage!.getBoundingClientRect();
+    const ra = item.a.getBoundingClientRect();
+    const rb = item.b.getBoundingClientRect();
+    const x1 = ra.left - r.left + 6, y1 = ra.top - r.top + 6;
+    const x2 = rb.left - r.left + 6, y2 = rb.top - r.top + 6;
+    const len = Math.sqrt((x2-x1)**2 + (y2-y1)**2);
+    const ang = Math.atan2(y2-y1, x2-x1) * 180 / Math.PI;
+    item.el.style.width = len + 'px';
+    item.el.style.left  = x1 + 'px';
+    item.el.style.top   = y1 + 'px';
+    item.el.style.transform = `rotate(${ang}deg)`;
+  }
+
+  setTimeout(() => lines.forEach(posLine), 250);
+
+  function drift() {
+    nodes.forEach(n => {
+      n.style.left = Math.max(5, Math.min(90, parseFloat(n.style.left) + (Math.random() - 0.5) * 3)) + '%';
+      n.style.top  = Math.max(5, Math.min(80, parseFloat(n.style.top)  + (Math.random() - 0.5) * 3)) + '%';
+    });
+    requestAnimationFrame(() => lines.forEach(posLine));
+  }
+
+  setInterval(drift, 2200);
+})();
+
+/* ── Chart.js Habit Simulator ── */
+document.addEventListener('DOMContentLoaded', function() {
+  const canvas = document.getElementById('habitChart') as HTMLCanvasElement | null;
+  if (!canvas) return;
+
+  function init() {
+    if (typeof (window as any).Chart === 'undefined') { setTimeout(init, 300); return; }
+    const Chart = (window as any).Chart;
+    const ctx = canvas!.getContext('2d');
+    let days = [1], nh = [8], oh = [92], day = 1;
+
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: days,
+        datasets: [
+          { label: 'New Habit — Neural Pathway Strength (%)', data: nh, borderColor: '#0f766e', backgroundColor: 'rgba(15,118,110,.08)', borderWidth: 3, tension: .4, fill: true, pointRadius: 4, pointBackgroundColor: '#0f766e' },
+          { label: 'Old Habit — Pathway Weakening (%)', data: oh, borderColor: '#d97706', borderWidth: 2.5, borderDash: [6,4], tension: .4, fill: false, pointRadius: 3, pointBackgroundColor: '#d97706' }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: { duration: 450 },
+        scales: {
+          y: { beginAtZero: true, max: 100, ticks: { callback: (v: number) => v + '%', color: '#6b7280', font: { size: 11 } }, grid: { color: '#f3f4f6' }, title: { display: true, text: 'Connection Strength (%)', color: '#9ca3af', font: { size: 11 } } },
+          x: { ticks: { color: '#6b7280', font: { size: 11 } }, grid: { color: '#f9fafb' }, title: { display: true, text: 'Day / Repetition', color: '#9ca3af', font: { size: 11 } } }
+        },
+        plugins: { legend: { position: 'top', labels: { usePointStyle: true, padding: 18, color: '#374151', font: { size: 11 } } }, tooltip: { mode: 'index', intersect: false } }
+      }
+    });
+
+    const statusEl = document.getElementById('sim-status')!;
+    const ctrEl    = document.getElementById('day-counter')!;
+
+    document.getElementById('btn-fire')!.addEventListener('click', () => {
+      if (day >= 30) { alert('30 repetitions reached. The neural pathway is now strongly myelinated — the habit operates largely on autopilot.'); return; }
+      day++;
+      days.push(day);
+      const ln = nh[nh.length - 1], lo = oh[oh.length - 1];
+      nh.push(Math.min(100, ln + (100 - ln) * 0.14 + Math.random() * 1.4));
+      oh.push(Math.max(0, lo - lo * 0.11 - Math.random() * 1.4));
+      chart.update();
+      ctrEl.textContent = String(day);
+      if (day < 7)       { statusEl.textContent = 'Resistance Phase — Keep going!'; statusEl.className = 'sim-badge building'; }
+      else if (day < 21) { statusEl.textContent = 'Wiring Phase — Connections forming'; statusEl.className = 'sim-badge wiring'; }
+      else               { statusEl.textContent = 'Automation Phase'; statusEl.className = 'sim-badge automated'; }
+    });
+
+    document.getElementById('btn-reset')!.addEventListener('click', () => {
+      day = 1; days.length = 0; days.push(1);
+      nh.length = 0; nh.push(8); oh.length = 0; oh.push(92);
+      chart.update();
+      ctrEl.textContent = '1';
+      statusEl.textContent = 'Starting Phase'; statusEl.className = 'sim-badge starting';
+    });
+  }
+
+  init();
+});
+</script>
