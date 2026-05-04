@@ -1,0 +1,1348 @@
+---
+// src/pages/neuroplasticity-exercises.astro
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "17 Neuroplasticity Exercises to Rewire Your Brain (Science-Backed)";
+const pageDescription = "Evidence-based neuroplasticity exercises and practices that physically reshape your brain. Build new neural pathways with these 17 science-backed techniques.";
+const pageKeywords = "neuroplasticity exercises, neuroplasticity practices, brain rewiring exercises, neural pathway training, brain plasticity exercises, cognitive exercises neuroplasticity, mindfulness neuroplasticity, neuroplasticity training, rewire your brain exercises";
+const publishedDate = "2026-05-04T00:00:00Z";
+const modifiedDate  = "2026-05-04T00:00:00Z";
+
+const sidebarTopics = [
+  { id:"why-exercises",   label:"Why Exercises Work"          },
+  { id:"tier1",           label:"Tier 1: Foundational"        },
+  { id:"tier2",           label:"Tier 2: Cognitive"           },
+  { id:"tier3",           label:"Tier 3: Advanced"            },
+  { id:"daily-protocol",  label:"Daily Protocol"              },
+  { id:"mistakes",        label:"Common Mistakes"             },
+  { id:"tracker",         label:"Interactive Tracker"         },
+  { id:"faq",             label:"FAQ"                         },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": pageTitle,
+  "description": pageDescription,
+  "author": { "@type": "Organization", "name": "Success Odyssey Hub", "url": "https://successodysseyhub.com" },
+  "publisher": { "@type": "Organization", "name": "Success Odyssey Hub" },
+  "datePublished": publishedDate,
+  "dateModified": modifiedDate,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://successodysseyhub.com/neuroplasticity-exercises" },
+  "keywords": pageKeywords,
+  "articleSection": "Brain Science",
+  "inLanguage": "en-US"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What are the best neuroplasticity exercises?", "acceptedAnswer": { "@type": "Answer", "text": "The most evidence-backed neuroplasticity exercises include aerobic exercise (which boosts BDNF), mindfulness meditation (which increases prefrontal cortex gray matter), deliberate skill learning, spaced repetition, and mental visualization. Combining physical, cognitive, and mindfulness practices produces the strongest results." } },
+    { "@type": "Question", "name": "How long does it take to see results from neuroplasticity exercises?", "acceptedAnswer": { "@type": "Answer", "text": "Research shows measurable structural brain changes within 8 weeks of consistent daily practice (mindfulness studies, University of Massachusetts). Habit loop formation averages 66 days. However, neurochemical benefits such as elevated BDNF from exercise appear within hours of a single session." } },
+    { "@type": "Question", "name": "Can neuroplasticity exercises improve memory?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Spaced repetition, aerobic exercise, and sleep optimization are the three most powerful memory-enhancing neuroplasticity practices. Aerobic exercise promotes hippocampal neurogenesis — the growth of new neurons in the brain's primary memory center." } },
+    { "@type": "Question", "name": "Are neuroplasticity exercises suitable for older adults?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Research confirms that neuroplasticity persists throughout life. Adults over 60 who regularly engage in aerobic exercise, social learning, and novel skill acquisition show significantly reduced cognitive decline. The brain remains shapeable at any age — it simply requires greater consistency." } }
+  ]
+};
+
+const tier1 = [
+  {
+    id: "ex-aerobic",
+    num: "01",
+    title: "Aerobic Exercise",
+    tag: "Physical",
+    tagClass: "tag-physical",
+    science: "Boosts BDNF by up to 200–300% in a single session (Cotman & Berchtold, 2002). Promotes hippocampal neurogenesis and improves working memory within 20 minutes.",
+    protocol: "30 minutes of zone-2 cardio (brisk walk, jog, cycling) 4–5× per week. You should be able to hold a conversation but feel your heart rate elevated.",
+    timeToEffect: "Hours (neurochemical) / 4–8 weeks (structural)",
+    difficulty: 2,
+  },
+  {
+    id: "ex-sleep",
+    num: "02",
+    title: "Sleep Optimization",
+    tag: "Recovery",
+    tagClass: "tag-recovery",
+    science: "During slow-wave sleep, the glymphatic system clears neurotoxic waste. Memory consolidation (synaptic homeostasis theory) primarily occurs during sleep. Chronic sleep deprivation suppresses BDNF and impairs LTP within 24 hours.",
+    protocol: "7–9 hours at consistent times. No screens 60 minutes before bed. Keep room at 65–68°F (18–20°C). Avoid alcohol within 3 hours of sleep.",
+    timeToEffect: "Immediate cognitive gains / 2–4 weeks (structural consolidation)",
+    difficulty: 1,
+  },
+  {
+    id: "ex-mindfulness",
+    num: "03",
+    title: "Mindfulness Meditation",
+    tag: "Mind",
+    tagClass: "tag-mind",
+    science: "Sara Lazar's Harvard study (2005) found meditators had measurably thicker cortical regions associated with attention and interoception. An 8-week MBSR program increases gray matter in the prefrontal cortex and reduces amygdala volume.",
+    protocol: "10–20 minutes daily of focused breath attention. When the mind wanders, notice without judgment and return. Consistency over intensity — 10 minutes every day beats 60 minutes once a week.",
+    timeToEffect: "8 weeks (structural gray matter changes)",
+    difficulty: 2,
+  },
+  {
+    id: "ex-nutrition",
+    num: "04",
+    title: "Brain-Supportive Nutrition",
+    tag: "Physical",
+    tagClass: "tag-physical",
+    science: "Omega-3 fatty acids (DHA) are directly incorporated into neuronal membranes, improving signal conductance. A 2020 meta-analysis in Nutrients found DHA supplementation improved memory performance across 18 randomized controlled trials.",
+    protocol: "2–3 servings of fatty fish weekly (salmon, sardines, mackerel). Daily intake of antioxidant-rich vegetables. Minimize ultra-processed foods, which promote neuroinflammation. Consider a high-quality DHA supplement if fish intake is low.",
+    timeToEffect: "4–12 weeks (membrane composition changes)",
+    difficulty: 1,
+  },
+];
+
+const tier2 = [
+  {
+    id: "ex-novel-skill",
+    num: "05",
+    title: "Novel Skill Acquisition",
+    tag: "Cognitive",
+    tagClass: "tag-cognitive",
+    science: "Learning a genuinely new skill forces the brain to build entirely new neural maps rather than strengthen existing ones. A landmark study (Draganski et al., 2004) found measurable gray matter increases in jugglers within 3 months of learning — and shrinkage when they stopped.",
+    protocol: "Choose a skill outside your current competence: a musical instrument, a new language, chess, drawing, or coding. Practice 20–30 minutes daily at the edge of your ability. Avoid comfortable repetition — deliberate challenge is the neuroplastic signal.",
+    timeToEffect: "3–6 months (structural)",
+    difficulty: 4,
+  },
+  {
+    id: "ex-spaced",
+    num: "06",
+    title: "Spaced Repetition",
+    tag: "Cognitive",
+    tagClass: "tag-cognitive",
+    science: "The spacing effect (Ebbinghaus, 1885; replicated hundreds of times) demonstrates that information reviewed at increasing intervals is retained exponentially longer than massed practice. Each retrieval attempt strengthens the memory trace through reconsolidation.",
+    protocol: "Use a spaced repetition system (Anki is free). Review new information at 1 day, 3 days, 7 days, 14 days, 30 days, and 90 days. The slight difficulty of retrieval at each interval is the productive struggle that drives neural strengthening.",
+    timeToEffect: "Immediate retention gains / 30–90 days (long-term encoding)",
+    difficulty: 3,
+  },
+  {
+    id: "ex-visualization",
+    num: "07",
+    title: "Mental Visualization",
+    tag: "Mind",
+    tagClass: "tag-mind",
+    science: "The brain's motor cortex activates during vivid mental rehearsal of a physical skill (Pascual-Leone et al., 1995). The famous piano study showed that purely mental practice produced near-identical neural changes to physical practice. Imagery primes neural pathways before real-world execution.",
+    protocol: "10 minutes daily. Close your eyes and rehearse the target skill or scenario in first-person perspective. Include sensory detail: what you see, hear, and feel. Pair with physical practice for maximum effect. Most effective immediately before the real performance.",
+    timeToEffect: "2–4 weeks (neural priming)",
+    difficulty: 2,
+  },
+  {
+    id: "ex-cold",
+    num: "08",
+    title: "Cold Water Exposure",
+    tag: "Physical",
+    tagClass: "tag-physical",
+    science: "Cold exposure triggers a 2–3× increase in norepinephrine, which enhances focus, attention, and mood. A 2022 study in PLOS ONE found regular cold-water swimming associated with reduced depression and improved mental well-being. Norepinephrine also upregulates BDNF expression.",
+    protocol: "Begin with 30-second cold endings to your normal shower. Progressively extend to 2–3 minutes of cold water. Cold plunges at 50–59°F (10–15°C) for 11 minutes total per week (Andrew Huberman's evidence-based protocol).",
+    timeToEffect: "Immediate (neurochemical) / 4 weeks (baseline shift)",
+    difficulty: 4,
+  },
+  {
+    id: "ex-journaling",
+    num: "09",
+    title: "Expressive Journaling",
+    tag: "Mind",
+    tagClass: "tag-mind",
+    science: "James Pennebaker's research at UT Austin showed that structured expressive writing about difficult experiences reduces psychological distress and improves immune function. Journaling activates the prefrontal cortex and promotes emotional regulation by engaging the left hemisphere's language centers to process right-hemisphere emotional content.",
+    protocol: "15–20 minutes daily. Write without editing. Choose a prompt: 'What am I trying to avoid thinking about?' or 'What would I do if I weren't afraid?' or a simple daily reflection on wins, lessons, and intentions for tomorrow.",
+    timeToEffect: "1–4 weeks (emotional regulation improvements)",
+    difficulty: 1,
+  },
+  {
+    id: "ex-social",
+    num: "10",
+    title: "Deep Social Engagement",
+    tag: "Social",
+    tagClass: "tag-social",
+    science: "The social brain hypothesis (Dunbar) proposes that human prefrontal cortex expansion evolved largely to manage complex social relationships. Rich social interaction demands perspective-taking, emotional regulation, and language processing — activating multiple cortical networks simultaneously.",
+    protocol: "Replace passive social media scrolling with active conversations. Have at least 1 deep conversation daily. Learn a cooperative skill with another person. Teach what you know — the act of teaching is one of the most potent neuroplastic activities.",
+    timeToEffect: "Ongoing — cumulative benefit",
+    difficulty: 2,
+  },
+];
+
+const tier3 = [
+  {
+    id: "ex-breath",
+    num: "11",
+    title: "Deliberate Breathwork",
+    tag: "Advanced",
+    tagClass: "tag-advanced",
+    science: "Cyclic sighing (one extended double-inhale followed by a slow exhale) rapidly reduces physiological arousal by deflating over-inflated alveoli, lowering CO₂, and slowing the heart rate. Stanford research (Balban et al., 2023) showed this was superior to mindfulness meditation for reducing stress in real time.",
+    protocol: "5 minutes of cyclic sighing: double-inhale through the nose, slow complete exhale through the mouth. Practice before high-stakes situations. Alternatively, box breathing (4-4-4-4) activates the parasympathetic system and improves prefrontal function before demanding cognitive tasks.",
+    timeToEffect: "Immediate (acute) / 4 weeks (HRV baseline improvement)",
+    difficulty: 2,
+  },
+  {
+    id: "ex-interleaved",
+    num: "12",
+    title: "Interleaved Practice",
+    tag: "Cognitive",
+    tagClass: "tag-cognitive",
+    science: "Mixing related skills within a single practice session (interleaving) produces stronger long-term retention than blocked practice, despite feeling harder and less productive. The cognitive difficulty of switching forces deeper encoding and retrieval — what researchers call 'desirable difficulty.'",
+    protocol: "Instead of practicing skill A for 30 minutes then skill B for 30 minutes, alternate: A-B-A-B-A-B. Apply this to language learning (vocabulary → grammar → listening), sports (forehand → serve → backhand), or any multi-component skill.",
+    timeToEffect: "6–12 weeks (long-term retention gains)",
+    difficulty: 4,
+  },
+  {
+    id: "ex-flow",
+    num: "13",
+    title: "Flow State Training",
+    tag: "Advanced",
+    tagClass: "tag-advanced",
+    science: "Flow states are associated with transient hypofrontality — a temporary reduction in prefrontal activity that reduces self-criticism and increases pattern recognition. During flow, norepinephrine, dopamine, anandamide, and serotonin are all elevated simultaneously — creating the optimal neurochemical environment for neuroplastic learning.",
+    protocol: "Identify your skill-challenge sweet spot: a task that is 4–8% beyond your current ability. Eliminate all distractions. Use a clear goal structure and immediate feedback. Time blocks: 90–120 minutes. The first 15–20 minutes of friction are normal — do not quit.",
+    timeToEffect: "Session-by-session — cumulative neuroplastic benefit",
+    difficulty: 5,
+  },
+  {
+    id: "ex-contrast",
+    num: "14",
+    title: "Contrast Learning",
+    tag: "Cognitive",
+    tagClass: "tag-cognitive",
+    science: "Studying examples of both correct and incorrect performance (contrast learning) activates error-detection circuits in the anterior cingulate cortex more strongly than studying correct examples alone. This produces faster and more durable neural encoding of the target skill.",
+    protocol: "When learning any skill, find examples of excellent execution AND common failure modes side by side. Analyze what distinguishes them. For language: study native speakers alongside typical learner errors. For writing: read masterwork alongside mediocre examples with explicit comparison.",
+    timeToEffect: "Immediate — accelerated encoding from first session",
+    difficulty: 3,
+  },
+  {
+    id: "ex-teaching",
+    num: "15",
+    title: "The Feynman Teaching Method",
+    tag: "Cognitive",
+    tagClass: "tag-cognitive",
+    science: "Attempting to explain a concept in simple terms forces retrieval of everything you know, exposes gaps, and requires mental reorganization — all of which deepen the neural encoding. Studies on the 'protégé effect' show that teaching expectation alone improves learning performance by up to 28%.",
+    protocol: "After learning anything new, explain it aloud as if to a 12-year-old with no prior knowledge. When you hit a gap, return to the source material. Repeat until you can explain it from first principles without notes. Write it down — then refine.",
+    timeToEffect: "Immediate — per-session encoding boost",
+    difficulty: 3,
+  },
+  {
+    id: "ex-resistance",
+    num: "16",
+    title: "Resistance Training",
+    tag: "Physical",
+    tagClass: "tag-physical",
+    science: "Beyond its muscular effects, resistance training increases IGF-1 (insulin-like growth factor), which crosses the blood-brain barrier and promotes neurogenesis. A 2019 study in NeuroImage found that 6 months of resistance training produced significant increases in hippocampal volume in older adults.",
+    protocol: "2–3 sessions per week of compound resistance training (squat, deadlift, press patterns). You do not need to lift heavy — progressive overload matters more than absolute load. Combine with aerobic exercise for additive BDNF effects.",
+    timeToEffect: "6–12 weeks (IGF-1 elevation and hippocampal changes)",
+    difficulty: 3,
+  },
+  {
+    id: "ex-non-sleep",
+    num: "17",
+    title: "Non-Sleep Deep Rest (NSDR)",
+    tag: "Advanced",
+    tagClass: "tag-advanced",
+    science: "NSDR protocols (yoga nidra and certain hypnosis scripts) have been shown to increase striatal dopamine by up to 65% in a single session (Kjaer et al., 2002 adapted by Huberman Lab). NSDR accelerates memory consolidation when practiced within hours of a learning session — compressing the overnight benefit into 20 minutes.",
+    protocol: "20–30 minute guided NSDR or yoga nidra session. Ideally practice 60–90 minutes after a learning session while still in your cognitive window. Available free on YouTube (search 'Huberman NSDR' or 'yoga nidra 20 minutes'). Not sleep — remain in a liminal state.",
+    timeToEffect: "Immediate consolidation benefit / Ongoing dopamine baseline improvement",
+    difficulty: 2,
+  },
+];
+
+const protocolItems = [
+  { time:"6:00 AM", action:"Wake + 10 min NSDR or quiet focus", why:"Restores dopamine baseline before stimulation", duration:"10 min" },
+  { time:"6:30 AM", action:"30 min aerobic exercise (outdoors preferred)", why:"BDNF surge + cortisol regulation + dopamine", duration:"30 min" },
+  { time:"7:15 AM", action:"10 min expressive journaling + intention setting", why:"Prefrontal activation + goal encoding", duration:"10 min" },
+  { time:"9:00 AM", action:"Deep work block — novel skill or deliberate practice", why:"Peak acetylcholine window (90 min max)", duration:"90 min" },
+  { time:"12:00 PM", action:"20 min NSDR / nap", why:"Memory consolidation of morning learning", duration:"20 min" },
+  { time:"3:00 PM", action:"10 min mindfulness + breathwork", why:"Afternoon cortisol dip recovery", duration:"10 min" },
+  { time:"5:00 PM", action:"Resistance or mobility training", why:"IGF-1 + BDNF second surge", duration:"30 min" },
+  { time:"8:00 PM", action:"Spaced repetition review (Anki / reading)", why:"Reconsolidation window — low cognitive load", duration:"20 min" },
+  { time:"9:30 PM", action:"No screens — reading, journaling, or conversation", why:"Melatonin protection + parasympathetic mode", duration:"60 min" },
+  { time:"10:30 PM", action:"Sleep — 7–9 hours target", why:"Glymphatic clearance + synaptic homeostasis", duration:"8 hrs" },
+];
+
+const mistakes = [
+  {
+    title: "Confusing Novelty with Neuroplasticity",
+    body: "Trying something new once is not neuroplastic training. The brain changes through repetition at the edge of ability — not through variety alone. Switching hobbies every week produces stimulation, not structural change.",
+    fix: "Pick one skill and practice it consistently for 90 days before adding another."
+  },
+  {
+    title: "Skipping Sleep to Practice More",
+    body: "Sleep is not downtime for neuroplasticity — it is the primary consolidation phase. Cutting sleep to gain practice hours is a net negative: you are creating more experience that your brain cannot properly encode.",
+    fix: "Treat 7+ hours of sleep as a non-negotiable performance variable, not a reward."
+  },
+  {
+    title: "Practicing in Comfort Zones",
+    body: "Repeating what you already do well does not signal the brain to build new pathways. LTP is triggered by novelty and challenge — not familiar repetition. This is why experienced practitioners plateau without deliberate practice.",
+    fix: "Identify the specific sub-skill you struggle with most and target it directly."
+  },
+  {
+    title: "Expecting Linear Progress",
+    body: "Neuroplastic change is non-linear. Plateaus are periods of consolidation, not stagnation. The brain reorganizes and strengthens pathways during rest, not during practice itself. Progress often appears in sudden jumps after apparent plateaus.",
+    fix: "Track practice consistency (days × quality), not performance metrics alone."
+  },
+  {
+    title: "High Intensity Without Recovery",
+    body: "Chronic stress — including overtraining — suppresses BDNF and promotes cortisol-driven hippocampal damage. More practice under stress produces less neural change than moderate practice with recovery. The most neuroplastic athletes are not those who train hardest but those who recover best.",
+    fix: "Build at least 2 full recovery days per week into any cognitive or physical training protocol."
+  },
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  type="article"
+  datePublished={publishedDate}
+  dateModified={modifiedDate}
+  author="Success Odyssey Hub"
+  canonicalUrl="https://successodysseyhub.com/neuroplasticity-exercises"
+>
+  <slot slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </slot>
+
+  <div class="npe-wrapper">
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="npe-sidebar" aria-label="Article navigation">
+      <div class="sb-inner">
+        <div class="sb-badge">Brain Science</div>
+        <nav aria-label="Page sections">
+          <ul>
+            {sidebarTopics.map(t => (
+              <li>
+                <a class="sb-link" href={`#${t.id}`} data-target={t.id}>{t.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div class="sb-callout">
+          <div class="sb-callout-title">Related</div>
+          <a class="sb-rel-link" href="/neuroplasticity">← Neuroplasticity Science</a>
+          <a class="sb-rel-link" href="/blog/neuroplasticity-success">Neuroplasticity for Success →</a>
+        </div>
+        <div class="sb-progress">
+          <div class="sb-prog-label">Reading progress</div>
+          <div class="sb-prog-track"><div class="sb-prog-fill" id="reading-progress"></div></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ══ MOBILE NAV ══ -->
+    <div class="mob-pill" id="mob-pill">
+      <button class="mob-pill-btn" id="mob-pill-toggle" aria-expanded="false">
+        <span id="mob-pill-label">Topics</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="mob-pill-menu" id="mob-pill-menu" hidden>
+        {sidebarTopics.map(t => (
+          <a class="mob-link" href={`#${t.id}`} data-target={t.id}>{t.label}</a>
+        ))}
+      </div>
+    </div>
+
+    <!-- ══ MAIN CONTENT ══ -->
+    <main class="npe-main">
+
+      <!-- HEADER -->
+      <div class="article-header">
+        <div class="eyebrow-row">
+          <span class="eyebrow-tag">Brain Science</span>
+          <span class="eyebrow-sep">·</span>
+          <time datetime={publishedDate} class="eyebrow-date">May 4, 2026</time>
+          <span class="eyebrow-sep">·</span>
+          <span class="eyebrow-read">14 min read</span>
+        </div>
+        <h1>17 Neuroplasticity Exercises to <span class="grad">Rewire Your Brain</span></h1>
+        <p class="article-lead">Most brain-training advice is vague. This guide goes deeper: each exercise below is mapped to a specific neurological mechanism, backed by peer-reviewed research, and structured with a concrete protocol you can start today. The science of how to physically reshape your brain — not just why you should.</p>
+
+        <div class="stat-row">
+          <div class="stat"><span class="sn">17</span><span class="sd">Validated exercises</span></div>
+          <div class="stat"><span class="sn">3</span><span class="sd">Difficulty tiers</span></div>
+          <div class="stat"><span class="sn">66</span><span class="sd">Avg. days to habit formation</span></div>
+        </div>
+      </div>
+
+      <!-- WHY EXERCISES WORK -->
+      <section id="why-exercises" class="npe-sec">
+        <div class="eyebrow">The Science</div>
+        <h2>Why Neuroplasticity Exercises Actually Work</h2>
+        <p class="body-text">Most "brain training" products fail because they target the wrong mechanism. They increase familiarity with a narrow task, not structural brain change. Genuine neuroplastic exercises work through three specific biological pathways:</p>
+
+        <div class="mechanism-grid">
+          <div class="mech-card">
+            <div class="mech-icon">①</div>
+            <h3>Long-Term Potentiation (LTP)</h3>
+            <p>Repeated, high-frequency activation of a synapse permanently increases its sensitivity. This is the cellular mechanism of learning — literally the wiring of a new habit or skill into the brain's hardware. Every exercise in this guide targets LTP through deliberate, spaced repetition.</p>
+          </div>
+          <div class="mech-card">
+            <div class="mech-icon">②</div>
+            <h3>BDNF Upregulation</h3>
+            <p>Brain-Derived Neurotrophic Factor is the molecular signal that tells the brain to grow new connections. The exercises that most dramatically increase BDNF — aerobic exercise, sleep, novel skill learning — are the backbone of any serious neuroplasticity protocol.</p>
+          </div>
+          <div class="mech-card">
+            <div class="mech-icon">③</div>
+            <h3>Synaptic Pruning (LTD)</h3>
+            <p>Unused pathways are actively eliminated. This is not passive decay — it is active optimization. By consistently choosing new behaviors over old ones, you accelerate the pruning of unwanted patterns while strengthening replacements. Use it or lose it applies in both directions.</p>
+          </div>
+        </div>
+
+        <div class="callout green">
+          <div>
+            <strong>The critical insight most guides miss:</strong>
+            <p>Neuroplasticity exercises only produce structural change when the brain is in the right neurochemical state. Chronic stress, sleep deprivation, or poor nutrition can make the exact same exercises ineffective. The lifestyle practices in Tier 1 are not optional supplements — they are the prerequisites for everything else working.</p>
+          </div>
+        </div>
+
+        <p class="body-text">The exercises are organized into three tiers: <strong>Tier 1</strong> covers foundational biological prerequisites — get these right first. <strong>Tier 2</strong> covers the core cognitive and mindfulness practices. <strong>Tier 3</strong> covers advanced techniques that amplify everything below them.</p>
+      </section>
+
+      <!-- TIER 1 -->
+      <section id="tier1" class="npe-sec">
+        <div class="tier-header tier-header--1">
+          <div class="tier-badge">Tier 1</div>
+          <h2>Foundational Practices</h2>
+          <p>These are the biological prerequisites of neuroplasticity. Without them, the cognitive exercises in Tier 2 and 3 produce significantly weaker results. Start here before adding complexity.</p>
+        </div>
+
+        <div class="exercise-list">
+          {tier1.map(ex => (
+            <article id={ex.id} class="exercise-card">
+              <div class="ex-header">
+                <span class="ex-num">{ex.num}</span>
+                <div class="ex-title-wrap">
+                  <h3>{ex.title}</h3>
+                  <span class={`ex-tag ${ex.tagClass}`}>{ex.tag}</span>
+                </div>
+                <div class="ex-diff" aria-label={`Difficulty ${ex.difficulty} of 5`}>
+                  {[1,2,3,4,5].map(d => (
+                    <span class={`diff-dot ${d <= ex.difficulty ? 'filled' : ''}`}></span>
+                  ))}
+                </div>
+              </div>
+              <div class="ex-body">
+                <div class="ex-science">
+                  <span class="ex-label">The Science</span>
+                  <p>{ex.science}</p>
+                </div>
+                <div class="ex-protocol">
+                  <span class="ex-label">Protocol</span>
+                  <p>{ex.protocol}</p>
+                </div>
+                <div class="ex-footer">
+                  <span class="ex-time-label">Time to effect:</span>
+                  <span class="ex-time">{ex.timeToEffect}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- AD UNIT TOP -->
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7229511013815291"
+          data-ad-slot="2952775705"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- TIER 2 -->
+      <section id="tier2" class="npe-sec">
+        <div class="tier-header tier-header--2">
+          <div class="tier-badge tier-badge--2">Tier 2</div>
+          <h2>Cognitive & Mindfulness Practices</h2>
+          <p>With the Tier 1 foundations established, these exercises directly target specific neural circuits responsible for attention, memory, learning, and emotional regulation.</p>
+        </div>
+
+        <div class="exercise-list">
+          {tier2.map(ex => (
+            <article id={ex.id} class="exercise-card">
+              <div class="ex-header">
+                <span class="ex-num">{ex.num}</span>
+                <div class="ex-title-wrap">
+                  <h3>{ex.title}</h3>
+                  <span class={`ex-tag ${ex.tagClass}`}>{ex.tag}</span>
+                </div>
+                <div class="ex-diff" aria-label={`Difficulty ${ex.difficulty} of 5`}>
+                  {[1,2,3,4,5].map(d => (
+                    <span class={`diff-dot ${d <= ex.difficulty ? 'filled' : ''}`}></span>
+                  ))}
+                </div>
+              </div>
+              <div class="ex-body">
+                <div class="ex-science">
+                  <span class="ex-label">The Science</span>
+                  <p>{ex.science}</p>
+                </div>
+                <div class="ex-protocol">
+                  <span class="ex-label">Protocol</span>
+                  <p>{ex.protocol}</p>
+                </div>
+                <div class="ex-footer">
+                  <span class="ex-time-label">Time to effect:</span>
+                  <span class="ex-time">{ex.timeToEffect}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- AD UNIT MID -->
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7229511013815291"
+          data-ad-slot="4827765044"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- TIER 3 -->
+      <section id="tier3" class="npe-sec">
+        <div class="tier-header tier-header--3">
+          <div class="tier-badge tier-badge--3">Tier 3</div>
+          <h2>Advanced Neuroplasticity Techniques</h2>
+          <p>These high-leverage practices amplify the effect of everything in Tier 1 and 2. They are more demanding to implement but produce disproportionate results for those who have established the foundations.</p>
+        </div>
+
+        <div class="exercise-list">
+          {tier3.map(ex => (
+            <article id={ex.id} class="exercise-card">
+              <div class="ex-header">
+                <span class="ex-num">{ex.num}</span>
+                <div class="ex-title-wrap">
+                  <h3>{ex.title}</h3>
+                  <span class={`ex-tag ${ex.tagClass}`}>{ex.tag}</span>
+                </div>
+                <div class="ex-diff" aria-label={`Difficulty ${ex.difficulty} of 5`}>
+                  {[1,2,3,4,5].map(d => (
+                    <span class={`diff-dot ${d <= ex.difficulty ? 'filled' : ''}`}></span>
+                  ))}
+                </div>
+              </div>
+              <div class="ex-body">
+                <div class="ex-science">
+                  <span class="ex-label">The Science</span>
+                  <p>{ex.science}</p>
+                </div>
+                <div class="ex-protocol">
+                  <span class="ex-label">Protocol</span>
+                  <p>{ex.protocol}</p>
+                </div>
+                <div class="ex-footer">
+                  <span class="ex-time-label">Time to effect:</span>
+                  <span class="ex-time">{ex.timeToEffect}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- DAILY PROTOCOL -->
+      <section id="daily-protocol" class="npe-sec">
+        <div class="eyebrow">Protocol</div>
+        <h2>The Optimized Daily Neuroplasticity Protocol</h2>
+        <p class="body-text">Rather than doing all 17 exercises simultaneously, the following daily protocol integrates the highest-leverage practices into a realistic daily structure. This is designed for someone with moderate time availability and a serious commitment to cognitive performance.</p>
+
+        <div class="protocol-table-wrap">
+          <table class="protocol-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Practice</th>
+                <th>Neuroplastic Mechanism</th>
+                <th>Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {protocolItems.map((item, i) => (
+                <tr class={i % 2 === 0 ? 'row-even' : 'row-odd'}>
+                  <td class="time-cell"><strong>{item.time}</strong></td>
+                  <td>{item.action}</td>
+                  <td class="why-cell">{item.why}</td>
+                  <td class="dur-cell">{item.duration}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout amber">
+          <div>
+            <strong>Start With One Tier, Not All Three</strong>
+            <p>If this protocol feels overwhelming, start with just Tier 1 for 30 days. The foundational practices alone produce measurable improvements in cognition, mood, and energy. Add Tier 2 practices in month two. Save Tier 3 for month three. Compounding applies to habit formation, not just finance.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MISTAKES -->
+      <section id="mistakes" class="npe-sec">
+        <div class="eyebrow">Common Mistakes</div>
+        <h2>5 Mistakes That Kill Neuroplastic Progress</h2>
+        <p class="body-text">Most people who attempt a brain-training protocol fail not because the exercises don't work, but because of avoidable strategic errors. These are the five most common — and most damaging.</p>
+
+        <div class="mistakes-list">
+          {mistakes.map((m, i) => (
+            <div class="mistake-card">
+              <div class="mistake-num">0{i+1}</div>
+              <div class="mistake-body">
+                <h3>{m.title}</h3>
+                <p>{m.body}</p>
+                <div class="mistake-fix"><strong>Fix:</strong> {m.fix}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- INTERACTIVE TRACKER -->
+      <section id="tracker" class="npe-sec">
+        <div class="eyebrow">Interactive</div>
+        <h2>7-Day Neuroplasticity Practice Tracker</h2>
+        <p class="body-text">Tracking practice days is one of the most effective behavioral interventions for habit formation. Check off each practice daily. The visual streak creates a mild social commitment that leverages your brain's loss-aversion to maintain consistency.</p>
+
+        <div class="tracker-wrap">
+          <div class="tracker-grid" id="tracker-grid">
+            <!-- populated by JS -->
+          </div>
+          <div class="tracker-legend">
+            <div class="tl-item"><span class="tl-dot done"></span> Completed</div>
+            <div class="tl-item"><span class="tl-dot today"></span> Today</div>
+            <div class="tl-item"><span class="tl-dot empty"></span> Upcoming</div>
+          </div>
+          <div class="tracker-stats" id="tracker-stats"></div>
+          <button class="tracker-reset" id="tracker-reset">Reset tracker</button>
+        </div>
+      </section>
+
+      <!-- AD UNIT BOTTOM -->
+      <div class="ad-unit ad-unit--bottom">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7229511013815291"
+          data-ad-slot="2952775705"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- FAQ -->
+      <section id="faq" class="npe-sec">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          {[
+            {q:"What are the best neuroplasticity exercises?", a:"The most evidence-backed practices are aerobic exercise (BDNF), mindfulness meditation (gray matter growth), deliberate skill learning (LTP), spaced repetition (memory consolidation), and sleep optimization (glymphatic clearance). Combining physical, cognitive, and mindfulness practices produces the strongest structural results."},
+            {q:"How long does it take to see results?", a:"Neurochemical benefits — improved mood, focus, energy — appear within hours of a single aerobic session. Structural brain changes take longer: mindfulness studies show measurable gray matter increases at 8 weeks. Habit loop formation averages 66 days (Phillippa Lally, UCL, 2010). Expect noticeable functional improvement within 30 days, and structural change within 90."},
+            {q:"Can neuroplasticity exercises improve memory?", a:"Yes, particularly aerobic exercise, spaced repetition, sleep optimization, and the Feynman teaching method. Aerobic exercise specifically promotes hippocampal neurogenesis — new neuron growth in the brain's primary memory center. Combine all four for additive effects."},
+            {q:"Are these exercises suitable for older adults?", a:"Absolutely. The National Institute on Aging confirms that neuroplasticity persists throughout life. Adults over 60 who regularly practice aerobic exercise, social engagement, and novel skill acquisition show measurably reduced cognitive decline. The brain remains shapeable at any age — the key variables are consistency and challenge level."},
+            {q:"Do I need to do all 17 exercises?", a:"No. Start with Tier 1 (exercises 1–4) for 30 days before adding anything else. The foundational practices alone produce significant results. Select from Tier 2 and 3 based on your specific goals — cognitive performance, emotional regulation, skill acquisition — rather than trying to do everything at once."},
+          ].map(f => (
+            <details class="faq-item">
+              <summary class="faq-q">{f.q}</summary>
+              <p class="faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CONCLUSION -->
+      <section class="npe-sec conclusion-sec">
+        <div class="eyebrow">Conclusion</div>
+        <h2>Your Brain Is Waiting for a Signal</h2>
+        <p class="body-text">Every exercise in this guide works through the same fundamental principle: send a strong, repeated, focused signal to a specific neural circuit, and the brain will allocate resources to strengthen it. The 17 practices above are the most reliable ways to send that signal — each one backed by published research and structured for practical application.</p>
+        <p class="body-text">The most important variable is not which exercise you choose — it is consistency. A mediocre practice done daily beats a perfect protocol done occasionally. Start with Tier 1. Build the biological foundation. Add complexity gradually. Your brain changes in the direction you repeatedly point it.</p>
+
+        <div class="cta-box">
+          <h3>Ready to go deeper?</h3>
+          <p>Explore the complete science behind these mechanisms in our foundational guide — including the biological mechanisms of LTP, BDNF, and the full neuroscience of habit formation.</p>
+          <a href="/neuroplasticity" class="cta-btn">Read: The Science of Neuroplasticity →</a>
+          <a href="/blog/neuroplasticity-success" class="cta-btn cta-btn--sec">Neuroplasticity for Success →</a>
+        </div>
+      </section>
+
+      <!-- AUTHOR BIO -->
+      <div class="author-bio">
+        <div class="author-bio__content">
+          <h3>About the Author</h3>
+          <p><strong>Success Odyssey Hub</strong> is an independent research-driven publication focused on the psychology of achievement, decision-making science, and evidence-based personal development. Our content synthesizes peer-reviewed research, philosophical frameworks, and practical application — written for people who take their growth seriously.</p>
+        </div>
+      </div>
+
+      <!-- RELATED ARTICLES -->
+      <div class="related-section">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <a href="/neuroplasticity" class="related-card">
+            <div class="rc-label">Brain Science</div>
+            <div class="rc-title">Neuroplasticity & Strategic Personal Development</div>
+            <div class="rc-arrow">→</div>
+          </a>
+          <a href="/blog/neuroplasticity-success" class="related-card">
+            <div class="rc-label">Performance</div>
+            <div class="rc-title">Neuroplasticity: How to Rewire Your Brain for Success</div>
+            <div class="rc-arrow">→</div>
+          </a>
+          <a href="/blog/habit-loop-explained" class="related-card">
+            <div class="rc-label">Habits</div>
+            <div class="rc-title">The Habit Loop: Cue, Routine, Reward Explained</div>
+            <div class="rc-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- EXTERNAL RESOURCES -->
+      <div class="external-resources">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://www.nia.nih.gov/health/brain-health" target="_blank" rel="noopener noreferrer">National Institute on Aging — Brain Health</a></li>
+          <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3174832/" target="_blank" rel="noopener noreferrer">Cotman & Berchtold (2002) — Exercise and BDNF (NIH)</a></li>
+          <li><a href="https://news.harvard.edu/gazette/story/2018/04/harvard-researchers-study-how-mindfulness-may-change-the-brain-in-depressed-patients/" target="_blank" rel="noopener noreferrer">Harvard — Mindfulness and Brain Structure</a></li>
+        </ul>
+      </div>
+
+    </main>
+  </div>
+
+<style lang="scss">
+
+/* ── Layout ── */
+.npe-wrapper {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  gap: 0 2.5rem;
+  position: relative;
+}
+
+/* ── Sidebar ── */
+.npe-sidebar {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+.sb-inner {
+  position: sticky;
+  top: 6rem;
+  background: var(--color-surface, #f9fafb);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 14px;
+  padding: 1.25rem 1rem;
+}
+.sb-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent, #0f766e);
+  margin-bottom: 1rem;
+}
+.sb-inner nav ul { list-style: none; padding: 0; margin: 0; }
+.sb-inner nav li { margin-bottom: 0.15rem; }
+.sb-link {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--color-text-muted, #6b7280);
+  text-decoration: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 7px;
+  transition: all 0.18s;
+  &:hover, &.active {
+    color: var(--color-accent, #0f766e);
+    background: var(--color-accent-subtle, rgba(15,118,110,.08));
+  }
+}
+.sb-callout {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, #e5e7eb);
+}
+.sb-callout-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted, #9ca3af);
+  margin-bottom: 0.5rem;
+}
+.sb-rel-link {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-accent, #0f766e);
+  text-decoration: none;
+  padding: 0.3rem 0;
+  &:hover { text-decoration: underline; }
+}
+.sb-progress { margin-top: 1.25rem; }
+.sb-prog-label { font-size: 0.7rem; color: var(--color-text-muted, #9ca3af); margin-bottom: 0.4rem; }
+.sb-prog-track { height: 4px; background: var(--color-border, #e5e7eb); border-radius: 2px; overflow: hidden; }
+.sb-prog-fill { height: 100%; width: 0%; background: var(--color-accent, #0f766e); border-radius: 2px; transition: width 0.2s; }
+
+/* ── Mobile pill nav ── */
+.mob-pill {
+  display: none;
+  position: sticky;
+  top: 4rem;
+  z-index: 100;
+  grid-column: 1 / -1;
+  margin-bottom: 1rem;
+}
+.mob-pill-btn {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--color-surface, #f9fafb);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 99px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-text, #111827);
+}
+.mob-pill-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  padding: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  display: flex; flex-direction: column; gap: 0.15rem;
+  min-width: 220px;
+}
+.mob-link {
+  display: block;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text, #111827);
+  text-decoration: none;
+  border-radius: 8px;
+  &:hover { background: var(--color-accent-subtle, rgba(15,118,110,.08)); color: var(--color-accent, #0f766e); }
+}
+
+/* ── Main ── */
+.npe-main {
+  grid-column: 2;
+  min-width: 0;
+}
+
+/* ── Article header ── */
+.article-header {
+  margin-bottom: 2.5rem;
+}
+.eyebrow-row {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.eyebrow-tag {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--color-accent, #0f766e);
+  background: var(--color-accent-subtle, rgba(15,118,110,.08));
+  padding: 0.2rem 0.6rem; border-radius: 99px;
+}
+.eyebrow-sep, .eyebrow-date, .eyebrow-read {
+  font-size: 0.78rem; color: var(--color-text-muted, #9ca3af);
+}
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: var(--color-heading, #111827);
+}
+.grad {
+  background: linear-gradient(135deg, #0f766e 0%, #0891b2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.article-lead {
+  font-size: 1.1rem;
+  color: var(--color-text-muted, #4b5563);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Stats ── */
+.stat-row {
+  display: flex; gap: 2rem; flex-wrap: wrap;
+  padding: 1.5rem;
+  background: var(--color-surface, #f9fafb);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 14px;
+}
+.stat { display: flex; flex-direction: column; }
+.sn { font-size: 2rem; font-weight: 800; color: var(--color-accent, #0f766e); line-height: 1; }
+.sd { font-size: 0.78rem; color: var(--color-text-muted, #6b7280); margin-top: 0.2rem; }
+
+/* ── Sections ── */
+.npe-sec { margin-bottom: 4rem; }
+.eyebrow {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--color-accent, #0f766e);
+  margin-bottom: 0.6rem;
+}
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  color: var(--color-heading, #111827);
+}
+.body-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text, #374151);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Mechanism grid ── */
+.mechanism-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.mech-card {
+  background: var(--color-surface, #f9fafb);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+.mech-icon {
+  width: 2.2rem; height: 2.2rem;
+  background: var(--color-accent, #0f766e);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.mech-card h3 { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.5rem; }
+.mech-card p { font-size: 0.88rem; line-height: 1.6; color: var(--color-text-muted, #6b7280); margin: 0; }
+
+/* ── Callouts ── */
+.callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  display: flex; gap: 1rem;
+  &.green { background: rgba(15,118,110,.06); border-left: 4px solid var(--color-accent, #0f766e); }
+  &.amber { background: rgba(217,119,6,.06); border-left: 4px solid #d97706; }
+  &.red { background: rgba(220,38,38,.06); border-left: 4px solid #dc2626; }
+  strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+  p { font-size: 0.88rem; line-height: 1.6; color: var(--color-text-muted, #6b7280); margin: 0; }
+}
+
+/* ── Tier headers ── */
+.tier-header {
+  padding: 1.5rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
+  &--1 { background: linear-gradient(135deg, rgba(15,118,110,.08) 0%, rgba(8,145,178,.06) 100%); border: 1px solid rgba(15,118,110,.2); }
+  &--2 { background: linear-gradient(135deg, rgba(79,70,229,.07) 0%, rgba(147,51,234,.05) 100%); border: 1px solid rgba(79,70,229,.2); }
+  &--3 { background: linear-gradient(135deg, rgba(217,119,6,.08) 0%, rgba(234,88,12,.06) 100%); border: 1px solid rgba(217,119,6,.2); }
+  p { margin: 0; font-size: 0.9rem; color: var(--color-text-muted, #6b7280); }
+  h2 { margin-bottom: 0.5rem; }
+}
+.tier-badge {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--color-accent, #0f766e);
+  background: rgba(15,118,110,.12);
+  padding: 0.25rem 0.75rem; border-radius: 99px;
+  margin-bottom: 0.75rem;
+  &--2 { color: #4f46e5; background: rgba(79,70,229,.12); }
+  &--3 { color: #d97706; background: rgba(217,119,6,.12); }
+}
+
+/* ── Exercise cards ── */
+.exercise-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.exercise-card {
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  &:hover { box-shadow: 0 4px 24px rgba(0,0,0,.07); }
+}
+.ex-header {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface, #f9fafb);
+  border-bottom: 1px solid var(--color-border, #e5e7eb);
+}
+.ex-num {
+  font-size: 1.4rem; font-weight: 900;
+  color: var(--color-accent, #0f766e);
+  min-width: 2.5rem;
+  font-variant-numeric: tabular-nums;
+}
+.ex-title-wrap { flex: 1; }
+.ex-title-wrap h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 0.3rem; }
+.ex-tag {
+  display: inline-block;
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+  padding: 0.15rem 0.6rem; border-radius: 99px;
+}
+.tag-physical  { color: #0f766e; background: rgba(15,118,110,.1); }
+.tag-cognitive { color: #4f46e5; background: rgba(79,70,229,.1); }
+.tag-mind      { color: #7c3aed; background: rgba(124,58,237,.1); }
+.tag-social    { color: #b45309; background: rgba(180,83,9,.1); }
+.tag-recovery  { color: #0891b2; background: rgba(8,145,178,.1); }
+.tag-advanced  { color: #dc2626; background: rgba(220,38,38,.1); }
+
+.ex-diff {
+  display: flex; gap: 4px; align-items: center;
+}
+.diff-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--color-border, #e5e7eb);
+  &.filled { background: var(--color-accent, #0f766e); }
+}
+
+.ex-body { padding: 1.25rem; }
+.ex-science, .ex-protocol {
+  margin-bottom: 1rem;
+  p { font-size: 0.9rem; line-height: 1.7; color: var(--color-text, #374151); margin: 0.3rem 0 0; }
+}
+.ex-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--color-text-muted, #9ca3af);
+}
+.ex-footer {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border, #f3f4f6);
+}
+.ex-time-label { font-size: 0.75rem; color: var(--color-text-muted, #9ca3af); }
+.ex-time { font-size: 0.78rem; font-weight: 600; color: var(--color-accent, #0f766e); }
+
+/* ── Protocol table ── */
+.protocol-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; border-radius: 12px; border: 1px solid var(--color-border, #e5e7eb); }
+.protocol-table {
+  width: 100%; border-collapse: collapse; font-size: 0.85rem;
+  th {
+    background: var(--color-surface, #f9fafb);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted, #6b7280);
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
+  }
+  td { padding: 0.75rem 1rem; vertical-align: top; line-height: 1.5; }
+  .row-even { background: transparent; }
+  .row-odd { background: var(--color-surface, #fafafa); }
+  .time-cell { white-space: nowrap; color: var(--color-accent, #0f766e); font-size: 0.82rem; }
+  .why-cell { color: var(--color-text-muted, #6b7280); font-size: 0.82rem; }
+  .dur-cell { white-space: nowrap; font-weight: 600; font-size: 0.8rem; }
+}
+
+/* ── Mistakes ── */
+.mistakes-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.mistake-card {
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--color-surface, #fafafa);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 14px;
+}
+.mistake-num {
+  font-size: 1.8rem; font-weight: 900; color: #dc2626;
+  opacity: 0.25; line-height: 1; min-width: 2.5rem;
+}
+.mistake-body h3 { font-size: 1rem; font-weight: 700; margin: 0 0 0.4rem; }
+.mistake-body p { font-size: 0.88rem; line-height: 1.65; color: var(--color-text-muted, #6b7280); margin: 0 0 0.6rem; }
+.mistake-fix {
+  font-size: 0.85rem;
+  color: var(--color-accent, #0f766e);
+  background: rgba(15,118,110,.06);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+}
+
+/* ── Tracker ── */
+.tracker-wrap {
+  background: var(--color-surface, #f9fafb);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.tracker-day {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 2px solid var(--color-border, #e5e7eb);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #6b7280);
+  user-select: none;
+  &.done { background: var(--color-accent, #0f766e); border-color: var(--color-accent, #0f766e); color: #fff; }
+  &.today { border-color: var(--color-accent, #0f766e); color: var(--color-accent, #0f766e); }
+  &:hover:not(.done) { border-color: var(--color-accent, #0f766e); background: rgba(15,118,110,.06); }
+}
+.tracker-legend { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+.tl-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--color-text-muted, #6b7280); }
+.tl-dot {
+  width: 12px; height: 12px; border-radius: 3px;
+  &.done { background: var(--color-accent, #0f766e); }
+  &.today { background: transparent; border: 2px solid var(--color-accent, #0f766e); }
+  &.empty { background: transparent; border: 2px solid var(--color-border, #e5e7eb); }
+}
+.tracker-stats { font-size: 0.85rem; color: var(--color-text-muted, #4b5563); margin-bottom: 1rem; }
+.tracker-reset {
+  background: transparent;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 8px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--color-text-muted, #6b7280);
+  &:hover { border-color: #dc2626; color: #dc2626; }
+}
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item {
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  overflow: hidden;
+  &[open] { border-color: var(--color-accent, #0f766e); }
+}
+.faq-q {
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  &::after { content: '+'; font-size: 1.2rem; color: var(--color-accent, #0f766e); }
+}
+details[open] .faq-q::after { content: '−'; }
+.faq-a {
+  padding: 0 1.25rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-text, #374151);
+  margin: 0;
+}
+
+/* ── Conclusion ── */
+.conclusion-sec { background: transparent; }
+.cta-box {
+  background: linear-gradient(135deg, rgba(15,118,110,.06) 0%, rgba(8,145,178,.04) 100%);
+  border: 1px solid rgba(15,118,110,.2);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  h3 { font-size: 1.2rem; font-weight: 800; margin: 0 0 0.5rem; }
+  p { font-size: 0.9rem; color: var(--color-text-muted, #6b7280); margin-bottom: 1.25rem; }
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--color-accent, #0f766e);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-right: 0.75rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.18s;
+  &:hover { background: #0d6860; }
+  &--sec { background: transparent; color: var(--color-accent, #0f766e); border: 1.5px solid var(--color-accent, #0f766e); &:hover { background: rgba(15,118,110,.06); } }
+}
+
+/* ── Author bio ── */
+.author-bio {
+  background: var(--color-surface, #f9fafb);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin: 3rem 0 2rem;
+  h3 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted, #9ca3af); margin: 0 0 0.5rem; }
+  p { font-size: 0.88rem; line-height: 1.7; color: var(--color-text, #374151); margin: 0; }
+}
+
+/* ── Related articles ── */
+.related-section { margin-bottom: 2rem; }
+.related-section h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-heading, #111827); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.related-card {
+  display: flex; flex-direction: column; justify-content: space-between;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: var(--color-text, #111827);
+  transition: all 0.18s;
+  &:hover { border-color: var(--color-accent, #0f766e); box-shadow: 0 2px 12px rgba(15,118,110,.1); }
+}
+.rc-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-accent, #0f766e); margin-bottom: 0.4rem; }
+.rc-title { font-size: 0.88rem; font-weight: 600; line-height: 1.4; flex: 1; }
+.rc-arrow { font-size: 1.1rem; color: var(--color-accent, #0f766e); margin-top: 0.75rem; }
+
+/* ── External resources ── */
+.external-resources {
+  margin-bottom: 2rem;
+  h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, #111827); }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin-bottom: 0.4rem; }
+  a { font-size: 0.85rem; color: var(--color-accent, #0f766e); text-decoration: none; &:hover { text-decoration: underline; } }
+}
+
+/* ── Ad units ── */
+.ad-unit {
+  margin: var(--spacing-2xl, 3rem) 0;
+  text-align: center;
+  overflow: hidden;
+  &--top { margin-top: 0; margin-bottom: var(--spacing-2xl, 3rem); }
+  &--mid { border-top: 1px solid var(--color-border, #e5e7eb); border-bottom: 1px solid var(--color-border, #e5e7eb); padding: var(--spacing-lg, 1.5rem) 0; }
+  &--bottom { border-top: 1px solid var(--color-border, #e5e7eb); padding-top: var(--spacing-lg, 1.5rem); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .npe-wrapper {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .npe-sidebar { display: none; }
+  .mob-pill { display: block; }
+  .npe-main { grid-column: 1; }
+  .tracker-grid { grid-template-columns: repeat(7, 1fr); gap: 0.4rem; }
+}
+@media (max-width: 600px) {
+  h1 { font-size: 1.6rem; }
+  .stat-row { gap: 1rem; }
+  .ex-header { flex-wrap: wrap; }
+  .protocol-table { font-size: 0.78rem; td, th { padding: 0.5rem 0.6rem; } }
+  .mistake-card { flex-direction: column; gap: 0.5rem; }
+  .tracker-grid { gap: 0.3rem; }
+}
+</style>
+
+<script is:inline>
+/* ── Reading progress ── */
+(function() {
+  const fill = document.getElementById('reading-progress');
+  if (!fill) return;
+  window.addEventListener('scroll', function() {
+    const el = document.documentElement;
+    const top = el.scrollTop || document.body.scrollTop;
+    const height = el.scrollHeight - el.clientHeight;
+    fill.style.width = (height > 0 ? (top / height * 100) : 0) + '%';
+  }, { passive: true });
+})();
+
+/* ── Active sidebar link ── */
+(function() {
+  const links = document.querySelectorAll('.sb-link, .mob-link');
+  const sections = document.querySelectorAll('[id]');
+  if (!sections.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        links.forEach(l => {
+          l.classList.toggle('active', l.dataset.target === id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => obs.observe(s));
+})();
+
+/* ── Smooth scroll ── */
+(function() {
+  document.querySelectorAll('.sb-link, .mob-link').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      const t = document.getElementById(this.dataset.target);
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const menu = document.getElementById('mob-pill-menu');
+      if (menu) menu.hidden = true;
+      const btn = document.getElementById('mob-pill-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const btn = document.getElementById('mob-pill-toggle');
+  const menu = document.getElementById('mob-pill-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', function() {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      menu.hidden = open;
+    });
+  }
+})();
+
+/* ── 7-Day Tracker ── */
+(function() {
+  const grid = document.getElementById('tracker-grid');
+  const statsEl = document.getElementById('tracker-stats');
+  const resetBtn = document.getElementById('tracker-reset');
+  if (!grid) return;
+
+  const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const STORAGE_KEY = 'npe-tracker-v1';
+  const today = new Date().getDay(); // 0=Sun
+  const todayIdx = today === 0 ? 6 : today - 1; // convert to Mon=0
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || new Array(7).fill(false); }
+    catch(e) { return new Array(7).fill(false); }
+  }
+  function save(data) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+  }
+
+  function render(data) {
+    grid.innerHTML = '';
+    let completed = 0;
+    data.forEach(function(done, i) {
+      const day = document.createElement('div');
+      day.className = 'tracker-day' + (done ? ' done' : '') + (i === todayIdx && !done ? ' today' : '');
+      day.innerHTML = '<span>' + DAYS[i] + '</span>';
+      day.addEventListener('click', function() {
+        data[i] = !data[i];
+        save(data);
+        render(data);
+      });
+      grid.appendChild(day);
+      if (done) completed++;
+    });
+    if (statsEl) {
+      statsEl.textContent = completed + ' of 7 days completed this week' + (completed === 7 ? ' 🎉 Perfect week!' : '');
+    }
+  }
+
+  const data = load();
+  render(data);
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function() {
+      const fresh = new Array(7).fill(false);
+      save(fresh);
+      render(fresh);
+    });
+  }
+})();
+</script>

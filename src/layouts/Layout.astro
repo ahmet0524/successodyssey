@@ -19,7 +19,7 @@ export interface Props {
   author?: string;
   noindex?: boolean;
   alternateLanguages?: Array<{lang: string, url: string}>;
-  canonicalUrl?: string; // 🆕 Manuel canonical override için
+  canonicalUrl?: string;
 }
 
 const {
@@ -39,18 +39,18 @@ const {
   author = "Success Odyssey Hub",
   noindex = false,
   alternateLanguages = [],
-  canonicalUrl // 🆕
+  canonicalUrl
 } = Astro.props;
 
 const finalPublishedDate = publishedDate || datePublished;
 const finalModifiedDate = modifiedDate || dateModified;
 
-// 🔥 ÖNEMLİ: Canonical URL Mantığı (Google için optimize)
+// 🔥 Canonical URL Mantığı (Google için optimize)
 const canonicalURL = canonicalUrl
   ? new URL(canonicalUrl, Astro.site)
   : new URL(Astro.url.pathname, Astro.site);
 
-// Trailing slash standardizasyonu (Google karışıklığını önler)
+// Trailing slash standardizasyonu
 if (canonicalURL.pathname.endsWith('/') && canonicalURL.pathname !== '/') {
   canonicalURL.pathname = canonicalURL.pathname.slice(0, -1);
 }
@@ -74,7 +74,6 @@ const breadcrumbList = {
       "item": Astro.site?.toString()
     },
     ...pathSegments.map((segment, index) => {
-      // ✅ Trailing slash'i kaldır
       const itemUrl = new URL(pathSegments.slice(0, index + 1).join('/'), Astro.site).toString();
       return {
         "@type": "ListItem",
@@ -94,7 +93,7 @@ const mainSchema = {
   "name": title,
   "headline": title,
   "description": description,
-  "url": canonicalURL.toString(), // 🔥 Canonical ile eşleşmeli
+  "url": canonicalURL.toString(),
   "image": {
     "@type": "ImageObject",
     "url": imageURL,
@@ -148,7 +147,6 @@ if (type === 'article') {
   mainSchema.wordCount = description.split(' ').length * 50;
 }
 
-// ✅ YENİ - Düzeltilmiş versiyon:
 if (type === 'website' && Astro.url.pathname === '/') {
   mainSchema.potentialAction = {
     "@type": "SearchAction",
@@ -185,7 +183,7 @@ if (type === 'website' && Astro.url.pathname === '/') {
 {noindex && <meta name="robots" content="noindex, nofollow" />}
 {!noindex && <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
 
-<!-- 🔥 CANONICAL TAG - Google için kritik -->
+<!-- 🔥 CANONICAL TAG -->
 <link rel="canonical" href={canonicalURL.toString()} />
 
 <!-- Alternate Languages -->
@@ -204,7 +202,7 @@ if (type === 'website' && Astro.url.pathname === '/') {
 <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 <link rel="dns-prefetch" href="//api.convertkit.com" />
 
-<!-- Fonts - Optimized loading -->
+<!-- Fonts -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
@@ -214,7 +212,7 @@ if (type === 'website' && Astro.url.pathname === '/') {
 <meta property="og:site_name" content="Success Odyssey Hub" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:url" content={canonicalURL.toString()} /> <!-- 🔥 Canonical ile eşleşmeli -->
+<meta property="og:url" content={canonicalURL.toString()} />
 <meta property="og:image" content={imageURL} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -318,20 +316,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="header">
 <nav class="nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
 <div class="nav-container">
-<a href="/" class="logo" itemprop="url">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
-</svg>
-<span itemprop="name">Success Odyssey Hub</span>
-</a>
-<ul class="nav-links">
-<li><a href="/" itemprop="url">Home</a></li>
-<li><a href="/blog" itemprop="url">Blog</a></li>
-<li><a href="/neuroplasticity" itemprop="url">Brain Science</a></li>
-<li><a href="/products" itemprop="url">Products</a></li>
-<li><a href="/about" itemprop="url">About</a></li>
-<li><a href="/contact" itemprop="url">Contact</a></li>
-</ul>
+  <a href="/" class="logo" itemprop="url">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+    </svg>
+    <span itemprop="name">Success Odyssey Hub</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" itemprop="url">Home</a></li>
+    <li><a href="/blog" itemprop="url">Blog</a></li>
+
+    <!-- ── Brain Science Dropdown ── -->
+    <li class="nav-dropdown">
+      <a href="/neuroplasticity" itemprop="url" class="dropdown-toggle">
+        Brain Science
+        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li role="none">
+          <a href="/neuroplasticity" role="menuitem">
+            <span class="dm-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.5 2a2.5 2.5 0 0 1 2.45 2H13a3 3 0 0 1 3 3v1h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1v2a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V7a3 3 0 0 1 3-3h.05A2.5 2.5 0 0 1 9.5 2z"/>
+                <path d="M9 13h.01M15 13h.01"/>
+              </svg>
+            </span>
+            <span class="dm-text">
+              <strong>Neuroplasticity Science</strong>
+              <span>The complete scientific guide</span>
+            </span>
+          </a>
+        </li>
+        <li role="none">
+          <a href="/neuroplasticity-exercises" role="menuitem">
+            <span class="dm-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                <line x1="6" y1="1" x2="6" y2="4"/>
+                <line x1="10" y1="1" x2="10" y2="4"/>
+                <line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </span>
+            <span class="dm-text">
+              <strong>Exercises & Practices</strong>
+              <span>17 science-backed exercises</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li><a href="/products" itemprop="url">Products</a></li>
+    <li><a href="/about" itemprop="url">About</a></li>
+    <li><a href="/contact" itemprop="url">Contact</a></li>
+  </ul>
 </div>
 </nav>
 </header>
@@ -343,50 +384,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer" itemscope itemtype="https://schema.org/WPFooter">
 <div class="footer-container">
 <div class="footer-content">
-<div class="footer-section">
-<h3>Success Odyssey Hub</h3>
-<p>Transform your life with proven strategies and timeless wisdom.</p>
-<div class="social-links">
-<a href="https://twitter.com/successodyssey" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-</svg>
-</a>
-<a href="https://facebook.com/successodyssey" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-</svg>
-</a>
-<a href="https://linkedin.com/company/successodyssey" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-</svg>
-</a>
-</div>
-</div>
-<div class="footer-section">
-<h4>Quick Links</h4>
-<ul>
-<li><a href="/">Home</a></li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/products">Products</a></li>
-<li><a href="/about">About</a></li>
-<li><a href="/privacy">Privacy Policy</a></li>
-<li><a href="/terms">Terms of Service</a></li>
-</ul>
-</div>
-<div class="footer-section">
-<h4>Topics</h4>
-<ul>
-<li><a href="/blog/mental-models">Mental Models</a></li>
-<li><a href="/blog/stoicism">Stoicism</a></li>
-<li><a href="/blog/success-philosophy">Success Philosophy</a></li>
-<li><a href="/contact" itemprop="url">Contact</a></li>
-</ul>
-</div>
+  <div class="footer-section">
+    <h3>Success Odyssey Hub</h3>
+    <p>Transform your life with proven strategies and timeless wisdom.</p>
+    <div class="social-links">
+      <a href="https://twitter.com/successodyssey" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="https://facebook.com/successodyssey" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+      <a href="https://linkedin.com/company/successodyssey" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-section">
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms of Service</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-section">
+    <h4>Topics</h4>
+    <ul>
+      <li><a href="/blog/mental-models">Mental Models</a></li>
+      <li><a href="/blog/stoicism">Stoicism</a></li>
+      <li><a href="/blog/success-philosophy">Success Philosophy</a></li>
+      <li><a href="/neuroplasticity">Neuroplasticity Science</a></li>
+      <li><a href="/neuroplasticity-exercises">Brain Exercises</a></li>
+      <li><a href="/contact" itemprop="url">Contact</a></li>
+    </ul>
+  </div>
 </div>
 <div class="footer-bottom">
-<p>&copy; 2025 Success Odyssey Hub. All rights reserved.</p>
+  <p>&copy; 2026 Success Odyssey Hub. All rights reserved.</p>
 </div>
 </div>
 </footer>
@@ -394,6 +439,154 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </html>
 
 <style lang="scss">
+
+/* ── Nav Dropdown ── */
+.nav-dropdown {
+  position: relative;
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+
+    /* dropdown-toggle'ın kendi underline animasyonunu kaldır */
+    &::after { display: none !important; }
+
+    .chevron {
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    padding: 0.5rem;
+    min-width: 240px;
+    list-style: none;
+    z-index: 200;
+
+    /* küçük üçgen ok */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-left: 1px solid var(--gray-200);
+      border-top: 1px solid var(--gray-200);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    li { margin: 0; }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-color);
+      transition: background 0.15s;
+
+      /* parent link'in ::after underline efektini iptal et */
+      &::after { display: none !important; }
+
+      &:hover {
+        background: var(--gray-100);
+
+        .dm-icon {
+          background: #e0e7ff;
+          color: var(--primary-color);
+        }
+      }
+
+      .dm-icon {
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gray-200);
+        border-radius: 7px;
+        color: var(--gray-600);
+        transition: background 0.15s, color 0.15s;
+      }
+
+      .dm-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+
+        strong {
+          font-size: 0.88rem;
+          font-weight: 600;
+          color: var(--text-color);
+        }
+
+        span {
+          font-size: 0.75rem;
+          color: var(--gray-600);
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  /* hover veya focus ile aç */
+  &:hover .dropdown-menu,
+  &:focus-within .dropdown-menu {
+    display: block;
+  }
+
+  &:hover .dropdown-toggle .chevron,
+  &:focus-within .dropdown-toggle .chevron {
+    transform: rotate(180deg);
+  }
+}
+
+/* Mobilde dropdown davranışı */
+@media (max-width: 768px) {
+  .nav-dropdown {
+    .dropdown-menu {
+      position: static;
+      transform: none;
+      box-shadow: none;
+      border: none;
+      background: var(--gray-100);
+      border-radius: 8px;
+      margin-top: 0.4rem;
+      padding: 0.25rem;
+
+      &::before { display: none; }
+
+      a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* mobilde her zaman görünür yap */
+    .dropdown-menu {
+      display: block;
+    }
+  }
+}
+
+/* ── Social Links ── */
 .social-links {
   display: flex;
   gap: 1.5rem;
