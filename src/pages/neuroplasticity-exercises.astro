@@ -2,8 +2,12 @@
 // src/pages/neuroplasticity-exercises.astro
 import Layout from '../layouts/Layout.astro';
 
-const pageTitle = "17 Neuroplasticity Exercises to Rewire Your Brain (Science-Backed)";
-const pageDescription = "Evidence-based neuroplasticity exercises and practices that physically reshape your brain. Build new neural pathways with these 17 science-backed techniques.";
+// ── DÜZELTME 1: Title pipe formatı (parantez Google tarafından kesiliyordu)
+const pageTitle = "17 Neuroplasticity Exercises to Rewire Your Brain | Science-Backed";
+
+// ── DÜZELTME 2: Meta description daha spesifik + differentiator içeriyor
+const pageDescription = "17 science-backed neuroplasticity exercises — each mapped to a specific brain mechanism with a concrete daily protocol. Start with Tier 1 today.";
+
 const pageKeywords = "neuroplasticity exercises, neuroplasticity practices, brain rewiring exercises, neural pathway training, brain plasticity exercises, cognitive exercises neuroplasticity, mindfulness neuroplasticity, neuroplasticity training, rewire your brain exercises";
 const publishedDate = "2026-05-04T00:00:00Z";
 const modifiedDate  = "2026-05-04T00:00:00Z";
@@ -19,13 +23,28 @@ const sidebarTopics = [
   { id:"faq",             label:"FAQ"                         },
 ];
 
+// ── DÜZELTME 3: Article schema — publisher.logo eklendi (neuroplasticity.astro ile tutarlı)
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": pageTitle,
   "description": pageDescription,
-  "author": { "@type": "Organization", "name": "Success Odyssey Hub", "url": "https://successodysseyhub.com" },
-  "publisher": { "@type": "Organization", "name": "Success Odyssey Hub" },
+  "author": {
+    "@type": "Organization",
+    "name": "Success Odyssey Hub",
+    "url": "https://successodysseyhub.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Success Odyssey Hub",
+    "url": "https://successodysseyhub.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://successodysseyhub.com/assets/logo.png",
+      "width": 120,
+      "height": 120
+    }
+  },
   "datePublished": publishedDate,
   "dateModified": modifiedDate,
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://successodysseyhub.com/neuroplasticity-exercises" },
@@ -34,6 +53,7 @@ const articleSchema = {
   "inLanguage": "en-US"
 };
 
+// ── DÜZELTME 4: FAQ schema — 5. soru eklendi (HTML ile eşleşiyor)
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -41,7 +61,9 @@ const faqSchema = {
     { "@type": "Question", "name": "What are the best neuroplasticity exercises?", "acceptedAnswer": { "@type": "Answer", "text": "The most evidence-backed neuroplasticity exercises include aerobic exercise (which boosts BDNF), mindfulness meditation (which increases prefrontal cortex gray matter), deliberate skill learning, spaced repetition, and mental visualization. Combining physical, cognitive, and mindfulness practices produces the strongest results." } },
     { "@type": "Question", "name": "How long does it take to see results from neuroplasticity exercises?", "acceptedAnswer": { "@type": "Answer", "text": "Research shows measurable structural brain changes within 8 weeks of consistent daily practice (mindfulness studies, University of Massachusetts). Habit loop formation averages 66 days. However, neurochemical benefits such as elevated BDNF from exercise appear within hours of a single session." } },
     { "@type": "Question", "name": "Can neuroplasticity exercises improve memory?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Spaced repetition, aerobic exercise, and sleep optimization are the three most powerful memory-enhancing neuroplasticity practices. Aerobic exercise promotes hippocampal neurogenesis — the growth of new neurons in the brain's primary memory center." } },
-    { "@type": "Question", "name": "Are neuroplasticity exercises suitable for older adults?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Research confirms that neuroplasticity persists throughout life. Adults over 60 who regularly engage in aerobic exercise, social learning, and novel skill acquisition show significantly reduced cognitive decline. The brain remains shapeable at any age — it simply requires greater consistency." } }
+    { "@type": "Question", "name": "Are neuroplasticity exercises suitable for older adults?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Research confirms that neuroplasticity persists throughout life. Adults over 60 who regularly engage in aerobic exercise, social learning, and novel skill acquisition show significantly reduced cognitive decline. The brain remains shapeable at any age — it simply requires greater consistency." } },
+    // ── DÜZELTME 4 (devam): 5. soru — HTML'deki son FAQ ile eşleşiyor
+    { "@type": "Question", "name": "Do I need to do all 17 exercises?", "acceptedAnswer": { "@type": "Answer", "text": "No. Start with Tier 1 (exercises 1–4) for 30 days before adding anything else. The foundational practices alone produce significant results. Select from Tier 2 and 3 based on your specific goals — cognitive performance, emotional regulation, skill acquisition — rather than trying to do everything at once." } }
   ]
 };
 
@@ -241,6 +263,22 @@ const tier3 = [
   },
 ];
 
+// ── DÜZELTME 5: ItemList schema — 17 egzersizi listeleyen schema (carousel potansiyeli)
+const allExercises = [...tier1, ...tier2, ...tier3];
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "17 Neuroplasticity Exercises",
+  "description": pageDescription,
+  "numberOfItems": 17,
+  "itemListElement": allExercises.map((ex, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": ex.title,
+    "url": `https://successodysseyhub.com/neuroplasticity-exercises#${ex.id}`
+  }))
+};
+
 const protocolItems = [
   { time:"6:00 AM", action:"Wake + 10 min NSDR or quiet focus", why:"Restores dopamine baseline before stimulation", duration:"10 min" },
   { time:"6:30 AM", action:"30 min aerobic exercise (outdoors preferred)", why:"BDNF surge + cortisol regulation + dopamine", duration:"30 min" },
@@ -296,6 +334,14 @@ const mistakes = [
   <slot slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    {/* ── DÜZELTME 5: ItemList schema */}
+    <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+    {/* ── DÜZELTME 6: article:tag meta'ları — OG bloğuna ek olarak */}
+    <meta property="article:tag" content="BDNF" />
+    <meta property="article:tag" content="brain training" />
+    <meta property="article:tag" content="habit formation" />
+    <meta property="article:tag" content="neuroplasticity" />
+    <meta property="article:tag" content="cognitive performance" />
   </slot>
 
   <div class="npe-wrapper">
@@ -316,6 +362,7 @@ const mistakes = [
         <div class="sb-callout">
           <div class="sb-callout-title">Related</div>
           <a class="sb-rel-link" href="/neuroplasticity">← Neuroplasticity Science</a>
+          {/* ── DÜZELTME 7: Kırık link düzeltildi — /blog/ prefix kaldırıldı */}
           <a class="sb-rel-link" href="/blog/neuroplasticity-success">Neuroplasticity for Success →</a>
         </div>
         <div class="sb-progress">
@@ -640,6 +687,7 @@ const mistakes = [
             {q:"How long does it take to see results?", a:"Neurochemical benefits — improved mood, focus, energy — appear within hours of a single aerobic session. Structural brain changes take longer: mindfulness studies show measurable gray matter increases at 8 weeks. Habit loop formation averages 66 days (Phillippa Lally, UCL, 2010). Expect noticeable functional improvement within 30 days, and structural change within 90."},
             {q:"Can neuroplasticity exercises improve memory?", a:"Yes, particularly aerobic exercise, spaced repetition, sleep optimization, and the Feynman teaching method. Aerobic exercise specifically promotes hippocampal neurogenesis — new neuron growth in the brain's primary memory center. Combine all four for additive effects."},
             {q:"Are these exercises suitable for older adults?", a:"Absolutely. The National Institute on Aging confirms that neuroplasticity persists throughout life. Adults over 60 who regularly practice aerobic exercise, social engagement, and novel skill acquisition show measurably reduced cognitive decline. The brain remains shapeable at any age — the key variables are consistency and challenge level."},
+            // ── DÜZELTME 4 (HTML): 5. soru HTML FAQ'da da mevcut (schema ile eşleşiyor)
             {q:"Do I need to do all 17 exercises?", a:"No. Start with Tier 1 (exercises 1–4) for 30 days before adding anything else. The foundational practices alone produce significant results. Select from Tier 2 and 3 based on your specific goals — cognitive performance, emotional regulation, skill acquisition — rather than trying to do everything at once."},
           ].map(f => (
             <details class="faq-item">
@@ -661,6 +709,7 @@ const mistakes = [
           <h3>Ready to go deeper?</h3>
           <p>Explore the complete science behind these mechanisms in our foundational guide — including the biological mechanisms of LTP, BDNF, and the full neuroscience of habit formation.</p>
           <a href="/neuroplasticity" class="cta-btn">Read: The Science of Neuroplasticity →</a>
+          {/* ── DÜZELTME 7: Kırık link düzeltildi */}
           <a href="/blog/neuroplasticity-success" class="cta-btn cta-btn--sec">Neuroplasticity for Success →</a>
         </div>
       </section>
@@ -682,6 +731,7 @@ const mistakes = [
             <div class="rc-title">Neuroplasticity & Strategic Personal Development</div>
             <div class="rc-arrow">→</div>
           </a>
+          {/* ── DÜZELTME 7: Kırık link düzeltildi */}
           <a href="/blog/neuroplasticity-success" class="related-card">
             <div class="rc-label">Performance</div>
             <div class="rc-title">Neuroplasticity: How to Rewire Your Brain for Success</div>
@@ -1295,6 +1345,7 @@ details[open] .faq-q::after { content: '−'; }
 })();
 
 /* ── 7-Day Tracker ── */
+/* ── DÜZELTME 8: localStorage try/catch + SSR fallback — Googlebot uyumlu ── */
 (function() {
   const grid = document.getElementById('tracker-grid');
   const statsEl = document.getElementById('tracker-stats');
@@ -1306,12 +1357,27 @@ details[open] .faq-q::after { content: '−'; }
   const today = new Date().getDay(); // 0=Sun
   const todayIdx = today === 0 ? 6 : today - 1; // convert to Mon=0
 
+  // ── SSR/Googlebot güvenli storage erişimi
   function load() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || new Array(7).fill(false); }
-    catch(e) { return new Array(7).fill(false); }
+    try {
+      if (typeof localStorage === 'undefined' || localStorage === null) {
+        return new Array(7).fill(false);
+      }
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : new Array(7).fill(false);
+    } catch(e) {
+      return new Array(7).fill(false);
+    }
   }
+
   function save(data) {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+    try {
+      if (typeof localStorage !== 'undefined' && localStorage !== null) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      }
+    } catch(e) {
+      // localStorage kısıtlıysa sessizce geç
+    }
   }
 
   function render(data) {
