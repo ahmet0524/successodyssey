@@ -22,52 +22,6 @@ const sidebarTopics = [
   { id:"faq",            label:"FAQ"                      },
 ];
 
-const articleSchema = {
-  "@context":"https://schema.org","@type":"Article",
-  "headline":"Neuroplasticity: The Complete Science-Backed Guide to Rewiring Your Brain",
-  "description":pageDescription,
-  "author":{
-    "@type":"Organization",
-    "name":"Success Odyssey Hub",
-    "url":"https://successodysseyhub.com",
-    "logo":{
-      "@type":"ImageObject",
-      "url":"https://successodysseyhub.com/favicon.svg"
-    },
-    "sameAs":[
-      "https://successodysseyhub.com"
-    ]
-  },
-  "publisher":{
-    "@type":"Organization",
-    "name":"Success Odyssey Hub",
-    "url":"https://successodysseyhub.com",
-    "logo":{
-      "@type":"ImageObject",
-      "url":"https://successodysseyhub.com/favicon.svg"
-    }
-  },
-  "datePublished":publishedDate,
-  "dateModified":modifiedDate,
-  "mainEntityOfPage":{ "@type": "WebPage", "@id": "https://successodysseyhub.com/neuroplasticity" },
-  "keywords":pageKeywords,
-  "articleSection":"Brain Science",
-  "inLanguage":"en-US",
-  "about":{
-    "@type":"Thing",
-    "name":"Neuroplasticity",
-    "description":"The brain's ability to reorganize and form new neural connections throughout life in response to experience, learning, and environment."
-  },
-  "mentions":[
-    {"@type":"Thing","name":"BDNF","alternateName":"Brain-Derived Neurotrophic Factor"},
-    {"@type":"Thing","name":"Long-Term Potentiation"},
-    {"@type":"Thing","name":"Habit Formation"},
-    {"@type":"Person","name":"Donald Hebb"},
-    {"@type":"Person","name":"Jeffrey Kleim"},
-    {"@type":"Person","name":"Theresa Jones"}
-  ]
-};
-
 const faqSchema = {
   "@context":"https://schema.org","@type":"FAQPage",
   "mainEntity":[
@@ -81,14 +35,6 @@ const faqSchema = {
   ]
 };
 
-const breadcrumbSchema = {
-  "@context":"https://schema.org","@type":"BreadcrumbList",
-  "itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://successodysseyhub.com"},
-    {"@type":"ListItem","position":2,"name":"Brain Science","item":"https://successodysseyhub.com/brain-science"},
-    {"@type":"ListItem","position":3,"name":"Neuroplasticity","item":"https://successodysseyhub.com/neuroplasticity"}
-  ]
-};
 ---
 
 <Layout
@@ -100,11 +46,12 @@ const breadcrumbSchema = {
   dateModified={modifiedDate}
   author="Success Odyssey Hub"
   canonicalUrl="https://successodysseyhub.com/neuroplasticity"
+  articleSection="Brain Science"
+  wordCount={4800}
+  image="/assets/neuroplasticity-og.webp"
 >
   <slot slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <meta property="og:title" content="Neuroplasticity: The Complete Science-Backed Guide" />
     <meta property="og:description" content="Learn how neuroplasticity works and how to use it. Science-backed guide to habit formation, BDNF, self-directed neuroplasticity, and the 10 principles that govern brain rewiring." />
     <meta property="og:type" content="article" />

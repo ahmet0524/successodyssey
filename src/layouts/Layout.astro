@@ -20,6 +20,8 @@ export interface Props {
   noindex?: boolean;
   alternateLanguages?: Array<{lang: string, url: string}>;
   canonicalUrl?: string;
+  wordCount?: number;
+  articleSection?: string;
 }
 
 const {
@@ -39,7 +41,9 @@ const {
   author = "Success Odyssey Hub",
   noindex = false,
   alternateLanguages = [],
-  canonicalUrl
+  canonicalUrl,
+  wordCount,
+  articleSection = "Personal Development",
 } = Astro.props;
 
 const finalPublishedDate = publishedDate || datePublished;
@@ -142,9 +146,9 @@ if (type === 'article') {
     "@id": canonicalURL.toString()
   };
   mainSchema.inLanguage = "en-US";
-  mainSchema.articleSection = "Personal Development";
+  mainSchema.articleSection = articleSection;
   if (keywords) mainSchema.keywords = keywords.split(', ');
-  mainSchema.wordCount = description.split(' ').length * 50;
+  if (wordCount) mainSchema.wordCount = wordCount;
 }
 
 if (type === 'website' && Astro.url.pathname === '/') {
@@ -176,8 +180,6 @@ if (type === 'website' && Astro.url.pathname === '/') {
 <meta name="description" content={description} />
 <meta name="keywords" content={keywords} />
 <meta name="author" content={author} />
-<meta name="language" content="en" />
-<meta name="revisit-after" content="7 days" />
 
 <!-- Robots & Indexing -->
 {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -232,7 +234,7 @@ if (type === 'website' && Astro.url.pathname === '/') {
 <meta property="article:published_time" content={finalPublishedDate} />
 <meta property="article:modified_time" content={finalModifiedDate || currentDate} />
 <meta property="article:author" content={author} />
-<meta property="article:section" content="Personal Development" />
+<meta property="article:section" content={articleSection} />
 {keywords && keywords.split(', ').slice(0, 3).map(keyword => (
   <meta property="article:tag" content={keyword.trim()} />
 ))}
