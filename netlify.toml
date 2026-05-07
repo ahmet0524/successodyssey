@@ -85,6 +85,29 @@
     X-XSS-Protection = "1; mode=block"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
+# ============================================
+# CACHE - Bot crawler timeout önlemi (Bing/Google)
+# ============================================
+
+# Ana sayfa
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=86400"
+
+# Tüm HTML sayfaları
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=86400"
+
+# Blog sayfaları (Bing timeout yaşayan sayfalar)
+[[headers]]
+  for = "/blog/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=86400"
+
+# Static assets — uzun süreli cache
 [[headers]]
   for = "/_assets/*"
   [headers.values]
@@ -104,8 +127,9 @@
 # ============================================
 # NOT: Cloudflare Ayarları
 # ============================================
-# 1. SSL/TLS → "Full" (NOT Full Strict)
+# 1. SSL/TLS → "Full (Strict)" — Netlify otomatik SSL sağlar, Strict daha hızlı
 # 2. SSL/TLS → Always Use HTTPS: OFF
 # 3. Speed → Auto Minify: OFF
 # 4. Caching → Browser Cache TTL: "Respect Existing Headers"
-# 5. Page Rules → SSL: Full, Auto HTTPS Rewrites: Off
+# 5. Security → WAF → Bingbot whitelist kuralı ekle:
+#    (http.user_agent contains "bingbot") → Action: Allow
