@@ -1,0 +1,369 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import card1 from '../../assets/card1.jpg';
+import ContentBox from '../../components/blog/ContentBox.astro';
+import ContentGrid from '../../components/blog/ContentGrid.astro';
+import StepsList from '../../components/blog/StepsList.astro';
+
+const datePublished = '2026-05-07T00:00:00Z';
+const dateModified  = '2026-05-07T00:00:00Z';
+const author        = 'Success Odyssey Hub';
+const pageTitle       = 'The Psychology of Success: What Science Actually Says';
+const pageDescription = 'What separates high achievers from everyone else is not talent or luck — it is a specific set of psychological patterns. Discover what decades of research reveals about the psychology of success.';
+const pageKeywords    = 'psychology of success, psychology of high achievers, what makes people successful, science of success, success mindset psychology, achievement psychology, psychological traits of successful people, how successful people think, success research psychology, growth mindset success, self-efficacy and achievement, intrinsic motivation success, grit and success, behavioral psychology success, habits of successful people';
+const readingTime     = 13;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={card1}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/psychology-of-success"
+>
+  <link rel="preload" as="image" href={card1.src} slot="head" />
+
+  <script type="application/ld+json" slot="head">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does psychology say about success?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Decades of research show that success is driven more by psychological factors than talent or intelligence. Key variables include growth mindset, self-efficacy, intrinsic motivation, delayed gratification, and deliberate practice. Studies consistently find that how people interpret failure and persist through difficulty predicts achievement more reliably than raw ability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the most important psychological trait for success?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Research points to self-efficacy — belief in one's ability to execute specific tasks — as among the strongest predictors of success across domains. Albert Bandura's decades of research show that self-efficacy influences the goals people set, the effort they invest, and their resilience after setbacks. It is not confidence in general, but confidence in one's ability to handle specific challenges."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the psychology of success be learned?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Unlike fixed personality traits, the psychological patterns associated with success are largely learnable and trainable. Carol Dweck's growth mindset research shows that belief systems about ability can be changed. Self-efficacy can be built through mastery experiences. Delayed gratification capacity improves with practice and environmental design."
+        }
+      }
+    ]
+  })}
+  </script>
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <header class="article-header">
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <div class="article-meta">
+        <time datetime={datePublished} itemprop="datePublished">May 7, 2026</time>
+        <meta itemprop="dateModified" content={dateModified} />
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>{readingTime} min read</span>
+        <div class="article-tags">
+          <span class="tag">Success Psychology</span>
+          <span class="tag">Achievement</span>
+          <span class="tag">Mindset</span>
+        </div>
+      </div>
+    </header>
+
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card1}
+        alt="The psychology of success — scientific research on what drives high achievement and the mental patterns of successful people"
+        width={1200}
+        height={600}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={90}
+        class="hero-image"
+      />
+      <meta itemprop="url" content={new URL(card1.src, Astro.site).toString()} />
+    </figure>
+
+    <div class="article-content" itemprop="articleBody">
+
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#the-wrong-model">The Wrong Model Most People Use</a></li>
+          <li><a href="#self-efficacy">Self-Efficacy: The Most Underrated Predictor</a></li>
+          <li><a href="#growth-mindset">Growth Mindset: What Dweck's Research Actually Shows</a></li>
+          <li><a href="#intrinsic-motivation">Intrinsic Motivation and Long-Term Performance</a></li>
+          <li><a href="#delayed-gratification">Delayed Gratification: More Than Willpower</a></li>
+          <li><a href="#failure-interpretation">How High Achievers Interpret Failure Differently</a></li>
+          <li><a href="#deliberate-practice">Deliberate Practice vs. Naive Practice</a></li>
+          <li><a href="#how-to-apply">How to Apply This: Building Your Success Psychology</a></li>
+          <li><a href="#misconceptions">Common Misconceptions About Success Psychology</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+      </nav>
+
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <p class="lead">
+        The conventional story about success goes like this: some people are born with it — the talent, the intelligence, the drive — and the rest of us are working uphill against nature. Decades of psychological research say something entirely different. What separates high achievers from everyone else is not what they were born with. It is a specific cluster of learnable mental patterns that determine how they respond to difficulty, interpret feedback, and sustain effort across time.
+      </p>
+
+      <section id="the-wrong-model">
+        <h2>The Wrong Model Most People Use</h2>
+        <p>
+          Consider the typical explanation for why some people succeed while others do not: natural talent, supportive environments, fortunate circumstances, or simple hard work. Each of these contains partial truth. But they share a critical flaw — they treat success as something that happens to people rather than something produced by identifiable psychological mechanisms.
+        </p>
+        <p>
+          The research literature paints a more precise picture. A landmark meta-analysis published in <em>Perspectives on Psychological Science</em> by Credé, Tynan, and Harms (2017) examined over 200 studies on grit — defined as passion and perseverance for long-term goals — and found that while grit predicts performance, it does so largely through conscientiousness, a broader personality trait. The implication: specific psychological constructs matter, but they work through mechanisms, not magic.
+        </p>
+        <p>
+          The more productive question is not "are successful people different?" but "what specific psychological processes drive the outcomes we call success?" — and whether those processes can be deliberately cultivated.
+        </p>
+        <h3>Why IQ Isn't Enough</h3>
+        <p>
+          In a widely cited study, Lewis Terman followed over 1,500 high-IQ children from the 1920s into adulthood. The most successful in the cohort were not distinguished by higher intelligence — they were distinguished by higher self-confidence, stronger goal persistence, and better social integration. Among the least successful in the same high-IQ group, the most common deficits were not intellectual. They were motivational and psychological. Intelligence is a ceiling, not a floor — it sets the upper limit of potential but does not determine how much of that potential gets used.
+        </p>
+      </section>
+
+      <section id="self-efficacy">
+        <h2>Self-Efficacy: The Most Underrated Predictor</h2>
+        <p>
+          Albert Bandura's concept of self-efficacy — the belief in one's capability to execute the specific behaviors required to produce a given outcome — is perhaps the most robustly supported predictor of achievement in the psychological literature. In a comprehensive review published in <em>Psychological Bulletin</em>, Stajkovic and Luthans (1998) found that self-efficacy was significantly correlated with work-related performance across 114 studies, with an average effect size comparable to or exceeding other commonly cited predictors.
+        </p>
+        <p>
+          Crucially, self-efficacy is not general self-confidence or self-esteem. It is domain-specific and task-specific. A person can have high self-efficacy for public speaking and low self-efficacy for financial management, and these beliefs will shape behavior independently in each domain. This specificity is what makes self-efficacy both tractable to measure and actionable to build.
+        </p>
+        <h3>The Four Sources of Self-Efficacy</h3>
+        <p>
+          Bandura identified four mechanisms through which self-efficacy develops. Mastery experiences — successfully completing progressively harder challenges — are the most powerful. Vicarious experiences, watching others with similar characteristics succeed, are the second source. Social persuasion, credible encouragement from trusted others, provides a third. And physiological states — interpreting arousal as excitement rather than anxiety — constitute the fourth. Each of these can be deliberately engineered.
+        </p>
+      </section>
+
+      <section id="growth-mindset">
+        <h2>Growth Mindset: What Dweck's Research Actually Shows</h2>
+        <p>
+          Carol Dweck's distinction between fixed and growth mindsets has been widely popularized — and almost as widely oversimplified. The core finding, from decades of research at Columbia and Stanford, is precise: people who believe that their abilities are fixed entities tend to avoid challenges that might expose their limits, while those who believe abilities are developed through effort tend to seek challenge as a vehicle for growth.
+        </p>
+        <p>
+          The downstream consequences of this difference compound significantly over time. In a study of seventh-grade students transitioning to junior high school — a period associated with declining academic motivation — Dweck and Blackwell (2007) found that students taught growth mindset showed a reversal in declining grades, while control group peers continued to slide. The intervention was not tutoring or content instruction. It was a change in how students conceptualized the nature of intelligence.
+        </p>
+        <h3>What Mindset Does and Does Not Affect</h3>
+        <p>
+          A growth mindset primarily affects behavior in the face of difficulty and setback. It changes whether people persist, seek help, use strategies, and reframe failure as information. What it does not do — contrary to some popular presentations — is make everyone equally capable of everything with sufficient effort. The research does not claim that effort alone eliminates cognitive or physical constraints. It claims that people with growth mindsets use more of whatever capacity they have, for longer, more effectively.
+        </p>
+      </section>
+
+      <section id="intrinsic-motivation">
+        <h2>Intrinsic Motivation and Long-Term Performance</h2>
+        <p>
+          Edward Deci and Richard Ryan's Self-Determination Theory, developed over four decades of research, establishes a fundamental distinction between intrinsic motivation — engaging in an activity for inherent satisfaction — and extrinsic motivation, driven by external rewards or avoidance of punishment. The theory's core prediction: intrinsic motivation produces higher-quality performance, greater persistence, more creativity, and better wellbeing than extrinsic motivation, particularly in complex tasks.
+        </p>
+        <p>
+          The famous "overjustification effect" demonstrated by Lepper, Greene, and Nisbett (1973) showed that rewarding children for drawing — an activity they initially did for pleasure — reduced their subsequent motivation to draw when no reward was present. Extrinsic rewards can crowd out intrinsic motivation, especially when the reward signals that the activity is not worth doing for its own sake.
+        </p>
+        <h3>Why High Achievers Talk About Their Work Differently</h3>
+        <p>
+          Interview any sustained high performer — in any field — and a consistent pattern emerges: they describe their work in terms of fascination, challenge, meaning, and identity, not primarily in terms of external rewards. This is not post-hoc rationalization. Research on expert performers consistently shows that intrinsic engagement with the domain itself is a distinguishing feature of those who reach the highest levels. External rewards can initiate behavior; intrinsic motivation sustains it over the decade-scale timelines that elite performance requires.
+        </p>
+      </section>
+
+      <section id="delayed-gratification">
+        <h2>Delayed Gratification: More Than Willpower</h2>
+        <p>
+          The Stanford marshmallow studies of the 1960s and 70s, conducted by Walter Mischel, became one of psychology's most discussed findings: children who could delay eating a marshmallow for fifteen minutes in order to receive two marshmallows later showed significantly better outcomes decades later on measures including SAT scores, educational attainment, and body mass index. The initial finding was striking. The subsequent research was more important.
+        </p>
+        <p>
+          Later work by Mischel's team, along with replications by other researchers, identified that successful delay was not primarily a function of brute willpower — of "just resisting" temptation through force of will. Children who succeeded most reliably did so by using cognitive strategies: distracting themselves, transforming the marshmallow mentally (imagining it as a picture rather than a real object), or redirecting attention entirely. The limiting factor was not desire but strategy.
+        </p>
+        <h3>The Role of Trust and Environment</h3>
+        <p>
+          More recent research by Kidd, Palmeri, and Aslin (2013) complicated the picture further: children who had been given reliable prior experiences with researchers — where an adult followed through on a promise — waited significantly longer than children from unreliable prior conditions. Delay capacity is partially a function of trust in the environment and confidence that the future reward will materialize. This finding reframes delayed gratification partly as a rational calculation about environmental reliability, not purely a measure of internal self-control capacity.
+        </p>
+      </section>
+
+      <section id="failure-interpretation">
+        <h2>How High Achievers Interpret Failure Differently</h2>
+        <p>
+          One of the most consistent findings across the psychology of achievement is a systematic difference in how successful and unsuccessful people attribute the causes of outcomes. Martin Seligman's work on explanatory style identifies three dimensions: permanence (is this temporary or permanent?), pervasiveness (is this specific or universal?), and personalization (is this about me or about circumstances?). People who interpret negative events as temporary, specific, and contextual — rather than permanent, global, and personal — show greater resilience and better long-term performance.
+        </p>
+        <p>
+          Importantly, this is not about naive optimism. Research on "depressive realism" suggests that mildly depressed people are actually more accurate in some assessments of their own performance than non-depressed people, who tend toward self-serving bias. The high performer's advantage is not accuracy — it is strategic interpretation that sustains motivation without fully losing contact with reality. They fail accurately but recover quickly.
+        </p>
+        <h3>The After-Action Review Habit</h3>
+        <p>
+          High-performing organizations — the military, elite sports teams, top surgical programs — systematically debrief after both successes and failures. The psychological function of this practice is to transform subjective experience into structured information: what happened, what was expected, what caused the gap, and what to adjust. This converts failure from an emotional event into an analytical one, which is precisely the cognitive reframe that supports continued performance.
+        </p>
+      </section>
+
+      <section id="deliberate-practice">
+        <h2>Deliberate Practice vs. Naive Practice</h2>
+        <p>
+          Anders Ericsson's research on expert performance, synthesized in his book <em>Peak</em> (co-written with Robert Pool), established the concept of deliberate practice as the primary mechanism behind expert skill development. Deliberate practice is not simply doing something repeatedly — it is engaging in specifically designed activities to improve performance, operating at the edge of current ability, with immediate feedback and focused attention on weaknesses.
+        </p>
+        <p>
+          The famous "10,000 hours" figure — popularized by Malcolm Gladwell from Ericsson's research — was both oversimplified and somewhat misattributed. Ericsson's actual finding was that quality of practice matters at least as much as quantity, and that the type of practice most people engage in — "naive practice," which involves doing familiar things repeatedly without targeted improvement — produces minimal skill gains after initial competence is established. Hours of naive practice do not compound the way hours of deliberate practice do.
+        </p>
+      </section>
+
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="4827765044"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="how-to-apply">
+        <h2>How to Apply This: Building Your Success Psychology</h2>
+        <p>The research is clear on mechanisms. Here is how to work with them directly:</p>
+        <ol>
+          <li><strong>Audit your self-efficacy by domain.</strong> List five areas where your success matters most to you. Rate your self-efficacy in each from 1–10. Where ratings are low, engineer mastery experiences: break the domain into sub-skills, find the easiest version of the hardest thing, succeed there, and move up. Do not wait for confidence — build it through small completions.</li>
+          <li><strong>Track your explanatory style after setbacks.</strong> When something goes wrong, write down your automatic explanation before analyzing it. Ask: am I treating this as permanent, pervasive, and personal? Deliberately test each dimension — is there evidence it is actually temporary? Specific rather than global? Situational rather than dispositional?</li>
+          <li><strong>Identify what you find intrinsically engaging.</strong> Extrinsic motivation can get you started; it will not sustain you through difficulty. Find the aspect of your work that produces curiosity, challenge, or meaning independent of external reward. Structure more of your time around that aspect. Remove or automate the parts that produce only compliance.</li>
+          <li><strong>Design your environment for delayed gratification rather than willpower.</strong> Put the friction between yourself and short-term rewards (notifications off, phone in another room, no fast food in the house). Put the ease between yourself and long-term investments (gym bag packed the night before, reading list on the nightstand). Reduce the decision burden at the moment of choice.</li>
+          <li><strong>Replace naive practice with deliberate practice.</strong> Identify the specific skill bottleneck that most limits your performance. Design a practice session that targets that bottleneck specifically, includes immediate feedback, and operates slightly beyond your current comfortable ability. Do this for 45–90 minutes before any other task.</li>
+          <li><strong>Build a failure debrief habit.</strong> After any significant failure or setback, run a five-minute structured analysis: what did I expect, what happened, what caused the gap, what will I do differently. This converts emotional events into information and maintains the analytical orientation that supports continued performance.</li>
+        </ol>
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions About Success Psychology</h2>
+        <h3>"Successful people are just more motivated"</h3>
+        <p>
+          Motivation is a state, not a trait. Research on high performers consistently shows that motivation fluctuates for everyone — what distinguishes high achievers is not that they feel more motivated but that they have systems that produce action even when motivation is low. Habit formation, environmental design, and commitment devices replace motivational dependence with behavioral consistency.
+        </p>
+        <h3>"You need to love what you do"</h3>
+        <p>
+          The passion hypothesis — that you should find your pre-existing passion and follow it — is not well supported by research on how successful people actually developed their interests. Cal Newport's analysis of career research suggests that passion typically follows mastery, not the other way around. People who become good at something often become more interested in it as competence develops. Waiting for passion before investing effort often inverts the actual causal sequence.
+        </p>
+        <h3>"Positive thinking produces success"</h3>
+        <p>
+          Gabriele Oettingen's research on mental contrasting shows that pure positive fantasy about future success — without realistic engagement with current obstacles — actually reduces motivation and performance. The effective variant is WOOP (Wish, Outcome, Obstacle, Plan): combining positive envisioning of outcomes with explicit identification of obstacles and concrete implementation intentions. The positive thinking industry has the first step right and omits the more important second step.
+        </p>
+      </section>
+
+      <div class="ad-unit ad-unit--bottom">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          The psychology of success is not a collection of motivational insights — it is a body of empirical research identifying the specific mechanisms through which people produce exceptional outcomes over time. Self-efficacy, growth mindset, intrinsic motivation, strategic delay of gratification, optimistic explanatory style, and deliberate practice are not personality traits you either have or lack. They are psychological processes with identifiable development pathways.
+        </p>
+        <p>
+          What the research does not support is the idea that any of these variables works in isolation, or that developing them is simple or fast. Building genuine self-efficacy requires completing real challenges at real difficulty. Developing a growth mindset requires sustained behavioral practice of the relevant cognitive reframes. Growing intrinsic motivation requires structured exposure and skill development in a domain. These are multi-year processes, not weekend interventions.
+        </p>
+        <p>
+          The encouraging finding is that they are processes — which means they respond to deliberate action. You do not need to wait for talent, inspiration, or fortune. You need to understand the mechanisms and work with them consistently over time.
+        </p>
+      </section>
+
+      <ContentBox type="tip" title="Your Next Step">
+        <p>Start with a self-efficacy audit this week. Choose the one domain where your performance most matters and where your belief in your own capability is lowest. Design a single mastery experience — a task that is genuinely challenging but clearly achievable — and complete it before anything else tomorrow. For foundational reading, Carol Dweck's <em>Mindset</em> covers the growth mindset research directly. Angela Duckworth's <em>Grit</em> extends the persistence research. Albert Bandura's academic work on self-efficacy is dense but the most rigorous primary source. For a practical synthesis, James Clear's <em>Atomic Habits</em> (<a href="https://amzn.to/atomichabits" rel="nofollow sponsored" target="_blank">available on Amazon</a>) operationalizes much of this research into daily behavioral systems.</p>
+      </ContentBox>
+
+      <div class="author-bio">
+        <div class="author-bio__content">
+          <h3>About the Author</h3>
+          <p><strong>Success Odyssey Hub</strong> is an independent research-driven publication focused on the psychology of achievement, decision-making science, and evidence-based personal development. Our content synthesizes peer-reviewed research, philosophical frameworks, and practical application — written for people who take their growth seriously.</p>
+        </div>
+      </div>
+
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <a href="/blog/growth-mindset-vs-fixed" class="related-card">
+            <h4>Growth Mindset vs Fixed Mindset: Complete Guide</h4>
+            <p>A deep dive into Carol Dweck's research — what growth mindset actually is, what it is not, and how to develop it beyond the oversimplified popular version.</p>
+          </a>
+          <a href="/blog/self-efficacy-success" class="related-card">
+            <h4>Self-Efficacy: Believe You Can and You Will</h4>
+            <p>Bandura's most important concept explained in full — the four sources of self-efficacy and how to deliberately build domain-specific confidence.</p>
+          </a>
+          <a href="/blog/grit-persistence" class="related-card">
+            <h4>Grit: Why Persistence Matters More Than Talent</h4>
+            <p>Angela Duckworth's research on passion and perseverance — what grit is, how it develops, and whether it can be cultivated in adulthood.</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="external-resources">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://psycnet.apa.org/record/1998-04684-003" target="_blank" rel="noopener">Stajkovic & Luthans (1998) — Self-Efficacy and Work-Related Performance (<em>Psychological Bulletin</em>)</a> — Meta-analysis of 114 studies establishing self-efficacy as a strong predictor of work performance, with implications for how organizations and individuals should develop confidence in specific domains.</li>
+          <li><a href="https://www.pnas.org/doi/10.1073/pnas.0910062107" target="_blank" rel="noopener">Blackwell, Trzesniewski & Dweck (2007) — Implicit Theories of Intelligence Predict Achievement (<em>Child Development</em>)</a> — The foundational growth mindset intervention study showing that changing beliefs about the nature of intelligence reversed declining grades in seventh-grade students.</li>
+          <li><a href="https://psycnet.apa.org/doiLanding?doi=10.1037%2F0033-2909.124.2.240" target="_blank" rel="noopener">Deci, Koestner & Ryan (1999) — A Meta-Analytic Review of Experiments Examining the Effects of Extrinsic Rewards on Intrinsic Motivation (<em>Psychological Bulletin</em>)</a> — Comprehensive meta-analysis confirming that tangible extrinsic rewards undermine intrinsic motivation for interesting tasks, with important implications for how success incentives should be structured.</li>
+        </ul>
+      </div>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><span aria-hidden="true">&#x203A;</span></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><span aria-hidden="true">&#x203A;</span></li>
+          <li><span aria-current="page">The Psychology of Success</span></li>
+        </ol>
+      </nav>
+
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+.ad-unit {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+  overflow: hidden;
+  &--top   { margin-top: 0; margin-bottom: var(--spacing-2xl); }
+  &--mid   { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: var(--spacing-lg) 0; }
+  &--bottom{ border-top: 1px solid var(--color-border); padding-top: var(--spacing-lg); }
+}
+.blog-article { max-width: 800px; margin: 0 auto; padding: var(--spacing-2xl) var(--spacing-md); }
+.article-header {
+  text-align: center; margin-bottom: var(--spacing-3xl);
+  h1 { margin-bottom: var(--spacing-lg); }
+  .article-meta { display: flex; justify-content: center; align-items: center; gap: var(--spacing-lg); flex-wrap: wrap; color: var(--color-text-secondary); font-size: 0.95rem; time { font-weight: 600; } .reading-time { color: var(--color-primary); font-weight: 600; } }
+  .article-tags { display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap; .tag { background: var(--gradient-primary); color: white; padding: var(--spacing-sm) var(--spacing-md); border-radius: 20px; font-size: 0.875rem; font-weight: 600; } }
+}
+.hero-figure { margin: 0 0 var(--spacing-3xl); .hero-image { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); } }
+.article-content {
+  font-size: 1.125rem; line-height: 1.8;
+  section { margin-bottom: var(--spacing-3xl); scroll-margin-top: 100px; }
+  h2 { margin: var(--spacing-3xl) 0 var(--spacing-xl); }
+  h3 { margin: var(--spacing-2xl) 0 var(--spacing-lg); }
+  .lead { font-size: 1.3rem; text-align: center; padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary); margin: var(--spacing-2xl) 0; font-weight: 500; }
+  ol { padding-left: var(--spacing-xl); li { margin-bottom: var(--spacing-lg); line-height: 1.8; } }
+}
+.table-of-contents { background: var(--color-bg-secondary); border: 2px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-xl); margin: var(--spacing-2xl) 0; h2 { margin-top: 0; margin-bottom: var(--spacing-lg); color: var(--color-primary); } ol { padding-left: var(--spacing-lg); line-height: 1.8; li { margin-bottom: var(--spacing-sm); } a { color: var(--color-text-primary); text-decoration: none; &:hover { color: var(--color-primary); } } } }
+.author-bio { display: flex; gap: var(--spacing-xl); padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); margin: var(--spacing-3xl) 0; .author-bio__content { h3 { margin-top: 0; margin-bottom: var(--spacing-sm); } p { margin: 0; color: var(--color-text-secondary); } } }
+.related-articles { margin: var(--spacing-3xl) 0; h3 { margin-bottom: var(--spacing-xl); text-align: center; } .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); } .related-card { padding: var(--spacing-lg); background: var(--color-bg-secondary); border: 2px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: var(--transition); &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); } h4 { color: var(--color-text-primary); margin-top: 0; margin-bottom: var(--spacing-sm); } p { color: var(--color-text-secondary); margin: 0; font-size: 0.95rem; } } }
+.external-resources { margin: var(--spacing-3xl) 0; padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); h3 { margin-top: 0; margin-bottom: var(--spacing-lg); } ul { padding-left: var(--spacing-lg); line-height: 2; } a { color: var(--color-primary); font-weight: 600; } }
+.breadcrumb { margin-top: var(--spacing-2xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--color-border); ol { display: flex; gap: var(--spacing-sm); list-style: none; padding: 0; font-size: 0.9rem; flex-wrap: wrap; } a { color: var(--color-primary); text-decoration: none; &:hover { text-decoration: underline; } } span { color: var(--color-text-secondary); } }
+@media (max-width: 768px) { .blog-article { padding: var(--spacing-xl) var(--spacing-md); } .article-header .article-meta { flex-direction: column; gap: var(--spacing-sm); } .author-bio { flex-direction: column; text-align: center; } .related-articles .related-grid { grid-template-columns: 1fr; } .article-content { font-size: 1.0625rem; } }
+</style>

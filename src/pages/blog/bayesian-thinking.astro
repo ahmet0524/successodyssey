@@ -1,0 +1,372 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import card1 from '../../assets/card1.jpg';
+import ContentBox from '../../components/blog/ContentBox.astro';
+import ContentGrid from '../../components/blog/ContentGrid.astro';
+import StepsList from '../../components/blog/StepsList.astro';
+
+const datePublished = '2026-05-07T00:00:00Z';
+const dateModified  = '2026-05-07T00:00:00Z';
+const author        = 'Success Odyssey Hub';
+const pageTitle       = 'Bayesian Thinking: Update Your Beliefs with Evidence';
+const pageDescription = "Bayesian thinking is the most rigorous framework for updating beliefs in proportion to evidence. Learn how to apply it without the math — and why it produces dramatically better judgments over time.";
+const pageKeywords    = 'bayesian thinking, bayesian reasoning, bayesian updating beliefs, how to think like a bayesian, bayes theorem decision making, update beliefs with evidence, prior probability thinking, posterior belief updating, rational belief revision, bayesian mental model, bayes rule everyday life, bayesian inference decisions, calibrated belief bayesian, evidence-based thinking, bayesian vs frequentist thinking';
+const readingTime     = 13;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={card1}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/bayesian-thinking"
+>
+  <link rel="preload" as="image" href={card1.src} slot="head" />
+
+  <script type="application/ld+json" slot="head">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Bayesian thinking in simple terms?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bayesian thinking is the practice of starting with your best current estimate of how likely something is (your prior belief), then updating that estimate proportionally when you encounter new evidence. If new evidence strongly favors one hypothesis over alternatives, update significantly. If the evidence is weak or equally consistent with multiple explanations, update minimally. The result is beliefs that track reality more accurately over time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you need to know statistics to use Bayesian thinking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The core of Bayesian thinking is a qualitative habit: always ask what your prior belief is, how much more likely this evidence is given your hypothesis versus its alternatives, and how much you should update. Most practical applications require only rough probability estimates — better or worse than 50/50, strong or weak evidence — rather than precise numerical calculation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Bayesian thinking differ from normal reasoning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most people reason by finding evidence that confirms a preferred conclusion. Bayesian thinking requires explicitly quantifying prior beliefs, asking how likely the observed evidence is under competing hypotheses, and updating in proportion to that ratio. The key difference is that Bayesian thinking treats the strength of evidence relative to alternatives — not just whether evidence exists — as the update signal."
+        }
+      }
+    ]
+  })}
+  </script>
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <header class="article-header">
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <div class="article-meta">
+        <time datetime={datePublished} itemprop="datePublished">May 7, 2026</time>
+        <meta itemprop="dateModified" content={dateModified} />
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>{readingTime} min read</span>
+        <div class="article-tags">
+          <span class="tag">Decision Making</span>
+          <span class="tag">Mental Models</span>
+          <span class="tag">Reasoning</span>
+        </div>
+      </div>
+    </header>
+
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card1}
+        alt="Bayesian thinking — updating beliefs with evidence using Bayes theorem for better decisions and clearer reasoning"
+        width={1200}
+        height={600}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={90}
+        class="hero-image"
+      />
+      <meta itemprop="url" content={new URL(card1.src, Astro.site).toString()} />
+    </figure>
+
+    <div class="article-content" itemprop="articleBody">
+
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#what-is-bayesian">What Bayesian Thinking Actually Is</a></li>
+          <li><a href="#the-math-without-math">The Logic Without the Math</a></li>
+          <li><a href="#priors">Priors: Your Starting Beliefs</a></li>
+          <li><a href="#evidence-strength">Evaluating Evidence Strength</a></li>
+          <li><a href="#updating-mistakes">The Most Common Updating Mistakes</a></li>
+          <li><a href="#in-practice">Bayesian Thinking in Everyday Decisions</a></li>
+          <li><a href="#vs-confirmation-bias">Bayesian Thinking vs. Confirmation Bias</a></li>
+          <li><a href="#how-to-apply">How to Apply This: The Bayesian Practice</a></li>
+          <li><a href="#misconceptions">Common Misconceptions</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+      </nav>
+
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <p class="lead">
+        Thomas Bayes, an 18th-century English minister with an interest in probability, developed a theorem that would eventually become the foundation of modern statistics, artificial intelligence, and — most usefully for our purposes — a precise method for thinking. Bayesian thinking is not primarily about mathematics. It is about a discipline of reasoning: start with explicit prior beliefs, encounter evidence, update in proportion to what the evidence actually implies. Done consistently, it produces dramatically more accurate beliefs than the reasoning patterns most people use by default.
+      </p>
+
+      <section id="what-is-bayesian">
+        <h2>What Bayesian Thinking Actually Is</h2>
+        <p>
+          The core Bayesian insight is that every belief should be held with a degree of confidence — a probability — rather than as a binary true-or-false claim. And that degree of confidence should update when you encounter new evidence, by a specific amount determined by how much more likely the evidence is under your hypothesis than under competing hypotheses.
+        </p>
+        <p>
+          Contrast this with how most people actually reason: they form an initial conclusion, seek evidence that supports it, interpret ambiguous evidence as supporting it, and update their confidence very little when disconfirming evidence arrives. This is the pattern that confirmation bias describes — and it produces beliefs that become increasingly disconnected from reality over time as confirming evidence accumulates and disconfirming evidence is discarded.
+        </p>
+        <p>
+          Bayesian reasoning forces a fundamentally different question. Not just "is there evidence for my belief?" but "how much more likely is this evidence if my belief is correct than if it is incorrect?" A belief for which even the best available evidence would be equally likely regardless of whether the belief was true provides essentially no confirmation. A belief for which the observed evidence would be extremely unlikely unless the belief is true provides strong confirmation.
+        </p>
+        <h3>A Medical Illustration</h3>
+        <p>
+          The classic Bayesian medical example illustrates the logic cleanly. Suppose a disease affects 1% of the population. A test for the disease is 95% accurate (produces a positive result 95% of the time when the disease is present, and a negative result 95% of the time when it is absent). You test positive. How likely are you to have the disease?
+        </p>
+        <p>
+          Most people answer "95%" — the accuracy of the test. The Bayesian answer is approximately 16%. Why? Because the 1% base rate means that in a population of 10,000 people, 100 have the disease (and ~95 will test positive) while 9,900 do not (and ~495 will falsely test positive). Of the ~590 total positive tests, only 95 come from people who actually have the disease. The base rate — your prior — must anchor the interpretation of the test result. Ignoring it produces a 6x error in probability estimation.
+        </p>
+      </section>
+
+      <section id="the-math-without-math">
+        <h2>The Logic Without the Math</h2>
+        <p>
+          Formal Bayes' theorem requires numerical probabilities and produces numerical outputs. But the core reasoning structure is accessible without computation. The three components are: (1) your prior — how likely did you think this was before encountering the evidence? (2) the likelihood ratio — how much more probable is this evidence if your hypothesis is true versus false? and (3) your posterior — the updated belief after incorporating the evidence.
+        </p>
+        <p>
+          In qualitative practice, you can reason through these without numbers. Consider the hypothesis "this business venture will succeed." Your prior might be "I'd say roughly 25% likely, given the base rate for new ventures in this industry." Evidence arrives: your first customer says they love the product. The Bayesian question is: how much more likely is this enthusiastic customer response given the business will succeed versus given it will fail? If customers respond similarly regardless of eventual success (because enthusiasm doesn't predict all the factors that determine success), this evidence barely updates your prior. If enthusiastic early customer response is strongly predictive of success in this market, it shifts the probability more substantially.
+        </p>
+        <h3>The Likelihood Ratio Is the Key</h3>
+        <p>
+          The piece most people miss is that evidence strength depends entirely on its likelihood ratio — how much more probable the evidence is under the hypothesis compared to its negation. Evidence that is equally likely regardless of whether your hypothesis is true is uninformative. Evidence that would be highly surprising unless your hypothesis is true is highly informative. Evaluating this ratio — even roughly — is the core skill of Bayesian reasoning.
+        </p>
+      </section>
+
+      <section id="priors">
+        <h2>Priors: Your Starting Beliefs</h2>
+        <p>
+          Your prior is what you believe before encountering the specific evidence at hand. Bayesian reasoning requires priors to be explicit and grounded — ideally, in base rates rather than intuitive feelings. The best prior for "will this new restaurant succeed?" is the historical failure rate for restaurants in that market, adjusted for any specific features of this case that are known to shift the probability.
+        </p>
+        <p>
+          The problem with informal reasoning is that priors are almost never explicit. When someone evaluates a new business idea, they rarely start by citing base rates — they start with their gut reaction to the specific case. This produces priors that are heavily influenced by the most salient features of the case (the compelling pitch, the charismatic founder, the exciting market) and systematically underweight the statistical context (the historical failure rate of similar ventures).
+        </p>
+        <h3>Strong vs. Weak Priors</h3>
+        <p>
+          The strength of a prior — how much evidence it takes to substantially shift it — should reflect the quality of the evidence underlying it. A prior based on thousands of well-documented cases should require substantial contrary evidence before updating. A prior based on a single data point or personal impression should update easily. Many reasoning failures involve holding weak priors too strongly (resistant to update) or strong priors too weakly (updating excessively on individual dramatic examples).
+        </p>
+      </section>
+
+      <section id="evidence-strength">
+        <h2>Evaluating Evidence Strength</h2>
+        <p>
+          Not all evidence is created equal. The Bayesian framework makes the relevant dimension explicit: evidence is strong to the extent that it is much more likely given one hypothesis than given its competitors. A doctor who observes a symptom that is highly specific to one disease gains strong information. A doctor who observes a symptom that appears with equal frequency across fifty conditions gains little.
+        </p>
+        <p>
+          In daily reasoning, evaluating evidence strength requires asking: "would I expect to see this evidence even if my belief were wrong?" If yes, the evidence is weak. If no — if this evidence would be quite surprising unless my hypothesis were correct — the evidence is strong. The answer to this question requires genuine engagement with alternative explanations, which is precisely what motivated reasoning typically avoids.
+        </p>
+        <p>
+          A practical heuristic: the more surprising the evidence would be under the null hypothesis (the assumption that nothing interesting is going on), the more it should update your beliefs. Surprising evidence is the highest-quality evidence. Expected evidence, consistent with many hypotheses, provides minimal update signal.
+        </p>
+      </section>
+
+      <section id="updating-mistakes">
+        <h2>The Most Common Updating Mistakes</h2>
+        <p>
+          <strong>Under-updating from strong evidence.</strong> When evidence strongly favors one interpretation over others, the correct Bayesian response is substantial belief revision. But anchoring — the cognitive tendency to remain close to an initial estimate regardless of evidence — produces systematic under-updating. People adjust, but insufficiently.
+        </p>
+        <p>
+          <strong>Over-updating from vivid evidence.</strong> Dramatic, emotionally salient examples — a plane crash, a lottery winner, a single spectacular failure — produce disproportionate belief revision because the vividness of the example inflates its perceived frequency and causal significance. The Bayesian correction is to weight evidence by its actual frequency and quality of causal mechanism, not by the intensity of the emotional response it produces.
+        </p>
+        <p>
+          <strong>Treating confirming evidence as more diagnostic than disconfirming evidence.</strong> Research by Wason (1968) and decades of follow-up work show that people systematically seek and weight confirming evidence more heavily than disconfirming evidence, even when disconfirming evidence is more diagnostic. In Bayesian terms, this produces beliefs that are too confident in the direction of the initial hypothesis, regardless of what the full evidence base actually supports.
+        </p>
+        <h3>The Motivated Reasoning Problem</h3>
+        <p>
+          Perhaps the deepest obstacle to Bayesian updating is motivated reasoning — the tendency to evaluate evidence differently depending on whether it supports or challenges a conclusion we are emotionally invested in. Research by Kunda (1990) showed that people are generally capable of conducting the cognitive operations required for accurate evidence evaluation, but choose not to when the conclusion threatens self-relevant beliefs. The solution is not purely cognitive — it requires building the meta-level habit of noticing when you are treating evidence on a topic you care about differently than you would treat equivalent evidence on a neutral topic.
+        </p>
+      </section>
+
+      <section id="in-practice">
+        <h2>Bayesian Thinking in Everyday Decisions</h2>
+        <p>
+          <strong>Evaluating a new hire.</strong> Prior: the base rate of success for candidates from this background in this role. Evidence: a strong interview performance. Bayesian question: how much more likely is a strong interview performance in someone who will succeed versus someone who will fail? Research on structured interviews suggests moderate predictive validity — not zero, but not overwhelming either. Update accordingly: moderately positive, not conclusively so.
+        </p>
+        <p>
+          <strong>Interpreting a partner's behavior.</strong> Prior: based on years of interactions, this person is generally reliable and considerate. Evidence: they cancelled plans without much explanation. Bayesian question: how much more likely is this behavior given that they have become less reliable versus given that something is simply going on in their life right now? Given the strong prior, one instance should produce only mild updating toward concern, not a wholesale revision of the model.
+        </p>
+        <p>
+          <strong>Assessing a financial opportunity.</strong> Prior: opportunities promising returns significantly above market average have a high probability of being either very risky or fraudulent. Evidence: compelling pitch, impressive early returns. Bayesian question: how likely is this evidence given a legitimate high-return opportunity versus given a highly risky or fraudulent one? Ponzi schemes and overly risky investments often produce exactly this evidence pattern in their early stages. The prior should be very hard to shift without extraordinarily clear and specific evidence of the mechanism generating returns.
+        </p>
+      </section>
+
+      <section id="vs-confirmation-bias">
+        <h2>Bayesian Thinking vs. Confirmation Bias</h2>
+        <p>
+          Confirmation bias and Bayesian updating are mutually exclusive cognitive approaches to the same evidence. Confirmation bias asks: "does this evidence support what I already believe?" and weights the evidence accordingly — heavily if confirming, lightly if disconfirming. Bayesian updating asks: "how much more likely is this evidence given my hypothesis versus given alternatives?" and updates in proportion to that ratio, regardless of which direction the update runs.
+        </p>
+        <p>
+          The practical difference accumulates dramatically over time. A confirmation-biased reasoner's beliefs become increasingly insulated from disconfirmation and increasingly confident without warrant. A Bayesian reasoner's beliefs gradually converge toward whatever is actually true as evidence accumulates, because the update mechanism is symmetric — strong disconfirming evidence shifts beliefs in the negative direction just as strongly as strong confirming evidence shifts them in the positive direction.
+        </p>
+      </section>
+
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="4827765044"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="how-to-apply">
+        <h2>How to Apply This: The Bayesian Practice</h2>
+        <ol>
+          <li><strong>Always make your prior explicit before evaluating evidence.</strong> Before reading the details of any situation, state what you believe the base probability is. Write it down. This prevents the evidence from contaminating the prior — a common reasoning error where the details of the specific case replace the statistical context entirely.</li>
+          <li><strong>For every piece of evidence, ask the likelihood ratio question.</strong> "Would I expect to see this if my hypothesis were false?" If yes and in roughly equal measure, the evidence is weak. If this evidence would be substantially more surprising under the alternative hypothesis, it is strong.</li>
+          <li><strong>Practice symmetric updating.</strong> Actively look for evidence that would disconfirm your hypothesis and apply the same evaluation standards to it that you apply to confirming evidence. If you would update substantially on a confirming result, ask how much you should update on the absence of that result.</li>
+          <li><strong>Build a prior inventory for high-stakes domains.</strong> For career decisions, financial decisions, and relationship assessments — the domains where your priors matter most — explicitly research base rates. What is the historical success rate for ventures like this? What is the track record of people in this position? Ground your priors in data rather than optimistic projection.</li>
+          <li><strong>Distinguish between updating your confidence and updating your behavior.</strong> Bayesian thinking produces probability estimates, not binary action prescriptions. A 65% probability of success does not definitively warrant proceeding; a 35% probability does not definitively warrant stopping. Apply expected value analysis to translate updated probabilities into action decisions.</li>
+          <li><strong>Run a weekly "belief audit."</strong> Pick three beliefs you hold with high confidence. For each, ask: what is the strongest evidence against this belief? Have you genuinely evaluated that evidence using the same standard as evidence in favor? This practice consistently surfaces beliefs that have not been genuinely tested.</li>
+        </ol>
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions</h2>
+        <h3>"Bayesian thinking requires precise numbers"</h3>
+        <p>
+          The mathematical form of Bayes' theorem requires numbers, but the cognitive habit of Bayesian updating is qualitative. "My prior is low — maybe 10-15%" is vastly more useful than no prior at all. "This evidence is moderately strong — it roughly doubles my probability estimate" is vastly more accurate than ignoring the likelihood ratio. Rough Bayesian reasoning substantially outperforms non-Bayesian reasoning even without numerical precision.
+        </p>
+        <h3>"If my prior is very strong, I don't need to update much"</h3>
+        <p>
+          Strong priors based on high-quality evidence should indeed be updated slowly. But there is a failure mode where strong priors become unfalsifiable — where no evidence could shift them. A belief held with 99% certainty should theoretically update on evidence that would be ten times more likely if the belief were false. If you cannot specify what evidence would change your mind, your prior is not a calibrated belief — it is a commitment.
+        </p>
+        <h3>"Bayesian reasoning is too slow for fast decisions"</h3>
+        <p>
+          The explicit Bayesian process is slow. But the Bayesian habit, internalized through practice, produces a faster and more accurate intuitive process. Experienced physicians, engineers, and investors who have trained their judgment over many feedback-rich decisions develop intuitions that approximate Bayesian reasoning without explicit computation — what Gary Klein calls "recognition-primed decision making" and what Kahneman calls practiced System 1 thinking in experts. The explicit practice builds the underlying intuitive calibration.
+        </p>
+      </section>
+
+      <div class="ad-unit ad-unit--bottom">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          Bayesian thinking is the formal specification of what good reasoning has always required: start with what you know, engage honestly with new evidence, and update your beliefs in proportion to what the evidence actually implies. Its value is not that it introduces exotic new cognitive operations but that it structures the cognitive operations most people attempt informally — and structures them in a way that systematically corrects for the biases that informal reasoning generates.
+        </p>
+        <p>
+          The prior-likelihood-posterior framework provides a diagnostic tool for every significant belief you hold. What is the base rate? How strong is the evidence relative to alternatives? Have you updated symmetrically — with the same rigor on disconfirming evidence as on confirming evidence? These three questions, asked consistently, produce beliefs that converge toward accuracy rather than diverge toward motivated conclusion.
+        </p>
+        <p>
+          The habits built through explicit Bayesian practice — making priors concrete, evaluating evidence by its likelihood ratio, updating symmetrically — gradually reshape intuitive judgment as well. The goal is not a life spent calculating probabilities but a mind that naturally tracks evidence honestly and revises beliefs gracefully as the evidence changes.
+        </p>
+      </section>
+
+      <ContentBox type="tip" title="Your Next Step">
+        <p>Take one strong belief you currently hold and spend fifteen minutes genuinely steelmanning the opposite position — finding the best evidence against your view. Then apply the likelihood ratio question to that evidence. Does it shift your confidence at all? By how much? The discomfort of this exercise is the signal that it is working. For foundational reading, Sharon Bertsch McGrayne's <em>The Theory That Would Not Die</em> is the best narrative history of Bayesian reasoning. For practical application to decision-making, Shane Parrish's <em>The Great Mental Models</em> (<a href="https://amzn.to/greatmentalmodels" rel="nofollow sponsored" target="_blank">available on Amazon</a>) integrates Bayesian thinking with the broader mental model framework.</p>
+      </ContentBox>
+
+      <div class="author-bio">
+        <div class="author-bio__content">
+          <h3>About the Author</h3>
+          <p><strong>Success Odyssey Hub</strong> is an independent research-driven publication focused on the psychology of achievement, decision-making science, and evidence-based personal development. Our content synthesizes peer-reviewed research, philosophical frameworks, and practical application — written for people who take their growth seriously.</p>
+        </div>
+      </div>
+
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <a href="/blog/probabilistic-thinking" class="related-card">
+            <h4>Probabilistic Thinking: See the World More Clearly</h4>
+            <p>The companion framework to Bayesian updating — how to represent beliefs as probability distributions rather than binary claims, and why calibration matters more than confidence.</p>
+          </a>
+          <a href="/blog/confirmation-bias" class="related-card">
+            <h4>How Confirmation Bias Destroys Good Decisions</h4>
+            <p>The cognitive error that Bayesian thinking most directly corrects — how selective evidence evaluation produces beliefs that diverge from reality over time.</p>
+          </a>
+          <a href="/blog/decision-making-framework" class="related-card">
+            <h4>A Simple Framework for Better Decisions</h4>
+            <p>Integrating Bayesian updating with pre-mortem analysis, outside-view thinking, and values clarification into a complete decision protocol.</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="external-resources">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://www.lesswrong.com/posts/AN8vBdrRBemqQXJJH/an-intuitive-explanation-of-bayes-theorem" target="_blank" rel="noopener">Yudkowsky — An Intuitive Explanation of Bayes' Theorem (LessWrong)</a> — The most widely cited non-mathematical explanation of Bayesian reasoning, using the mammogram example to build genuine understanding of why base rates dominate and when evidence is and isn't informative.</li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/1538024/" target="_blank" rel="noopener">Kunda (1990) — The Case for Motivated Reasoning (<em>Psychological Bulletin</em>)</a> — The foundational research paper establishing the motivated reasoning framework, showing how emotional investment in conclusions produces systematically biased evidence evaluation — the primary obstacle to Bayesian updating in practice.</li>
+          <li><a href="https://www.science.org/doi/10.1126/science.1157679" target="_blank" rel="noopener">Tetlock & Mellers (2011) — Intelligent Management of Intelligence (<em>Science</em>)</a> — Research on the Good Judgment Project documenting how training in probabilistic and Bayesian reasoning produces measurably better forecasting accuracy, with direct implications for how the habit can be developed.</li>
+        </ul>
+      </div>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><span aria-hidden="true">&#x203A;</span></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><span aria-hidden="true">&#x203A;</span></li>
+          <li><span aria-current="page">Bayesian Thinking</span></li>
+        </ol>
+      </nav>
+
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+.ad-unit {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+  overflow: hidden;
+  &--top   { margin-top: 0; margin-bottom: var(--spacing-2xl); }
+  &--mid   { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: var(--spacing-lg) 0; }
+  &--bottom{ border-top: 1px solid var(--color-border); padding-top: var(--spacing-lg); }
+}
+.blog-article { max-width: 800px; margin: 0 auto; padding: var(--spacing-2xl) var(--spacing-md); }
+.article-header {
+  text-align: center; margin-bottom: var(--spacing-3xl);
+  h1 { margin-bottom: var(--spacing-lg); }
+  .article-meta { display: flex; justify-content: center; align-items: center; gap: var(--spacing-lg); flex-wrap: wrap; color: var(--color-text-secondary); font-size: 0.95rem; time { font-weight: 600; } .reading-time { color: var(--color-primary); font-weight: 600; } }
+  .article-tags { display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap; .tag { background: var(--gradient-primary); color: white; padding: var(--spacing-sm) var(--spacing-md); border-radius: 20px; font-size: 0.875rem; font-weight: 600; } }
+}
+.hero-figure { margin: 0 0 var(--spacing-3xl); .hero-image { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); } }
+.article-content {
+  font-size: 1.125rem; line-height: 1.8;
+  section { margin-bottom: var(--spacing-3xl); scroll-margin-top: 100px; }
+  h2 { margin: var(--spacing-3xl) 0 var(--spacing-xl); }
+  h3 { margin: var(--spacing-2xl) 0 var(--spacing-lg); }
+  .lead { font-size: 1.3rem; text-align: center; padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary); margin: var(--spacing-2xl) 0; font-weight: 500; }
+  ol { padding-left: var(--spacing-xl); li { margin-bottom: var(--spacing-lg); line-height: 1.8; } }
+}
+.table-of-contents { background: var(--color-bg-secondary); border: 2px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-xl); margin: var(--spacing-2xl) 0; h2 { margin-top: 0; margin-bottom: var(--spacing-lg); color: var(--color-primary); } ol { padding-left: var(--spacing-lg); line-height: 1.8; li { margin-bottom: var(--spacing-sm); } a { color: var(--color-text-primary); text-decoration: none; &:hover { color: var(--color-primary); } } } }
+.author-bio { display: flex; gap: var(--spacing-xl); padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); margin: var(--spacing-3xl) 0; .author-bio__content { h3 { margin-top: 0; margin-bottom: var(--spacing-sm); } p { margin: 0; color: var(--color-text-secondary); } } }
+.related-articles { margin: var(--spacing-3xl) 0; h3 { margin-bottom: var(--spacing-xl); text-align: center; } .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); } .related-card { padding: var(--spacing-lg); background: var(--color-bg-secondary); border: 2px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: var(--transition); &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); } h4 { color: var(--color-text-primary); margin-top: 0; margin-bottom: var(--spacing-sm); } p { color: var(--color-text-secondary); margin: 0; font-size: 0.95rem; } } }
+.external-resources { margin: var(--spacing-3xl) 0; padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); h3 { margin-top: 0; margin-bottom: var(--spacing-lg); } ul { padding-left: var(--spacing-lg); line-height: 2; } a { color: var(--color-primary); font-weight: 600; } }
+.breadcrumb { margin-top: var(--spacing-2xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--color-border); ol { display: flex; gap: var(--spacing-sm); list-style: none; padding: 0; font-size: 0.9rem; flex-wrap: wrap; } a { color: var(--color-primary); text-decoration: none; &:hover { text-decoration: underline; } } span { color: var(--color-text-secondary); } }
+@media (max-width: 768px) { .blog-article { padding: var(--spacing-xl) var(--spacing-md); } .article-header .article-meta { flex-direction: column; gap: var(--spacing-sm); } .author-bio { flex-direction: column; text-align: center; } .related-articles .related-grid { grid-template-columns: 1fr; } .article-content { font-size: 1.0625rem; } }
+</style>

@@ -1,0 +1,368 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import card2 from '../../assets/card2.jpg';
+import ContentBox from '../../components/blog/ContentBox.astro';
+import ContentGrid from '../../components/blog/ContentGrid.astro';
+import StepsList from '../../components/blog/StepsList.astro';
+
+const datePublished = '2026-05-07T00:00:00Z';
+const dateModified  = '2026-05-07T00:00:00Z';
+const author        = 'Success Odyssey Hub';
+const pageTitle       = 'Intuition vs. Analytical Thinking: When to Trust Your Gut';
+const pageDescription = 'Neither intuition nor analysis is universally superior — each dominates in different conditions. Learn exactly when to trust your gut and when to override it with systematic analysis.';
+const pageKeywords    = 'intuition vs analysis, when to trust your gut, intuition vs analytical thinking, intuitive vs rational decision making, gut feeling vs logic, system 1 system 2 thinking, kahneman intuition analysis, fast thinking slow thinking, when intuition works, expert intuition research, intuition decision making psychology, analytical vs intuitive thinking, trust your gut decisions, rational vs intuitive, gut instinct vs reasoning';
+const readingTime     = 13;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={card2}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/intuition-vs-analysis"
+>
+  <link rel="preload" as="image" href={card2.src} slot="head" />
+
+  <script type="application/ld+json" slot="head">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When should you trust your intuition over analysis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Intuition is most reliable when you have substantial domain expertise — typically 10,000+ hours — in a domain with clear and rapid feedback on decisions. Expert chess players, firefighters, and emergency room physicians show reliable intuitive judgment. Intuition is unreliable in novel situations, domains without clear feedback, and when strong emotional states are present. The key question is: have I received enough feedback in this domain to trust my pattern recognition?"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is intuition or analysis better for important decisions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Neither is universally better — the optimal approach depends on the type of decision. For novel, high-stakes decisions in domains where you lack extensive experience, structured analysis substantially outperforms intuition. For decisions in domains where you have extensive feedback-rich experience, intuition often matches or outperforms analysis. Many high-quality decisions use both: analytical framing to structure the decision and intuitive judgment to fill the gaps where analysis runs out."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you know if your intuition is reliable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The key criteria for reliable intuition are domain expertise and feedback quality. Ask: have I made hundreds of similar decisions in this domain? Did I receive clear, timely feedback on whether those decisions were correct? Are the patterns I learned in familiar situations transferring to this situation, or is this context genuinely different? If yes to the first two and yes to the third, intuition is more trustworthy. If any of these are absent, analytical override is warranted."
+        }
+      }
+    ]
+  })}
+  </script>
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <header class="article-header">
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <div class="article-meta">
+        <time datetime={datePublished} itemprop="datePublished">May 7, 2026</time>
+        <meta itemprop="dateModified" content={dateModified} />
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>{readingTime} min read</span>
+        <div class="article-tags">
+          <span class="tag">Decision Making</span>
+          <span class="tag">Cognitive Science</span>
+          <span class="tag">Psychology</span>
+        </div>
+      </div>
+    </header>
+
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={card2}
+        alt="Intuition vs analytical thinking — when to trust your gut feeling and when to rely on systematic analysis for better decisions"
+        width={1200}
+        height={600}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={90}
+        class="hero-image"
+      />
+      <meta itemprop="url" content={new URL(card2.src, Astro.site).toString()} />
+    </figure>
+
+    <div class="article-content" itemprop="articleBody">
+
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#two-systems">Two Systems, Not Two Options</a></li>
+          <li><a href="#when-intuition-works">When Intuition Works: The Expert Pattern Recognizer</a></li>
+          <li><a href="#when-intuition-fails">When Intuition Fails: The Conditions That Break It</a></li>
+          <li><a href="#when-analysis-works">When Analysis Works and When It Doesn't</a></li>
+          <li><a href="#the-wicked-vs-kind">Wicked vs. Kind Learning Environments</a></li>
+          <li><a href="#emotional-contamination">Emotional States and Decision Contamination</a></li>
+          <li><a href="#integration">Integrating Both: The Dual-Process Approach</a></li>
+          <li><a href="#how-to-apply">How to Apply This: The Decision Routing Framework</a></li>
+          <li><a href="#misconceptions">Common Misconceptions</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+      </nav>
+
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <p class="lead">
+        The question of whether to trust your gut or run the analysis is one of the most practically consequential questions in decision-making — and the popular answer ("always do both") is less useful than understanding the specific conditions under which each approach is most reliable. Daniel Kahneman, who spent four decades studying both, concluded that expert intuition is sometimes trustworthy and often not, and that the conditions distinguishing the two cases are specific and identifiable.
+      </p>
+
+      <section id="two-systems">
+        <h2>Two Systems, Not Two Options</h2>
+        <p>
+          Kahneman's System 1 and System 2 framework, developed with Amos Tversky and described in <em>Thinking, Fast and Slow</em>, provides the foundational model. System 1 operates automatically, rapidly, and effortlessly — producing judgments and impressions through pattern recognition without deliberate attention. System 2 operates deliberately, slowly, and effortfully — applying logical rules, checking conclusions, and performing analyses that System 1 cannot.
+        </p>
+        <p>
+          The critical insight is that these are not a choice between an irrational gut and a rational mind. Both systems can produce accurate or inaccurate outputs depending on conditions. System 1 produces highly reliable outputs in domains where it has been trained on good feedback. System 2 produces reliable outputs when the problem structure is well-defined, the relevant variables are identifiable, and the analytical method is appropriate. Both fail systematically under different conditions.
+        </p>
+        <h3>The Source of Intuition</h3>
+        <p>
+          Intuition is not mysterious — it is compressed experience. When you have made hundreds or thousands of similar judgments in a domain and received feedback on whether they were correct, your pattern recognition system extracts and encodes regularities that are then deployed automatically in novel situations. A chess grandmaster looking at a board position and sensing that something is wrong is not experiencing a mystical insight — they are experiencing rapid pattern recognition across a library of thousands of stored positions, producing a diagnostic signal before conscious analysis has begun.
+        </p>
+      </section>
+
+      <section id="when-intuition-works">
+        <h2>When Intuition Works: The Expert Pattern Recognizer</h2>
+        <p>
+          Gary Klein's recognition-primed decision model, developed through studying firefighters, military commanders, and intensive care nurses, documented systematic cases of expert intuition producing fast, accurate decisions in high-stakes situations. A senior firefighter entering a burning building and feeling that something is wrong — before identifying any specific structural anomaly — is drawing on thousands of hours of pattern recognition that encodes signals below the threshold of conscious articulation.
+        </p>
+        <p>
+          The conditions for reliable expert intuition are well-specified in the research. Domain expertise — typically 10,000+ hours in feedback-rich contexts — is necessary. Rapid, unambiguous feedback on previous decisions in similar situations is necessary. A stable, regular domain structure is necessary. When these conditions are present, expert intuition frequently matches or outperforms analytical approaches, particularly for time-constrained decisions.
+        </p>
+        <p>
+          Emergency medicine physicians, elite athletes, experienced investors in narrow specialties, and master-level craftspeople all show evidence of reliable intuitive judgment in their domains — and all operate in domains with extensive feedback, stable structure, and deep accumulated experience. The intuition is doing real computational work; it is simply doing it below the level of verbal articulation.
+        </p>
+        <h3>When to Trust the Feeling of "Something Is Wrong"</h3>
+        <p>
+          One specific context where intuition is particularly valuable is in detecting anomalies — situations where something about the current case does not match the pattern that experience predicts. A physician examining a patient who presents with textbook symptoms of one condition but who "doesn't look right" to an experienced clinician should take that signal seriously even when the analytical case appears complete. The intuitive signal may be detecting a subtle pattern inconsistency that systematic analysis has not yet formalized.
+        </p>
+      </section>
+
+      <section id="when-intuition-fails">
+        <h2>When Intuition Fails: The Conditions That Break It</h2>
+        <p>
+          The same pattern recognition system that produces reliable expert intuition in high-feedback domains produces systematic errors in domains where the underlying patterns are unstable, feedback is absent or delayed, or the current context differs from the context in which experience was accumulated.
+        </p>
+        <p>
+          Financial analysts who develop strong intuitive judgments about stock performance in normal market conditions frequently find those intuitions worse than random during regime changes — because the historical patterns their intuition encoded no longer apply. Real estate investors who develop reliable intuition about property value in one market apply that intuition inappropriately in structurally different markets. The pattern recognition is real; it is just calibrated to the wrong environment.
+        </p>
+        <p>
+          Kahneman and Klein's joint analysis, published in <em>American Psychologist</em> (2009), identified the key distinction: intuition is trustworthy when it was built in environments with "high validity" — where reliable cues exist and can be learned — and untrustworthy when it was built in "low validity" environments where the feedback connection between cues and outcomes is weak or absent. Stock market pundits, clinical psychologists predicting long-term outcomes, and political experts predicting geopolitical events have all been shown to perform at or below baseline — because they operate in low-validity environments where years of experience do not improve the underlying signal.
+        </p>
+      </section>
+
+      <section id="when-analysis-works">
+        <h2>When Analysis Works and When It Doesn't</h2>
+        <p>
+          Systematic analysis — working through a decision using explicit criteria, evidence, and logical structure — outperforms intuition under specific conditions: when the decision is novel (no relevant experience base), when the stakes are high enough to justify the time cost, when the decision structure is well-defined (clear criteria and measurable variables), and when there is enough time to conduct analysis before the decision window closes.
+        </p>
+        <p>
+          Analysis fails when the structure of the problem is poorly specified (what are the relevant variables?), when the analytical model is misspecified (you are analyzing the wrong things), or when the time required for analysis exceeds the available window. It also fails under analysis paralysis — the phenomenon where increasing analytical effort produces diminishing returns on decision quality while increasing time and psychological cost.
+        </p>
+        <h3>The Complexity Paradox</h3>
+        <p>
+          For very complex decisions involving many variables, intuitive judgment sometimes outperforms explicit analysis — not because intuition is "better" but because the explicit analytical model cannot capture all the relevant complexity. Research by Ap Dijksterhuis (2004) on complex consumer choices showed that participants who spent time distracted between choice exposure and decision sometimes outperformed those who analyzed consciously — suggesting that unconscious processing can integrate information that conscious analysis cannot manage simultaneously. This finding remains controversial and context-dependent, but it points to the limits of explicit analysis for very high-dimensional problems.
+        </p>
+      </section>
+
+      <section id="the-wicked-vs-kind">
+        <h2>Wicked vs. Kind Learning Environments</h2>
+        <p>
+          Robin Hogarth's distinction between "kind" and "wicked" learning environments provides the clearest framework for predicting when experience improves judgment. Kind learning environments have clear feedback, short delays between action and outcome, and stable rules — chess, tennis, surgery in routine cases. In kind environments, experience reliably improves performance because the feedback needed to calibrate pattern recognition is available.
+        </p>
+        <p>
+          Wicked learning environments have unclear or absent feedback, long delays between action and outcome, and unstable or context-dependent rules. Long-term management decisions, macroeconomic forecasting, and many people-management judgments occur in wicked environments. In these domains, experience may produce confidence without producing accuracy — practitioners feel better calibrated as they accumulate experience, but their actual judgment does not improve (and sometimes worsens) because the feedback loop needed for learning is absent or misleading.
+        </p>
+        <p>
+          The practical implication is important: if you are in a domain with delayed, unclear, or absent feedback, treat your intuitions with high skepticism regardless of how experienced you feel. The feeling of expertise is not the same as calibrated expertise.
+        </p>
+      </section>
+
+      <section id="emotional-contamination">
+        <h2>Emotional States and Decision Contamination</h2>
+        <p>
+          Strong emotional states — fear, anger, excitement, grief — reliably distort both intuitive and analytical judgment, but in different ways. Emotional states narrow attention toward threat-relevant or reward-relevant stimuli, activate approach or avoidance motivation independent of the actual decision at hand, and increase the subjective confidence of whatever conclusion they are driving toward.
+        </p>
+        <p>
+          Research by Lerner and Keltner (2001) demonstrated that incidental fear — fear unrelated to the decision at hand — increases risk aversion in subsequent unrelated decisions, while anger increases risk tolerance. Both effects operate below conscious awareness and contaminate judgments that the decision-maker believes they are making rationally. The decision feels like analysis; it is actually analysis running in an emotional context that has pre-weighted the conclusions.
+        </p>
+        <p>
+          The practical implication: any significant decision made while experiencing a strong emotional state should be flagged for review when the emotional activation has subsided. This does not mean emotional content is irrelevant to decisions — sometimes your emotional response carries genuine information. It means the emotion itself should not be doing the analytical work.
+        </p>
+      </section>
+
+      <section id="integration">
+        <h2>Integrating Both: The Dual-Process Approach</h2>
+        <p>
+          The highest-quality decision-making does not exclusively use either intuition or analysis — it uses both in sequence. A structured approach: run an initial intuitive assessment to get a rapid first impression, then run explicit analysis to check and elaborate on that impression, then check whether the analytical conclusion and the intuitive impression agree or diverge.
+        </p>
+        <p>
+          When intuition and analysis align, confidence in the conclusion is justified. When they diverge — when the analysis says X but the gut says Y — this divergence is informative and deserves investigation. The intuition may be detecting a relevant pattern that the analysis missed. The analysis may be correcting for a bias that the intuition has encoded. The source of the divergence is worth understanding before proceeding.
+        </p>
+        <p>
+          This approach is particularly valuable for high-stakes decisions. It uses intuition as a fast hypothesis-generator and analysis as a hypothesis-tester. It avoids the failure mode of pure analysis (missing patterns that are below analytical formalization) and the failure mode of pure intuition (pattern recognition applied in the wrong environment or contaminated by emotional state).
+        </p>
+      </section>
+
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="4827765044"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="how-to-apply">
+        <h2>How to Apply This: The Decision Routing Framework</h2>
+        <ol>
+          <li><strong>Assess your domain expertise and feedback quality.</strong> Before trusting an intuition in a high-stakes decision, ask honestly: how many similar decisions have I made in this exact type of context? Did I receive clear, timely feedback on those decisions? If the answer to either is "few" or "no," treat the intuition as a hypothesis to be tested, not a conclusion to be acted on.</li>
+          <li><strong>Identify whether you are in a kind or wicked learning environment.</strong> For any domain where you rely on experiential judgment, assess the feedback loop: how quickly do you learn whether your judgments were correct, and how clearly? In wicked environments, supplement intuition with base rates and systematic analysis even after accumulating extensive experience.</li>
+          <li><strong>Check for emotional contamination before deciding.</strong> Before any significant decision, ask: am I currently experiencing a strong emotional state (fear, excitement, anger, grief)? If yes, identify whether that state is relevant to this decision or incidental. If incidental, delay the decision until the state subsides, or consciously adjust for its known effects (fear inflates risk estimates; excitement deflates them).</li>
+          <li><strong>Use the agree/diverge check.</strong> For important decisions, run both an intuitive assessment and an explicit analytical review. Note where they agree and where they diverge. Investigate the divergences. The point of disagreement between gut and analysis often contains the most important information about the decision.</li>
+          <li><strong>Build domain expertise deliberately in high-stakes areas.</strong> If there are domains where you regularly make important intuitive judgments, invest in accelerating feedback. Create tracking systems that record your predictions and outcomes. Seek mentors who can give you faster feedback than the environment naturally provides. The quality of your intuition is directly proportional to the quality of the feedback loop that built it.</li>
+          <li><strong>Use analysis for novel, irreversible decisions; use intuition for routine, reversible ones.</strong> Novel, irreversible decisions warrant the full analytical overhead regardless of your experience level, because the stakes of a miscalibrated intuition are too high. Routine, reversible decisions can rely more heavily on experiential judgment, with the understanding that any resulting errors can be corrected.</li>
+        </ol>
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions</h2>
+        <h3>"Intuition is just emotion; analysis is rational"</h3>
+        <p>
+          This conflates intuition with emotional reaction. Expert intuition is a form of compressed analytical knowledge — the result of pattern recognition trained on extensive high-quality feedback. It is not fundamentally irrational; it is a different computational process that operates below conscious articulation. Emotional reactions are also fast and automatic, but they are driven by valence (approach/avoid) rather than pattern-matching on domain-relevant features. Distinguishing genuine expert intuition from emotional reaction is difficult but important: expert intuition tends to be specific and predictive, while emotional reactions tend to be diffuse and motivational.
+        </p>
+        <h3>"More analysis is always better for important decisions"</h3>
+        <p>
+          Research on decision quality does not support a linear relationship between analytical effort and outcome quality. Beyond a threshold, additional analysis produces analysis paralysis, introduces model error (garbage in, garbage out), and can override genuine intuitive signals with analytical conclusions that are precise but not accurate. The optimal level of analysis is decision-specific and depends on domain, stakes, available information, and time constraints.
+        </p>
+        <h3>"If my intuition has been right before, I should trust it"</h3>
+        <p>
+          Past accuracy is only informative about future accuracy if the conditions that produced past accuracy persist. A successful investor's intuition about tech stocks in 2018 market conditions may be systematically miscalibrated for 2026 conditions. Feedback that your intuition worked in past cases does not validate it for novel cases in structurally different environments. This is precisely the mechanism through which successful people develop dangerous overconfidence — past success in a favorable environment generalizes into confidence in genuinely different environments.
+        </p>
+      </section>
+
+      <div class="ad-unit ad-unit--bottom">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          The question is not "intuition or analysis?" but "under what conditions is each reliable, and which conditions apply here?" Expert intuition in feedback-rich, stable domains is a genuine cognitive asset that produces fast, accurate judgments — replacing it with explicit analysis in these contexts often makes decisions slower without making them better. But intuition applied outside the conditions that built it, in novel domains, in wicked learning environments, or under strong emotional activation, is systematically unreliable and needs analytical correction.
+        </p>
+        <p>
+          The highest-quality decision-making builds both capabilities and integrates them appropriately. This requires honest self-assessment about where your experience genuinely applies, investment in feedback loops that improve intuitive calibration over time, and systematic structures — pre-mortem, explicit criteria, outside-view analysis — that prevent analytical override of genuinely expert intuition while catching intuitive errors in domains where the pattern recognition is not yet reliable.
+        </p>
+        <p>
+          The goal is not a system that bypasses intuition or one that defers to it always. It is a system that deploys each process where it is most reliable and uses divergence between them as a signal rather than a problem to resolve by simply picking one.
+        </p>
+      </section>
+
+      <ContentBox type="tip" title="Your Next Step">
+        <p>Identify one domain where you regularly make intuitive judgments. Honestly assess: how extensive is your experience (hours, decisions), and how clear and fast is your feedback on those decisions? If the feedback loop is weak, start building one — track your intuitive predictions and review outcomes systematically. For the foundational research, Kahneman's <em>Thinking, Fast and Slow</em> remains the essential text. Gary Klein's <em>Sources of Power</em> provides the complementary expert-intuition perspective. For a framework that integrates both, Shane Parrish's <em>The Great Mental Models</em> (<a href="https://amzn.to/greatmentalmodels" rel="nofollow sponsored" target="_blank">available on Amazon</a>) covers the decision architecture needed to apply them correctly.</p>
+      </ContentBox>
+
+      <div class="author-bio">
+        <div class="author-bio__content">
+          <h3>About the Author</h3>
+          <p><strong>Success Odyssey Hub</strong> is an independent research-driven publication focused on the psychology of achievement, decision-making science, and evidence-based personal development. Our content synthesizes peer-reviewed research, philosophical frameworks, and practical application — written for people who take their growth seriously.</p>
+        </div>
+      </div>
+
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <a href="/blog/fast-slow-thinking" class="related-card">
+            <h4>Fast Thinking vs Slow Thinking (Kahneman)</h4>
+            <p>The foundational System 1 / System 2 framework — what each system does well, where each fails, and how to deploy them appropriately for different decision types.</p>
+          </a>
+          <a href="/blog/decision-making-framework" class="related-card">
+            <h4>A Simple Framework for Better Decisions</h4>
+            <p>A complete decision protocol that integrates both intuitive and analytical inputs, with specific procedures for high-stakes irreversible choices.</p>
+          </a>
+          <a href="/blog/cognitive-biases-success" class="related-card">
+            <h4>Cognitive Biases That Sabotage Success</h4>
+            <p>The specific systematic errors in both intuitive and analytical thinking that most reliably undermine decision quality — and targeted corrections for each.</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="external-resources">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://psycnet.apa.org/record/2009-13887-001" target="_blank" rel="noopener">Kahneman & Klein (2009) — Conditions for Intuitive Expertise (<em>American Psychologist</em>)</a> — The landmark collaborative paper between Kahneman (skeptic of intuition) and Klein (champion of expert intuition) specifying exactly when intuition is and is not trustworthy, with direct practical implications.</li>
+          <li><a href="https://psycnet.apa.org/record/2001-18661-006" target="_blank" rel="noopener">Lerner & Keltner (2001) — Fear, Anger, and Risk (<em>Journal of Personality and Social Psychology</em>)</a> — Research demonstrating that incidental emotional states contaminate subsequent unrelated decisions, establishing the mechanism by which emotional context corrupts analytical judgment.</li>
+          <li><a href="https://hbr.org/2001/02/when-to-trust-your-gut" target="_blank" rel="noopener">Alden Hayashi — When to Trust Your Gut (<em>Harvard Business Review</em>)</a> — Practical synthesis of the research on expert intuition in business contexts, with case studies from senior executives and guidance on the conditions under which gut instinct deserves weight in organizational decisions.</li>
+        </ul>
+      </div>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><span aria-hidden="true">&#x203A;</span></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><span aria-hidden="true">&#x203A;</span></li>
+          <li><span aria-current="page">Intuition vs. Analytical Thinking</span></li>
+        </ol>
+      </nav>
+
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+.ad-unit {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+  overflow: hidden;
+  &--top   { margin-top: 0; margin-bottom: var(--spacing-2xl); }
+  &--mid   { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: var(--spacing-lg) 0; }
+  &--bottom{ border-top: 1px solid var(--color-border); padding-top: var(--spacing-lg); }
+}
+.blog-article { max-width: 800px; margin: 0 auto; padding: var(--spacing-2xl) var(--spacing-md); }
+.article-header {
+  text-align: center; margin-bottom: var(--spacing-3xl);
+  h1 { margin-bottom: var(--spacing-lg); }
+  .article-meta { display: flex; justify-content: center; align-items: center; gap: var(--spacing-lg); flex-wrap: wrap; color: var(--color-text-secondary); font-size: 0.95rem; time { font-weight: 600; } .reading-time { color: var(--color-primary); font-weight: 600; } }
+  .article-tags { display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap; .tag { background: var(--gradient-primary); color: white; padding: var(--spacing-sm) var(--spacing-md); border-radius: 20px; font-size: 0.875rem; font-weight: 600; } }
+}
+.hero-figure { margin: 0 0 var(--spacing-3xl); .hero-image { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); } }
+.article-content {
+  font-size: 1.125rem; line-height: 1.8;
+  section { margin-bottom: var(--spacing-3xl); scroll-margin-top: 100px; }
+  h2 { margin: var(--spacing-3xl) 0 var(--spacing-xl); }
+  h3 { margin: var(--spacing-2xl) 0 var(--spacing-lg); }
+  .lead { font-size: 1.3rem; text-align: center; padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary); margin: var(--spacing-2xl) 0; font-weight: 500; }
+  ol { padding-left: var(--spacing-xl); li { margin-bottom: var(--spacing-lg); line-height: 1.8; } }
+}
+.table-of-contents { background: var(--color-bg-secondary); border: 2px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-xl); margin: var(--spacing-2xl) 0; h2 { margin-top: 0; margin-bottom: var(--spacing-lg); color: var(--color-primary); } ol { padding-left: var(--spacing-lg); line-height: 1.8; li { margin-bottom: var(--spacing-sm); } a { color: var(--color-text-primary); text-decoration: none; &:hover { color: var(--color-primary); } } } }
+.author-bio { display: flex; gap: var(--spacing-xl); padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); margin: var(--spacing-3xl) 0; .author-bio__content { h3 { margin-top: 0; margin-bottom: var(--spacing-sm); } p { margin: 0; color: var(--color-text-secondary); } } }
+.related-articles { margin: var(--spacing-3xl) 0; h3 { margin-bottom: var(--spacing-xl); text-align: center; } .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); } .related-card { padding: var(--spacing-lg); background: var(--color-bg-secondary); border: 2px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: var(--transition); &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); } h4 { color: var(--color-text-primary); margin-top: 0; margin-bottom: var(--spacing-sm); } p { color: var(--color-text-secondary); margin: 0; font-size: 0.95rem; } } }
+.external-resources { margin: var(--spacing-3xl) 0; padding: var(--spacing-xl); background: var(--color-bg-secondary); border-radius: var(--radius-lg); h3 { margin-top: 0; margin-bottom: var(--spacing-lg); } ul { padding-left: var(--spacing-lg); line-height: 2; } a { color: var(--color-primary); font-weight: 600; } }
+.breadcrumb { margin-top: var(--spacing-2xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--color-border); ol { display: flex; gap: var(--spacing-sm); list-style: none; padding: 0; font-size: 0.9rem; flex-wrap: wrap; } a { color: var(--color-primary); text-decoration: none; &:hover { text-decoration: underline; } } span { color: var(--color-text-secondary); } }
+@media (max-width: 768px) { .blog-article { padding: var(--spacing-xl) var(--spacing-md); } .article-header .article-meta { flex-direction: column; gap: var(--spacing-sm); } .author-bio { flex-direction: column; text-align: center; } .related-articles .related-grid { grid-template-columns: 1fr; } .article-content { font-size: 1.0625rem; } }
+</style>
