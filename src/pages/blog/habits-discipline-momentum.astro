@@ -1,68 +1,110 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import habitsDisciplineMomentum from "../../assets/habits-discipline-and-momentum.webp";
-import ContentBox from "../../components/blog/ContentBox.astro";
-import ContentGrid from "../../components/blog/ContentGrid.astro";
+import card1 from '../../assets/card1.jpg';
+import ContentBox from '../../components/blog/ContentBox.astro';
+import ContentGrid from '../../components/blog/ContentGrid.astro';
+import StepsList from '../../components/blog/StepsList.astro';
+
+const datePublished = '2025-01-22T00:00:00Z';
+const dateModified  = '2026-05-07T00:00:00Z';
+const author        = 'Success Odyssey Hub';
+const pageTitle       = 'Habits, Discipline, and Momentum: The Engine of Sustainable Success';
+const pageDescription = 'Discover the neuroscience of habit formation and learn how to build disciplined systems that create unstoppable momentum. Research-backed strategies that actually work.';
+const pageKeywords    = 'habits discipline momentum, habit formation science, how to build good habits, discipline vs motivation, atomic habits summary, behavioral momentum, habit loop explained, keystone habits, identity based habits, environment design habits, habit stacking technique, how to stay consistent, willpower and discipline, sustainable success habits, how successful people build habits';
+const readingTime     = 14;
 ---
 
 <Layout
-  title="Habits, Discipline, and Momentum: The Engine of Sustainable Success"
-  description="Uncover the science behind habit formation and learn how to build disciplined systems that create unstoppable momentum toward your goals."
-  keywords="habit formation, discipline, momentum, behavioral psychology, atomic habits, willpower, self-control, success systems"
-  image={habitsDisciplineMomentum}
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={card1}
   type="article"
-  datePublished="2025-01-22T00:00:00Z"
-  dateModified="2025-03-15T00:00:00Z"
-  author="Success Odyssey Hub"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
   canonicalUrl="https://successodysseyhub.com/blog/habits-discipline-momentum"
 >
-  <article class="blog-page" itemscope itemtype="https://schema.org/BlogPosting">
+  <link rel="preload" as="image" href={card1.src} slot="head" />
+
+  <script type="application/ld+json" slot="head">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does it take to build a new habit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Research published in the European Journal of Social Psychology found that habit formation takes anywhere from 18 to 254 days, with an average of 66 days. Simple behaviors automate faster; complex ones take longer. Consistency matters more than speed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does discipline matter more than motivation for long-term success?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Motivation is emotion-dependent and fluctuates daily. Discipline is a system that operates regardless of how you feel. High achievers build habits and environments that make good behavior the default, removing the reliance on motivation entirely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is habit stacking and how does it work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Habit stacking links a new behavior to an existing one using the formula: After I [current habit], I will [new habit]. It piggybacks on established neural pathways, dramatically reducing the friction required to start a new behavior."
+        }
+      }
+    ]
+  })}
+  </script>
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
     <header class="article-header">
       <h1 itemprop="headline">Habits, Discipline, and Momentum: The Engine of Sustainable Success</h1>
       <div class="article-meta">
         <time datetime="2025-01-22" itemprop="datePublished">January 22, 2025</time>
-        <span class="reading-time" itemprop="timeRequired" content="PT20M">20 min read</span>
+        <span class="reading-time">{readingTime} min read</span>
         <div class="tags">
-          <span class="tag" itemprop="keywords">Habits</span>
-          <span class="tag" itemprop="keywords">Discipline</span>
-          <span class="tag" itemprop="keywords">Psychology</span>
+          <span class="tag">Habits</span>
+          <span class="tag">Discipline</span>
+          <span class="tag">Psychology</span>
         </div>
       </div>
     </header>
 
     <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
       <Image
-        src={habitsDisciplineMomentum}
-        alt="Building habits and discipline for success"
+        src={card1}
+        alt="habits discipline and momentum — person building consistent daily routines for long-term success"
         class="hero-image"
         width={900}
-        height={200}
+        height={500}
         loading="eager"
         fetchpriority="high"
         format="webp"
         quality={85}
       />
-      <meta itemprop="url" content={new URL(habitsDisciplineMomentum.src, Astro.site).toString()} />
-      <meta itemprop="width" content="900" />
-      <meta itemprop="height" content="200" />
     </figure>
 
     <div class="content" itemprop="articleBody">
-      <!-- Table of Contents -->
-      <h1 class="article-title">Building Sustainable Success: Habits, Systems, and Momentum</h1>
+
       <nav class="table-of-contents" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
-          <li><a href="#foundation">The Foundation: Understanding Your Brain's Autopilot</a></li>
+          <li><a href="#foundation">Understanding Your Brain's Autopilot</a></li>
           <li><a href="#habit-science">The Science of Habit Formation</a></li>
           <li><a href="#discipline-myth">Discipline: Myth vs. Reality</a></li>
           <li><a href="#momentum-physics">The Physics of Momentum</a></li>
-          <li><a href="#building-system">Building Your Success Engine</a></li>
-          <li><a href="#identity-habits">Identity-Based Habits: Become Before You Achieve</a></li>
-          <li><a href="#habit-stacking">Habit Stacking: Chain Your Way to Excellence</a></li>
-          <li><a href="#environment-design">Environment Design: Make Good Habits Inevitable</a></li>
-          <li><a href="#troubleshooting">Troubleshooting Common Problems</a></li>
+          <li><a href="#identity-habits">Identity-Based Habits</a></li>
+          <li><a href="#habit-stacking">Habit Stacking</a></li>
+          <li><a href="#environment-design">Environment Design</a></li>
+          <li><a href="#how-to-apply">How to Apply This</a></li>
+          <li><a href="#misconceptions">Common Misconceptions</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
         </ol>
       </nav>
 
@@ -78,528 +120,196 @@ import ContentGrid from "../../components/blog/ContentGrid.astro";
       </div>
 
       <p class="lead">
-        Success isn't built on moments of inspiration or bursts of motivation. It's constructed through the quiet accumulation of disciplined habits that compound over time, creating unstoppable momentum toward your goals.
-      </p>
-
-      <h2 id="foundation">The Foundation: Understanding Your Brain's Autopilot</h2>
-
-      <p>
-        Neuroscience reveals that approximately 40-45% of our daily actions are habits—automatic behaviors that require minimal conscious thought. This isn't a design flaw; it's an evolutionary feature that allows our brains to conserve energy for complex decisions and creative thinking.
+        Most people approach self-improvement as if it were an act of will. They set ambitious goals, summon motivation, and push hard — until they don't. The uncomfortable truth that behavioral science has confirmed repeatedly is that willpower is the wrong tool for the job. Sustainable success is not built on motivation peaks; it is engineered through habits, disciplined systems, and the compounding momentum those systems generate over time.
       </p>
 
       <p>
-        The basal ganglia, a cluster of structures deep in the brain, serves as the headquarters for habit formation. When a behavior becomes habitual, neural pathways strengthen while the prefrontal cortex—responsible for conscious decision-making—reduces its involvement. This is why habits feel effortless once established but require significant mental energy to change.
+        A 2019 analysis published in <em>Frontiers in Psychology</em> found that self-control as a stable trait explained far less of high achievers' success than their habit structures did. The people who seemed most disciplined were not fighting harder against temptation — they had designed their lives so that temptation arose less frequently in the first place. That distinction is everything.
       </p>
 
-      <div class="neuroplasticity-box">
-        <h3>The Power of Neuroplasticity</h3>
-        <p>
-          Your brain's capacity to form new neural pathways means you can literally rewire your automatic behaviors. Research shows that significant habit changes can occur in as little as 18-254 days, with an average of 66 days for simple behaviors to become automatic.
-        </p>
-      </div>
+      <h2 id="foundation">Understanding Your Brain's Autopilot</h2>
+
+      <p>
+        Neuroscience research estimates that roughly 40 to 45 percent of our daily actions are habitual — automatic responses that bypass conscious deliberation entirely. This is not a design flaw. It is an energy-conservation feature. The brain, which consumes approximately 20 percent of the body's energy despite being only two percent of its mass, offloads repetitive behaviors to automatic processing so that cognitive resources can be reserved for genuinely novel problems.
+      </p>
+
+      <p>
+        The basal ganglia, a cluster of structures deep in the subcortical brain, serves as the headquarters for habit storage and execution. When a behavior is repeated consistently in a stable context, the neural pathway encoding that behavior becomes faster, stronger, and more automatic — a process called myelination. Simultaneously, the prefrontal cortex, the seat of deliberate decision-making, reduces its involvement. This is why established habits feel nearly effortless while new behaviors feel exhausting.
+      </p>
+
+      <ContentBox type="highlight" title="The Neuroplasticity Insight">
+        <p>Your brain's capacity to form and dissolve neural pathways — neuroplasticity — means your automatic behaviors are not fixed. Research by Phillippa Lally at University College London found that habit formation takes between 18 and 254 days depending on complexity, with a median of 66 days. The implication: the discomfort of building a new habit is temporary. The automation is permanent.</p>
+      </ContentBox>
 
       <h2 id="habit-science">The Science of Habit Formation</h2>
 
       <p>
-        MIT researchers identified the neurological habit loop consisting of three components: cue, routine, and reward. Understanding this loop is crucial for both building beneficial habits and breaking destructive ones.
+        MIT neuroscientists Ann Graybiel and colleagues identified the foundational habit loop in the 1990s: a three-component cycle of cue, routine, and reward. More recent work by James Clear and researchers at Duke University has refined this model to include a fourth element — craving — which turns out to be the actual driver of habitual behavior.
       </p>
 
-      <h3>The Habit Loop Breakdown</h3>
+      <h3>The Four-Part Habit Loop</h3>
 
-      <div class="habit-loop-visual">
-        <div class="loop-component">
-          <h4>1. Cue (Trigger)</h4>
-          <p>The environmental or internal signal that initiates the behavior. Cues can be:</p>
-          <ul>
-            <li><strong>Time-based:</strong> 6 AM alarm for morning workout</li>
-            <li><strong>Location-based:</strong> Seeing your guitar triggers practice</li>
-            <li><strong>Emotional:</strong> Stress triggers deep breathing</li>
-            <li><strong>Social:</strong> Colleague's invitation triggers lunch walk</li>
-            <li><strong>Preceding action:</strong> After coffee, read for 20 minutes</li>
-          </ul>
-        </div>
-
-        <div class="loop-component">
-          <h4>2. Routine (Behavior)</h4>
-          <p>The actual behavior or action performed. This can be:</p>
-          <ul>
-            <li><strong>Physical:</strong> Exercise, writing, cleaning</li>
-            <li><strong>Mental:</strong> Problem-solving, meditation, planning</li>
-            <li><strong>Emotional:</strong> Gratitude practice, self-compassion</li>
-          </ul>
-        </div>
-
-        <div class="loop-component">
-          <h4>3. Reward (Benefit)</h4>
-          <p>The positive outcome that reinforces the behavior. Rewards can be:</p>
-          <ul>
-            <li><strong>Intrinsic:</strong> Sense of accomplishment, flow state</li>
-            <li><strong>Physical:</strong> Endorphins from exercise</li>
-            <li><strong>Social:</strong> Connection, approval, belonging</li>
-            <li><strong>Material:</strong> Progress toward goals, tangible outcomes</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>The Craving Component</h3>
       <p>
-        Modern research adds a fourth element: craving. The anticipation of the reward, not the reward itself, drives behavior. This explains why habits can feel compulsive—your brain begins craving the reward as soon as it encounters the cue.
+        The <strong>cue</strong> is any environmental or internal signal that predicts a reward — a time of day, a location, an emotional state, or an action just completed. The <strong>craving</strong> is the motivational force that the cue generates: not a desire for the routine itself, but for the state the routine produces. The <strong>routine</strong> is the behavior. The <strong>reward</strong> is what satisfies the craving and signals to the brain that this loop is worth remembering.
+      </p>
+
+      <p>
+        Crucially, it is the craving — not the routine — that drives repetition. This is why changing a habit by targeting the routine alone so often fails. The craving remains, and eventually overrides the new behavior. Durable habit change requires either eliminating the cue, substituting the routine while preserving the reward, or replacing the craving entirely through identity-level change — which we will address below.
       </p>
 
       <blockquote>
-        "Habits are the compound interest of self-improvement. Getting 1% better every day counts for a lot in the long run." - James Clear
+        "You do not rise to the level of your goals. You fall to the level of your systems." — James Clear, Atomic Habits
       </blockquote>
 
       <h2 id="discipline-myth">Discipline: Myth vs. Reality</h2>
 
       <p>
-        Popular culture portrays discipline as an iron will that forces behavior through sheer determination. Neuroscience tells a different story: discipline is better understood as the intelligent design of systems that minimize the need for willpower.
+        Popular culture treats discipline as a character trait — something you either have or you don't, forged through suffering and sheer resolve. Behavioral science offers a more useful and more accurate model: discipline is not a trait but a <em>strategy</em>. Specifically, it is the strategy of reducing reliance on willpower by building systems, habits, and environments that make desired behaviors automatic.
       </p>
 
-      <h3>The Willpower Depletion Model</h3>
+      <h3>The Willpower Depletion Problem</h3>
+
       <p>
-        Research by Roy Baumeister demonstrated that willpower operates like a muscle—it can be strengthened through use but also becomes fatigued. While some recent studies question the universality of ego depletion, the practical insight remains valuable: relying solely on willpower is unsustainable.
+        Roy Baumeister's ego depletion research — and the extensive debate it sparked — produced one practically useful consensus: making decisions consumes cognitive resources. Whether willpower depletes like a battery or merely feels like it does, the behavioral outcome is the same. People make worse choices later in the day, after prolonged decision-making, or under stress. Relying on willpower as a primary strategy means building your success system on a resource that degrades exactly when you need it most.
       </p>
 
-      <div class="discipline-strategies">
-        <h4>True Discipline Strategies</h4>
-
-        <div class="strategy-item">
-          <h4>Environmental Design</h4>
-          <p>Structure your environment to make good choices easier and bad choices harder. Place workout clothes by your bed, remove junk food from your kitchen, or use website blockers during work hours.</p>
-        </div>
-
-        <div class="strategy-item">
-          <h4>Identity-Based Habits</h4>
-          <p>Focus on becoming the type of person who naturally engages in desired behaviors. Instead of "I want to exercise," think "I am someone who prioritizes health." This identity reinforcement creates powerful intrinsic motivation.</p>
-        </div>
-
-        <div class="strategy-item">
-          <h5>Implementation Intentions</h5>
-          <p>Create specific if-then plans: "If it's 7 AM, then I will immediately do 20 pushups." This pre-decision reduces the mental energy needed to initiate behavior.</p>
-        </div>
-
-        <div class="strategy-item">
-          <h5>Habit Stacking</h5>
-          <p>Link new habits to established ones: "After I pour my coffee, I will write three things I'm grateful for." This leverages existing neural pathways to support new behaviors.</p>
-        </div>
-      </div>
+      <p>
+        The counterintuitive solution is to <em>need</em> willpower less. As we explore in our guide to <a href="/blog/mental-models">mental models for better decision-making</a>, the most effective strategy is often to change the context of a decision, not the decision itself. The same logic applies to habits: change the environment, and behavior follows without requiring willpower at all.
+      </p>
 
       <h3>The Two-Minute Rule</h3>
       <p>
-        When establishing new habits, make them so small they seem trivial. Want to read more? Start with just one page. Want to exercise? Begin with two minutes of movement. This reduces resistance and builds the neural pathway without overwhelming your willpower reserves.
+        When establishing a new habit, reduce its size until it becomes nearly impossible to fail. Want to read more? Commit to one page. Want to exercise? Commit to putting on workout clothes and stepping outside. The goal of the two-minute version is not to accomplish much — it is to establish the neural pathway and the identity vote that goes with it. Once the loop exists, expansion is natural.
       </p>
 
       <h2 id="momentum-physics">The Physics of Momentum</h2>
 
       <p>
-        Newton's first law applies to behavior: objects in motion tend to stay in motion, while objects at rest tend to stay at rest. Behavioral momentum follows similar principles—the hardest part is starting, but once moving, continuation becomes easier.
+        Newton's first law — objects in motion stay in motion — applies to behavior with striking accuracy. Starting is the hardest part of any consistent practice, not because of difficulty, but because of inertia. Once a behavior is in motion, continuation is disproportionately easier than initiation. This is behavioral momentum, and it is one of the most underappreciated forces in personal productivity.
       </p>
-
-      <h3>Types of Momentum</h3>
-
-      <div class="momentum-types">
-        <div class="momentum-type">
-          <h4>Daily Momentum</h4>
-          <p>Starting your day with a disciplined habit creates psychological momentum that carries into subsequent activities. Morning routines are particularly powerful because they establish a sense of control and accomplishment early.</p>
-        </div>
-
-        <div class="momentum-type">
-          <h4>Weekly Momentum</h4>
-          <p>Consistent daily habits build weekly momentum. Missing one day has minimal impact, but the pattern of consistency creates powerful psychological reinforcement and identity formation.</p>
-        </div>
-
-        <div class="momentum-type">
-          <h4>Compound Momentum</h4>
-          <p>Over months and years, small improvements compound exponentially. A 1% daily improvement results in 37x improvement over a year—the mathematical power of consistency.</p>
-        </div>
-      </div>
-
-      <h3>The Momentum Equation</h3>
-      <p>
-        Behavioral momentum = Consistency × Time × Identity Alignment. All three factors must be present for sustainable momentum. High consistency without identity alignment leads to burnout. Identity alignment without consistency leads to self-deception. Time without the other factors leads to stagnation.
-      </p>
-
-      <h2 id="building-system">Building Your Success Engine</h2>
 
       <p>
-        Creating sustainable success requires designing a personal system that harnesses the power of habits, minimizes dependence on willpower, and builds unstoppable momentum.
+        A 1% daily improvement compounds to approximately 37 times better over a single year (1.01^365 ≈ 37.78). A 1% daily decline compounds to nearly zero (0.99^365 ≈ 0.03). The math is not motivational hyperbole — it is the actual arithmetic of consistent small actions over time. Most people dramatically underestimate what 66 days of consistent effort produces, because the results are invisible until they suddenly are not.
       </p>
 
-      <h3>Phase 1: Foundation (Weeks 1-4)</h3>
-
-      <div class="phase-breakdown">
-        <h4>Choose Your Keystone Habit</h4>
-        <p>
-          Identify one habit that naturally triggers other positive behaviors. Common keystone habits include exercise, meditation, or a structured morning routine. Research shows that people who exercise regularly also tend to eat better, sleep more, and be more productive.
-        </p>
-
-        <h4>Design Your Environment</h4>
-        <p>
-          Audit your environment for cues that trigger unwanted behaviors and barriers that prevent desired ones. Make good choices the path of least resistance.
-        </p>
-
-        <h4>Start Ridiculously Small</h4>
-        <p>
-          Begin with a version of your habit so small it's nearly impossible to fail. One pushup, one page of reading, two minutes of meditation. The goal is establishing the neural pathway, not achieving immediate results.
-        </p>
-      </div>
-
-      <h3>Phase 2: Expansion (Weeks 5-12)</h3>
-
-      <div class="phase-breakdown">
-        <h4>Gradually Increase Intensity</h4>
-        <p>
-          Once the basic habit is established, slowly increase duration or intensity. Add one pushup per week, read one additional page, extend meditation by one minute weekly.
-        </p>
-
-        <h4>Add Supporting Habits</h4>
-        <p>
-          Introduce complementary habits that support your keystone habit. If exercise is your keystone, add habits around nutrition, sleep, or recovery.
-        </p>
-
-        <h4>Track Leading Indicators</h4>
-        <p>
-          Focus on measuring inputs (behaviors) rather than outputs (results). Track days exercised rather than weight lost, pages read rather than books completed.
-        </p>
-      </div>
-
-      <h3>Phase 3: Optimization (Weeks 13+)</h3>
-
-      <div class="phase-breakdown">
-        <h4>Refine Your System</h4>
-        <p>
-          Identify friction points and inefficiencies in your habits. Streamline routines, adjust timing, or modify approaches based on what you've learned about your patterns.
-        </p>
-
-        <h4>Build Advanced Habits</h4>
-        <p>
-          Layer on more complex habits that require the foundation you've built. Advanced planning, creative projects, or leadership behaviors often require significant existing discipline.
-        </p>
-
-        <h4>Focus on Identity Integration</h4>
-        <p>
-          Reinforce the identity changes your habits have created. You're no longer someone trying to exercise—you're an athlete. You're not learning to write—you're a writer.
-        </p>
-      </div>
-
-      <!-- ============================================================
-           NEW: IDENTITY-BASED HABITS
-           ============================================================ -->
-      <section id="identity-habits">
-        <h2>Identity-Based Habits: Become Before You Achieve</h2>
-
-        <p>
-          Most approaches to habit formation focus on outcomes: lose 20 pounds, write a book, build a business. The problem with outcome-based habits is that they treat the desired result as something external to be acquired — and once motivation toward that external result fades, the habit collapses with it.
-        </p>
-
-        <p>
-          James Clear, in <em>Atomic Habits</em>, articulates a deeper framework: identity-based habit formation. Instead of asking "what do I want to achieve?", ask "who do I want to become?" Instead of "I want to run a marathon," the identity shift is "I am a runner." Instead of "I want to write more," it becomes "I am a writer." Every action you take is a vote for the kind of person you are becoming — and the accumulation of those votes, over time, creates a new identity that makes the habits feel natural rather than forced.
-        </p>
-
-        <ContentBox type="highlight" title="The Identity → Habit → Result Chain">
-          <p>
-            Most people try to change their habits by focusing on results (the outermost layer) or processes (the middle layer). Identity-based habit formation works from the inside out — starting with the identity, which naturally produces the processes, which naturally produce the results.
-          </p>
-          <p>
-            The practical implication: before trying to build any significant habit, ask yourself — what kind of person consistently does this? Then ask — what small action can I take <em>today</em> that provides evidence that I am that kind of person?
-          </p>
-        </ContentBox>
-
-        <p>
-          This approach also explains why habit change often feels like a personal identity threat. Trying to quit smoking when you identify as "a smoker" is fighting against yourself. Trying to exercise when you do not identify as "an active person" is swimming upstream. The shortcut is to update the identity first — even slightly — and let the habits follow. Two minutes of exercise is not about fitness; it is a vote for "I am someone who exercises." Over weeks and months, those votes compound into a genuine identity shift.
-        </p>
-
-        <p>
-          The Stoics understood this intuitively. Marcus Aurelius did not ask "how do I become more patient?" He asked "what would a patient person do right now?" — and then did it, repeatedly, until patience became part of who he was. This is identity-based habit formation expressed in ancient philosophy. It connects directly to <a href="/blog/stoicism">the Stoic framework for character development</a> and to <a href="/blog/success-philosophy">the success philosophy of becoming before achieving</a>.
-        </p>
-      </section>
-
-      <!-- ============================================================
-           NEW: HABIT STACKING
-           ============================================================ -->
-      <section id="habit-stacking">
-        <h2>Habit Stacking: Chain Your Way to Excellence</h2>
-
-        <p>
-          One of the most underused techniques in habit formation is habit stacking — the practice of linking a new habit to an existing one using a simple formula: <em>After I [current habit], I will [new habit].</em>
-        </p>
-
-        <p>
-          The neurological basis for habit stacking is straightforward. Existing habits have already carved deep neural pathways — they run automatically with almost no friction. A new habit attached to an existing one can piggyback on that existing neural infrastructure, borrowing its momentum rather than having to generate its own from scratch.
-        </p>
-
-        <ContentGrid columns={2}>
-          <ContentBox type="info" title="Morning stack example">
-            <p>After I pour my morning coffee (existing habit), I will write in my journal for five minutes (new habit). After I journal, I will review my top three priorities for the day.</p>
-          </ContentBox>
-          <ContentBox type="info" title="Evening stack example">
-            <p>After I brush my teeth (existing habit), I will do ten minutes of reading (new habit). After I read, I will write down one thing I am grateful for.</p>
-          </ContentBox>
-          <ContentBox type="info" title="Work stack example">
-            <p>After I sit down at my desk (existing habit), I will immediately open my most important task — not email (new habit). After I complete one focused session, I will check messages.</p>
-          </ContentBox>
-          <ContentBox type="info" title="Exercise stack example">
-            <p>After I put on my workout clothes (existing habit), I will do five minutes of mobility work (new habit). After mobility, I will move into the main workout automatically.</p>
-          </ContentBox>
-        </ContentGrid>
-
-        <p>
-          The key principle of effective habit stacking is specificity. "After I exercise, I will meditate" is weak — exercise happens at different times and places. "After I finish my morning run and step into the shower, I will practice box breathing for two minutes" is strong — the trigger is specific, the environment is consistent, the time commitment is small enough to be non-threatening.
-        </p>
-
-        <p>
-          Habit stacking also creates what psychologists call "implementation intentions" — specific plans that connect a cue to a behavior. Research by Peter Gollwitzer shows that people who form implementation intentions are two to three times more likely to follow through on new habits than those who rely on general intentions alone. The specificity of "when X, then Y" dramatically reduces the cognitive load required to initiate a new behavior.
-        </p>
-      </section>
-
-      <!-- ============================================================
-           NEW: ENVIRONMENT DESIGN
-           ============================================================ -->
-      <section id="environment-design">
-        <h2>Environment Design: Make Good Habits Inevitable</h2>
-
-        <p>
-          Willpower is a finite resource. Environment design is an infinite one. The most effective habit builders do not rely primarily on motivation or discipline — they architect their physical and digital environments so that good habits require minimal effort and bad habits require maximum friction.
-        </p>
-
-        <p>
-          The principle is sometimes called "choice architecture" — the idea that how options are presented and arranged significantly influences which options are chosen, independent of conscious decision-making. If fruit is at eye level in the refrigerator and chocolate is in the back corner behind other items, people eat more fruit — not because they become more virtuous, but because the environment has shifted the path of least resistance.
-        </p>
-
-        <ContentBox type="highlight" title="The Two-Sided Environment Strategy">
-          <p>
-            Effective environment design has two components that work together: <strong>reduce friction for desired behaviors</strong> and <strong>increase friction for undesired behaviors</strong>. Most people focus only on the first, and wonder why it does not work well enough. Both levers together are exponentially more powerful than either alone.
-          </p>
-        </ContentBox>
-
-        <p>
-          <strong>Reducing friction examples:</strong> Leave your running shoes by the door instead of in the closet. Put your book on your pillow instead of on the shelf. Set your guitar on a stand in the living room instead of in its case in the bedroom. Keep healthy food at the front of the refrigerator, pre-chopped and ready to eat. Have your journal open on your desk when you sit down in the morning. Each of these micro-adjustments removes the small friction that, over hundreds of repetitions, determines whether a habit takes root or withers.
-        </p>
-
-        <p>
-          <strong>Increasing friction examples:</strong> Put your phone in another room when you want to focus. Log out of social media after every session so re-entry requires deliberate action. Keep junk food at a store rather than at home — the 10-minute trip creates enough friction that the impulse usually passes. Delete entertainment apps from your phone's home screen so accessing them requires navigating through menus. Use app blockers during work hours that require a waiting period to disable.
-        </p>
-
-        <p>
-          The deeper insight is that most habit failures are not failures of character — they are failures of environment. When your environment is misaligned with your intentions, you are fighting against architecture that is stronger than your willpower. When your environment is aligned with your intentions, the right behavior happens almost automatically, and you can preserve your limited willpower for the decisions that genuinely require it.
-        </p>
-
-        <p>
-          This connects directly to <a href="/blog/mental-models-for-success">systems thinking as a mental model</a> — the recognition that the system you operate within shapes your behavior more reliably than your individual choices within that system. Change the system, and behavior changes with far less effort.
-        </p>
-      </section>
-
-      <!-- AD 2: İçerik ortası -->
+      <!-- AD 2: İçerik ortası — fluid/in-article -->
       <div class="ad-unit ad-unit--mid">
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
              data-ad-client="ca-pub-7229511013815291"
-             data-ad-slot="4827765044"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-ad-slot="4827765044"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
-      <h2 id="troubleshooting">Troubleshooting Common Problems</h2>
-
-      <h3>Problem: Inconsistency and Missed Days</h3>
-      <div class="solution-box">
-        <h4>Solution: Never Miss Twice</h4>
-        <p>Missing one day is a mistake; missing two days starts a pattern. When you miss a day, focus intensely on getting back on track the next day. Consider having a "minimum viable habit" for challenging days—even 30 seconds counts.</p>
-      </div>
-
-      <h3>Problem: Lack of Immediate Results</h3>
-      <div class="solution-box">
-        <h4>Solution: Process-Focused Metrics</h4>
-        <p>Celebrate the behavior itself rather than waiting for external results. Keep a visible tracking system and acknowledge each completion. Remember that behavioral change precedes outcome change by weeks or months.</p>
-      </div>
-
-      <h3>Problem: Overwhelming Multiple Habits</h3>
-      <div class="solution-box">
-        <h4>Solution: Sequential Development</h4>
-        <p>Focus on one habit at a time until it becomes automatic (approximately 66 days). Only then add another habit. Trying to change everything simultaneously typically leads to changing nothing.</p>
-      </div>
-
-      <h3>Problem: Loss of Motivation</h3>
-      <div class="solution-box">
-        <h4>Solution: Systems Over Goals</h4>
-        <p>Motivation initiates behavior, but systems sustain it. Focus on building habits that don't depend on feeling motivated. Design your system to work even when—especially when—you don't feel like it.</p>
-      </div>
-
-      <h2>The Compound Effect in Action</h2>
+      <h2 id="identity-habits">Identity-Based Habits: Become Before You Achieve</h2>
 
       <p>
-        Consider the long-term impact of seemingly small daily habits:
+        Most approaches to habit formation focus on outcomes: lose 20 pounds, write a book, build a business. The problem with outcome-based habits is that they treat the desired result as something external to be acquired — and once motivation toward that external result fades, the habit collapses with it.
       </p>
-
-      <div class="compound-examples">
-        <div class="example">
-          <h4>Reading</h4>
-          <p><strong>Daily:</strong> 20 minutes (10 pages)</p>
-          <p><strong>Annual:</strong> ~18 books, 3,650 pages</p>
-          <p><strong>Decade:</strong> ~180 books of knowledge and wisdom</p>
-        </div>
-
-        <div class="example">
-          <h4>Exercise</h4>
-          <p><strong>Daily:</strong> 30 minutes of movement</p>
-          <p><strong>Annual:</strong> 180+ hours of fitness</p>
-          <p><strong>Decade:</strong> Dramatically different health trajectory</p>
-        </div>
-
-        <div class="example">
-          <h4>Learning</h4>
-          <p><strong>Daily:</strong> 15 minutes practicing a skill</p>
-          <p><strong>Annual:</strong> 90+ hours of deliberate practice</p>
-          <p><strong>Decade:</strong> Expert-level competence in chosen area</p>
-        </div>
-      </div>
-
-      <blockquote>
-        "We are what we repeatedly do. Excellence, then, is not an act, but a habit." - Aristotle
-      </blockquote>
-
-      <h2>The Long Game: Sustainable Success Through Systems</h2>
 
       <p>
-        The most successful individuals understand that achievement isn't about heroic efforts or perfect days—it's about building systems that produce consistent results regardless of circumstances. They focus on process over outcomes, systems over goals, and identity over achievements.
+        James Clear articulates a deeper framework in <em>Atomic Habits</em>: identity-based habit formation. Instead of asking "what do I want to achieve?", ask "who do I want to become?" Instead of "I want to run a marathon," the identity shift is "I am a runner." Every action you take is a vote for the kind of person you are becoming — and the accumulation of those votes creates a new identity that makes the habits feel natural rather than forced.
       </p>
 
-      <div class="success-framework">
-        <h3>The Four Pillars of Habit-Based Success</h3>
-
-        <div class="pillar">
-          <h4>1. Clarity</h4>
-          <p>Specific, measurable habits linked to clear outcomes. Vague intentions like "exercise more" become precise commitments like "20 pushups at 7 AM daily."</p>
-        </div>
-
-        <div class="pillar">
-          <h4>2. Consistency</h4>
-          <p>Reliable execution regardless of motivation levels. Building systems that work when you're tired, stressed, or unmotivated.</p>
-        </div>
-
-        <div class="pillar">
-          <h4>3. Patience</h4>
-          <p>Understanding that meaningful change happens slowly, then suddenly. Trusting the process during the inevitable plateau periods.</p>
-        </div>
-
-        <div class="pillar">
-          <h4>4. Flexibility</h4>
-          <p>Adapting methods while maintaining core behaviors. Adjusting your approach based on what you learn about yourself and your environment.</p>
-        </div>
-      </div>
-
-      <h2>Beyond Individual Habits: Social and Environmental Systems</h2>
+      <ContentBox type="tip" title="The Identity → Habit → Result Chain">
+        <p>Most people try to change their habits by focusing on results (the outermost layer) or processes (the middle layer). Identity-based habit formation works from the inside out — starting with the identity, which naturally produces the processes, which naturally produce the results. Before trying to build any significant habit, ask: what kind of person consistently does this? Then ask: what small action can I take today that provides evidence that I am that kind of person?</p>
+      </ContentBox>
 
       <p>
-        While personal discipline is crucial, the most powerful habit systems extend beyond individual behavior to include social and environmental factors.
+        The Stoics understood this intuitively. Marcus Aurelius did not ask "how do I become more patient?" He asked "what would a patient person do right now?" — and then did it, repeatedly, until patience became part of who he was. This connects directly to <a href="/blog/stoicism">the Stoic framework for character development</a> and to <a href="/blog/success-philosophy">the philosophy of becoming before achieving</a>.
       </p>
 
-      <h3>Social Momentum</h3>
-      <p>
-        Humans are inherently social creatures whose behaviors are heavily influenced by their communities. Research shows that behaviors spread through social networks like contagions—both positive and negative habits are "caught" from those around us.
-      </p>
-
-      <div class="social-strategies">
-        <h4>Leveraging Social Influence</h4>
-        <ul>
-          <li><strong>Accountability Partners:</strong> Regular check-ins with someone pursuing similar goals</li>
-          <li><strong>Community Involvement:</strong> Join groups aligned with your desired habits (running clubs, book clubs, professional organizations)</li>
-          <li><strong>Mentorship:</strong> Both having mentors who model desired behaviors and mentoring others to reinforce your own growth</li>
-          <li><strong>Public Commitment:</strong> Sharing goals publicly creates social pressure and support</li>
-        </ul>
-      </div>
-
-      <h3>Environmental Design</h3>
-      <p>
-        Your environment shapes your behavior more than you might realize. Small environmental changes can create massive behavioral shifts with minimal ongoing effort.
-      </p>
-
-      <div class="environment-audit">
-        <h4>Environmental Audit Questions</h4>
-        <ul>
-          <li>What does the first thing I see each morning encourage me to do?</li>
-          <li>How does my workspace design support or hinder deep work?</li>
-          <li>What behaviors does my kitchen layout promote?</li>
-          <li>How do my phone settings and app placement influence my attention?</li>
-          <li>What does my evening environment encourage—relaxation, learning, or mindless consumption?</li>
-        </ul>
-      </div>
-
-      <h2>The Neuroscience of Habit Maintenance</h2>
+      <h2 id="habit-stacking">Habit Stacking: Chain Your Way to Excellence</h2>
 
       <p>
-        Maintaining habits over years and decades requires understanding how the brain adapts to established routines and how to prevent behavioral extinction.
+        Habit stacking is the practice of linking a new habit to an existing one using a simple formula: <em>After I [current habit], I will [new habit].</em> Existing habits have already carved deep neural pathways — they run automatically with almost no friction. A new habit attached to an existing one can piggyback on that existing neural infrastructure, borrowing its momentum.
       </p>
 
-      <h3>The Plateau Effect</h3>
-      <p>
-        After initial progress, improvement often plateaus. This isn't failure—it's neurological adaptation. Your brain becomes efficient at the established routine, requiring conscious attention to continue progressing.
-      </p>
-
-      <div class="plateau-solutions">
-        <h4>Overcoming Plateaus</h4>
-        <ul>
-          <li><strong>Progressive Overload:</strong> Gradually increase difficulty or complexity</li>
-          <li><strong>Variation:</strong> Modify methods while maintaining core behaviors</li>
-          <li><strong>Skill Stacking:</strong> Layer new, related skills onto established habits</li>
-          <li><strong>Periodic Review:</strong> Regular assessment and adjustment of goals and methods</li>
-        </ul>
-      </div>
-
-      <h3>Habit Resilience</h3>
-      <p>
-        Life will inevitably disrupt your routines. Building resilient habits means creating systems that can withstand and quickly recover from disruptions.
-      </p>
-
-      <div class="resilience-strategies">
-        <h4>Building Anti-Fragile Habits</h4>
-        <ul>
-          <li><strong>Minimum Viable Habits:</strong> Stripped-down versions you can maintain during difficult periods</li>
-          <li><strong>Multiple Trigger Points:</strong> Several environmental cues that can initiate the same habit</li>
-          <li><strong>Recovery Protocols:</strong> Pre-planned strategies for getting back on track after disruptions</li>
-          <li><strong>Context Independence:</strong> Habits that can be performed in various environments and circumstances</li>
-        </ul>
-      </div>
-
-      <h2>Measuring What Matters</h2>
+      <ContentGrid columns={2}>
+        <ContentBox type="info" title="Morning Stack">
+          <p>After I pour my morning coffee, I will write in my journal for five minutes. After I journal, I will review my top three priorities for the day.</p>
+        </ContentBox>
+        <ContentBox type="info" title="Evening Stack">
+          <p>After I brush my teeth, I will do ten minutes of reading. After I read, I will write down one thing I am grateful for before sleeping.</p>
+        </ContentBox>
+        <ContentBox type="info" title="Work Stack">
+          <p>After I sit down at my desk, I will immediately open my most important task — not email. After one focused session, I will check messages.</p>
+        </ContentBox>
+        <ContentBox type="info" title="Exercise Stack">
+          <p>After I put on my workout clothes, I will do five minutes of mobility work. After mobility, I will move into the main workout automatically.</p>
+        </ContentBox>
+      </ContentGrid>
 
       <p>
-        Traditional goal-setting focuses on outcomes—lose 20 pounds, write a book, get promoted. Habit-based success focuses on inputs—daily behaviors that compound over time.
+        Research by Peter Gollwitzer shows that people who form implementation intentions — specific when-then plans — are two to three times more likely to follow through on new behaviors than those with general intentions. Habit stacking operationalizes implementation intentions in the simplest possible way.
       </p>
 
-      <div class="measurement-framework">
-        <h3>Input vs. Output Metrics</h3>
-
-        <div class="metric-comparison">
-          <div class="metric-type">
-            <h4>Output Metrics (Results)</h4>
-            <ul>
-              <li>Weight lost</li>
-              <li>Books published</li>
-              <li>Revenue generated</li>
-              <li>Followers gained</li>
-            </ul>
-            <p class="metric-note">Outcomes you control indirectly through behavior</p>
-          </div>
-
-          <div class="metric-type">
-            <h4>Input Metrics (Behaviors)</h4>
-            <ul>
-              <li>Workouts completed</li>
-              <li>Words written daily</li>
-              <li>Sales calls made</li>
-              <li>Value provided to others</li>
-            </ul>
-            <p class="metric-note">Behaviors you control directly</p>
-          </div>
-        </div>
-      </div>
+      <h2 id="environment-design">Environment Design: Make Good Habits Inevitable</h2>
 
       <p>
-        Focus primarily on input metrics while tracking output metrics for feedback. When output metrics stall, examine and adjust input metrics rather than abandoning the system.
+        Willpower is finite. Environment design is not. The most effective habit builders do not rely primarily on motivation or discipline — they architect their physical and digital environments so that good habits require minimal effort and bad habits require maximum friction. This principle, called choice architecture, is supported by decades of behavioral economics research.
       </p>
+
+      <p>
+        <strong>Reducing friction:</strong> Leave running shoes by the door. Put your book on your pillow. Set your guitar on a stand in the living room. Keep healthy food at the front of the refrigerator, pre-chopped and ready. Have your journal open on your desk when you sit down each morning.
+      </p>
+
+      <p>
+        <strong>Increasing friction:</strong> Put your phone in another room during focused work. Log out of social media after every session. Delete entertainment apps from your phone's home screen. Use app blockers during work hours that require a waiting period to override.
+      </p>
+
+      <p>
+        The deeper insight is that most habit failures are not failures of character — they are failures of environment design. When your environment is misaligned with your intentions, you fight against architecture that is stronger than willpower. Change the system, and behavior changes with far less effort. This is precisely the logic behind <a href="/blog/rethinking-success">rethinking what success actually requires</a>.
+      </p>
+
+      <h2 id="how-to-apply">How to Apply This</h2>
+
+      <StepsList steps={[
+        {
+          title: "Choose one keystone habit",
+          description: "Identify a single behavior that naturally triggers other positive changes — exercise, journaling, or a structured morning routine. Do not attempt to change multiple habits simultaneously. Research consistently shows sequential development outperforms parallel attempts."
+        },
+        {
+          title: "Shrink it to two minutes",
+          description: "Reduce your chosen habit to its smallest possible version. One pushup. One paragraph. Two minutes of meditation. The goal is establishing the neural loop, not producing immediate results. Expansion happens naturally once the pattern exists."
+        },
+        {
+          title: "Design your environment tonight",
+          description: "Before you sleep, set up tomorrow's cues: lay out workout clothes, place the book on your pillow, put your journal open on the desk. Remove one friction barrier for your desired habit and add one friction barrier for your competing habit."
+        },
+        {
+          title: "Stack it onto an existing habit",
+          description: "Write the exact formula: After I [existing habit], I will [new habit]. Be specific about time, location, and trigger. Specificity is the difference between a plan and an intention."
+        },
+        {
+          title: "Track inputs, not outcomes",
+          description: "Mark a simple calendar or habit tracker each day you complete the behavior. Focus on the behavior itself, not its downstream results. Results lag behavior by weeks or months — tracking behavior keeps you calibrated to what you can actually control."
+        },
+        {
+          title: "Apply the never-miss-twice rule",
+          description: "Missing one day is an accident. Missing two days is the beginning of a pattern. When you miss, focus entirely on the next day. Have a minimum viable version of your habit — even 30 seconds — for days when full execution is impossible."
+        }
+      ]} />
+
+      <h2 id="misconceptions">Common Misconceptions About Habits and Discipline</h2>
+
+      <ContentBox type="warning" title="Misconception 1: Disciplined people have more willpower">
+        <p>Research shows the opposite. Studies by Wendy Wood at USC found that highly self-disciplined individuals reported encountering temptation less frequently — not resisting it more successfully. Their habits and environments prevented temptation from arising in the first place. Discipline is system design, not force of will.</p>
+      </ContentBox>
+
+      <ContentBox type="warning" title="Misconception 2: You need to feel motivated to build habits">
+        <p>Motivation follows action more reliably than it precedes it. Waiting to feel ready is a reliable way to never start. The two-minute rule exists precisely because motivation is unnecessary when the behavior is small enough. Action generates the emotional state; the emotional state does not generate the action.</p>
+      </ContentBox>
+
+      <ContentBox type="warning" title="Misconception 3: Missing a day breaks the habit">
+        <p>Habit research consistently shows that a single missed day has negligible impact on long-term habit strength. What matters is the response to missing — whether you return immediately or allow a second miss. The habit is not the streak; it is the underlying identity.</p>
+      </ContentBox>
+
+      <ContentBox type="warning" title="Misconception 4: More habits equals more success">
+        <p>Attempting to build many habits simultaneously is one of the most common and most reliably unsuccessful strategies. Willpower, attention, and habit-formation capacity are all finite. Building one solid habit that becomes truly automatic — typically requiring 60 to 90 days — and then adding the next consistently outperforms trying to change everything at once.</p>
+      </ContentBox>
 
       <!-- AD 3: Final section öncesi -->
       <div class="ad-unit ad-unit--bottom">
@@ -612,754 +322,268 @@ import ContentGrid from "../../components/blog/ContentGrid.astro";
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
-      <h2>The Compound Advantage</h2>
+      <h2 id="conclusion">Conclusion</h2>
 
       <p>
-        The true power of habit-based momentum becomes apparent over longer time horizons. While others cycle through bursts of motivation followed by periods of inaction, those with disciplined systems gain an exponential advantage.
+        Success is not an event. It is the accumulated output of systems that operate whether or not you feel inspired on any given day. Habits reduce the cost of good decisions. Discipline — properly understood — means designing those habits and the environments that support them. Momentum is what happens when consistent action compounds over time into results that look, from the outside, like sudden breakthroughs.
       </p>
 
-      <div class="compound-advantage">
-        <h3>The Mathematics of Marginal Gains</h3>
-        <p>
-          If you improve by 1% every day for a year, you'll be 37 times better by year's end. If you decline by 1% daily, you'll decline to nearly zero. Small changes in daily habits create dramatically different long-term outcomes.
-        </p>
+      <p>
+        The most important thing you can do today is not to add more goals. It is to design better systems for the goals you already have. Start with one habit. Make it small. Stack it onto something existing. Modify your environment tonight. And commit to the only rule that matters in the long run: never miss twice.
+      </p>
 
-        <div class="math-example">
-          <p><strong>1.01^365 = 37.78</strong> (37x improvement)</p>
-          <p><strong>0.99^365 = 0.03</strong> (97% decline)</p>
+      <ContentBox type="tip" title="Start Here">
+        <p>Pick the single most important habit you want to build. Write the implementation intention: "After I [existing habit], I will [new behavior]." Make the minimum viable version of it. Then do it tomorrow — not when you feel ready. The momentum starts with the first vote.</p>
+      </ContentBox>
+
+      <div class="author-bio">
+        <div class="author-bio__content">
+          <h3>About the Author</h3>
+          <p><strong>Success Odyssey Hub</strong> is an independent research-driven publication focused on the psychology of achievement, decision-making science, and evidence-based personal development. Our content synthesizes peer-reviewed research, philosophical frameworks, and practical application — written for people who take their growth seriously.</p>
         </div>
       </div>
 
-      <p>
-        This mathematical reality explains why successful people can seem to have "overnight" breakthroughs after years of seemingly modest progress. The momentum was building invisibly through consistent daily habits.
-      </p>
-
-      <h2>Your Personal Success Engine</h2>
-
-      <p>
-        Building your success engine requires honest self-assessment, strategic design, and patient implementation. Start with these reflection questions:
-      </p>
-
-      <div class="personal-assessment">
-        <h4>Success Engine Assessment</h4>
-        <ol>
-          <li>What is the single most important outcome you want to achieve in the next year?</li>
-          <li>What daily behavior, if consistently performed, would make that outcome inevitable?</li>
-          <li>What environmental changes would make this behavior easier to maintain?</li>
-          <li>Who in your network supports this goal, and how can you increase that support?</li>
-          <li>What is the smallest version of this behavior you could commit to doing even on your worst days?</li>
-        </ol>
-      </div>
-
-      <p>
-        Remember: You don't need to be perfect. You need to be consistent. The goal isn't to never fail—it's to fail well and get back on track quickly. Your habits are votes for the type of person you want to become. Make sure you're voting for the right candidate.
-      </p>
-
-      <div class="final-insight">
-        <h3>The Ultimate Truth About Success</h3>
-        <p>
-          Success is not a destination you arrive at—it's a process you commit to. It's not about having perfect days—it's about having systems that work imperfectly but consistently. The magic happens not in moments of inspiration, but in the mundane repetition of beneficial behaviors that compound over time into extraordinary results.
-        </p>
-      </div>
-    </div>
-
-    <!-- Author Info -->
-    <div class="author-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
-      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 12px;">
-        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white"/>
-      </svg>
-      <div class="author-details">
-        <h4 itemprop="name">Success Odyssey Hub</h4>
-        <meta itemprop="url" content={Astro.site?.toString()} />
-        <p>Our team of productivity experts has tested thousands of tools and strategies to bring you only the most effective solutions for personal and professional growth.</p>
-      </div>
-    </div>
-
-    <!-- Related Articles -->
-    <nav class="related-articles" aria-label="Related articles">
-      <h3>Related Articles</h3>
-      <div class="related-grid">
-        <a href="/blog/mental-models-for-success" rel="related">
-          <span>15 Mental Models for Success</span>
-        </a>
-        <a href="/blog/stoicism" rel="related">
-          <span>Stoic Wisdom for Modern Life</span>
-        </a>
-        <a href="/blog/overcoming-resistance" rel="related">
-          <span>Overcoming Resistance: Building Resilience</span>
-        </a>
-        <a href="/blog/vision-to-reality" rel="related">
-          <span>From Vision to Reality: The Art of Execution</span>
-        </a>
-      </div>
-    </nav>
-
-    <!-- Breadcrumb Navigation -->
-    <nav aria-label="Breadcrumb" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border, #e5e7eb);">
-      <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="/">
-            <span itemprop="name">Home</span>
+      <nav class="related-articles" aria-label="Related articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <a href="/blog/mental-models" rel="related">
+            <span>Mental Models for Better Decision Making</span>
           </a>
-          <meta itemprop="position" content="1" />
-          <span style="margin: 0 0.5rem;">/</span>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="/blog">
-            <span itemprop="name">Blog</span>
+          <a href="/blog/stoicism" rel="related">
+            <span>Stoic Wisdom for Modern Life</span>
           </a>
-          <meta itemprop="position" content="2" />
-          <span style="margin: 0 0.5rem;">/</span>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name">Habits, Discipline, and Momentum</span>
-          <meta itemprop="position" content="3" />
-        </li>
-      </ol>
-    </nav>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How long does it take to form a new habit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Research shows that significant habit changes can occur in 18-254 days, with an average of 66 days for simple behaviors to become automatic."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the habit loop?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The habit loop consists of three components: cue (trigger), routine (behavior), and reward (benefit). Modern research adds a fourth element: craving, the anticipation of the reward."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I build discipline without relying on willpower?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "True discipline involves environmental design, identity-based habits, implementation intentions, and habit stacking. These strategies minimize the need for willpower by making good choices the path of least resistance."
-      }
-    }
-  ]
-}
-</script>
+          <a href="/blog/overcoming-resistance" rel="related">
+            <span>Overcoming Resistance: Building Resilience</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="external-resources">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://jamesclear.com/atomic-habits" target="_blank" rel="noopener noreferrer">Atomic Habits by James Clear — official summary and resources</a></li>
+          <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank" rel="noopener noreferrer">Phillippa Lally et al. — How habits are formed (European Journal of Social Psychology)</a></li>
+          <li><a href="https://dornsife.usc.edu/wendywood/" target="_blank" rel="noopener noreferrer">Wendy Wood's research on habit and self-control — USC</a></li>
+        </ul>
+      </div>
+
+    </div>
   </article>
 </Layout>
-  <style>
-    /* ===== AD UNITS ===== */
-    .ad-unit {
-      margin: 2rem 0;
-      text-align: center;
-      overflow: hidden;
-    }
-    .ad-unit--top { margin-top: 0; margin-bottom: 2rem; }
-    .ad-unit--mid { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 1.5rem 0; }
-    .ad-unit--bottom { border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
 
-    /* Hero image - Fixed compact size */
-    .hero-image {
-      width: 100%;
-      height: 200px !important;
-      max-height: 200px !important;
-      object-fit: cover;
-      border-radius: 8px;
-      margin: 2rem 0;
-      display: block;
-    }
+<style lang="scss">
+  .blog-article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
 
-    @media (max-width: 768px) {
-      .hero-image {
-        height: 150px !important;
-        max-height: 150px !important;
-      }
-    }
+  .article-header {
+    margin-bottom: 2rem;
 
-    /* Article structure */
-    .blog-page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      line-height: 1.7;
-    }
-
-    .article-header {
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .article-header h1 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.2;
-      margin: 1rem 0;
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.25;
+      margin-bottom: 1rem;
       color: var(--color-text-primary, #1a1a1a);
-      font-weight: 700;
     }
+  }
 
-    .article-meta {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-      flex-wrap: wrap;
-    }
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary, #666);
 
-    .article-meta time {
-      color: var(--color-text-secondary, #666);
-      font-size: 0.95rem;
-    }
-
-    .reading-time {
-      color: var(--color-text-secondary, #666);
-      font-size: 0.95rem;
-    }
+    time { font-weight: 500; }
 
     .tags {
       display: flex;
       gap: 0.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
     }
 
     .tag {
-      background: var(--color-primary, #3b82f6);
-      color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
+      background: var(--color-accent-light, #f0f4ff);
+      color: var(--color-primary, #3b82f6);
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 500;
     }
+  }
 
-    /* Content styling */
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
+  .hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    display: block;
+  }
 
-    .content p {
-      margin-bottom: 1.5rem;
-      color: var(--color-text-primary, #1a1a1a);
-    }
+  .content {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-text-primary, #1a1a1a);
+
+    p { margin-bottom: 1.25rem; }
 
     .lead {
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       font-weight: 500;
-      color: var(--color-primary, #3b82f6);
-      text-align: center;
-      margin: 2rem 0;
-      line-height: 1.6;
-    }
-
-    .content h2 {
-      font-size: 1.8rem;
-      margin: 3rem 0 1.5rem 0;
       color: var(--color-text-primary, #1a1a1a);
-      font-weight: 700;
+      border-left: 4px solid var(--color-primary, #3b82f6);
+      padding-left: 1.25rem;
+      margin-bottom: 2rem;
     }
 
-    .content h3 {
-      font-size: 1.4rem;
-      margin: 2.5rem 0 1rem 0;
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      margin-top: 3rem;
+      margin-bottom: 1rem;
       color: var(--color-text-primary, #1a1a1a);
-      font-weight: 600;
     }
 
-    .content h4 {
+    h3 {
       font-size: 1.2rem;
-      margin: 2rem 0 0.75rem 0;
-      color: var(--color-text-primary, #1a1a1a);
-      font-weight: 600;
-    }
-
-    .content ul, .content ol {
-      margin: 1.5rem 0;
-      padding-left: 2rem;
-    }
-
-    .content li {
-      margin-bottom: 0.8rem;
-      color: var(--color-text-primary, #1a1a1a);
-      line-height: 1.7;
-    }
-
-    .content a {
-      color: var(--color-primary, #3b82f6);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .content a:hover {
-      text-decoration: underline;
-    }
-
-    .content strong {
-      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
       color: var(--color-text-primary, #1a1a1a);
     }
 
     blockquote {
-      font-style: italic;
-      font-size: 1.1rem;
       border-left: 4px solid var(--color-primary, #3b82f6);
-      padding-left: 2rem;
       margin: 2rem 0;
-      color: var(--color-text-secondary, #666);
-    }
-
-    /* Table of contents */
-    .table-of-contents {
-      background: var(--color-accent-light, #f8fafc);
-      border: 1px solid var(--color-border, #e5e7eb);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .table-of-contents h2 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: var(--color-primary, #3b82f6);
-    }
-
-    .table-of-contents ol {
-      line-height: 1.6;
-      margin: 0;
-      padding-left: 1.5rem;
-    }
-
-    .table-of-contents a {
-      color: var(--color-text-secondary, #666);
-      text-decoration: none;
-    }
-
-    .table-of-contents a:hover {
-      color: var(--color-primary, #3b82f6);
-    }
-
-    /* Special components for this article */
-    .neuroplasticity-box {
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border-left: 4px solid var(--color-accent, #f59e0b);
-      padding: 2rem;
-      margin: 2rem 0;
+      padding: 1rem 1.5rem;
+      background: var(--color-bg-secondary, #f8fafc);
       border-radius: 0 8px 8px 0;
-    }
-
-    .neuroplasticity-box h3 {
-      color: #92400e;
-      margin-bottom: 1rem;
-    }
-
-    .habit-loop-visual {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-
-    .loop-component {
-      background: var(--color-accent-light, #f8fafc);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid var(--color-border, #e5e7eb);
-    }
-
-    .loop-component h4 {
-      color: var(--color-primary, #3b82f6);
-      margin-bottom: 1rem;
-    }
-
-    .loop-component ul {
-      margin-top: 1rem;
-    }
-
-    .loop-component li {
-      margin-bottom: 0.5rem;
-    }
-
-    .loop-component strong {
-      color: var(--color-text-primary, #1a1a1a);
-    }
-
-    .discipline-strategies {
-      margin: 2rem 0;
-    }
-
-    .strategy-item {
-      background: white;
-      border: 1px solid var(--color-border, #e5e7eb);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .strategy-item h5 {
-      color: var(--color-primary, #3b82f6);
-      margin-bottom: 0.75rem;
-    }
-
-    .momentum-types {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .momentum-type {
-      background: var(--color-bg-tertiary, #f9fafb);
-      padding: 1.5rem;
-      border-radius: 8px;
-    }
-
-    .momentum-type h4 {
-      color: var(--color-accent, #f59e0b);
-      margin-bottom: 1rem;
-    }
-
-    .phase-breakdown {
-      background: var(--color-accent-light, #f8fafc);
-      padding: 2rem;
-      border-radius: 8px;
-      margin: 2rem 0;
-      border-left: 4px solid var(--color-primary, #3b82f6);
-    }
-
-    .phase-breakdown h4 {
-      color: var(--color-primary, #3b82f6);
-      margin-bottom: 1rem;
-    }
-
-    .solution-box {
-      background: #ecfdf5;
-      border: 1px solid #10b981;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-    }
-
-    .solution-box h4 {
-      color: #059669;
-      margin-bottom: 0.75rem;
-    }
-
-    .compound-examples {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .example {
-      background: white;
-      border: 2px solid var(--color-accent, #f59e0b);
-      border-radius: 8px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .example h4 {
-      color: var(--color-accent, #f59e0b);
-      margin-bottom: 1rem;
-    }
-
-    .example p {
-      margin-bottom: 0.5rem;
-    }
-
-    .example strong {
-      color: var(--color-text-primary, #1a1a1a);
-    }
-
-    .success-framework {
-      margin: 3rem 0;
-    }
-
-    .pillar {
-      background: var(--color-accent-light, #f8fafc);
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--color-primary, #3b82f6);
-    }
-
-    .pillar h4 {
-      color: var(--color-primary, #3b82f6);
-      margin-bottom: 0.75rem;
-    }
-
-    .social-strategies, .environment-audit, .plateau-solutions, .resilience-strategies {
-      background: var(--color-bg-tertiary, #f9fafb);
-      padding: 2rem;
-      border-radius: 8px;
-      margin: 2rem 0;
-    }
-
-    .social-strategies h4, .environment-audit h4, .plateau-solutions h4, .resilience-strategies h4 {
-      color: var(--color-primary, #3b82f6);
-      margin-bottom: 1.5rem;
-    }
-
-    .social-strategies li, .environment-audit li, .plateau-solutions li, .resilience-strategies li {
-      margin-bottom: 0.75rem;
-    }
-
-    .social-strategies strong, .environment-audit strong, .plateau-solutions strong, .resilience-strategies strong {
-      color: var(--color-text-primary, #1a1a1a);
-    }
-
-    .measurement-framework {
-      margin: 2rem 0;
-    }
-
-    .metric-comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .metric-type {
-      background: var(--color-accent-light, #f8fafc);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--color-border, #e5e7eb);
-    }
-
-    .metric-type h4 {
-      color: var(--color-primary, #3b82f6);
-      margin-bottom: 1rem;
-    }
-
-    .metric-note {
       font-style: italic;
-      color: var(--color-text-secondary, #666);
-      margin-top: 1rem;
+      color: var(--color-text-secondary, #555);
     }
 
-    .compound-advantage {
-      background: linear-gradient(135deg, var(--color-primary, #3b82f6), var(--color-primary-dark, #2563eb));
-      color: white;
-      padding: 3rem;
-      border-radius: 8px;
-      margin: 3rem 0;
-      text-align: center;
-    }
-
-    .compound-advantage h3 {
-      color: white;
-      margin-bottom: 1.5rem;
-    }
-
-    .compound-advantage p {
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 2rem;
-    }
-
-    .math-example {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      border-radius: 8px;
-      font-family: monospace;
-      font-size: 1.1rem;
-    }
-
-    .math-example p {
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-
-    .personal-assessment {
-      background: white;
-      border: 2px solid var(--color-accent, #f59e0b);
-      padding: 2rem;
-      border-radius: 8px;
-      margin: 2rem 0;
-    }
-
-    .personal-assessment h4 {
-      color: var(--color-accent, #f59e0b);
-      margin-bottom: 1.5rem;
-    }
-
-    .personal-assessment ol li {
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      color: var(--color-text-secondary, #666);
-    }
-
-    .final-insight {
-      background: var(--color-bg-tertiary, #f9fafb);
-      padding: 3rem;
-      border-radius: 8px;
-      text-align: center;
-      margin: 3rem 0;
-    }
-
-    .final-insight h3 {
+    a {
       color: var(--color-primary, #3b82f6);
-      margin-bottom: 1.5rem;
-    }
+      text-decoration: underline;
+      text-underline-offset: 3px;
 
-    .final-insight p {
-      font-size: 1.1rem;
-      line-height: 1.7;
+      &:hover { text-decoration: none; }
+    }
+  }
+
+  .table-of-contents {
+    background: var(--color-bg-secondary, #f8fafc);
+    border: 1px solid var(--color-border, #e5e7eb);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       color: var(--color-text-secondary, #666);
-      font-style: italic;
+      margin: 0 0 1rem;
     }
 
-    /* Author info */
-    .author-info {
-      display: flex;
-      gap: 1rem;
-      padding: 2rem;
-      background: var(--color-accent-light, #f8fafc);
-      border-radius: 8px;
-      margin-top: 3rem;
-    }
-
-    .author-info svg {
-      flex-shrink: 0;
-    }
-
-    .author-details {
-      flex: 1;
-    }
-
-    .author-details h4 {
-      margin-bottom: 0.5rem;
-      color: var(--color-text-primary, #1a1a1a);
-    }
-
-    .author-details p {
-      color: var(--color-text-secondary, #666);
-      font-size: 0.9rem;
+    ol {
       margin: 0;
-      line-height: 1.5;
+      padding-left: 1.25rem;
+
+      li {
+        margin-bottom: 0.4rem;
+
+        a {
+          color: var(--color-primary, #3b82f6);
+          text-decoration: none;
+
+          &:hover { text-decoration: underline; }
+        }
+      }
+    }
+  }
+
+  .ad-unit {
+    margin: var(--spacing-2xl, 3rem) 0;
+    text-align: center;
+    overflow: hidden;
+
+    &--top   { margin-top: 0; margin-bottom: var(--spacing-2xl, 3rem); }
+    &--mid   { border-top: 1px solid var(--color-border, #e5e7eb); border-bottom: 1px solid var(--color-border, #e5e7eb); padding: var(--spacing-lg, 1.5rem) 0; }
+    &--bottom{ border-top: 1px solid var(--color-border, #e5e7eb); padding-top: var(--spacing-lg, 1.5rem); }
+  }
+
+  .author-bio {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--color-bg-secondary, #f8fafc);
+    border-radius: 10px;
+    border: 1px solid var(--color-border, #e5e7eb);
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-secondary, #666);
     }
 
-    /* Related articles */
-    .related-articles {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--color-border, #e5e7eb);
-    }
+    p { margin: 0; color: var(--color-text-secondary, #555); }
+  }
 
-    .related-articles h3 {
-      margin-bottom: 1.5rem;
-      color: var(--color-text-primary, #1a1a1a);
-    }
+  .related-articles {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border, #e5e7eb);
+
+    h3 { margin-bottom: 1.25rem; }
 
     .related-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
-    }
 
-    .related-grid a {
-      display: block;
-      padding: 1rem;
-      background: var(--color-accent-light, #f8fafc);
-      border: 1px solid var(--color-border, #e5e7eb);
-      border-radius: 8px;
-      text-decoration: none;
-      color: var(--color-text-primary, #1a1a1a);
-      transition: all 0.3s ease;
-    }
-
-    .related-grid a:hover {
-      background: var(--color-bg-tertiary, #f3f4f6);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Mobile responsive */
-    @media (max-width: 768px) {
-      .blog-page {
+      a {
+        display: block;
         padding: 1rem;
-      }
+        background: var(--color-bg-secondary, #f8fafc);
+        border: 1px solid var(--color-border, #e5e7eb);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--color-text-primary, #1a1a1a);
+        font-weight: 500;
+        transition: transform 0.2s, box-shadow 0.2s;
 
-      .article-meta {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .content {
-        font-size: 1rem;
-      }
-
-      .content h2 {
-        font-size: 1.6rem;
-      }
-
-      .content h3 {
-        font-size: 1.3rem;
-      }
-
-      .habit-loop-visual,
-      .momentum-types,
-      .compound-examples {
-        grid-template-columns: 1fr;
-      }
-
-      .metric-comparison {
-        grid-template-columns: 1fr;
-      }
-
-      .compound-advantage {
-        padding: 2rem;
-      }
-
-      .personal-assessment {
-        padding: 1.5rem;
-      }
-
-      .final-insight {
-        padding: 2rem;
-      }
-
-      .author-info {
-        padding: 1.5rem;
-      }
-
-      .related-grid {
-        grid-template-columns: 1fr;
-      }
-        /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-      .table-of-contents {
-        background: var(--color-bg-secondary);
-      }
-
-      blockquote {
-        background: var(--color-bg-tertiary);
-      }
-
-      .product-highlight {
-        background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
-      }
-
-      .automation-examples {
-        background: var(--color-bg-secondary);
-      }
-
-      .author-info {
-        background: var(--color-bg-secondary);
-      }
-
-      .related-grid a {
-        background: var(--color-bg-secondary);
-      }
-
-      .related-grid a:hover {
-        background: var(--color-bg-tertiary);
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
       }
     }
-    </style>
+  }
+
+  .external-resources {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border, #e5e7eb);
+
+    h3 { margin-bottom: 1rem; font-size: 1.1rem; }
+
+    ul { padding-left: 1.25rem; }
+
+    li { margin-bottom: 0.5rem; }
+
+    a {
+      color: var(--color-primary, #3b82f6);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .blog-article { padding: 1rem; }
+    .article-meta { flex-direction: column; gap: 0.5rem; }
+    .related-articles .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
