@@ -28,38 +28,38 @@ const readingTime     = 13;
 >
   <link rel="preload" as="image" href={card3.src} slot="head" />
 
-  <script type="application/ld+json" slot="head">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What mental models are most useful for relationships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The most useful mental models for relationships include Hanlon's Razor (assume incompetence before malice), the Map-Territory distinction (recognize that your model of a person is not the person), Inversion (ask what destroys relationships to avoid it), and the Emotional Bank Account (understand that trust is built through small consistent deposits, not grand gestures). Each addresses a different failure mode that commonly damages relationships."
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What mental models are most useful for relationships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most useful mental models for relationships include Hanlon's Razor (assume incompetence before malice), the Map-Territory distinction (recognize that your model of a person is not the person), Inversion (ask what destroys relationships to avoid it), and the Emotional Bank Account (understand that trust is built through small consistent deposits, not grand gestures). Each addresses a different failure mode that commonly damages relationships."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does inversion thinking apply to relationships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inversion applied to relationships asks: instead of asking how to build a great relationship, ask what reliably destroys relationships. Research on relationship dissolution consistently identifies defensiveness, contempt, stonewalling, and criticism as the four most destructive patterns. Systematically eliminating these behaviors produces better relationship outcomes than most positive-addition strategies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can mental models improve communication in relationships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Map-Territory model improves communication by reminding you that your interpretation of what someone said is your construction, not an objective fact. Steel manning reduces defensive communication by encouraging you to represent the strongest version of the other person's position. And second-order thinking helps you anticipate how your response will be received, not just how it is intended."
+          }
         }
-      },
-      {
-        "@type": "Question",
-        "name": "How does inversion thinking apply to relationships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Inversion applied to relationships asks: instead of asking how to build a great relationship, ask what reliably destroys relationships. Research on relationship dissolution consistently identifies defensiveness, contempt, stonewalling, and criticism as the four most destructive patterns. Systematically eliminating these behaviors produces better relationship outcomes than most positive-addition strategies."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can mental models improve communication in relationships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The Map-Territory model improves communication by reminding you that your interpretation of what someone said is your construction, not an objective fact. Steel manning reduces defensive communication by encouraging you to represent the strongest version of the other person's position. And second-order thinking helps you anticipate how your response will be received, not just how it is intended."
-        }
-      }
-    ]
-  })}
-  </script>
+      ]
+    })} />
+  </Fragment>
 
   <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
 
