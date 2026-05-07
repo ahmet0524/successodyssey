@@ -13,6 +13,37 @@ const pageTitle       = 'Mental Models for Better Relationships';
 const pageDescription = 'The same mental models that improve decisions in business and investing also transform how you navigate relationships. Learn which frameworks most reliably reduce conflict, build trust, and deepen connection.';
 const pageKeywords    = 'mental models for relationships, better relationships psychology, relationship mental models, how to improve relationships, relationship frameworks, conflict resolution mental models, trust in relationships, understanding people mental models, relationship thinking tools, empathy mental models, hanlon razor relationships, inversion relationships, second order thinking relationships, relationships and mental models, improve communication mental models';
 const readingTime     = 13;
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What mental models are most useful for relationships?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most useful mental models for relationships include Hanlon's Razor (assume incompetence before malice), the Map-Territory distinction (recognize that your model of a person is not the person), Inversion (ask what destroys relationships to avoid it), and the Emotional Bank Account (understand that trust is built through small consistent deposits, not grand gestures). Each addresses a different failure mode that commonly damages relationships."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does inversion thinking apply to relationships?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inversion applied to relationships asks: instead of asking how to build a great relationship, ask what reliably destroys relationships. Research on relationship dissolution consistently identifies defensiveness, contempt, stonewalling, and criticism as the four most destructive patterns. Systematically eliminating these behaviors produces better relationship outcomes than most positive-addition strategies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can mental models improve communication in relationships?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Map-Territory model improves communication by reminding you that your interpretation of what someone said is your construction, not an objective fact. Steel manning reduces defensive communication by encouraging you to represent the strongest version of the other persons position. And second-order thinking helps you anticipate how your response will be received, not just how it is intended."
+      }
+    }
+  ]
+});
 ---
 
 <Layout
@@ -28,36 +59,7 @@ const readingTime     = 13;
 >
   <link rel="preload" as="image" href={card3.src} slot="head" />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What mental models are most useful for relationships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The most useful mental models for relationships include Hanlon's Razor (assume incompetence before malice), the Map-Territory distinction (recognize that your model of a person is not the person), Inversion (ask what destroys relationships to avoid it), and the Emotional Bank Account (understand that trust is built through small consistent deposits, not grand gestures). Each addresses a different failure mode that commonly damages relationships."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does inversion thinking apply to relationships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Inversion applied to relationships asks: instead of 'how do I build a great relationship?', ask 'what reliably destroys relationships?' Research on relationship dissolution consistently identifies defensiveness, contempt, stonewalling, and criticism as the four most destructive patterns. Systematically eliminating these behaviors produces better relationship outcomes than most positive-addition strategies."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can mental models improve communication in relationships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The Map-Territory model improves communication by reminding you that your interpretation of what someone said is your construction, not an objective fact. Steel manning — genuinely representing the strongest version of someone else's position — reduces defensive communication. And second-order thinking helps you anticipate how your response will be received, not just how it is intended."
-        }
-      }
-    ]
-  })}></script>
+  <script type="application/ld+json" set:html={faqSchema}></script>
 
   <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
 
