@@ -28,8 +28,7 @@ const readingTime     = 12;
 >
   <link rel="preload" as="image" href={card1.src} slot="head" />
 
-  <script type="application/ld+json" slot="head">
-  {JSON.stringify({
+  <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
@@ -49,8 +48,7 @@ const readingTime     = 12;
         "acceptedAnswer": { "@type": "Answer", "text": "Even intelligent people confuse their mental model of another person with that person's actual reality — what philosophers call the map-territory error. Your internal representation of someone is built from incomplete information, past experiences, and projection. Updating that map through genuine curiosity and active inquiry is the core skill of relational intelligence." }
       }
     ]
-  })}
-  </script>
+  })} slot="head" />
 
   <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
 
