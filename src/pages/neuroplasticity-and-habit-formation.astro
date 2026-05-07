@@ -1,0 +1,468 @@
+---
+// src/pages/neuroplasticity-and-habit-formation.astro
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Neuroplasticity and Habit Formation: The Brain Science Behind Every Habit | Success Odyssey Hub";
+const pageDescription = "Discover how neuroplasticity drives habit formation. Science-backed guide to the neural habit loop, basal ganglia, myelination, and the 66-day rule for lasting behavioral change.";
+const pageKeywords = "neuroplasticity and habit formation, habit formation neuroscience, neural habit loop, basal ganglia habits, how habits form in the brain, myelination habits, 66 day rule neuroscience, rewiring bad habits, neuroplasticity behavior change";
+const publishedDate = "2025-02-10T00:00:00Z";
+const modifiedDate  = "2025-02-10T00:00:00Z";
+
+const sidebarTopics = [
+  { id: "intro",       label: "The Brain-Habit Link"     },
+  { id: "loop",        label: "The Neural Habit Loop"    },
+  { id: "basal",       label: "Basal Ganglia"            },
+  { id: "myelin",      label: "Myelination & Speed"      },
+  { id: "sixty-six",   label: "The 66-Day Rule"          },
+  { id: "breaking",    label: "Breaking Bad Habits"      },
+  { id: "protocol",    label: "5-Step Protocol"          },
+  { id: "faq",         label: "FAQ"                      },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does neuroplasticity relate to habit formation?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Neuroplasticity is the biological mechanism that makes habit formation possible. Every time you repeat a behavior, the neural pathway associated with that behavior is physically strengthened — synaptic connections thicken, myelin wraps around the pathway, and signal transmission speeds up. Over time, the behavior becomes automatic because the neural highway is so well-established that it requires minimal conscious effort." }
+    },
+    {
+      "@type": "Question",
+      "name": "What part of the brain controls habits?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Habits are primarily controlled by the basal ganglia, a cluster of structures deep in the brain that automates repeated behaviors. When a behavior is new, the prefrontal cortex (responsible for conscious decision-making) manages it. As the behavior is repeated, control gradually shifts to the basal ganglia, freeing the prefrontal cortex for other tasks — this is what makes habits feel effortless." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to form a new habit neurologically?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Research by Phillippa Lally at University College London found that habit formation takes an average of 66 days, with a range of 18 to 254 days depending on the complexity of the behavior and individual differences. The popular '21-day rule' is a myth — lasting neural pathway formation requires consistent repetition over months, not weeks." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you permanently break a bad habit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Bad habits are never truly erased from the brain — their neural pathways persist. What you can do is build a stronger competing pathway that overrides the old one. The most effective strategy is to keep the same cue and reward but replace the routine (the behavior itself). Over time, the new pathway becomes dominant through myelination and repeated activation, while the old pathway weakens through disuse (Long-Term Depression)." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the role of dopamine in habit formation?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Dopamine is the brain's primary learning and reward signal. When a behavior produces a positive outcome, dopamine is released, which signals the brain to encode and strengthen that behavioral pathway. Crucially, dopamine is released in anticipation of the reward (in response to the cue) once the habit is established — this is what creates craving and drives habitual behavior automatically." }
+    }
+  ]
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  type="article"
+  datePublished={publishedDate}
+  dateModified={modifiedDate}
+  author="Success Odyssey Hub"
+  canonicalUrl="https://successodysseyhub.com/neuroplasticity-and-habit-formation"
+  articleSection="Brain Science"
+  wordCount={3200}
+  image="/assets/neuroplasticity-habits-og.webp"
+>
+  <slot slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <meta property="og:title" content="Neuroplasticity and Habit Formation: The Brain Science Behind Every Habit" />
+    <meta property="og:description" content="Discover how neuroplasticity drives habit formation. Science-backed guide to the neural habit loop, basal ganglia, and the 66-day rule." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://successodysseyhub.com/neuroplasticity-and-habit-formation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Neuroplasticity and Habit Formation: The Brain Science" />
+    <meta name="twitter:description" content="How your brain physically wires every habit you have — and how to use that process deliberately." />
+  </slot>
+
+  <div class="np-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="np-sidebar" aria-label="Article navigation">
+      <div class="sb-inner">
+        <div class="sb-head">Brain Science</div>
+        <nav>
+          <ul>
+            {sidebarTopics.map(t => (
+              <li><a class="sb-link" href={`#${t.id}`}>{t.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="np-main">
+
+      <!-- INTRO -->
+      <section id="intro" class="np-sec">
+        <div class="eyebrow">Neuroscience of Behavior</div>
+        <h1>Neuroplasticity and Habit Formation: <span class="grad">The Brain Science Behind Every Habit</span></h1>
+        <p class="lead">Every habit you have — good or bad — is a physical structure in your brain. Neuroplasticity is the mechanism that builds it, maintains it, and can be leveraged to change it. This guide explains how the process works at the cellular level and how to direct it deliberately.</p>
+
+        <div class="stat-row">
+          <div class="stat"><span class="sn">40%</span><span class="sd">Of daily behaviors are habits, not conscious decisions</span></div>
+          <div class="stat"><span class="sn">66</span><span class="sd">Average days to wire a new neural pathway</span></div>
+          <div class="stat"><span class="sn">100×</span><span class="sd">Signal speed increase from myelination</span></div>
+        </div>
+
+        <div class="intro-cta-bar">
+          <span>Want the full neuroscience picture?</span>
+          <a href="/neuroplasticity" class="intro-cta-link">Read our complete neuroplasticity guide →</a>
+        </div>
+
+        <blockquote class="bq">
+          "We are what we repeatedly do. Excellence, then, is not an act, but a habit."
+          <cite>— Aristotle (now confirmed by neuroscience)</cite>
+        </blockquote>
+      </section>
+
+      <!-- NEURAL HABIT LOOP -->
+      <section id="loop" class="np-sec">
+        <div class="eyebrow">Mechanism</div>
+        <h2>The Neural Habit Loop</h2>
+        <p class="body-text">MIT researchers discovered that habits follow a consistent three-part neurological loop. Understanding this loop is the prerequisite for both building new habits and dismantling old ones.</p>
+
+        <div class="loop-diagram" aria-label="Neural habit loop diagram">
+          <div class="loop-step ls-cue">
+            <div class="ls-num">01</div>
+            <h3>Cue</h3>
+            <p>A trigger that activates the habit circuit in the basal ganglia. Can be a time, place, emotion, preceding action, or person. The cue fires a specific neural pattern.</p>
+          </div>
+          <div class="loop-arrow" aria-hidden="true">→</div>
+          <div class="loop-step ls-routine">
+            <div class="ls-num">02</div>
+            <h3>Routine</h3>
+            <p>The behavior itself — the physical, mental, or emotional action. Every repetition thickens the myelin around the associated neural pathway, making the behavior faster and more automatic.</p>
+          </div>
+          <div class="loop-arrow" aria-hidden="true">→</div>
+          <div class="loop-step ls-reward">
+            <div class="ls-num">03</div>
+            <h3>Reward</h3>
+            <p>The positive outcome that releases dopamine and signals the brain to encode this pathway as valuable. Over time, the brain anticipates the reward the moment it detects the cue — creating craving.</p>
+          </div>
+        </div>
+
+        <div class="callout green">
+          <div>
+            <strong>Key Insight</strong>
+            <p>The habit loop is the brain's efficiency system. Once a behavior is encoded in the basal ganglia, it executes with minimal prefrontal cortex involvement — conserving cognitive energy for novel challenges. This is why habits feel effortless: the brain has already built the highway.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- BASAL GANGLIA -->
+      <section id="basal" class="np-sec">
+        <div class="eyebrow">Neuroanatomy</div>
+        <h2>The Basal Ganglia: Your Brain's Habit Engine</h2>
+        <p class="body-text">The basal ganglia — a group of subcortical nuclei deep in the brain — is the primary hardware for habit storage and execution. Understanding its role explains why habits are so persistent.</p>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Chunking & Automation</h3>
+            <p>When a behavior is repeated, the basal ganglia "chunks" it into a single automated sequence. What began as dozens of conscious micro-decisions (tying shoelaces, driving to work) becomes a single compressed neural pattern that fires as one unit. This chunking is neuroplasticity in action.</p>
+            <span class="tag">Structural</span>
+          </article>
+          <article class="card">
+            <h3>Prefrontal Handoff</h3>
+            <p>New behaviors are managed by the prefrontal cortex — the seat of conscious decision-making. As a behavior is repeated, neural control progressively transfers to the basal ganglia. This handoff is permanent: even after years of not performing a habit, the basal ganglia retains the encoded pattern.</p>
+            <span class="tag">Functional</span>
+          </article>
+          <article class="card">
+            <h3>The Habit "On/Off" Switch</h3>
+            <p>Ann Graybiel's research at MIT identified that the basal ganglia has a bookmarking mechanism — it fires most strongly at the beginning (cue) and end (reward) of each habit sequence, and is quieter in the middle. This is why willpower works best at the decision point, not mid-habit.</p>
+            <span class="tag">Research</span>
+          </article>
+          <article class="card">
+            <h3>Why Habits Never Disappear</h3>
+            <p>The neural encoding in the basal ganglia is essentially permanent. This explains why recovering addicts can relapse after years of abstinence when exposed to old cues — the circuit is still there, waiting to be reactivated. Habit change is about building stronger competing pathways, not erasing the old ones.</p>
+            <span class="tag">Clinical</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- MYELINATION -->
+      <section id="myelin" class="np-sec">
+        <div class="eyebrow">Biology</div>
+        <h2>Myelination: How Practice Builds the Neural Highway</h2>
+        <p class="body-text">Myelination is the process by which the brain wraps neural pathways in myelin — a fatty sheath that dramatically increases signal transmission speed. It is the physical substrate of skill acquisition and habit automaticity.</p>
+
+        <div class="myelin-bar">
+          <div class="mb-stage">
+            <div class="mb-icon mb-slow" aria-hidden="true">◎</div>
+            <div class="mb-label">Day 1</div>
+            <div class="mb-desc">Bare axon. Signal travels at 1–2 m/s. Behavior feels effortful and requires full attention.</div>
+          </div>
+          <div class="mb-divider" aria-hidden="true">▸</div>
+          <div class="mb-stage">
+            <div class="mb-icon mb-mid" aria-hidden="true">◉</div>
+            <div class="mb-label">Week 4</div>
+            <div class="mb-desc">Early myelination. Signal at ~20 m/s. Behavior becoming more fluent, less mentally taxing.</div>
+          </div>
+          <div class="mb-divider" aria-hidden="true">▸</div>
+          <div class="mb-stage">
+            <div class="mb-icon mb-fast" aria-hidden="true">●</div>
+            <div class="mb-label">Month 3+</div>
+            <div class="mb-desc">Full myelination. Signal at 100–120 m/s. Behavior is automatic, nearly unconscious.</div>
+          </div>
+        </div>
+
+        <p class="body-text">This is why consistency beats intensity. Each repetition adds another layer of myelin — and unlike muscle tissue, myelin does not require rest days to grow. Frequency of repetition is the primary driver of myelination speed.</p>
+
+        <div class="callout amber">
+          <div>
+            <strong>Practical Implication</strong>
+            <p>10 minutes of practice every single day produces more myelination than 70 minutes once per week. The brain rewards frequency, not volume. This is the neuroscience behind "don't break the chain."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 66 DAY RULE -->
+      <section id="sixty-six" class="np-sec">
+        <div class="eyebrow">Research</div>
+        <h2>The 66-Day Rule: What the Research Actually Shows</h2>
+        <p class="body-text">The popular claim that habits form in 21 days comes from a misreading of Maxwell Maltz's 1960 self-help book. The neuroscience tells a different story.</p>
+
+        <div class="research-box">
+          <div class="rb-title">UCL Study — Phillippa Lally, 2010</div>
+          <p>Tracking 96 participants forming real-world habits over 12 weeks, the study found that automaticity (the point at which a behavior required minimal conscious effort) was reached in an average of <strong>66 days</strong>, with a range of 18 to 254 days. More complex behaviors took longer. Critically, missing one day did not meaningfully impair the formation process — the neural infrastructure remained intact.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Simple habits</h3>
+            <p>Drinking a glass of water with breakfast. Stretching for 2 minutes. Taking the stairs. These typically reach automaticity in 20–30 days of consistent repetition.</p>
+            <span class="tag">18–30 days</span>
+          </article>
+          <article class="card">
+            <h3>Moderate habits</h3>
+            <p>A 20-minute daily workout. Journaling. Meditation. Cold showers. These typically require 45–75 days of consistent daily practice to become genuinely automatic.</p>
+            <span class="tag">45–75 days</span>
+          </article>
+          <article class="card">
+            <h3>Complex habits</h3>
+            <p>Learning an instrument. Regular running. Dietary overhauls. Complex skill-based habits can take 3–8 months to reach full automaticity in the basal ganglia.</p>
+            <span class="tag">90–254 days</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- BREAKING BAD HABITS -->
+      <section id="breaking" class="np-sec">
+        <div class="eyebrow">Application</div>
+        <h2>Breaking Bad Habits: The Neurological Truth</h2>
+        <p class="body-text">Attempting to eliminate a habit by willpower alone ignores how the basal ganglia works. The path of least resistance is not elimination — it is substitution.</p>
+
+        <div class="method-row">
+          <div class="method-card mc-wrong">
+            <div class="mc-label">❌ What doesn't work</div>
+            <h3>Suppression</h3>
+            <p>Trying to "not do" a habit activates the prefrontal cortex in an attempt to override the basal ganglia. This is a battle you will lose whenever cognitive resources are depleted — which is why bad habits resurface under stress, fatigue, or alcohol.</p>
+          </div>
+          <div class="method-card mc-right">
+            <div class="mc-label">✓ What works</div>
+            <h3>Routine Substitution</h3>
+            <p>Keep the <strong>same cue</strong> and the <strong>same reward</strong>, but change the routine. If the cue is stress and the reward is relief, replace smoking with a 5-minute walk. The existing neural circuitry (cue → reward) is leveraged, reducing resistance. Only the middle of the loop needs to change.</p>
+          </div>
+        </div>
+
+        <blockquote class="bq">
+          "You can't extinguish a bad habit — you can only change it."
+          <cite>— Charles Duhigg, The Power of Habit</cite>
+        </blockquote>
+      </section>
+
+      <!-- 5-STEP PROTOCOL -->
+      <section id="protocol" class="np-sec dark-sec">
+        <div class="eyebrow light">Protocol</div>
+        <h2 class="light-h">The 5-Step Neuroplasticity Habit Protocol</h2>
+        <p class="body-text light-p">This protocol aligns with the biological mechanisms of habit formation to maximize the speed and durability of new neural pathways.</p>
+
+        <div class="proto-steps">
+          {[
+            {
+              n: "01",
+              title: "Identify the full loop",
+              body: "Before building a new habit, map your target: what is the exact cue (time, place, emotional state), what is the routine you want to install, and what reward will reinforce it? Ambiguous habits fail at the cue stage.",
+            },
+            {
+              n: "02",
+              title: "Start at 20% of intended behavior",
+              body: "The amygdala generates resistance to large behavioral changes. A 2-minute version of your habit (2 minutes of meditation, not 30) bypasses this threat response and begins myelination. Expand duration only after the cue-routine association is stable.",
+            },
+            {
+              n: "03",
+              title: "Stack on an existing habit",
+              body: "Habit stacking (after I do X, I will do Y) piggybacks on an existing basal ganglia circuit to trigger the new behavior. This dramatically reduces the cognitive load of remembering to execute the new habit.",
+            },
+            {
+              n: "04",
+              title: "Reward within 5 seconds",
+              body: "Dopamine must arrive within seconds of the behavior to be associated with it. A genuine internal celebration — a real sense of pride, not performed positivity — is sufficient. This seals the reward phase of the loop and accelerates myelination.",
+            },
+            {
+              n: "05",
+              title: "Track for 90 days minimum",
+              body: "Visual habit tracking activates a secondary reward loop (the satisfaction of marking a completed day) and provides data on your actual consistency. Most habits require 60–90 days before automaticity is felt. Expect resistance for the first 3–4 weeks — that is the brain physically rewiring.",
+            },
+          ].map(s => (
+            <div class="proto-step">
+              <div class="ps-num">{s.n}</div>
+              <div class="ps-body">
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="callout-dark">
+          <p>For a complete breakdown of self-directed neuroplasticity techniques, including mental rehearsal and mindfulness, see our guide to <a href="/self-directed-neuroplasticity" class="cd-link">self-directed neuroplasticity</a>.</p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="np-sec">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          {faqSchema.mainEntity.map(q => (
+            <details class="faq-item">
+              <summary class="faq-q">{q.name}</summary>
+              <p class="faq-a">{q.acceptedAnswer.text}</p>
+            </details>
+          ))}
+        </div>
+
+        <div class="related-links">
+          <p>Continue exploring the neuroscience:</p>
+          <a href="/neuroplasticity" class="rel-link">Complete Neuroplasticity Guide →</a>
+          <a href="/self-directed-neuroplasticity" class="rel-link">Self-Directed Neuroplasticity →</a>
+          <a href="/how-to-rewire-your-brain" class="rel-link">How to Rewire Your Brain →</a>
+          <a href="/neuroplasticity-exercises" class="rel-link">17 Neuroplasticity Exercises →</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</Layout>
+
+<style>
+/* ── Layout ── */
+.np-wrapper{display:grid;grid-template-columns:240px 1fr;gap:2rem;max-width:1160px;margin:0 auto;padding:2rem 1.5rem;}
+.np-sidebar{position:sticky;top:80px;height:fit-content;}
+.sb-inner{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:1.25rem;}
+.sb-head{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#64748b;margin-bottom:.75rem;}
+.np-sidebar nav ul{list-style:none;}
+.sb-link{display:block;padding:.35rem .5rem;font-size:13px;color:#475569;border-radius:6px;text-decoration:none;transition:all .2s;}
+.sb-link:hover,.sb-link.active{background:#e0e7ff;color:#4338ca;}
+.np-main{min-width:0;}
+.np-sec{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid #f1f5f9;}
+.np-sec:last-child{border-bottom:none;}
+
+/* ── Typography ── */
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6366f1;margin-bottom:.5rem;}
+h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;line-height:1.2;color:#0f172a;margin-bottom:1rem;}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#0f172a;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;color:#1e293b;margin-bottom:.5rem;}
+.lead{font-size:1.125rem;color:#334155;line-height:1.7;margin-bottom:1.5rem;}
+.body-text{font-size:1rem;color:#475569;line-height:1.8;margin-bottom:1.5rem;}
+.grad{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* ── Stats ── */
+.stat-row{display:flex;gap:1rem;flex-wrap:wrap;margin:1.5rem 0;}
+.stat{background:linear-gradient(135deg,#f0f4ff,#e8eeff);border:1px solid #c7d2fe;border-radius:12px;padding:1rem 1.25rem;flex:1;min-width:140px;}
+.sn{display:block;font-size:1.75rem;font-weight:700;color:#4f46e5;line-height:1;}
+.sd{font-size:12px;color:#6b7280;margin-top:.25rem;line-height:1.4;}
+
+/* ── CTA bar ── */
+.intro-cta-bar{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:.875rem 1.25rem;margin:1.5rem 0;font-size:.9rem;color:#166534;}
+.intro-cta-link{color:#16a34a;font-weight:600;text-decoration:none;}
+.intro-cta-link:hover{text-decoration:underline;}
+
+/* ── Blockquote ── */
+.bq{border-left:3px solid #6366f1;padding:1rem 1.25rem;margin:1.5rem 0;background:#f8f7ff;border-radius:0 8px 8px 0;font-style:italic;color:#3730a3;}
+.bq cite{display:block;font-style:normal;font-size:.85rem;color:#6b7280;margin-top:.5rem;}
+
+/* ── Loop diagram ── */
+.loop-diagram{display:flex;align-items:stretch;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0;}
+.loop-step{flex:1;min-width:160px;border-radius:12px;padding:1.25rem;border:1px solid transparent;}
+.ls-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;}
+.ls-cue{background:#eff6ff;border-color:#bfdbfe;}.ls-cue .ls-num{color:#2563eb;}
+.ls-routine{background:#f0fdf4;border-color:#bbf7d0;}.ls-routine .ls-num{color:#16a34a;}
+.ls-reward{background:#fefce8;border-color:#fde68a;}.ls-reward .ls-num{color:#d97706;}
+.loop-arrow{display:flex;align-items:center;font-size:1.5rem;color:#cbd5e1;padding:0 .25rem;}
+
+/* ── Callouts ── */
+.callout{border-radius:10px;padding:1.25rem 1.5rem;margin:1.5rem 0;border-left:4px solid transparent;}
+.callout.green{background:#f0fdf4;border-color:#22c55e;}
+.callout.amber{background:#fffbeb;border-color:#f59e0b;}
+.callout strong{font-weight:600;color:#1e293b;display:block;margin-bottom:.35rem;}
+.callout p{font-size:.95rem;color:#475569;line-height:1.7;margin:0;}
+
+/* ── Grids ── */
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:1.5rem 0;}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.5rem 0;}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.25rem;}
+.tag{display:inline-block;font-size:11px;font-weight:600;background:#e0e7ff;color:#4338ca;padding:2px 8px;border-radius:20px;margin-top:.75rem;}
+
+/* ── Myelin bar ── */
+.myelin-bar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:1.5rem 0;background:#f8fafc;border-radius:12px;padding:1.5rem;}
+.mb-stage{flex:1;min-width:160px;text-align:center;}
+.mb-icon{font-size:2rem;margin-bottom:.5rem;}
+.mb-slow{color:#cbd5e1;}.mb-mid{color:#6366f1;opacity:.6;}.mb-fast{color:#6366f1;}
+.mb-label{font-weight:700;font-size:.9rem;color:#1e293b;margin-bottom:.35rem;}
+.mb-desc{font-size:.8rem;color:#64748b;line-height:1.5;}
+.mb-divider{font-size:1.25rem;color:#c7d2fe;}
+
+/* ── Research box ── */
+.research-box{background:#f0f4ff;border:1px solid #c7d2fe;border-radius:12px;padding:1.5rem;margin:1.5rem 0;}
+.rb-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6366f1;margin-bottom:.5rem;}
+.research-box p{font-size:.95rem;color:#334155;line-height:1.7;}
+.research-box strong{color:#1e293b;}
+
+/* ── Method cards ── */
+.method-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin:1.5rem 0;}
+.method-card{border-radius:12px;padding:1.5rem;border:1px solid transparent;}
+.mc-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem;}
+.mc-wrong{background:#fff5f5;border-color:#fecaca;}.mc-wrong .mc-label{color:#dc2626;}
+.mc-right{background:#f0fdf4;border-color:#bbf7d0;}.mc-right .mc-label{color:#16a34a;}
+.mc-right strong{color:#1e293b;}
+
+/* ── Dark section ── */
+.dark-sec{background:linear-gradient(135deg,#0f172a,#1e1b4b);border-radius:20px;padding:2.5rem;margin-bottom:3rem;}
+.light{color:#e0e7ff !important;}
+.light-h{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#f1f5f9;margin-bottom:1rem;}
+.light-p{font-size:1rem;color:#94a3b8;line-height:1.8;margin-bottom:1.5rem;}
+.proto-steps{display:flex;flex-direction:column;gap:1rem;}
+.proto-step{display:flex;gap:1.25rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.25rem;}
+.ps-num{font-size:1.5rem;font-weight:700;color:#6366f1;opacity:.7;flex-shrink:0;line-height:1;}
+.ps-body h3{color:#f1f5f9;margin-bottom:.35rem;}
+.ps-body p{font-size:.9rem;color:#94a3b8;line-height:1.7;margin:0;}
+.callout-dark{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:1rem 1.25rem;margin-top:1.5rem;}
+.callout-dark p{font-size:.9rem;color:#c7d2fe;margin:0;line-height:1.6;}
+.cd-link{color:#a5b4fc;text-decoration:none;}
+.cd-link:hover{text-decoration:underline;}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:.5rem;margin:1.5rem 0;}
+.faq-item{border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;}
+.faq-q{padding:1rem 1.25rem;font-weight:600;color:#1e293b;cursor:pointer;list-style:none;font-size:.95rem;}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-a{padding:.75rem 1.25rem 1.25rem;font-size:.9rem;color:#475569;line-height:1.7;margin:0;border-top:1px solid #f1f5f9;}
+
+/* ── Related links ── */
+.related-links{margin-top:2rem;padding:1.5rem;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0;}
+.related-links p{font-size:.9rem;font-weight:600;color:#1e293b;margin-bottom:.75rem;}
+.rel-link{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .875rem;background:#e0e7ff;color:#4338ca;border-radius:20px;font-size:.85rem;font-weight:500;text-decoration:none;transition:background .2s;}
+.rel-link:hover{background:#c7d2fe;}
+
+@media(max-width:768px){
+  .np-wrapper{grid-template-columns:1fr;}
+  .np-sidebar{display:none;}
+  .loop-diagram{flex-direction:column;}
+  .loop-arrow{transform:rotate(90deg);justify-content:center;}
+  .myelin-bar{flex-direction:column;}
+  .mb-divider{transform:rotate(90deg);}
+}
+</style>

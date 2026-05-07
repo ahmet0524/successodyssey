@@ -1,0 +1,344 @@
+---
+// src/pages/how-to-rewire-your-brain.astro
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "How to Rewire Your Brain: 7 Science-Backed Methods | Success Odyssey Hub";
+const pageDescription = "Learn how to rewire your brain using proven neuroscience. 7 evidence-based methods including exercise, sleep, mindfulness, and deliberate practice — with specific protocols for lasting cognitive change.";
+const pageKeywords = "how to rewire your brain, rewire your brain, brain rewiring techniques, how to change your brain, neuroplasticity methods, rewire brain scientifically, change neural pathways, BDNF brain, brain rewiring exercises, how to change thought patterns brain";
+const publishedDate = "2025-03-05T00:00:00Z";
+const modifiedDate  = "2025-03-05T00:00:00Z";
+
+const sidebarTopics = [
+  { id: "intro",    label: "How Rewiring Works"       },
+  { id: "method1",  label: "1. Aerobic Exercise"      },
+  { id: "method2",  label: "2. Sleep Optimization"    },
+  { id: "method3",  label: "3. Mindfulness"           },
+  { id: "method4",  label: "4. Novel Skill Learning"  },
+  { id: "method5",  label: "5. Deliberate Practice"   },
+  { id: "method6",  label: "6. Mental Rehearsal"      },
+  { id: "method7",  label: "7. Cold Exposure"         },
+  { id: "stack",    label: "The Rewiring Stack"       },
+  { id: "faq",      label: "FAQ"                      },
+];
+
+const methods = [
+  {
+    id: "method1",
+    num: "01",
+    label: "Aerobic Exercise",
+    kicker: "The single most powerful BDNF lever",
+    body: "Aerobic exercise is the most evidence-backed tool for brain rewiring. A 2013 study in Proceedings of the National Academy of Sciences found that 150 minutes of moderate-intensity cardio per week increases hippocampal volume by 2% in adults — effectively reversing 1–2 years of age-related brain shrinkage. The mechanism: aerobic exercise increases BDNF (Brain-Derived Neurotrophic Factor) by 200–300%, stimulates hippocampal neurogenesis, and floods the brain with dopamine, norepinephrine, and serotonin — all of which accelerate synaptic formation.",
+    protocol: "30 minutes of moderate-intensity cardio (zone 2 — you can hold a conversation) at least 5 days per week. Intensity over duration: HIIT sessions also spike BDNF acutely for 1–2 hours post-exercise.",
+    stat: "+200–300% BDNF increase",
+  },
+  {
+    id: "method2",
+    num: "02",
+    label: "Sleep Optimization",
+    kicker: "When the rewiring actually happens",
+    body: "Sleep is not recovery from neuroplasticity — it is when neuroplasticity occurs. During slow-wave sleep (deep sleep), the brain replays the day's experiences, consolidates new neural pathways, and prunes unused synaptic connections. The glymphatic system — the brain's waste clearance system — operates almost exclusively during sleep, clearing the metabolic byproducts that accumulate during neural activity. Chronic sleep deprivation measurably impairs LTP (Long-Term Potentiation), reduces BDNF, and physically shrinks the hippocampus over time.",
+    protocol: "7–9 hours per night at a consistent schedule. The first 90-minute sleep cycle — the deepest slow-wave stage — is the most critical for memory consolidation. Prioritize bedtime consistency over total duration.",
+    stat: "Night 1 of poor sleep = 20% LTP impairment",
+  },
+  {
+    id: "method3",
+    num: "03",
+    label: "Mindfulness Meditation",
+    kicker: "Structural gray matter growth in 8 weeks",
+    body: "Mindfulness is the practice of directed, non-judgmental attention — and directed attention is the primary driver of neuroplastic change. Sara Lazar's research at Harvard found measurable increases in cortical thickness in the prefrontal cortex and anterior insula after 8 weeks of daily practice. The amygdala — responsible for fear and stress responses — physically shrinks with regular mindfulness, reducing reactivity at the structural level. This is not a functional change; it is a hardware modification.",
+    protocol: "10–20 minutes of focused attention meditation daily. Begin with breath-focus: attention on the physical sensation of breathing, gently returning when it wanders. Each return of attention is an active neuroplasticity exercise — you are literally training the prefrontal cortex's control over wandering attention.",
+    stat: "Amygdala gray matter measurably reduces in 8 weeks",
+  },
+  {
+    id: "method4",
+    num: "04",
+    label: "Novel Skill Learning",
+    kicker: "Novelty triggers the most widespread neural restructuring",
+    body: "The brain allocates neuroplastic resources preferentially to novel, challenging experiences. Learning a new language activates and expands the left hemisphere language regions. Learning a musical instrument produces measurable changes across motor, auditory, and visual cortices simultaneously. A seminal study on London taxi drivers found that memorizing the city's 25,000+ streets physically enlarged the posterior hippocampus — the region dedicated to spatial navigation. Novelty is the stimulus; your brain builds the hardware in response.",
+    protocol: "Choose one genuinely new skill — an instrument, language, craft, or sport. Practice it with deliberate focus for 30–60 minutes daily. The key is that the skill must be genuinely challenging. Once something becomes automatic, it produces minimal new neuroplasticity — advance the challenge.",
+    stat: "Language learning: measurable gray matter expansion in 3 months",
+  },
+  {
+    id: "method5",
+    num: "05",
+    label: "Deliberate Practice",
+    kicker: "Focused, feedback-driven repetition at the skill edge",
+    body: "Anders Ericsson's research across multiple domains established that not all practice produces equal neural adaptation. Deliberate practice — working specifically on weaknesses, with immediate feedback, at the edge of current ability — produces far greater and faster neural restructuring than naive repetition. The mechanism is high cognitive load: when the brain is fully engaged in problem-solving and error-correction, BDNF release is maximized and LTP occurs more rapidly. Comfort is the enemy of rewiring.",
+    protocol: "Identify the specific sub-skill you are weakest at. Practice only that, with a method that provides immediate feedback (a teacher, a recording, objective metrics). Sessions of 45–90 minutes with full concentration. Extend duration only as focus allows — distracted deliberate practice is not deliberate practice.",
+    stat: "3× faster skill acquisition vs naive repetition",
+  },
+  {
+    id: "method6",
+    num: "06",
+    label: "Mental Rehearsal & Visualization",
+    kicker: "Training the brain without the body",
+    body: "Vivid mental rehearsal activates the same neural circuits as physical performance — motor cortex, cerebellum, supplementary motor area — producing real, measurable LTP in those pathways. The Harvard piano study demonstrated nearly identical cortical expansion between physical and mental practice groups after 5 days. This technique is particularly powerful for performance anxiety, phobia reduction, and skill consolidation. The brain processes richly imagined scenarios as partially real events.",
+    protocol: "10–15 minutes daily. Eyes closed, relaxed but alert. First-person perspective (looking through your own eyes). Include all senses: sound, physical sensation, emotion. Visualize successful execution, not just the outcome. Best performed in the morning before activity or immediately before sleep for consolidation.",
+    stat: "Same cortical expansion as physical practice in 5 days",
+  },
+  {
+    id: "method7",
+    num: "07",
+    label: "Cold Water Exposure",
+    kicker: "Norepinephrine spike for focus and neural growth",
+    body: "Cold water exposure (10–20°C) triggers a rapid, significant release of norepinephrine — up to 300% above baseline — along with dopamine and adrenaline. Norepinephrine is critical for synaptic consolidation, focused attention, and BDNF production. Andrew Huberman's research highlights cold exposure as one of the most efficient ways to elevate the neurochemical environment required for neuroplasticity. It also trains the prefrontal cortex's regulation of the amygdala's stress response — a real-time deliberate practice of cognitive control.",
+    protocol: "1–3 minutes of cold shower (or cold water immersion) at the coldest temperature your water supply allows. Best performed after exercise to extend the norepinephrine and BDNF window. Daily or 5× per week. The discomfort is the training stimulus — do not turn it warm before exiting.",
+    stat: "Up to 300% norepinephrine increase",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can you really rewire your brain as an adult?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The idea that the adult brain is fixed was disproven in the 1980s and 1990s through research by Michael Merzenich and others. Adult neuroplasticity is well-established: the brain continues to form new synaptic connections, grow new neurons in the hippocampus, and structurally reorganize in response to experience throughout life. The process is slower in adults than in children, but it is not qualitatively different — it requires greater consistency and focus, not a different mechanism." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to rewire your brain?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Functional changes in neural firing patterns can appear within days of consistent practice. Measurable structural changes — increased cortical thickness, synaptogenesis, myelination — typically emerge within 4–8 weeks of daily targeted practice. Significant, durable architectural changes that shift default thought patterns and automatic behaviors generally require 3–6 months. The 21-day rule is a myth; the research average for new habit automaticity is 66 days, with a range of 18–254 days depending on complexity." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is BDNF and why does it matter for brain rewiring?",
+      "acceptedAnswer": { "@type": "Answer", "text": "BDNF (Brain-Derived Neurotrophic Factor) is often called the brain's growth fertilizer. It promotes the formation of new synaptic connections, protects existing neurons, and is essential for hippocampal neurogenesis. Low BDNF is associated with depression, cognitive decline, and impaired learning. The most potent natural BDNF elevators are aerobic exercise (increases BDNF by 200–300%), quality sleep, novel skill learning, and cold water exposure." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which method produces the fastest brain rewiring?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Aerobic exercise produces the fastest acute neurochemical changes (BDNF spike within 1 session), while deliberate practice combined with visualization produces the fastest skill-specific structural changes. For mood and stress-related rewiring, mindfulness produces measurable amygdala changes in 8 weeks. The most effective approach combines multiple methods — exercise primes the brain, deliberate practice directs the change, and sleep consolidates it." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can negative thought patterns be rewired?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Negative thought patterns are neural pathways — specifically, well-traveled circuits connecting certain triggers to certain cognitive and emotional responses. These pathways are strengthened by repetition and weakened by disuse. Cognitive Behavioral Therapy (CBT), mindfulness-based interventions, and self-directed neuroplasticity techniques all work by building stronger alternative pathways (realistic, constructive thinking) that override the negative circuits. The negative circuits are not erased — they are outcompeted." }
+    }
+  ]
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  type="article"
+  datePublished={publishedDate}
+  dateModified={modifiedDate}
+  author="Success Odyssey Hub"
+  canonicalUrl="https://successodysseyhub.com/how-to-rewire-your-brain"
+  articleSection="Brain Science"
+  wordCount={3800}
+  image="/assets/rewire-brain-og.webp"
+>
+  <slot slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <meta property="og:title" content="How to Rewire Your Brain: 7 Science-Backed Methods" />
+    <meta property="og:description" content="7 evidence-based methods to rewire your brain — exercise, sleep, mindfulness, deliberate practice, and more. With specific protocols." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://successodysseyhub.com/how-to-rewire-your-brain" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to Rewire Your Brain: 7 Science-Backed Methods" />
+    <meta name="twitter:description" content="The neuroscience of self-directed brain change — and exactly how to apply it." />
+  </slot>
+
+  <div class="np-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="np-sidebar" aria-label="Article navigation">
+      <div class="sb-inner">
+        <div class="sb-head">Brain Science</div>
+        <nav>
+          <ul>
+            {sidebarTopics.map(t => (
+              <li><a class="sb-link" href={`#${t.id}`}>{t.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="np-main">
+
+      <!-- INTRO -->
+      <section id="intro" class="np-sec">
+        <div class="eyebrow">Brain Rewiring Science</div>
+        <h1>How to Rewire Your Brain: <span class="grad">7 Science-Backed Methods</span></h1>
+        <p class="lead">Brain rewiring is not metaphor — it is a literal biological process called neuroplasticity. Every method on this page produces measurable, documented structural changes in neural architecture. This guide covers the seven most evidence-backed approaches, with the specific protocols that trigger them.</p>
+
+        <div class="stat-row">
+          <div class="stat"><span class="sn">2%</span><span class="sd">Hippocampal volume increase from 6 months of aerobic exercise</span></div>
+          <div class="stat"><span class="sn">8 wks</span><span class="sd">For mindfulness to produce measurable gray matter change</span></div>
+          <div class="stat"><span class="sn">300%</span><span class="sd">BDNF increase from aerobic exercise</span></div>
+        </div>
+
+        <div class="intro-cta-bar">
+          <span>Want the full science?</span>
+          <a href="/neuroplasticity" class="intro-cta-link">Read our complete neuroplasticity guide →</a>
+        </div>
+
+        <div class="how-it-works">
+          <h3>How brain rewiring actually works</h3>
+          <p>Every neural pathway in your brain is maintained by use. Frequently activated pathways are physically strengthened through synaptogenesis (new connection formation), myelination (signal speed increase), and LTP (Long-Term Potentiation). Unused pathways weaken through LTD (Long-Term Depression) and synaptic pruning. "Rewiring" means deliberately activating the pathways you want to strengthen while starving the ones you want to weaken. The 7 methods below maximize the neurochemical and structural conditions that make this happen fastest.</p>
+        </div>
+      </section>
+
+      <!-- 7 METHODS -->
+      {methods.map(m => (
+        <section id={m.id} class="np-sec method-sec">
+          <div class="eyebrow">Method {m.num}</div>
+          <h2>{m.label}</h2>
+          <div class="method-kicker">{m.kicker}</div>
+          <div class="method-stat">{m.stat}</div>
+          <p class="body-text">{m.body}</p>
+          <div class="protocol-box">
+            <div class="pb-label">Protocol</div>
+            <p>{m.protocol}</p>
+          </div>
+        </section>
+      ))}
+
+      <!-- THE STACK -->
+      <section id="stack" class="np-sec dark-sec">
+        <div class="eyebrow light">Compound Protocol</div>
+        <h2 class="light-h">The Brain Rewiring Stack</h2>
+        <p class="body-text light-p">Each method works independently, but the compounding effect of combining them is dramatically greater. Aerobic exercise primes the neurochemical environment. Deliberate practice directs the structural change. Sleep consolidates it. Mindfulness amplifies attentional control. Here is how to combine them into a daily system.</p>
+
+        <div class="stack-timeline">
+          {[
+            { time: "6:00 AM", icon: "🏃", label: "30 min aerobic exercise", note: "Spikes BDNF and primes the brain for learning for 1–2 hours post-session" },
+            { time: "7:00 AM", icon: "🚿", label: "2 min cold exposure", note: "Norepinephrine spike extends and compounds the post-exercise neurochemical window" },
+            { time: "9:00–10:30 AM", icon: "⚡", label: "Deliberate practice session", note: "Peak BDNF window. 90 minutes maximum of fully focused skill work with feedback" },
+            { time: "12:30 PM", icon: "◯", label: "15 min mindfulness", note: "Resets prefrontal cortex. Reduces cortisol that would otherwise suppress afternoon BDNF" },
+            { time: "8:00 PM", icon: "◑", label: "10 min mental rehearsal", note: "Visualization of day's practice before sleep triggers enhanced overnight consolidation" },
+            { time: "10:00 PM", icon: "◐", label: "Sleep (7–9 hours)", note: "Glymphatic clearance, LTP consolidation, and hippocampal replay of new pathways" },
+          ].map(item => (
+            <div class="st-item">
+              <div class="st-time">{item.time}</div>
+              <div class="st-dot" aria-hidden="true"></div>
+              <div class="st-body">
+                <div class="st-icon" aria-hidden="true">{item.icon}</div>
+                <div>
+                  <div class="st-label">{item.label}</div>
+                  <div class="st-note">{item.note}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="callout-dark">
+          <p>For the habit formation mechanics that make daily practice sustainable, see <a href="/neuroplasticity-and-habit-formation" class="cd-link">Neuroplasticity and Habit Formation →</a></p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="np-sec">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          {faqSchema.mainEntity.map(q => (
+            <details class="faq-item">
+              <summary class="faq-q">{q.name}</summary>
+              <p class="faq-a">{q.acceptedAnswer.text}</p>
+            </details>
+          ))}
+        </div>
+
+        <div class="related-links">
+          <p>Continue exploring the neuroscience:</p>
+          <a href="/neuroplasticity" class="rel-link">Complete Neuroplasticity Guide →</a>
+          <a href="/neuroplasticity-and-habit-formation" class="rel-link">Neuroplasticity & Habits →</a>
+          <a href="/self-directed-neuroplasticity" class="rel-link">Self-Directed Neuroplasticity →</a>
+          <a href="/neuroplasticity-exercises" class="rel-link">17 Neuroplasticity Exercises →</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</Layout>
+
+<style>
+.np-wrapper{display:grid;grid-template-columns:240px 1fr;gap:2rem;max-width:1160px;margin:0 auto;padding:2rem 1.5rem;}
+.np-sidebar{position:sticky;top:80px;height:fit-content;}
+.sb-inner{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:1.25rem;}
+.sb-head{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#64748b;margin-bottom:.75rem;}
+.np-sidebar nav ul{list-style:none;}
+.sb-link{display:block;padding:.35rem .5rem;font-size:13px;color:#475569;border-radius:6px;text-decoration:none;transition:all .2s;}
+.sb-link:hover{background:#e0e7ff;color:#4338ca;}
+.np-main{min-width:0;}
+.np-sec{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid #f1f5f9;}
+.np-sec:last-child{border-bottom:none;}
+
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6366f1;margin-bottom:.5rem;}
+h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;line-height:1.2;color:#0f172a;margin-bottom:1rem;}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#0f172a;margin-bottom:.5rem;}
+h3{font-size:1.05rem;font-weight:600;color:#1e293b;margin-bottom:.5rem;}
+.lead{font-size:1.125rem;color:#334155;line-height:1.7;margin-bottom:1.5rem;}
+.body-text{font-size:1rem;color:#475569;line-height:1.8;margin-bottom:1.5rem;}
+.grad{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+.stat-row{display:flex;gap:1rem;flex-wrap:wrap;margin:1.5rem 0;}
+.stat{background:linear-gradient(135deg,#f0f4ff,#e8eeff);border:1px solid #c7d2fe;border-radius:12px;padding:1rem 1.25rem;flex:1;min-width:140px;}
+.sn{display:block;font-size:1.75rem;font-weight:700;color:#4f46e5;line-height:1;}
+.sd{font-size:12px;color:#6b7280;margin-top:.25rem;line-height:1.4;}
+
+.intro-cta-bar{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:.875rem 1.25rem;margin:1.5rem 0;font-size:.9rem;color:#166534;}
+.intro-cta-link{color:#16a34a;font-weight:600;text-decoration:none;}
+.intro-cta-link:hover{text-decoration:underline;}
+
+.how-it-works{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:1.5rem;margin-top:1.5rem;}
+.how-it-works h3{margin-bottom:.75rem;}
+.how-it-works p{font-size:.95rem;color:#475569;line-height:1.7;margin:0;}
+
+.method-sec{}
+.method-kicker{font-size:.875rem;font-weight:600;color:#6366f1;margin-bottom:.75rem;font-style:italic;}
+.method-stat{display:inline-block;background:#e0e7ff;color:#4338ca;font-size:.8rem;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:1rem;}
+
+.protocol-box{background:#f0f4ff;border:1px solid #c7d2fe;border-left:4px solid #6366f1;border-radius:0 10px 10px 0;padding:1.25rem;margin-top:1.25rem;}
+.pb-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6366f1;margin-bottom:.5rem;}
+.protocol-box p{font-size:.9rem;color:#334155;line-height:1.7;margin:0;}
+
+/* Dark section */
+.dark-sec{background:linear-gradient(135deg,#0f172a,#1e1b4b);border-radius:20px;padding:2.5rem;margin-bottom:3rem;}
+.light{color:#e0e7ff !important;}
+.light-h{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#f1f5f9;margin-bottom:1rem;}
+.light-p{font-size:1rem;color:#94a3b8;line-height:1.8;margin-bottom:1.5rem;}
+
+.stack-timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:2rem;}
+.stack-timeline::before{content:'';position:absolute;left:6.5rem;top:0;bottom:0;width:1px;background:rgba(99,102,241,.3);}
+.st-item{display:flex;align-items:flex-start;gap:1rem;padding:.875rem 0;position:relative;}
+.st-time{font-size:.75rem;font-weight:600;color:#6366f1;min-width:5rem;text-align:right;flex-shrink:0;padding-top:2px;}
+.st-dot{width:10px;height:10px;border-radius:50%;background:#6366f1;flex-shrink:0;margin-top:4px;position:relative;z-index:1;}
+.st-body{display:flex;gap:.75rem;align-items:flex-start;}
+.st-icon{font-size:1.1rem;flex-shrink:0;}
+.st-label{font-size:.9rem;font-weight:600;color:#f1f5f9;margin-bottom:.2rem;}
+.st-note{font-size:.8rem;color:#94a3b8;line-height:1.5;}
+
+.callout-dark{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:1rem 1.25rem;margin-top:1.5rem;}
+.callout-dark p{font-size:.9rem;color:#c7d2fe;margin:0;line-height:1.6;}
+.cd-link{color:#a5b4fc;text-decoration:none;}
+.cd-link:hover{text-decoration:underline;}
+
+.faq-list{display:flex;flex-direction:column;gap:.5rem;margin:1.5rem 0;}
+.faq-item{border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;}
+.faq-q{padding:1rem 1.25rem;font-weight:600;color:#1e293b;cursor:pointer;list-style:none;font-size:.95rem;}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-a{padding:.75rem 1.25rem 1.25rem;font-size:.9rem;color:#475569;line-height:1.7;margin:0;border-top:1px solid #f1f5f9;}
+
+.related-links{margin-top:2rem;padding:1.5rem;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0;}
+.related-links p{font-size:.9rem;font-weight:600;color:#1e293b;margin-bottom:.75rem;}
+.rel-link{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.4rem .875rem;background:#e0e7ff;color:#4338ca;border-radius:20px;font-size:.85rem;font-weight:500;text-decoration:none;transition:background .2s;}
+.rel-link:hover{background:#c7d2fe;}
+
+@media(max-width:768px){
+  .np-wrapper{grid-template-columns:1fr;}
+  .np-sidebar{display:none;}
+  .stack-timeline{padding-left:0;}
+  .stack-timeline::before{display:none;}
+  .st-item{flex-wrap:wrap;}
+  .st-time{min-width:auto;text-align:left;}
+}
+</style>
