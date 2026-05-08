@@ -11,7 +11,7 @@ import StepsList from "../../components/blog/StepsList.astro";
 import Newsletter from "../../components/blog/Newsletter.astro";
 
 const datePublished = "2025-01-12T00:00:00Z";
-const dateModified = "2025-03-15T00:00:00Z";
+const dateModified = "2026-05-08T00:00:00Z";
 const author = "Success Odyssey Hub";
 const siteUrl = Astro.site?.toString() || "https://successodysseyhub.com";
 const canonicalUrl = `${siteUrl}/blog/stoicism`;
@@ -23,7 +23,7 @@ const readingTime = 22;
 <Layout
   title="Stoic Wisdom for Modern Life: Ancient Philosophy for Today"
   description="Discover how ancient Stoic philosophy offers practical wisdom for navigating modern life's challenges. Learn the dichotomy of control, virtue ethics, and daily practices for resilience, inner peace, and mental strength."
-  keywords="stoicism, stoic philosophy, Marcus Aurelius, Epictetus, Seneca, dichotomy of control, virtue ethics, resilience, inner peace, mental strength, ancient wisdom, modern stoicism, personal development"
+  keywords="stoicism, stoic philosophy, Marcus Aurelius, Epictetus, Seneca, dichotomy of control, virtue ethics, resilience, inner peace, mental strength, ancient wisdom, modern stoicism, personal development, what is stoicism, stoicism for beginners, how to practice stoicism daily, stoic exercises, stoic mindset, stoicism and success, negative visualization, memento mori, amor fati, stoic quotes"
   image={marcusAurelius}
   type="article"
   datePublished={datePublished}
@@ -33,6 +33,46 @@ const readingTime = 22;
 >
   <!-- Preload Critical Assets -->
   <link rel="preload" as="image" href={marcusAurelius.src} slot="head" />
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Stoicism in simple terms?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stoicism is an ancient Greek philosophy founded by Zeno of Citium around 300 BCE that teaches one core idea: you cannot control what happens to you, but you can always control how you respond. The Stoics divided the world into two categories — things 'up to us' (our thoughts, choices, and actions) and things 'not up to us' (outcomes, other people's behavior, external events). By focusing energy only on what you can control and accepting everything else with calm, you achieve a state of inner resilience the Stoics called ataraxia — freedom from emotional disturbance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you practice Stoicism in daily life?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Stoics recommended several concrete daily practices: (1) Morning reflection — review your intentions and prepare for challenges before the day begins, as Marcus Aurelius did in his journal. (2) Negative visualization (premeditatio malorum) — briefly imagine things going wrong to reduce anxiety and increase gratitude. (3) Evening review — ask yourself what you did well, what you failed at, and what you can improve. (4) Memento mori — remember your mortality to sharpen your focus on what actually matters. (5) The view from above — mentally zoom out to gain perspective on problems that feel overwhelming. These practices require only a few minutes but compound dramatically over time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the dichotomy of control in Stoicism?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The dichotomy of control, articulated most clearly by Epictetus in the Enchiridion, is the foundational distinction in Stoic philosophy. It states: 'Some things are in our control and others not. Things in our control are opinion, pursuit, desire, aversion, and, in a word, whatever are our own actions. Things not in our control are body, reputation, command, and, in one word, whatever are not our own actions.' In practice, this means you direct your full effort and attention toward your choices, your effort, and your character — while releasing anxiety over outcomes, other people's judgments, and circumstances you cannot change. This framework is used today in sports psychology, military training, and cognitive behavioral therapy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What did Marcus Aurelius teach about success and resilience?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Marcus Aurelius, who ruled the Roman Empire during plague, war, and repeated personal loss, left the most complete record of Stoic practice in his private journal, now known as Meditations. His core teachings on resilience: (1) The obstacle is the way — every impediment to action becomes an opportunity for growth. (2) You have power over your mind, not outside events — realize this and you will find strength. (3) The best revenge is to not be like your enemy. (4) Loss is nothing else but change, and change is Nature's delight. (5) Confine yourself to the present — the past is gone, the future is not yet here, and this moment is where all action takes place. Aurelius demonstrated that Stoicism is not passive resignation but the foundation of sustained high performance under extreme pressure."
+        }
+      }
+    ]
+  })} />
 
   <!-- Open Graph -->
   <meta property="og:url" content={canonicalUrl} slot="head" />
@@ -454,11 +494,11 @@ const readingTime = 22;
       <!-- AD 2: İçerik ortası -->
       <div class="ad-unit ad-unit--mid">
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
              data-ad-client="ca-pub-7229511013815291"
-             data-ad-slot="4827765044"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-ad-slot="4827765044"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
