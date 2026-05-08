@@ -480,6 +480,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </div>
 </footer>
+<script is:inline>
+(function () {
+  // Mobile dropdown toggle — Brain Science nav item
+  const dropdown = document.querySelector('.nav-dropdown');
+  if (!dropdown) return;
+  const toggle = dropdown.querySelector('.dropdown-toggle');
+  if (!toggle) return;
+
+  toggle.addEventListener('click', function (e) {
+    // Sadece mobilde toggle et (desktop'ta hover çalışır)
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+    }
+  });
+
+  // Dışarı tıklayınca kapat
+  document.addEventListener('click', function (e) {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
+})();
+</script>
 </body>
 </html>
 
@@ -606,6 +630,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 /* Mobilde dropdown davranışı */
 @media (max-width: 768px) {
   .nav-dropdown {
+    width: 100%;
+    text-align: center;
+
+    .dropdown-toggle {
+      justify-content: center;
+    }
+
     .dropdown-menu {
       position: static;
       transform: none;
@@ -615,6 +646,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       border-radius: 8px;
       margin-top: 0.4rem;
       padding: 0.25rem;
+      display: none; /* JS ile toggle edilir */
 
       &::before { display: none; }
 
@@ -624,9 +656,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
 
-    /* mobilde her zaman görünür yap */
-    .dropdown-menu {
+    /* JS tarafından eklenen open class ile aç */
+    &.open .dropdown-menu {
       display: block;
+    }
+
+    &.open .dropdown-toggle .chevron {
+      transform: rotate(180deg);
     }
   }
 }
