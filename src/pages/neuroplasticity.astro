@@ -611,6 +611,31 @@ const faqSchema = {
 </Layout>
 
 <style>
+/* ── CSS Variables (page-level fallbacks) ── */
+:root {
+  --color-primary: #2563eb;
+  --color-primary-light: #93c5fd;
+  --color-primary-dark: #1d4ed8;
+  --color-secondary: #764ba2;
+  --color-accent: #6366f1;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #9ca3af;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f3f4f6;
+  --color-bg-tertiary: #e5e7eb;
+  --color-border: #e5e7eb;
+  --color-border-dark: #d1d5db;
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+  --transition-fast: all 0.2s ease;
+}
+
 /* ── Ad Units (system prompt standard) ── */
 .ad-unit {
   margin: 2rem 0;
@@ -637,6 +662,7 @@ const faqSchema = {
   align-items: flex-start;
   max-width: 1440px;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 /* ── Sidebar ── */
@@ -738,8 +764,8 @@ const faqSchema = {
   position: sticky;
   top: 68px;
   z-index: 50;
-  background: var(--color-bg-primary);
-  border-bottom: 1px solid var(--color-border);
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
   width: 100%;
 }
 
@@ -753,15 +779,22 @@ const faqSchema = {
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-text-primary);
+  color: #1a1a1a;
   cursor: pointer;
 }
 
 .mob-pill-menu {
   display: flex;
   flex-direction: column;
-  background: var(--color-bg-primary);
-  box-shadow: var(--shadow-lg);
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  border-top: 1px solid #e5e7eb;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.mob-pill-menu[hidden] {
+  display: none;
 }
 
 .mob-link {
@@ -1801,22 +1834,98 @@ const faqSchema = {
 }
 
 @media (max-width: 768px) {
+  /* Layout */
   .np-sidebar { display: none; }
-  .mob-pill { display: block; }
-  .np-main { padding: 0 1rem 3rem; }
-  .np-sec { padding: 2.5rem 0; }
-  .dark-sec { padding: 2rem; margin: 0; }
-  .stat-row { flex-direction: column; }
+  .mob-pill { display: block; background: #fff; }
+  .np-wrapper { flex-direction: column; }
+  .np-main { padding: 0 1rem 3rem; width: 100%; max-width: 100%; overflow-x: hidden; }
+
+  /* Sections */
+  .np-sec { padding: 2rem 0; }
+  .np-sec h1 { font-size: 1.65rem; }
+  .np-sec h2 { font-size: 1.35rem; }
+  .lead { font-size: 0.97rem; }
+  .body-text { font-size: 0.93rem; max-width: 100%; }
+
+  /* Stats */
+  .stat-row { flex-direction: column; gap: 0.65rem; }
+  .stat { min-width: 0; }
+
+  /* Grids */
   .hl-steps,
   .steps-wrap,
   .grid-3,
   .grid-4,
-  .related-grid { grid-template-columns: 1fr; }
+  .related-grid,
+  .misc-grid { grid-template-columns: 1fr; }
+
+  /* Steps */
   .steps-wrap { gap: 1rem; }
-  .steps-tabs { flex-direction: column; }
-  .sim-ctrl { flex-direction: column; align-items: flex-start; }
+  .steps-tabs { flex-direction: row; flex-wrap: wrap; gap: 0.35rem; }
+  .stab { font-size: 0.78rem; padding: 0.55rem 0.65rem; flex: 1 1 auto; min-width: 80px; }
+  .steps-panel-area { padding: 1.25rem; min-height: auto; }
+
+  /* Dark section */
+  .dark-sec { padding: 1.5rem 1rem; margin: 0; border-radius: 12px; }
+
+  /* Neurochemistry */
+  .nc-card { padding: 1.2rem; }
+
+  /* Habit loop */
+  .habit-loop-box { padding: 1.25rem; }
+
+  /* Simulator */
+  .sim-ctrl { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
   .chart-wrap { height: 220px; }
-  .np-cta { padding: 2rem 1.25rem; }
+  .sim-box { padding: 1.2rem; }
+  .btn-fire { width: 100%; text-align: center; }
+
+  /* CTA */
+  .np-cta { padding: 1.75rem 1rem; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .cta-p, .cta-s { width: 100%; text-align: center; }
+
+  /* Intro CTA bar */
+  .intro-cta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.85rem;
+  }
+  .intro-cta-link { white-space: normal; }
+  .rel-link { white-space: normal; }
+
+  /* Timeline */
+  .timeline { padding-left: 1.25rem; }
+  .tl-item { gap: 0.75rem; }
+
+  /* Breadcrumb */
+  .breadcrumb { font-size: 11px; }
+
+  /* Node stage */
+  .node-stage { max-width: 100%; height: 140px; }
+
+  /* Step items */
+  .step-item { padding: 1rem; gap: 0.65rem; }
+  .step-num { font-size: 1rem; }
+
+  /* Life cards */
+  .life-card { padding: 1.15rem; }
+
+  /* SDNP cards */
+  .sdnp-card { padding: 1.15rem; }
+
+  /* Related */
+  .np-related { padding: 2rem 0 1.5rem; }
+
+  /* FAQ */
+  .faq-item summary { font-size: 0.88rem; padding: 0.85rem 1rem; }
+
+  /* Author bio */
+  .author-bio { padding: 1.1rem; }
+
+  /* Blockquote */
+  .bq { max-width: 100%; }
 }
 
 .misc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.25rem}

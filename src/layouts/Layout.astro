@@ -520,13 +520,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   if (dropToggle) {
     dropToggle.addEventListener('click', function (e) {
-      if (isMobile()) {
-        e.preventDefault();
-        e.stopPropagation();
-        dropdown.classList.toggle('open');
-      }
+      e.preventDefault();
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
     });
   }
+
+  // Dışarı tıklanınca dropdown'ı kapat (masaüstü + mobil)
+  document.addEventListener('click', function (e) {
+    if (dropdown && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
+  document.addEventListener('touchstart', function (e) {
+    if (dropdown && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  }, { passive: true });
+
+  // ESC tuşuyla kapat
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (dropdown) dropdown.classList.remove('open');
+      closeMenu();
+    }
+  });
 
   navLinks.querySelectorAll('a:not(.dropdown-toggle)').forEach(function (a) {
     a.addEventListener('click', function () { if (isMobile()) closeMenu(); });
@@ -646,14 +664,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
-  /* hover veya focus ile aç */
-  &:hover .dropdown-menu,
-  &:focus-within .dropdown-menu {
+  /* Sadece JS .open class ile açılır */
+  &.open .dropdown-menu {
     display: block;
   }
 
-  &:hover .dropdown-toggle .chevron,
-  &:focus-within .dropdown-toggle .chevron {
+  &.open .dropdown-toggle .chevron {
     transform: rotate(180deg);
   }
 }
