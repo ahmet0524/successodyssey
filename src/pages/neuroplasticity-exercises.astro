@@ -854,18 +854,20 @@ const mistakes = [
   font-weight: 600;
   cursor: pointer;
   color: var(--color-text, #111827);
+  width: 100%;
 }
 .mob-pill-menu {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
-  background: var(--color-surface, #fff);
+  background: #fff;
   border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: 12px;
-  padding: 0.75rem;
+  border-top: none;
   box-shadow: 0 8px 32px rgba(0,0,0,.12);
-  display: flex; flex-direction: column; gap: 0.15rem;
-  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem;
+}
+.mob-pill-menu[hidden] {
+  display: none !important;
 }
 .mob-link {
   display: block;
