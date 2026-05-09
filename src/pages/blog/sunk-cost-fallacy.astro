@@ -1,0 +1,470 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card1a.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import ContentGrid from "../../components/blog/ContentGrid.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2026-05-09T00:00:00Z";
+const dateModified  = "2026-05-09T00:00:00Z";
+const author        = "Success Odyssey Hub";
+const pageTitle       = "The Sunk Cost Fallacy: Why We Keep Throwing Good Resources After Bad";
+const pageDescription = "The sunk cost fallacy causes us to continue failing investments, bad relationships, and wrong careers simply because we've already paid in. Learn the psychology behind it and how to escape it for good.";
+const pageKeywords    = "sunk cost fallacy, sunk cost bias, sunk cost examples, how to overcome sunk cost fallacy, sunk cost psychology, sunk cost decision making, sunk cost trap, loss aversion, escalation of commitment, when to quit, sunk cost in business, irrational decision making";
+const readingTime     = 13;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={heroImage}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/sunk-cost-fallacy"
+>
+  <link rel="preload" as="image" href={heroImage.src} slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the sunk cost fallacy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The sunk cost fallacy is the tendency to continue an endeavor because of previously invested resources — time, money, or effort — even when continuing is no longer the rational choice. The key insight is that sunk costs are gone regardless of what you do next, so they should have zero influence on future decisions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the sunk cost fallacy so hard to overcome?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The sunk cost fallacy is powered by loss aversion (losses feel twice as painful as equivalent gains), status quo bias, fear of admitting failure, and escalation of commitment. These are deeply wired psychological mechanisms, not logical flaws — which is why awareness alone is rarely enough to overcome them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between sunk cost and opportunity cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A sunk cost is a past investment that cannot be recovered — it is irrelevant to future decisions. An opportunity cost is what you give up by choosing one path over another — it is highly relevant. Good decision-making ignores sunk costs and focuses on opportunity costs: what could you achieve with the time and resources you'd free up by quitting?"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is it rational to continue despite past losses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Continuing is rational when future expected value genuinely exceeds future expected costs — independent of past investment. If you would start this project today knowing what you know now, continue. If you wouldn't, that's strong evidence you're being held by sunk cost thinking rather than sound judgment."
+        }
+      }
+    ]
+  })} />
+
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Decision Making</span>
+        <span class="read-time">{readingTime} min read</span>
+      </div>
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <p class="article-subtitle">You finish a movie you hate because you already paid. You stay in a job for another year because you've given it five. You keep funding a failing project because walking away feels like admitting defeat. This is the sunk cost fallacy — and it costs far more than you think.</p>
+      <div class="author-info">
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">{author}</span>
+        </span>
+        <time itemprop="datePublished" datetime={datePublished}>May 9, 2026</time>
+      </div>
+    </header>
+
+    <figure class="article-hero">
+      <Image
+        src={heroImage}
+        alt="The Sunk Cost Fallacy: Why We Keep Throwing Good Resources After Bad"
+        width={1200}
+        height={630}
+        fetchpriority="high"
+        loading="eager"
+      />
+    </figure>
+
+    <div class="article-body" itemprop="articleBody">
+
+      <section>
+        <h2>The Money Is Already Gone</h2>
+        <p>In 1971, the U.S. government had spent $1.1 billion developing the supersonic passenger jet known as the Concorde. Economists at the time were clear: the project made no commercial sense. Operating costs were too high, the market too small, and profits would never materialize.</p>
+        <p>The British and French governments continued anyway — for another four decades. The term "Concorde fallacy" entered the scientific literature as a name for what happens when past investment overrides present judgment.</p>
+        <p>The same dynamic plays out at every scale:</p>
+        <ul>
+          <li>The entrepreneur who keeps pouring cash into a business model that has failed every test</li>
+          <li>The manager who defends a project to the executive team because she championed it from the start</li>
+          <li>The investor who holds a collapsing stock because selling would "lock in" the loss</li>
+          <li>The person who stays in the wrong career, relationship, or city because leaving feels like wasting years</li>
+        </ul>
+        <p>In every case, past costs that cannot be recovered are driving future decisions. And in every case, the outcome is worse than it needed to be.</p>
+
+        <ContentBox type="highlight" title="The Core Principle">
+          A sunk cost is any investment of time, money, energy, or emotion that cannot be recovered. Because it cannot be recovered, it is economically irrelevant to every future decision. The only question that matters is: given where things stand right now, what is the best path forward?
+        </ContentBox>
+      </section>
+
+      <section>
+        <h2>Why We Do It Anyway: The Psychology</h2>
+        <p>If the logic is so clear — past costs are gone, forget them — why is the sunk cost fallacy so universal? Because it isn't driven by logic. It's driven by a cluster of deeply wired psychological mechanisms that evolved for reasons that made sense in ancestral environments but misfire badly in modern decision contexts.</p>
+
+        <h3>Loss Aversion</h3>
+        <p>Daniel Kahneman and Amos Tversky's foundational research established that losses feel roughly twice as painful as equivalent gains feel good. Stopping a failing investment forces you to acknowledge a real loss. Continuing allows you to defer that acknowledgment — to keep the loss in a state of psychological suspension where it hasn't fully "happened" yet.</p>
+        <p>This is why investors hold losing stocks far longer than winners. Selling the loser makes the loss real. Holding it keeps hope alive — even when hope is irrational.</p>
+
+        <h3>Identity and Commitment</h3>
+        <p>When you invest significantly in something, it becomes part of who you are. Quitting isn't just abandoning a project — it's revising your self-concept. The person who spent three years building a startup doesn't just walk away from a business; they walk away from "being a founder." That identity cost can feel larger than the financial cost of continuing.</p>
+
+        <h3>Fear of Appearing Foolish</h3>
+        <p>Publicly reversing course after loud commitment signals — to others and to yourself — that you were wrong. The social cost of looking inconsistent or indecisive can override the economic logic of changing direction. Leaders in particular suffer from this: admitting a strategy isn't working can feel more damaging than the strategy itself.</p>
+
+        <h3>Escalation of Commitment</h3>
+        <p>Psychologist Barry Staw coined this term for the systematic tendency to increase investment in a failing course of action specifically because of prior investment. Each additional investment creates a new threshold of loss that must be "recovered" before quitting feels acceptable — which is why bad projects often absorb far more resources than the original commitment.</p>
+
+        <ContentGrid columns={2} gap="md">
+          <ContentBox type="warning" title="Signs You're Trapped by Sunk Cost">
+            — "I've put too much into this to quit now"<br/>
+            — "I just need one more year to make it work"<br/>
+            — "I can't walk away after everything I've invested"<br/>
+            — Defending a project without evaluating its future<br/>
+            — Staying because leaving feels like admitting failure
+          </ContentBox>
+          <ContentBox type="tip" title="Signs You're Thinking Clearly">
+            — "Given what I know now, would I start this today?"<br/>
+            — "What could I do with these resources if I redirected them?"<br/>
+            — "Is the evidence pointing forward or backward?"<br/>
+            — Evaluating future prospects independently of past costs<br/>
+            — Treating the past as information, not as obligation
+          </ContentBox>
+        </ContentGrid>
+      </section>
+
+      <!-- Fluid In-Article Ad -->
+      <ins class="adsbygoogle"
+        style="display:block; text-align:center;"
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client="ca-pub-7229511013815291"
+        data-ad-slot="4827765044"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section>
+        <h2>The Opportunity Cost Reframe</h2>
+        <p>The most powerful antidote to sunk cost thinking is switching from looking backward to looking forward — and specifically, replacing "what have I spent?" with "what am I giving up?"</p>
+        <p>Every hour you spend continuing a failing project is an hour you could spend on something that works. Every dollar you put into a declining investment is a dollar not available for a growing one. Every year you stay in the wrong career is a year not invested in building the right one.</p>
+        <p>Sunk cost thinking makes past investment feel like a reason to continue. Opportunity cost thinking makes future value the only question that matters.</p>
+
+        <ContentBox type="info" title="The Jeff Bezos Test">
+          Jeff Bezos articulated one of the clearest versions of this principle: evaluate decisions by whether they are two-way doors (reversible) or one-way doors (irreversible). For reversible decisions, move fast and be willing to change. For irreversible decisions, think carefully. But in both cases, the question is always about future consequences — never about what has already been spent.
+        </ContentBox>
+
+        <h3>The Replacement Test</h3>
+        <p>Here's the most direct way to strip sunk costs from a decision: imagine you had never made the original investment. You're starting fresh today, with no history. Given the current situation — the assets, the prospects, the alternatives — what would you choose to do?</p>
+        <p>If you would choose to begin this project today, continue. If you wouldn't, you're being held by past investment rather than guided by future value.</p>
+        <p>This thought experiment works because it eliminates the psychological weight of prior commitment. You're no longer "quitting" — you're making a fresh resource allocation decision based on present and future facts.</p>
+      </section>
+
+      <section>
+        <h2>Sunk Cost Fallacy Across Different Domains</h2>
+        <p>The fallacy appears in predictable patterns across different areas of life. Recognizing it in each domain makes it easier to catch in real time.</p>
+
+        <h3>Investing and Finance</h3>
+        <p>The most financially costly version: holding a declining stock or investment longer than rational because you don't want to "lock in" the loss. The loss is already locked in — it exists the moment the price falls. Selling or holding doesn't change the past loss; it only affects what happens next. The relevant question is whether the investment's future prospects justify its current price relative to alternatives.</p>
+        <p>Professional investors use a simple discipline: they evaluate every position as if they had just acquired it today. Would they buy it at the current price, knowing what they know now? If not, they have no reason to hold it.</p>
+
+        <h3>Business and Projects</h3>
+        <p>Organizations are especially vulnerable because multiple people have invested reputation in a project's success. The business equivalent of the Concorde fallacy: a product development project absorbs $10 million, early results are poor, but no one will recommend cancellation because too many careers are attached to its success.</p>
+        <p>The corrective is to separate the decision from the people who made prior decisions. A new evaluator — or an evaluator explicitly asked to assess future prospects without regard to past investment — will give a cleaner read.</p>
+
+        <h3>Relationships</h3>
+        <p>Perhaps the most emotionally charged version: staying in a relationship that no longer works because you've invested years, have shared history, or don't want that time to feel "wasted." But time spent in a relationship isn't wasted just because the relationship ends — it's only wasted if you remain in a situation that prevents something better from emerging.</p>
+        <p>The relevant question is never "how long have we been together?" It's always: given who we both are now and what we both need, is this the right choice going forward?</p>
+
+        <h3>Careers</h3>
+        <p>People stay in wrong careers for decades because they've invested in credentials, built expertise, or don't want to feel that their training was wasted. The credentials and expertise don't disappear when you change direction — they transfer, adapt, or simply become part of your history. What doesn't transfer is the ongoing cost of spending your working life doing something that doesn't fit.</p>
+
+        <ContentBox type="quote" title="Richard Thaler on Sunk Costs">
+          "The key to good decision-making is not to ignore the past — it's to use the past as information rather than as an obligation. Past costs tell you something about what you've tried and learned. They should never tell you what you must do next."
+        </ContentBox>
+      </section>
+
+      <section>
+        <h2>When Continuing IS Rational</h2>
+        <p>The goal isn't to become a serial quitter who abandons everything at the first sign of difficulty. There are legitimate reasons to continue despite past losses — they just have nothing to do with the past losses themselves.</p>
+
+        <ContentGrid columns={2} gap="md">
+          <ContentBox type="tip" title="Rational Reasons to Continue">
+            — Future expected value genuinely exceeds future expected costs<br/>
+            — You've gained knowledge that improves future prospects<br/>
+            — The core problem is fixable with a specific intervention<br/>
+            — The value is long-term and the evidence horizon isn't complete<br/>
+            — Quitting now has switching costs greater than future value gained
+          </ContentBox>
+          <ContentBox type="warning" title="Irrational Reasons to Continue">
+            — "I've put so much in already"<br/>
+            — "I can't face admitting this was wrong"<br/>
+            — "I just need it to work to justify what I've spent"<br/>
+            — "Everyone will think I failed"<br/>
+            — "It would feel like throwing away all that time"
+          </ContentBox>
+        </ContentGrid>
+
+        <p>Resilience and persistence have genuine value — but they must be grounded in honest assessment of future prospects, not in the need to justify past investment. The difference between grit and the sunk cost trap is whether you're staying because the evidence supports continuing or because you can't face what quitting means.</p>
+      </section>
+
+      <section>
+        <h2>A Protocol for Sunk Cost Decisions</h2>
+        <p>When you find yourself reluctant to stop something — a project, investment, relationship, or path — run this decision protocol before choosing to continue.</p>
+
+        <StepsList title="The Sunk Cost Decision Protocol">
+          <li><strong>Name the sunk cost explicitly.</strong> Write down exactly what has been invested: money, time, energy, reputation. Making it concrete removes the vague emotional weight that unnamed sunk costs carry.</li>
+          <li><strong>Mentally write it off.</strong> Say to yourself: "That investment is gone. It's in the past. It will not come back no matter what I do next." This is not denial — it's accurate accounting.</li>
+          <li><strong>Apply the replacement test.</strong> If you were starting fresh today — with no history — would you choose to begin this project or investment? If yes, continue for that reason. If no, you have your answer.</li>
+          <li><strong>Calculate opportunity cost.</strong> What could you do with the time, money, and energy currently committed to this endeavor if you redirected it? Is that alternative more valuable than the future prospects of continuing?</li>
+          <li><strong>Check for reversibility.</strong> Is this a two-way door? If you continue for another 30, 60, or 90 days, will you have more or less information? If more — define exactly what evidence would cause you to stop. If the situation is already irreversible, the decision is now.</li>
+          <li><strong>Separate identity from decision.</strong> You are not your project. Stopping does not mean you failed — it means you updated your beliefs based on evidence. Write down what you learned that is genuinely valuable regardless of the outcome.</li>
+          <li><strong>Make the call on future terms alone.</strong> If, after removing sunk cost reasoning, the best path forward is to continue — continue. If it's to stop — stop. Either answer is valid as long as it's driven by future value, not past cost.</li>
+        </StepsList>
+      </section>
+
+      <section>
+        <h2>Organizational Sunk Cost Traps</h2>
+        <p>Organizations are structurally more vulnerable to sunk cost traps than individuals because the person making the continuation decision is often not the person who made the original commitment — and may therefore have even more to lose socially from admitting the original decision was wrong.</p>
+        <p>The most effective organizational interventions:</p>
+        <ul>
+          <li><strong>Red team reviews</strong> — assign a team specifically tasked with making the case for stopping. Their job is to argue against continuation independent of past investment.</li>
+          <li><strong>Pre-defined kill criteria</strong> — before starting a project, establish the specific conditions under which you would stop. This removes the negotiation from the heat of sunk cost pressure.</li>
+          <li><strong>Separate decision makers</strong> — bring in someone who wasn't involved in the original commitment to assess future prospects. They have no identity invested in the prior decision.</li>
+          <li><strong>Zero-based budgeting</strong> — each cycle, re-evaluate all projects as if requesting funding for the first time. This prevents the implicit assumption that continuation is the default.</li>
+        </ul>
+
+        <ContentBox type="info" title="The NASA Challenger Lesson">
+          The Challenger disaster is cited in organizational psychology as a catastrophic example of escalation of commitment. Engineers raised concerns about O-ring performance in cold temperatures. Institutional pressure — from schedule commitments, budget investment, and public expectations — overrode technical judgment. The sunk cost of the shuttle program contributed to a decision that no rational fresh analysis would have supported. The lesson: the higher the stakes, the more important it is to strip sunk cost reasoning from the process.
+        </ContentBox>
+      </section>
+
+      <section>
+        <h2>Building Immunity Over Time</h2>
+        <p>You can't fully eliminate sunk cost thinking — the psychological mechanisms behind it are too deeply wired. But you can build habits and structures that make it much less likely to drive consequential decisions.</p>
+
+        <h3>Keep a Decision Journal</h3>
+        <p>Record your reasoning at the time you make commitments. Include what evidence would cause you to change course. When reviewing decisions later, you can compare what you actually observed to what you expected — and identify when you're continuing based on hope rather than data. (See our guide on <a href="/blog/decision-journal">how to keep a decision journal</a>.)</p>
+
+        <h3>Create Pre-commitment Devices</h3>
+        <p>Establish in advance the conditions under which you will stop. "If this product doesn't hit $X revenue by this date, we close it." "If I don't have a concrete offer by month 6, I change approach." This converts a future emotional decision into a pre-made analytical one.</p>
+
+        <h3>Practice Small Quits</h3>
+        <p>Most people have almost no practice stopping things deliberately. They watch shows they don't enjoy to the end, finish books that lost them, attend meetings that have become pointless. Practicing intentional stopping on low-stakes situations builds the muscle for high-stakes ones.</p>
+
+        <h3>Reframe Quitting as Intelligence</h3>
+        <p>The narrative that quitting is weakness is deeply culturally embedded — and deeply wrong. The ability to update beliefs, change course when evidence warrants, and redirect resources from losing bets to winning ones is a hallmark of sophisticated judgment. Elite investors, successful entrepreneurs, and great scientists all share a willingness to be wrong quickly and act on that recognition without delay.</p>
+
+        <ContentBox type="highlight" title="The Compound Cost of Staying">
+          Every month you remain in a situation that should be stopped, two costs accumulate: the direct cost of continuing (money, time, energy) and the opportunity cost of not pursuing alternatives. Over years, these compound in ways that dwarf the original sunk investment. The most expensive decision is often not the bad one you made — it's the refusal to acknowledge it for years afterward.
+        </ContentBox>
+      </section>
+
+      <section>
+        <h2>The Freedom in the Sunk Cost Reframe</h2>
+        <p>There is something genuinely liberating about fully internalizing the sunk cost principle. When you accept that past investment neither obligates future action nor justifies continuation, you recover something important: the freedom to make every future decision on its own terms.</p>
+        <p>You don't have to finish the book you hate. You don't have to justify the project that isn't working. You don't have to stay in the wrong situation because leaving would mean admitting the decision to enter it was a mistake. The past is complete. It's information — not obligation.</p>
+        <p>Every moment of decision is a fresh start. The resources you have right now — time, money, attention, energy — can be directed toward the highest future value available. The only question is whether you're free enough from the past to see clearly what that is.</p>
+
+        <ContentBox type="tip" title="Key Takeaways">
+          — Sunk costs are irrelevant to future decisions — they cannot be recovered regardless of what you do next<br/>
+          — The fallacy is powered by loss aversion, identity investment, and fear of appearing inconsistent<br/>
+          — The replacement test: would you start this today, knowing what you know now?<br/>
+          — Opportunity cost is the forward-looking complement — what are you giving up by continuing?<br/>
+          — Pre-commit to kill criteria before starting anything significant<br/>
+          — Stopping is not failure — it's evidence-based resource reallocation
+        </ContentBox>
+      </section>
+
+      <section class="related-articles">
+        <h2>Related Articles</h2>
+        <ul>
+          <li><a href="/blog/decision-journal">How to Keep a Decision Journal</a></li>
+          <li><a href="/blog/pre-mortem-technique">The Pre-Mortem Technique: Prevent Failure Before It Happens</a></li>
+          <li><a href="/blog/reversible-vs-irreversible">Reversible vs. Irreversible Decisions</a></li>
+          <li><a href="/blog/how-to-avoid-cognitive-bias">How to Avoid Cognitive Bias</a></li>
+        </ul>
+      </section>
+
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+  .article-header {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 2rem 1rem 0;
+
+    .article-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .category-badge {
+        background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .read-time {
+        color: #64748b;
+        font-size: 0.9rem;
+      }
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+
+    .article-subtitle {
+      font-size: 1.15rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .author-info {
+      display: flex;
+      gap: 1rem;
+      color: #64748b;
+      font-size: 0.9rem;
+      align-items: center;
+
+      time { color: #94a3b8; }
+    }
+  }
+
+  .article-hero {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+  }
+
+  .article-body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem 4rem;
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: #1e293b;
+      margin: 2.5rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 3px solid #667EEA;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #334155;
+      margin: 2rem 0 0.75rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.25rem;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+
+      li {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    a {
+      color: #667EEA;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      &:hover { color: #764BA2; }
+    }
+  }
+
+  .related-articles {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 3rem;
+
+    h2 {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e2e8f0;
+
+        &:last-child { border-bottom: none; }
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .article-header {
+      h1 { color: #f1f5f9; }
+      .article-subtitle { color: #94a3b8; }
+    }
+
+    .article-body {
+      h2 { color: #f1f5f9; }
+      h3 { color: #e2e8f0; }
+      p, li { color: #cbd5e1; }
+    }
+
+    .related-articles {
+      background: #1e293b;
+
+      li { border-color: #334155; }
+    }
+  }
+</style>
