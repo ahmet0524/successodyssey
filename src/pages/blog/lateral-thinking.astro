@@ -1,67 +1,86 @@
-﻿---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContentBox from '../../components/blog/ContentBox.astro';
-import StepsList from '../../components/blog/StepsList.astro';
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card1a.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
 
-const title = "Lateral Thinking: How to Solve Problems Creatively";
-const description = "Discover lateral thinking techniques to break out of conventional patterns and solve problems from unexpected angles. Learn Edward de Bono's proven methods.";
-const keywords = "lateral thinking, lateral thinking techniques, Edward de Bono lateral thinking, creative problem solving, lateral vs vertical thinking, how to think laterally, lateral thinking examples, random entry technique, provocation technique, six thinking hats, creative thinking methods, unconventional problem solving, thinking outside the box, parallel thinking";
-const publishDate = "2025-01-15";
-const canonicalUrl = "https://successodysseyhub.com/blog/lateral-thinking";
-const imageUrl = "/images/card1a.jpg";
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is lateral thinking and how is it different from vertical thinking?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Lateral thinking, coined by Edward de Bono, is a way of solving problems through indirect and creative approaches — exploring multiple possibilities rather than following a single logical path. Vertical thinking digs deeper in one direction using logic and established patterns. Lateral thinking moves sideways to find new starting points and unexpected solutions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the most effective lateral thinking techniques?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The most effective techniques include: Random Entry (introducing an unrelated stimulus to break fixed patterns), Provocation (deliberately making absurd statements to spark new ideas), Challenge (questioning why things are done a certain way), and the Six Thinking Hats method (examining problems from six distinct perspectives sequentially)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can lateral thinking be learned or is it a natural talent?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Lateral thinking is absolutely a learnable skill. Edward de Bono designed it as a deliberate, teachable method rather than an innate talent. With structured practice using techniques like provocation, random entry, and the Six Thinking Hats, anyone can develop stronger lateral thinking abilities over time."
-      }
-    }
-  ]
-};
+const datePublished = "2026-05-09T00:00:00Z";
+const dateModified  = "2026-05-09T00:00:00Z";
+const author        = "Success Odyssey Hub";
+const pageTitle     = "Lateral Thinking: How to Solve Problems Creatively";
+const pageDescription = "Discover lateral thinking techniques to break out of conventional patterns and solve problems from unexpected angles. Learn Edward de Bono's proven methods.";
+const pageKeywords  = "lateral thinking, lateral thinking techniques, Edward de Bono lateral thinking, creative problem solving, lateral vs vertical thinking, how to think laterally, lateral thinking examples, random entry technique, provocation technique, six thinking hats, creative thinking methods, unconventional problem solving, thinking outside the box, parallel thinking";
+const readingTime   = 9;
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  keywords={keywords}
-  canonicalUrl={canonicalUrl}
-  imageUrl={imageUrl}
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={heroImage}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/lateral-thinking"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <link rel="preload" as="image" href={heroImage.src} slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is lateral thinking and how is it different from vertical thinking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lateral thinking, coined by Edward de Bono, is a way of solving problems through indirect and creative approaches — exploring multiple possibilities rather than following a single logical path. Vertical thinking digs deeper in one direction using logic and established patterns. Lateral thinking moves sideways to find new starting points and unexpected solutions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the most effective lateral thinking techniques?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most effective techniques include: Random Entry (introducing an unrelated stimulus to break fixed patterns), Provocation (deliberately making absurd statements to spark new ideas), Challenge (questioning why things are done a certain way), and the Six Thinking Hats method (examining problems from six distinct perspectives sequentially)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can lateral thinking be learned or is it a natural talent?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lateral thinking is absolutely a learnable skill. Edward de Bono designed it as a deliberate, teachable method rather than an innate talent. With structured practice using techniques like provocation, random entry, and the Six Thinking Hats, anyone can develop stronger lateral thinking abilities over time."
+        }
+      }
+    ]
+  })} />
 
-  <article class="blog-post">
-    <header class="post-header">
-      <div class="post-meta">
-        <span class="post-category">Decision Making</span>
-        <span class="post-date">{publishDate}</span>
-        <span class="read-time">9 min read</span>
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Decision Making</span>
+        <span class="read-time">{readingTime} min read</span>
+        <time itemprop="datePublished" datetime={datePublished}>May 9, 2026</time>
       </div>
-      <h1>{title}</h1>
-      <p class="post-excerpt">{description}</p>
-      <img src={imageUrl} alt="Lateral Thinking: Creative Problem Solving" class="post-hero-image" loading="eager" />
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <p class="article-subtitle">Most people dig deeper when stuck. Lateral thinking goes sideways — deliberately disrupting mental patterns to find solutions that logic alone never reaches.</p>
+      <span itemprop="author" itemscope itemtype="https://schema.org/Person" style="display:none">
+        <span itemprop="name">{author}</span>
+      </span>
     </header>
+
+    <figure class="article-hero">
+      <Image
+        src={heroImage}
+        alt="Lateral Thinking: Creative Problem Solving techniques by Edward de Bono"
+        width={1200}
+        height={630}
+        fetchpriority="high"
+        loading="eager"
+      />
+    </figure>
 
     <nav class="table-of-contents" aria-label="Table of Contents">
       <h2>Table of Contents</h2>
@@ -76,226 +95,213 @@ const faqSchema = {
       </ol>
     </nav>
 
-    <!-- AD 1: After ToC (display) -->
-    <div class="ad-container">
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-7229511013815291"
-        data-ad-slot="4827765044"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
+    <!-- AD 1: After TOC -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="article-body" itemprop="articleBody">
+
+      <section id="what-is-lateral-thinking">
+        <h2>What Is Lateral Thinking?</h2>
+        <p>Lateral thinking is a term coined by physician and author <strong>Edward de Bono</strong> in his 1967 book <em>The Use of Lateral Thinking</em>. It describes a deliberate, systematic method for generating creative ideas by approaching problems from unexpected angles.</p>
+        <p>Unlike purely logical reasoning, lateral thinking deliberately disrupts established mental patterns to find solutions that wouldn't emerge from conventional analysis alone. It's not random brainstorming — it's a structured way of generating new perspectives.</p>
+        <p>De Bono defined lateral thinking as "the process of using information to bring about creativity and insight restructuring." The key insight: our brains are pattern-recognition machines. This efficiency is powerful but also limiting — the same neural pathways get used repeatedly, making truly novel thinking rare without deliberate effort.</p>
+      </section>
+
+      <section id="lateral-vs-vertical">
+        <h2>Lateral vs. Vertical Thinking</h2>
+        <p>Understanding the contrast between these two modes clarifies when each is useful:</p>
+        <table style="width:100%; border-collapse:collapse; margin:1.5rem 0;">
+          <thead>
+            <tr style="background:#f0f4ff;">
+              <th style="padding:12px; border:1px solid #ddd; text-align:left;">Vertical Thinking</th>
+              <th style="padding:12px; border:1px solid #ddd; text-align:left;">Lateral Thinking</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:10px; border:1px solid #ddd;">Digs deeper in one direction</td>
+              <td style="padding:10px; border:1px solid #ddd;">Moves sideways to new starting points</td>
+            </tr>
+            <tr style="background:#fafafa;">
+              <td style="padding:10px; border:1px solid #ddd;">Builds on existing ideas</td>
+              <td style="padding:10px; border:1px solid #ddd;">Challenges existing ideas</td>
+            </tr>
+            <tr>
+              <td style="padding:10px; border:1px solid #ddd;">Sequential and logical</td>
+              <td style="padding:10px; border:1px solid #ddd;">Disruptive and generative</td>
+            </tr>
+            <tr style="background:#fafafa;">
+              <td style="padding:10px; border:1px solid #ddd;">Best for refining solutions</td>
+              <td style="padding:10px; border:1px solid #ddd;">Best for finding new solutions</td>
+            </tr>
+            <tr>
+              <td style="padding:10px; border:1px solid #ddd;">Each step must be correct</td>
+              <td style="padding:10px; border:1px solid #ddd;">Wrong steps can lead to right answers</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The most effective problem solvers use both. Lateral thinking generates creative options; vertical thinking evaluates and implements the best ones.</p>
+      </section>
+
+      <section id="core-techniques">
+        <h2>Core Lateral Thinking Techniques</h2>
+
+        <h3>1. Random Entry</h3>
+        <p>Pick a random word, image, or object and force connections to your problem. The randomness disrupts habitual thinking. For example, if you're trying to improve customer service and you randomly pick "waterfall," you might think about flow, stages, momentum — leading to ideas about streamlining service handoffs.</p>
+
+        <h3>2. Provocation (Po)</h3>
+        <p>De Bono introduced the symbol "Po" to signal a deliberate provocation — a statement you know is wrong or absurd, used as a springboard. "Po: cars have square wheels." This leads to thinking about why wheels are round, what friction actually does, and potentially new ideas about surface contact.</p>
+
+        <h3>3. Challenge</h3>
+        <p>Question why something is done the way it is — not because it's wrong, but to explore alternatives. "Why do meetings always start on the hour?" challenges a default assumption and might reveal more productive scheduling options.</p>
+
+        <h3>4. Concept Extraction</h3>
+        <p>Extract the underlying concept behind an existing solution, then find different ways to fulfill that concept. Uber's concept isn't "taxi app" — it's "connecting people who need rides with people who have cars." That concept spawned delivery services, freight, and more.</p>
+
+        <h3>5. Six Thinking Hats</h3>
+        <p>One of de Bono's most widely used frameworks: six colored hats represent six modes of thinking that a group explores sequentially:</p>
+        <ul>
+          <li><strong>White Hat:</strong> Facts and data only</li>
+          <li><strong>Red Hat:</strong> Emotions and gut feelings</li>
+          <li><strong>Black Hat:</strong> Caution, risks, problems</li>
+          <li><strong>Yellow Hat:</strong> Optimism, benefits</li>
+          <li><strong>Green Hat:</strong> Creative ideas and alternatives</li>
+          <li><strong>Blue Hat:</strong> Process control and meta-thinking</li>
+        </ul>
+        <p>By separating thinking modes, groups avoid the confusion of arguing across different types of thinking simultaneously.</p>
+      </section>
+
+      <!-- AD 2: Fluid In-Article -->
+      <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7229511013815291" data-ad-slot="2952775705"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
 
-    <section id="what-is-lateral-thinking">
-      <h2>What Is Lateral Thinking?</h2>
-      <p>Lateral thinking is a term coined by physician and author <strong>Edward de Bono</strong> in his 1967 book <em>The Use of Lateral Thinking</em>. It describes a deliberate, systematic method for generating creative ideas by approaching problems from unexpected angles.</p>
-      <p>Unlike purely logical reasoning, lateral thinking deliberately disrupts established mental patterns to find solutions that wouldn't emerge from conventional analysis alone. It's not random brainstorming — it's a structured way of generating new perspectives.</p>
-      <p>De Bono defined lateral thinking as "the process of using information to bring about creativity and insight restructuring." The key insight: our brains are pattern-recognition machines. This efficiency is powerful but also limiting — the same neural pathways get used repeatedly, making truly novel thinking rare without deliberate effort.</p>
-    </section>
+      <section id="real-world-examples">
+        <h2>Real-World Examples</h2>
 
-    <section id="lateral-vs-vertical">
-      <h2>Lateral vs. Vertical Thinking</h2>
-      <p>Understanding the contrast between these two modes clarifies when each is useful:</p>
-      <table style="width:100%; border-collapse:collapse; margin:1.5rem 0;">
-        <thead>
-          <tr style="background:#f0f4ff;">
-            <th style="padding:12px; border:1px solid #ddd; text-align:left;">Vertical Thinking</th>
-            <th style="padding:12px; border:1px solid #ddd; text-align:left;">Lateral Thinking</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding:10px; border:1px solid #ddd;">Digs deeper in one direction</td>
-            <td style="padding:10px; border:1px solid #ddd;">Moves sideways to new starting points</td>
-          </tr>
-          <tr style="background:#fafafa;">
-            <td style="padding:10px; border:1px solid #ddd;">Builds on existing ideas</td>
-            <td style="padding:10px; border:1px solid #ddd;">Challenges existing ideas</td>
-          </tr>
-          <tr>
-            <td style="padding:10px; border:1px solid #ddd;">Sequential and logical</td>
-            <td style="padding:10px; border:1px solid #ddd;">Disruptive and generative</td>
-          </tr>
-          <tr style="background:#fafafa;">
-            <td style="padding:10px; border:1px solid #ddd;">Best for refining solutions</td>
-            <td style="padding:10px; border:1px solid #ddd;">Best for finding new solutions</td>
-          </tr>
-          <tr>
-            <td style="padding:10px; border:1px solid #ddd;">Each step must be correct</td>
-            <td style="padding:10px; border:1px solid #ddd;">Wrong steps can lead to right answers</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>The most effective problem solvers use both. Lateral thinking generates creative options; vertical thinking evaluates and implements the best ones.</p>
-    </section>
+        <h3>FedEx Overnight Delivery</h3>
+        <p>The overnight delivery industry emerged from lateral thinking: instead of improving ground shipping incrementally (vertical), Fred Smith asked "What if all packages went to a central hub first?" This hub-and-spoke model — counterintuitive at first glance — became the foundation of FedEx.</p>
 
-    <section id="core-techniques">
-      <h2>Core Lateral Thinking Techniques</h2>
+        <h3>The Post-It Note</h3>
+        <p>Spencer Silver at 3M invented a weak adhesive that everyone considered a failure. Art Fry, a colleague, laterally reframed "weak adhesive" as "repositionable bookmark." A failed product became a billion-dollar innovation.</p>
 
-      <h3>1. Random Entry</h3>
-      <p>Pick a random word, image, or object and force connections to your problem. The randomness disrupts habitual thinking. For example, if you're trying to improve customer service and you randomly pick "waterfall," you might think about flow, stages, momentum — leading to ideas about streamlining service handoffs.</p>
+        <h3>Airbnb</h3>
+        <p>Rather than building more hotels (vertical thinking), Airbnb laterally asked: "What if the unused bedrooms that already exist could become hotel rooms?" The same resource, seen differently, created an entirely new industry.</p>
+      </section>
 
-      <h3>2. Provocation (Po)</h3>
-      <p>De Bono introduced the symbol "Po" to signal a deliberate provocation — a statement you know is wrong or absurd, used as a springboard. "Po: cars have square wheels." This leads to thinking about why wheels are round, what friction actually does, and potentially new ideas about surface contact.</p>
+      <section id="how-to-apply">
+        <h2>How to Apply Lateral Thinking</h2>
+        <StepsList title="Lateral Thinking: Step-by-Step">
+          <li><strong>State the problem clearly first.</strong> Write your problem in one sentence. Vague problems produce vague lateral thinking. Specific problem statements give your creative techniques something concrete to push against.</li>
+          <li><strong>Choose a lateral technique.</strong> Select Random Entry, Provocation, or Challenge based on your context. Random Entry works well for stuck creative projects. Provocation works well for systemic problems. Challenge works well for questioning inherited processes.</li>
+          <li><strong>Generate without judging.</strong> During the lateral phase, suspend evaluation entirely. Write down every idea — even obviously bad ones. Premature judgment kills the generative phase before it can produce useful insights.</li>
+          <li><strong>Harvest useful directions.</strong> Review your generated ideas for any direction or concept that has potential — even partial potential. You're not looking for finished solutions yet, just promising vectors.</li>
+          <li><strong>Develop promising ideas with vertical thinking.</strong> Switch to analytical mode. Take the best directions from lateral thinking and develop them rigorously — test feasibility, identify risks, refine details.</li>
+          <li><strong>Practice with low-stakes problems first.</strong> Build the habit with everyday problems: how could you organize your desk differently? How could meetings be structured differently? Small practice builds the muscle for high-stakes creative problem solving.</li>
+        </StepsList>
+      </section>
 
-      <h3>3. Challenge</h3>
-      <p>Question why something is done the way it is — not because it's wrong, but to explore alternatives. "Why do meetings always start on the hour?" challenges a default assumption and might reveal more productive scheduling options.</p>
+      <section id="misconceptions">
+        <h2>Common Misconceptions</h2>
 
-      <h3>4. Concept Extraction</h3>
-      <p>Extract the underlying concept behind an existing solution, then find different ways to fulfill that concept. Uber's concept isn't "taxi app" — it's "connecting people who need rides with people who have cars." That concept spawned delivery services, freight, and more.</p>
+        <ContentBox type="warning" title='❌ "Lateral thinking just means brainstorming"'>
+          <p>Brainstorming is unstructured idea generation. Lateral thinking uses specific, deliberate techniques (provocation, random entry, challenge) that have a different cognitive mechanism. It's structured creativity, not free association.</p>
+        </ContentBox>
 
-      <h3>5. Six Thinking Hats</h3>
-      <p>One of de Bono's most widely used frameworks: six colored hats represent six modes of thinking that a group explores sequentially:</p>
-      <ul>
-        <li><strong>White Hat:</strong> Facts and data only</li>
-        <li><strong>Red Hat:</strong> Emotions and gut feelings</li>
-        <li><strong>Black Hat:</strong> Caution, risks, problems</li>
-        <li><strong>Yellow Hat:</strong> Optimism, benefits</li>
-        <li><strong>Green Hat:</strong> Creative ideas and alternatives</li>
-        <li><strong>Blue Hat:</strong> Process control and meta-thinking</li>
-      </ul>
-      <p>By separating thinking modes, groups avoid the confusion of arguing across different types of thinking simultaneously.</p>
-    </section>
+        <ContentBox type="warning" title={`❌ "It's only useful for creative professionals"`}>
+          <p>Lateral thinking applies to any domain with problems that standard approaches haven't solved — engineering, medicine, management, personal decisions. Edward de Bono taught it in medical schools and Fortune 500 companies alike.</p>
+        </ContentBox>
 
-    <!-- AD 2: Middle (fluid in-article) -->
-    <div class="ad-container">
-      <ins class="adsbygoogle"
-        style="display:block; text-align:center;"
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
-        data-ad-client="ca-pub-7229511013815291"
-        data-ad-slot="2952775705"></ins>
+        <ContentBox type="warning" title={`❌ "You either have creative thinking or you don't"`}>
+          <p>This is the fixed mindset applied to creativity. De Bono's entire thesis is that lateral thinking is a learnable skill, not a personality trait. Regular practice with the techniques produces measurable improvement.</p>
+        </ContentBox>
+      </section>
+
+      <!-- AD 3: Before conclusion -->
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>Lateral thinking isn't about being randomly creative — it's a disciplined practice of deliberately disrupting your own mental patterns to find solutions you wouldn't reach through logic alone. The techniques Edward de Bono developed are tools, not magic: they work when practiced consistently and combined with rigorous analysis.</p>
+        <p>The most innovative thinkers in history weren't just smarter — they thought differently. They questioned assumptions, combined unrelated ideas, and were willing to look absurd before they looked brilliant. That's a learnable skill. Start small, practice the techniques, and gradually build your lateral thinking capacity into one of your most valuable cognitive assets.</p>
+
+        <ContentBox type="tip" title="Ready to Think More Creatively?">
+          Start with one technique this week. Pick a real problem you're stuck on and apply Random Entry: open a dictionary to a random page, pick the first noun you see, and spend 10 minutes forcing connections to your problem. You'll be surprised what emerges.
+        </ContentBox>
+      </section>
+
+      <section class="author-bio">
+        <div class="author-bio-content">
+          <h3>About Success Odyssey Hub</h3>
+          <p>Success Odyssey Hub creates evidence-based content on decision making, mental models, and the psychology of high performance. Every article draws from peer-reviewed research and the documented practices of exceptional performers across business, science, and leadership.</p>
+        </div>
+      </section>
+
+      <section class="related-articles">
+        <h2>Related Articles</h2>
+        <ul>
+          <li><a href="/blog/critical-thinking-skills">Critical Thinking Skills: How to Think More Clearly</a></li>
+          <li><a href="/blog/avoid-cognitive-biases">How to Avoid Cognitive Biases in Everyday Decisions</a></li>
+          <li><a href="/blog/first-principles-thinking">First Principles Thinking: Elon Musk's Problem-Solving Method</a></li>
+        </ul>
+      </section>
+
+      <section class="external-resources">
+        <h2>Further Reading</h2>
+        <ul>
+          <li><a href="https://www.debonogroup.com/services/core-programs/lateral-thinking/" target="_blank" rel="noopener">The de Bono Group – Official Lateral Thinking Resources</a></li>
+          <li><a href="https://fs.blog/edward-de-bono-lateral-thinking/" target="_blank" rel="noopener">Farnam Street – Edward de Bono on Lateral Thinking</a></li>
+          <li><a href="https://hbr.org/2012/03/six-thinking-hats" target="_blank" rel="noopener">Harvard Business Review – The Six Thinking Hats</a></li>
+        </ul>
+      </section>
+
+      <section class="book-recommendations">
+        <h2>Recommended Books</h2>
+        <ul>
+          <li><a href="https://amzn.to/greatmentalmodels" target="_blank" rel="noopener sponsored">The Great Mental Models Vol. 1 — Shane Parrish</a> — A foundational guide to the thinking frameworks used by the world's best problem solvers.</li>
+          <li><a href="https://amzn.to/atomichabits" target="_blank" rel="noopener sponsored">Atomic Habits — James Clear</a> — Build the systematic daily habits that make creative thinking a natural part of your routine.</li>
+        </ul>
+      </section>
+
     </div>
-
-    <section id="real-world-examples">
-      <h2>Real-World Examples</h2>
-
-      <h3>FedEx Overnight Delivery</h3>
-      <p>The overnight delivery industry emerged from lateral thinking: instead of improving ground shipping incrementally (vertical), Fred Smith asked "What if all packages went to a central hub first?" This hub-and-spoke model — counterintuitive at first glance — became the foundation of FedEx.</p>
-
-      <h3>The Post-It Note</h3>
-      <p>Spencer Silver at 3M invented a weak adhesive that everyone considered a failure. Art Fry, a colleague, laterally reframed "weak adhesive" as "repositionable bookmark." A failed product became a billion-dollar innovation.</p>
-
-      <h3>Airbnb</h3>
-      <p>Rather than building more hotels (vertical thinking), Airbnb laterally asked: "What if the unused bedrooms that already exist could become hotel rooms?" The same resource, seen differently, created an entirely new industry.</p>
-    </section>
-
-    <section id="how-to-apply">
-      <h2>How to Apply Lateral Thinking</h2>
-      <StepsList steps={[
-        {
-          title: "State the problem clearly first",
-          description: "Write your problem in one sentence. Vague problems produce vague lateral thinking. Specific problem statements give your creative techniques something concrete to push against."
-        },
-        {
-          title: "Choose a lateral technique",
-          description: "Select Random Entry, Provocation, or Challenge based on your context. Random Entry works well for stuck creative projects. Provocation works well for systemic problems. Challenge works well for questioning inherited processes."
-        },
-        {
-          title: "Generate without judging",
-          description: "During the lateral phase, suspend evaluation entirely. Write down every idea — even obviously bad ones. Premature judgment kills the generative phase before it can produce useful insights."
-        },
-        {
-          title: "Harvest useful directions",
-          description: "Review your generated ideas for any direction or concept that has potential — even partial potential. You're not looking for finished solutions yet, just promising vectors."
-        },
-        {
-          title: "Develop promising ideas with vertical thinking",
-          description: "Switch to analytical mode. Take the best directions from lateral thinking and develop them rigorously — test feasibility, identify risks, refine details."
-        },
-        {
-          title: "Practice with low-stakes problems first",
-          description: "Build the habit with everyday problems: how could you organize your desk differently? How could meetings be structured differently? Small practice builds the muscle for high-stakes creative problem solving."
-        }
-      ]} />
-    </section>
-
-    <section id="misconceptions">
-      <h2>Common Misconceptions</h2>
-
-      <ContentBox type="warning">
-        <h3>❌ "Lateral thinking just means brainstorming"</h3>
-        <p>Brainstorming is unstructured idea generation. Lateral thinking uses specific, deliberate techniques (provocation, random entry, challenge) that have a different cognitive mechanism. It's structured creativity, not free association.</p>
-      </ContentBox>
-
-      <ContentBox type="warning">
-        <h3>❌ "It's only useful for creative professionals"</h3>
-        <p>Lateral thinking applies to any domain with problems that standard approaches haven't solved — engineering, medicine, management, personal decisions. Edward de Bono taught it in medical schools and Fortune 500 companies alike.</p>
-      </ContentBox>
-
-      <ContentBox type="warning">
-        <h3>❌ "You either have creative thinking or you don't"</h3>
-        <p>This is the fixed mindset applied to creativity. De Bono's entire thesis is that lateral thinking is a learnable skill, not a personality trait. Regular practice with the techniques produces measurable improvement.</p>
-      </ContentBox>
-    </section>
-
-    <!-- AD 3: Before conclusion (display) -->
-    <div class="ad-container">
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-7229511013815291"
-        data-ad-slot="4827765044"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <section id="conclusion">
-      <h2>Conclusion</h2>
-      <p>Lateral thinking isn't about being randomly creative — it's a disciplined practice of deliberately disrupting your own mental patterns to find solutions you wouldn't reach through logic alone. The techniques Edward de Bono developed are tools, not magic: they work when practiced consistently and combined with rigorous analysis.</p>
-      <p>The most innovative thinkers in history weren't just smarter — they thought differently. They questioned assumptions, combined unrelated ideas, and were willing to look absurd before they looked brilliant. That's a learnable skill. Start small, practice the techniques, and gradually build your lateral thinking capacity into one of your most valuable cognitive assets.</p>
-    </section>
-
-    <ContentBox type="tip">
-      <h3>Ready to Think More Creatively?</h3>
-      <p>Start with one technique this week. Pick a real problem you're stuck on and apply Random Entry: open a dictionary to a random page, pick the first noun you see, and spend 10 minutes forcing connections to your problem. You'll be surprised what emerges.</p>
-    </ContentBox>
-
-    <section class="author-bio">
-      <img src="/images/author.jpg" alt="Success Odyssey Author" class="author-avatar" loading="lazy" />
-      <div class="author-info">
-        <h3>Success Odyssey</h3>
-        <p>We study the science of decision-making, cognitive psychology, and peak performance to help you think more clearly and act more effectively. Our content is grounded in research and built for practical application.</p>
-      </div>
-    </section>
-
-    <section class="related-articles">
-      <h2>Related Articles</h2>
-      <ul>
-        <li><a href="/blog/critical-thinking-skills">Critical Thinking Skills: How to Think More Clearly</a></li>
-        <li><a href="/blog/avoid-cognitive-biases">How to Avoid Cognitive Biases in Everyday Decisions</a></li>
-        <li><a href="/blog/first-principles-thinking">First Principles Thinking: Elon Musk's Problem-Solving Method</a></li>
-      </ul>
-    </section>
-
-    <section class="external-resources">
-      <h2>External Resources</h2>
-      <ul>
-        <li><a href="https://www.debonogroup.com/services/core-programs/lateral-thinking/" target="_blank" rel="noopener noreferrer">The de Bono Group – Official Lateral Thinking Resources</a></li>
-        <li><a href="https://fs.blog/edward-de-bono-lateral-thinking/" target="_blank" rel="noopener noreferrer">Farnam Street – Edward de Bono on Lateral Thinking</a></li>
-        <li><a href="https://hbr.org/2012/03/six-thinking-hats" target="_blank" rel="noopener noreferrer">Harvard Business Review – The Six Thinking Hats</a></li>
-      </ul>
-    </section>
-
-    <section class="book-recommendations">
-      <h2>Recommended Books</h2>
-      <ul>
-        <li>
-          <a href="https://amzn.to/greatmentalmodels" target="_blank" rel="noopener noreferrer sponsored">
-            <strong>The Great Mental Models Vol. 1</strong> – Shane Parrish<br/>
-            <span>A foundational guide to the thinking frameworks used by the world's best problem solvers.</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://amzn.to/atomichabits" target="_blank" rel="noopener noreferrer sponsored">
-            <strong>Atomic Habits</strong> – James Clear<br/>
-            <span>Build the systematic daily habits that make creative thinking a natural part of your routine.</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-
   </article>
-</BaseLayout>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0;
+    .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;
+      .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+      .read-time, time { color: #64748b; font-size: 0.9rem; }
+    }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; }
+    .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; }
+  }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA;
+    h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; }
+    a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } }
+  }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem;
+    section { margin-bottom: 3rem; }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; }
+    h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; }
+    p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } }
+    a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } }
+  }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA;
+    h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; }
+  }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem;
+    h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; }
+    ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } }
+  }
+  @media (prefers-color-scheme: dark) {
+    .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } }
+    .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } }
+    .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } }
+    .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } }
+  }
+</style>
