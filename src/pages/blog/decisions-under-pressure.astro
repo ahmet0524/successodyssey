@@ -1,0 +1,467 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3a.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import ContentGrid from "../../components/blog/ContentGrid.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2026-05-09T00:00:00Z";
+const dateModified  = "2026-05-09T00:00:00Z";
+const author        = "Success Odyssey Hub";
+const pageTitle       = "How to Make Decisions Under Pressure: Stay Clear When Stakes Are High";
+const pageDescription = "Pressure degrades decision quality in predictable ways. Learn the cognitive science of high-stakes decisions and the specific techniques that keep your judgment sharp when it matters most.";
+const pageKeywords    = "decisions under pressure, decision making under stress, high stakes decision making, how to think clearly under pressure, stress and decision making, cognitive performance under pressure, decision making anxiety, pressure decision quality, crisis decision making, making good decisions when stressed, decision making techniques, calm under pressure";
+const readingTime     = 13;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={heroImage}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/decisions-under-pressure"
+>
+  <link rel="preload" as="image" href={heroImage.src} slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why do people make worse decisions under pressure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pressure triggers the brain's threat response, flooding the body with cortisol and adrenaline. This narrows attention to the most immediate threat, reduces working memory capacity, accelerates processing toward fast pattern-matching (System 1), and suppresses the prefrontal cortex activity needed for deliberate reasoning. The result: tunnel vision, premature closure on the first plausible option, and decisions driven by anxiety rather than analysis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the single most effective technique for better decisions under pressure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Creating a deliberate pause before deciding — even just 10-30 seconds of conscious interruption — breaks the automatic stress-driven response cycle. This pause allows the prefrontal cortex to re-engage, reframes the decision from a threat to a problem, and opens space for the broader option set that pressure-induced tunnel vision closes off."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do high performers maintain decision quality under pressure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Elite performers use three main strategies: pre-commitment (making decisions in advance before pressure hits), simulation (repeatedly practicing high-pressure scenarios until procedures become automatic), and structured protocols (decision checklists and frameworks that reduce reliance on real-time judgment when judgment is most impaired). They also build stress tolerance through deliberate exposure so pressure itself becomes less impairing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it ever right to trust your gut under pressure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — but only when the gut response is built on genuine expertise in the relevant domain. Expert intuition under pressure (like a firefighter's pattern recognition or a surgeon's procedural instinct) is a form of fast, compressed deliberation from thousands of hours of experience. Novice gut reactions under pressure, by contrast, are typically just anxiety-driven impulses. The key question: have I built enough domain experience that my automatic response reflects real pattern recognition?"
+        }
+      }
+    ]
+  })} />
+
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Decision Making</span>
+        <span class="read-time">{readingTime} min read</span>
+      </div>
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <p class="article-subtitle">The moments that define careers and lives are almost always moments of pressure — a negotiation, a crisis, a fork in the road that demands a response now. Yet pressure is precisely when the brain's decision-making machinery works worst. Here's how to fix that.</p>
+      <div class="author-info">
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">{author}</span>
+        </span>
+        <time itemprop="datePublished" datetime={datePublished}>May 9, 2026</time>
+      </div>
+    </header>
+
+    <figure class="article-hero">
+      <Image
+        src={heroImage}
+        alt="How to Make Decisions Under Pressure: Stay Clear When Stakes Are High"
+        width={1200}
+        height={630}
+        fetchpriority="high"
+        loading="eager"
+      />
+    </figure>
+
+    <div class="article-body" itemprop="articleBody">
+
+      <section>
+        <h2>What Pressure Does to Your Brain</h2>
+        <p>When you perceive a threat — a looming deadline, a confrontational conversation, a business crisis — your brain initiates a cascade of physiological changes designed for survival, not sophisticated reasoning. Cortisol and adrenaline flood the system. Heart rate and blood pressure rise. Attention narrows sharply to the most immediate threat.</p>
+        <p>This is the stress response, and it evolved to be useful. If a predator is chasing you, you don't need deliberate analysis — you need fast, decisive physical action. The problem is that modern high-stakes decisions rarely involve predators. They involve nuance, tradeoffs, incomplete information, and long-term consequences that the stress response is actively hostile to processing well.</p>
+        <p>What specifically degrades under pressure:</p>
+        <ul>
+          <li><strong>Working memory capacity drops</strong> — you literally have less cognitive space to hold and process competing options</li>
+          <li><strong>Attention tunnels</strong> — you fixate on the most salient aspect of the problem and miss important context</li>
+          <li><strong>Option generation narrows</strong> — you converge on the first plausible solution rather than generating alternatives</li>
+          <li><strong>Time perception distorts</strong> — urgency feels more extreme than it is, compressing the decision timeline unnecessarily</li>
+          <li><strong>Risk assessment shifts</strong> — high-stress states make people either overly risk-averse or, in some conditions, recklessly risk-seeking</li>
+        </ul>
+
+        <ContentBox type="highlight" title="The Pressure Paradox">
+          The higher the stakes of a decision, the more pressure accompanies it — and the more pressure degrades the cognitive processes you need most. The moments that matter most are the moments when your natural decision-making is most impaired. This is not a flaw to accept; it's a problem with known solutions.
+        </ContentBox>
+      </section>
+
+      <section>
+        <h2>The Two Types of Pressure Decisions</h2>
+        <p>Not all pressure decisions are the same, and the right response strategy depends on which type you're facing.</p>
+
+        <ContentGrid columns={2} gap="md">
+          <ContentBox type="info" title="Time-Constrained Decisions">
+            You must decide now — seconds or minutes. The pressure is real and the time compression is genuine. Examples: a crisis response, a negotiation moment, a medical emergency.<br/><br/>
+            Strategy: Pre-commitment and trained protocols. The decision should largely be made in advance. Your job in the moment is to recognize the situation type and execute.
+          </ContentBox>
+          <ContentBox type="tip" title="Stakes-Elevated Decisions">
+            You have time — hours, days — but the stakes feel overwhelming, creating artificial urgency. Examples: a major career decision, a large financial commitment, a difficult conversation you've been avoiding.<br/><br/>
+            Strategy: Decompression and structure. The feeling of urgency is the enemy. Create space, use decision frameworks, and recognize that the pressure is psychological, not temporal.
+          </ContentBox>
+        </ContentGrid>
+
+        <p>Most people treat stakes-elevated decisions as if they were time-constrained — they make them quickly to escape the discomfort of sitting with uncertainty. This is one of the most expensive decision-making errors there is. The discomfort of a high-stakes decision is not a signal to decide faster. It's a signal to think more carefully.</p>
+      </section>
+
+      <section>
+        <h2>The Pause: Your Most Powerful Tool</h2>
+        <p>Before any technique, any framework, any protocol — there is the pause. A deliberate interruption of the automatic stress-to-action sequence that pressure creates.</p>
+        <p>When pressure hits and a decision feels urgent, the untrained response is immediate action — driven by the need to resolve the discomfort. The trained response is to create space, however small, before committing to a course of action.</p>
+        <p>Even 10-30 seconds of conscious pause does measurable things to decision quality:</p>
+        <ul>
+          <li>Allows the acute stress response to begin subsiding</li>
+          <li>Reactivates prefrontal cortex processing that the threat response suppresses</li>
+          <li>Reframes the situation from threat to problem — a shift that opens the option space</li>
+          <li>Creates the cognitive space to ask "what am I missing?" rather than "what's my answer?"</li>
+        </ul>
+        <p>In negotiation, this pause is called tactical silence. In leadership, it's called composure. In medicine, it's called taking a breath before cutting. In all contexts, it's the difference between a reactive and a deliberate response.</p>
+
+        <ContentBox type="quote" title="Viktor Frankl on the Space Between Stimulus and Response">
+          "Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom." The pause is not passivity — it is the deliberate occupation of that space.
+        </ContentBox>
+      </section>
+
+      <!-- Fluid In-Article Ad -->
+      <ins class="adsbygoogle"
+        style="display:block; text-align:center;"
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client="ca-pub-7229511013815291"
+        data-ad-slot="4827765044"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section>
+        <h2>Pre-Commitment: Decide Before the Pressure Hits</h2>
+        <p>The most reliable way to make good decisions under pressure is to make them before the pressure arrives. Pre-commitment — deciding in advance what you will do in specific high-pressure scenarios — removes the need for real-time judgment in the moment when judgment is most compromised.</p>
+        <p>This is the logic behind:</p>
+        <ul>
+          <li><strong>Investment rules</strong> — "I will sell if the position drops 20%" decided before market volatility, not during it</li>
+          <li><strong>Negotiation walk-away points</strong> — "I will not accept less than X" decided before the negotiation begins, when you're calm</li>
+          <li><strong>Crisis protocols</strong> — what the organization does in the first 60 minutes of a crisis, pre-written, pre-rehearsed</li>
+          <li><strong>Personal principles</strong> — "I don't make major financial decisions the same day I hear about them" as a standing rule</li>
+        </ul>
+        <p>Pre-commitment works because it moves the decision to a cognitive context — low pressure, clear thinking, adequate time — and binds your future high-pressure self to the calm self's judgment. The pressure-self is not asked to decide; it's asked to follow a plan.</p>
+
+        <ContentBox type="warning" title="The Danger of In-the-Moment Flexibility">
+          Pre-commitment rules feel constraining — until pressure hits and you understand what they're protecting you from. The investor who overrides their stop-loss "just this once" because the market is volatile is making a worse decision than the one they made when they set the rule. Pressure makes exceptions feel justified. They rarely are.
+        </ContentBox>
+      </section>
+
+      <section>
+        <h2>Cognitive Techniques for In-the-Moment Clarity</h2>
+        <p>When pressure is real and time is genuinely limited, these techniques help maintain decision quality during the window you have.</p>
+
+        <h3>The Perspective Shift</h3>
+        <p>Ask: "What would I advise a trusted friend to do in this exact situation?" This simple reframe creates psychological distance that reduces the emotional noise generated by personal stakes. Research consistently shows that people give better advice to others facing the same dilemma they face themselves — because the emotional charge is lower and the reasoning clearer.</p>
+        <p>Related: "What will I think of this decision in 10 years?" Time perspective expansion reduces the apparent urgency that creates pressure and puts stakes in proportion.</p>
+
+        <h3>The Reverse Question</h3>
+        <p>Instead of asking "what should I do?" ask "what should I avoid?" When options feel overwhelming, it's often easier to eliminate clearly wrong choices than to identify the clearly right one. The remaining option space is smaller and easier to navigate.</p>
+
+        <h3>The Binary Test</h3>
+        <p>Strip the decision to its simplest form: "If I had to choose between A and B right now, what would I choose?" This works when analysis paralysis — a common pressure response — has generated so many considerations that action feels impossible. Force binary choice, then re-examine if time permits.</p>
+
+        <h3>The Minimum Viable Decision</h3>
+        <p>Ask: "What is the smallest decision I can make right now that preserves my options?" Under pressure, the instinct is to decide everything at once. The disciplined response is to decide only what must be decided now, leave what can wait open, and reduce the decision to its actual immediate requirements.</p>
+
+        <h3>Physiological Regulation</h3>
+        <p>Cognitive techniques work better when the body's stress response is modulated. Controlled breathing — specifically, extended exhalation — activates the parasympathetic nervous system and reduces cortisol levels within seconds. The physiological sigh (two quick inhales through the nose, followed by a long exhale through the mouth) has been shown in Stanford research to be the fastest single technique for real-time stress reduction. This is not a soft strategy — it's neuroscience.</p>
+      </section>
+
+      <section>
+        <h2>Structured Protocols: Checklists Under Pressure</h2>
+        <p>Atul Gawande's research on surgical checklists demonstrated something counterintuitive: highly trained experts made fewer errors when they used structured protocols than when they relied on judgment alone. This is especially true under pressure, when expert judgment is most degraded.</p>
+        <p>The implication: for recurring high-pressure decision scenarios, develop a checklist. Not a comprehensive analytical framework — a short, actionable sequence that prevents the most critical errors even when cognitive capacity is compressed.</p>
+        <p>A good pressure decision checklist for leaders:</p>
+        <ul>
+          <li>What do I actually know vs. what am I assuming?</li>
+          <li>Who else needs to be involved in this decision?</li>
+          <li>What's the worst realistic outcome if I get this wrong?</li>
+          <li>Do I have to decide right now, or can I take 30 more minutes?</li>
+          <li>What would I regret not doing?</li>
+        </ul>
+        <p>Five questions. Sixty seconds. Enough to prevent the most common pressure-driven decision errors.</p>
+      </section>
+
+      <section>
+        <h2>Expert Intuition vs. Anxiety Responses</h2>
+        <p>Not all fast decisions under pressure are bad decisions. Genuine expert intuition — the compressed, automatic judgment of someone with thousands of hours of domain-specific experience — can be more reliable than slow deliberation, precisely because it draws on deep pattern recognition that analytical thinking can miss.</p>
+        <p>Gary Klein's research on naturalistic decision-making showed that experienced firefighters, military commanders, and emergency physicians often made excellent fast decisions by recognizing situation types and executing proven responses — without consciously generating and comparing options.</p>
+        <p>The critical distinction:</p>
+
+        <ContentGrid columns={2} gap="md">
+          <ContentBox type="tip" title="Expert Intuition (Trust It)">
+            — Built on thousands of hours of deliberate practice in the domain<br/>
+            — Pattern recognition: "I've seen this before"<br/>
+            — Fast but not thoughtless — compressed experience<br/>
+            — Produces the same answer on reflection<br/>
+            — Domain: areas where you have genuine mastery
+          </ContentBox>
+          <ContentBox type="warning" title="Anxiety Response (Override It)">
+            — Driven by stress, not experience<br/>
+            — Avoidance pattern: "I need this pressure to stop"<br/>
+            — Fast and thoughtless — compressed panic<br/>
+            — Changes significantly on reflection<br/>
+            — Domain: unfamiliar, novel, or emotionally charged situations
+          </ContentBox>
+        </ContentGrid>
+
+        <p>The test: would a calm, 10-minute reflection produce the same answer? If yes, your intuition is probably reliable. If the answer would change significantly with more space, it's likely anxiety-driven — and the pause technique is essential.</p>
+      </section>
+
+      <section>
+        <h2>Building Pressure Tolerance: Training the Decision Muscle</h2>
+        <p>The most durable solution to pressure-degraded decisions is reducing how much pressure degrades you — by systematically building stress tolerance through deliberate exposure.</p>
+        <p>This is what elite performers in every field do. Military special operations units train in conditions designed to replicate combat stress — not just to learn tactics, but to make stress itself less cognitively impairing. Surgeons practice procedures under simulated time pressure. Athletes compete in high-stakes practice scenarios. The goal is always the same: narrow the gap between what you can do under ideal conditions and what you can do under pressure.</p>
+        <p>For everyday decision-makers, this means:</p>
+        <ul>
+          <li><strong>Deliberately seek low-stakes pressure situations.</strong> Debate, negotiation, impromptu speaking, competitive games — any context that creates real-time pressure trains the stress response to be less disruptive.</li>
+          <li><strong>Practice decision frameworks until they're automatic.</strong> If you have to remember how to apply a framework while under pressure, the pressure will disrupt the application. The framework must be practiced until it runs without conscious effort.</li>
+          <li><strong>Simulate high-stakes scenarios before they're real.</strong> Walk through how you'd handle the difficult conversation, the crisis, the negotiation — before it happens. Pre-simulation reduces novelty, and novelty amplifies the stress response.</li>
+          <li><strong>Review past pressure decisions honestly.</strong> What did you do? What did you miss? What would you do differently? This debrief process is how professionals convert experience into expertise rather than just accumulating repetitions.</li>
+        </ul>
+
+        <ContentBox type="info" title="The 40% Rule">
+          Navy SEALs use the concept of the 40% rule: when you feel like you're at your limit, you're typically at about 40% of your actual capacity. The feeling of being overwhelmed arrives well before the actual limit. Under pressure, that feeling becomes even more distorted. Knowing this is not just motivational — it's a calibration tool. The cognitive shutdown that pressure produces is often the brain protecting itself from perceived danger, not actual incapacity.
+        </ContentBox>
+      </section>
+
+      <section>
+        <h2>A Complete Protocol for High-Stakes Pressure Decisions</h2>
+
+        <StepsList title="The Pressure Decision Protocol">
+          <li><strong>Pause deliberately.</strong> Before any response, create a conscious gap — 10 seconds minimum. Use a breath, a phrase ("let me think about this"), or a physical pause. This is not weakness; it is the prerequisite for everything that follows.</li>
+          <li><strong>Classify the pressure.</strong> Is this genuine time urgency or stakes-elevated anxiety? If you have more time than the pressure makes it feel, reclaim it. Most "urgent" decisions are not actually time-constrained within the next hour.</li>
+          <li><strong>Name what you know vs. what you're assuming.</strong> Write or mentally separate confirmed facts from inferences and fears. Pressure collapses this distinction; re-establishing it immediately improves decision quality.</li>
+          <li><strong>Apply the perspective shift.</strong> What would you advise a trusted friend in this situation? What will you think of this decision in five years? This creates the cognitive distance that reduces emotional noise.</li>
+          <li><strong>Generate at least one alternative.</strong> Pressure produces premature closure on the first option. Force yourself to name at least one other course of action, even if it seems inferior. The act of generating alternatives expands the option space.</li>
+          <li><strong>Check for pre-commitments.</strong> Have you already decided what to do in a situation like this? If yes, execute the pre-commitment unless the current situation is genuinely different from what you anticipated when you made it.</li>
+          <li><strong>Decide and act — then debrief.</strong> Make the best decision you can with available information, execute it clearly, and commit to a debrief afterward. The debrief — what did I know, what did I do, what would I change — is how pressure decisions become expertise over time.</li>
+        </StepsList>
+      </section>
+
+      <section>
+        <h2>The Long Game: Decisions That Matter</h2>
+        <p>The decisions that most shape a life — career pivots, relationship choices, major commitments, crisis responses — almost always arrive under pressure. They feel urgent, they carry real stakes, and they demand a response before the feeling of uncertainty becomes unbearable.</p>
+        <p>The people who navigate these moments well are not people who happen to be calm by nature. They are people who have built the habits, protocols, and stress tolerance to perform well precisely when performance is hardest. They pause. They separate urgency from importance. They apply structure to their thinking. They have decided in advance what they value and what they will not compromise.</p>
+        <p>The result is not perfection — high-stakes decisions under genuine pressure will sometimes produce bad outcomes even with excellent process. But over time, the quality of judgment compounds. Each well-handled pressure moment builds tolerance for the next. Each debriefed decision adds calibration to future estimates. Each pre-committed principle removes one more real-time judgment from the pressure window.</p>
+        <p>Clarity under pressure is not a gift. It is a skill. And like all skills, it is built through practice, not through waiting for the right temperament to appear.</p>
+
+        <ContentBox type="tip" title="Key Takeaways">
+          — Pressure impairs working memory, tunnels attention, and narrows options — understanding this is the first step<br/>
+          — Classify pressure: time-constrained (need protocols) vs. stakes-elevated (need decompression)<br/>
+          — The pause is the most universally effective technique — even 10-30 seconds changes outcomes<br/>
+          — Pre-commitment: make high-stakes decisions before pressure hits, when judgment is clearest<br/>
+          — Expert intuition is reliable; anxiety responses are not — learn to distinguish them<br/>
+          — Build pressure tolerance deliberately through simulation, practice, and honest debrief<br/>
+          — Physiological regulation (extended exhalation) works in seconds and supports all cognitive techniques
+        </ContentBox>
+      </section>
+
+      <section class="related-articles">
+        <h2>Related Articles</h2>
+        <ul>
+          <li><a href="/blog/thinking-clearly-uncertainty">How to Think Clearly Under Uncertainty</a></li>
+          <li><a href="/blog/decision-making-framework">A Decision Making Framework That Actually Works</a></li>
+          <li><a href="/blog/pre-mortem-technique">The Pre-Mortem Technique: Prevent Failure Before It Happens</a></li>
+          <li><a href="/blog/decision-journal">How to Keep a Decision Journal</a></li>
+        </ul>
+      </section>
+
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+  .article-header {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 2rem 1rem 0;
+
+    .article-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .category-badge {
+        background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .read-time {
+        color: #64748b;
+        font-size: 0.9rem;
+      }
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+
+    .article-subtitle {
+      font-size: 1.15rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .author-info {
+      display: flex;
+      gap: 1rem;
+      color: #64748b;
+      font-size: 0.9rem;
+      align-items: center;
+
+      time { color: #94a3b8; }
+    }
+  }
+
+  .article-hero {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+  }
+
+  .article-body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem 4rem;
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: #1e293b;
+      margin: 2.5rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 3px solid #667EEA;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #334155;
+      margin: 2rem 0 0.75rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.25rem;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+
+      li {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    a {
+      color: #667EEA;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      &:hover { color: #764BA2; }
+    }
+  }
+
+  .related-articles {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 3rem;
+
+    h2 {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e2e8f0;
+
+        &:last-child { border-bottom: none; }
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .article-header {
+      h1 { color: #f1f5f9; }
+      .article-subtitle { color: #94a3b8; }
+    }
+
+    .article-body {
+      h2 { color: #f1f5f9; }
+      h3 { color: #e2e8f0; }
+      p, li { color: #cbd5e1; }
+    }
+
+    .related-articles {
+      background: #1e293b;
+
+      li { border-color: #334155; }
+    }
+  }
+</style>
