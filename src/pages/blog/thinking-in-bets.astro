@@ -1,0 +1,275 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card2a.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import ContentGrid from "../../components/blog/ContentGrid.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2026-05-09T00:00:00Z";
+const dateModified  = "2026-05-09T00:00:00Z";
+const author        = "Success Odyssey Hub";
+const pageTitle     = "Thinking in Bets: Annie Duke's Framework Explained";
+const pageDescription = "Annie Duke's Thinking in Bets reframes every decision as a bet on an uncertain future. Learn how this framework eliminates resulting, improves judgment calibration, and builds a more honest relationship with uncertainty.";
+const pageKeywords  = "thinking in bets, Annie Duke thinking in bets, decision making framework, resulting bias, decisions under uncertainty, poker thinking framework, how to make better decisions, outcome vs decision quality, calibrated thinking, probabilistic decisions, separating decisions from outcomes, decision quality improvement, good decisions bad outcomes";
+const readingTime   = 12;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={heroImage}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/thinking-in-bets"
+>
+  <link rel="preload" as="image" href={heroImage.src} slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does 'thinking in bets' mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Thinking in bets means recognizing that most decisions are bets on uncertain future outcomes — you're choosing based on what you believe will happen, not what you know will happen. This framing forces honest probability estimation, separates decision quality from outcome quality, and reduces the tendency to judge decisions by how they turned out rather than by how good the reasoning was at the time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is 'resulting' and why is it a problem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Resulting is the tendency to evaluate the quality of a decision by its outcome. A good decision that produces a bad outcome gets labeled a mistake; a bad decision that produces a good outcome gets labeled smart. This is a fundamental error because decisions are made before outcomes are known. Resulting prevents learning from experience because it attributes outcomes to decision quality rather than to the probabilistic nature of uncertain events."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply thinking in bets to everyday decisions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Before any significant decision, explicitly state your confidence level as a probability: 'I'm 70% confident this is the right choice.' This forces honest uncertainty acknowledgment. After outcomes, review the decision quality separately from the outcome — was the reasoning sound given what you knew? Build a peer group that evaluates your thinking process, not just whether things worked out."
+        }
+      }
+    ]
+  })} />
+
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Decision Making</span>
+        <span class="read-time">{readingTime} min read</span>
+        <time itemprop="datePublished" datetime={datePublished}>May 9, 2026</time>
+      </div>
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <p class="article-subtitle">Every decision you make is a bet. You're wagering that your chosen path leads somewhere better than the alternatives. The question isn't whether to bet — you can't not bet. The question is whether you're betting well.</p>
+      <span itemprop="author" itemscope itemtype="https://schema.org/Person" style="display:none">
+        <span itemprop="name">{author}</span>
+      </span>
+    </header>
+
+    <figure class="article-hero">
+      <Image
+        src={heroImage}
+        alt="thinking in bets Annie Duke framework — decision maker evaluating probability and uncertainty"
+        width={1200}
+        height={630}
+        fetchpriority="high"
+        loading="eager"
+      />
+    </figure>
+
+    <nav class="table-of-contents" aria-label="Table of Contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#poker-insight">The Poker Player's Insight</a></li>
+        <li><a href="#resulting">Resulting: The Enemy of Good Judgment</a></li>
+        <li><a href="#uncertainty">Embracing Uncertainty Honestly</a></li>
+        <li><a href="#truth-seeking">Building a Truth-Seeking Group</a></li>
+        <li><a href="#how-to-apply">How to Apply This</a></li>
+        <li><a href="#misconceptions">Common Misconceptions</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <!-- AD 1: After TOC -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="article-body" itemprop="articleBody">
+
+      <section id="poker-insight">
+        <h2>The Poker Player's Insight</h2>
+        <p>Annie Duke was one of the most successful professional poker players in history — the only woman to win the World Series of Poker Tournament of Champions — before becoming a decision strategist and author. The core insight she brought from poker to decision science: in poker, you can make the right decision and still lose. You can make the wrong decision and still win. The cards don't care about the quality of your reasoning.</p>
+        <p>The same is true of every decision made under uncertainty — which is virtually every decision that matters. You can make the correct career move and have it not work out because of factors outside your control. You can make a poor investment decision and profit because of luck. You can choose correctly and fail; choose incorrectly and succeed.</p>
+        <p>This creates a fundamental problem: if outcomes are our primary signal for decision quality, we're using a corrupted signal. We're attributing to the quality of our reasoning what is partly a function of random variation, incomplete information, and external factors we couldn't control. The solution is to evaluate decisions by the quality of the reasoning at the time — not by what happened afterward.</p>
+
+        <ContentBox type="highlight" title="The Core Reframe">
+          Life, like poker, is a game of incomplete information played under uncertainty. The goal isn't to make decisions that always work out — that's impossible. The goal is to make decisions that are good bets: positive expected value, sound process, calibrated confidence — and then accept that good bets sometimes lose.
+        </ContentBox>
+      </section>
+
+      <section id="resulting">
+        <h2>Resulting: The Enemy of Good Judgment</h2>
+        <p>Duke calls the tendency to judge decisions by their outcomes "resulting" — and it is one of the most pervasive and destructive patterns in human reasoning about decisions. It appears in two equally damaging forms.</p>
+
+        <h3>Negative Resulting</h3>
+        <p>A decision turns out badly, so we conclude it was a bad decision. We second-guess our reasoning, look for what we did wrong, and update toward more conservative choices in the future — even when the decision was actually sound and the bad outcome was simply the unlucky realization of a known risk. This produces risk aversion that isn't calibrated to actual decision quality.</p>
+
+        <h3>Positive Resulting</h3>
+        <p>A decision turns out well, so we conclude it was a good decision. We credit our reasoning, feel more confident in our process, and may take on more risk — even when the good outcome was partly or substantially luck. This produces overconfidence that isn't calibrated to actual skill.</p>
+        <p>Both forms of resulting corrupt the learning process. If you can't distinguish between good decisions with bad outcomes and bad decisions with bad outcomes, you can't improve your decision quality. You're learning from noise rather than signal. As Duke writes: "The quality of your decisions is not the quality of your outcomes."</p>
+
+        <ContentGrid columns={2} gap="md">
+          <ContentBox type="warning" title="Resulting Thinking">
+            "That worked out, so I made the right call"<br/>
+            "That failed, so I must have decided wrong"<br/>
+            Crediting luck to skill when outcomes are good<br/>
+            Attributing bad luck to bad judgment<br/>
+            Using outcomes as the primary feedback signal
+          </ContentBox>
+          <ContentBox type="tip" title="Process Thinking">
+            "Did I have the right information at the time?"<br/>
+            "Was my probability estimate calibrated?"<br/>
+            "Was the expected value genuinely positive?"<br/>
+            "What can I learn from the process, not the outcome?"<br/>
+            Separating decision review from outcome review
+          </ContentBox>
+        </ContentGrid>
+      </section>
+
+      <section id="uncertainty">
+        <h2>Embracing Uncertainty Honestly</h2>
+        <p>One of the most practical elements of Duke's framework is the insistence on expressing uncertainty explicitly, as probabilities, rather than hiding it behind confident-sounding language.</p>
+        <p>When someone says "I think this will work," they're making a prediction, but hiding the probability. What does "I think" mean? 60%? 90%? The ambiguity isn't accidental — it protects the speaker from being wrong. If the prediction fails, "I only said I thought it would work" provides cover. If it succeeds, the confident implication of the statement is credited.</p>
+        <p>Forcing explicit probability statements — "I'm about 70% confident this is the right hire" — does several things simultaneously. It makes the prediction falsifiable and therefore learnable. It forces honest reflection on how confident you actually are. It creates a record that can be reviewed against outcomes to calibrate your estimation. And it normalizes uncertainty in ways that make teams more honest about what they know and don't know.</p>
+        <p>Duke's exercise: practice replacing "I think," "I believe," and "I'm confident that" with explicit probabilities. The discomfort this produces is informative — it reveals how often confident-sounding language was obscuring genuine uncertainty.</p>
+      </section>
+
+      <!-- AD 2: Fluid In-Article -->
+      <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7229511013815291" data-ad-slot="2952775705"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="truth-seeking">
+        <h2>Building a Truth-Seeking Group</h2>
+        <p>Duke argues that individual decision-making is inherently limited by the blind spots, biases, and motivated reasoning that operate below our awareness. The corrective is a peer group specifically structured to improve decision quality — not to validate, not to encourage, but to help you see what you're missing.</p>
+        <p>Most social groups do the opposite. Friends validate our decisions because social harmony depends on it. Colleagues avoid challenging leadership because careers depend on it. Family members support our choices because relationships depend on it. These incentives produce echo chambers where feedback is systematically filtered toward what we want to hear.</p>
+        <p>A truth-seeking group operates under different norms: honest evaluation of reasoning (not outcome), willingness to say "your process here was weak," active challenge of confident assertions, and the explicit goal of accuracy rather than agreement. This is uncomfortable and rare — and, when you find or build one, dramatically accelerates the improvement of judgment over time. Building this kind of group — even informally — is one of the highest-leverage investments in decision quality available.</p>
+      </section>
+
+      <section id="how-to-apply">
+        <h2>How to Apply This</h2>
+        <StepsList title="Thinking in Bets: Practical Protocol">
+          <li><strong>Frame significant decisions as bets explicitly.</strong> "I am betting that this hire will work out. My confidence is approximately 75%. The cost of being wrong is X; the benefit of being right is Y." This framing forces honest assessment and makes the expected value calculation visible.</li>
+          <li><strong>Express confidence in probabilities, not adjectives.</strong> Replace "I think," "I'm pretty sure," and "I'm confident" with specific percentages. This is uncomfortable at first — that discomfort is the bias being surfaced.</li>
+          <li><strong>Separate decision review from outcome review.</strong> When reviewing past decisions, assess the reasoning quality independently of what happened. Would you make the same decision again with the same information? That's the signal. Whether it worked out is separate data.</li>
+          <li><strong>Track your probability estimates over time.</strong> If you say you're 80% confident in something, you should be right about 80% of the time across many instances. If your 80% predictions succeed 95% of the time, you're underconfident. If they succeed 60% of the time, you're overconfident. This calibration tracking is how you improve.</li>
+          <li><strong>Seek out people who will disagree honestly.</strong> Find at least one person in your professional life who will tell you when your reasoning is weak. Reward honest challenge rather than comfortable agreement. If everyone always agrees with you, you have an echo chamber, not a truth-seeking group.</li>
+          <li><strong>Apply the 10-10-10 test to high-stakes decisions.</strong> How will you feel about this decision in 10 minutes, 10 months, 10 years? This temporal expansion counters the present-bias that makes immediate emotions dominate what should be long-horizon reasoning.</li>
+        </StepsList>
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions</h2>
+
+        <h3>"Thinking in bets means being coldly calculated"</h3>
+        <p>The framework doesn't eliminate emotion from decisions — it adds structure to decisions that emotion alone makes poorly. Emotions contain real information about values, preferences, and intuitions built from experience. The goal is to make that information legible and accurate, not to replace it with pure calculation.</p>
+
+        <h3>"Good process guarantees good outcomes"</h3>
+        <p>No — it raises the probability of good outcomes over many decisions. A single decision, even made with excellent process, can produce a bad outcome. This is precisely the point: you can't evaluate a decision from a single outcome. The value of good process is statistical, not deterministic.</p>
+
+        <h3>"This framework is only for professional decision-makers"</h3>
+        <p>The value of thinking in bets scales exactly with the stakes and frequency of your decisions — which applies to almost everyone. Career choices, relationship decisions, financial moves, and health behaviors are all consequential enough to benefit from honest probability estimation and process-rather-than-outcome evaluation.</p>
+      </section>
+
+      <!-- AD 3: Before conclusion -->
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>Thinking in bets reframes the relationship between decisions and outcomes in a way that makes learning from experience actually possible. By separating decision quality from outcome quality, expressing uncertainty honestly, and building peer structures that prioritize accuracy over comfort, you create the conditions for judgment to actually improve over time — rather than oscillating randomly based on whatever happened last. The core commitment is simple: evaluate your reasoning as if you knew the outcome wouldn't tell you whether you were right.</p>
+
+        <ContentBox type="tip" title="This Week's Practice">
+          For the next 7 days, express your confidence in any significant assertion as a probability before someone can ask. "I'm about 65% sure this is the right approach." Track whether this feels accurate. Notice the discomfort — it's the gap between how certain you sound and how certain you actually are.
+        </ContentBox>
+      </section>
+
+      <section class="author-bio">
+        <div class="author-bio-content">
+          <h3>About Success Odyssey Hub</h3>
+          <p>Success Odyssey Hub creates evidence-based content on decision making, mental models, and the psychology of high performance. Every article draws from peer-reviewed research and the documented practices of exceptional performers across business, science, and leadership.</p>
+        </div>
+      </section>
+
+      <section class="related-articles">
+        <h2>Related Articles</h2>
+        <ul>
+          <li><a href="/blog/probabilistic-thinking">Probabilistic Thinking: See the World More Clearly</a></li>
+          <li><a href="/blog/decision-journal">How to Keep a Decision Journal</a></li>
+          <li><a href="/blog/avoid-cognitive-biases">How to Avoid Cognitive Biases in Decisions</a></li>
+        </ul>
+      </section>
+
+      <section class="external-resources">
+        <h2>Further Reading</h2>
+        <ul>
+          <li><a href="https://www.annieduke.com/thinking-in-bets/" target="_blank" rel="noopener">Annie Duke — Thinking in Bets (official resources)</a></li>
+          <li><a href="https://fs.blog/annie-duke/" target="_blank" rel="noopener">Farnam Street — Interview with Annie Duke</a></li>
+          <li><a href="https://hbr.org/2018/02/how-to-make-better-decisions-when-you-dont-know-the-future" target="_blank" rel="noopener">Harvard Business Review — Making Better Decisions Under Uncertainty</a></li>
+        </ul>
+      </section>
+
+      <section class="book-recommendations">
+        <h2>Recommended Books</h2>
+        <ul>
+          <li><a href="https://amzn.to/thinkgrowrich" target="_blank" rel="noopener sponsored">Thinking in Bets — Annie Duke</a> — The foundational book on this framework.</li>
+          <li><a href="https://amzn.to/greatmentalmodels" target="_blank" rel="noopener sponsored">The Great Mental Models — Shane Parrish</a> — Complementary decision-making frameworks.</li>
+        </ul>
+      </section>
+
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0;
+    .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;
+      .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+      .read-time, time { color: #64748b; font-size: 0.9rem; }
+    }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; }
+    .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; }
+  }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA;
+    h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; }
+    a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } }
+  }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem;
+    section { margin-bottom: 3rem; }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; }
+    h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; }
+    p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } }
+    a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } }
+  }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA;
+    h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; }
+  }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem;
+    h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; }
+    ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } }
+  }
+  @media (prefers-color-scheme: dark) {
+    .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } }
+    .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } }
+    .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } }
+    .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } }
+  }
+</style>
