@@ -1,0 +1,563 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3a.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import ContentGrid from "../../components/blog/ContentGrid.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2026-05-09T00:00:00Z";
+const dateModified  = "2026-05-09T00:00:00Z";
+const author        = "Success Odyssey Hub";
+const pageTitle       = "How to Keep a Decision Journal: The Practice That Compounds Your Judgment";
+const pageDescription = "A decision journal is the single most effective tool for improving judgment over time. Learn exactly what to record, how to review it, and why most people who try decision journaling do it wrong — and how to do it right.";
+const pageKeywords    = "decision journal, how to keep a decision journal, decision journaling, improve decision making journal, decision log, judgment improvement, decision tracking, decision review process, decision journal template, calibrate judgment, decision making practice, record decisions";
+const readingTime     = 12;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  image={heroImage}
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/decision-journal"
+>
+  <link rel="preload" as="image" href={heroImage.src} slot="head" />
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a decision journal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A decision journal is a written record of significant decisions that captures your reasoning, assumptions, expected outcomes, and emotional state at the time of the decision — before you know the outcome. Reviewing these records against actual outcomes over time builds genuine calibration: you learn where your judgment is reliable, where you are systematically overconfident, and which cognitive biases most frequently distort your reasoning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should you write in a decision journal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each entry should capture: (1) the decision being made and the options considered, (2) the key reasoning and assumptions behind your choice, (3) what information you have and what you're uncertain about, (4) your confidence level and predicted outcome, (5) your emotional state at the time, and (6) what you expect to observe that will tell you whether the decision was good. Record before the outcome is known — this is what makes the journal useful."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should you review your decision journal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Review individual entries when enough time has passed to observe meaningful outcomes — typically 3 to 12 months after the decision, depending on the type. Conduct a broader pattern review quarterly or annually, looking across all entries for recurring biases, systematic overconfidence in specific domains, and patterns in which types of decisions you make well versus poorly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do most people who try decision journaling quit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most common failure mode is recording decisions but never reviewing them against outcomes — which eliminates most of the value. The second is applying the journal only to major decisions while skipping medium-stakes ones where patterns are most visible. The third is recording conclusions rather than reasoning — writing 'I chose X' rather than 'I chose X because I believe A, B, and C, and I estimate a 70% probability of outcome Y.' Reasoning records enable learning; conclusion records do not."
+        }
+      }
+    ]
+  })} />
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <header class="article-header">
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <div class="article-meta">
+        <time datetime={datePublished} itemprop="datePublished">May 9, 2026</time>
+        <meta itemprop="dateModified" content={dateModified} />
+        <span class="reading-time" itemprop="timeRequired" content={`PT${readingTime}M`}>{readingTime} min read</span>
+        <div class="article-tags">
+          <span class="tag">Decision Making</span>
+          <span class="tag">Productivity</span>
+          <span class="tag">Self-Improvement</span>
+        </div>
+      </div>
+    </header>
+
+    <figure class="hero-figure" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <Image
+        src={heroImage}
+        alt="Decision journal — a systematic practice for recording and reviewing decisions to build calibrated judgment and improve decision quality over time"
+        width={1200}
+        height={600}
+        loading="eager"
+        fetchpriority="high"
+        format="webp"
+        quality={90}
+        class="hero-image"
+      />
+      <meta itemprop="url" content={new URL(heroImage.src, Astro.site).toString()} />
+    </figure>
+
+    <div class="article-content" itemprop="articleBody">
+
+      <nav class="table-of-contents" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#why-journal">Why a Decision Journal Changes Everything</a></li>
+          <li><a href="#the-problem">The Problem with Learning from Experience</a></li>
+          <li><a href="#what-to-record">What to Record: The Decision Journal Template</a></li>
+          <li><a href="#how-to-review">How to Review: Extracting the Learning</a></li>
+          <li><a href="#which-decisions">Which Decisions Belong in the Journal?</a></li>
+          <li><a href="#common-mistakes">The Most Common Decision Journal Mistakes</a></li>
+          <li><a href="#build-the-habit">Building the Habit: Making It Stick</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+      </nav>
+
+      <!-- Top Ad -->
+      <div class="ad-unit ad-unit--top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="2952775705"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <p class="lead">
+        Experience is supposed to be the best teacher. But experience alone — without structured reflection — is a surprisingly unreliable way to improve judgment. The problem is not a lack of feedback. Most professionals receive plenty of outcome feedback over a career. The problem is that the feedback arrives too late, too ambiguously, and too subject to motivated interpretation to produce genuine calibration. We remember the decisions that worked and attribute them to skill; we explain away the ones that didn't with circumstances beyond our control. Without a written record of what we actually believed and why, before the outcome was known, we cannot distinguish between good decisions and lucky ones — or between bad decisions and unlucky ones. A decision journal solves this problem by creating an objective record of reasoning at decision time, making it possible to learn from experience with the precision that experience alone never provides.
+      </p>
+
+      <section id="why-journal">
+        <h2>Why a Decision Journal Changes Everything</h2>
+        <p>
+          The decision journal is, at its core, a calibration tool. Calibration — the alignment between your confidence in your judgments and the actual accuracy of those judgments — is one of the most powerful predictors of long-term decision quality. Philip Tetlock's decades of research on expert forecasting found that the most consistently accurate forecasters were those with the best calibration: when they said they were 70% confident, they were right about 70% of the time. When they said 90%, they were right about 90% of the time. This calibration — not raw intelligence, domain expertise, or analytical sophistication — was the primary differentiator between superforecasters and average experts.
+        </p>
+        <p>
+          Calibration cannot be improved without feedback that is specific enough to update beliefs. Without a decision journal, the feedback you receive from outcomes is systematically distorted: you misremember what you believed before the outcome, you attribute success to skill and failure to circumstance, and you interpret ambiguous outcomes in ways that confirm your prior beliefs about your own judgment quality. The journal prevents these distortions by creating an objective record that cannot be rewritten in hindsight.
+        </p>
+
+        <ContentBox type="highlight" title="Annie Duke on Decision Records">
+          <p>Former World Series of Poker champion and decision researcher Annie Duke, in her book <em>Thinking in Bets</em>, emphasizes that the only way to separate good decision-making from good luck is to record the reasoning behind decisions before outcomes are known. Without such records, we are subject to "resulting" — judging the quality of a decision by the outcome rather than by the quality of the process. Resulting produces exactly the wrong lessons: we learn to repeat processes that produced lucky outcomes and abandon processes that produced unlucky ones, even when the underlying decision quality was the reverse. The decision journal is the primary tool for countering resulting.</p>
+        </ContentBox>
+
+        <p>
+          Beyond calibration, the decision journal produces three additional benefits that compound over time. First, it forces clarity at decision time: the act of writing out your reasoning reveals gaps, hidden assumptions, and motivated reasoning that remain invisible when thinking is purely internal. Second, it creates an intellectual archive: the reasoning you develop for a difficult decision is often directly applicable to similar decisions years later, but only if it is written down. Third, it builds metacognitive awareness — over time, you develop a clearer picture of which types of decisions you make well, which cognitive biases recur in your reasoning, and which domains systematically exceed your competence. This self-knowledge is irreplaceable.
+        </p>
+      </section>
+
+      <section id="the-problem">
+        <h2>The Problem with Learning from Experience</h2>
+        <p>
+          The assumption that experience automatically produces wisdom is one of the most consequential false beliefs in professional life. Research on expert performance across domains — medicine, investing, management, law — consistently finds that years of experience do not reliably correlate with better judgment, except in environments with rapid, clear, and unambiguous feedback. Where feedback is delayed, ambiguous, or absent, experience often produces greater confidence without greater accuracy — a particularly dangerous combination.
+        </p>
+        <p>
+          Three specific failure modes prevent experience from producing genuine learning without structured reflection:
+        </p>
+
+        <h3>Outcome Bias and Resulting</h3>
+        <p>
+          We judge past decisions primarily by their outcomes, not by the quality of the reasoning that produced them. A decision that was poorly reasoned but produced a good outcome (due to luck, favorable conditions, or factors unrelated to the decision) is remembered as a good decision. A decision that was carefully reasoned but produced a bad outcome (due to genuine uncertainty or unfavorable conditions) is remembered as a mistake. Over time, this produces the wrong lessons: we repeat poor processes that got lucky and abandon good processes that got unlucky.
+        </p>
+
+        <h3>Hindsight Bias</h3>
+        <p>
+          Once an outcome is known, we unconsciously revise our memory of what we believed before the outcome. Events that actually surprised us are remembered as having seemed more predictable. Outcomes we got right are remembered as having seemed more obvious in advance. This hindsight bias makes it nearly impossible to accurately assess the quality of past reasoning without a written contemporaneous record — because the memory of what we believed has been overwritten by knowledge of what happened.
+        </p>
+
+        <h3>Attribution Asymmetry</h3>
+        <p>
+          We attribute success to skill and failure to circumstances. This self-serving bias prevents the extraction of accurate learning from outcomes: good outcomes teach us we are competent, and bad outcomes teach us about external adversity, regardless of whether the decision quality was actually different in the two cases. Written decision records, reviewed against actual outcomes, reveal the degree to which our self-assessments are accurate — often surprising us with both domains of genuine competence and persistent blind spots.
+        </p>
+      </section>
+
+      <!-- Mid-Article Ad -->
+      <div class="ad-unit ad-unit--mid">
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-7229511013815291"
+             data-ad-slot="4827765044"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section id="what-to-record">
+        <h2>What to Record: The Decision Journal Template</h2>
+        <p>
+          The content of a decision journal entry is what determines whether reviewing it later will produce genuine learning or merely confirm existing beliefs. The critical principle is: record reasoning, assumptions, and predictions before the outcome is known. An entry that captures only conclusions provides no basis for learning; an entry that captures the full reasoning structure makes it possible to identify exactly where and why the reasoning succeeded or failed.
+        </p>
+
+        <StepsList steps={[
+          {
+            title: "The Decision",
+            description: "State the decision being made in one or two specific sentences. 'I chose to hire candidate A over candidate B for the engineering lead role.' 'I decided to allocate 15% of my portfolio to X.' 'I chose to accept the project proposal from vendor Y.' Specificity matters — vague entries produce vague learning."
+          },
+          {
+            title: "The Options Considered",
+            description: "List all meaningful options you considered, including the option to do nothing. Recording only the chosen option makes it impossible to later assess whether the option selection process was sound — whether you considered the full space of possibilities or anchored on a narrow set from the start."
+          },
+          {
+            title: "The Key Reasoning",
+            description: "Write the main reasons for your choice in your own words, as if explaining to a thoughtful person who will challenge your logic. Not a bullet list of positives — a genuine argument for why this option is better than the alternatives, what evidence supports it, and how you weighted competing considerations."
+          },
+          {
+            title: "The Key Assumptions",
+            description: "Explicitly list the 3-5 most important assumptions on which your reasoning depends. 'I am assuming the market will grow at X% over the next two years.' 'I am assuming candidate A's references are accurate.' 'I am assuming the vendor can meet the timeline they quoted.' These assumptions are what to check first when reviewing the outcome."
+          },
+          {
+            title: "Your Confidence Level and Predicted Outcome",
+            description: "State explicitly how confident you are in the decision (as a percentage or scale) and what specific outcome you expect. 'I am 70% confident this hire will work out in the role. I expect to see X, Y, and Z within six months if I am right.' Explicit predictions are what make the journal a calibration tool rather than a diary."
+          },
+          {
+            title: "Your Emotional State",
+            description: "Note briefly how you feel about the decision: Are you excited, anxious, relieved, conflicted? Emotional state at decision time predicts important things: anxiety often signals genuine uncertainty being suppressed; excitement can signal overconfidence; relief from finally deciding can cloud post-decision evaluation. This note also helps you recognize when emotional states are driving reasoning rather than following it."
+          },
+          {
+            title: "What Will Tell You If You Were Right",
+            description: "Define in advance the observable signals that will indicate the decision was good or bad, and by when. 'By month 6, I expect to see X. By month 12, Y should be visible.' This forces you to think clearly about what success and failure actually look like — and prevents you from moving the goalposts in hindsight when reviewing the entry."
+          }
+        ]} />
+      </section>
+
+      <section id="how-to-review">
+        <h2>How to Review: Extracting the Learning</h2>
+        <p>
+          Recording decisions without reviewing them against outcomes is the most common failure mode in decision journaling. The record alone has limited value — it is the comparison between recorded reasoning and actual outcomes that produces calibration. Reviews should happen on two timeframes: individual entry reviews when outcomes are observable, and pattern reviews conducted periodically across all entries.
+        </p>
+
+        <h3>Individual Entry Review</h3>
+        <p>
+          When enough time has passed to observe meaningful outcomes (typically 3 to 12 months, depending on the decision type), review each entry with a structured set of questions:
+        </p>
+        <ul>
+          <li>Did the outcome match my prediction? If not, where did my reasoning go wrong?</li>
+          <li>Which of my key assumptions proved correct? Which were wrong?</li>
+          <li>Was the decision actually good, regardless of the outcome? (Would I make the same decision again with the same information?)</li>
+          <li>What did I know that I underweighted? What did I not know that mattered?</li>
+          <li>What would I do differently in the decision process — not the choice, but the process?</li>
+        </ul>
+        <p>
+          Write brief answers to these questions directly in the journal entry. The act of writing forces clarity and prevents the review from becoming a vague reflection that produces no actionable learning.
+        </p>
+
+        <h3>Pattern Review</h3>
+        <p>
+          Quarterly or annually, review all entries from the period and look for patterns across decisions. This meta-analysis is where the most valuable learning lives:
+        </p>
+
+        <ContentGrid columns={2}>
+          <ContentBox type="highlight" title="Look for These Patterns">
+            <p>Domains where your confidence consistently exceeds accuracy (chronic overconfidence)</p>
+            <p>Cognitive biases that recur across multiple entries (your personal blind spots)</p>
+            <p>Types of decisions where your reasoning is consistently sound</p>
+            <p>Assumptions that prove wrong repeatedly (systematic errors in your model of reality)</p>
+            <p>Emotional states that correlate with poor decision quality</p>
+          </ContentBox>
+          <ContentBox type="warning" title="Common Patterns to Diagnose">
+            <p>Consistently optimistic timeline estimates (planning fallacy)</p>
+            <p>Overweighting recent information vs. base rates (availability heuristic)</p>
+            <p>Patterns of reversing decisions made under time pressure</p>
+            <p>Domains where outside input consistently outperforms your solo judgment</p>
+            <p>Recurring failure to consider specific types of risk</p>
+          </ContentBox>
+        </ContentGrid>
+
+        <p>
+          The pattern review is what converts individual lesson-extraction into systematic improvement of your decision process. Each identified pattern points to a specific change in how you approach similar decisions in the future — a more conservative timeline estimate, a mandatory outside view check, a red-flag question to ask in a specific type of situation.
+        </p>
+      </section>
+
+      <section id="which-decisions">
+        <h2>Which Decisions Belong in the Journal?</h2>
+        <p>
+          Not every decision warrants a full journal entry. The journal should be selective enough to maintain without becoming burdensome, but comprehensive enough to capture the decisions where learning matters most. A practical threshold: any decision that, if it goes wrong, you will be bothered by for more than a month. This naturally captures medium-to-large stakes decisions while excluding the hundreds of trivial daily choices that would make the journal unmanageable.
+        </p>
+
+        <ContentGrid columns={2}>
+          <ContentBox type="highlight" title="Decisions That Belong in the Journal">
+            <p>Hiring and team decisions</p>
+            <p>Significant financial commitments (investments, major purchases)</p>
+            <p>Strategic direction changes in projects or career</p>
+            <p>Partnership and vendor selections</p>
+            <p>Major time commitments (projects, initiatives, relationships)</p>
+            <p>Any decision you feel conflicted or uncertain about</p>
+          </ContentBox>
+          <ContentBox type="warning" title="Decisions That Usually Don't Need It">
+            <p>Routine operational decisions with clear criteria</p>
+            <p>Easily reversible low-stakes choices</p>
+            <p>Decisions within a domain where you have extensive calibrated experience</p>
+            <p>Time-sensitive decisions requiring immediate action</p>
+            <p>Decisions where the only meaningful option is obvious</p>
+          </ContentBox>
+        </ContentGrid>
+
+        <p>
+          One important nuance: include some medium-stakes decisions even when they feel straightforward, because these are where patterns are most visible. Your most consequential biases are likely to show up not in the decisions that feel hard (where you are more likely to apply deliberate reasoning) but in the decisions that feel easy — where a confident, fast System 1 judgment determines the outcome without triggering careful evaluation.
+        </p>
+      </section>
+
+      <section id="common-mistakes">
+        <h2>The Most Common Decision Journal Mistakes</h2>
+
+        <h3>Recording Conclusions Instead of Reasoning</h3>
+        <p>
+          The most common failure: writing "I chose X because it seemed best" rather than the actual reasoning. Conclusions without reasoning provide no basis for learning — you cannot determine from the entry whether the reasoning was sound or flawed, whether the assumptions were realistic or optimistic, or whether the confidence was calibrated. Every entry should capture the argument for the choice, not just the choice itself.
+        </p>
+
+        <h3>Never Reviewing Against Outcomes</h3>
+        <p>
+          A journal that is written but never reviewed against actual outcomes is a diary, not a learning system. The entire value of the practice resides in the comparison between recorded predictions and actual results. If entries are not reviewed with outcome data — and specific questions about where the reasoning succeeded or failed — the journal produces no calibration benefit. Build the review into the system: when you create an entry, schedule a calendar reminder for the review date.
+        </p>
+
+        <h3>Applying It Only to Catastrophic Decisions</h3>
+        <p>
+          Many people begin decision journals after a significant failure, intending to capture only the most important decisions. This selection bias means the journal captures too few decisions for pattern recognition to work — you need volume across similar decision types to identify reliable patterns. Apply the journal to all decisions above the threshold, not just the ones that feel consequential in advance.
+        </p>
+
+        <h3>Stopping After the Entry, Not Running the Process</h3>
+        <p>
+          The decision journal is most valuable when it is part of a broader decision process — not a post-hoc record of decisions already made by other means. Writing the entry should be integrated into the decision-making process itself: writing out your reasoning clarifies it, forces you to state assumptions explicitly, and often reveals gaps before the decision is finalized. The journal entry is both a record and a decision tool.
+        </p>
+
+        <ContentBox type="highlight" title="The Power of Predicted Outcomes">
+          <p>The single most valuable habit in decision journaling is writing specific, observable, time-bound predicted outcomes before committing. 'I expect this to work out' is not a prediction — it produces no learning. 'I expect revenue to grow by at least 15% in the six months following this strategy change' is a prediction that can be verified or falsified. The specificity feels uncomfortable at the time of writing, which is exactly the point: the discomfort of committing to a specific prediction is the discomfort of genuine accountability to your reasoning, which is what the journal is designed to create.</p>
+        </ContentBox>
+      </section>
+
+      <section id="build-the-habit">
+        <h2>Building the Habit: Making It Stick</h2>
+        <p>
+          The decision journal fails most often not because people disagree with its value, but because it never becomes a reliable habit. The activation energy of opening a document, writing a structured entry, and scheduling a review is higher than the activation energy of simply making the decision and moving on. Building the journal into a sustainable practice requires reducing friction and creating reliable triggers.
+        </p>
+
+        <h3>Use a Simple, Consistent Format</h3>
+        <p>
+          A standardized template that you fill in without thinking about structure — the seven elements described earlier in a fixed order — reduces the cognitive overhead of each entry to near zero. Any format that requires you to figure out what to write each time will fail under time pressure. Create a template once, use it every time, modify it only when you discover a genuinely better approach through use.
+        </p>
+
+        <h3>Integrate the Entry Into the Decision Process</h3>
+        <p>
+          The most reliable trigger for writing a journal entry is the decision itself. Rather than treating the entry as a task to complete after deciding, make writing the entry part of how you make the decision: you have not finished making the decision until the entry is written. This re-framing eliminates the common failure mode of intending to write the entry after the meeting or the call, and then never doing so.
+        </p>
+
+        <h3>Schedule Reviews at Entry Time</h3>
+        <p>
+          When you write each entry, immediately schedule a calendar reminder for the review. The review date should be based on when meaningful outcome data will be observable — 3 months, 6 months, 12 months, depending on the decision type. Without a scheduled reminder, reviews depend on you spontaneously remembering to look at past entries — which reliably does not happen. Automate the reminder at entry time.
+        </p>
+
+        <h3>Start Small: Three Entries Before Judging</h3>
+        <p>
+          The journal produces no immediately visible benefit — its value is in the review, which comes months later. This makes the early phase, before any entry has been reviewed, the period of highest abandonment risk. Commit to writing three complete entries and one review before evaluating whether the practice is worth continuing. The first review — seeing your pre-outcome predictions compared to actual results — is almost always sufficiently revealing to make the practice feel obviously valuable.
+        </p>
+      </section>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          The decision journal is not a glamorous tool. It does not produce the immediate satisfaction of a framework applied in the moment or a technique that produces visible results in a meeting. Its mechanism is slower and less visible: it creates an objective record of reasoning that, when reviewed against outcomes over months and years, builds the calibration and self-knowledge that constitute genuine wisdom.
+        </p>
+        <p>
+          Most professionals learn from experience — but slowly, noisily, and with significant distortion from hindsight bias, outcome bias, and attribution asymmetry. The decision journal compresses that learning cycle, removes the distortions, and converts ambiguous outcome feedback into specific, actionable intelligence about where and how your judgment succeeds and fails. Over a career, the compounding effect of this systematic calibration is substantial: better judgment in hiring, better judgment in strategy, better judgment in resource allocation, better judgment in the hundreds of medium-stakes decisions that collectively determine most professional outcomes.
+        </p>
+        <p>
+          The investment required is modest: fifteen minutes per significant decision to write the entry, thirty minutes per quarter to review and identify patterns. The return — genuine improvement in the quality of judgment over time, in the domains that matter most — is the highest-leverage use of structured reflection available to knowledge workers. Start with the next significant decision you face. Write the entry before the outcome is known. Schedule the review. Then let the compounding begin.
+        </p>
+      </section>
+
+      <!-- Related Articles -->
+      <section class="related-articles">
+        <h2>Continue Reading</h2>
+        <div class="related-grid">
+          <a href="/blog/how-to-avoid-cognitive-bias" class="related-card">
+            <span class="related-label">Decision Making</span>
+            <span class="related-title">How to Avoid Cognitive Bias: A Research-Backed Guide</span>
+          </a>
+          <a href="/blog/pre-mortem-technique" class="related-card">
+            <span class="related-label">Decision Making</span>
+            <span class="related-title">The Pre-Mortem Technique: Prevent Failure Before It Happens</span>
+          </a>
+          <a href="/blog/decision-making-framework" class="related-card">
+            <span class="related-label">Decision Making</span>
+            <span class="related-title">A Simple Framework for Better Decisions</span>
+          </a>
+          <a href="/blog/probabilistic-thinking" class="related-card">
+            <span class="related-label">Critical Thinking</span>
+            <span class="related-title">Probabilistic Thinking: See the World More Clearly</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <meta itemprop="author" content={author} />
+    <meta itemprop="publisher" content={author} />
+    <meta itemprop="wordCount" content="2500" />
+    <meta itemprop="keywords" content={pageKeywords} />
+
+  </article>
+
+</Layout>
+
+<style lang="scss">
+  .blog-article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+    time { font-weight: 500; }
+  }
+
+  .article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: #ede9fe;
+    color: #5b21b6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .hero-figure {
+    margin: 0 0 2.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    .hero-image { width: 100%; height: auto; display: block; }
+  }
+
+  .article-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .table-of-contents {
+    background: #f8f7ff;
+    border: 1px solid #ede9fe;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #5b21b6;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    ol {
+      margin: 0;
+      padding-left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      li a {
+        color: #4c1d95;
+        text-decoration: none;
+        font-size: 0.95rem;
+        &:hover { text-decoration: underline; }
+      }
+    }
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: #1f2937;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    padding-left: 1.25rem;
+    border-left: 4px solid #7c3aed;
+  }
+
+  section {
+    margin-bottom: 3rem;
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2d1b69;
+      margin: 1.75rem 0 0.75rem;
+    }
+    p { margin-bottom: 1.25rem; }
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      li { line-height: 1.7; }
+    }
+    a { color: #7c3aed; text-decoration: underline; text-underline-offset: 3px; }
+  }
+
+  .ad-unit { margin: 2rem 0; text-align: center; min-height: 90px; }
+
+  .related-articles {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #ede9fe;
+    h2 { font-size: 1.3rem; font-weight: 800; color: #1a1a2e; margin-bottom: 1.25rem; }
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    @media (max-width: 600px) { grid-template-columns: 1fr; }
+  }
+
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1rem 1.25rem;
+    background: #f8f7ff;
+    border: 1px solid #ede9fe;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    &:hover { border-color: #7c3aed; background: #f3f0ff; }
+    .related-label { font-size: 0.75rem; font-weight: 600; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.05em; }
+    .related-title { font-size: 0.95rem; font-weight: 600; color: #1a1a2e; line-height: 1.4; }
+  }
+
+  @media (max-width: 640px) {
+    .blog-article { padding: 1.5rem 1rem 3rem; }
+    .article-header h1 { font-size: 1.5rem; }
+    section h2 { font-size: 1.35rem; }
+    .lead { font-size: 1.05rem; padding-left: 1rem; }
+    .table-of-contents { padding: 1.25rem; }
+  }
+</style>
