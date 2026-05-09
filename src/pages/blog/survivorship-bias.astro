@@ -7,11 +7,11 @@ import ContentGrid from "../../components/blog/ContentGrid.astro";
 import StepsList from "../../components/blog/StepsList.astro";
 
 const datePublished = "2025-03-26T00:00:00Z";
-const dateModified = "2025-03-26T00:00:00Z";
+const dateModified = "2026-05-08T00:00:00Z";
 const author = "Success Odyssey Hub";
 const pageTitle = "Survivorship Bias: Why You Learn the Wrong Lessons";
 const pageDescription = "Master survivorship bias — the cognitive error that causes us to learn from winners while ignoring the far more numerous failures. Discover how it distorts success advice, business strategy, and everyday decisions.";
-const pageKeywords = "survivorship bias, survivorship bias examples, survivorship bias definition, Abraham Wald, survivorship bias business, how to avoid survivorship bias, selection bias, cognitive bias";
+const pageKeywords = "survivorship bias, survivorship bias examples, survivorship bias definition, Abraham Wald, survivorship bias business, how to avoid survivorship bias, selection bias, cognitive bias, hidden failures, visible success bias, missing data bias, sampling bias";
 const readingTime = 18;
 ---
 
@@ -27,6 +27,44 @@ const readingTime = 18;
   canonicalUrl="https://successodysseyhub.com/blog/survivorship-bias"
 >
   <link rel="preload" as="image" href={survivorshipBias.src} slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is survivorship bias?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Survivorship bias occurs when we focus on subjects that passed a selection process while ignoring those that did not — because the failures are invisible. We only see survivors, which distorts our perception of what works and what doesn't."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the most famous example of survivorship bias?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "During WWII, statistician Abraham Wald analyzed bullet holes in returning planes. The military wanted to reinforce damaged areas. Wald said reinforce the undamaged areas instead — because planes hit there didn't return. The missing data was the most important data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does survivorship bias affect our perception of success?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We hear about successful entrepreneurs, investors, and authors, but not the thousands who tried the same approach and failed. This creates a distorted view that makes successful strategies seem universally applicable when they may be the product of luck, timing, or selection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can you guard against survivorship bias?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Actively seek out failure data, not just success stories. Ask 'who is not in this sample?' before drawing conclusions. Study companies that failed, not just those that succeeded. Look for the planes that didn't come back."
+      }
+    }
+  ]
+})} />
 
   <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
 
@@ -186,11 +224,11 @@ const readingTime = 18;
       <!-- AD 2: Ortası -->
       <div class="ad-unit ad-unit--mid">
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
              data-ad-client="ca-pub-7229511013815291"
-             data-ad-slot="4827765044"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-ad-slot="4827765044"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
