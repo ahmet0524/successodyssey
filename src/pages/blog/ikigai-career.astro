@@ -1,0 +1,210 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2026-05-10T00:00:00Z";
+const dateModified = "2026-05-10T00:00:00Z";
+const author = "Success Odyssey Hub";
+const readingTime = 10;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does ikigai mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ikigai is a Japanese concept meaning 'reason for being' or 'reason to get up in the morning.' It describes the intersection of four elements: what you love, what you are good at, what the world needs, and what you can be paid for. When all four circles overlap, the result is work that feels meaningful, skilled, needed, and sustainable — ikigai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the four circles of the ikigai framework?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The four circles are: Passion (what you love doing), Vocation (what you are good at), Mission (what the world needs), and Profession (what you can be paid for). Each pair of overlapping circles creates a partial fulfillment — passion plus vocation creates flow but may not pay; mission plus profession creates a sustainable career but may not be personally meaningful. Full ikigai requires all four."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you apply ikigai practically to career planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The practical application starts with mapping your own four circles honestly: what activities produce flow states and intrinsic motivation, what skills do you have that others recognize as valuable, what genuine problems exist in the world that you care about, and what people or organizations would pay for your specific combination of passion and skill. The intersection of these maps reveals your ikigai — or highlights where you need to develop skills or market awareness to reach it."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Ikigai and Career Fulfillment: Finding Work That Feels Worth Doing"
+  description="Ikigai — the Japanese concept of a reason for being — offers a four-part framework for finding work that is meaningful, skilled, needed, and sustainable. Here is how to apply it practically."
+  keywords="ikigai career, ikigai framework, career fulfillment ikigai, finding meaningful work, ikigai four circles"
+  image="/assets/card3.jpg"
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/ikigai-career"
+>
+  <link rel="preload" as="image" href="/assets/card3.jpg" slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Personal Finance &amp; Career</span>
+        <span class="read-time">{readingTime} min read</span>
+        <time datetime={datePublished}>May 10, 2026</time>
+      </div>
+      <h1>Ikigai and Career Fulfillment: Finding Work That Feels Worth Doing</h1>
+      <p class="article-subtitle">Ikigai — the Japanese concept of a reason for being — offers a four-part framework for finding work that is meaningful, skilled, needed, and sustainable. Here is how to apply it practically.</p>
+      <span>By <strong>{author}</strong></span>
+    </header>
+
+    <figure class="article-hero">
+      <Image src={heroImage} alt="Ikigai framework for career fulfillment and finding meaningful work" width={1200} height={630} fetchpriority="high" loading="eager" />
+    </figure>
+
+    <nav class="table-of-contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#what-ikigai">What Ikigai Means</a></li>
+        <li><a href="#four-circles">The Four Circles of Ikigai</a></li>
+        <li><a href="#intersections">Where the Circles Intersect</a></li>
+        <li><a href="#pitfalls">Common Pitfalls When Applying Ikigai</a></li>
+        <li><a href="#practical">Applying Ikigai Practically to Your Career</a></li>
+        <li><a href="#conclusion">Building Toward Your Ikigai</a></li>
+      </ol>
+    </nav>
+
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="article-body" itemprop="articleBody">
+      <section id="what-ikigai">
+        <h2>What Ikigai Means</h2>
+        <p>Ikigai (pronounced ee-kee-guy) is a Japanese concept that translates roughly as "reason for being" or "reason to get up in the morning." It derives from two Japanese words: iki, meaning life or alive, and gai, meaning value or worth. In Japanese culture, ikigai is not primarily a career planning framework — it is a philosophical orientation toward life, encompassing small daily joys as much as grand vocational purposes. The elderly residents of Okinawa, one of the world's longevity hotspots, frequently cite ikigai as central to their wellbeing: it is what makes them feel their existence is worthwhile.</p>
+        <p>The four-circle Venn diagram that most Western audiences associate with ikigai is actually a Western adaptation of the original concept, created by Spanish author Héctor García and Francesc Miralles. The original Japanese concept is broader and more holistic than this model suggests — it encompasses relationships, hobbies, and small daily pleasures alongside vocational meaning. But the four-circle framework has become valuable as a career planning tool precisely because it forces explicit consideration of four dimensions that career planning usually addresses haphazardly: what you love, what you are good at, what the world needs, and what you can be paid for.</p>
+        <p>Viktor Frankl, writing from the very different context of his experience in Nazi concentration camps, reached a conclusion convergent with ikigai: that the search for meaning is the primary motivating force in human life, and that people who find genuine meaning in their work and relationships are more resilient, more motivated, and more likely to flourish than those whose primary motivation is pleasure or comfort. The ikigai framework operationalizes Frankl's insight by providing a structured approach to identifying the work that feels genuinely meaningful — not because it is pleasant in the moment, but because it serves something larger than the immediate self.</p>
+        <p>The practical power of the ikigai framework in career planning comes from its insistence on all four dimensions simultaneously. Most career frameworks focus on two or three: "follow your passion" focuses on love and possibly vocation; "develop marketable skills" focuses on vocation and profession; "find your mission" focuses on love and mission. The ikigai framework recognizes that career fulfillment requires all four to be present in some meaningful degree — and that the absence of any one creates characteristic forms of dissatisfaction that the presence of the other three cannot compensate for.</p>
+      </section>
+
+      <section id="four-circles">
+        <h2>The Four Circles of Ikigai</h2>
+        <p>The first circle — What You Love — encompasses activities and domains that produce intrinsic motivation: the work you would do even without external reward, the problems you find genuinely fascinating, the processes you lose yourself in. Mihaly Csikszentmihalyi's research on flow — the psychological state of complete absorption in a challenging and rewarding activity — provides the neuroscientific basis for this circle. Flow states occur most reliably when a task is at the edge of your current capability and genuinely engaging. Identifying what produces flow in your professional life is a practical way to map the first circle.</p>
+        <p>The second circle — What You Are Good At — encompasses genuine strengths: the capabilities where your natural aptitude combines with developed skill to produce consistently high-quality output. Cal Newport's work is particularly relevant here. Newport argues against the "passion hypothesis" (follow your passion and the career will follow) in favor of a skills-first approach: identify where you have genuine strengths, develop them to rare and valuable levels, and let the passion follow from the competence. The second circle of ikigai reflects this insight: your best work comes from the intersection of what you love and what you are genuinely capable of — not just what you enjoy.</p>
+        <p>The third circle — What the World Needs — encompasses genuine problems in the world that your work can meaningfully address. This is the mission dimension: the sense that your work contributes to something beyond personal gain. Research on work motivation consistently finds that people who feel their work is meaningful — that it genuinely helps others or contributes to something larger than themselves — report higher engagement, higher satisfaction, and higher resilience than those who feel their work serves only commercial or personal ends. The mission circle is what gives ikigai its characteristic quality of purpose rather than merely pleasure or competence.</p>
+        <p>The fourth circle — What You Can Be Paid For — is the sustainability dimension that many philosophical approaches to meaningful work neglect. Beautiful work that addresses genuine needs and draws on genuine strengths is wonderful, but it must also generate the income to support the life from which it is done. The profession circle forces honest engagement with market reality: are there people or organizations willing to pay for what the other three circles produce? If not, the ikigai is incomplete — or requires development of market positioning, communication, or business skills to make the value legible to those who could pay for it.</p>
+      </section>
+
+      <section id="intersections">
+        <h2>Where the Circles Intersect</h2>
+        <p>The ikigai framework becomes most analytically powerful when examining the partial overlaps between circles — the zones where two or three circles intersect without the fourth. Each partial overlap has a characteristic emotional signature that the framework predicts: what the fulfilled zone feels like, and what the unfulfilled dimension produces when it is absent. These characteristic signatures can help diagnose career dissatisfaction more precisely than "I am unhappy with my work," pointing toward the specific dimension that is underdeveloped.</p>
+        <p>The overlap of love and vocation without mission or profession is what the framework calls "passion." You love it, you are good at it, but it does not serve a genuine need or generate income. This zone produces delight — a sense of deep enjoyment and competence — but also uselessness (nothing is needed or paid for) and potential financial instability. Many talented hobbyists and artists live in this zone: extraordinarily skilled and genuinely loving of their craft, but struggling to translate that into sustainable income or the sense that their work is genuinely needed by others.</p>
+        <p>The overlap of mission and vocation without love or profession is what the framework calls "calling." You are good at it and the world needs it, but you do not love it and it does not pay. This zone produces a sense of righteousness — the satisfaction of being good at something needed — combined with deprivation and meaninglessness in the personal sense. Many professionals in service roles experience this: excellent at work that genuinely helps people, but depleted by the absence of personal passion and underpaid relative to the value they create.</p>
+        <p>The overlap of mission and profession without love or vocation is what the framework calls "vocation." You can be paid for it and the world needs it, but you do not love it and are not genuinely skilled at it. This produces comfort — financial security and the sense of social usefulness — combined with emptiness and a nagging sense of inadequacy. Many people who chose careers primarily for financial stability land in this zone: comfortable and useful, but not genuinely engaged or particularly skilled. The full ikigai requires the addition of love and vocation — genuine passion and genuine competence — to the mission and profession that these people often already have.</p>
+      </section>
+
+      <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7229511013815291" data-ad-slot="2952775705"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="pitfalls">
+        <h2>Common Pitfalls When Applying Ikigai</h2>
+        <p>The most common pitfall in applying the ikigai framework is treating it as a one-time discovery exercise rather than an ongoing developmental project. Many people sit down with the four circles, map their current state, and either find they are already near their ikigai (which is encouraging but may be an overly optimistic self-assessment) or find they are very far from it (which is discouraging and may feel like proof that the framework is aspirational rather than practical). Both responses miss the point: ikigai is not a place you find but a direction you move toward through deliberate development over years.</p>
+        <p>The second common pitfall is treating the four circles as equal in a given moment when they are not. At early career stages, vocation (skill development) and profession (building market value) typically deserve priority investment, even if love and mission are temporarily secondary. Spending the first decade of a career primarily building skills and market positioning — with genuine passion and mission as guides rather than immediate requirements — produces a much stronger platform for ikigai than spending those years in a role that feels perfectly aligned but develops no marketable capability. Cal Newport's skills-first approach is not anti-ikigai — it is a sequencing of ikigai development that reflects the reality that skill development precedes passion in most domains.</p>
+        <p>The third pitfall is applying the framework to a job rather than to a career or body of work. No single job satisfies all four circles fully — every role has elements that are tedious, poorly compensated, or disconnected from personal passion. The ikigai lens is most useful at the career level: does the overall trajectory of your professional development move toward greater alignment across all four circles? Are you building the skills and market positioning that will make the mission you care about professionally sustainable? Are you finding ways to incorporate more of what you love into your work as your career advances? These questions produce useful guidance that the daily job question — "does this meeting feel meaningful?" — cannot.</p>
+        <p>A fourth pitfall is assuming that ikigai requires all four circles to be fully satisfied simultaneously. The lived experience of most people who report genuine career fulfillment is that some circles are fully developed and others are partial — but the partial ones are developing rather than static, and the fully developed ones are genuinely deep rather than superficially present. A rough but dynamic alignment — where each circle is meaningful and the trajectory is toward greater integration — produces the characteristic experience of ikigai better than a theoretically perfect static alignment that has no growth edge.</p>
+      </section>
+
+      <StepsList title="Six Steps to Apply Ikigai to Your Career">
+        <li>Map your four circles honestly and separately: list specific activities and domains for each circle, resisting the temptation to put the same items in all four as wishful thinking — the framework is most useful when the gaps between circles are clearly visible.</li>
+        <li>Identify your current career position in the partial overlap zones: which circles are well-developed and which are weak? What is the characteristic emotional signature of the zone you currently inhabit, and does that match your actual experience?</li>
+        <li>Treat ikigai as a developmental trajectory rather than a current state: ask which circle, if developed further in the next three to five years, would most move you toward the full intersection — and invest in that development deliberately.</li>
+        <li>Apply the skills-first sequencing early in your career: prioritize vocation and profession development even when love and mission feel more immediately compelling, knowing that deep competence is typically the prerequisite for work that feels truly meaningful.</li>
+        <li>Look for opportunities within your current role to expand the ikigai overlap: volunteer for projects that touch on your mission, find ways to use your genuine strengths rather than only your assigned duties, and build visibility for the work that most reflects the full four-circle intersection.</li>
+        <li>Review your four circles annually, recognizing that what you love evolves, what the world needs changes, your skills grow, and the market for your work shifts — the ikigai mapping is not a one-time exercise but a living career navigation tool.</li>
+      </StepsList>
+
+      <section id="practical">
+        <h2>Applying Ikigai Practically to Your Career</h2>
+        <p>The practical application of ikigai begins with honest self-knowledge — which is both the most important and the most difficult input the framework requires. Most people have a reasonable but not precise understanding of what they love and what they are good at. Developing greater precision requires reflection on when you have experienced genuine flow in work, what types of problems you return to voluntarily in your reading and conversations, what accomplishments you are most proud of and why, and what you would choose to do with unlimited time and resources if income were not a constraint.</p>
+        <p>The vocation circle — what you are good at — is most accurately assessed through external feedback rather than self-assessment. What do others consistently recognize as exceptional about your work? What are you asked to help with more often than other people? What tasks do you find relatively easy that others find difficult? These signals, which may not perfectly align with your self-perception, are more reliable indicators of genuine comparative advantage than introspection alone. Gathering this feedback — through performance reviews, conversations with trusted colleagues, and observation of which of your contributions others most value — is a practical research method for mapping the second circle with accuracy.</p>
+        <p>The mission circle — what the world needs — requires perspective-taking that moves beyond personal preferences. What are the genuine problems that cause suffering, inefficiency, or constraint for people you care about or communities you are part of? What do you observe in the world that strikes you as wrong, unnecessary, or fixable? Where do you see gaps between what exists and what should exist? These questions generate mission candidates that are both genuinely needed and personally resonant — the combination that produces sustained motivation rather than either detached philanthropy or self-absorbed passion.</p>
+        <p>The profession circle — what you can be paid for — requires market research alongside self-reflection. What do people and organizations in your target market currently pay for? How does the combination of your love, vocation, and mission translate into products, services, or employment roles that have demonstrated market demand? This circle benefits from concrete external data: job postings, salary research, client conversations, competitive analysis. The goal is not to subordinate your ikigai entirely to market demand but to understand where the market for your specific combination of gifts exists and how to position yourself to be found by it.</p>
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions About Ikigai</h2>
+        <ContentBox type="warning" title={`Misconception: "Ikigai is just the Japanese word for passion"`}>
+          Ikigai is fundamentally different from passion as commonly understood. Passion in Western career discourse often means intense enthusiasm for an activity, focused on personal enjoyment. Ikigai requires that enthusiasm to be grounded in genuine skill, to address a real need in the world, and to generate sustainable income — three requirements that passion alone does not include. The result is a much more stable and sustainable form of career meaning than passion, which can fluctuate and does not guarantee social value or financial viability.
+        </ContentBox>
+        <ContentBox type="warning" title={`Misconception: "Your ikigai should be immediately obvious if you reflect deeply enough"`}>
+          Ikigai typically emerges through experimentation and development over years, not through a single reflective exercise. Most people who report living their ikigai arrived at it through a series of career experiments, skill developments, and course corrections rather than a sudden revelation. The framework is a navigation tool, not a destination that can be precisely specified in advance. The most practical approach is to identify the direction that the framework points and move consistently in that direction, updating the map as you learn more.
+        </ContentBox>
+        <ContentBox type="warning" title={`Misconception: "Ikigai requires you to love every aspect of your work"`}>
+          Even work that is deeply aligned with ikigai includes elements that are tedious, frustrating, or draining. The question is not whether every task is enjoyable but whether the overall work, in its most important dimensions, produces the sense of meaning and engagement that ikigai describes. Many people who report genuine career fulfillment also describe specific aspects of their work that they find difficult, boring, or depleting — but these are in the context of a work life that is overall deeply satisfying and meaningful.
+        </ContentBox>
+      </section>
+
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="conclusion">
+        <h2>Building Toward Your Ikigai</h2>
+        <p>The ikigai framework is not a promise that perfect career alignment is available to everyone, or that finding it is easy or fast. It is a framework for thinking more clearly about what makes work feel worth doing — the combination of genuine love, genuine skill, genuine usefulness, and genuine sustainability that produces the rare experience of work as vocation rather than obligation. Most people who live in that experience did not find it — they built it, through deliberate development of skill, deliberate cultivation of purpose, and deliberate positioning in markets where their specific gifts create recognizable value.</p>
+        <p>The journey toward ikigai is not linear. It involves false starts, course corrections, and periods where one or two of the four circles are strong while others are underdeveloped. This is not failure — it is the normal developmental process that authentic career alignment requires. The professional who is actively working on all four circles, even if none is perfectly developed, is in a better position than one who has settled for a partial alignment that feels comfortable but produces the characteristic dissatisfaction of an important circle being absent.</p>
+        <ContentBox type="tip">
+          Spend twenty minutes this week drawing your four circles and filling each one with honest answers. Do not rush, do not try to be consistent across circles, and do not filter for what sounds impressive. The goal is honest self-knowledge, which is the only useful input this framework can work with. Where the circles overlap, mark what is already present. Where they fail to overlap, mark what is missing. Then identify the one action — one skill to develop, one project to pursue, one market to explore — that would most move you toward a fuller intersection. That one action is your ikigai direction.
+        </ContentBox>
+      </section>
+
+      <div class="author-bio">
+        <h3>About Success Odyssey Hub</h3>
+        <p>Success Odyssey Hub explores the psychology, habits, and mental models of high achievers across finance, career, and personal development. Our content is grounded in research and designed to be immediately actionable for readers at every stage of their journey.</p>
+      </div>
+
+      <div class="related-articles">
+        <h2>Related Articles</h2>
+        <ul>
+          <li><a href="/blog/meaning-vs-pleasure">Meaning vs Pleasure</a></li>
+          <li><a href="/blog/success-vs-happiness">Success vs Happiness</a></li>
+          <li><a href="/blog/viktor-frankl-meaning">Viktor Frankl and the Search for Meaning</a></li>
+          <li><a href="/blog/career-growth-strategy">Career Growth Strategy</a></li>
+        </ul>
+      </div>
+
+      <div class="external-resources">
+        <h2>External Resources</h2>
+        <ul>
+          <li><a href="https://www.bluezones.com/2018/08/ikigai-the-japanese-secret-to-a-long-and-happy-life" target="_blank" rel="noopener noreferrer">Blue Zones — Ikigai and Longevity Research</a></li>
+          <li><a href="https://www.ted.com/talks/dan_buettner_how_to_live_to_be_100" target="_blank" rel="noopener noreferrer">Dan Buettner — Secrets of the Blue Zones</a></li>
+          <li><a href="https://www.calnewport.com/books/so-good" target="_blank" rel="noopener noreferrer">Cal Newport — So Good They Can't Ignore You</a></li>
+        </ul>
+      </div>
+
+      <div class="book-recommendations">
+        <h2>Recommended Reading</h2>
+        <ul>
+          <li><em>Ikigai: The Japanese Secret to a Long and Happy Life</em> — Héctor García &amp; Francesc Miralles</li>
+          <li><em>Man's Search for Meaning</em> — Viktor Frankl</li>
+          <li><em>So Good They Can't Ignore You</em> — Cal Newport</li>
+          <li><em>Flow</em> — Mihaly Csikszentmihalyi</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0; .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; } .read-time, time { color: #64748b; font-size: 0.9rem; } } h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; } .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; } }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA; h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; } ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; } a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } } }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem; section { margin-bottom: 3rem; } h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; } h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; } p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; } ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } } a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } } }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA; h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; } }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem; h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; } ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } } }
+  @media (prefers-color-scheme: dark) { .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } } .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } } .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } } .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } } }
+</style>

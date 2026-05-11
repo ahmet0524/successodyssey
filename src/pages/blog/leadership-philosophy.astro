@@ -1,0 +1,210 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2026-05-10T00:00:00Z";
+const dateModified = "2026-05-10T00:00:00Z";
+const author = "Success Odyssey Hub";
+const readingTime = 10;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What separates great leaders from merely competent managers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Great leaders create the conditions in which other people can do their best work. They understand that leadership is fundamentally about enabling others rather than demonstrating their own capability. Research by Amy Edmondson at Harvard consistently shows that psychological safety — the belief that it is safe to speak up, make mistakes, and take risks — is the strongest predictor of team performance, and that creating psychological safety is a leadership responsibility."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is servant leadership or command leadership more effective?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Research suggests that servant leadership — which prioritizes the growth, wellbeing, and empowerment of the people being led — consistently outperforms command-and-control styles in contexts requiring creativity, innovation, and sustained motivation. Command styles can be effective for immediate compliance in crisis situations but tend to produce fragile organizations that depend excessively on the leader's presence and judgment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do great leaders behave under pressure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Great leaders under pressure model the behaviors they expect of others: calm deliberation rather than reactive panic, honest communication about uncertainty rather than false confidence, decisive action on available information rather than paralysis, and compassionate concern for the people affected by decisions. Marcus Aurelius wrote extensively about this in his Meditations — the leader's inner life under pressure is the template for the organization's response."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="The Philosophy of Great Leadership: What It Really Means to Lead Well"
+  description="Leadership is not a title — it is a philosophy practiced daily. Explore what the greatest thinkers and most effective leaders say about what it actually means to lead people well."
+  keywords="leadership philosophy, what is great leadership, servant leadership, leadership principles, effective leadership"
+  image="/assets/card3.jpg"
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/leadership-philosophy"
+>
+  <link rel="preload" as="image" href="/assets/card3.jpg" slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Personal Finance &amp; Career</span>
+        <span class="read-time">{readingTime} min read</span>
+        <time datetime={datePublished}>May 10, 2026</time>
+      </div>
+      <h1>The Philosophy of Great Leadership: What It Really Means to Lead Well</h1>
+      <p class="article-subtitle">Leadership is not a title — it is a philosophy practiced daily. Explore what the greatest thinkers and most effective leaders say about what it actually means to lead people well.</p>
+      <span>By <strong>{author}</strong></span>
+    </header>
+
+    <figure class="article-hero">
+      <Image src={heroImage} alt="The philosophy of great leadership and what it means to lead people effectively" width={1200} height={630} fetchpriority="high" loading="eager" />
+    </figure>
+
+    <nav class="table-of-contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#what-leadership">What Leadership Really Is</a></li>
+        <li><a href="#servant-command">Servant vs Command Leadership</a></li>
+        <li><a href="#psychological-safety">Psychological Safety and Team Performance</a></li>
+        <li><a href="#leading-example">Leading by Example</a></li>
+        <li><a href="#under-pressure">Leadership Under Pressure</a></li>
+        <li><a href="#conclusion">Developing a Leadership Philosophy You Can Live</a></li>
+      </ol>
+    </nav>
+
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="article-body" itemprop="articleBody">
+      <section id="what-leadership">
+        <h2>What Leadership Really Is</h2>
+        <p>The word "leadership" is used so frequently and so loosely that it has lost much of its precision. In popular culture, it is often conflated with management (directing activities toward defined goals), authority (having formal power over others), or charisma (the ability to inspire through personality). None of these is leadership in its deepest sense. Leadership, more precisely, is the capacity to influence others toward goals they might not have reached alone — through vision, trust, example, and the cultivation of other people's capabilities rather than through positional authority or personal magnetism alone.</p>
+        <p>Warren Bennis, who spent decades studying leadership and interviewing some of the most effective leaders of the twentieth century, identified four competencies that consistently characterized transformative leaders: the management of attention (the ability to create a compelling vision that orients others), the management of meaning (the ability to communicate that vision in ways that resonate), the management of trust (the ability to be reliably consistent so that others can depend on you), and the management of self (the self-knowledge to understand one's strengths, weaknesses, and the impact one has on others). None of these competencies is innate; all of them are developed through deliberate practice and reflection.</p>
+        <p>Peter Drucker, the management philosopher who shaped modern organizational theory, made a distinction that is even more fundamental: he separated leadership from management by describing management as doing things right and leadership as doing the right things. Managers optimize within a given system; leaders define the system's goals and direction. This distinction matters because the skills required are genuinely different — and in many organizations, the most capable managers are promoted into leadership roles where the skills that made them successful managers are insufficient for the new demands of leading people and setting direction.</p>
+        <p>The ancient texts on leadership — from Plato's philosopher-kings to Confucius's junzi (exemplary person) to the Stoic tradition of Marcus Aurelius — converge on a view that genuine leadership requires character more than technique. A person of genuine wisdom, justice, courage, and temperance will lead well in most contexts even without formal training; a person lacking these qualities will lead poorly regardless of how many management courses they complete. This is not an argument against developing practical leadership skills — it is an argument that those skills are only fully effective when built on a foundation of genuine character development.</p>
+      </section>
+
+      <section id="servant-command">
+        <h2>Servant vs Command Leadership</h2>
+        <p>Robert Greenleaf introduced the term "servant leadership" in a 1970 essay that has influenced generations of organizational theorists and practitioners. His central claim was that the most effective leaders are motivated primarily by a desire to serve — to enable the growth and wellbeing of those they lead — rather than by a desire to exercise authority or demonstrate their own competence. The servant leader asks "how can I help the people I lead do their best work?" rather than "how can I direct people to accomplish my goals?" This inversion of the typical leader-follower relationship produces distinctive organizational dynamics that research has consistently found to be superior for sustained performance.</p>
+        <p>The command-and-control leadership model — in which leaders direct activities through formal authority, monitor compliance closely, and maintain clear hierarchies of decision-making — has genuine advantages in specific contexts: military operations requiring immediate coordinated response, emergency situations demanding fast decisive action, or manufacturing environments with well-defined processes and safety requirements. But the research on command leadership in knowledge-work environments — which characterize most modern organizations — is largely damning. Command styles suppress the information flow that leaders need to make good decisions, reduce the initiative and creativity that knowledge workers must exercise to create value, and produce organizations that function only when the leader is present and attentive.</p>
+        <p>Jim Collins, in <em>Good to Great</em>, identified what he called "Level 5 leadership" as a distinguishing characteristic of the most successful companies over long periods. Level 5 leaders combine fierce professional will — relentless ambition for the organization's success — with personal humility — attributing success to others and taking responsibility for failures themselves. This combination is almost the opposite of the charismatic, attention-seeking leadership that popular culture celebrates. Collins found that Level 5 leaders are often quiet, self-effacing people who are intensely focused on building organizational capability rather than personal legacy. The organizations they build perform better precisely because the leader is not the limiting factor in their success.</p>
+        <p>Adam Grant's research on "givers" — people who contribute to others without expectation of immediate return — found that organizations with high proportions of givers outperform those dominated by "takers" (who maximize personal gain at others' expense) and "matchers" (who give only when they can expect equivalent return). The servant leader is the ultimate organizational giver, and their presence creates conditions that attract and enable other givers while screening out takers. The network effects of genuine servant leadership — the kind of organizational culture that emerges when leaders model generosity, trust, and genuine concern for others — are among the most powerful and most difficult to replicate competitive advantages available to any organization.</p>
+      </section>
+
+      <section id="psychological-safety">
+        <h2>Psychological Safety and Team Performance</h2>
+        <p>Amy Edmondson, a professor at Harvard Business School, has spent three decades studying the conditions under which teams perform well. Her central finding, replicated across industries, organizational types, and cultures, is that psychological safety — the belief that it is safe to speak up, take risks, make mistakes, and challenge authority without fear of punishment or humiliation — is the strongest predictor of team learning and performance. The concept is deceptively simple but practically demanding: creating genuine psychological safety requires consistent, deliberate leadership behavior that makes speaking up unambiguously rewarding rather than subtly risky.</p>
+        <p>The research is remarkable in its consistency. Google's Project Aristotle, an internal study of team effectiveness involving hundreds of Google teams, found that psychological safety was by far the most important factor distinguishing high-performing teams — more important than team composition, individual talent, or the nature of the work. Teams with psychological safety spoke up more, shared problems earlier, learned from failures faster, and ultimately performed better than teams where members felt unsafe to challenge ideas or admit mistakes, even when those teams had individually more talented members. The leader's primary job, by this analysis, is to create the conditions for psychological safety.</p>
+        <p>The behaviors that create psychological safety are specific and learnable. Leaders who ask genuine questions (rather than rhetorical ones), model intellectual humility (acknowledging what they do not know), respond to bad news with curiosity rather than blame, explicitly invite dissent and disagreement, and publicly reward risk-taking and honest error reporting all create environments where psychological safety flourishes. The absence of any of these behaviors — particularly responding to bad news with anger or blame — rapidly destroys psychological safety even when it is otherwise present, because a single memorable punishment for truth-telling communicates more powerfully than dozens of rewards for it.</p>
+        <p>The organizational benefits of psychological safety extend far beyond team performance in any single project. In high-safety environments, problems surface early when they are small and manageable; in low-safety environments, they are concealed until they become large and expensive. Innovation requires the ability to propose ideas that might be wrong, experiment with approaches that might fail, and challenge assumptions that might be correct — all of which are suppressed in low-safety environments. The long-term organizational cost of a culture where people are afraid to speak up is measured in preventable failures, missed innovations, and talent attrition as capable people seek environments where their contributions are genuinely welcomed.</p>
+      </section>
+
+      <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7229511013815291" data-ad-slot="2952775705"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="leading-example">
+        <h2>Leading by Example</h2>
+        <p>The oldest and most consistently validated principle in leadership is that leaders shape organizational culture through their own behavior more than through their stated values, formal policies, or explicit instruction. Employees at every level watch what leaders actually do — particularly under pressure, when competing demands create genuine trade-offs — and infer from those behaviors what is truly valued rather than merely proclaimed. An organization whose leadership frequently violates in private the norms they profess publicly will develop a culture of cynicism and double standards regardless of how eloquently those norms are articulated in mission statements and all-hands meetings.</p>
+        <p>Marcus Aurelius, who led the Roman Empire for two decades while also maintaining a private philosophical practice recorded in his <em>Meditations</em>, understood this dynamic with extraordinary clarity. The Meditations are not primarily a record of his philosophical views — they are a practice tool, a repeated self-examination against his own standards. He held himself to the same standards he expected of his subordinates, and he was acutely aware that his behavior as emperor set the moral temperature of the entire empire. "Waste no more time arguing about what a good man should be," he wrote. "Be one." This injunction — be rather than argue about being — is the foundation of leading by example.</p>
+        <p>Brené Brown's research on shame and vulnerability in leadership finds that leaders who are willing to be vulnerable — to admit mistakes, acknowledge uncertainty, and show genuine emotion in appropriate contexts — create cultures of vulnerability that are paradoxically more courageous and more innovative than cultures of performed certainty and invulnerability. When a leader says "I don't know — let's figure it out together," they model intellectual humility and collaborative problem-solving. When a leader says "I made a mistake and here is what I learned," they model the learning orientation that high performance requires. These behaviors are costly to the leader in the short term — they require genuine courage — but they create the conditions for much greater organizational courage over time.</p>
+        <p>The practical challenge of leading by example is that it is total rather than partial. Leaders cannot lead by example selectively — being generous in public while being petty in private, being curious in formal settings while being dismissive in informal ones, being patient with senior stakeholders while being impatient with junior ones. People notice the inconsistencies, and the inconsistencies carry more information than the consistent behaviors do. Building genuine character — values that are lived uniformly rather than performed situationally — is the deepest requirement of leading by example, and it is the requirement that most distinguishes the philosophy of leadership from the techniques of management.</p>
+      </section>
+
+      <StepsList title="Six Principles of a Great Leadership Philosophy">
+        <li>Define leadership as enabling others to do their best work rather than as demonstrating your own capability — measure your effectiveness as a leader by the performance, growth, and wellbeing of the people you lead, not by your personal output.</li>
+        <li>Build psychological safety deliberately by modeling intellectual humility, responding to bad news with curiosity rather than blame, and explicitly rewarding honest dissent and early problem reporting rather than punishing the messenger.</li>
+        <li>Practice servant leadership by asking consistently "what does this person or team need from me to succeed?" and prioritizing those needs over your own visibility and preferences in the work.</li>
+        <li>Lead by example in the behaviors you most want to see in your organization — and be aware that your behavior under pressure carries more cultural information than your behavior under favorable conditions.</li>
+        <li>Develop genuine character — consistency between stated values and actual behavior, intellectual honesty about your mistakes and limitations, and genuine concern for others — as the foundation of your leadership influence rather than relying primarily on positional authority.</li>
+        <li>Study leadership with the same rigor you would apply to any other high-value skill: read deeply across the available research and great thinkers, seek honest feedback about your actual impact, and build a deliberate practice of reflection and growth.</li>
+      </StepsList>
+
+      <section id="under-pressure">
+        <h2>Leadership Under Pressure</h2>
+        <p>The true test of leadership philosophy is not its expression in favorable conditions but its maintenance under genuine pressure. Any reasonably competent person can lead generously, patiently, and thoughtfully when things are going well; the question that distinguishes great from average leaders is how they behave when the organization faces crisis, conflict, or failure. The research on leadership under pressure consistently finds that the leaders who maintain their values and composure under stress create organizations that are more resilient, better at learning from adversity, and more trusted by the people they lead than leaders who maintain their principles only when it is convenient.</p>
+        <p>Organizational psychologist Karl Weick studied high-reliability organizations — hospital emergency rooms, nuclear power plants, aircraft carrier flight decks — where errors have catastrophic consequences and pressure is constant. He found that these organizations share specific leadership behaviors: they are preoccupied with failure rather than complacent about success; they resist oversimplification of complex situations; they remain sensitive to the front-line operations that produce actual outcomes; they maintain commitment to resilience — the capacity to recover from unexpected events; and they defer to expertise rather than hierarchy in urgent situations. These behaviors, which constitute a leadership philosophy for high-stakes environments, produce organizations that are paradoxically more reliable precisely because they are not naively confident.</p>
+        <p>The Stoic tradition provides one of the most developed philosophies for leadership under pressure. Epictetus, a former slave who became one of the most influential philosophers in history, distinguished between what is "up to us" — our judgments, intentions, and responses — and what is "not up to us" — external events, other people's behavior, outcomes. The leader who has internalized this distinction maintains equanimity under pressure not by being indifferent to outcomes but by focusing their energy and attention on what they can actually influence. This is not passivity — it is the highest form of activity, directing effort where it is genuinely effective and releasing attachment to what cannot be controlled.</p>
+        <p>Nelson Mandela, who led the transformation of South Africa from apartheid to democracy after 27 years in prison, embodied the Stoic leadership philosophy under pressure as vividly as any modern example. His ability to emerge from decades of unjust imprisonment without bitterness, to lead with a philosophy of reconciliation rather than retribution, and to maintain strategic patience through enormous external pressure — all of this reflected a leadership character developed through sustained philosophical and psychological practice rather than simply natural temperament. The lesson is not that great leaders are born with exceptional equanimity but that equanimity under pressure is a cultivated capacity, available to anyone willing to develop it through sustained practice.</p>
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions About Great Leadership</h2>
+        <ContentBox type="warning" title={`Misconception: "Great leaders are naturally charismatic"`}>
+          Research consistently finds that charisma — the magnetic personal appeal that draws followers — is neither necessary nor sufficient for effective leadership. Jim Collins's Level 5 leaders are often notably quiet and self-effacing. Many of the most transformative leaders in history — from Darwin to Lincoln to Mandela — were not naturally charismatic in the entertainment-industry sense. Effective leadership correlates more strongly with consistency, integrity, and genuine concern for others than with personal magnetism.
+        </ContentBox>
+        <ContentBox type="warning" title={`Misconception: "Strong leaders make all the decisions"`}>
+          Centralized decision-making is a leadership anti-pattern in most modern contexts. Leaders who make all significant decisions become bottlenecks that slow their organizations, reduce their teams' development and motivation, and create dangerous single points of failure. Great leaders make fewer decisions than their formal authority would allow, pushing decisions to the people closest to the relevant information and reserving their personal decision-making for the genuinely irreversible, high-stakes choices that require their specific judgment.
+        </ContentBox>
+        <ContentBox type="warning" title={`Misconception: "Nice leaders produce weak organizations"`}>
+          The false choice between nice and effective confuses psychological safety with permissiveness. Psychologically safe organizations maintain high standards — they have clear expectations, honest feedback, and genuine accountability for performance. What they do not have is blame, humiliation, or punishment for honest mistakes and honest dissent. The combination of high standards and high psychological safety consistently outperforms both low-standard-high-safety (permissive) and high-standard-low-safety (fear-based) organizations in sustained performance.
+        </ContentBox>
+      </section>
+
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="conclusion">
+        <h2>Developing a Leadership Philosophy You Can Live</h2>
+        <p>A leadership philosophy is not a document — it is a practice. It is the accumulated set of values, principles, and behavioral commitments that you bring to the work of influencing others toward shared goals. The philosophy is tested not in the statement of it but in the living of it, particularly under the conditions of pressure, uncertainty, and competing demands that leadership always involves. The work of developing a leadership philosophy is therefore the work of character development: not acquiring new techniques but becoming a person whose natural responses to difficult situations are those of a wise, caring, effective leader.</p>
+        <p>The greatest leadership texts — from Aristotle's <em>Nicomachean Ethics</em> to Marcus Aurelius's <em>Meditations</em> to modern works by Bennis, Collins, and Edmondson — all point in the same direction: the foundation of great leadership is the deliberate cultivation of character, self-knowledge, and genuine care for others. This cultivation is a lifelong project, not a destination. The leader who believes they have arrived at great leadership has almost certainly stopped doing the reflective work that makes it possible. The most effective leaders I know are those still asking, late in distinguished careers, "how could I have led that better?"</p>
+        <ContentBox type="tip">
+          Choose one leadership principle from this article and write a specific commitment to practicing it over the next 30 days. Be specific about the behaviors: "I will ask one genuine question before sharing my own opinion in every team meeting" or "I will respond to the next piece of bad news with curiosity and inquiry rather than blame." The practice of specific, behavioral commitments — rather than abstract value statements — is what translates leadership philosophy into leadership culture. After 30 days, reflect on what changed and what you learned, then choose the next commitment. This is how a philosophy becomes a practice.
+        </ContentBox>
+      </section>
+
+      <div class="author-bio">
+        <h3>About Success Odyssey Hub</h3>
+        <p>Success Odyssey Hub explores the psychology, habits, and mental models of high achievers across finance, career, and personal development. Our content is grounded in research and designed to be immediately actionable for readers at every stage of their journey.</p>
+      </div>
+
+      <div class="related-articles">
+        <h2>Related Articles</h2>
+        <ul>
+          <li><a href="/blog/marcus-aurelius-meditations">Marcus Aurelius and the Meditations</a></li>
+          <li><a href="/blog/stoic-philosophy-work">Stoic Philosophy at Work</a></li>
+          <li><a href="/blog/emotional-intelligence-success">Emotional Intelligence and Success</a></li>
+          <li><a href="/blog/jeff-bezos-principles">Jeff Bezos Leadership Principles</a></li>
+        </ul>
+      </div>
+
+      <div class="external-resources">
+        <h2>External Resources</h2>
+        <ul>
+          <li><a href="https://www.hbs.edu/faculty/Pages/profile.aspx?facId=6451" target="_blank" rel="noopener noreferrer">Amy Edmondson — Psychological Safety Research</a></li>
+          <li><a href="https://www.jimcollins.com" target="_blank" rel="noopener noreferrer">Jim Collins — Good to Great Research</a></li>
+          <li><a href="https://www.brenebrown.com" target="_blank" rel="noopener noreferrer">Brené Brown — Leadership and Vulnerability</a></li>
+        </ul>
+      </div>
+
+      <div class="book-recommendations">
+        <h2>Recommended Reading</h2>
+        <ul>
+          <li><em>The Fearless Organization</em> — Amy Edmondson</li>
+          <li><em>Good to Great</em> — Jim Collins</li>
+          <li><em>Meditations</em> — Marcus Aurelius</li>
+          <li><em>Dare to Lead</em> — Brené Brown</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0; .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; } .read-time, time { color: #64748b; font-size: 0.9rem; } } h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; } .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; } }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA; h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; } ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; } a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } } }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem; section { margin-bottom: 3rem; } h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; } h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; } p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; } ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } } a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } } }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA; h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; } }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem; h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; } ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } } }
+  @media (prefers-color-scheme: dark) { .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } } .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } } .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } } .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } } }
+</style>

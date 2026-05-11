@@ -1,0 +1,210 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2026-05-10T00:00:00Z";
+const dateModified = "2026-05-10T00:00:00Z";
+const author = "Success Odyssey Hub";
+const readingTime = 10;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does dopamine actually do in the brain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dopamine is primarily a motivation and anticipation chemical, not a pleasure chemical as commonly misunderstood. It drives the seeking behavior that moves you toward potential rewards, rather than producing the pleasure of receiving them. This is why dopamine makes you want, strive, and pursue — and why it is so central to motivation, goal pursuit, and the drive that underlies sustained performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What causes dopamine depletion and how does it affect motivation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dopamine depletion occurs when the dopamine system is overstimulated repeatedly by highly rewarding activities — especially digital entertainment, social media, processed food, or substance use — without effortful achievement. The baseline dopamine level drops, making natural rewards feel less motivating and increasing the threshold for satisfaction. This produces the characteristic experience of procrastination, low motivation, difficulty concentrating, and inability to find pleasure in previously enjoyable activities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I use dopamine to build better motivation habits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most effective strategies involve working with dopamine's anticipation mechanism: setting clear, specific goals that generate anticipatory dopamine; celebrating small wins to provide regular reward signals during long projects; protecting baseline dopamine by avoiding excessive consumption of highly stimulating digital content; and using 'dopamine scheduling' — spacing out high-reward activities — to maintain sensitivity to the natural rewards of effort and achievement."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Dopamine and Motivation: How to Use Your Brain's Reward System for Better Results"
+  description="Dopamine is not the pleasure chemical — it is the anticipation and motivation chemical. Understanding how it actually works lets you design your environment and habits for sustained drive."
+  keywords="dopamine motivation, dopamine reward system, how dopamine works, dopamine habits, motivation neuroscience"
+  image="/assets/card3.jpg"
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/dopamine-motivation"
+>
+  <link rel="preload" as="image" href="/assets/card3.jpg" slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Neuroscience &amp; Performance</span>
+        <span class="read-time">{readingTime} min read</span>
+        <time datetime={datePublished}>May 10, 2026</time>
+      </div>
+      <h1>Dopamine and Motivation: How to Use Your Brain's Reward System for Better Results</h1>
+      <p class="article-subtitle">Dopamine is not the pleasure chemical — it is the anticipation and motivation chemical. Understanding how it actually works lets you design your environment and habits for sustained drive.</p>
+      <span>By <strong>{author}</strong></span>
+    </header>
+
+    <figure class="article-hero">
+      <Image src={heroImage} alt="Dopamine and motivation neuroscience for better habits and performance" width={1200} height={630} fetchpriority="high" loading="eager" />
+    </figure>
+
+    <nav class="table-of-contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#what-dopamine">What Dopamine Actually Does</a></li>
+        <li><a href="#anticipation">Anticipation vs Reward: The Real Dopamine Story</a></li>
+        <li><a href="#depletion">Dopamine Depletion and Low Motivation</a></li>
+        <li><a href="#healthy-habits">Healthy Dopamine Habits</a></li>
+        <li><a href="#traps">Avoiding Dopamine Traps</a></li>
+        <li><a href="#conclusion">Designing Your Dopamine Environment for Sustained Drive</a></li>
+      </ol>
+    </nav>
+
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="article-body" itemprop="articleBody">
+      <section id="what-dopamine">
+        <h2>What Dopamine Actually Does</h2>
+        <p>Dopamine is one of the brain's primary neurotransmitters — a chemical messenger that carries signals between neurons — and it has become widely misunderstood in popular culture. The frequent description of dopamine as the "pleasure chemical" is technically inaccurate and practically misleading. Dopamine is better understood as the motivation, seeking, and anticipation chemical: it is released in anticipation of potential rewards and drives the goal-directed behavior needed to pursue them, rather than primarily generating the subjective experience of pleasure when rewards are received. That role is more accurately attributed to the opioid and endocannabinoid systems.</p>
+        <p>The distinction between wanting and liking — introduced by neuroscientist Kent Berridge at the University of Michigan — captures the dopamine story precisely. Berridge's landmark research with rats found that dopamine-depleted rats would not work to obtain food rewards — they lacked the motivation to seek them — but would still show signs of pleasure when food was placed directly in their mouths. Conversely, artificially elevated dopamine made rats work harder for rewards without making those rewards more enjoyable when received. Dopamine drives wanting; other systems produce liking. You experience dopamine not as the pleasure of having something but as the drive to go and get it.</p>
+        <p>This has profound implications for understanding motivation. When you feel driven to pursue a goal — when the anticipation of achieving it energizes your behavior, when you feel alert and engaged as you work toward it — dopamine is the neurochemical responsible. When you reach the goal and experience satisfaction, pleasure, and resolution, other neurochemical systems are at work. The practical consequence is that goal-setting, progress milestones, and the anticipation of achievement are as important as the achievement itself for sustaining motivated behavior — because dopamine is released at each anticipated step toward a goal, not only at the final arrival.</p>
+        <p>Wolfram Schultz's Nobel Prize-winning research on dopamine neurons revealed another crucial property: dopamine neurons fire most strongly when a reward is unexpected. When a reward is fully predicted, the dopamine response moves earlier in time — to the cue that predicts the reward rather than the reward itself. When a predicted reward fails to materialize, dopamine levels drop below baseline — producing the aversive experience of disappointment. This prediction error mechanism means that novelty, unpredictability, and the uncertainty of outcome are all dopaminergic — they generate stronger dopamine responses than fully predictable rewards. The slot machine's intermittent reinforcement schedule exploits this mechanism with devastating effectiveness; so can well-designed personal motivation systems.</p>
+      </section>
+
+      <section id="anticipation">
+        <h2>Anticipation vs Reward: The Real Dopamine Story</h2>
+        <p>The distinction between anticipatory dopamine and consummatory dopamine has direct practical implications for how high performers structure their motivation. If dopamine drives the pursuit rather than the possession of rewards, then the state of active goal pursuit — the period during which you are working toward a meaningful objective — is itself the dopaminergic experience. The completion of a goal, paradoxically, is often accompanied by a dopamine drop rather than a dopamine peak, as the prediction of reward resolves and the drive toward it dissipates. This is the neurochemical explanation for the "post-achievement blues" that many high achievers experience: the completion of a long-worked-for goal removes the anticipatory dopamine that had been fueling motivation throughout the pursuit.</p>
+        <p>Andrew Huberman at Stanford has written and spoken extensively about what he calls the "dopamine reward system" and how to work with it for sustained performance. His key insight is that the subjective experience associated with effortful work — the sense of engagement, focus, and drive that accompanies challenging goal pursuit — is itself a dopaminergic state that can be cultivated. One strategy he recommends is deliberately associating the effort of challenging work with reward, rather than waiting for the outcome. Telling yourself that the struggle is itself the point, that the difficulty signals growth, that the discomfort is where the value is being created — these cognitive reframes, when genuinely internalized, shift the dopaminergic interpretation of effortful work from aversive to rewarding.</p>
+        <p>The goal gradient effect — the well-documented tendency for motivation to increase as a goal becomes closer — reflects the anticipatory dopamine mechanism. Rats run faster as they approach the food box; humans work harder as a deadline approaches or a milestone comes into sight. This effect can be deliberately designed into goal structures: breaking large, distant goals into close, specific milestones creates a series of goal gradients rather than a single flat anticipation curve, producing regular peaks of motivating dopamine throughout the pursuit rather than only at the distant finish line. James Clear's habit stacking and milestone-based reward systems are implicitly dopaminergic in this sense.</p>
+        <p>Variable ratio reinforcement — the pattern of reward delivery that produces the strongest and most persistent motivated behavior — also exploits anticipatory dopamine most effectively. When you do not know exactly when a reward will arrive, the dopamine system remains in a heightened anticipatory state longer, producing sustained motivation. This is the mechanism behind social media's addictive pull (unpredictable likes and notifications), gambling's compulsive quality (unpredictable wins), and also, when understood and deliberately applied, the motivational sustainability of creative and intellectual work — where the "reward" of insight, breakthrough, or elegant solution arrives unpredictably and reinforces continued engagement through precisely this variable ratio mechanism.</p>
+      </section>
+
+      <section id="depletion">
+        <h2>Dopamine Depletion and Low Motivation</h2>
+        <p>Anna Lembke, the Stanford psychiatrist who wrote <em>Dopamine Nation</em>, describes a concept she calls the "dopamine balance" — the brain's homeostatic regulation of dopamine levels around a set point. When the dopamine system is repeatedly and intensely stimulated — through high-calorie foods, social media, video games, pornography, or substance use — the brain compensates by downregulating dopamine receptors and reducing baseline dopamine production. The short-term result is tolerance: you need more of the same stimulus to get the same dopamine response. The long-term result is depletion: the baseline dopamine level drops, making ordinary activities that previously seemed rewarding feel flat, boring, or uninteresting.</p>
+        <p>This depletion pattern has become increasingly common in the digital age. The average smartphone user checks their device between 80 and 150 times per day, each check providing a small, immediate dopamine hit from social validation, new information, or entertaining content. The cumulative effect of these small, effortless dopamine bursts throughout the day — which require no sustained effort, produce no meaningful achievement, and are immediately available whenever motivation for harder tasks drops — gradually shifts the dopamine baseline lower. The brain that has been fed a constant diet of easy, high-dopamine digital stimulation loses sensitivity to the smaller, slower rewards that meaningful work, physical activity, and genuine human connection provide.</p>
+        <p>The clinical manifestations of dopamine depletion include persistent low motivation, difficulty initiating tasks, inability to sustain focus on demanding work, reduced enjoyment of previously pleasurable activities, increased impulsivity, and heightened emotional reactivity. These symptoms are recognizable as the characteristic experience of procrastination and low productivity — and they are, in large part, a neurobiological consequence of dopamine system dysregulation from excessive consumption of easy, high-stimulation content rather than a character flaw or motivational failure.</p>
+        <p>The recovery from dopamine depletion follows a predictable but uncomfortable course. When the high-stimulation activities are reduced or removed, the depleted dopamine system gradually upregulates — recovering sensitivity and raising the baseline — but the initial period of reduction is experienced as acute discomfort: boredom, restlessness, low motivation, and irritability. This is the neurochemical basis for the well-documented discomfort of digital detoxes and the difficulty of reducing social media use. The discomfort is real, but it is temporary, and the restoration of dopamine sensitivity on the other side produces a genuine improvement in the subjective experience of ordinary life and meaningful work. The researcher who eliminates social media from their work day typically finds, after a period of adjustment, that the work itself becomes more engaging — not because the work changed but because their dopamine sensitivity recovered.</p>
+      </section>
+
+      <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7229511013815291" data-ad-slot="2952775705"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="healthy-habits">
+        <h2>Healthy Dopamine Habits</h2>
+        <p>Building healthy dopamine habits is fundamentally about restoring and maintaining sensitivity to the natural rewards of achievement, connection, learning, and physical activity. These are the activities that the human dopamine system evolved to respond to — effort-dependent rewards that require sustained engagement to obtain. The challenge in the modern environment is that easier, higher-stimulation alternatives are constantly available and specifically designed to exploit the dopamine system in ways that were not possible in the evolutionary environment in which the system developed.</p>
+        <p>Regular physical exercise is one of the most powerful healthy dopamine practices available. Aerobic exercise increases baseline dopamine production, increases dopamine receptor density, and releases BDNF that supports the health of dopamine-producing neurons. John Ratey's research, summarized in <em>Spark</em>, documents the consistent cognitive and motivational benefits of regular exercise that are mediated partly through these dopaminergic effects. The morning exercise habit that many high performers report as foundational to their productivity is not coincidental — exercise-induced dopamine elevation early in the day appears to set a motivational tone that persists through subsequent hours.</p>
+        <p>Goal-setting and achievement practices are equally important. Clear, specific, measurable goals — particularly those broken into near-term milestones — provide the regular anticipatory dopamine signals that sustain motivation through long projects. The satisfaction of checking a completed task, logging a completed workout, or crossing off a milestone generates a small but real dopamine signal that compounds over time. Systems like Don't Break the Chain (maintaining a visual streak), progress tracking, and periodic review of achieved milestones all leverage the dopaminergic reward of progress and achievement to sustain motivation through extended effort.</p>
+        <p>Social connection and genuine human interaction also provide important dopamine signals. Research on social neuroscience consistently shows that positive social interactions — feeling understood, contributing to others' wellbeing, receiving genuine appreciation — produce dopamine alongside other neurochemicals (including oxytocin and serotonin) that support both motivation and wellbeing. This explains why isolation tends to reduce motivation and energy: it removes an important class of dopaminergic rewards that the human social brain evolved to require. The high performer who neglects social connection in favor of productivity may find that the social deficit gradually erodes the very motivation they are trying to protect.</p>
+      </section>
+
+      <StepsList title="Six Dopamine Principles for Sustained Motivation">
+        <li>Structure your goals with clear near-term milestones rather than distant outcomes, leveraging the goal gradient effect and anticipatory dopamine to maintain motivation through the flat middle of long projects.</li>
+        <li>Reduce consumption of highly stimulating, effortless content — social media, endless video, processed food — during work periods to protect dopamine sensitivity and make the natural rewards of achievement and learning more motivating by comparison.</li>
+        <li>Exercise regularly in the morning to elevate baseline dopamine and set a motivational tone for the day, using this as the first high-value dopaminergic input rather than social media or news.</li>
+        <li>Deliberately reframe effortful work as rewarding rather than aversive, associating the difficulty of challenging tasks with the growth they represent rather than with the discomfort they produce — this cognitive reframe shifts dopaminergic interpretation of effort over time with consistent practice.</li>
+        <li>Use variable ratio reward structures for your most important habits: introduce unpredictable positive feedback at irregular intervals rather than perfectly predictable ones, exploiting the variable ratio mechanism that produces the most sustained motivational engagement.</li>
+        <li>Schedule periodic dopamine fasts — deliberate periods of reduced consumption of highly stimulating content — to allow dopamine receptor sensitivity to recover, restoring the capacity to find natural rewards genuinely motivating rather than flat by comparison to digital stimulation.</li>
+      </StepsList>
+
+      <section id="traps">
+        <h2>Avoiding Dopamine Traps</h2>
+        <p>The modern environment contains numerous "dopamine traps" — products, services, and environments specifically engineered to exploit the dopamine system in ways that undermine long-term motivation and wellbeing. Social media platforms are perhaps the most consequential. The infinite scroll, algorithmic personalization, variable ratio notification delivery, and social validation mechanisms of platforms like Instagram, TikTok, and Twitter are not accidental — they reflect millions of dollars of behavioral engineering aimed at maximizing the dopaminergic engagement that drives time-on-platform. Understanding that these platforms are engineered to hijack your dopamine system is the first step to consciously managing their role in your motivational environment.</p>
+        <p>Video games represent another well-designed dopamine trap for some individuals. Modern games are typically engineered with the same behavioral psychology principles as social media: variable ratio reward schedules, achievement systems, progress bars, and social elements that exploit the goal gradient effect and social dopamine simultaneously. None of this makes games inherently harmful — the issue is whether the dopamine consumed through gaming is crowding out the dopamine available for meaningful work, learning, and achievement. The person who spends evenings gaming and then struggles to find meaningful work motivating may be experiencing the behavioral consequence of a dopamine system saturated by easier, higher-stimulation gaming rewards.</p>
+        <p>The trap of "productivity theater" — performing the activities associated with productive work without actually engaging in cognitively demanding output — also has a dopaminergic dimension. Organizing your workspace, making elaborate to-do lists, reading about productivity methods, and planning work in excessive detail all provide mild dopaminergic rewards associated with the anticipation of productive work without requiring the sustained effort that actual productive work demands. The brain gets a small version of the reward without the full cost, which can substitute for the actual work and reduce motivation to engage with the harder thing. Cal Newport describes this as a form of pseudo-work that satisfies the motivational surface while leaving the substantive work undone.</p>
+        <p>The antidote to dopamine traps is not elimination — which is often impractical and unnecessary — but conscious management. Establishing clear times and contexts for high-stimulation consumption (after the primary work of the day is done, not before), using structural barriers to prevent unconscious access (app timers, website blockers, keeping devices out of the bedroom), and building awareness of when high-stimulation content is being used as procrastination from harder but more meaningful work — these practices restore conscious agency over the dopamine system rather than leaving it to be managed by engineers whose incentives are not aligned with your long-term motivation and wellbeing.</p>
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions About Dopamine and Motivation</h2>
+        <ContentBox type="warning" title={`Misconception: "More dopamine is always better for motivation"`}>
+          Dopamine has an inverted-U relationship with performance — both too little and too much impair cognitive function and motivation. The optimal dopamine level for motivation and performance is moderate and responsive to genuine effort and achievement. Artificially elevated dopamine through pharmacological means or excessive stimulation actually degrades motivation by downregulating receptors and disrupting the natural reward signaling that drives goal-directed behavior.
+        </ContentBox>
+        <ContentBox type="warning" title={`Misconception: "Dopamine-depleting activities are obviously harmful in the moment"`}>
+          The neurological damage of dopamine-depleting habits is typically invisible in the moment and only becomes apparent in the aggregate. Social media use feels pleasant; the gradual desensitization of the reward system is not consciously experienced until motivated behavior on harder tasks declines noticeably. This invisibility makes dopamine traps particularly challenging to manage — the cost is paid later and in a different currency than the pleasure received now.
+        </ContentBox>
+        <ContentBox type="warning" title={`Misconception: "Dopamine fasts require eliminating all pleasure"`}>
+          A dopamine fast, properly understood, means reducing highly stimulating, effortless consumption — social media, video, processed food — not eliminating all pleasure. Natural pleasures that require effort or social engagement (exercise, conversation, reading, cooking, creative work) are not the problem and do not need to be fasted from. The goal is to recalibrate the dopamine system by reducing the high-stimulation inputs that desensitize it, not to eliminate reward altogether.
+        </ContentBox>
+      </section>
+
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="conclusion">
+        <h2>Designing Your Dopamine Environment for Sustained Drive</h2>
+        <p>Motivation is not a character trait — it is a biological state shaped by the dopamine system's current sensitivity and the availability of rewards that trigger anticipatory dopamine. The person who consistently demonstrates high motivation has typically built an environment and a set of habits that work with the dopamine system rather than against it: adequate exercise, manageable stimulation levels, clear goals with proximate milestones, and meaningful work that provides genuine achievement rewards. They may not have consciously designed this environment, but the design is present in the behavioral pattern.</p>
+        <p>The good news from the neuroscience of dopamine is that motivation is highly modifiable. The dopamine system's plasticity means that it can be recalibrated — sensitivity restored, baseline elevated, reward responses to meaningful activity strengthened — through deliberate environmental and behavioral changes. This is not quick; the recalibration of a depleted dopamine system takes weeks rather than days. But it is real, and the improvement in subjective motivation, the restoration of genuine engagement with challenging work, and the reduction in procrastination and low-energy avoidance that accompany the recalibration are among the most practically significant improvements available to any high performer.</p>
+        <ContentBox type="tip">
+          Try a one-week experiment: for seven days, delay all social media, news, and entertainment until after your primary work block is complete. Start each day instead with fifteen minutes of physical activity and then go directly into your most important work before checking any digital notifications. Track your motivation, focus, and output quality across the week and compare it to a typical week. Most people find the first two days uncomfortable and the subsequent days increasingly productive — as the dopamine system, freed from early high-stimulation inputs, makes the natural rewards of focused work more accessible and more motivating than they have been in years.
+        </ContentBox>
+      </section>
+
+      <div class="author-bio">
+        <h3>About Success Odyssey Hub</h3>
+        <p>Success Odyssey Hub explores the psychology, habits, and mental models of high achievers across finance, career, and personal development. Our content is grounded in research and designed to be immediately actionable for readers at every stage of their journey.</p>
+      </div>
+
+      <div class="related-articles">
+        <h2>Related Articles</h2>
+        <ul>
+          <li><a href="/blog/neuroplasticity-success">Neuroplasticity and Success</a></li>
+          <li><a href="/blog/habit-loop-explained">The Habit Loop Explained</a></li>
+          <li><a href="/blog/digital-minimalism-productivity">Digital Minimalism and Productivity</a></li>
+          <li><a href="/blog/prefrontal-cortex-discipline">Strengthen Your Prefrontal Cortex</a></li>
+        </ul>
+      </div>
+
+      <div class="external-resources">
+        <h2>External Resources</h2>
+        <ul>
+          <li><a href="https://www.hubermanlab.com" target="_blank" rel="noopener noreferrer">Huberman Lab — Dopamine and Motivation Research</a></li>
+          <li><a href="https://www.annalembke.com" target="_blank" rel="noopener noreferrer">Anna Lembke — Dopamine Nation Research</a></li>
+          <li><a href="https://www.berridge.rcgd.uab.edu" target="_blank" rel="noopener noreferrer">Kent Berridge Lab — Wanting and Liking Research</a></li>
+        </ul>
+      </div>
+
+      <div class="book-recommendations">
+        <h2>Recommended Reading</h2>
+        <ul>
+          <li><em>Dopamine Nation</em> — Anna Lembke</li>
+          <li><em>The Molecule of More</em> — Daniel Lieberman &amp; Michael Long</li>
+          <li><em>Atomic Habits</em> — James Clear</li>
+          <li><em>Digital Minimalism</em> — Cal Newport</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0; .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; } .read-time, time { color: #64748b; font-size: 0.9rem; } } h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; } .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; } }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA; h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; } ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; } a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } } }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem; section { margin-bottom: 3rem; } h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; } h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; } p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; } ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } } a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } } }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA; h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; } }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem; h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; } ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } } }
+  @media (prefers-color-scheme: dark) { .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } } .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } } .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } } .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } } }
+</style>

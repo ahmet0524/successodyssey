@@ -1,0 +1,210 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const datePublished = "2026-05-10T00:00:00Z";
+const dateModified = "2026-05-10T00:00:00Z";
+const author = "Success Odyssey Hub";
+const readingTime = 10;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the time value of money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The time value of money is the principle that a dollar available today is worth more than a dollar available in the future, because today's dollar can be invested and grow. This concept underlies all of finance — from compound interest and loan pricing to retirement planning and business investment decisions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does compounding demonstrate the time value of money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compounding demonstrates time value by showing how a present dollar grows exponentially over time when returns are reinvested. At 10% annual return, $1 doubles roughly every 7.2 years (the Rule of 72). Over 40 years, that dollar becomes about $45. The earlier you invest, the more periods of compounding you enjoy, which is why time is the most powerful variable in long-term wealth building."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the time value of money apply to non-financial life decisions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The time value of money applies to any decision where timing affects outcomes: starting a business or pursuing a career change earlier versus later, developing skills when young versus middle-aged, maintaining health through preventive investment versus treating chronic conditions later, and spending experiences while energetic versus deferring them. In each case, earlier action captures more of the compounding benefits of time."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="The Time Value of Money: Why a Dollar Today Is Worth More Than a Dollar Tomorrow"
+  description="The time value of money is the most important concept in personal finance. Learn how compounding, opportunity cost, and time interact to determine your financial future."
+  keywords="time value of money, compounding interest, opportunity cost money, financial planning time, compound growth"
+  image="/assets/card3.jpg"
+  type="article"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/time-value-money-life"
+>
+  <link rel="preload" as="image" href="/assets/card3.jpg" slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Personal Finance &amp; Career</span>
+        <span class="read-time">{readingTime} min read</span>
+        <time datetime={datePublished}>May 10, 2026</time>
+      </div>
+      <h1>The Time Value of Money: Why a Dollar Today Is Worth More Than a Dollar Tomorrow</h1>
+      <p class="article-subtitle">The time value of money is the most important concept in personal finance. Learn how compounding, opportunity cost, and time interact to determine your financial future.</p>
+      <span>By <strong>{author}</strong></span>
+    </header>
+
+    <figure class="article-hero">
+      <Image src={heroImage} alt="Time value of money and compound interest visualization" width={1200} height={630} fetchpriority="high" loading="eager" />
+    </figure>
+
+    <nav class="table-of-contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#what-it-means">What Time Value of Money Means</a></li>
+        <li><a href="#math-compounding">The Mathematics of Compounding</a></li>
+        <li><a href="#opportunity-cost">The Opportunity Cost of Waiting</a></li>
+        <li><a href="#inflation">Inflation and Purchasing Power Over Time</a></li>
+        <li><a href="#life-decisions">Life Decision Applications</a></li>
+        <li><a href="#conclusion">Using Time Value Thinking in Every Financial Decision</a></li>
+      </ol>
+    </nav>
+
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="article-body" itemprop="articleBody">
+      <section id="what-it-means">
+        <h2>What Time Value of Money Means</h2>
+        <p>The time value of money is the foundational principle of all of finance: a dollar available today is worth more than a dollar available at some future date. This is not merely a convention or an assumption — it reflects three concrete economic realities. First, a present dollar can be invested to earn a return, making it genuinely worth more in the future than its face value. Second, inflation erodes the purchasing power of money over time, making future dollars worth less in real terms than present dollars. Third, uncertainty — the possibility that a future dollar will not actually arrive — means that present certainty commands a premium over future promises.</p>
+        <p>These three forces — investment return potential, inflation, and uncertainty — together constitute the "discount rate" that financial analysts use to compare present and future cash flows. When a business evaluates an investment that will generate returns over ten years, it discounts those future returns back to present value using an appropriate discount rate to determine whether the present cost of the investment is justified. When an individual evaluates a pension that will pay out over 20 years, the same logic applies: the present value of those future payments, discounted appropriately, is the correct measure of the pension's worth.</p>
+        <p>Understanding time value of money at an intuitive level — not just as a financial formula but as a mental model — transforms how you think about every financial decision. Consumer debt, which takes a present dollar you do not have and commits future dollars to repay it with interest, is time value working against you. Investment, which sacrifices a present dollar to gain many future dollars, is time value working for you. The financial decisions that build long-term wealth are the ones that systematically put time value on your side, and the decisions that destroy it are those that work against it.</p>
+        <p>The concept also reframes the meaning of financial patience. When you understand that $10,000 invested today at historical market returns will become approximately $174,000 in 40 years, the cost of spending that $10,000 today is not $10,000 — it is $174,000 of future wealth. This is not an argument for never spending money, but it is a powerful reminder that every spending decision is simultaneously an investment decision, and evaluating it as such produces better long-term outcomes. The immediate cost and the long-term cost of any expenditure are very different numbers.</p>
+      </section>
+
+      <section id="math-compounding">
+        <h2>The Mathematics of Compounding</h2>
+        <p>Compound interest works through the simple mechanism of earning returns on returns. In the first period, you earn returns on your principal. In the second period, you earn returns on your principal plus the first period's returns. In each subsequent period, the base on which returns are earned grows, producing the exponential growth curve that distinguishes compounding from simple interest. The longer the compounding continues, the more dramatic the divergence between compounded and simple growth.</p>
+        <p>The Rule of 72 provides a simple approximation of compounding's power: divide 72 by the annual interest rate to find the approximate number of years it takes an investment to double. At 6%, money doubles every 12 years. At 8%, every 9 years. At 10%, every 7.2 years. Applied practically: $10,000 invested at 8% becomes $20,000 after 9 years, $40,000 after 18 years, $80,000 after 27 years, and $160,000 after 36 years. No additional contributions were made — the original $10,000 did all the work, compounding on itself repeatedly over time.</p>
+        <p>The critical insight from this mathematics is that the early years of compounding matter far more than the later years in terms of the contribution each year makes to the terminal value. A dollar invested at age 25 that compounds at 8% for 40 years becomes approximately $21.72. A dollar invested at age 35 that compounds for 30 years becomes approximately $10.06. A dollar invested at age 45 that compounds for 20 years becomes $4.66. The 25-year-old's dollar generates more than four times the value of the 45-year-old's dollar despite the same investment and the same return rate — simply because of time. This is why financial advisors unanimously recommend starting investment contributions as early as possible, and why the opportunity cost of delaying is so devastating in long-term financial terms.</p>
+        <p>Albert Einstein's purported observation about compound interest being the eighth wonder of the world, whether or not it is accurately attributed, captures something genuine. The exponential nature of compounding means that the trajectory accelerates over time rather than staying constant. In the early years, growth feels linear and modest. In the later years — decades into a compounding journey — growth accelerates to a pace that seems almost impossible when viewed from the beginning. The investor who stays through the early modest years is the one who experiences the extraordinary later ones.</p>
+      </section>
+
+      <section id="opportunity-cost">
+        <h2>The Opportunity Cost of Waiting</h2>
+        <p>Every year that passes without investing is not neutral — it is costly. The opportunity cost of waiting to invest is the return that would have been earned if investment had begun sooner. This cost is invisible because it consists of gains not realized rather than losses incurred, but it is economically real and can be calculated precisely. A 30-year-old who waits until 40 to begin investing $500 per month, rather than starting at 30, will retire with roughly half the wealth of the person who started earlier, assuming identical investment returns. The ten years of waiting cost not just ten years of contributions but ten years of compounding on everything that followed.</p>
+        <p>The opportunity cost of waiting applies beyond personal investment decisions. Every major life decision has an opportunity cost dimension that time value analysis can clarify. Choosing to remain in a poorly-paying role for two additional years rather than pursuing a better opportunity has an opportunity cost that compounds: not just two years of lower earnings but two years of compounding on the wealth difference between the two paths. Delaying a necessary health intervention has a compounding cost in reduced productivity and potentially much higher future treatment costs. Postponing the development of a high-value skill costs not just the delayed learning but the compounding of applications and returns that the skill would have generated earlier.</p>
+        <p>Jeff Bezos has spoken about using "regret minimization" as a decision framework — projecting yourself to age 80 and asking which choice you would regret more. This framework is implicitly a time value framework: it asks you to evaluate the long-term cost of different choices, weighing immediate convenience against compounding future benefits or regrets. The choices that minimize long-term regret are often those that front-load difficulty and patience in exchange for long-term compound returns — starting the business while you are young, investing aggressively while you have time, developing demanding skills before they are needed.</p>
+        <p>The cognitive challenge is that opportunity costs are less emotionally vivid than direct costs. Paying $500 for something feels like a clear $500 loss. Not investing $500, which has an opportunity cost of potentially $10,000+ over 30 years, feels like nothing at all — because nothing happens immediately. The disciplined financial thinker has learned to make invisible opportunity costs visible by translating them into future dollar terms, which makes the tradeoffs emotionally real enough to influence behavior. This mental discipline — seeing the future cost of present inaction — is one of the most valuable applications of time value thinking in everyday life.</p>
+      </section>
+
+      <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7229511013815291" data-ad-slot="2952775705"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="inflation">
+        <h2>Inflation and Purchasing Power Over Time</h2>
+        <p>Inflation — the general increase in the price level over time — is the silent counterpart to compound investment returns. While investment compounds your wealth upward, inflation compounds the erosion of purchasing power downward. A dollar held in cash at 3% annual inflation loses half its purchasing power in about 24 years (Rule of 72 applied to inflation). The person who keeps their savings in cash for twenty years does not just miss out on investment returns — they experience a real reduction in the value of what they have saved, even though the nominal balance is unchanged.</p>
+        <p>The implications for financial planning are direct. The goal is not to preserve nominal wealth but to preserve and grow real wealth — wealth measured in purchasing power rather than dollar amounts. An investment that returns 7% nominally in a 3% inflation environment is generating approximately 4% real return. A savings account paying 1% in a 3% inflation environment is generating -2% real return — actively destroying purchasing power. Evaluating investments in real rather than nominal terms changes the assessment of many seemingly "safe" choices and clarifies the actual risk of cash and low-yield instruments over long periods.</p>
+        <p>Inflation also creates an important asymmetry in the time value calculation. For borrowers, inflation is beneficial — they repay loans with dollars that are worth less in real terms than the dollars they borrowed. A 30-year mortgage taken today will be repaid with significantly less valuable dollars at the end of the term, effectively reducing the real cost of the debt over time. For savers holding cash or low-yield instruments, inflation is harmful — it gradually erodes the purchasing power of their holdings. This asymmetry is one reason why long-term, fixed-rate debt used to purchase appreciating assets with rental income is a common wealth-building strategy: the asset appreciates while the debt erodes in real terms.</p>
+        <p>Long-term investors should think of their return target not as a specific nominal percentage but as a real return above inflation. Historically, equities have provided approximately 6-7% real return, making them the most accessible inflation-beating investment for most individuals. Real estate in appreciating markets has similarly outpaced inflation over long periods. Bonds and cash equivalents, by contrast, have historically provided returns close to or below inflation over long periods, meaning they preserve nominal but not real wealth. Building an investment portfolio with adequate inflation-beating exposure is not optional for long-term financial health — it is a requirement.</p>
+      </section>
+
+      <StepsList title="Six Ways to Apply Time Value Thinking to Your Financial Life">
+        <li>Start investing immediately rather than waiting for ideal conditions — each year of delay costs not just that year's contributions but the compounding of decades of returns that could have been building on that earlier investment.</li>
+        <li>Calculate the future value of major spending decisions: translate today's purchase price into the compounded investment value it represents 20 or 30 years from now to make the true long-term cost visible.</li>
+        <li>Evaluate all investment returns in real (inflation-adjusted) terms rather than nominal terms to accurately assess whether your savings are building or eroding your purchasing power over time.</li>
+        <li>Use the opportunity cost framework for major life decisions — career changes, skill development, health investments — by projecting the long-term compounding difference between paths rather than evaluating only immediate impacts.</li>
+        <li>Maintain inflation-beating investments — equities, real estate, inflation-indexed bonds — as the core of your long-term portfolio rather than defaulting to cash that nominally feels safe but destroys real value over decades.</li>
+        <li>Apply the "regret minimization" framework to time-sensitive decisions: project to age 80 and ask which choice, in light of compounding consequences, you would most regret — and let that guide action on decisions where time genuinely matters.</li>
+      </StepsList>
+
+      <section id="life-decisions">
+        <h2>Life Decision Applications</h2>
+        <p>The time value of money framework extends naturally beyond financial decisions into life choices more broadly. This is because many of the most consequential life decisions have a similar structure to financial investments: you pay a cost upfront — in time, effort, discomfort, or money — to receive benefits that compound over a long future period. Health behaviors, skill development, relationship investment, and educational choices all follow this pattern, and applying time value thinking to them produces better decisions than purely present-focused reasoning.</p>
+        <p>Health is one of the most striking examples. The costs of preventive health behaviors — exercise, nutrition, sleep, stress management — are paid every day in immediate effort. The benefits are deferred and uncertain in timing, but the evidence for their compounding is overwhelming: people who invest consistently in preventive health over decades have dramatically better health outcomes, lower medical costs, higher cognitive performance into late age, and longer productive lifespans. The person who declines to invest thirty minutes per day in exercise at 30 is making a financial decision with a poor expected return that may cost decades of health and productivity later.</p>
+        <p>Skill development follows the same logic. Learning a high-value skill — programming, financial analysis, persuasive writing, data science — typically requires hundreds of hours of investment before the return materializes. But a skill, once developed, compounds: it generates returns for decades and can be combined with other skills to produce unique leverage. The opportunity cost of not developing a high-value skill at 25 versus 35 is not just ten years of income difference — it is ten additional years of the skill compounding in the background of every project, conversation, and career decision.</p>
+        <p>Relationship investment — time spent developing deep professional and personal connections — is perhaps the most undervalued compound investment available. The professional network built over twenty years of consistent, genuine relationship-building generates opportunities, information, support, and collaboration that cannot be replicated by networking sessions attended at the last minute. The close friendships developed over decades of sustained investment provide resilience, joy, and support that late-stage social efforts rarely achieve with the same depth. In both domains, the compounding of early and consistent investment dramatically outperforms intensive late-stage effort.</p>
+      </section>
+
+      <section id="misconceptions">
+        <h2>Common Misconceptions About Time Value of Money</h2>
+        <ContentBox type="warning" title={`Misconception: "I'll start investing when I have more money"`}>
+          Waiting for a larger amount to invest before starting loses the most precious component of compounding: early time. A $50 monthly investment started today will outperform a $500 monthly investment started five years from now, given sufficient time horizon. The amount of any investment matters less than the time it has to compound. Starting now with whatever is possible is categorically better than waiting for optimal conditions that may never arrive.
+        </ContentBox>
+        <ContentBox type="warning" title={`Misconception: "Saving in cash is safe"`}>
+          Cash is safe in nominal terms but is not safe in real terms over long periods. At 3% average inflation, cash loses half its purchasing power every 24 years. A person who saves $100,000 in cash for 30 years without investing has a nominal balance that hasn't declined, but a real balance worth roughly $40,000 in today's dollars. True safety for long-term savings requires inflation-beating returns, not nominal stability.
+        </ContentBox>
+        <ContentBox type="warning" title={`Misconception: "The time value of money only applies to financial decisions"`}>
+          Time value thinking applies to any decision where timing affects compounding outcomes: health investments, skill development, relationship building, career pivots, and personal growth all have time-dependent compounding structures. The person who develops a high-value skill at 25 instead of 35 enjoys ten additional years of that skill compounding into opportunities, income, and capabilities. Time value is a universal framework for understanding why earlier, consistent investment in almost any domain produces disproportionate long-term results.
+        </ContentBox>
+      </section>
+
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="conclusion">
+        <h2>Using Time Value Thinking in Every Financial Decision</h2>
+        <p>The time value of money is not just a financial formula — it is a lens for understanding why patience and early action are so reliably rewarded in every domain that involves compounding. The person who internalizes this principle at a deep level makes better financial decisions, better career decisions, and better life decisions, because they can see the true long-term cost of present choices that others evaluate only in immediate terms. This cognitive advantage — the ability to think clearly about long time horizons — is one of the most durable edges available in both personal finance and life planning.</p>
+        <p>The practical application is to build a habit of asking, for significant decisions: "What is the compounded long-term impact of this choice versus the alternative?" Not as a formula to calculate precisely, but as a discipline to ensure that the time dimension of consequential decisions is considered rather than ignored. The vast majority of financial mistakes — carrying consumer debt, delaying investment, cashing out retirement accounts, holding cash during inflationary periods — reflect a failure to account for the time value of the choices being made.</p>
+        <ContentBox type="tip">
+          Use a compound interest calculator to make the time value of your current financial decisions concrete. Take your monthly discretionary spending category you are most uncertain about — dining out, subscriptions, a planned purchase — and calculate what that amount, invested monthly at 7% for 30 years, would become. The number you see is the true cost of that spending, not the nominal price. This exercise, done once for your largest discretionary categories, often produces more behavior change than any budget or spending rule, because it makes the invisible opportunity cost emotionally real.
+        </ContentBox>
+      </section>
+
+      <div class="author-bio">
+        <h3>About Success Odyssey Hub</h3>
+        <p>Success Odyssey Hub explores the psychology, habits, and mental models of high achievers across finance, career, and personal development. Our content is grounded in research and designed to be immediately actionable for readers at every stage of their journey.</p>
+      </div>
+
+      <div class="related-articles">
+        <h2>Related Articles</h2>
+        <ul>
+          <li><a href="/blog/compound-effect-success">The Compound Effect in Success and Finance</a></li>
+          <li><a href="/blog/investing-psychology">The Psychology of Investing</a></li>
+          <li><a href="/blog/financial-independence-mindset">The Financial Independence Mindset</a></li>
+          <li><a href="/blog/opportunity-cost-thinking">Opportunity Cost Thinking</a></li>
+        </ul>
+      </div>
+
+      <div class="external-resources">
+        <h2>External Resources</h2>
+        <ul>
+          <li><a href="https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" target="_blank" rel="noopener noreferrer">SEC Compound Interest Calculator</a></li>
+          <li><a href="https://www.bls.gov/cpi" target="_blank" rel="noopener noreferrer">U.S. Bureau of Labor Statistics — CPI Inflation Data</a></li>
+          <li><a href="https://www.federalreserve.gov" target="_blank" rel="noopener noreferrer">Federal Reserve — Economic Research and Data</a></li>
+        </ul>
+      </div>
+
+      <div class="book-recommendations">
+        <h2>Recommended Reading</h2>
+        <ul>
+          <li><em>The Richest Man in Babylon</em> — George S. Clason</li>
+          <li><em>The Psychology of Money</em> — Morgan Housel</li>
+          <li><em>Simple Wealth, Inevitable Wealth</em> — Nick Murray</li>
+          <li><em>The Little Book of Common Sense Investing</em> — John C. Bogle</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0; .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; } .read-time, time { color: #64748b; font-size: 0.9rem; } } h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; } .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; } }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA; h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; } ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; } a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } } }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem; section { margin-bottom: 3rem; } h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; } h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; } p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; } ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } } a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } } }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA; h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; } }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem; h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; } ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } } }
+  @media (prefers-color-scheme: dark) { .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } } .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } } .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } } .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } } }
+</style>
