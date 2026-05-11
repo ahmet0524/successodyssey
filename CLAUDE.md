@@ -425,16 +425,16 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 
 | Gün | Slug | Başlık | Durum |
 |-----|------|--------|-------|
-| 141 | `financial-independence-mindset` | Financial Independence Mindset | ⏳ |
-| 142 | `wealth-building-habits` | Wealth Building Habits | ⏳ |
-| 143 | `money-mindset-shift` | The Money Mindset Shift | ⏳ |
-| 144 | `passive-income-mental-models` | Mental Models for Passive Income | ⏳ |
-| 145 | `career-growth-strategy` | Career Growth Strategy | ⏳ |
-| 146 | `negotiation-psychology` | The Psychology of Negotiation | ⏳ |
-| 147 | `networking-strategy` | Strategic Networking | ⏳ |
-| 148 | `entrepreneurship-mindset` | The Entrepreneurship Mindset | ⏳ |
-| 149 | `personal-brand-success` | Building a Personal Brand | ⏳ |
-| 150 | `high-income-skills` | High-Income Skills Worth Developing | ⏳ |
+| 141 | `financial-independence-mindset` | Financial Independence Mindset | ✅ |
+| 142 | `wealth-building-habits` | Wealth Building Habits | ✅ |
+| 143 | `money-mindset-shift` | The Money Mindset Shift | ✅ |
+| 144 | `passive-income-mental-models` | Mental Models for Passive Income | ✅ |
+| 145 | `career-growth-strategy` | Career Growth Strategy | ✅ |
+| 146 | `negotiation-psychology` | The Psychology of Negotiation | ✅ |
+| 147 | `networking-strategy` | Strategic Networking | ✅ |
+| 148 | `entrepreneurship-mindset` | The Entrepreneurship Mindset | ✅ |
+| 149 | `personal-brand-success` | Building a Personal Brand | ✅ |
+| 150 | `high-income-skills` | High-Income Skills Worth Developing | ✅ |
 | 151 | `financial-habits-millionaires` | Financial Habits of Millionaires | ⏳ |
 | 152 | `investing-psychology` | The Psychology of Investing | ⏳ |
 | 153 | `risk-tolerance-success` | Understanding Your Risk Tolerance | ⏳ |
@@ -508,12 +508,12 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | Phase 4 (Gün 61-90) | 30 | 30 | 0 |
 | Phase 5 (Gün 91-115) | 25 | 25 | 0 |
 | Phase 6 (Gün 116-140) | 25 | 25 | 0 |
-| Phase 7 (Gün 141-165) | 25 | 0 | 25 |
+| Phase 7 (Gün 141-165) | 25 | 10 | 15 |
 | Phase 8 (Gün 166-185) | 20 | 0 | 20 |
 | Phase 9 (Gün 186-200) | 15 | 0 | 15 |
-| **TOPLAM** | **200** | **126** | **74** |
+| **TOPLAM** | **200** | **136** | **64** |
 
-**🔜 Sıradaki görev:** Day 141 — `financial-independence-mindset` (Phase 7 başlıyor)
+**🔜 Sıradaki görev:** Day 151 — `financial-habits-millionaires`
 
 ---
 
