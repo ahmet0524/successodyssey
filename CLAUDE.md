@@ -410,16 +410,16 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | 128 | `elon-musk-thinking` | How Elon Musk Thinks | ✅ |
 | 129 | `jeff-bezos-principles` | Jeff Bezos' Leadership Principles | ✅ |
 | 130 | `steve-jobs-philosophy` | Steve Jobs' Philosophy | ✅ |
-| 131 | `long-game-success` | The Long Game | ⏳ |
-| 132 | `compound-effect-success` | The Compound Effect | ⏳ |
-| 133 | `pursuit-of-excellence` | The Philosophy of Excellence | ⏳ |
-| 134 | `success-vs-happiness` | Success vs Happiness | ⏳ |
-| 135 | `philosophy-failure` | The Philosophy of Failure | ⏳ |
-| 136 | `meritocracy-reality` | Meritocracy: Myth or Reality? | ⏳ |
-| 137 | `stoic-philosophy-work` | Stoic Philosophy at Work | ⏳ |
-| 138 | `meaning-vs-pleasure` | Meaning vs Pleasure | ⏳ |
-| 139 | `virtue-success` | Virtue and Success | ⏳ |
-| 140 | `timeless-success-principles` | Timeless Principles of Success | ⏳ |
+| 131 | `long-game-success` | The Long Game | ✅ |
+| 132 | `compound-effect-success` | The Compound Effect | ✅ |
+| 133 | `pursuit-of-excellence` | The Philosophy of Excellence | ✅ |
+| 134 | `success-vs-happiness` | Success vs Happiness | ✅ |
+| 135 | `philosophy-failure` | The Philosophy of Failure | ✅ |
+| 136 | `meritocracy-reality` | Meritocracy: Myth or Reality? | ✅ |
+| 137 | `stoic-philosophy-work` | Stoic Philosophy at Work | ✅ |
+| 138 | `meaning-vs-pleasure` | Meaning vs Pleasure | ✅ |
+| 139 | `virtue-success` | Virtue and Success | ✅ |
+| 140 | `timeless-success-principles` | Timeless Principles of Success | ✅ |
 
 ### PHASE 7 — Personal Finance & Career (Gün 141-165) — En Yüksek RPM
 
@@ -507,13 +507,13 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | Phase 3 (Gün 36-60) | 25 | 25 | 0 |
 | Phase 4 (Gün 61-90) | 30 | 30 | 0 |
 | Phase 5 (Gün 91-115) | 25 | 25 | 0 |
-| Phase 6 (Gün 116-140) | 25 | 15 | 10 |
+| Phase 6 (Gün 116-140) | 25 | 25 | 0 |
 | Phase 7 (Gün 141-165) | 25 | 0 | 25 |
 | Phase 8 (Gün 166-185) | 20 | 0 | 20 |
 | Phase 9 (Gün 186-200) | 15 | 0 | 15 |
-| **TOPLAM** | **200** | **116** | **84** |
+| **TOPLAM** | **200** | **126** | **74** |
 
-**🔜 Sıradaki görev:** Day 131 — `long-game-success` (image: card3.jpg)
+**🔜 Sıradaki görev:** Day 141 — `financial-independence-mindset` (Phase 7 başlıyor)
 
 ---
 
