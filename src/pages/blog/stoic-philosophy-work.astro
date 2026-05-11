@@ -1,0 +1,231 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const pageTitle = "Stoic Philosophy at Work: Ancient Principles for Modern Professional Life";
+const pageDescription = "Stoicism offers remarkably practical tools for navigating workplace stress, difficult colleagues, setbacks, and ambition. Learn how to apply Marcus Aurelius, Epictetus, and Seneca at work.";
+const pageKeywords = "stoicism at work, stoic philosophy workplace, Marcus Aurelius leadership, Epictetus work principles, stoic career advice, stoicism professional life, stoic mindset work";
+const canonicalUrl = "https://successodysseyhub.com/blog/stoic-philosophy-work";
+const datePublished = "2026-05-10T00:00:00Z";
+const dateModified = "2026-05-10T00:00:00Z";
+const author = "Success Odyssey Hub";
+const readingTime = 10;
+
+const faqData = [
+  {
+    question: "What is the most practically useful Stoic idea for workplace stress?",
+    answer: "The dichotomy of control — distinguishing sharply between what is within your power (your responses, preparation, effort, and judgment) and what is not (other people's reactions, organizational decisions, economic conditions, outcomes) — is the most immediately applicable. Most workplace stress comes from treating things outside our control as if they were within it, and then feeling responsible for and anxious about outcomes we cannot actually determine. Applying this distinction clearly and consistently is the most reliable path to equanimity without passivity."
+  },
+  {
+    question: "How did Marcus Aurelius apply Stoicism as a leader?",
+    answer: "Marcus Aurelius ruled the Roman Empire for almost two decades while simultaneously writing what we know as the Meditations — private philosophical notes to himself. His leadership was characterized by restraint of power, consistent application of justice, tolerance of subordinates' failures, focus on what he could control in situations of enormous complexity, and a relentless practice of returning to equanimity when events threatened to disturb it. He faced military crises, a devastating plague, and a rebellion by a trusted general — and his written reflections during these periods show someone actively applying Stoic principles, not just reciting them."
+  },
+  {
+    question: "Is Stoicism compatible with genuine ambition?",
+    answer: "Yes — but it redefines what ambition should be aimed at. Stoic philosophy does not discourage action, achievement, or excellence — Seneca, Marcus Aurelius, and Epictetus all led highly engaged lives. What Stoicism discourages is treating external achievements (promotions, income, recognition) as the source of your well-being, because these are not fully within your control. It redirects ambition toward what is fully within your control: the quality of your character, the excellence of your work, and the integrity of your conduct. Paradoxically, this redirection often produces better external outcomes because it removes the anxiety and desperation that degrade performance."
+  }
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+  }))
+});
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  canonicalUrl={canonicalUrl}
+>
+  <script type="application/ld+json" slot="head" set:html={faqSchema} />
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": pageTitle,
+    "description": pageDescription,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "author": { "@type": "Organization", "name": author },
+    "publisher": { "@type": "Organization", "name": "Success Odyssey Hub" }
+  })} />
+
+  <header class="article-header">
+    <div class="article-meta">
+      <span class="category-badge">Success Philosophy</span>
+      <span class="read-time">{readingTime} min read</span>
+      <time datetime={datePublished}>May 10, 2026</time>
+    </div>
+    <h1>{pageTitle}</h1>
+    <p class="article-subtitle">{pageDescription}</p>
+  </header>
+
+  <div class="article-hero">
+    <Image src={heroImage} alt="Ancient Roman columns representing Stoic philosophy and its application to modern professional and work life" width={1200} height={630} fetchpriority="high" loading="eager" />
+  </div>
+
+  <nav class="table-of-contents" aria-label="Table of contents">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#why-stoicism-fits">Why Stoicism Fits Work</a></li>
+      <li><a href="#dichotomy-at-work">The Dichotomy at Work</a></li>
+      <li><a href="#obstacles-opportunities">Obstacles as Opportunities</a></li>
+      <li><a href="#difficult-colleagues">Difficult Colleagues</a></li>
+      <li><a href="#ambition-without-attachment">Ambition Without Attachment</a></li>
+      <li><a href="#how-to-apply">How to Apply</a></li>
+      <li><a href="#warnings">Warnings</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <ins class="adsbygoogle"
+    data-ad-client="ca-pub-7229511013815291"
+    data-ad-slot="4827765044"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+
+  <div class="article-body" itemprop="articleBody">
+
+    <section id="why-stoicism-fits">
+      <h2>Why Stoicism Fits Work</h2>
+      <p>Stoicism was not developed as a philosophy for the contemplative retreat — it was developed for people navigating power, uncertainty, and adversity in the world. Its three principal Roman practitioners were each deeply embedded in demanding professional and public life: Epictetus was a former slave who became one of the most influential teachers of his era; Marcus Aurelius was a Roman Emperor managing wars, plagues, and rebellions while writing his private philosophical reflections; Seneca was a statesman, advisor to Nero, and one of the wealthiest men in Rome. Their philosophy was hammered out in contact with real-world difficulty, which is precisely why it translates so powerfully to the modern workplace.</p>
+      <p>The specific challenges that Stoicism addresses map almost perfectly onto the most common sources of professional distress. Uncontrollable outcomes — project failures, rejected proposals, economic downturns — correspond directly to the Stoic treatment of external events. Difficult people — critical managers, obstructive colleagues, demanding clients — are addressed by Epictetus' teachings on other people's judgments and actions as things "not up to us." The challenge of maintaining integrity under pressure — when cutting corners would be easier, when dishonesty would be convenient — is precisely where Stoic virtue ethics is most useful. And the question of ambition — how to pursue achievement without becoming enslaved by the desire for recognition and reward — is a central Stoic preoccupation.</p>
+      <p>What makes Stoicism distinctive among philosophical systems is that it is simultaneously a theory and a practice. It does not simply offer ideas about how to think about adversity — it provides specific exercises, perspectives, and behavioral disciplines designed to build the psychological capacities it describes. The Stoics understood that philosophy practiced only in the mind, without being trained into habits and character, is a luxury rather than a living force. This emphasis on practice over theory is exactly what makes Stoicism so valuable as a professional toolkit.</p>
+      <ContentBox type="quote" title="Marcus Aurelius on Work">
+        "Begin the morning by saying to thyself, I shall meet with the busy-body, the ungrateful, arrogant, deceitful, envious, unsocial. All these things happen to them by reason of their ignorance of what is good and evil... I can neither be harmed by any of them, for no one can fix on me what is ugly, nor can I be angry with my kinsman, nor hate him." The Meditations, Book II.
+      </ContentBox>
+    </section>
+
+    <section id="dichotomy-at-work">
+      <h2>The Dichotomy at Work</h2>
+      <p>Epictetus' "dichotomy of control" — his central teaching that everything in life falls into one of two categories, "up to us" and "not up to us," and that wisdom consists in knowing which is which — is the most immediately applicable Stoic concept for professional life. What is up to us at work: our preparation and skill development, the quality of attention we bring to tasks, our communication choices, the way we treat colleagues, our ethical standards, and our response to whatever happens. What is not up to us: whether our work is appreciated, whether we get the promotion, whether the project succeeds, how colleagues and managers perceive us, and the broader economic and organizational forces that shape our environment.</p>
+      <p>The practical power of this distinction is that it identifies precisely where your energy should go and where it will be wasted. Energy invested in factors within your control — preparation, quality, relationships, integrity — compounds over time into genuine capability and trustworthiness. Energy invested in trying to control what is outside your control — managing perceptions, fretting over outcomes, resenting organizational decisions you cannot change — is consumed without productive return and generates unnecessary suffering. The Stoic at work is not passive; they are simply strategic about where they deploy their finite cognitive and emotional resources.</p>
+      <p>Applied daily, the dichotomy of control suggests a specific morning practice: before beginning work, briefly review the day's agenda and ask, for each item, "What is within my control here, and what is not?" Then commit your energy to the former and practice equanimity about the latter. This does not take long, but it reorients your relationship to the day's events from reactive to intentional — from being at the mercy of whatever happens to having a clear framework for what you are responsible for and what you are not.</p>
+    </section>
+
+    <section id="obstacles-opportunities">
+      <h2>Obstacles as Opportunities</h2>
+      <p>Marcus Aurelius wrote, in one of the most famous passages of the Meditations: "The impediment to action advances action. What stands in the way becomes the way." This passage, which Ryan Holiday's book The Obstacle Is the Way has brought to wide contemporary attention, describes a Stoic practice of actively looking for how adversity creates opportunity — how the obstacle you face might, if engaged correctly, become the very mechanism of your advance. This is not positive thinking; it is strategic reframing grounded in the observation that constraints often force creativity and that resistance builds capacity.</p>
+      <p>In professional contexts, this principle transforms the meaning of setbacks. A project that fails forces a reexamination of assumptions that might otherwise have remained unquestioned for years, potentially producing better strategy than the original plan would have. A difficult manager who provides harsh feedback, however unpleasantly delivered, may accelerate your development more than a supportive one who only validates your existing approach. A restructuring that eliminates your role might force you into a direction that turns out to be more aligned with your actual strengths and values than the one you were comfortable in. The obstacle as the way is not a guarantee — it is a practice of actively looking for the opportunity in the obstacle rather than defaulting to victimhood.</p>
+      <p>The Stoic application in practice involves a specific mental move when encountering resistance: instead of asking "why is this happening to me?" ask "what does this obstacle make possible that would not otherwise have been available?" This question does not deny the reality of the difficulty — it adds a second register of analysis that often reveals genuine strategic opportunities. Seneca described this disposition as turning adversity into "a test of character" — an opportunity to demonstrate, to yourself and others, the quality of your response under pressure, which is ultimately more career-defining than the outcome of any single project.</p>
+    </section>
+
+    <section id="difficult-colleagues">
+      <h2>Difficult Colleagues</h2>
+      <p>The professional world is populated by people who are, at various times, frustrating, unreasonable, critical, self-interested, unreliable, or unkind. The Stoics addressed this reality directly and with unusual sophistication. Marcus Aurelius' morning meditation, quoted earlier, explicitly anticipates encountering difficult people and pre-commits to a philosophical response before emotion has a chance to set the tone. This is not resignation to mistreatment — it is psychological preparation that allows you to respond to difficult people with clarity and intention rather than reactive emotion.</p>
+      <p>Epictetus' teaching on other people's opinions is particularly useful here. He argued that other people's judgments of us — their approval or disapproval, their praise or criticism — are entirely "not up to us" and therefore should not be the source of our confidence or distress. This is a radical position that most professionals pay lip service to without actually practicing. But when genuinely internalized, it produces a striking freedom: you are no longer hostage to the most critical voice in the room, no longer performing for approval rather than doing excellent work, no longer devastated by unfair criticism or puffed up by undeserved praise. Your standard is internal; external judgments are interesting but not determinative.</p>
+      <p>The Stoics also taught a form of radical empathy as a tool for managing difficult relationships. Marcus Aurelius repeatedly reminded himself that difficult people act from ignorance — that no one does wrong voluntarily, in Socrates' formulation, but because they have false beliefs about what is good for them. This reframe does not excuse bad behavior, but it transforms your emotional response to it. Instead of personal anger, you feel something closer to philosophical sadness — which is a far more manageable emotional state and one from which constructive responses are far more easily generated than from outrage or resentment.</p>
+      <ContentBox type="tip" title="The Pre-Mortem for Difficult Interactions">
+        Before any meeting or interaction you anticipate as difficult, spend two minutes applying Stoic preparation: What is within my control in this interaction? What outcome would I consider excellent given the constraints? What might happen that is outside my control, and how will I respond to it with equanimity? This brief preparation reduces reactive responses and increases the probability of outcomes you can be proud of.
+      </ContentBox>
+    </section>
+
+    <section id="ambition-without-attachment">
+      <h2>Ambition Without Attachment</h2>
+      <p>One of Stoicism's most sophisticated and practically powerful insights for professional life is the concept of pursuing external goals with full commitment while maintaining inner independence from their outcomes — what the Stoics described as "preferred indifferents." Career advancement, income, recognition, and professional success are all genuinely worth pursuing — they make life better and enable more good to be done. But they are not the source of your well-being, your worth as a person, or your fundamental happiness. Treating them as if they were — as most professional cultures implicitly encourage — is a recipe for chronic anxiety, compromised ethics, and the kind of desperate striving that paradoxically impairs the judgment and character that produce long-term success.</p>
+      <p>Seneca articulated this orientation with characteristic sharpness: "It is not that I am brave, but that I know what is mine and what is not." What is his: his intentions, his effort, his character. What is not: the response of the world to those intentions and that effort. This is not passivity — Seneca was one of the most productive writers and successful people of his era. It is a specific relationship to ambition that allows full investment in effort without the corrosive anxiety of conditional self-worth. The Stoic ambitious person works as hard as anyone while sleeping better, making clearer decisions, and maintaining the ethical standards that build long-term reputation.</p>
+      <p>In practice, this orientation manifests as a specific cognitive distinction between "process goals" (what you will do) and "outcome goals" (what you want to happen). The Stoic commits fully to process goals — excellence of effort, quality of work, integrity of conduct — and holds outcome goals loosely as directional guides rather than requirements for well-being. This is, remarkably, also what sports psychology research recommends for peak performance: process focus during execution produces better outcomes than outcome focus, because it directs attention to the variables that actually determine performance. Ancient wisdom and modern performance science converge on the same prescription.</p>
+    </section>
+
+    <ins class="adsbygoogle"
+      data-ad-layout="in-article"
+      data-ad-format="fluid"
+      data-ad-client="ca-pub-7229511013815291"
+      data-ad-slot="2952775705"></ins>
+
+    <section id="how-to-apply">
+      <h2>How to Apply Stoic Philosophy at Work</h2>
+      <StepsList>
+        <li><strong>Begin each workday with a brief Stoic morning review:</strong> Spend five minutes reviewing the day ahead. For each significant item, ask: what is within my control here? Commit your energy to those elements and practice releasing attachment to those outside your control. This sets an intentional tone for the day that reduces reactive decision-making and increases equanimity under pressure.</li>
+        <li><strong>Practice the obstacle reframe when setbacks occur:</strong> When you encounter resistance — a rejected proposal, a critical response, a project complication — immediately ask: what does this obstacle make possible that was not available before? What new information does it provide? What capacity does it force me to develop? This is not denial; it is a trained habit of analytical response that converts setbacks into strategic information.</li>
+        <li><strong>Anchor your professional identity in character rather than outcomes:</strong> Define your professional success in terms of the quality of your effort, the integrity of your conduct, and the excellence of your work — not in terms of promotions, compensation, or recognition. Review your conduct at day's end rather than your outcomes. This produces a stable self-assessment that is not at the mercy of organizational politics or economic fluctuations.</li>
+        <li><strong>Apply the Stoic view of difficult colleagues:</strong> When someone at work frustrates or angers you, pause before responding and ask: what false beliefs are leading this person to act this way? What do they not understand that, if they did, they would act differently? This reframe from personal offense to philosophical understanding reduces the reactive emotional intensity and often reveals more effective responses.</li>
+        <li><strong>Use negative visualization to appreciate your current position:</strong> The Stoic practice of premeditatio malorum — imagining the loss of things you currently have — counteracts the hedonic adaptation that makes current goods invisible. Periodically imagine, with genuine concreteness, losing your job, your health, or key relationships. This practice renews appreciation for what you have and clarifies what actually matters, providing perspective on professional frustrations that normally feel enormous.</li>
+        <li><strong>End each workday with a Stoic evening review:</strong> Seneca described his practice of asking himself three questions each evening: Where did I fail today? Where did I improve? Where could I have done better? This is not self-flagellation but honest self-assessment — the information needed to improve and the closure needed to leave work at work. The review takes five minutes and produces more growth than any number of performance reviews imposed from outside.</li>
+      </StepsList>
+    </section>
+
+    <ins class="adsbygoogle"
+      data-ad-client="ca-pub-7229511013815291"
+      data-ad-slot="4827765044"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+
+    <section id="warnings">
+      <h2>Warnings</h2>
+      <ContentBox type="warning" title="Warning: Stoic Equanimity Can Be Misread as Passivity">
+        Stoicism is sometimes misunderstood as a philosophy of passive acceptance — just accepting whatever happens without complaint or action. This is a fundamental misreading. The Stoics were among the most active and engaged people of their era. Stoic equanimity is about your internal state — how you feel about events — not about your external behavior. You can and should advocate for change, set clear standards, and take decisive action while maintaining inner peace regardless of outcome.
+      </ContentBox>
+      <ContentBox type="warning" title="Warning: Not All Workplace Problems Are Philosophical Problems">
+        Stoicism is a tool for your response to circumstances, not a substitute for changing circumstances that can and should be changed. If your workplace is genuinely toxic — if there is abuse, injustice, or structural dysfunction — the correct Stoic response includes taking practical action to address or exit the situation, not simply finding equanimity within it. Seneca himself eventually separated from Nero's court when continued involvement became ethically untenable.
+      </ContentBox>
+      <ContentBox type="warning" title="Warning: Suppressing Emotion Is Not Stoic">
+        A common misinterpretation of Stoicism is that it requires suppressing or denying emotions. The Stoics did not recommend this — they recommended understanding emotions clearly, examining the beliefs that generate them, and choosing which to act on. Marcus Aurelius' Meditations are full of emotional content — frustration, sadness, anxiety, and longing. The Stoic practice is not emotional suppression but emotional intelligence: feeling fully while being governed by reason rather than reactivity.
+      </ContentBox>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      {faqData.map(f => (
+        <div>
+          <h3>{f.question}</h3>
+          <p>{f.answer}</p>
+        </div>
+      ))}
+    </section>
+
+    <div class="author-bio">
+      <h3>About {author}</h3>
+      <p>Success Odyssey Hub explores the intersection of ancient philosophy, modern psychology, and practical strategy to help thoughtful people build lives of meaning, excellence, and lasting achievement. Our research draws from primary Stoic texts, contemporary Stoicism scholarship, leadership psychology, and the practices of the most effective and resilient professionals across every field.</p>
+    </div>
+
+    <div class="related-articles">
+      <h2>Related Articles</h2>
+      <ul>
+        <li><a href="/blog/virtue-success">Virtue and Success: Why Character Is Your Highest Competitive Advantage</a></li>
+        <li><a href="/blog/philosophy-failure">The Philosophy of Failure: Why Your Biggest Setbacks Are Your Best Teachers</a></li>
+        <li><a href="/blog/pursuit-of-excellence">The Philosophy of Excellence: What It Means to Pursue Mastery</a></li>
+        <li><a href="/blog/timeless-success-principles">Timeless Principles of Success: What 3,000 Years of Wisdom Agree On</a></li>
+      </ul>
+    </div>
+
+    <div class="external-resources">
+      <h2>External Resources</h2>
+      <ul>
+        <li><a href="https://modernstoicism.com/" target="_blank" rel="noopener noreferrer">Modern Stoicism: Research and Practice</a></li>
+        <li><a href="https://plato.stanford.edu/entries/stoicism/" target="_blank" rel="noopener noreferrer">Stanford Encyclopedia of Philosophy: Stoicism</a></li>
+        <li><a href="https://dailystoic.com/" target="_blank" rel="noopener noreferrer">Daily Stoic: Ryan Holiday's Stoic Practice Resource</a></li>
+      </ul>
+    </div>
+
+    <div class="book-recommendations">
+      <h2>Book Recommendations</h2>
+      <ul>
+        <li><strong>Meditations</strong> by Marcus Aurelius — the greatest Stoic practitioner's private philosophical journal, astonishingly relevant to modern professional life</li>
+        <li><strong>Letters from a Stoic</strong> by Seneca — practical wisdom on time, work, relationships, and death from Rome's most eloquent Stoic</li>
+        <li><strong>The Obstacle Is the Way</strong> by Ryan Holiday — the best modern application of Stoic thinking to professional challenges and adversity</li>
+        <li><strong>A Guide to the Good Life</strong> by William Irvine — a philosophy professor's rigorous and practical guide to applying Stoicism in contemporary life</li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0; .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; } .read-time, time { color: #64748b; font-size: 0.9rem; } } h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; } .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; } }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA; h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; } ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; } a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } } }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem; section { margin-bottom: 3rem; } h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; } h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; } p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; } ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } } a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } } }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA; h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; } }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem; h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; } ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } } }
+  @media (prefers-color-scheme: dark) { .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } } .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } } .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } } .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } } }
+</style>

@@ -1,0 +1,238 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const pageTitle = "Timeless Principles of Success: What 3,000 Years of Wisdom Agree On";
+const pageDescription = "From Aristotle to Warren Buffett, from Stoic philosophers to modern psychologists — certain principles of success appear across every era and culture. Here are the ones that have never changed.";
+const pageKeywords = "timeless success principles, universal success principles, what successful people have in common, ancient wisdom modern success, success across cultures, enduring principles achievement";
+const canonicalUrl = "https://successodysseyhub.com/blog/timeless-success-principles";
+const datePublished = "2026-05-10T00:00:00Z";
+const dateModified = "2026-05-10T00:00:00Z";
+const author = "Success Odyssey Hub";
+const readingTime = 11;
+
+const faqData = [
+  {
+    question: "Why do some success principles endure for thousands of years while others fade within a decade?",
+    answer: "Principles endure when they describe stable features of human nature, social dynamics, or the structure of achievement — things that do not change with technology, culture, or era. The principle that character compounds through consistent behavior is timeless because human social cognition, which operates on trust and reputation, has not fundamentally changed. The principle that deliberate practice builds skill is timeless because the neuroscience of learning is stable across centuries. Principles that fade are typically strategies — specific tactics that worked in particular technological or market contexts that no longer exist."
+  },
+  {
+    question: "What do ancient philosophical traditions and modern psychology most agree on about success?",
+    answer: "The clearest area of agreement across traditions is the primacy of character and virtue. Aristotle, Confucius, the Stoics, and modern psychological research on conscientiousness, trust, and long-term performance all converge on the finding that the quality of your character — your reliability, honesty, discipline, and genuine concern for others — is more predictive of long-term success than intelligence, talent, or circumstance alone. A second area of remarkable convergence is the importance of deliberate practice over innate talent, which is found in both ancient craft traditions and modern expertise research."
+  },
+  {
+    question: "Can you apply principles from ancient philosophy to modern career challenges?",
+    answer: "Absolutely — and this is precisely what makes ancient philosophy so valuable. The Stoic distinction between what is within your control and what is not applies perfectly to modern workplace stress, organizational change, and career uncertainty. Aristotle's concept of deliberate practice and habituation is directly applicable to skill development. Confucius' emphasis on self-cultivation and the quality of relationships is as relevant to professional networks today as it was to Chinese court life in the fifth century BCE. The principles are timeless because the fundamental challenges of being a human being pursuing meaningful achievement have not changed."
+  }
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+  }))
+});
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  canonicalUrl={canonicalUrl}
+>
+  <script type="application/ld+json" slot="head" set:html={faqSchema} />
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": pageTitle,
+    "description": pageDescription,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "author": { "@type": "Organization", "name": author },
+    "publisher": { "@type": "Organization", "name": "Success Odyssey Hub" }
+  })} />
+
+  <header class="article-header">
+    <div class="article-meta">
+      <span class="category-badge">Success Philosophy</span>
+      <span class="read-time">{readingTime} min read</span>
+      <time datetime={datePublished}>May 10, 2026</time>
+    </div>
+    <h1>{pageTitle}</h1>
+    <p class="article-subtitle">{pageDescription}</p>
+  </header>
+
+  <div class="article-hero">
+    <Image src={heroImage} alt="Ancient and modern skylines side by side representing the timeless principles of success that span three thousand years of human wisdom" width={1200} height={630} fetchpriority="high" loading="eager" />
+  </div>
+
+  <nav class="table-of-contents" aria-label="Table of contents">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#why-timeless">Why Some Principles Are Timeless</a></li>
+      <li><a href="#clarity-purpose">Clarity of Purpose</a></li>
+      <li><a href="#deliberate-practice">Deliberate Practice</a></li>
+      <li><a href="#character-virtue">Character and Virtue</a></li>
+      <li><a href="#resilience-persistence">Resilience and Persistence</a></li>
+      <li><a href="#relationships-mentorship">Relationships and Mentorship</a></li>
+      <li><a href="#how-to-apply">How to Apply</a></li>
+      <li><a href="#warnings">Warnings</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <ins class="adsbygoogle"
+    data-ad-client="ca-pub-7229511013815291"
+    data-ad-slot="4827765044"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+
+  <div class="article-body" itemprop="articleBody">
+
+    <section id="why-timeless">
+      <h2>Why Some Principles Are Timeless</h2>
+      <p>The success literature produces a new wave of frameworks, methodologies, and strategies with each generation — most of which are forgotten within a decade. Meanwhile, certain ideas from Aristotle, written in the fourth century BCE, remain as practically useful and as empirically supported as anything published in the last five years. Understanding why some principles persist while others fade is itself a valuable insight: principles endure when they describe stable features of human nature, the structure of complex skills, or the dynamics of social trust — things that do not change with technology, markets, or cultural fashion.</p>
+      <p>The convergence test is one of the most reliable methods for identifying genuine principles. When the ancient Greeks, the Stoic philosophers, the Confucian tradition, Islamic Golden Age scholars, Renaissance humanists, Enlightenment thinkers, and modern psychologists independently arrive at the same conclusion from entirely different starting points and methodologies, there is strong evidence that the conclusion is tracking something real rather than reflecting cultural bias or historical accident. The principles explored in this article pass this convergence test: each of them appears, in essentially the same form, across multiple independent traditions spanning thousands of years.</p>
+      <p>The practical value of this cross-cultural, cross-temporal validation is that it provides a reliable foundation for personal strategy in a world of information overload and advice proliferation. When you cannot tell which of the ten competing frameworks for productivity, leadership, or career development is correct, the convergence test gives you a robust filter: look for what every tradition agrees on. The timeless principles are not exciting or novel — they are well-worn because they work. The challenge is not discovering them but applying them with the discipline and patience they require.</p>
+      <ContentBox type="highlight" title="The Convergence Signal">
+        Aristotle in Athens, Confucius in Qufu, Marcus Aurelius in Rome, Ibn Khaldun in Tunis, Benjamin Franklin in Philadelphia, and modern researchers in psychology and behavioral economics all emphasized some version of the same five principles. This convergence across cultures, centuries, and methodologies is the strongest possible evidence that these principles describe real features of human flourishing rather than culturally contingent opinions.
+      </ContentBox>
+    </section>
+
+    <section id="clarity-purpose">
+      <h2>Clarity of Purpose</h2>
+      <p>The most consistent finding across ancient philosophy and modern psychology is that clarity of purpose is among the most powerful predictors of sustained achievement. Aristotle opened the Nicomachean Ethics with the observation that "every art and every inquiry, and similarly every action and pursuit, is thought to aim at some good." The question of what good you are actually aiming at — not the proximate goal but the ultimate one, the telos — is the first and most important question for anyone pursuing meaningful achievement. Without clarity on this question, effort is scattered, decisions are inconsistent, and the inevitable setbacks of ambitious endeavor have no context that makes them worth enduring.</p>
+      <p>The Confucian tradition, independently, placed the same emphasis on clarity of purpose through the concept of <em>zhi</em> — will or intention — as the foundation of all moral and practical achievement. Confucius taught that self-cultivation begins with the sincerity of one's purpose: genuine commitment to becoming better and contributing to the flourishing of others. Without this sincerity of intention, all the techniques of self-improvement are hollow. The Analects repeatedly return to the theme that what distinguishes the <em>junzi</em> (the excellent person) from the merely clever person is not talent but depth and genuineness of purpose.</p>
+      <p>Modern psychology has confirmed and elaborated these ancient intuitions. Research by psychologist Roy Baumeister and colleagues on the psychology of meaning found that having clear personal goals — particularly goals that provide a sense of purpose beyond self-interest — is one of the strongest predictors of both well-being and effective action. Goal-setting theory by Edwin Locke and Gary Latham found that specific, challenging, personally meaningful goals produce dramatically better performance than vague or easy ones — but only when the person is genuinely committed to the goal, which requires that it connect to something they actually care about. Clarity of purpose is not just inspirational; it is mechanistically important for performance.</p>
+    </section>
+
+    <section id="deliberate-practice">
+      <h2>Deliberate Practice</h2>
+      <p>The principle that excellence requires sustained, focused, effortful practice directed at specific weaknesses appears in virtually every tradition that has seriously examined how mastery is achieved. The Greek concept of <em>askesis</em> — disciplined training or practice — was central to both athletic and philosophical development in ancient Athens. Stoic philosophers used the term specifically for the systematic exercise of philosophical skills: practicing equanimity under small stresses to build it for large ones, rehearsing philosophical arguments until they became second nature, engaging in voluntary discomfort to strengthen the ability to maintain virtue under real difficulty. Practice was not just for athletes; it was the mechanism by which character itself was formed.</p>
+      <p>The Islamic scholars of the Golden Age, building on Greek philosophy, developed a sophisticated concept of <em>istiqama</em> — steadfastness and consistent right practice — as the mechanism by which spiritual and intellectual excellence was developed. Benjamin Franklin's famous system of thirteen virtues, which he worked through systematically, spending one week focused on each virtue in rotation before cycling through again, was a deliberate practical implementation of the same principle: excellence in any virtue requires repeated, focused practice, not simply good intentions. Franklin's autobiography is essentially a treatise on character development through deliberate practice, though he did not use that term.</p>
+      <p>Anders Ericsson's deliberate practice research, discussed elsewhere on this site, is the modern scientific culmination of this ancient insight. His central finding — that what separates experts from novices is not talent but the type and amount of practice, specifically practice that targets weaknesses at the edge of current ability with immediate feedback — exactly replicates what Aristotle described as habituation. The neuroscience confirms the mechanism: deliberate practice produces physical changes in the brain's structure and connectivity that make skilled performance faster, more accurate, and less cognitively costly. Excellence is not a gift — it is a product of deliberate investment, across every tradition and every century that has seriously examined how it is achieved.</p>
+    </section>
+
+    <section id="character-virtue">
+      <h2>Character and Virtue</h2>
+      <p>No principle appears more consistently across ancient philosophy, religious ethics, and modern empirical psychology than the primacy of character. Aristotle's entire ethics is organized around the formation of excellent character as the foundation of the good life. The Confucian tradition makes self-cultivation — the development of <em>ren</em> (benevolence), <em>yi</em> (righteousness), <em>li</em> (ritual propriety), and <em>zhi</em> (wisdom) — the central enterprise of human life. The Stoics identified virtue as the only genuine good, the single thing that is fully within our control and fully constitutive of the flourishing life. Buddhist ethics, Platonic philosophy, Kantian moral theory, and virtually every major religious tradition converge on the same fundamental claim: character is the foundation, not a nice supplement to skill and strategy.</p>
+      <p>Modern psychology has provided empirical support for this ancient consensus. Conscientiousness — the personality dimension associated with self-discipline, reliability, diligence, and follow-through — is the personality trait most consistently associated with career success, income, relationship quality, and longevity across studies. Angela Duckworth's research on grit — the combination of passion and perseverance for long-term goals — finds this character quality predictive of success across diverse domains from military training to national spelling competitions to sales performance. Adam Grant's research on prosocial behavior (giving generously in professional contexts) finds that genuine givers, over long time horizons, achieve among the best outcomes in most networks, because they accumulate the social capital that character compounds into.</p>
+      <p>The convergence of ancient wisdom and modern research on character's primacy carries a specific practical implication: investment in character development — not just skill development — is the highest-return investment available to anyone pursuing long-term success. Skills have shelf lives; character compounds. Skills can be replicated; genuine trustworthiness is rare and irreplaceable. Skills create capability; character determines whether that capability is deployed in ways that build or destroy long-term value. The most sophisticated achievers across history have understood this and invested accordingly.</p>
+      <ContentBox type="info" title="The Conscientiousness Premium">
+        Research by Brent Roberts and colleagues found that conscientiousness — often described as the character dimension closest to Aristotle's practical virtue — is more predictive of life outcomes than intelligence across multiple domains. This finding has been replicated in studies spanning multiple cultures, decades of follow-up, and diverse outcome measures. Character outperforms IQ over a lifetime.
+      </ContentBox>
+    </section>
+
+    <section id="resilience-persistence">
+      <h2>Resilience and Persistence</h2>
+      <p>Every tradition of wisdom that takes success seriously treats the capacity to persist through adversity as an essential rather than incidental quality. The Stoics made equanimity in the face of hardship the centerpiece of their practical philosophy — not as passive acceptance but as the active maintenance of clear-eyed purposeful engagement despite difficult circumstances. The Confucian tradition valued persistent self-cultivation even when external circumstances made progress difficult or invisible. The Japanese concept of <em>gaman</em> — enduring the seemingly unbearable with patience and dignity — and <em>kaizen</em> — continuous improvement through small consistent steps — together describe a cultural philosophy of resilient progress that mirrors what Western philosophy and psychology have independently concluded.</p>
+      <p>Research on grit by Angela Duckworth provided the most carefully studied modern framework for persistence, finding that the combination of passion (genuine long-term interest in a domain) and perseverance (consistent effort over years despite obstacles) predicted success in a variety of high-achievement contexts better than talent alone. Her research was importantly qualified by subsequent work showing that grit is most effective when directed at intrinsically meaningful goals — grinding through work you genuinely do not care about produces burnout rather than achievement. The Stoic and Confucian traditions anticipated this nuance: persistence is virtuous when directed by genuine purpose, not when it is mere stubbornness in the service of a goal that has lost its meaning.</p>
+      <p>The psychological research on resilience reveals several consistently important factors: the quality of close relationships (which provide support and meaning during hard periods), a growth mindset about adversity (viewing hardship as challenge rather than evidence of inadequacy), a genuine sense of purpose that provides context for suffering, and what psychologists call "benefit finding" — the ability to identify real growth and learning in difficult experiences. These are not innate traits but cultivable capacities. The traditions that emphasize resilience as a virtue rather than a personality trait — Stoicism, Buddhism, the martial arts traditions — are correct that it can be deliberately developed through practice, exposure to manageable difficulties, and the philosophical frameworks that make adversity meaningful.</p>
+    </section>
+
+    <section id="relationships-mentorship">
+      <h2>Relationships and Mentorship</h2>
+      <p>The final timeless principle — one that appears with striking consistency across cultures and centuries — is the indispensable role of relationships, particularly mentoring relationships, in the development of excellence and achievement. Aristotle's concept of <em>philia</em> (friendship in its deepest form) treated genuine relationships as essential to the good life and to moral development: we cannot fully develop the virtues in isolation because virtues are exercised in relation to others, and we need good people around us who model excellence and hold us accountable to it. The Confucian tradition was even more emphatic: self-cultivation was inseparable from the quality of one's relationships and one's contribution to the cultivation of others.</p>
+      <p>The Platonic dialogues themselves are structured around a mentoring relationship — Socrates developing his interlocutors through questioning — and this structure reflects a deep philosophical conviction that wisdom is transmitted person-to-person, in relationship, rather than simply downloaded from texts. The great medieval guild system, the apprenticeship traditions of every craft, the guru-shishya relationship in Indian philosophy, and the roshi-student relationship in Zen Buddhism all embody the same insight: genuine mastery requires transmission from master to apprentice in a relationship of sustained engagement, not merely instruction and practice.</p>
+      <p>The Harvard Study of Adult Development — the longest longitudinal study of human flourishing ever conducted, now spanning over eighty years — produced one of the clearest and most replicated findings in the literature: the quality of close relationships is the single most powerful predictor of healthy aging, well-being, and what the study's director Robert Waldinger calls "good old age." Not wealth, not fame, not achievement — the warmth and depth of your relationships with other people. This finding echoes Aristotle's conclusion in the Nicomachean Ethics, written twenty-four centuries earlier, that "without friends no one would choose to live, though he had all other goods." The principle is timeless because it reflects something irreducibly true about human nature: we are social beings, and our flourishing is inseparable from our relationships.</p>
+    </section>
+
+    <ins class="adsbygoogle"
+      data-ad-layout="in-article"
+      data-ad-format="fluid"
+      data-ad-client="ca-pub-7229511013815291"
+      data-ad-slot="2952775705"></ins>
+
+    <section id="how-to-apply">
+      <h2>How to Apply the Timeless Principles</h2>
+      <StepsList>
+        <li><strong>Write your purpose statement and test it against your actual choices:</strong> Draft a statement of your deepest purpose — not what you want to achieve, but why you want to achieve it and what it is in service of. Then audit your last thirty days of major decisions against that statement. Where do your actual choices align with your stated purpose? Where do they diverge? The gap is your most important strategic information. Purpose without alignment is wishful thinking; purpose that governs choices is a genuine force.</li>
+        <li><strong>Design your practice deliberately:</strong> In each domain that matters to you, identify your specific skill gaps — not general areas for improvement but precise, targeted weaknesses. Design daily practice that addresses these gaps specifically, at the edge of your current ability, with some form of feedback. Commit to this practice for at least sixty days before evaluating results, because deliberate practice produces slow visible progress but cumulative dramatic improvement that only becomes clear with patience.</li>
+        <li><strong>Conduct a character inventory annually:</strong> Once per year, honestly assess your character across the dimensions that matter most: honesty (do you tell the truth even when it is uncomfortable?), reliability (do you do what you say you will do?), justice (do you treat people fairly, including those who cannot affect your outcomes?), and practical wisdom (do your decisions consistently reflect your deepest values?). Identify your characteristic failure modes and design specific countermeasures for them.</li>
+        <li><strong>Build a resilience practice before you need it:</strong> The Stoic insight is that resilience must be trained in advance, not assembled during crisis. Build yours deliberately: practice voluntary discomfort regularly (cold exposure, fasting, difficult physical challenges), study stories of people who persisted through extreme adversity, maintain a journaling practice that processes difficulty rather than suppressing it, and cultivate the philosophical frameworks (purpose, growth mindset, Stoic control) that make adversity meaningful rather than merely painful.</li>
+        <li><strong>Invest in depth of relationship over breadth of network:</strong> Identify the five to ten relationships that are most important to your flourishing — people who challenge you, support you, share your values, and tell you hard truths — and invest in them deliberately and generously. Beyond these core relationships, maintain a broader network through genuine giving rather than transactional networking. Quality relationships require consistent, generous investment; they cannot be built in bursts of activity and neglected in between.</li>
+        <li><strong>Seek mentors and serve as one:</strong> Identify one to three people who embody the excellence you are pursuing — whose judgment you deeply trust, who have navigated challenges you face, and who are willing to invest in your development. Cultivate these relationships with genuine humility and real contribution to the mentors' goals. Simultaneously, invest in others who are earlier in their journey in areas where you have genuine expertise. The act of mentoring accelerates your own mastery while creating the relational reciprocity that sustains long-term professional flourishing.</li>
+      </StepsList>
+    </section>
+
+    <ins class="adsbygoogle"
+      data-ad-client="ca-pub-7229511013815291"
+      data-ad-slot="4827765044"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+
+    <section id="warnings">
+      <h2>Warnings</h2>
+      <ContentBox type="warning" title="Warning: Knowing Principles Is Not the Same as Applying Them">
+        The most common failure mode in engaging with timeless wisdom is the mistaking of intellectual understanding for actual practice. You can read every great book on virtue, purpose, and deliberate practice without changing a single behavior. The principles described in this article are widely known and minimally practiced. The gap between knowing and doing is bridged only by the deliberate design of specific behavioral changes, accountability structures, and regular honest self-assessment. Reading is the beginning, not the end.</ContentBox>
+      <ContentBox type="warning" title="Warning: Timeless Principles Still Require Contextual Application">
+        The universality of these principles does not mean their application is uniform across all situations. How you pursue clarity of purpose when you are twenty-two is different from how you pursue it at forty-five. What deliberate practice looks like in surgery is different from what it looks like in creative writing. The principles are stable; their implementation is contextual and requires the practical wisdom (itself a timeless principle) to discern what they require in your specific circumstances at your specific stage of life.
+      </ContentBox>
+      <ContentBox type="warning" title="Warning: Ancient Wisdom Had Blind Spots Too">
+        The convergence of ancient wisdom across cultures is impressive, but it would be intellectually dishonest to apply these principles uncritically without noting that many ancient traditions had significant blind spots — particularly regarding who was considered eligible for excellence and achievement. Aristotle's ethics excluded women and slaves; Confucian philosophy was often hierarchically conservative; Stoic cosmopolitanism was more theoretical than practical in its treatment of social inequality. The principles of character, practice, purpose, resilience, and relationship are genuinely universal — but their application should be informed by everything that subsequent centuries have learned about justice and the full scope of human dignity.
+      </ContentBox>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      {faqData.map(f => (
+        <div>
+          <h3>{f.question}</h3>
+          <p>{f.answer}</p>
+        </div>
+      ))}
+    </section>
+
+    <div class="author-bio">
+      <h3>About {author}</h3>
+      <p>Success Odyssey Hub explores the intersection of ancient philosophy, modern psychology, and practical strategy to help thoughtful people build lives of meaning, excellence, and lasting achievement. Our research synthesizes three thousand years of philosophical tradition with the most rigorous findings of contemporary science to identify what is most reliably true about human flourishing across all contexts and eras.</p>
+    </div>
+
+    <div class="related-articles">
+      <h2>Related Articles</h2>
+      <ul>
+        <li><a href="/blog/virtue-success">Virtue and Success: Why Character Is Your Highest Competitive Advantage</a></li>
+        <li><a href="/blog/pursuit-of-excellence">The Philosophy of Excellence: What It Means to Pursue Mastery</a></li>
+        <li><a href="/blog/stoic-philosophy-work">Stoic Philosophy at Work: Ancient Principles for Modern Professional Life</a></li>
+        <li><a href="/blog/long-game-success">The Long Game: Why Playing for Decades Beats Optimizing for Today</a></li>
+      </ul>
+    </div>
+
+    <div class="external-resources">
+      <h2>External Resources</h2>
+      <ul>
+        <li><a href="https://www.adultdevelopmentstudy.org/" target="_blank" rel="noopener noreferrer">Harvard Study of Adult Development — The World's Longest Study of Adult Life</a></li>
+        <li><a href="https://plato.stanford.edu/entries/aristotle-ethics/" target="_blank" rel="noopener noreferrer">Stanford Encyclopedia of Philosophy: Aristotle's Ethics</a></li>
+        <li><a href="https://www.angelajduckworth.com/research/" target="_blank" rel="noopener noreferrer">Angela Duckworth's Grit and Character Research</a></li>
+      </ul>
+    </div>
+
+    <div class="book-recommendations">
+      <h2>Book Recommendations</h2>
+      <ul>
+        <li><strong>Nicomachean Ethics</strong> by Aristotle — the foundational Western account of virtue, excellence, friendship, and the good life</li>
+        <li><strong>The Analects</strong> by Confucius — the collected wisdom of the Confucian tradition on self-cultivation, relationships, and purposeful action</li>
+        <li><strong>Meditations</strong> by Marcus Aurelius — the most personal and accessible Stoic text, written as private practice notes by a philosopher-emperor</li>
+        <li><strong>Good to Great</strong> by Jim Collins — the most rigorous empirical study of what distinguishes sustained excellence from temporary success in organizations</li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0; .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; } .read-time, time { color: #64748b; font-size: 0.9rem; } } h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; } .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; } }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA; h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; } ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; } a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } } }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem; section { margin-bottom: 3rem; } h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; } h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; } p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; } ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } } a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } } }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA; h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; } }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem; h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; } ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } } }
+  @media (prefers-color-scheme: dark) { .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } } .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } } .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } } .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } } }
+</style>

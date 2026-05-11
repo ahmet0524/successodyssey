@@ -1,0 +1,231 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
+
+const pageTitle = "Meaning vs Pleasure: Why Purpose Outlasts Happiness";
+const pageDescription = "Psychology distinguishes two kinds of good life — the pleasant life (hedonic) and the meaningful life (eudaimonic). Research shows meaning produces more durable wellbeing and greater achievement.";
+const pageKeywords = "meaning vs pleasure, hedonic vs eudaimonic wellbeing, meaningful life vs pleasant life, purpose vs happiness, Viktor Frankl meaning, Aristotle eudaimonia success";
+const canonicalUrl = "https://successodysseyhub.com/blog/meaning-vs-pleasure";
+const datePublished = "2026-05-10T00:00:00Z";
+const dateModified = "2026-05-10T00:00:00Z";
+const author = "Success Odyssey Hub";
+const readingTime = 10;
+
+const faqData = [
+  {
+    question: "What is the difference between hedonic and eudaimonic wellbeing?",
+    answer: "Hedonic wellbeing refers to the presence of positive emotions, the absence of negative emotions, and overall life satisfaction — roughly, feeling good. Eudaimonic wellbeing refers to living in accordance with your deepest values, developing your capacities, engaging in meaningful work, and contributing to something beyond yourself — roughly, living well. Both are components of flourishing, but they predict different outcomes: eudaimonic wellbeing is more strongly associated with long-term health, resilience, and sustained motivation, while hedonic wellbeing is more subject to hedonic adaptation and circumstantial fluctuation."
+  },
+  {
+    question: "Can you have both a meaningful and a pleasurable life?",
+    answer: "Absolutely, and the research suggests they are more complementary than competing when pursued correctly. The problem arises when pleasure is pursued as the primary or exclusive goal — this tends to be self-undermining because pleasure adapts quickly and seeking more of it often produces diminishing returns. When meaning is the primary orientation and pleasure is welcomed as a companion rather than a goal, both tend to be more sustainably present. Aristotle's eudaimonia specifically includes pleasure as one component of the flourishing life — but pleasure that arises from excellent activity, not pleasure pursued for its own sake."
+  },
+  {
+    question: "How do you find meaning if you are not sure what your purpose is?",
+    answer: "Research by William Damon and others suggests that purpose develops through engagement rather than revelation — it is more often discovered through doing than through introspection alone. The most reliable path is to experiment with activities that involve: contributing to others, developing genuine competence, aligning with your deepest values, and connecting to something larger than yourself. Notice where time disappears, where effort feels generative rather than depleting, and where your particular strengths seem to create genuine value for others. Purpose is often the intersection of these signals."
+  }
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+  }))
+});
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  canonicalUrl={canonicalUrl}
+>
+  <script type="application/ld+json" slot="head" set:html={faqSchema} />
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": pageTitle,
+    "description": pageDescription,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "author": { "@type": "Organization", "name": author },
+    "publisher": { "@type": "Organization", "name": "Success Odyssey Hub" }
+  })} />
+
+  <header class="article-header">
+    <div class="article-meta">
+      <span class="category-badge">Success Philosophy</span>
+      <span class="read-time">{readingTime} min read</span>
+      <time datetime={datePublished}>May 10, 2026</time>
+    </div>
+    <h1>{pageTitle}</h1>
+    <p class="article-subtitle">{pageDescription}</p>
+  </header>
+
+  <div class="article-hero">
+    <Image src={heroImage} alt="Light through a forest representing purpose and meaning as deeper sources of wellbeing than momentary pleasure" width={1200} height={630} fetchpriority="high" loading="eager" />
+  </div>
+
+  <nav class="table-of-contents" aria-label="Table of contents">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#two-visions">Two Visions of the Good Life</a></li>
+      <li><a href="#hedonic-psychology">Hedonic Psychology</a></li>
+      <li><a href="#eudaimonic-psychology">Eudaimonic Psychology</a></li>
+      <li><a href="#what-research-shows">What Research Shows</a></li>
+      <li><a href="#finding-meaning">Finding Your Meaning</a></li>
+      <li><a href="#how-to-apply">How to Apply</a></li>
+      <li><a href="#warnings">Warnings</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <ins class="adsbygoogle"
+    data-ad-client="ca-pub-7229511013815291"
+    data-ad-slot="4827765044"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+
+  <div class="article-body" itemprop="articleBody">
+
+    <section id="two-visions">
+      <h2>Two Visions of the Good Life</h2>
+      <p>The question of what constitutes a good life has two ancient and fundamentally different answers. The hedonic tradition, originating with Aristippus of Cyrene and later refined by Epicurus, holds that the good life consists in maximizing pleasure and minimizing pain — that well-being is essentially a function of how much enjoyment and how little suffering a life contains. The eudaimonic tradition, most fully developed by Aristotle, holds that the good life consists in human flourishing — in actualizing your capacities, living in accordance with your highest values, and contributing to something beyond yourself. These are not just philosophical disagreements; they generate radically different strategies for how to live.</p>
+      <p>Modern psychology has mapped these ancient distinctions onto its own research frameworks. The "subjective well-being" tradition associated with researchers like Ed Diener focuses primarily on hedonic measures: positive affect, negative affect, and life satisfaction. The eudaimonic tradition in psychology, associated with Carol Ryff, Martin Seligman, and others, measures dimensions like purpose in life, personal growth, positive relationships, environmental mastery, and autonomy. Both traditions have produced important insights, but they track different things — and the patterns of what predicts what in their respective measures reveal important truths about the structure of a flourishing life.</p>
+      <p>The distinction matters practically because it determines what you optimize for. If you are a hedonic optimizer, you arrange your life to maximize pleasant experiences and minimize unpleasant ones. If you are a eudaimonic optimizer, you arrange your life to develop your capacities, align your activities with your values, and create genuine contributions — accepting that this may sometimes involve difficulty, discomfort, and delayed or uncertain rewards. The research, as we will see, suggests that eudaimonic optimization produces both more durable well-being and, often, better external outcomes than hedonic optimization pursued directly.</p>
+      <ContentBox type="highlight" title="Aristotle's Core Insight">
+        Aristotle argued that pleasure is a natural accompaniment to excellent activity, not its purpose. The excellent musician takes pleasure in making excellent music — but if they perform primarily to experience pleasure rather than to make excellent music, their music (and their pleasure) will both be worse. Pleasure following from genuine engagement is sustainable; pleasure pursued as the primary goal tends to defeat itself.
+      </ContentBox>
+    </section>
+
+    <section id="hedonic-psychology">
+      <h2>Hedonic Psychology</h2>
+      <p>Hedonic psychology investigates the conditions under which people experience positive rather than negative emotions and evaluate their lives as satisfying rather than unsatisfying. Ed Diener's decades of research established that subjective well-being has three primary components: positive affect (experiencing pleasant emotions frequently), negative affect (experiencing unpleasant emotions infrequently), and cognitive life satisfaction (evaluating your life positively when you reflect on it). These three measures are partially but not fully correlated — you can have high positive affect and low cognitive life satisfaction, or vice versa — which suggests they are tapping somewhat different dimensions of experience.</p>
+      <p>Research on the determinants of hedonic well-being produced several counterintuitive findings. Absolute income, beyond a threshold sufficient to meet basic needs comfortably, shows diminishing returns in its effect on positive affect — a finding associated with Kahneman and Deaton's work, though subsequent research has complicated this picture. Relationship quality is consistently among the strongest predictors of subjective well-being, far outperforming income, status, and material circumstances. And personality factors — particularly neuroticism (negative) and extraversion (positive) — account for a substantial portion of well-being variance, suggesting that some baseline hedonic level is constitutionally set rather than environmentally determined.</p>
+      <p>The hedonic treadmill — the tendency to rapidly adapt to new positive circumstances, returning to a stable baseline — is the central limitation of the hedonic approach. This adaptation is both a remarkable feature of human resilience (we recover from adversity with similar speed) and a fundamental challenge for hedonic optimization (we cannot sustainably increase our well-being by accumulating new pleasures, because adaptation erases the gains). Research by Sonja Lyubomirsky suggests that activities produce more durable well-being than circumstances, precisely because activities (especially varied and engaged ones) resist adaptation more effectively than possessions or status changes.</p>
+    </section>
+
+    <section id="eudaimonic-psychology">
+      <h2>Eudaimonic Psychology</h2>
+      <p>Carol Ryff's model of psychological well-being, developed in the 1980s and continuously refined since, operationalizes the eudaimonic tradition into six measurable dimensions: self-acceptance, positive relations with others, autonomy, environmental mastery, purpose in life, and personal growth. Critically, Ryff found that these dimensions — particularly purpose in life and personal growth — are largely independent of hedonic well-being. You can have high hedonic well-being (feeling good, satisfied with life) but low eudaimonic well-being (no clear sense of purpose, minimal personal growth, weak relationships), and vice versa. This independence means they are measuring genuinely different aspects of a flourishing life.</p>
+      <p>Viktor Frankl's logotherapy provides the most powerful clinical and philosophical account of eudaimonic well-being's importance, forged in the most extreme conditions imaginable. Frankl, an Austrian psychiatrist who survived four Nazi concentration camps including Auschwitz, observed that survival rates among prisoners were not primarily predicted by physical strength or health — they were predicted by whether prisoners maintained a sense of meaning and purpose. Those who had a reason to survive — a loved one to return to, a work to complete, a story to tell — showed remarkable resilience that defied physical explanations. Those who lost their sense of meaning often died within days of the loss, regardless of their physical condition. Frankl's conclusion: meaning is not a luxury of comfortable life but the primary human motivational force and the foundation of psychological survival.</p>
+      <p>Self-determination theory, developed by Edward Deci and Richard Ryan, identifies three basic psychological needs whose fulfillment constitutes eudaimonic well-being: competence (feeling effective in your activities), autonomy (experiencing your actions as self-directed and value-aligned), and relatedness (feeling genuinely connected to others who matter to you). When these needs are met, intrinsic motivation thrives, well-being is high, and performance is excellent. When they are thwarted — particularly autonomy, through external control and surveillance — performance and well-being both suffer, regardless of external incentives. This framework has profound implications for how we design work, education, and relationships.</p>
+    </section>
+
+    <section id="what-research-shows">
+      <h2>What Research Shows</h2>
+      <p>A landmark study by Barbara Fredrickson and colleagues published in the Proceedings of the National Academy of Sciences found that eudaimonic and hedonic well-being have different effects at the biological level. Participants high in eudaimonic well-being showed favorable gene expression profiles associated with immune function and reduced inflammation, while those high in hedonic well-being alone — despite feeling good — showed less favorable profiles. The researchers interpreted this as evidence that "the biology of human well-being appears to be more responsive to its character than to its presence." Meaning, in other words, matters in ways that go all the way down to the cellular level.</p>
+      <p>Research on motivation and performance consistently finds that eudaimonic engagement — intrinsic motivation, value alignment, genuine absorption in meaningful work — predicts better quality work, greater persistence, more creativity, and more ethical behavior than extrinsic motivation. Amy Wrzesniewski's research on work orientations found that people who experience their work as a "calling" — as deeply personally meaningful and connected to a larger purpose — report higher life satisfaction, more positive work affect, and miss less work through illness than those who see it primarily as a "job" (source of income) or "career" (source of status and advancement), even controlling for income and job prestige. Meaning is both intrinsically rewarding and practically productive.</p>
+      <p>Longitudinal research supports the durability advantage of eudaimonic well-being over hedonic. While hedonic states are more immediately sensitive to circumstances — a raise, a vacation, a pleasant social event all produce quick hedonic boosts — eudaimonic well-being is more resistant to circumstantial fluctuation and produces more stable long-term outcomes. Research tracking people through major life transitions consistently finds that those with strong sense of purpose navigate uncertainty, setbacks, and change with greater resilience — because their well-being is grounded in something more durable than circumstance.</p>
+      <ContentBox type="info" title="The Health Evidence">
+        Patrick Hill and Nicholas Turiano's research tracking over 6,000 adults found that having a strong sense of purpose in life was associated with significantly lower mortality risk over the fourteen-year study period — even after controlling for positive affect and life satisfaction. Meaning appears to have independent health-protective effects that go beyond simply feeling good.
+      </ContentBox>
+    </section>
+
+    <section id="finding-meaning">
+      <h2>Finding Your Meaning</h2>
+      <p>One of the most important practical insights from the meaning research is that purpose is not something you find fully formed through introspection — it is something you develop through engagement with the world. Mihaly Csikszentmihalyi's research on flow, Viktor Frankl's logotherapy, and William Damon's research on purpose all point to the same conclusion: meaning is most reliably discovered and deepened through doing — through engaging seriously with activities that challenge you, involve others, and connect to values you hold deeply. Waiting to feel a calling before committing to work is often backwards; commitment to excellent work often generates the sense of calling.</p>
+      <p>Frankl identified three primary pathways to meaning. The first is creation — contributing something to the world through work, art, or service. The second is experience — encountering truth, beauty, or love in the world, including the experience of a deep relationship with another person. The third, and most profound, is the attitude one takes toward unavoidable suffering — the choice of meaning in the face of circumstances that cannot be changed. This third pathway is the most distinctively Frankl's, and it applies to anyone facing illness, loss, or limitation: the freedom to choose your response to circumstances you did not choose is always available, and that choice is itself a source of meaning and dignity.</p>
+      <p>Practical meaning-finding involves several disciplines. Regular reflection on your core values — not what you think you should value, but what you actually care about when you observe your real choices and genuine emotional responses — provides the foundation. Identifying recurring themes across your most engaged and generative experiences reveals where your particular capacities and interests converge. And actively experimenting with contribution — doing things that are genuinely useful to others, participating in communities of purpose, working on problems that matter to you — generates the experiential data from which meaning crystallizes over time.</p>
+    </section>
+
+    <ins class="adsbygoogle"
+      data-ad-layout="in-article"
+      data-ad-format="fluid"
+      data-ad-client="ca-pub-7229511013815291"
+      data-ad-slot="2952775705"></ins>
+
+    <section id="how-to-apply">
+      <h2>How to Apply These Insights</h2>
+      <StepsList>
+        <li><strong>Clarify your values and check your life against them:</strong> Write down the five values that feel most fundamental to who you are — not aspirational values but the ones that, when violated, cause genuine distress. Then audit how your current work, relationships, and daily activities align or conflict with those values. Gaps between stated values and actual life arrangements are the primary source of eudaimonic deficit and a reliable signal of where meaning needs to be cultivated or recovered.</li>
+        <li><strong>Identify and pursue contribution, not just consumption:</strong> Hedonic optimization focuses on consuming pleasant experiences. Eudaimonic optimization focuses on contributing — creating, building, teaching, serving, producing something of value to others. Deliberately increase the ratio of contribution to consumption in your life, particularly in domains where your particular skills and interests can create genuine value for others.</li>
+        <li><strong>Design your work for intrinsic engagement:</strong> Using self-determination theory as a guide, assess your work along three dimensions: competence (are you growing and feeling effective?), autonomy (are you directing your work in line with your values?), relatedness (are you genuinely connected to others through your work?). Where deficits exist, take active steps to redesign your role, your environment, or your relationship to your work to better meet these needs.</li>
+        <li><strong>Practice Frankl's attitude freedom:</strong> When facing circumstances you cannot change, explicitly practice the choice of your response. Ask: given that I cannot change this situation, what attitude toward it would express my values most fully? What meaning can I find in how I engage with it? This practice does not require acceptance of injustice or suppression of legitimate emotion — it requires the active choice to be the author of your response rather than purely its victim.</li>
+        <li><strong>Invest in depth over breadth in relationships:</strong> Eudaimonic well-being is strongly associated with the quality of close relationships, not the quantity of pleasant social interactions. Invest deliberately in a small number of relationships characterized by genuine mutual understanding, honest communication, and shared investment in each other's flourishing. These relationships are both intrinsically meaningful and a primary source of the support that makes all other meaningful pursuits possible.</li>
+        <li><strong>Notice and honor your flow states as signals:</strong> Keep a brief journal of when you experience flow — complete absorption in challenging and engaging activity. Over months, patterns will emerge: domains, types of problems, relational contexts, and modes of work that consistently produce this state. These patterns are among the most reliable guides to where your particular form of meaningful engagement lies, and they deserve deliberate investment.</li>
+      </StepsList>
+    </section>
+
+    <ins class="adsbygoogle"
+      data-ad-client="ca-pub-7229511013815291"
+      data-ad-slot="4827765044"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+
+    <section id="warnings">
+      <h2>Warnings</h2>
+      <ContentBox type="warning" title="Warning: Meaning Can Become a Source of Grandiosity">
+        The search for meaning can sometimes produce a problematic inflation of self-importance — the sense that your work must have world-historical significance to be truly meaningful. But research on meaning consistently shows that meaning is found at every scale of contribution, from raising children well to maintaining a beautiful garden to serving customers with genuine care. The requirement that meaning be grand is itself an obstacle to finding it in the rich texture of ordinary life.
+      </ContentBox>
+      <ContentBox type="warning" title="Warning: Meaning Can Be Used to Rationalize Overwork">
+        "I find my work deeply meaningful" is sometimes a genuine expression of eudaimonic engagement and sometimes a rationalization for working in ways that damage health, relationships, and other sources of meaning. Meaningful work is not a license to neglect every other dimension of a flourishing life. The research on eudaimonic well-being consistently identifies multiple domains — relationships, personal growth, health, contribution — as components of flourishing. Sacrificing all of them for one is not eudaimonia; it is a narrowed life with a compelling narrative.
+      </ContentBox>
+      <ContentBox type="warning" title="Warning: Pleasure Is Not the Enemy">
+        The argument for prioritizing meaning over pleasure should not be read as a brief for asceticism or the suppression of enjoyment. Epicurus himself was not a hedonist in the popular sense — he advocated for simple, sustainable pleasures (friendship, good food, philosophical conversation) over intense, short-lived ones. The point is not to eliminate pleasure but to ensure that your life is not organized primarily around its pursuit — because a life organized primarily around pleasure tends to produce both less pleasure and less meaning than a life organized around meaning that includes pleasure as a companion.
+      </ContentBox>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      {faqData.map(f => (
+        <div>
+          <h3>{f.question}</h3>
+          <p>{f.answer}</p>
+        </div>
+      ))}
+    </section>
+
+    <div class="author-bio">
+      <h3>About {author}</h3>
+      <p>Success Odyssey Hub explores the intersection of ancient philosophy, modern psychology, and practical strategy to help thoughtful people build lives of meaning, excellence, and lasting achievement. Our research draws from eudaimonic psychology, Viktor Frankl's logotherapy, self-determination theory, and Aristotelian ethics to offer the most rigorous and practical perspective on human flourishing.</p>
+    </div>
+
+    <div class="related-articles">
+      <h2>Related Articles</h2>
+      <ul>
+        <li><a href="/blog/success-vs-happiness">Success vs Happiness: Do You Have to Choose?</a></li>
+        <li><a href="/blog/virtue-success">Virtue and Success: Why Character Is Your Highest Competitive Advantage</a></li>
+        <li><a href="/blog/stoic-philosophy-work">Stoic Philosophy at Work: Ancient Principles for Modern Professional Life</a></li>
+        <li><a href="/blog/timeless-success-principles">Timeless Principles of Success: What 3,000 Years of Wisdom Agree On</a></li>
+      </ul>
+    </div>
+
+    <div class="external-resources">
+      <h2>External Resources</h2>
+      <ul>
+        <li><a href="https://greatergood.berkeley.edu/topic/meaning_purpose" target="_blank" rel="noopener noreferrer">Greater Good Science Center: Meaning and Purpose Research</a></li>
+        <li><a href="https://selfdeterminationtheory.org/" target="_blank" rel="noopener noreferrer">Self-Determination Theory: Deci and Ryan's Research</a></li>
+        <li><a href="https://www.apa.org/monitor/2014/02/purpose" target="_blank" rel="noopener noreferrer">APA Monitor: The Importance of Purpose</a></li>
+      </ul>
+    </div>
+
+    <div class="book-recommendations">
+      <h2>Book Recommendations</h2>
+      <ul>
+        <li><strong>Man's Search for Meaning</strong> by Viktor Frankl — the most powerful account of meaning as the foundation of human resilience and flourishing</li>
+        <li><strong>Flow</strong> by Mihaly Csikszentmihalyi — the psychology of optimal experience and what it reveals about the conditions of meaningful engagement</li>
+        <li><strong>The Path to Purpose</strong> by William Damon — research-based guidance on how purpose develops and how to cultivate it at any life stage</li>
+        <li><strong>Authentic Happiness</strong> by Martin Seligman — the founding text of positive psychology and the PERMA model of flourishing</li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>
+
+<style lang="scss">
+  .article-header { max-width: 800px; margin: 0 auto 2rem; padding: 2rem 1rem 0; .article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; .category-badge { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; } .read-time, time { color: #64748b; font-size: 0.9rem; } } h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; color: #1e293b; margin-bottom: 1rem; } .article-subtitle { font-size: 1.15rem; color: #475569; line-height: 1.7; } }
+  .article-hero { max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem; img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } }
+  .table-of-contents { max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #667EEA; h2 { font-size: 1rem; font-weight: 700; color: #374151; margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; } ol { margin: 0; padding-left: 1.25rem; } li { margin-bottom: 0.4rem; } a { color: #667EEA; text-decoration: none; font-size: 0.95rem; &:hover { text-decoration: underline; } } }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 1rem 4rem; section { margin-bottom: 3rem; } h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: #1e293b; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 3px solid #667EEA; } h3 { font-size: 1.2rem; font-weight: 700; color: #334155; margin: 2rem 0 0.75rem; } p { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 1.25rem; } ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; li { font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 0.5rem; } } a { color: #667EEA; text-decoration: underline; text-underline-offset: 3px; &:hover { color: #764BA2; } } }
+  .author-bio { background: #f8fafc; border-radius: 12px; padding: 2rem; margin: 3rem 0; border-left: 4px solid #667EEA; h3 { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.5rem; } p { font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6; } }
+  .related-articles, .external-resources, .book-recommendations { background: #f8fafc; border-radius: 12px; padding: 2rem; margin-top: 2rem; h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; border: none; padding: 0; } ul { list-style: none; padding: 0; margin: 0; } li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; &:last-child { border-bottom: none; } } }
+  @media (prefers-color-scheme: dark) { .article-header { h1 { color: #f1f5f9; } .article-subtitle { color: #94a3b8; } } .table-of-contents { background: #1e293b; h2 { color: #cbd5e1; } } .article-body { h2 { color: #f1f5f9; } h3 { color: #e2e8f0; } p, li { color: #cbd5e1; } } .author-bio, .related-articles, .external-resources, .book-recommendations { background: #1e293b; h2, h3 { color: #f1f5f9; } p { color: #94a3b8; } li { border-color: #334155; } } }
+</style>
