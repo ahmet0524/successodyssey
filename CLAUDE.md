@@ -29,16 +29,17 @@ src/
     blog.astro     ← blog listesi (allBlogPosts dizisi)
     index.astro    ← ana sayfa
   layouts/
-    Layout.astro   ← eski postlar (AdSense script burada)
-    BaseLayout.astro ← Day 97+ yeni postlar
+    Layout.astro   ← TÜM postlar bu layout'u kullanır (BaseLayout KULLANILMAZ)
   components/
     blog/
-      ContentBox.astro
-      StepsList.astro
+      ContentBox.astro   → type: 'info' | 'highlight' | 'tip' | 'quote' | 'warning'
+      StepsList.astro    → <li> slot kullanır, steps={[]} prop DEĞİL
       ContentGrid.astro
       ComparisonTable.astro
       ImageWithCaption.astro
       CodeBlock.astro
+  assets/
+    card3.jpg      ← TÜM blog sayfalarında hero image olarak kullanılan görsel
 ```
 
 ---
@@ -50,7 +51,7 @@ src/
 - **Display slot:** `4827765044` → REKLAM 1 (ToC sonrası) + REKLAM 3 (conclusion öncesi)
 
 ```html
-<!-- REKLAM 1 — ToC'tan hemen sonra -->
+<!-- REKLAM 1 — ToC'tan hemen sonra (article-body DIŞINDA) -->
 <ins class="adsbygoogle" style="display:block"
   data-ad-client="ca-pub-7229511013815291"
   data-ad-slot="4827765044"
@@ -58,7 +59,7 @@ src/
   data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-<!-- REKLAM 2 — İçerik ortası (7-8. section arası) -->
+<!-- REKLAM 2 — İçerik ortası (article-body İÇİNDE, section'lar arası) -->
 <ins class="adsbygoogle" style="display:block; text-align:center;"
   data-ad-layout="in-article"
   data-ad-format="fluid"
@@ -66,7 +67,7 @@ src/
   data-ad-slot="2952775705"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-<!-- REKLAM 3 — Conclusion'dan hemen önce -->
+<!-- REKLAM 3 — Conclusion'dan hemen önce (article-body İÇİNDE) -->
 <ins class="adsbygoogle" style="display:block"
   data-ad-client="ca-pub-7229511013815291"
   data-ad-slot="4827765044"
@@ -75,55 +76,135 @@ src/
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 ```
 
----
-
-## Görsel Döngüsü (Day 97+ yeni postlar)
-
-| Gün % 3 | Görsel |
-|---------|--------|
-| 1 | `/images/card1a.jpg` |
-| 2 | `/images/card2a.jpg` |
-| 0 | `/images/card3a.jpg` |
+⚠️ Reklam etiketleri **bare `<ins>`** olarak yazılır — `<div class="ad-container">` gibi wrapper KULLANILMAZ.
 
 ---
 
-## Yeni Post Şablonu (Day 97+ — BaseLayout)
+## Hero Görseli
+
+Tüm blog sayfalarında TEK bir hero image kullanılır:
+
+```astro
+import heroImage from "../../assets/card3.jpg";
+```
+
+card1a.jpg / card2a.jpg / card3a.jpg rotasyonu KALDIRILDI. Hepsi card3.jpg oldu.
+
+---
+
+## Doğru Post Şablonu (Layout.astro — TÜM postlar)
 
 ```astro
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContentBox from '../../components/blog/ContentBox.astro';
-import StepsList from '../../components/blog/StepsList.astro';
+import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImage from "../../assets/card3.jpg";
+import ContentBox from "../../components/blog/ContentBox.astro";
+import StepsList from "../../components/blog/StepsList.astro";
 
-const title = "...";
-const description = "...";           // 150-160 karakter, aktif fiil
-const keywords = "kw1, kw2, ...";   // minimum 10 semantik varyasyon
-const publishDate = "YYYY-MM-DD";
-const canonicalUrl = "https://successodysseyhub.com/blog/slug"; // trailing slash YOK
-const imageUrl = "/images/cardXa.jpg";
+const datePublished = "2026-05-09T00:00:00Z";
+const dateModified  = "2026-05-09T00:00:00Z";
+const author        = "Success Odyssey Hub";
+const pageTitle     = "...";
+const pageDescription = "...";
+const pageKeywords  = "...";
+const readingTime   = 10;
 
 const faqSchema = { /* ZORUNLU — tam 3 soru */ };
 ---
-<BaseLayout title description keywords canonicalUrl imageUrl>
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <article class="blog-post">
-    <header>H1 + tarih + okuma süresi</header>
-    <nav class="table-of-contents">Tüm H2'lere anchor</nav>
-    <!-- REKLAM 1 (display, slot 4827765044) -->
-    <!-- Ana bölümler (H2) -->
-    <!-- REKLAM 2 (fluid in-article, slot 2952775705) — 7-8. section arası -->
-    <section id="how-to-apply"><StepsList /></section>
-    <section id="misconceptions"><ContentBox type="warning" /></section>
-    <!-- REKLAM 3 (display, slot 4827765044) -->
-    <section id="conclusion">...</section>
-    <ContentBox type="tip">CTA</ContentBox>
-    <section class="author-bio">...</section>
-    <section class="related-articles">3 iç link</section>
-    <section class="external-resources">2-3 dış kaynak</section>
-    <section class="book-recommendations">affiliate linkler</section>
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords}
+  image={heroImage} type="article" datePublished={datePublished}
+  dateModified={dateModified} author={author}
+  canonicalUrl="https://successodysseyhub.com/blog/SLUG">
+  <link rel="preload" as="image" href={heroImage.src} slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <article itemscope itemtype="https://schema.org/Article">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-badge">Kategori</span>
+        <span class="read-time">{readingTime} min read</span>
+        <time itemprop="datePublished" datetime={datePublished}>May 9, 2026</time>
+      </div>
+      <h1 itemprop="headline">{pageTitle}</h1>
+      <p class="article-subtitle">Hook cümlesi.</p>
+      <span itemprop="author" itemscope itemtype="https://schema.org/Person" style="display:none">
+        <span itemprop="name">{author}</span>
+      </span>
+    </header>
+
+    <figure class="article-hero">
+      <Image src={heroImage} alt="..." width={1200} height={630} fetchpriority="high" loading="eager" />
+    </figure>
+
+    <nav class="table-of-contents" aria-label="Table of Contents">
+      <h2>Table of Contents</h2>
+      <ol><li><a href="#section-id">Section Title</a></li>...</ol>
+    </nav>
+
+    <!-- REKLAM 1 (article-body DIŞINDA) -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <div class="article-body" itemprop="articleBody">
+      <section id="...">...</section>
+
+      <!-- REKLAM 2 (fluid in-article) -->
+      <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7229511013815291" data-ad-slot="2952775705"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="how-to-apply">
+        <StepsList title="...">
+          <li><strong>Başlık.</strong> Açıklama.</li>
+        </StepsList>
+      </section>
+
+      <section id="misconceptions">
+        <ContentBox type="warning" title={`❌ "Apostrophe içeren başlık"`}>
+          <p>İçerik.</p>
+        </ContentBox>
+      </section>
+
+      <!-- REKLAM 3 (conclusion öncesi) -->
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7229511013815291" data-ad-slot="4827765044" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <section id="conclusion">
+        <ContentBox type="tip" title="CTA">CTA metni</ContentBox>
+      </section>
+
+      <section class="author-bio">
+        <div class="author-bio-content">
+          <h3>About Success Odyssey Hub</h3>
+          <p>Success Odyssey Hub creates evidence-based content...</p>
+        </div>
+      </section>
+      <section class="related-articles"><h2>Related Articles</h2><ul>...</ul></section>
+      <section class="external-resources"><h2>Further Reading</h2><ul>...</ul></section>
+      <section class="book-recommendations"><h2>Recommended Books</h2><ul>...</ul></section>
+    </div>
   </article>
-</BaseLayout>
+</Layout>
+
+<style lang="scss">
+  /* thinking-in-bets.astro veya herhangi bir son sayfadan kopyala */
+</style>
 ```
+
+---
+
+## Kritik Hatırlatmalar
+
+| Kural | Doğru | Yanlış |
+|-------|-------|--------|
+| Layout | `Layout.astro` | `BaseLayout.astro` ❌ |
+| Görsel import | `import heroImage from "../../assets/card3.jpg"` | string path ❌ |
+| Görsel tag | `<Image src={heroImage} fetchpriority="high" loading="eager" />` | `<img>` ❌ |
+| StepsList | `<li>` children slot | `steps={[]}` prop ❌ |
+| ContentBox title apostrophe | `` title={`❌ "It's..."`} `` | `title='❌ "It\'s"'` ❌ |
+| Ad wrapper | bare `<ins>` | `<div class="ad-container">` ❌ |
+| FAQ script | `slot="head"` zorunlu | slot olmadan ❌ |
+| ContentBox type | info/highlight/tip/quote/warning | insight ❌ |
 
 ---
 
@@ -143,6 +224,7 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 
 - **Index 0 = Featured post** ("Latest" badge). En yeni post her zaman EN ÜSTE eklenir.
 - Silinen/yanlış postlar diziden kaldırılmalı — broken link bırakılmaz.
+- blog.astro'da image olarak `card1Image.src` / `card2Image.src` / `card3Image.src` kullanılır (soh-1.png, soh-2.png, soh.png).
 
 ---
 
@@ -303,17 +385,17 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | 112 | `decision-making-under-pressure` | Decisions Under Pressure | ✅ |
 | 113 | `avoiding-analysis-paralysis` | Overcome Analysis Paralysis | ✅ |
 | 114 | `fast-slow-thinking` | Fast vs Slow Thinking (Kahneman) | ✅ |
-| 115 | `wisdom-of-crowds` | The Wisdom of Crowds | ⏳ **SIRADA** |
+| 115 | `wisdom-of-crowds` | The Wisdom of Crowds | ✅ |
 
 ### PHASE 6 — Success Philosophy Serisi (Gün 116-140)
 
 | Gün | Slug | Başlık | Durum |
 |-----|------|--------|-------|
-| 116 | `napoleon-hill-lessons` | Napoleon Hill's Greatest Lessons | ⏳ |
-| 117 | `jim-rohn-philosophy` | Jim Rohn's Philosophy | ⏳ |
-| 118 | `earl-nightingale-strangest-secret` | Earl Nightingale's Strangest Secret | ⏳ |
-| 119 | `stoicism-success` | How Stoicism Leads to Modern Success | ⏳ |
-| 120 | `marcus-aurelius-meditations` | Marcus Aurelius Meditations | ⏳ |
+| 116 | `napoleon-hill-lessons` | Napoleon Hill's Think and Grow Rich: 13 Timeless Lessons | ✅ |
+| 117 | `jim-rohn-philosophy` | Jim Rohn's Philosophy of Personal Development | ✅ |
+| 118 | `earl-nightingale-strangest-secret` | Earl Nightingale and The Strangest Secret | ✅ |
+| 119 | `stoicism-success` | Stoicism and Success | ✅ |
+| 120 | `marcus-aurelius-meditations` | Marcus Aurelius and the Meditations | ✅ |
 | 121 | `seneca-time-success` | Seneca on Time | ⏳ |
 | 122 | `epictetus-control` | Epictetus on Control | ⏳ |
 | 123 | `viktor-frankl-meaning` | Viktor Frankl on Finding Meaning | ⏳ |
@@ -420,14 +502,14 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | Phase 2 (Gün 15-35) | 21 | 21 | 0 |
 | Phase 3 (Gün 36-60) | 25 | 25 | 0 |
 | Phase 4 (Gün 61-90) | 30 | 30 | 0 |
-| Phase 5 (Gün 91-115) | 25 | 24 | 1 |
-| Phase 6 (Gün 116-140) | 25 | 0 | 25 |
+| Phase 5 (Gün 91-115) | 25 | 25 | 0 |
+| Phase 6 (Gün 116-140) | 25 | 5 | 20 |
 | Phase 7 (Gün 141-165) | 25 | 0 | 25 |
 | Phase 8 (Gün 166-185) | 20 | 0 | 20 |
 | Phase 9 (Gün 186-200) | 15 | 0 | 15 |
-| **TOPLAM** | **200** | **100** | **100** |
+| **TOPLAM** | **200** | **106** | **94** |
 
-**🔜 Sıradaki görev:** Day 115 — `wisdom-of-crowds` (image: card1a.jpg, 115%3=1)
+**🔜 Sıradaki görev:** Day 121 — `seneca-time-success` (image: card3.jpg)
 
 ---
 
@@ -435,6 +517,7 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 
 1. Bu dokümanı Claude'a yapıştır
 2. `Gün [X] içeriğini üret` yaz
-3. Claude 3 dosyayı hazırlar: `[slug].astro` + `blog.astro` güncelleme
-4. `git add . && git commit -m "Day X: [başlık]" && git -c http.sslVerify=false push origin main`
-5. Netlify otomatik deploy eder
+3. Claude 2 şeyi hazırlar: `[slug].astro` + `blog.astro` güncelleme
+4. `npm run build` → hata yoksa push
+5. `git add . && git commit -m "Day X: [başlık]" && git -c http.sslVerify=false push origin main`
+6. Netlify otomatik deploy eder
