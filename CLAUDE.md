@@ -205,6 +205,10 @@ const faqSchema = { /* ZORUNLU — tam 3 soru */ };
 | Ad wrapper | bare `<ins>` | `<div class="ad-container">` ❌ |
 | FAQ script | `slot="head"` zorunlu | slot olmadan ❌ |
 | ContentBox type | info/highlight/tip/quote/warning | insight ❌ |
+| ContentBox import path | `../../components/blog/ContentBox.astro` | `../../components/ContentBox.astro` ❌ |
+| StepsList import path | `../../components/blog/StepsList.astro` | `../../components/StepsList.astro` ❌ |
+
+> ⚠️ **Agent kullanıldığında:** Agent'ın ürettiği dosyalarda ContentBox ve StepsList import pathlerini build öncesi kontrol et — agent sık sık `/blog/` alt klasörünü atlıyor.
 
 ---
 
@@ -396,16 +400,16 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | 118 | `earl-nightingale-strangest-secret` | Earl Nightingale and The Strangest Secret | ✅ |
 | 119 | `stoicism-success` | Stoicism and Success | ✅ |
 | 120 | `marcus-aurelius-meditations` | Marcus Aurelius and the Meditations | ✅ |
-| 121 | `seneca-time-success` | Seneca on Time | ⏳ |
-| 122 | `epictetus-control` | Epictetus on Control | ⏳ |
-| 123 | `viktor-frankl-meaning` | Viktor Frankl on Finding Meaning | ⏳ |
-| 124 | `alan-watts-success` | Alan Watts on Success | ⏳ |
-| 125 | `naval-ravikant-wealth` | Naval Ravikant's Guide to Wealth | ⏳ |
-| 126 | `charlie-munger-wisdom` | Charlie Munger's Greatest Wisdom | ⏳ |
-| 127 | `warren-buffett-life-lessons` | Warren Buffett's Life Lessons | ⏳ |
-| 128 | `elon-musk-thinking` | How Elon Musk Thinks | ⏳ |
-| 129 | `jeff-bezos-principles` | Jeff Bezos' Leadership Principles | ⏳ |
-| 130 | `steve-jobs-philosophy` | Steve Jobs' Philosophy | ⏳ |
+| 121 | `seneca-time-success` | Seneca on Time | ✅ |
+| 122 | `epictetus-control` | Epictetus on Control | ✅ |
+| 123 | `viktor-frankl-meaning` | Viktor Frankl on Finding Meaning | ✅ |
+| 124 | `alan-watts-success` | Alan Watts on Success | ✅ |
+| 125 | `naval-ravikant-wealth` | Naval Ravikant's Guide to Wealth | ✅ |
+| 126 | `charlie-munger-wisdom` | Charlie Munger's Greatest Wisdom | ✅ |
+| 127 | `warren-buffett-life-lessons` | Warren Buffett's Life Lessons | ✅ |
+| 128 | `elon-musk-thinking` | How Elon Musk Thinks | ✅ |
+| 129 | `jeff-bezos-principles` | Jeff Bezos' Leadership Principles | ✅ |
+| 130 | `steve-jobs-philosophy` | Steve Jobs' Philosophy | ✅ |
 | 131 | `long-game-success` | The Long Game | ⏳ |
 | 132 | `compound-effect-success` | The Compound Effect | ⏳ |
 | 133 | `pursuit-of-excellence` | The Philosophy of Excellence | ⏳ |
@@ -503,13 +507,13 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | Phase 3 (Gün 36-60) | 25 | 25 | 0 |
 | Phase 4 (Gün 61-90) | 30 | 30 | 0 |
 | Phase 5 (Gün 91-115) | 25 | 25 | 0 |
-| Phase 6 (Gün 116-140) | 25 | 5 | 20 |
+| Phase 6 (Gün 116-140) | 25 | 15 | 10 |
 | Phase 7 (Gün 141-165) | 25 | 0 | 25 |
 | Phase 8 (Gün 166-185) | 20 | 0 | 20 |
 | Phase 9 (Gün 186-200) | 15 | 0 | 15 |
-| **TOPLAM** | **200** | **106** | **94** |
+| **TOPLAM** | **200** | **116** | **84** |
 
-**🔜 Sıradaki görev:** Day 121 — `seneca-time-success` (image: card3.jpg)
+**🔜 Sıradaki görev:** Day 131 — `long-game-success` (image: card3.jpg)
 
 ---
 
