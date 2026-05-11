@@ -300,10 +300,10 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | 109 | `steel-man-argument` | Steel Manning | ✅ |
 | 110 | `long-term-thinking` | Long-Term Thinking | ✅ |
 | 111 | `bayesian-thinking` | Bayesian Thinking | ✅ |
-| 112 | `decision-making-under-pressure` | Decisions Under Pressure | ⏳ **SIRADA** |
-| 113 | `avoiding-analysis-paralysis` | Overcome Analysis Paralysis | ⏳ |
-| 114 | `fast-slow-thinking` | Fast vs Slow Thinking (Kahneman) | ⏳ |
-| 115 | `wisdom-of-crowds` | The Wisdom of Crowds | ⏳ |
+| 112 | `decision-making-under-pressure` | Decisions Under Pressure | ✅ |
+| 113 | `avoiding-analysis-paralysis` | Overcome Analysis Paralysis | ✅ |
+| 114 | `fast-slow-thinking` | Fast vs Slow Thinking (Kahneman) | ✅ |
+| 115 | `wisdom-of-crowds` | The Wisdom of Crowds | ⏳ **SIRADA** |
 
 ### PHASE 6 — Success Philosophy Serisi (Gün 116-140)
 
@@ -420,14 +420,14 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | Phase 2 (Gün 15-35) | 21 | 21 | 0 |
 | Phase 3 (Gün 36-60) | 25 | 25 | 0 |
 | Phase 4 (Gün 61-90) | 30 | 30 | 0 |
-| Phase 5 (Gün 91-115) | 25 | 21 | 4 |
+| Phase 5 (Gün 91-115) | 25 | 24 | 1 |
 | Phase 6 (Gün 116-140) | 25 | 0 | 25 |
 | Phase 7 (Gün 141-165) | 25 | 0 | 25 |
 | Phase 8 (Gün 166-185) | 20 | 0 | 20 |
 | Phase 9 (Gün 186-200) | 15 | 0 | 15 |
-| **TOPLAM** | **200** | **97** | **103** |
+| **TOPLAM** | **200** | **100** | **100** |
 
-**🔜 Sıradaki görev:** Day 112 — `decision-making-under-pressure` (image: card1a.jpg, 112%3=1)
+**🔜 Sıradaki görev:** Day 115 — `wisdom-of-crowds` (image: card1a.jpg, 115%3=1)
 
 ---
 
