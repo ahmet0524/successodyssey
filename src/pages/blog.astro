@@ -54,9 +54,9 @@ import card1Image from "../assets/soh-1.png";
 import card2Image from "../assets/soh-2.png";
 
 
-const blogImages = import.meta.glob('../assets/blog/*.jpg', { eager: true });
+const blogImages = import.meta.glob('../assets/blog-thumb/*.jpg', { eager: true });
 function getBlogImage(slug) {
-  const key = `../assets/blog/${slug}.jpg`;
+  const key = `../assets/blog-thumb/${slug}.jpg`;
   const mod = blogImages[key];
   return mod ? (mod.default?.src ?? mod.default) : null;
 }
@@ -2001,7 +2001,7 @@ const categories = ['All', ...new Set(allBlogPosts.map(post => post.category))];
 
       img {
         width: 100%;
-        aspect-ratio: 40 / 21;
+        aspect-ratio: 1 / 1;
         object-fit: cover;
         object-position: center;
         display: block;
