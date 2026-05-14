@@ -1,9 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import authorImage from "../assets/ahmet-yavuz.png";
 
-const pageTitle = "About Success Odyssey Hub — Why This Site Exists";
-const pageDescription = "Success Odyssey Hub was built for people who have done everything right and still feel stuck. We translate psychology, philosophy, and neuroscience into insights that actually change how you think.";
-const pageKeywords = "about success odyssey hub, success psychology blog, personal development research, philosophy of success, mental models blog";
+const pageTitle = "About Ahmet Yavuz — Success Odyssey Hub";
+const pageDescription = "I'm Ahmet Yavuz, the founder of Success Odyssey Hub. I created this site to document a 200-day deep dive into the science and philosophy of achievement — neuroscience, psychology, stoicism, and financial wisdom.";
+const pageKeywords = "Ahmet Yavuz, about success odyssey hub, personal development blogger, success psychology, 200 day journey";
 ---
 
 <Layout
@@ -14,134 +16,234 @@ const pageKeywords = "about success odyssey hub, success psychology blog, person
   canonicalUrl="https://successodysseyhub.com/about"
 >
 
+  <!-- Hero -->
   <section class="about-hero">
     <div class="container">
-      <h1>Why This Site Exists</h1>
-      <p class="hero-subtitle">
-        This isn't another "10 habits of successful people" blog. We built it because we got tired of advice that sounded right but changed nothing.
-      </p>
+      <div class="hero-inner">
+        <div class="author-photo-wrap">
+          <Image
+            src={authorImage}
+            alt="Ahmet Yavuz — founder of Success Odyssey Hub"
+            width={220}
+            height={220}
+            loading="eager"
+          />
+          <div class="verified-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Verified Author
+          </div>
+        </div>
+        <div class="hero-text">
+          <span class="hero-label">The Person Behind the Site</span>
+          <h1>Hi, I'm Ahmet Yavuz</h1>
+          <p class="hero-tagline">Researcher · Writer · Lifelong Learner</p>
+          <p class="hero-desc">
+            I created Success Odyssey Hub as a personal 200-day journey through the science and philosophy of achievement.
+            Every article is my attempt to translate complex research in neuroscience, psychology, stoicism, and finance
+            into insights you can actually use — starting today.
+          </p>
+          <div class="hero-actions">
+            <a href="/blog" class="btn-primary">Read the Articles</a>
+            <a href="mailto:albert@furnituremarketingpros.com" class="btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="about-content">
+  <!-- Stats strip -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">200</span>
+          <span class="stat-lbl">Day Journey</span>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <span class="stat-num">150+</span>
+          <span class="stat-lbl">Articles Written</span>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <span class="stat-num">10K+</span>
+          <span class="stat-lbl">Monthly Readers</span>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-lbl">Research-Backed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <section class="about-body">
     <div class="container">
       <div class="about-grid">
 
-        <div class="story-section">
+        <div class="main-col">
 
-          <div class="story-block">
-            <h2>The Problem With Most Success Advice</h2>
+          <div class="content-block">
+            <h2>Why I Started This Journey</h2>
             <p>
-              Most people who end up here aren't failing. They're capable, intelligent, and working hard. They've read the books, followed the frameworks, optimized their routines. And yet — something isn't moving. The gap between where they are and where they sense they could be stays stubbornly wide.
+              A few years ago, I found myself doing everything "right" — reading the books, following the frameworks,
+              optimizing my routines — and still feeling like something wasn't moving. The gap between where I was
+              and where I knew I could be stayed stubbornly wide.
             </p>
             <p>
-              That was us too. Not stuck in any dramatic way. Just quietly aware that the standard playbook — more discipline, better habits, bigger goals — wasn't producing the change we actually wanted. We were executing the system. The system wasn't producing the result.
+              So I went deeper. Past the productivity hacks and morning routine breakdowns. Into actual research —
+              behavioral psychology, cognitive neuroscience, philosophy of mind, decision science. The literature
+              that serious researchers spend careers on, not the summaries that get turned into viral threads.
             </p>
             <p>
-              So we went deeper. Past the productivity hacks and morning routine breakdowns. Into the actual research — behavioral psychology, cognitive neuroscience, philosophy of mind, decision science. The literature that serious researchers spend careers on, not the summaries that get turned into viral threads.
-            </p>
-            <p>
-              What we found changed how we think about almost everything. Success Odyssey Hub is our attempt to share it — honestly, rigorously, and without the motivational veneer that makes most personal development content feel good in the moment and useless the morning after.
+              What I found changed how I think about almost everything. Success Odyssey Hub is my attempt to share
+              it — honestly, rigorously, and without the motivational veneer that makes most personal development
+              content feel good for twenty minutes and useless the morning after.
             </p>
           </div>
 
-          <div class="story-block">
-            <h2>What We Actually Believe</h2>
-            <p>
-              We believe most people don't have a discipline problem. They have a clarity problem — about what they actually want, why it matters to them specifically, and what their current thinking patterns are doing to their decisions without their awareness.
-            </p>
-            <p>
-              We believe the science of human performance is genuinely fascinating and genuinely useful — but only when it's translated honestly. Not cherry-picked to support a conclusion that was already decided. Not flattened into a three-step framework. Translated in a way that respects both the research and the reader's intelligence.
-            </p>
-            <p>
-              We believe the best insights are uncomfortable. The ones that make you sit with something for a day before you decide what to do with it. That's the kind of content we try to produce — not content that makes you feel motivated for twenty minutes, but content that changes how you see a problem you've been living with for years.
-            </p>
+          <div class="content-block">
+            <h2>What I Cover and Why</h2>
+            <div class="topics-list">
+              <div class="topic-item">
+                <span class="topic-icon">🧠</span>
+                <div>
+                  <h3>Neuroscience & Psychology</h3>
+                  <p>How the brain actually works — dopamine, neuroplasticity, the prefrontal cortex, sleep — and what it means for your performance and habits.</p>
+                </div>
+              </div>
+              <div class="topic-item">
+                <span class="topic-icon">💰</span>
+                <div>
+                  <h3>Financial Psychology</h3>
+                  <p>The mindset behind wealth — not just tactics, but the beliefs, habits, and mental models that separate financial freedom from perpetual struggle.</p>
+                </div>
+              </div>
+              <div class="topic-item">
+                <span class="topic-icon">🏛️</span>
+                <div>
+                  <h3>Stoicism & Philosophy</h3>
+                  <p>Ancient wisdom applied to modern challenges. Marcus Aurelius, Epictetus, and Seneca have more to say about 2026 than most modern self-help authors.</p>
+                </div>
+              </div>
+              <div class="topic-item">
+                <span class="topic-icon">⚙️</span>
+                <div>
+                  <h3>Mental Models & Decision Making</h3>
+                  <p>The thinking frameworks used by the world's best decision-makers — not as abstractions, but as tools you can deploy today.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="story-block">
-            <h2>What You'll Find Here</h2>
+          <div class="content-block">
+            <h2>My Standard for Every Article</h2>
             <p>
-              Every piece on this site is built around a single, specific idea — developed fully, with the research that supports it, the counterarguments that complicate it, and the practical implications that make it worth your time. We cover the psychology of success and high performance, the mental models used by the world's best decision-makers, the cognitive biases that quietly sabotage good judgment, the neuroscience of focus and motivation, the philosophy of what a meaningful and effective life actually looks like, and the practical frameworks for career and financial decisions that compound over time.
+              I don't publish something unless it genuinely changes how I think about the topic. Every article cites
+              primary research where it exists, acknowledges where evidence is limited or contested, and distinguishes
+              between what the science shows and what I think it means.
             </p>
             <p>
-              The common thread: we treat you as someone capable of handling complexity, ambiguity, and genuine intellectual challenge. Because the people who get the most from this site are exactly that.
-            </p>
-          </div>
-
-          <div class="story-block">
-            <h2>Our Standard</h2>
-            <p>
-              We don't publish something unless it genuinely changes how we think about the topic. Every article cites primary research where it exists, acknowledges where evidence is limited or contested, and distinguishes between what the science shows and what we think it means. We'll tell you when we're offering an interpretation, not just a fact. We'll tell you when the research is preliminary or when serious people disagree.
-            </p>
-            <p>
-              We think that honesty about uncertainty is more useful than false confidence. And we think you can handle it.
+              I'll tell you when I'm offering an interpretation, not just a fact. I'll tell you when the research
+              is preliminary or when serious people disagree. I think honesty about uncertainty is more useful
+              than false confidence.
             </p>
           </div>
 
           <div class="mission-block">
-            <h2>The One Thing We're Trying to Do</h2>
+            <div class="mission-icon">🎯</div>
+            <h2>The One Thing I'm Trying to Do</h2>
             <blockquote>
-              Help capable people think more clearly about what's actually stopping them — and give them the frameworks to do something about it.
+              "Help capable people think more clearly about what's actually stopping them —
+              and give them the frameworks to do something about it."
             </blockquote>
             <p>
-              If something here shifts a perspective, surfaces an assumption you hadn't examined, or gives you a framework that makes a stubborn problem suddenly tractable — that's what this site is for.
+              If something here shifts a perspective, surfaces an assumption you hadn't examined, or gives you
+              a framework that makes a stubborn problem suddenly tractable — that's what this site is for.
             </p>
-            <p>
-              We're glad you're here.
-            </p>
-            <p class="sign-off">— The Success Odyssey Hub Team</p>
+            <p class="sign-off">— Ahmet Yavuz</p>
+          </div>
+
+          <!-- Contact -->
+          <div class="contact-block">
+            <h2>Get in Touch</h2>
+            <p>I read every message. Whether it's a question about an article, a topic you'd like covered, or just to say hello — reach out.</p>
+            <div class="contact-links">
+              <a href="mailto:albert@furnituremarketingpros.com" class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email Me
+              </a>
+              <a href="https://twitter.com/successodyssey" class="contact-item" target="_blank" rel="noopener">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                Twitter / X
+              </a>
+            </div>
           </div>
 
         </div>
 
-        <aside class="about-sidebar">
+        <!-- Sidebar -->
+        <aside class="sidebar-col">
 
-          <div class="topic-card">
-            <div class="topic-icon">🧠</div>
-            <h3>Success Psychology</h3>
-            <p>What research actually shows about mindset, motivation, resilience, and the patterns that separate high performers from everyone else.</p>
-            <a href="/blog">Read more →</a>
+          <div class="sidebar-card">
+            <h3>🗺️ The 200-Day Map</h3>
+            <p>This site is structured as a 200-day journey. Each day covers one powerful idea from psychology, finance, neuroscience, or philosophy.</p>
+            <div class="progress-wrap">
+              <div class="progress-label">
+                <span>Progress</span>
+                <span>150 / 200 days</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%"></div>
+              </div>
+            </div>
+            <a href="/blog" class="sidebar-link">See all articles →</a>
           </div>
 
-          <div class="topic-card">
-            <div class="topic-icon">⚙️</div>
-            <h3>Mental Models</h3>
-            <p>The thinking frameworks used by the world's most effective decision-makers — not as abstractions, but as tools you can actually apply.</p>
-            <a href="/blog/mental-models">Read more →</a>
+          <div class="sidebar-card">
+            <h3>📚 Currently Reading</h3>
+            <ul class="reading-list">
+              <li>
+                <span class="book-dot book-dot--blue"></span>
+                <div>
+                  <strong>The Almanack of Naval Ravikant</strong>
+                  <span>Eric Jorgenson</span>
+                </div>
+              </li>
+              <li>
+                <span class="book-dot book-dot--purple"></span>
+                <div>
+                  <strong>Why We Sleep</strong>
+                  <span>Matthew Walker</span>
+                </div>
+              </li>
+              <li>
+                <span class="book-dot book-dot--green"></span>
+                <div>
+                  <strong>The Courage to Be Disliked</strong>
+                  <span>Fumitake Koga</span>
+                </div>
+              </li>
+            </ul>
           </div>
 
-          <div class="topic-card">
-            <div class="topic-icon">📐</div>
-            <h3>Decision Making</h3>
-            <p>The cognitive biases that quietly distort your judgment, and the structural habits that catch them before they become costly mistakes.</p>
-            <a href="/blog/confirmation-bias">Read more →</a>
+          <div class="sidebar-card">
+            <h3>🔍 Core Beliefs</h3>
+            <ul class="beliefs-list">
+              <li>Most people don't have a discipline problem — they have a clarity problem.</li>
+              <li>The best insights are uncomfortable. That's how you know they're real.</li>
+              <li>Time is the one resource you cannot recover. Spend it accordingly.</li>
+              <li>Compounding works in every domain — knowledge, money, relationships, health.</li>
+            </ul>
           </div>
 
-          <div class="topic-card">
-            <div class="topic-icon">📚</div>
-            <h3>Philosophy of Success</h3>
-            <p>Ancient and modern thinkers who asked the hardest questions about what a good life looks like — and what their answers mean now.</p>
-            <a href="/blog/stoicism">Read more →</a>
-          </div>
-
-          <div class="topic-card">
-            <div class="topic-icon">🔬</div>
-            <h3>Neuroscience & Performance</h3>
-            <p>How your brain actually works under pressure, in creative states, under chronic stress — and how to work with its architecture.</p>
-            <a href="/blog/dopamine-digital-age">Read more →</a>
-          </div>
-
-          <div class="topic-card">
-            <div class="topic-icon">💰</div>
-            <h3>Career & Finance</h3>
-            <p>The psychology of wealth, career decisions, and financial independence — with the mental models that make those choices clearer.</p>
-            <a href="/blog">Read more →</a>
-          </div>
-
-          <div class="cta-card">
-            <h3>Start Reading</h3>
-            <p>The best place to begin is wherever the problem you're thinking about lives.</p>
-            <a href="/blog" class="cta-btn">Browse All Articles →</a>
+          <div class="sidebar-cta">
+            <p>Enjoying the content?</p>
+            <a href="/#newsletter" class="btn-primary">Join the Newsletter →</a>
           </div>
 
         </aside>
@@ -153,227 +255,508 @@ const pageKeywords = "about success odyssey hub, success psychology blog, person
 </Layout>
 
 <style lang="scss">
+
+/* ========== HERO ========== */
 .about-hero {
-  background: var(--gradient-primary);
-  color: white;
-  padding: var(--spacing-3xl) 0 var(--spacing-2xl);
-  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 4rem 0 3rem;
+}
 
-  h1 {
-    color: white;
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.2;
-  }
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-  .hero-subtitle {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.92);
-    max-width: 640px;
-    margin: 0 auto;
-    font-weight: 500;
-    line-height: 1.7;
+.author-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.35);
+    border: 3px solid rgba(255,255,255,0.2);
   }
 }
 
-.about-content {
-  padding: var(--spacing-3xl) 0;
+.verified-badge {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #667eea;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  svg { width: 13px; height: 13px; }
+}
+
+.hero-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.4rem;
+}
+
+.hero-text h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: white;
+  margin: 0 0 0.3rem;
+  line-height: 1.2;
+}
+
+.hero-tagline {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-desc {
+  color: rgba(255,255,255,0.92);
+  line-height: 1.75;
+  font-size: 1rem;
+  max-width: 580px;
+  margin-bottom: 1.75rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.6rem;
+  background: white;
+  color: #667eea;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.6rem;
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: white;
+  }
+}
+
+/* ========== STATS STRIP ========== */
+.stats-strip {
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(102,126,234,0.1);
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.stat-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #667eea;
+  line-height: 1;
+}
+
+.stat-lbl {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-div {
+  width: 1px;
+  height: 36px;
+  background: rgba(0,0,0,0.1);
+}
+
+/* ========== BODY ========== */
+.about-body {
+  padding: 4rem 0;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: var(--spacing-3xl);
+  grid-template-columns: 1fr 310px;
+  gap: 3.5rem;
   align-items: start;
 }
 
-.story-section {
+.main-col { min-width: 0; }
 
-  .story-block {
-    margin-bottom: var(--spacing-3xl);
+.content-block {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--color-border, rgba(0,0,0,0.08));
 
-    h2 {
-      font-size: 1.6rem;
-      color: var(--color-text-primary);
-      margin-bottom: var(--spacing-xl);
-      padding-bottom: var(--spacing-md);
-      border-bottom: 2px solid var(--color-border);
-      position: relative;
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-bottom: 0.75rem;
 
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 60px;
-        height: 2px;
-        background: var(--gradient-primary);
-      }
-    }
-
-    p {
-      color: var(--color-text-secondary);
-      line-height: 1.85;
-      margin-bottom: var(--spacing-lg);
-      font-size: 1.05rem;
-
-      &:last-child { margin-bottom: 0; }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 50px; height: 3px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 2px;
     }
   }
 
-  .mission-block {
-    background: var(--color-bg-secondary);
-    border-radius: var(--radius-lg);
-    border-left: 4px solid var(--color-primary);
-    padding: var(--spacing-2xl);
-    margin-bottom: var(--spacing-3xl);
+  p {
+    color: var(--color-text-secondary, #555);
+    line-height: 1.85;
+    font-size: 1.02rem;
+    margin-bottom: 1rem;
 
-    h2 {
-      font-size: 1.4rem;
-      color: var(--color-text-primary);
-      margin-bottom: var(--spacing-xl);
-    }
-
-    blockquote {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--color-primary);
-      padding: var(--spacing-lg) 0;
-      margin: var(--spacing-lg) 0;
-      line-height: 1.55;
-    }
-
-    p {
-      color: var(--color-text-secondary);
-      line-height: 1.85;
-      margin-bottom: var(--spacing-lg);
-      font-size: 1.05rem;
-      &:last-child { margin-bottom: 0; }
-    }
-
-    .sign-off {
-      font-weight: 700;
-      color: var(--color-text-primary);
-      margin-top: var(--spacing-xl);
-    }
+    &:last-child { margin-bottom: 0; }
   }
 }
 
-.about-sidebar {
+/* Topics list */
+.topics-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.topic-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+
+  .topic-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 0.3rem;
+  }
+
+  p {
+    font-size: 0.88rem;
+    color: var(--color-text-secondary, #666);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+/* Mission block */
+.mission-block {
+  background: linear-gradient(135deg, #667eea11, #764ba211);
+  border: 1px solid #667eea33;
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+
+  .mission-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  blockquote {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #667eea;
+    line-height: 1.65;
+    font-style: italic;
+    margin: 0 0 1.25rem;
+    padding: 0 1rem;
+  }
+
+  p {
+    color: var(--color-text-secondary, #555);
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sign-off {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    font-size: 1.05rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Contact block */
+.contact-block {
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+  }
+  p {
+    color: var(--color-text-secondary, #555);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border: 2px solid var(--color-border, rgba(0,0,0,0.12));
+  border-radius: 50px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: #667eea;
+    color: #667eea;
+    transform: translateY(-2px);
+  }
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   position: sticky;
   top: 90px;
 }
 
-.topic-card {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
-  transition: var(--transition);
-
-  &:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-  }
-
-  .topic-icon {
-    font-size: 1.4rem;
-    margin-bottom: var(--spacing-sm);
-    line-height: 1;
-  }
+.sidebar-card {
+  background: var(--color-bg-secondary, #f8f9fa);
+  border: 1px solid var(--color-border, rgba(0,0,0,0.08));
+  border-radius: 16px;
+  padding: 1.5rem;
 
   h3 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--color-text-primary);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 0.75rem;
   }
 
   p {
-    font-size: 0.82rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  a {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    text-decoration: none;
-    &:hover { text-decoration: underline; }
+    font-size: 0.85rem;
+    color: var(--color-text-secondary, #666);
+    line-height: 1.65;
+    margin-bottom: 1rem;
   }
 }
 
-.cta-card {
-  background: var(--gradient-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  text-align: center;
+.sidebar-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #667eea;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
 
-  h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: var(--spacing-sm);
+/* Progress bar */
+.progress-wrap { margin-bottom: 1rem; }
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--color-text-secondary, #888);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.progress-bar {
+  height: 8px;
+  background: rgba(102,126,234,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+/* Reading list */
+.reading-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.82rem;
+
+    strong { display: block; color: var(--color-text-primary); font-weight: 700; }
+    span { color: var(--color-text-secondary, #888); font-size: 0.78rem; }
   }
+}
 
-  p {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: var(--spacing-lg);
+.book-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+
+  &--blue { background: #3b82f6; }
+  &--purple { background: #8b5cf6; }
+  &--green { background: #10b981; }
+}
+
+/* Beliefs list */
+.beliefs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  li {
+    font-size: 0.83rem;
+    color: var(--color-text-secondary, #666);
     line-height: 1.6;
-  }
+    padding-left: 1.25rem;
+    position: relative;
 
-  .cta-btn {
-    display: inline-block;
-    background: white;
-    color: var(--color-primary);
-    padding: 0.6rem 1.5rem;
-    border-radius: var(--radius);
-    font-weight: 700;
-    font-size: 0.875rem;
-    text-decoration: none;
-    transition: var(--transition);
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    &::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: 700;
     }
   }
 }
 
+.sidebar-cta {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+
+  p {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-primary {
+    background: white;
+    color: #667eea;
+    font-size: 0.85rem;
+    padding: 0.6rem 1.25rem;
+  }
+}
+
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .about-grid {
     grid-template-columns: 1fr;
   }
-
-  .about-sidebar {
+  .sidebar-col {
     position: static;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
-
-  .cta-card {
-    grid-column: 1 / -1;
-  }
+  .sidebar-cta { grid-column: 1 / -1; }
 }
 
 @media (max-width: 768px) {
-  .about-hero {
-    padding: var(--spacing-2xl) var(--spacing-md);
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+    padding: 0 1rem;
   }
-
-  .about-content {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .about-sidebar {
-    grid-template-columns: 1fr;
-  }
+  .hero-actions { justify-content: center; }
+  .stats-row { gap: 1rem; }
+  .stat-div { display: none; }
+  .sidebar-col { grid-template-columns: 1fr; }
+  .contact-links { flex-direction: column; }
+  .topics-list { gap: 1rem; }
 }
 </style>
