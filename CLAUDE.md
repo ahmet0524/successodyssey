@@ -3,7 +3,7 @@
 
 Bu dosya her Claude oturumunda referans olarak kullanılır.
 
----
+-c--
 
 ## Komutlar
 
@@ -207,8 +207,13 @@ const faqSchema = { /* ZORUNLU — tam 3 soru */ };
 | ContentBox type | info/highlight/tip/quote/warning | insight ❌ |
 | ContentBox import path | `../../components/blog/ContentBox.astro` | `../../components/ContentBox.astro` ❌ |
 | StepsList import path | `../../components/blog/StepsList.astro` | `../../components/StepsList.astro` ❌ |
+| İç link slug | Plan tablosundaki slug'ı birebir kullan | Tahminle slug yazma ❌ |
+| Henüz oluşturulmamış sayfa linki | Mevcut ✅ bir sayfaya yönlendir | ⏳ bekleyen sayfaya link verme ❌ |
+| pageTitle uzunluğu | 50-60 karakter (Search Console'da "Title too long" hatası) | 60+ karakter ❌ |
 
 > ⚠️ **Agent kullanıldığında:** Agent'ın ürettiği dosyalarda ContentBox ve StepsList import pathlerini build öncesi kontrol et — agent sık sık `/blog/` alt klasörünü atlıyor.
+
+> ⚠️ **İç link yazarken:** Related Articles ve inline linklerde slug'ı bu dosyadaki plan tablosundan kopyala. `psychology-of-goal-setting` yerine `psychology-of-goals`, `how-to-avoid-cognitive-bias` yerine `avoid-cognitive-biases` gibi hatalar 404'e yol açar. Henüz oluşturulmamış (⏳) sayfalara link verme — mevcut ilgili bir sayfaya yönlendir.
 
 ---
 
@@ -435,31 +440,31 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | 148 | `entrepreneurship-mindset` | The Entrepreneurship Mindset | ✅ |
 | 149 | `personal-brand-success` | Building a Personal Brand | ✅ |
 | 150 | `high-income-skills` | High-Income Skills Worth Developing | ✅ |
-| 151 | `financial-habits-millionaires` | Financial Habits of Millionaires | ⏳ |
-| 152 | `investing-psychology` | The Psychology of Investing | ⏳ |
-| 153 | `risk-tolerance-success` | Understanding Your Risk Tolerance | ⏳ |
-| 154 | `salary-negotiation` | How to Negotiate Your Salary | ⏳ |
-| 155 | `side-hustle-mental-models` | Mental Models for Side Hustle | ⏳ |
-| 156 | `frugality-vs-investing` | Frugality vs Investing | ⏳ |
-| 157 | `real-estate-mindset` | The Real Estate Investor Mindset | ⏳ |
-| 158 | `time-value-money-life` | The Time Value of Money | ⏳ |
-| 159 | `opportunity-cost-career` | Opportunity Cost in Career | ⏳ |
-| 160 | `financial-freedom-philosophy` | The Philosophy of Financial Freedom | ⏳ |
-| 161 | `business-mental-models` | Mental Models for Business Owners | ⏳ |
-| 162 | `leadership-philosophy` | The Philosophy of Great Leadership | ⏳ |
-| 163 | `productivity-income` | How Productivity Increases Income | ⏳ |
-| 164 | `skill-stacking` | Skill Stacking | ⏳ |
-| 165 | `ikigai-career` | Ikigai: Career Fulfillment | ⏳ |
+| 151 | `financial-habits-millionaires` | Financial Habits of Millionaires | ✅ |
+| 152 | `investing-psychology` | The Psychology of Investing | ✅ |
+| 153 | `risk-tolerance-success` | Understanding Your Risk Tolerance | ✅ |
+| 154 | `salary-negotiation` | How to Negotiate Your Salary | ✅ |
+| 155 | `side-hustle-mental-models` | Mental Models for Side Hustle | ✅ |
+| 156 | `frugality-vs-investing` | Frugality vs Investing | ✅ |
+| 157 | `real-estate-mindset` | The Real Estate Investor Mindset | ✅ |
+| 158 | `time-value-money-life` | The Time Value of Money | ✅ |
+| 159 | `opportunity-cost-career` | Opportunity Cost in Career | ✅ |
+| 160 | `financial-freedom-philosophy` | The Philosophy of Financial Freedom | ✅ |
+| 161 | `business-mental-models` | Mental Models for Business Owners | ✅ |
+| 162 | `leadership-philosophy` | The Philosophy of Great Leadership | ✅ |
+| 163 | `productivity-income` | How Productivity Increases Income | ✅ |
+| 164 | `skill-stacking` | Skill Stacking | ✅ |
+| 165 | `ikigai-career` | Ikigai: Career Fulfillment | ✅ |
 
 ### PHASE 8 — Neuroscience & Brain Performance (Gün 166-185)
 
 | Gün | Slug | Başlık | Durum |
 |-----|------|--------|-------|
-| 166 | `neuroplasticity-success` | Neuroplasticity for Success | ⏳ |
-| 167 | `prefrontal-cortex-discipline` | Strengthen Your Prefrontal Cortex | ⏳ |
-| 168 | `dopamine-motivation` | Dopamine for Better Motivation | ⏳ |
-| 169 | `cortisol-performance` | How Cortisol Affects Performance | ⏳ |
-| 170 | `sleep-brain-performance` | Sleep and Brain Performance | ⏳ |
+| 166 | `neuroplasticity-success` | Neuroplasticity for Success | ✅ |
+| 167 | `prefrontal-cortex-discipline` | Strengthen Your Prefrontal Cortex | ✅ |
+| 168 | `dopamine-motivation` | Dopamine for Better Motivation | ✅ |
+| 169 | `cortisol-performance` | How Cortisol Affects Performance | ✅ |
+| 170 | `sleep-brain-performance` | Sleep and Brain Performance | ✅ |
 | 171 | `meditation-brain-science` | What Meditation Does to Your Brain | ⏳ |
 | 172 | `exercise-neurogenesis` | How Exercise Grows Brain Cells | ⏳ |
 | 173 | `gut-brain-connection` | The Gut-Brain Connection | ⏳ |
@@ -508,12 +513,12 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 | Phase 4 (Gün 61-90) | 30 | 30 | 0 |
 | Phase 5 (Gün 91-115) | 25 | 25 | 0 |
 | Phase 6 (Gün 116-140) | 25 | 25 | 0 |
-| Phase 7 (Gün 141-165) | 25 | 10 | 15 |
-| Phase 8 (Gün 166-185) | 20 | 0 | 20 |
+| Phase 7 (Gün 141-165) | 25 | 25 | 0 |
+| Phase 8 (Gün 166-185) | 20 | 5 | 15 |
 | Phase 9 (Gün 186-200) | 15 | 0 | 15 |
-| **TOPLAM** | **200** | **136** | **64** |
+| **TOPLAM** | **200** | **156** | **44** |
 
-**🔜 Sıradaki görev:** Day 151 — `financial-habits-millionaires`
+**🔜 Sıradaki görev:** Day 171 — `meditation-brain-science`
 
 ---
 
