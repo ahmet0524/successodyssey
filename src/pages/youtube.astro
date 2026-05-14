@@ -14,10 +14,10 @@ const featuredVideo = {
   category: "Psychology"
 };
 
-// Add more video IDs here as you collect them
 const videos = [
-  { id: "NAWA_7N90B4", title: "Carl Jung's Hidden Manifestation Method", category: "Psychology" },
-  // Add more: { id: "VIDEO_ID", title: "Video Title", category: "Category" },
+  { id: "NAWA_7N90B4", title: "Carl Jung's Hidden Manifestation Method (Change Your Reality Fast)", category: "Psychology" },
+  { id: "KfFOJZRsOzc", title: "Neville Goddard's Ladder Technique: Proof That Imagination Creates Reality", category: "Manifestation" },
+  // More videos coming soon
 ];
 ---
 
@@ -135,6 +135,65 @@ const videos = [
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Video Grid -->
+  <section class="videos-grid-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">📺 All Videos</span>
+        <h2>Watch Every Episode</h2>
+        <p>Every video from The Identity Upgrade — click to watch on YouTube.</p>
+      </div>
+
+      <div class="video-grid">
+        {videos.map((v) => (
+          <a
+            href={`https://www.youtube.com/watch?v=${v.id}`}
+            class="vcard"
+            target="_blank"
+            rel="noopener"
+            aria-label={v.title}
+          >
+            <div class="vcard-thumb">
+              <img
+                src={`https://img.youtube.com/vi/${v.id}/mqdefault.jpg`}
+                alt={v.title}
+                width="320"
+                height="180"
+                loading="lazy"
+              />
+              <div class="vcard-play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="vcard-info">
+              <span class="vcard-cat">{v.category}</span>
+              <h3>{v.title}</h3>
+              <span class="vcard-link">Watch on YouTube →</span>
+            </div>
+          </a>
+        ))}
+
+        <!-- Placeholder cards for remaining videos -->
+        {Array.from({ length: Math.max(0, 22 - videos.length) }).map((_, i) => (
+          <a href="https://www.youtube.com/@TheIdentityUpgrade/videos" class="vcard vcard-placeholder" target="_blank" rel="noopener">
+            <div class="vcard-thumb vcard-thumb--empty">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            </div>
+            <div class="vcard-info">
+              <span class="vcard-cat">Coming Soon</span>
+              <h3>Video #{videos.length + i + 1}</h3>
+              <span class="vcard-link">View on Channel →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p class="video-count-note">
+        Showing {videos.length} of 22 videos · <a href="https://www.youtube.com/@TheIdentityUpgrade/videos" target="_blank" rel="noopener">View all on YouTube →</a>
+      </p>
     </div>
   </section>
 
@@ -468,6 +527,139 @@ const videos = [
     background: #cc0000;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(255,0,0,0.35);
+  }
+}
+
+/* ===== VIDEO GRID ===== */
+.videos-grid-section {
+  padding: 5rem 0;
+  background: var(--color-bg-secondary);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.vcard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border, rgba(0,0,0,0.08));
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    border-color: rgba(255,0,0,0.2);
+
+    .vcard-play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .vcard-thumb img { transform: scale(1.04); }
+  }
+}
+
+.vcard-thumb {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: #111;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+}
+
+.vcard-thumb--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary, #f3f4f6);
+  padding-bottom: 56.25%;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.vcard-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 52px;
+  height: 52px;
+  background: rgba(255,0,0,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+
+.vcard-info {
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.vcard-cat {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #FF0000;
+}
+
+.vcard-info h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  margin: 0;
+  flex: 1;
+}
+
+.vcard-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #888);
+  margin-top: 0.25rem;
+}
+
+.vcard-placeholder {
+  opacity: 0.5;
+}
+
+.video-count-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary, #888);
+
+  a {
+    color: #FF0000;
+    text-decoration: none;
+    font-weight: 600;
+    &:hover { text-decoration: underline; }
   }
 }
 
