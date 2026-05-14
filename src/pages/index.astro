@@ -294,15 +294,36 @@ const structuredData = {
           link="https://gumroad.com/l/success-mindset-ebook"
           badge="Bestseller"
         />
-        <ProductCard
-          title="Mental Clarity Service"
-          description="Personalized 1-on-1 coaching session to identify your mental blocks and create a clear path to your goals."
-          price="149.99"
-          originalPrice="199.99"
-          image={mentalClarityImage}
-          link="https://claritymentalhealth.net/"
-          badge="Limited"
-        />
+        <!-- Furniture Marketing Pros Promo Card -->
+        <div class="partner-card">
+          <div class="partner-badge">Partner Agency</div>
+          <div class="partner-logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Furniture Marketing Pros</h3>
+          <p class="partner-tagline">Digital Marketing for Furniture Businesses</p>
+          <p class="partner-desc">
+            Specialized digital marketing agency helping furniture retailers and manufacturers grow their online presence, increase showroom traffic, and dominate local search rankings.
+          </p>
+          <ul class="partner-features">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              SEO & Google Ads for Furniture Stores
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Social Media & Content Marketing
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Website Design & Lead Generation
+            </li>
+          </ul>
+          <a href="https://www.furnituremarketingpros.com" target="_blank" rel="noopener" class="partner-cta">
+            Visit Website
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
         <ProductCard
           title="Digital Life Planner"
           description="Interactive Notion template with goal tracking, habit formation, and reflection frameworks. Lifetime updates included."
@@ -972,6 +993,126 @@ const structuredData = {
 .feature-icon--indigo { background: linear-gradient(135deg, #667eea 0%, #4338ca 100%) !important; }
 .feature-icon--violet { background: linear-gradient(135deg, #764ba2 0%, #6d28d9 100%) !important; }
 .feature-icon--teal   { background: linear-gradient(135deg, #0f766e 0%, #06b6d4 100%) !important; }
+
+/* ========================================
+   PARTNER CARD
+   ======================================== */
+
+.partner-card {
+  background: var(--color-bg);
+  border: 2px solid #667eea33;
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+  }
+
+  &:hover {
+    border-color: #667eea66;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.15);
+  }
+}
+
+.partner-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  background: linear-gradient(135deg, #667eea22, #764ba222);
+  border: 1px solid #667eea44;
+  color: #667eea;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.partner-logo {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 0.25rem;
+}
+
+.partner-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.partner-tagline {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #764ba2;
+  margin: 0;
+}
+
+.partner-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary, #666);
+  line-height: 1.65;
+  margin: 0.25rem 0;
+}
+
+.partner-features {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.83rem;
+    color: var(--color-text-secondary, #555);
+    font-weight: 500;
+
+    svg { color: #667eea; flex-shrink: 0; }
+  }
+}
+
+.partner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.45);
+  }
+}
 
 /* ========================================
    BOOKS SECTION
