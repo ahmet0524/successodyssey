@@ -53,11 +53,19 @@ import card3Image from "../assets/soh.png";
 import card1Image from "../assets/soh-1.png";
 import card2Image from "../assets/soh-2.png";
 
+
+const blogImages = import.meta.glob('../assets/blog/*.jpg', { eager: true });
+function getBlogImage(slug) {
+  const key = `../assets/blog/${slug}.jpg`;
+  const mod = blogImages[key];
+  return mod ? (mod.default?.src ?? mod.default) : null;
+}
+
 const allBlogPosts = [
 {
   title: "Sleep and Brain Performance: Why Your Nights Determine Your Days",
   summary: "Sleep is not downtime — it is when your brain consolidates memory, clears waste, and rebuilds capacity. Learn the neuroscience of sleep and how optimizing it transforms cognitive performance.",
-  image: card1Image.src,
+  image: getBlogImage("sleep-brain-performance"),
   link: "/blog/sleep-brain-performance",
   category: "Neuroscience",
   readTime: "10 min read",
@@ -66,7 +74,7 @@ const allBlogPosts = [
 {
   title: "How Cortisol Affects Performance: Managing Stress for Peak Results",
   summary: "Cortisol is your primary stress hormone — it sharpens performance in short bursts and destroys it over time. Learn the neuroscience of cortisol and how to manage stress for sustained high performance.",
-  image: card2Image.src,
+  image: getBlogImage("cortisol-performance"),
   link: "/blog/cortisol-performance",
   category: "Neuroscience",
   readTime: "10 min read",
@@ -75,7 +83,7 @@ const allBlogPosts = [
 {
   title: "Dopamine and Motivation: How to Use Your Brain's Reward System for Better Results",
   summary: "Dopamine is not the pleasure chemical — it is the anticipation and motivation chemical. Understanding how it actually works lets you design your environment and habits for sustained drive.",
-  image: card3Image.src,
+  image: getBlogImage("dopamine-motivation"),
   link: "/blog/dopamine-motivation",
   category: "Neuroscience",
   readTime: "10 min read",
@@ -84,7 +92,7 @@ const allBlogPosts = [
 {
   title: "Strengthen Your Prefrontal Cortex: The Neuroscience of Self-Control and Discipline",
   summary: "The prefrontal cortex is your brain's executive center — responsible for self-control, planning, and rational decision-making. Learn how to protect and strengthen it for better performance.",
-  image: card1Image.src,
+  image: getBlogImage("prefrontal-cortex-discipline"),
   link: "/blog/prefrontal-cortex-discipline",
   category: "Neuroscience",
   readTime: "10 min read",
@@ -93,7 +101,7 @@ const allBlogPosts = [
 {
   title: "Neuroplasticity and Success: How to Rewire Your Brain for Higher Achievement",
   summary: "Your brain is not fixed — it rewires itself in response to experience and practice. Learn how neuroplasticity works and how to deliberately use it to build the habits and skills success requires.",
-  image: card2Image.src,
+  image: getBlogImage("neuroplasticity-success"),
   link: "/blog/neuroplasticity-success",
   category: "Neuroscience",
   readTime: "10 min read",
@@ -102,7 +110,7 @@ const allBlogPosts = [
 {
   title: "Ikigai and Career Fulfillment: Finding Work That Feels Worth Doing",
   summary: "Ikigai — the Japanese concept of a reason for being — offers a four-part framework for finding work that is meaningful, skilled, needed, and sustainable. Here is how to apply it practically.",
-  image: card3Image.src,
+  image: getBlogImage("ikigai-career"),
   link: "/blog/ikigai-career",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -111,7 +119,7 @@ const allBlogPosts = [
 {
   title: "Skill Stacking: How Combining Rare Skills Creates Unique Career Leverage",
   summary: "You do not need to be the best in the world at any one thing — you need to be very good at a unique combination. Skill stacking creates career leverage that pure specialization cannot.",
-  image: card1Image.src,
+  image: getBlogImage("skill-stacking"),
   link: "/blog/skill-stacking",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -120,7 +128,7 @@ const allBlogPosts = [
 {
   title: "How Productivity Increases Income: The Direct Link Between Output and Earnings",
   summary: "Income tracks output over time, not hours. Learn how increasing your productive output per hour — through focus, systems, and skill — creates the clearest path to higher earnings.",
-  image: card2Image.src,
+  image: getBlogImage("productivity-income"),
   link: "/blog/productivity-income",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -129,7 +137,7 @@ const allBlogPosts = [
 {
   title: "The Philosophy of Great Leadership: What It Really Means to Lead Well",
   summary: "Leadership is not a title — it is a philosophy practiced daily. Explore what the greatest thinkers and most effective leaders say about what it actually means to lead people well.",
-  image: card3Image.src,
+  image: getBlogImage("leadership-philosophy"),
   link: "/blog/leadership-philosophy",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -138,7 +146,7 @@ const allBlogPosts = [
 {
   title: "Mental Models for Business Owners: The Frameworks That Drive Better Decisions",
   summary: "Running a business means making dozens of high-stakes decisions every week. Learn the mental models successful entrepreneurs use to think clearly about strategy, pricing, hiring, and growth.",
-  image: card1Image.src,
+  image: getBlogImage("business-mental-models"),
   link: "/blog/business-mental-models",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -147,7 +155,7 @@ const allBlogPosts = [
 {
   title: "The Philosophy of Financial Freedom: What It Really Means and Why It Matters",
   summary: "Financial freedom is not about being rich — it is about having enough options to live on your own terms. Explore the philosophy behind genuine financial independence beyond just the numbers.",
-  image: card2Image.src,
+  image: getBlogImage("financial-freedom-philosophy"),
   link: "/blog/financial-freedom-philosophy",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -156,7 +164,7 @@ const allBlogPosts = [
 {
   title: "Opportunity Cost in Your Career: Every Choice Closes Other Doors",
   summary: "Every career decision has an invisible price tag — the value of the option you did not take. Learn to reason about opportunity cost so your career choices reflect your true priorities.",
-  image: card3Image.src,
+  image: getBlogImage("opportunity-cost-career"),
   link: "/blog/opportunity-cost-career",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -165,7 +173,7 @@ const allBlogPosts = [
 {
   title: "The Time Value of Money: Why a Dollar Today Is Worth More Than a Dollar Tomorrow",
   summary: "The time value of money is the most important concept in personal finance. Learn how compounding, opportunity cost, and time interact to determine your financial future.",
-  image: card1Image.src,
+  image: getBlogImage("time-value-money-life"),
   link: "/blog/time-value-money-life",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -174,7 +182,7 @@ const allBlogPosts = [
 {
   title: "The Real Estate Investor Mindset: How Successful Investors Think About Property",
   summary: "Real estate creates more millionaires than almost any other asset class — but most people approach it emotionally. Learn the mental models that separate successful real estate investors.",
-  image: card2Image.src,
+  image: getBlogImage("real-estate-mindset"),
   link: "/blog/real-estate-mindset",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -183,7 +191,7 @@ const allBlogPosts = [
 {
   title: "Frugality vs Investing: Why Both Matter and How to Balance Them",
   summary: "Extreme frugality and aggressive investing are often pitted against each other. The optimal path combines both — but the balance shifts by life stage, income, and goals.",
-  image: card3Image.src,
+  image: getBlogImage("frugality-vs-investing"),
   link: "/blog/frugality-vs-investing",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -192,7 +200,7 @@ const allBlogPosts = [
 {
   title: "Mental Models for Your Side Hustle: How to Think About Building Income Outside Your Job",
   summary: "A side hustle is a laboratory for building skills and creating optionality. Learn the mental models that separate thriving side hustles from exhausting ones with little return.",
-  image: card1Image.src,
+  image: getBlogImage("side-hustle-mental-models"),
   link: "/blog/side-hustle-mental-models",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -201,7 +209,7 @@ const allBlogPosts = [
 {
   title: "How to Negotiate Your Salary: The Psychology and Tactics That Get Results",
   summary: "Most people leave significant money on the table in salary negotiations. Learn the research-backed psychology and practical tactics that help you negotiate confidently and effectively.",
-  image: card2Image.src,
+  image: getBlogImage("salary-negotiation"),
   link: "/blog/salary-negotiation",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -210,7 +218,7 @@ const allBlogPosts = [
 {
   title: "Risk Tolerance and Success: How to Take Smart Risks That Pay Off",
   summary: "Understanding your true risk tolerance is the foundation of smart career and financial decisions. Learn how to calibrate risk-taking for maximum reward with minimum regret.",
-  image: card3Image.src,
+  image: getBlogImage("risk-tolerance-success"),
   link: "/blog/risk-tolerance-success",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -219,7 +227,7 @@ const allBlogPosts = [
 {
   title: "The Psychology of Investing: Mastering Your Emotions for Better Returns",
   summary: "Behavioral finance reveals how emotions sabotage investment returns. Learn the cognitive biases that destroy wealth and the mental strategies top investors use to stay rational.",
-  image: card1Image.src,
+  image: getBlogImage("investing-psychology"),
   link: "/blog/investing-psychology",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -228,7 +236,7 @@ const allBlogPosts = [
 {
   title: "Financial Habits of Millionaires: What the Wealthy Do Differently",
   summary: "Discover the daily financial habits and routines that millionaires practice to build and sustain wealth. Learn what sets the wealthy apart and how to adopt these proven behaviors.",
-  image: card2Image.src,
+  image: getBlogImage("financial-habits-millionaires"),
   link: "/blog/financial-habits-millionaires",
   category: "Personal Finance & Career",
   readTime: "11 min read",
@@ -237,7 +245,7 @@ const allBlogPosts = [
 {
   title: "High-Income Skills Worth Developing: The Abilities That Command Premium Pay",
   summary: "Not all skills pay equally. Learn which abilities command premium income in today's economy, why they are worth the investment, and how to develop them systematically.",
-  image: card1Image.src,
+  image: getBlogImage("high-income-skills"),
   link: "/blog/high-income-skills",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -246,7 +254,7 @@ const allBlogPosts = [
 {
   title: "Building a Personal Brand: How to Become Known for What You Are Best At",
   summary: "Your personal brand is your reputation made visible. Learn how to build an authentic brand that opens doors, commands premium value, and creates career options you never had before.",
-  image: card3Image.src,
+  image: getBlogImage("personal-brand-success"),
   link: "/blog/personal-brand-success",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -255,7 +263,7 @@ const allBlogPosts = [
 {
   title: "The Entrepreneurship Mindset: How Founders Think About Risk, Failure, and Value",
   summary: "Entrepreneurship is a mindset before it is a business model. Learn how successful founders think about risk, uncertainty, and value creation — and how to develop these mental habits.",
-  image: card2Image.src,
+  image: getBlogImage("entrepreneurship-mindset"),
   link: "/blog/entrepreneurship-mindset",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -264,7 +272,7 @@ const allBlogPosts = [
 {
   title: "Strategic Networking: How to Build Relationships That Actually Advance Your Career",
   summary: "Networking done wrong is transactional and ineffective. Learn the psychology of genuine relationship-building — giving first, weak ties theory, and creating real career leverage.",
-  image: card1Image.src,
+  image: getBlogImage("networking-strategy"),
   link: "/blog/networking-strategy",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -273,7 +281,7 @@ const allBlogPosts = [
 {
   title: "The Psychology of Negotiation: How to Get More of What You Want",
   summary: "Negotiation is one of the highest-ROI skills you can develop. Learn anchoring, BATNA, loss aversion, and how to negotiate from genuine confidence — not desperation.",
-  image: card3Image.src,
+  image: getBlogImage("negotiation-psychology"),
   link: "/blog/negotiation-psychology",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -282,7 +290,7 @@ const allBlogPosts = [
 {
   title: "Career Growth Strategy: How to Advance Faster Without Playing Office Politics",
   summary: "Career growth follows identifiable patterns. Learn the strategies that consistently produce rapid advancement: skill stacking, visibility, the mentor advantage, and strategic positioning.",
-  image: card2Image.src,
+  image: getBlogImage("career-growth-strategy"),
   link: "/blog/career-growth-strategy",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -291,7 +299,7 @@ const allBlogPosts = [
 {
   title: "Mental Models for Passive Income: How to Think About Building Income That Works for You",
   summary: "Passive income requires active thinking. Learn the mental models — leverage, scalability, and asymmetric risk — that separate sustainable passive income from get-rich-quick traps.",
-  image: card1Image.src,
+  image: getBlogImage("passive-income-mental-models"),
   link: "/blog/passive-income-mental-models",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -300,7 +308,7 @@ const allBlogPosts = [
 {
   title: "The Money Mindset Shift: From Scarcity to Abundance to Genuine Wealth",
   summary: "Your relationship with money is largely inherited and often unconscious. Learn how to identify limiting money beliefs, rewire your financial psychology, and build a wealth-oriented mindset.",
-  image: card3Image.src,
+  image: getBlogImage("money-mindset-shift"),
   link: "/blog/money-mindset-shift",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -309,7 +317,7 @@ const allBlogPosts = [
 {
   title: "Wealth Building Habits: The Daily Practices That Create Long-Term Financial Success",
   summary: "Wealth is not built by windfalls — it is built by consistent habits practiced daily over years. Discover the evidence-based habits that compound into financial independence.",
-  image: card2Image.src,
+  image: getBlogImage("wealth-building-habits"),
   link: "/blog/wealth-building-habits",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -318,7 +326,7 @@ const allBlogPosts = [
 {
   title: "The Financial Independence Mindset: How to Think About Money Like the Wealthy",
   summary: "Financial independence is a mindset before it is a number. Learn the mental models, beliefs, and habits that separate those who build wealth from those who stay stuck in scarcity.",
-  image: card1Image.src,
+  image: getBlogImage("financial-independence-mindset"),
   link: "/blog/financial-independence-mindset",
   category: "Personal Finance & Career",
   readTime: "10 min read",
@@ -327,7 +335,7 @@ const allBlogPosts = [
 {
   title: "Timeless Principles of Success: What 3,000 Years of Wisdom Agree On",
   summary: "From Aristotle to Warren Buffett, certain principles of success appear across every era and culture. Here are the five that have never changed — and how to apply them today.",
-  image: card1Image.src,
+  image: getBlogImage("timeless-success-principles"),
   link: "/blog/timeless-success-principles",
   category: "Success Philosophy",
   readTime: "11 min read",
@@ -336,7 +344,7 @@ const allBlogPosts = [
 {
   title: "Virtue and Success: Why Character Is Your Highest Competitive Advantage",
   summary: "Ancient philosophers insisted virtue is both the means to and the definition of success. Modern research on trust, reputation, and character confirms they were right — character compounds.",
-  image: card3Image.src,
+  image: getBlogImage("virtue-success"),
   link: "/blog/virtue-success",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -345,7 +353,7 @@ const allBlogPosts = [
 {
   title: "Meaning vs Pleasure: Why Purpose Outlasts Happiness",
   summary: "Psychology distinguishes two kinds of good life — the pleasant and the meaningful. Research shows that meaning produces more durable wellbeing and greater long-term achievement than pleasure.",
-  image: card2Image.src,
+  image: getBlogImage("meaning-vs-pleasure"),
   link: "/blog/meaning-vs-pleasure",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -354,7 +362,7 @@ const allBlogPosts = [
 {
   title: "Stoic Philosophy at Work: Ancient Principles for Modern Professional Life",
   summary: "Stoicism offers remarkably practical tools for navigating workplace stress, difficult colleagues, and setbacks. Learn how to apply Marcus Aurelius, Epictetus, and Seneca in your career.",
-  image: card1Image.src,
+  image: getBlogImage("stoic-philosophy-work"),
   link: "/blog/stoic-philosophy-work",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -363,7 +371,7 @@ const allBlogPosts = [
 {
   title: "Meritocracy: Myth or Reality? What Success Actually Depends On",
   summary: "We are told success is purely merit-based. Research tells a more complicated story — luck, timing, and networks matter alongside skill. Here is an honest look at what actually drives outcomes.",
-  image: card3Image.src,
+  image: getBlogImage("meritocracy-reality"),
   link: "/blog/meritocracy-reality",
   category: "Success Philosophy",
   readTime: "11 min read",
@@ -372,7 +380,7 @@ const allBlogPosts = [
 {
   title: "The Philosophy of Failure: Why Your Biggest Setbacks Are Your Best Teachers",
   summary: "Every major philosophical and psychological tradition treats failure as essential to growth. Learn how to process setbacks, extract lessons, and use failure as fuel for your next attempt.",
-  image: card2Image.src,
+  image: getBlogImage("philosophy-failure"),
   link: "/blog/philosophy-failure",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -381,7 +389,7 @@ const allBlogPosts = [
 {
   title: "Success vs Happiness: Do You Have to Choose?",
   summary: "Decades of research show that success and happiness have a complicated relationship — happiness often precedes success, not the other way around. Here is what the science actually says.",
-  image: card1Image.src,
+  image: getBlogImage("success-vs-happiness"),
   link: "/blog/success-vs-happiness",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -390,7 +398,7 @@ const allBlogPosts = [
 {
   title: "The Philosophy of Excellence: What It Means to Pursue Mastery",
   summary: "Excellence is not perfection — it is a philosophy of continuous improvement directed by clear standards. Explore what the greatest thinkers said about mastery and how to pursue it practically.",
-  image: card3Image.src,
+  image: getBlogImage("pursuit-of-excellence"),
   link: "/blog/pursuit-of-excellence",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -399,7 +407,7 @@ const allBlogPosts = [
 {
   title: "The Compound Effect: How Small Daily Choices Create Extraordinary Results",
   summary: "Small choices compound into dramatically different outcomes over time. Discover the science behind the compound effect and how to harness it deliberately in your career, health, and relationships.",
-  image: card2Image.src,
+  image: getBlogImage("compound-effect-success"),
   link: "/blog/compound-effect-success",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -408,7 +416,7 @@ const allBlogPosts = [
 {
   title: "The Long Game: Why Playing for Decades Beats Optimizing for Today",
   summary: "The most successful people in any field play a different game — one measured in decades, not quarters. Learn why long-term thinking is a strategic advantage and how to build it.",
-  image: card1Image.src,
+  image: getBlogImage("long-game-success"),
   link: "/blog/long-game-success",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -417,7 +425,7 @@ const allBlogPosts = [
 {
   title: "Steve Jobs' Philosophy: Simplicity, Focus, and the Intersection of Art and Technology",
   summary: "Steve Jobs believed that simplicity is the ultimate sophistication. Explore the core principles behind his legendary focus, taste, and the relentless pursuit of excellence that built Apple.",
-  image: card2Image.src,
+  image: getBlogImage("steve-jobs-philosophy"),
   link: "/blog/steve-jobs-philosophy",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -426,7 +434,7 @@ const allBlogPosts = [
 {
   title: "Jeff Bezos Leadership Principles: Day 1 Thinking, Decisions, and Customer Obsession",
   summary: "Jeff Bezos built Amazon on a handful of counterintuitive principles — Day 1 thinking, two-pizza teams, and Type 2 decisions. Learn how his framework applies beyond billion-dollar companies.",
-  image: card1Image.src,
+  image: getBlogImage("jeff-bezos-principles"),
   link: "/blog/jeff-bezos-principles",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -435,7 +443,7 @@ const allBlogPosts = [
 {
   title: "How Elon Musk Thinks: First Principles, Massive Goals, and the Physics Approach",
   summary: "Elon Musk builds rockets and electric cars by rejecting analogy-based thinking and reasoning from first principles. Learn the mental framework behind his approach to seemingly impossible problems.",
-  image: card3Image.src,
+  image: getBlogImage("elon-musk-thinking"),
   link: "/blog/elon-musk-thinking",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -444,7 +452,7 @@ const allBlogPosts = [
 {
   title: "Warren Buffett's Life Lessons: 10 Principles That Built the World's Greatest Investor",
   summary: "Warren Buffett's wisdom extends far beyond stock picking. His principles on reputation, learning, inner scorecard, and circle of competence are among the most practically useful in the success literature.",
-  image: card2Image.src,
+  image: getBlogImage("warren-buffett-life-lessons"),
   link: "/blog/warren-buffett-life-lessons",
   category: "Success Philosophy",
   readTime: "11 min read",
@@ -453,7 +461,7 @@ const allBlogPosts = [
 {
   title: "Charlie Munger's Greatest Wisdom: Mental Models, Latticework, and Inversion",
   summary: "Charlie Munger thought differently than almost anyone. His framework of multiple mental models, latticework thinking, and systematic inversion produced one of history's greatest investing minds.",
-  image: card1Image.src,
+  image: getBlogImage("charlie-munger-wisdom"),
   link: "/blog/charlie-munger-wisdom",
   category: "Success Philosophy",
   readTime: "11 min read",
@@ -462,7 +470,7 @@ const allBlogPosts = [
 {
   title: "Naval Ravikant's Guide to Wealth: Specific Knowledge, Leverage, and Freedom",
   summary: "Naval Ravikant distilled wealth creation into a tweetstorm that reshaped how a generation thinks about work. Learn his framework for specific knowledge, the four types of leverage, and why freedom is the real goal.",
-  image: card3Image.src,
+  image: getBlogImage("naval-ravikant-wealth"),
   link: "/blog/naval-ravikant-wealth",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -471,7 +479,7 @@ const allBlogPosts = [
 {
   title: "Alan Watts on Success: The Wisdom of Insecurity and Living Without Anxiety",
   summary: "Alan Watts argued that chasing security is the surest path to anxiety. His backwards law — that grasping for certainty makes things worse — offers a counterintuitive philosophy for living with more ease.",
-  image: card2Image.src,
+  image: getBlogImage("alan-watts-success"),
   link: "/blog/alan-watts-success",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -480,7 +488,7 @@ const allBlogPosts = [
 {
   title: "Viktor Frankl and Man's Search for Meaning: Purpose as the Ultimate Success",
   summary: "Viktor Frankl survived four Nazi concentration camps and discovered that meaning — not pleasure or power — is the deepest human motivation. His logotherapy offers a profound framework for purposeful achievement.",
-  image: card1Image.src,
+  image: getBlogImage("viktor-frankl-meaning"),
   link: "/blog/viktor-frankl-meaning",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -489,7 +497,7 @@ const allBlogPosts = [
 {
   title: "Epictetus on Control: The Dichotomy That Changes How You Live",
   summary: "A former slave became antiquity's most powerful philosopher of freedom. Epictetus's dichotomy of control — some things are up to us, others are not — remains the most practical idea in all of philosophy.",
-  image: card3Image.src,
+  image: getBlogImage("epictetus-control"),
   link: "/blog/epictetus-control",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -498,7 +506,7 @@ const allBlogPosts = [
 {
   title: "Seneca on Time: The Ancient Blueprint for Using Your Life Well",
   summary: "Seneca wrote that we do not have a short time to live — we waste a great deal of it. His philosophy of time is a 2,000-year-old diagnosis of why modern people feel perpetually behind.",
-  image: card2Image.src,
+  image: getBlogImage("seneca-time-success"),
   link: "/blog/seneca-time-success",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -507,7 +515,7 @@ const allBlogPosts = [
 {
   title: "Marcus Aurelius and the Meditations: Leadership, Resilience, and the Examined Life",
   summary: "The most powerful man in the world wrote private notes reminding himself to be humble and virtuous. Nearly 2,000 years later, the Meditations remains the most honest guide to leading under pressure ever written.",
-  image: card3Image.src,
+  image: getBlogImage("marcus-aurelius-meditations"),
   link: "/blog/marcus-aurelius-meditations",
   category: "Success Philosophy",
   readTime: "11 min read",
@@ -516,7 +524,7 @@ const allBlogPosts = [
 {
   title: "Stoicism and Success: Ancient Wisdom for Modern Achievement",
   summary: "Stoicism was the operating system of Rome's greatest leaders. Discover how Stoic tools — the dichotomy of control, memento mori, and negative visualization — translate into practical success strategies today.",
-  image: card2Image.src,
+  image: getBlogImage("stoicism-success"),
   link: "/blog/stoicism-success",
   category: "Success Philosophy",
   readTime: "11 min read",
@@ -525,7 +533,7 @@ const allBlogPosts = [
 {
   title: "Earl Nightingale and The Strangest Secret: We Become What We Think About",
   summary: "In 1956, Earl Nightingale recorded the first spoken-word Gold Record in history. Its message — 'we become what we think about' — launched the self-development industry and still holds surprising depth.",
-  image: card1Image.src,
+  image: getBlogImage("earl-nightingale-strangest-secret"),
   link: "/blog/earl-nightingale-strangest-secret",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -534,7 +542,7 @@ const allBlogPosts = [
 {
   title: "Jim Rohn's Philosophy of Personal Development: The Fundamentals That Change Everything",
   summary: "Jim Rohn never sold hype — he sold philosophy. His core ideas about working harder on yourself, the five people principle, and the seasons of life remain among the most useful in the success canon.",
-  image: card3Image.src,
+  image: getBlogImage("jim-rohn-philosophy"),
   link: "/blog/jim-rohn-philosophy",
   category: "Success Philosophy",
   readTime: "10 min read",
@@ -543,7 +551,7 @@ const allBlogPosts = [
 {
   title: "Napoleon Hill's Think and Grow Rich: 13 Timeless Lessons",
   summary: "Napoleon Hill distilled interviews with 500 of America's most successful people into a framework that still sells millions of copies a year. Here's what holds up under modern scrutiny — and what to leave behind.",
-  image: card2Image.src,
+  image: getBlogImage("napoleon-hill-lessons"),
   link: "/blog/napoleon-hill-lessons",
   category: "Success Philosophy",
   readTime: "11 min read",
@@ -552,7 +560,7 @@ const allBlogPosts = [
 {
   title: "The Wisdom of Crowds: When Groups Outperform Experts",
   summary: "Groups often make better predictions than individual experts — but only under the right conditions. Learn how to harness collective intelligence and when to be wary of groupthink.",
-  image: card1Image.src,
+  image: getBlogImage("wisdom-of-crowds"),
   link: "/blog/wisdom-of-crowds",
   category: "Decision Making",
   readTime: "10 min read",
@@ -561,7 +569,7 @@ const allBlogPosts = [
 {
   title: "Fast and Slow Thinking: Kahneman's Two Systems Explained",
   summary: "Daniel Kahneman's System 1 and System 2 thinking explains why smart people make predictable errors. Learn how your brain's two modes work and when to trust each one.",
-  image: card3Image.src,
+  image: getBlogImage("fast-slow-thinking"),
   link: "/blog/fast-slow-thinking",
   category: "Decision Making",
   readTime: "11 min read",
@@ -570,7 +578,7 @@ const allBlogPosts = [
 {
   title: "How to Overcome Analysis Paralysis and Start Deciding",
   summary: "Analysis paralysis traps smart people in endless evaluation instead of action. Learn the cognitive science behind it and evidence-based techniques to break free and decide with confidence.",
-  image: card2Image.src,
+  image: getBlogImage("avoiding-analysis-paralysis"),
   link: "/blog/avoiding-analysis-paralysis",
   category: "Decision Making",
   readTime: "10 min read",
@@ -579,7 +587,7 @@ const allBlogPosts = [
 {
   title: "How to Make Great Decisions Under Pressure",
   summary: "Pressure degrades decision quality in predictable ways. Learn the cognitive science behind high-stakes decisions and proven techniques to stay sharp when it matters most.",
-  image: card1Image.src,
+  image: getBlogImage("decision-making-under-pressure"),
   link: "/blog/decision-making-under-pressure",
   category: "Decision Making",
   readTime: "10 min read",
@@ -588,7 +596,7 @@ const allBlogPosts = [
 {
   title: "Long-Term Thinking: How to Make Decisions That Compound",
   summary: "Learn how to develop long-term thinking to make decisions that compound over time. Overcome short-termism and build the mental habits of the world's best long-horizon thinkers.",
-  image: card2Image.src,
+  image: getBlogImage("long-term-thinking"),
   link: "/blog/long-term-thinking",
   category: "Decision Making",
   readTime: "10 min read",
@@ -597,7 +605,7 @@ const allBlogPosts = [
 {
   title: "Steel Manning: How to Understand Any Argument",
   summary: "Learn the steel man technique — the opposite of a straw man — to engage with opposing views charitably, think more clearly, and make better decisions.",
-  image: card1Image.src,
+  image: getBlogImage("steel-man-argument"),
   link: "/blog/steel-man-argument",
   category: "Decision Making",
   readTime: "9 min read",
@@ -606,7 +614,7 @@ const allBlogPosts = [
 {
   title: "Devil's Advocate Thinking: Challenge Your Own Ideas",
   summary: "Learn how to use devil's advocate thinking to stress-test your decisions, challenge assumptions, and avoid costly blind spots before they become expensive mistakes.",
-  image: card3Image.src,
+  image: getBlogImage("devil-advocate-thinking"),
   link: "/blog/devil-advocate-thinking",
   category: "Decision Making",
   readTime: "9 min read",
@@ -615,7 +623,7 @@ const allBlogPosts = [
 {
   title: "Systems Thinking: How to Understand Complex Problems",
   summary: "Learn systems thinking to see the hidden structures behind complex problems. Understand feedback loops, leverage points, and how to make interventions that actually work.",
-  image: card2Image.src,
+  image: getBlogImage("systems-thinking"),
   link: "/blog/systems-thinking",
   category: "Decision Making",
   readTime: "10 min read",
@@ -624,7 +632,7 @@ const allBlogPosts = [
 {
   title: "Lateral Thinking: How to Solve Problems Creatively",
   summary: "Discover lateral thinking techniques to break out of conventional patterns and solve problems from unexpected angles. Learn Edward de Bono's proven methods.",
-  image: card1Image.src,
+  image: getBlogImage("lateral-thinking"),
   link: "/blog/lateral-thinking",
   category: "Decision Making",
   readTime: "9 min read",
@@ -633,7 +641,7 @@ const allBlogPosts = [
 {
   title: "Thinking in Bets: Make Better Decisions Under Uncertainty",
   summary: "Learn Annie Duke's thinking in bets framework to separate decision quality from outcomes, overcome resulting bias, and reason probabilistically in everyday life.",
-  image: card2Image.src,
+  image: getBlogImage("thinking-in-bets"),
   link: "/blog/thinking-in-bets",
   category: "Decision Making",
   readTime: "9 min read",
@@ -642,7 +650,7 @@ const allBlogPosts = [
 {
   title: "Critical Thinking Skills: How to Think More Clearly",
   summary: "Learn the core critical thinking skills that separate sharp thinkers from reactive ones. Practical techniques for evaluating evidence, challenging assumptions, and reasoning clearly.",
-  image: card1Image.src,
+  image: getBlogImage("critical-thinking-skills"),
   link: "/blog/critical-thinking-skills",
   category: "Decision Making",
   readTime: "9 min read",
@@ -651,7 +659,7 @@ const allBlogPosts = [
 {
   title: "Personal Risk Assessment: How to Evaluate Risk in Life Decisions",
   summary: "Learn a practical framework for assessing risk in career, financial, and personal decisions. Understand asymmetric risk, risk tolerance, and how to make decisions that protect your downside.",
-  image: card2Image.src,
+  image: getBlogImage("risk-assessment-life"),
   link: "/blog/risk-assessment-life",
   category: "Decision Making",
   readTime: "9 min read",
@@ -660,7 +668,7 @@ const allBlogPosts = [
 {
   title: "How to Avoid Cognitive Biases: A Research-Backed Debiasing Guide",
   summary: "Awareness of cognitive bias is not enough to overcome it. Discover the evidence-based debiasing techniques that actually work — structural interventions, decision protocols, and mental habits that reduce bias where it matters most.",
-  image: card1Image.src,
+  image: getBlogImage("avoid-cognitive-biases"),
   link: "/blog/avoid-cognitive-biases",
   category: "Decision Making",
   readTime: "10 min read",
@@ -669,7 +677,7 @@ const allBlogPosts = [
 {
   title: "The Sunk Cost Fallacy: Why We Keep Throwing Good Resources After Bad",
   summary: "The sunk cost fallacy causes us to continue failing investments, bad relationships, and wrong careers simply because we've already paid in. Learn the psychology behind it and the decision protocol to escape it for good.",
-  image: card1Image.src,
+  image: getBlogImage("sunk-cost-fallacy"),
   link: "/blog/sunk-cost-fallacy",
   category: "Decision Making",
   readTime: "13 min read",
@@ -678,7 +686,7 @@ const allBlogPosts = [
 {
   title: "The Pre-Mortem Technique: How to Prevent Failure Before It Happens",
   summary: "The pre-mortem is the most powerful decision tool most people never use. Learn how Gary Klein's prospective hindsight method lets you identify failure before you commit — and build decisions that actually hold up.",
-  image: card1Image.src,
+  image: getBlogImage("pre-mortem-technique"),
   link: "/blog/pre-mortem-technique",
   category: "Decision Making",
   readTime: "14 min read",
@@ -687,7 +695,7 @@ const allBlogPosts = [
 {
   title: "How to Keep a Decision Journal: The Practice That Compounds Your Judgment",
   summary: "A decision journal is the single most effective tool for improving judgment over time. Learn exactly what to record, how to review it, and why most people who try decision journaling do it wrong — and how to do it right.",
-  image: card3Image.src,
+  image: getBlogImage("decision-journal"),
   link: "/blog/decision-journal",
   category: "Decision Making",
   readTime: "12 min read",
@@ -696,7 +704,7 @@ const allBlogPosts = [
 {
   title: "Intuition vs. Analytical Thinking: When to Trust Your Gut",
   summary: "Neither intuition nor analysis is universally superior — each dominates in different conditions. Learn exactly when to trust your gut and when to override it with systematic analysis.",
-  image: card2Image.src,
+  image: getBlogImage("intuition-vs-analysis"),
   link: "/blog/intuition-vs-analysis",
   category: "Decision Making",
   readTime: "13 min read",
@@ -705,7 +713,7 @@ const allBlogPosts = [
 {
   title: "Bayesian Thinking: Update Your Beliefs with Evidence",
   summary: "Bayesian thinking is the most rigorous framework for updating beliefs in proportion to evidence. Learn how to apply it without the math — and why it produces dramatically better judgments over time.",
-  image: card1Image.src,
+  image: getBlogImage("bayesian-thinking"),
   link: "/blog/bayesian-thinking",
   category: "Decision Making",
   readTime: "13 min read",
@@ -714,7 +722,7 @@ const allBlogPosts = [
 {
   title: "Mental Models for Better Relationships",
   summary: "The same mental models that improve decisions in business and investing also transform how you navigate relationships. Learn which frameworks most reliably reduce conflict, build trust, and deepen connection.",
-  image: card3Image.src,
+  image: getBlogImage("mental-models-for-relationships"),
   link: "/blog/mental-models-for-relationships",
   category: "Mental Models",
   readTime: "13 min read",
@@ -723,7 +731,7 @@ const allBlogPosts = [
 {
   title: "Probabilistic Thinking: See the World More Clearly",
   summary: "Probabilistic thinking replaces false certainty with calibrated confidence. Learn how to reason in probabilities, update beliefs correctly, and make decisions that are right over time — not just occasionally.",
-  image: card2Image.src,
+  image: getBlogImage("probabilistic-thinking"),
   link: "/blog/probabilistic-thinking",
   category: "Decision Making",
   readTime: "13 min read",
@@ -732,7 +740,7 @@ const allBlogPosts = [
 {
   title: "The Psychology of Success: What Science Actually Says",
   summary: "What separates high achievers from everyone else is not talent or luck — it is a specific set of psychological patterns. Discover what decades of research reveals about the psychology of success.",
-  image: card1Image.src,
+  image: getBlogImage("psychology-of-success"),
   link: "/blog/psychology-of-success",
   category: "Success Psychology",
   readTime: "13 min read",
@@ -741,7 +749,7 @@ const allBlogPosts = [
 {
   title: "Strategic Thinking: How to Think 10 Steps Ahead",
   summary: "Strategic thinking is not a personality trait — it is a learnable skill. Discover the specific cognitive tools that let you see further, plan better, and outmaneuver complexity in career, business, and life.",
-  image: card3Image.src,
+  image: getBlogImage("strategic-thinking-skills"),
   link: "/blog/strategic-thinking-skills",
   category: "Decision Making",
   readTime: "13 min read",
@@ -750,7 +758,7 @@ const allBlogPosts = [
 {
   title: "How to Think Clearly Under Uncertainty: A Research-Backed Guide",
   summary: "Uncertainty does not have to paralyze you. Learn the cognitive tools elite decision-makers use to reason clearly when information is incomplete, stakes are high, and outcomes are unpredictable.",
-  image: card2Image.src,
+  image: getBlogImage("thinking-clearly-uncertainty"),
   link: "/blog/thinking-clearly-uncertainty",
   category: "Decision Making",
   readTime: "13 min read",
@@ -759,7 +767,7 @@ const allBlogPosts = [
 {
   title: "The 10/10/10 Rule: A Simple Framework for Better Decisions",
   summary: "The 10/10/10 rule forces you to see decisions across three time horizons — 10 minutes, 10 months, and 10 years. Learn how this deceptively simple technique eliminates emotional distortion from high-stakes choices.",
-  image: card1Image.src,
+  image: getBlogImage("10-10-10-rule"),
   link: "/blog/10-10-10-rule",
   category: "Decision Making",
   readTime: "12 min read",
@@ -768,7 +776,7 @@ const allBlogPosts = [
 {
   title: "Reversible vs Irreversible Decisions: The One Distinction That Changes Everything",
   summary: "Most decision-making errors come from treating reversible choices like permanent ones — or vice versa. Learn how to classify every decision correctly and apply the right process every time.",
-  image: card3Image.src,
+  image: getBlogImage("reversible-vs-irreversible"),
   link: "/blog/reversible-vs-irreversible",
   category: "Decision Making",
   readTime: "13 min read",
@@ -777,7 +785,7 @@ const allBlogPosts = [
 {
   title: "How Billionaires Make Decisions: The Mental Frameworks Behind Extreme Success",
   summary: "Billionaires don't decide faster — they decide differently. Discover the specific decision frameworks used by Bezos, Musk, Buffett, and Gates, and how to apply them to your own high-stakes choices.",
-  image: card2Image.src,
+  image: getBlogImage("how-billionaires-decide"),
   link: "/blog/how-billionaires-decide",
   category: "Decision Making",
   readTime: "13 min read",
@@ -786,7 +794,7 @@ const allBlogPosts = [
 {
   title: "A Simple Framework for Better Decisions",
   summary: "Most poor decisions are not made by stupid people — they are made by smart people using flawed decision processes. Discover a research-backed framework that improves decision quality across every domain of life.",
-  image: card1Image.src,
+  image: getBlogImage("decision-making-framework"),
   link: "/blog/decision-making-framework",
   category: "Decision Making",
   readTime: "12 min read",
@@ -795,7 +803,7 @@ const allBlogPosts = [
 {
   title: "Monthly Review: How to Audit and Improve Your Life Every 30 Days",
   summary: "The monthly review bridges the weekly grind and the annual vision. Discover the science of deliberate reflection, how to audit a full month honestly, and what the most effective review systems do that most people miss.",
-  image: card3Image.src,
+  image: getBlogImage("monthly-review-system"),
   link: "/blog/monthly-review-system",
   category: "Productivity",
   readTime: "12 min read",
@@ -804,7 +812,7 @@ const allBlogPosts = [
 {
   title: "Why Tracking Progress Is the Key to Success",
   summary: "What gets measured gets managed — but the science goes far deeper. Discover how progress tracking activates motivation, corrects drift, and produces outcomes that intention alone cannot.",
-  image: card2Image.src,
+  image: getBlogImage("tracking-progress"),
   link: "/blog/tracking-progress",
   category: "Habits",
   readTime: "12 min read",
@@ -813,7 +821,7 @@ const allBlogPosts = [
 {
   title: "How to Change Your Identity to Change Your Habits",
   summary: "Most habit attempts fail because they target behavior without touching identity. Discover the psychology of identity-based change and how to become the person whose habits you want — before the habits are established.",
-  image: card1Image.src,
+  image: getBlogImage("identity-change-habits"),
   link: "/blog/identity-change-habits",
   category: "Habits",
   readTime: "12 min read",
@@ -822,7 +830,7 @@ const allBlogPosts = [
 {
   title: "Environment Design: How Your Space Shapes Your Habits",
   summary: "Your environment triggers behavior more reliably than your intentions do. Discover how to redesign your physical and digital spaces so that good habits become automatic and bad ones require deliberate effort.",
-  image: card3Image.src,
+  image: getBlogImage("environment-design-habits"),
   link: "/blog/environment-design-habits",
   category: "Habits",
   readTime: "12 min read",
@@ -831,7 +839,7 @@ const allBlogPosts = [
 {
   title: "Accountability Systems That Actually Work: The Science of Staying on Track",
   summary: "Most accountability attempts fail because they rely on social pressure alone. Discover what behavioral science reveals about the mechanisms that make accountability genuinely effective — and how to build a system that holds.",
-  image: card2Image.src,
+  image: getBlogImage("accountability-systems"),
   link: "/blog/accountability-systems",
   category: "Habits",
   readTime: "12 min read",
@@ -840,7 +848,7 @@ const allBlogPosts = [
 {
   title: "Decision Fatigue: Why Your Willpower Runs Out — and How to Fix It",
   summary: "Every decision you make depletes the cognitive resources available for the next one. Discover the science of decision fatigue, why even trivial choices drain you, and how top performers protect their decision-making capacity.",
-  image: card1Image.src,
+  image: getBlogImage("decision-fatigue"),
   link: "/blog/decision-fatigue",
   category: "Decision Making",
   readTime: "12 min read",
@@ -849,7 +857,7 @@ const allBlogPosts = [
 {
   title: "Task Batching: Work Less, Achieve More Through Grouped Execution",
   summary: "Task batching groups similar work into dedicated blocks, eliminating the cognitive switching costs that fragment your day. Discover the neuroscience behind it and how to build a batching system that reclaims hours every week.",
-  image: card3Image.src,
+  image: getBlogImage("batching-tasks"),
   link: "/blog/batching-tasks",
   category: "Productivity",
   readTime: "11 min read",
@@ -858,7 +866,7 @@ const allBlogPosts = [
 {
   title: "Reading Habits of Highly Successful People: What the Research Actually Shows",
   summary: "The most accomplished people in every field are voracious readers — but not in the way most people think. Discover what the science of reading and learning says about how to read for genuine impact.",
-  image: card2Image.src,
+  image: getBlogImage("reading-habits-successful"),
   link: "/blog/reading-habits-successful",
   category: "Habits",
   readTime: "12 min read",
@@ -867,7 +875,7 @@ const allBlogPosts = [
 {
   title: "Journaling for Success: More Than Just a Diary",
   summary: "Journaling is one of the most research-supported practices for improving cognitive clarity, emotional regulation, and performance. Discover the science and how to build a journaling practice that actually produces results.",
-  image: card1Image.src,
+  image: getBlogImage("journaling-for-success"),
   link: "/blog/journaling-for-success",
   category: "Habits",
   readTime: "12 min read",
@@ -876,7 +884,7 @@ const allBlogPosts = [
 {
   title: "How Exercise Improves Mental Performance: The Neuroscience Behind Moving to Think Better",
   summary: "Exercise does not just build the body — it rebuilds the brain. Discover the neuroscience of BDNF, neurogenesis, prefrontal cortex strengthening, and how to time your workouts for maximum cognitive gains.",
-  image: card3Image.src,
+  image: getBlogImage("exercise-mental-performance"),
   link: "/blog/exercise-mental-performance",
   category: "Performance",
   readTime: "12 min read",
@@ -885,7 +893,7 @@ const allBlogPosts = [
 {
   title: "Sleep Optimization: The Secret Weapon of Top Performers",
   summary: "Sleep is not passive recovery — it is active performance infrastructure. Discover what the neuroscience of sleep reveals about memory, decision-making, and how the world's top performers protect their most valuable cognitive asset.",
-  image: card2Image.src,
+  image: getBlogImage("sleep-optimization"),
   link: "/blog/sleep-optimization",
   category: "Performance",
   readTime: "13 min read",
@@ -894,7 +902,7 @@ const allBlogPosts = [
 {
   title: "Digital Minimalism: How to Use Technology Without Being Used by It",
   summary: "Digital minimalism is not anti-technology — it is intentional technology use. Discover what the research on attention, dopamine, and digital overload says about reclaiming your cognitive life from your devices.",
-  image: card1Image.src,
+  image: getBlogImage("digital-minimalism-productivity"),
   link: "/blog/digital-minimalism-productivity",
   category: "Productivity",
   readTime: "13 min read",
@@ -903,7 +911,7 @@ const allBlogPosts = [
 {
   title: "The Art of Saying No: How to Protect Your Focus and Reclaim Your Time",
   summary: "Every yes is a no to something else. Discover the psychology of why saying no is so difficult, what the research says about overcommitment, and how high performers protect their most valuable resource.",
-  image: card3Image.src,
+  image: getBlogImage("saying-no-productivity"),
   link: "/blog/saying-no-productivity",
   category: "Productivity",
   readTime: "12 min read",
@@ -912,7 +920,7 @@ const allBlogPosts = [
 {
   title: "90-Day Goal Setting: The Framework That Actually Works",
   summary: "Annual goals fail because a year is too long to maintain focus and too short to build the systems that produce extraordinary results. The 90-day framework fixes both problems. Here is the science and the protocol.",
-  image: card2Image.src,
+  image: getBlogImage("90-day-goal-setting"),
   link: "/blog/90-day-goal-setting",
   category: "Productivity",
   readTime: "12 min read",
@@ -921,7 +929,7 @@ const allBlogPosts = [
 {
   title: "The Weekly Review: How High Performers Plan Their Week",
   summary: "The weekly review is the single practice that separates reactive professionals from intentional ones. Discover the psychology of planning, the GTD framework, and how to build a review that actually changes your week.",
-  image: card1Image.src,
+  image: getBlogImage("weekly-review-system"),
   link: "/blog/weekly-review-system",
   category: "Productivity",
   readTime: "12 min read",
@@ -930,7 +938,7 @@ const allBlogPosts = [
 {
   title: "How to Create a Distraction-Free Work Environment",
   summary: "Distraction is not a willpower problem — it is an environmental design problem. Discover what attention research reveals about how to engineer your workspace for deep, uninterrupted cognitive work.",
-  image: card3Image.src,
+  image: getBlogImage("distraction-free-work"),
   link: "/blog/distraction-free-work",
   category: "Productivity",
   readTime: "12 min read",
@@ -939,7 +947,7 @@ const allBlogPosts = [
 {
   title: "The Perfect Evening Routine for High Performance",
   summary: "Your evening routine determines the quality of your sleep — and your sleep determines the quality of everything else. Discover what the science of sleep, cortisol, and circadian biology says about designing your wind-down.",
-  image: card2Image.src,
+  image: getBlogImage("evening-routine"),
   link: "/blog/evening-routine",
   category: "Habits",
   readTime: "12 min read",
@@ -948,7 +956,7 @@ const allBlogPosts = [
 {
   title: "The 1% Better Rule: Small Improvements, Massive Results",
   summary: "Getting 1% better every day sounds trivial. Compounded over a year, it produces a 37-fold improvement. Discover the science behind marginal gains, how compounding actually works, and how to apply it deliberately.",
-  image: card1Image.src,
+  image: getBlogImage("1-percent-better"),
   link: "/blog/1-percent-better",
   category: "Habits",
   readTime: "12 min read",
@@ -957,7 +965,7 @@ const allBlogPosts = [
 {
   title: "Consistency Over Intensity: Why Showing Up Every Day Beats Going All-In",
   summary: "Intensity feels like progress but consistency builds it. Discover the neuroscience and behavioral research behind why regular, moderate effort outperforms sporadic bursts — and how to design for it.",
-  image: card3Image.src,
+  image: getBlogImage("consistency-over-intensity"),
   link: "/blog/consistency-over-intensity",
   category: "Habits",
   readTime: "12 min read",
@@ -966,7 +974,7 @@ const allBlogPosts = [
 {
   title: "Habit Stacking: How to Build Multiple Habits at Once",
   summary: "Habit stacking links new behaviors to existing routines, turning your current habits into reliable triggers for new ones. Discover the science, the formula, and how to build sequences that actually hold.",
-  image: card2Image.src,
+  image: getBlogImage("habit-stacking"),
   link: "/blog/habit-stacking",
   category: "Habits",
   readTime: "11 min read",
@@ -975,7 +983,7 @@ const allBlogPosts = [
 {
   title: "Keystone Habits: The One Habit That Changes Everything",
   summary: "Certain habits trigger cascading improvements across unrelated areas of life without any additional effort. Discover the science of keystone habits and how to identify and build your own.",
-  image: card1Image.src,
+  image: getBlogImage("keystone-habits"),
   link: "/blog/keystone-habits",
   category: "Habits",
   readTime: "11 min read",
@@ -984,7 +992,7 @@ const allBlogPosts = [
 {
   title: "Energy Management vs Time Management: The Shift That Changes Everything",
   summary: "Managing time without managing energy is like owning a car and ignoring the fuel. Discover the science of ultradian rhythms, chronobiology of performance, and how to structure your day around human energy cycles.",
-  image: card3Image.src,
+  image: getBlogImage("energy-management-productivity"),
   link: "/blog/energy-management-productivity",
   category: "Productivity",
   readTime: "12 min read",
@@ -993,7 +1001,7 @@ const allBlogPosts = [
 {
   title: "GTD vs Pomodoro vs Time Blocking: Which Productivity System Actually Works?",
   summary: "GTD, Pomodoro, and time blocking are the three most widely used productivity systems. Here is what each one does, what the research says, and how to choose the right system for your work and brain.",
-  image: card2Image.src,
+  image: getBlogImage("productivity-systems-comparison"),
   link: "/blog/productivity-systems-comparison",
   category: "Productivity",
   readTime: "14 min read",
@@ -1002,7 +1010,7 @@ const allBlogPosts = [
 {
   title: "Why Single-Tasking Beats Multitasking Every Time",
   summary: "Multitasking feels productive but the neuroscience is clear: it degrades performance, increases errors, and exhausts cognitive resources faster. Discover what the research shows and how to reclaim single-tasking.",
-  image: card1Image.src,
+  image: getBlogImage("single-tasking-vs-multitasking"),
   link: "/blog/single-tasking-vs-multitasking",
   category: "Productivity",
   readTime: "12 min read",
@@ -1011,7 +1019,7 @@ const allBlogPosts = [
 {
   title: "Atomic Habits: Key Lessons and How to Apply Them in Real Life",
   summary: "Atomic Habits by James Clear is the most practical system for behavior change ever written. Here are the key lessons — the Four Laws, identity-based habits, and the 1% rule — and exactly how to apply them.",
-  image: card3Image.src,
+  image: getBlogImage("atomic-habits-summary"),
   link: "/blog/atomic-habits-summary",
   category: "Habits",
   readTime: "14 min read",
@@ -1020,7 +1028,7 @@ const allBlogPosts = [
 {
   title: "The 5 AM Club: Is Waking Up Early Actually Worth It?",
   summary: "The 5 AM Club promises elite performance through early rising — but what does the science actually say? Discover what chronobiology, cortisol research, and high-performer studies reveal about early morning habits.",
-  image: card2Image.src,
+  image: getBlogImage("5am-club-habit"),
   link: "/blog/5am-club-habit",
   category: "Habits",
   readTime: "13 min read",
@@ -1029,7 +1037,7 @@ const allBlogPosts = [
 {
   title: "Time Blocking: The Ultimate Productivity Method for Deep Focus and Real Output",
   summary: "Time blocking is how the world's most productive people protect their most valuable hours. Discover the science behind it, the four scheduling philosophies, and a system you can implement today.",
-  image: card1Image.src,
+  image: getBlogImage("time-blocking-method"),
   link: "/blog/time-blocking-method",
   category: "Productivity",
   readTime: "13 min read",
@@ -1038,7 +1046,7 @@ const allBlogPosts = [
 {
   title: "Deep Work: How to Produce at Peak Capacity in a Distracted World",
   summary: "Deep work — the ability to focus without distraction on cognitively demanding tasks — is becoming rare and increasingly valuable. Discover the neuroscience, the four scheduling philosophies, and the strategies behind peak cognitive output.",
-  image: card3Image.src,
+  image: getBlogImage("deep-work-strategy"),
   link: "/blog/deep-work-strategy",
   category: "Productivity",
   readTime: "14 min read",
@@ -1047,7 +1055,7 @@ const allBlogPosts = [
 {
   title: "Morning Routines of the Most Successful People: What the Research Actually Shows",
   summary: "Elite performers swear by their morning routines — but what does the science actually say? Discover what chronobiology, the cortisol awakening response, and high-performer research reveal about morning habits that genuinely work.",
-  image: card2Image.src,
+  image: getBlogImage("morning-routine-successful-people"),
   link: "/blog/morning-routine-successful-people",
   category: "Habits",
   readTime: "13 min read",
@@ -1056,7 +1064,7 @@ const allBlogPosts = [
 {
   title: "The Habit Loop: Cue, Routine, Reward Explained by Science",
   summary: "The habit loop — cue, routine, reward — is the neurological engine behind every automatic behavior you have. Understand how it works and you can build any habit, break any pattern deliberately.",
-  image: card1Image.src,
+  image: getBlogImage("habit-loop-explained"),
   link: "/blog/habit-loop-explained",
   category: "Habits",
   readTime: "13 min read",
@@ -1065,7 +1073,7 @@ const allBlogPosts = [
 {
   title: "The Psychology of Lasting Behavior Change: Why Most Attempts Fail and What Actually Works",
   summary: "Most behavior change attempts fail within weeks. Discover the psychology of why — and the evidence-based mechanisms that produce change that actually lasts: identity, environment design, and implementation intentions.",
-  image: card3Image.src,
+  image: getBlogImage("psychology-habits-change"),
   link: "/blog/psychology-habits-change",
   category: "Success Psychology",
   readTime: "14 min read",
@@ -1074,7 +1082,7 @@ const allBlogPosts = [
 {
   title: "Identity-Based Success: Become Before You Achieve",
   summary: "Most people try to achieve their way to a new identity. The research shows this is backwards. Discover why identity change must precede behavioral change — and how to engineer the shift deliberately.",
-  image: card2Image.src,
+  image: getBlogImage("identity-based-success"),
   link: "/blog/identity-based-success",
   category: "Success Psychology",
   readTime: "13 min read",
@@ -1083,7 +1091,7 @@ const allBlogPosts = [
 {
   title: "Does Visualization Actually Work? What the Science Really Says",
   summary: "Visualization is praised by elite athletes and dismissed as magical thinking — often by the same culture. Here is what the research actually shows about mental imagery, process vs outcome visualization, and the WOOP framework.",
-  image: card1Image.src,
+  image: getBlogImage("visualization-success"),
   link: "/blog/visualization-success",
   category: "Success Psychology",
   readTime: "13 min read",
@@ -1092,7 +1100,7 @@ const allBlogPosts = [
 {
   title: "The Psychology of Money and Success: Why What You Believe Determines What You Build",
   summary: "Your beliefs about money shape every financial decision you make. Discover the psychology of money — from scarcity scripts to wealth identity — and how to rewire your relationship with financial success.",
-  image: card3Image.src,
+  image: getBlogImage("psychology-money-success"),
   link: "/blog/psychology-money-success",
   category: "Success Psychology",
   readTime: "13 min read",
@@ -1101,7 +1109,7 @@ const allBlogPosts = [
 {
   title: "Self-Efficacy: Believe You Can and You Will",
   summary: "Self-efficacy — your belief in your capacity to execute specific behaviors — is one of the strongest predictors of achievement ever identified. Here is what the science of Bandura's theory reveals.",
-  image: card2Image.src,
+  image: getBlogImage("self-efficacy-success"),
   link: "/blog/self-efficacy-success",
   category: "Success Psychology",
   readTime: "12 min read",
@@ -1110,7 +1118,7 @@ const allBlogPosts = [
 {
   title: "Internal vs External Locus of Control: How Your Beliefs Shape Your Destiny",
   summary: "Locus of control — whether you believe outcomes are driven by your actions or by outside forces — is one of the strongest psychological predictors of success. Here is what the research shows.",
-  image: locusControl.src,
+  image: getBlogImage("locus-of-control"),
   link: "/blog/locus-of-control",
   category: "Success Psychology",
   readTime: "11 min read",
@@ -1119,7 +1127,7 @@ const allBlogPosts = [
 {
   title: "The Psychology of Procrastination: Why You Do It and How to Stop",
   summary: "Procrastination is not a time management problem — it is an emotion regulation problem. Discover the psychology behind why you procrastinate and the evidence-based strategies that actually work.",
-  image: psychologyProcrastination.src,
+  image: getBlogImage("psychology-procrastination"),
   link: "/blog/psychology-procrastination",
   category: "Success Psychology",
   readTime: "12 min read",
@@ -1128,7 +1136,7 @@ const allBlogPosts = [
 {
   title: "Flow State: How to Achieve Peak Performance and Enter the Zone",
   summary: "Flow state is the psychology of peak performance — when effort becomes effortless and output reaches its highest level. Learn the science of flow and how to trigger it deliberately.",
-  image: flowState.src,
+  image: getBlogImage("flow-state-productivity"),
   link: "/blog/flow-state-productivity",
   category: "Success Psychology",
   readTime: "11 min read",
@@ -1137,7 +1145,7 @@ const allBlogPosts = [
 {
   title: "Cognitive Biases That Sabotage Success: What You Don't Know Is Hurting You",
   summary: "Your brain's shortcuts are quietly derailing your decisions, relationships, and career. Discover the cognitive biases that most sabotage success — and how to counter them systematically.",
-  image: cognitiveBiases.src,
+  image: getBlogImage("cognitive-biases-success"),
   link: "/blog/cognitive-biases-success",
   category: "Success Psychology",
   readTime: "12 min read",
@@ -1146,7 +1154,7 @@ const allBlogPosts = [
 {
   title: "Emotional Intelligence and Success: The Science Behind EQ",
   summary: "Emotional intelligence predicts career success, leadership effectiveness, and relationship quality more than IQ. Discover the science of EQ and how to develop it deliberately.",
-  image: emotionalIntelligence.src,
+  image: getBlogImage("emotional-intelligence-success"),
   link: "/blog/emotional-intelligence-success",
   category: "Success Psychology",
   readTime: "11 min read",
@@ -1156,7 +1164,7 @@ const allBlogPosts = [
 {
   title: "Scarcity Mindset vs Abundance Mindset: How Your Beliefs Shape Your Reality",
   summary: "The way you think about resources, opportunity, and success determines what you pursue and what you achieve. Discover the psychology of scarcity vs abundance mindset and how to make the shift.",
-  image: scarcityAbundance.src,
+  image: getBlogImage("scarcity-vs-abundance"),
   link: "/blog/scarcity-vs-abundance",
   category: "Success Psychology",
   readTime: "11 min read",
@@ -1166,7 +1174,7 @@ const allBlogPosts = [
 {
   title: "The Mindset of Billionaires: What Sets Them Apart",
   summary: "What does the psychology research reveal about billionaire thinking? Discover the specific mindset patterns, cognitive habits, and beliefs that distinguish the world's most successful entrepreneurs and investors.",
-  image: billionaireMindset.src,
+  image: getBlogImage("mindset-billionaires"),
   link: "/blog/mindset-billionaires",
   category: "Success Psychology",
   readTime: "12 min read",
@@ -1176,7 +1184,7 @@ const allBlogPosts = [
 {
   title: "The Psychology of Goal Setting: Why Most Goals Fail",
   summary: "Goal setting science reveals why most goals fail and what actually works. Discover the psychology behind effective goals, from implementation intentions to identity-based goal pursuit.",
-  image: psychologyOfGoalSetting.src,
+  image: getBlogImage("psychology-of-goals"),
   link: "/blog/psychology-of-goals",
   category: "Success Psychology",
   readTime: "11 min read",
@@ -1186,7 +1194,7 @@ const allBlogPosts = [
 {
   title: "Impostor Syndrome: How High Achievers Beat It",
   summary: "Impostor syndrome affects up to 70% of people — including the most successful. Discover the psychology behind it, why high achievers are most vulnerable, and how to overcome it permanently.",
-  image: impostorSyndrome.src,
+  image: getBlogImage("impostor-syndrome"),
   link: "/blog/impostor-syndrome",
   category: "Success Psychology",
   readTime: "11 min read",
@@ -1196,7 +1204,7 @@ const allBlogPosts = [
 {
   title: "Grit: Why Persistence Matters More Than Talent",
   summary: "Angela Duckworth's research revealed that grit — passion and perseverance for long-term goals — predicts success better than talent or IQ. Here's what the science shows and how to build it deliberately.",
-  image: gritPersistence.src,
+  image: getBlogImage("grit-persistence"),
   link: "/blog/grit-persistence",
   category: "Success Psychology",
   readTime: "11 min read",
@@ -1206,7 +1214,7 @@ const allBlogPosts = [
 {
   title: "Growth Mindset vs Fixed Mindset: The Complete Guide",
   summary: "Master the science of growth mindset vs fixed mindset. Learn what Dweck's research actually shows, how mindset shapes achievement across education, work, and relationships — and how to shift from fixed to growth thinking.",
-  image: growthFixedMindset.src,
+  image: getBlogImage("growth-mindset-vs-fixed"),
   link: "/blog/growth-mindset-vs-fixed",
   category: "Success Psychology",
   readTime: "12 min read",
@@ -1215,7 +1223,7 @@ const allBlogPosts = [
 {
   title: "First Principles Thinking: How to Think Like Elon Musk",
   summary: "Master the reasoning method used by Elon Musk, Aristotle, and Feynman to break through assumptions and solve problems others declare impossible.",
-  image: firstPrinciplesThinking.src,
+  image: getBlogImage("first-principles-thinking"),
   link: "/blog/first-principles-thinking",
   category: "Mental Models",
   readTime: "22 min read",
@@ -1224,7 +1232,7 @@ const allBlogPosts = [
 {
   title: "The Inversion Mental Model: How to Solve Problems Backwards",
   summary: "Master inversion thinking — the mental model used by Charlie Munger and the Stoics to avoid failure, make better decisions, and find solutions that forward thinking misses entirely.",
-  image: inversionMentalModel.src,
+  image: getBlogImage("inversion-mental-model"),
   link: "/blog/inversion-mental-model",
   category: "Mental Models",
   readTime: "20 min read",
@@ -1233,7 +1241,7 @@ const allBlogPosts = [
 {
   title: "Second-Order Thinking: See What Others Miss",
   summary: "Master second-order thinking — the mental model that separates elite decision-makers from everyone else. Learn to see beyond immediate consequences to the effects that actually determine outcomes.",
-  image: secondOrderThinking.src,
+  image: getBlogImage("second-order-thinking"),
   link: "/blog/second-order-thinking",
   category: "Mental Models",
   readTime: "21 min read",
@@ -1242,7 +1250,7 @@ const allBlogPosts = [
 {
   title: "Circle of Competence: Warren Buffett's Secret Weapon",
   summary: "Master the circle of competence mental model. Learn to define what you truly know, expand your circle deliberately, and make better decisions by staying inside it.",
-  image: circleOfCompetence.src,
+  image: getBlogImage("circle-of-competence"),
   link: "/blog/circle-of-competence",
   category: "Mental Models",
   readTime: "19 min read",
@@ -1251,7 +1259,7 @@ const allBlogPosts = [
 {
   title: "The 80/20 Rule: How to Do Less and Achieve More",
   summary: "Master the Pareto Principle — the 80/20 rule that governs results in almost every domain. Identify the vital few inputs that produce the majority of your outcomes.",
-  image: the8020Rule.src,
+  image: getBlogImage("pareto-principle-80-20"),
   link: "/blog/pareto-principle-80-20",
   category: "Mental Models",
   readTime: "20 min read",
@@ -1260,7 +1268,7 @@ const allBlogPosts = [
 {
   title: "Occam's Razor Explained: Why Simpler Is Usually Better",
   summary: "Master the principle of parsimony that has guided scientists, doctors, and decision-makers for 700 years. Learn when simpler explanations win and how to apply it to your thinking.",
-  image: occamsRazor.src,
+  image: getBlogImage("occams-razor-explained"),
   link: "/blog/occams-razor-explained",
   category: "Mental Models",
   readTime: "19 min read",
@@ -1269,7 +1277,7 @@ const allBlogPosts = [
 {
   title: "The Power of Compounding: Beyond Money",
   summary: "Master the compounding mental model — the most powerful force in finance, knowledge, relationships, and habits. Learn how small consistent actions compound into extraordinary results.",
-  image: thePowerOfCompounding.src,
+  image: getBlogImage("compounding-mental-model"),
   link: "/blog/compounding-mental-model",
   category: "Mental Models",
   readTime: "21 min read",
@@ -1278,7 +1286,7 @@ const allBlogPosts = [
 {
   title: "Opportunity Cost: The Hidden Price of Every Decision",
   summary: "Master opportunity cost thinking — the economic concept that reveals the true price of every choice. Learn to see what you're giving up with every decision.",
-  image: opportunityCost.src,
+  image: getBlogImage("opportunity-cost-thinking"),
   link: "/blog/opportunity-cost-thinking",
   category: "Mental Models",
   readTime: "20 min read",
@@ -1287,7 +1295,7 @@ const allBlogPosts = [
 {
   title: "The Feynman Technique: Learn Anything Faster",
   summary: "Master the 4-step learning method used by Nobel Prize winner Richard Feynman. Identify gaps in your knowledge and close them permanently through the power of teaching.",
-  image: feynmanTechnique.src,
+  image: getBlogImage("feynman-technique"),
   link: "/blog/feynman-technique",
   category: "Learning",
   readTime: "20 min read",
@@ -1296,7 +1304,7 @@ const allBlogPosts = [
 {
   title: "Jeff Bezos Regret Minimization Framework",
   summary: "Master the mental model that helped Bezos leave Wall Street to found Amazon. Learn to make bold decisions by projecting to age 80 and asking what you'd regret.",
-  image: regretMinimization.src,
+  image: getBlogImage("regret-minimization"),
   link: "/blog/regret-minimization",
   category: "Mental Models",
   readTime: "18 min read",
@@ -1305,7 +1313,7 @@ const allBlogPosts = [
 {
   title: "How Confirmation Bias Destroys Good Decisions",
   summary: "Understand the most pervasive cognitive bias affecting human judgment. Learn how it distorts decisions and beliefs — and master the structural practices that counteract it.",
-  image: confirmationBias.src,
+  image: getBlogImage("confirmation-bias"),
   link: "/blog/confirmation-bias",
   category: "Cognitive Biases",
   readTime: "20 min read",
@@ -1314,7 +1322,7 @@ const allBlogPosts = [
 {
   title: "Survivorship Bias: Why You Learn the Wrong Lessons",
   summary: "Master survivorship bias — the cognitive error that causes us to learn from winners while ignoring the far more numerous failures. Discover how it distorts success advice and strategy.",
-  image: survivorshipBias.src,
+  image: getBlogImage("survivorship-bias"),
   link: "/blog/survivorship-bias",
   category: "Cognitive Biases",
   readTime: "18 min read",
@@ -1323,7 +1331,7 @@ const allBlogPosts = [
 {
   title: "Hanlon's Razor: Stop Assuming Malice",
   summary: "Never attribute to malice what can be adequately explained by stupidity. Learn how this principle reduces conflict, improves relationships, and produces more accurate judgments.",
-  image: hanlonsRazor.src,
+  image: getBlogImage("hanlon-razor"),
   link: "/blog/hanlon-razor",
   category: "Mental Models",
   readTime: "17 min read",
@@ -1332,7 +1340,7 @@ const allBlogPosts = [
 {
   title: "The Map Is Not the Territory: How Our Models Mislead Us",
   summary: "Master the map-territory distinction — how our mental representations always differ from reality. Learn to hold your models loosely, update them accurately, and avoid Goodhart's Law.",
-  image: mapIsNotTheTerritory.src,
+  image: getBlogImage("map-territory"),
   link: "/blog/map-territory",
   category: "Mental Models",
   readTime: "19 min read",
@@ -1341,7 +1349,7 @@ const allBlogPosts = [
 {
   title: "Skin in the Game: Nassim Taleb's Most Important Idea",
   summary: "Master Taleb's skin in the game principle — why people who bear the consequences of their decisions make better ones. Learn to evaluate advice, detect moral hazard, and build accountability.",
-  image: skinInTheGame.src,
+  image: getBlogImage("skin-in-the-game"),
   link: "/blog/skin-in-the-game",
   category: "Mental Models",
   readTime: "19 min read",
@@ -1350,7 +1358,7 @@ const allBlogPosts = [
 {
   title: "The Eisenhower Matrix: Prioritize Like a President",
   summary: "Master the Eisenhower Matrix — the 2x2 priority framework that distinguishes urgent from important. Learn why Q2 is where results are made and how to protect it from urgency.",
-  image: eisenhoverMatrix.src,
+  image: getBlogImage("eisenhower-matrix"),
   link: "/blog/eisenhower-matrix",
   category: "Productivity",
   readTime: "18 min read",
@@ -1359,7 +1367,7 @@ const allBlogPosts = [
 {
   title: "Mental Models Every Investor Should Know",
   summary: "Master the thinking frameworks used by Buffett and Munger — Mr. Market, margin of safety, economic moats, second-level thinking, and the temperament that makes it all work.",
-  image: mentalModelInvesting.src,
+  image: getBlogImage("mental-models-investing"),
   link: "/blog/mental-models-investing",
   category: "Investing",
   readTime: "23 min read",
@@ -1368,7 +1376,7 @@ const allBlogPosts = [
 {
   title: "Mental Models for Better Business Decisions",
   summary: "Master the frameworks top executives use — jobs to be done, flywheel thinking, unit economics, theory of constraints, and power law markets. Build businesses that compound.",
-  image: mentalModelsBusinesses.src,
+  image: getBlogImage("mental-models-business"),
   link: "/blog/mental-models-business",
   category: "Business",
   readTime: "22 min read",
@@ -1377,7 +1385,7 @@ const allBlogPosts = [
 {
   title: "Charlie Munger's Mental Models: The Complete Guide",
   summary: "The definitive guide to Munger's latticework — worldly wisdom, psychology of misjudgment, lollapalooza effects, and the multidisciplinary method that made him extraordinary.",
-  image: charlieMungerMentalModels.src,
+  image: getBlogImage("charlie-munger-mental-models"),
   link: "/blog/charlie-munger-mental-models",
   category: "Mental Models",
   readTime: "25 min read",
@@ -1386,7 +1394,7 @@ const allBlogPosts = [
 {
   title: "Mental Models for Better Relationships",
   summary: "Master the frameworks that build deep, lasting relationships — Gottman's Four Horsemen, trust accounts, bids for connection, attachment theory, and repair attempts.",
-  image: reationshipMentalModels.src,
+  image: getBlogImage("mental-models-relationships"),
   link: "/blog/mental-models-relationships",
   category: "Relationships",
   readTime: "21 min read",
@@ -1395,7 +1403,7 @@ const allBlogPosts = [
 {
   title: "How to Build Your Mental Model Library",
   summary: "A practical guide to building a mental model library that compounds over time. From acquisition to organization, testing, and application — the system that turns reading into wisdom.",
-  image: mentalModelLibrary.src,
+  image: getBlogImage("build-mental-model-library"),
   link: "/blog/build-mental-model-library",
   category: "Mental Models",
   readTime: "20 min read",
@@ -1404,7 +1412,7 @@ const allBlogPosts = [
 {
   title: "15 Mental Models That Successful People Use to Think Clearly",
   summary: "Discover the 15 most powerful mental models used by top performers, billionaires, and high achievers to make better decisions, solve complex problems, and build lasting success.",
-  image: mentalModelsForSuccessImage.src,
+  image: getBlogImage("mental-models-for-success"),
   link: "/blog/mental-models-for-success",
   category: "Mental Models",
   readTime: "18 min read",
@@ -1413,7 +1421,7 @@ const allBlogPosts = [
 {
   title: "Dopamine: The Invisible Chains of the Digital Age",
   summary: "Discover how dopamine works at the molecular level, how Silicon Valley algorithms exploit your brain's reward system, and the science-backed protocol to reclaim your focus and motivation.",
-  image: dopamineDigitalImage.src,
+  image: getBlogImage("dopamine-digital-age"),
   link: "/blog/dopamine-digital-age",
   category: "Neuroscience",
   readTime: "18 min read",
@@ -1422,7 +1430,7 @@ const allBlogPosts = [
 {
   title: "The Neuroscience of Extreme: Why Obsession Rewires Your Brain for Success",
   summary: "Discover the neuroscientific evidence behind why extreme focus and obsession—not moderate effort—creates lasting brain changes. Explore neuroplasticity, dopamine systems, and the RAS.",
-  image: extremeMindsetImage.src,
+  image: getBlogImage("extreme-mindset-neuroscience"),
   link: "/blog/extreme-mindset-neuroscience",
   category: "Neuroscience",
   readTime: "16 min read",
@@ -1431,7 +1439,7 @@ const allBlogPosts = [
 {
   title: "The Power of Assumption: Neville Goddard's Secret to Wealth and Manifestation",
   summary: "Discover Neville Goddard's profound teaching on assumption and wealth consciousness. Learn how to embody prosperity by changing your inner state, not your circumstances.",
-  image: wealthAssumption.src,
+  image: getBlogImage("assumption-wealth"),
   link: "/blog/assumption-wealth",
   category: "Manifestation",
   readTime: "8 min read",
@@ -1440,7 +1448,7 @@ const allBlogPosts = [
 {
   title: "Synchronicity: When Meaning Reveals Itself Through Coincidence",
   summary: "A deep exploration of synchronicity through spiritual psychology, neuroscience, and philosophy, evaluating Dr. Lisa Miller’s approach alongside Jung, Frankl, and William James.",
-  image: synchronicityImage.src,
+  image: getBlogImage("synchronicity"),
   link: "/blog/synchronicity",
   category: "Spiritual Psychology",
   readTime: "12 min read",
@@ -1450,7 +1458,7 @@ const allBlogPosts = [
   {
     title: "The Philosophy of Happiness and Success",
     summary: "Discover Earl Nightingale's timeless wisdom on finding true happiness through purposeful work, service to others, and living in the present moment.",
-    image: happinessPhilosophyImage.src,
+    image: getBlogImage("happiness-philosophy"),
     link: "/blog/happiness-philosophy",
     category: "Philosophy",
     readTime: "15 min read",
@@ -1459,7 +1467,7 @@ const allBlogPosts = [
   {
     title: "Rethinking Success: A Scientific and Philosophical Exploration",
     summary: "Challenge conventional definitions of success through neuroscience, positive psychology, and philosophical frameworks.",
-    image: rethinkingSuccessImage.src,
+    image: getBlogImage("rethinking-success"),
     link: "/blog/rethinking-success",
     category: "Philosophy",
     readTime: "9 min read",
@@ -1468,7 +1476,7 @@ const allBlogPosts = [
   {
     title: "Habits, Discipline, and Momentum: The Engine of Sustainable Success",
     summary: "Uncover the science behind habit formation and learn how to build disciplined systems that create unstoppable momentum.",
-    image: engineOfSuccessImage.src,
+    image: getBlogImage("habits-discipline-momentum"),
     link: "/blog/habits-discipline-momentum",
     category: "Habits",
     readTime: "8 min read",
@@ -1477,7 +1485,7 @@ const allBlogPosts = [
   {
     title: "From Vision to Reality: The Art and Science of Execution",
     summary: "Bridge the gap between dreams and reality with proven execution frameworks.",
-    image: artOfExecutionImage.src,
+    image: getBlogImage("vision-to-reality"),
     link: "/blog/vision-to-reality",
     category: "Execution",
     readTime: "10 min read",
@@ -1486,7 +1494,7 @@ const allBlogPosts = [
   {
     title: "Overcoming Resistance: Building Resilience in the Face of Failure",
     summary: "Transform setbacks into stepping stones with psychological strategies for building unshakeable resilience.",
-    image: overcomingResistanceImage.src,
+    image: getBlogImage("overcoming-resistance"),
     link: "/blog/overcoming-resistance",
     category: "Resilience",
     readTime: "7 min read",
@@ -1495,7 +1503,7 @@ const allBlogPosts = [
   {
     title: "15 Best Productivity Tools for 2025 (Tested by Experts)",
     summary: "Discover the most effective productivity tools for 2025. From Notion templates to time tracking apps.",
-    image: productivityToolsImage.src,
+    image: getBlogImage("best-productivity-tools-2025"),
     link: "/blog/best-productivity-tools-2025",
     category: "Productivity",
     readTime: "12 min read",
@@ -1504,7 +1512,7 @@ const allBlogPosts = [
   {
     title: "Mental Models for Better Decision Making",
     summary: "Discover powerful thinking frameworks that help you navigate complex problems and make smarter choices.",
-    image: mentalModelsImage.src,
+    image: getBlogImage("mental-models"),
     link: "/blog/mental-models",
     category: "Mental Models",
     readTime: "8 min read",
@@ -1513,7 +1521,7 @@ const allBlogPosts = [
   {
     title: "Stoic Wisdom for Modern Life",
     summary: "Apply ancient Stoic teachings to build resilience, find inner peace, and maintain clarity.",
-    image: stoicWisdomImage.src,
+    image: getBlogImage("stoicism"),
     link: "/blog/stoicism",
     category: "Philosophy",
     readTime: "6 min read",
@@ -1522,7 +1530,7 @@ const allBlogPosts = [
   {
     title: "The Philosophy of Success",
     summary: "Learn timeless principles and daily habits that successful people use to achieve their goals.",
-    image: philosophyOfSuccess.src,
+    image: getBlogImage("success-philosophy"),
     link: "/blog/success-philosophy",
     category: "Success",
     readTime: "7 min read",
@@ -1531,7 +1539,7 @@ const allBlogPosts = [
   {
     title: "AI-Amplified Mental Models: The Thinking Revolution",
     summary: "Combining Charlie Munger's mental models with AI to compress decades of cognitive development into months.",
-    image: aiMagnifiedMentalModels2.src,
+    image: getBlogImage("ai-amplified-mental-models"),
     link: "/blog/ai-amplified-mental-models",
     category: "AI & Technology",
     readTime: "8 min read",
