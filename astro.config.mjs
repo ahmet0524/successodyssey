@@ -22,6 +22,7 @@ export default defineConfig({
           '/_',
           '.xml',
           '/index.html',
+          '/contact-success',      // Form teşekkür sayfası — index edilmemeli
           '?search=',              // Query parametreleri
           '?q=',
           'search_term_string',    // Google placeholder

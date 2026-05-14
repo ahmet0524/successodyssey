@@ -3,7 +3,7 @@
 
 Bu dosya her Claude oturumunda referans olarak kullanılır.
 
--c--
+
 
 ## Komutlar
 
@@ -210,10 +210,22 @@ const faqSchema = { /* ZORUNLU — tam 3 soru */ };
 | İç link slug | Plan tablosundaki slug'ı birebir kullan | Tahminle slug yazma ❌ |
 | Henüz oluşturulmamış sayfa linki | Mevcut ✅ bir sayfaya yönlendir | ⏳ bekleyen sayfaya link verme ❌ |
 | pageTitle uzunluğu | 50-60 karakter (Search Console'da "Title too long" hatası) | 60+ karakter ❌ |
+| Yeni sayfa slug'ı | Sadece 200 günlük plan tablosundaki slug'ları kullan | Plan dışı slug oluşturma ❌ |
 
 > ⚠️ **Agent kullanıldığında:** Agent'ın ürettiği dosyalarda ContentBox ve StepsList import pathlerini build öncesi kontrol et — agent sık sık `/blog/` alt klasörünü atlıyor.
 
 > ⚠️ **İç link yazarken:** Related Articles ve inline linklerde slug'ı bu dosyadaki plan tablosundan kopyala. `psychology-of-goal-setting` yerine `psychology-of-goals`, `how-to-avoid-cognitive-bias` yerine `avoid-cognitive-biases` gibi hatalar 404'e yol açar. Henüz oluşturulmamış (⏳) sayfalara link verme — mevcut ilgili bir sayfaya yönlendir.
+
+---
+
+## Özel Sayfa Durumları (Canonical / Duplicate)
+
+| Sayfa | Durum | Açıklama |
+|-------|-------|----------|
+| `mental-models-for-success` | Dosya var, blog.astro'da var | Canonical → `mental-models`. İyi trafik aldığı için listede kalıyor. Silme. |
+| `psychology-of-success-science` | Dosya var, blog.astro'dan çıkarıldı | Canonical → `psychology-of-success`. Sayfa erişilebilir ama listede görünmüyor. |
+| `mental-models-relationships` | **Silindi** | Canonical zaten `mental-models-for-relationships`'i işaret ediyordu. |
+| `mental-models-for-relationships` | Dosya var, blog.astro'da var | Plan slug'ı `mental-models-relationships` olmasına rağmen asıl canonical bu. |
 
 ---
 
