@@ -28,12 +28,13 @@
   status = 301
   force = true
 
-# 2. Blog trailing slash (force - blog dinamik)
+# 2. Global trailing slash redirect — tüm sayfalar için
+# Homepage (/) hariç tüm trailing slash URL'leri 301 ile yönlendirir
 [[redirects]]
-  from = "/blog/*/"
-  to = "/blog/:splat"
+  from = "/*/"
+  to = "/:splat"
   status = 301
-  force = true
+  force = false
 
 # 3. Ana sayfa trailing slash (force KALDIRILDI - asıl sayfaları override etmesin)
 [[redirects]]
