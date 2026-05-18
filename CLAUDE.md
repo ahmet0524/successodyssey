@@ -229,6 +229,41 @@ const faqSchema = { /* ZORUNLU — tam 3 soru */ };
 
 ---
 
+## Free Books Sistemi (`/free/`)
+
+### Yapı
+- `/free/index.astro` → 14 kitabı listeleyen public hub sayfası
+- `/free/[slug].astro` → email capture landing page (Netlify Forms)
+- `/free/thank-you-[slug].astro` → PDF indirme sayfası
+- `/free-admin.astro` → private yönetim paneli (navigasyonda yok)
+
+### Netlify Forms
+Her kitabın form-name'i: `[slug]-leads` (örn. `think-and-grow-rich-leads`)
+Leads: `app.netlify.com` → Forms sekmesinden görülür.
+
+### Doğrulanmış archive.org PDF Linkleri (Mayıs 2026)
+> ⚠️ Bu linkleri değiştirme — hepsi test edildi ve çalışıyor (302 redirect doğrulandı).
+> Hem `thank-you-*.astro` dosyalarında hem `free-admin.astro`'da bu URL'ler kullanılıyor.
+
+| Kitap | Çalışan PDF URL |
+|-------|----------------|
+| Think and Grow Rich | `https://archive.org/download/think-and-grow-rich_202206/Think-And-Grow-Rich.pdf` |
+| As a Man Thinketh | `https://archive.org/download/asmanthinketh1913alle/asmanthinketh1913alle.pdf` |
+| Science of Getting Rich | `https://archive.org/download/TheScienceOfGettingRich.pdf/the_science_of_getting_rich.pdf` |
+| Richest Man in Babylon | `https://archive.org/download/the-richest-man-in-babylon-100-george-s.-clason/The%20Richest%20Man%20in%20Babylon_%20100%20-%20George%20S.%20Clason.pdf` |
+| Meditations (Marcus Aurelius) | `https://archive.org/download/meditationsofmar00marc_0/meditationsofmar00marc_0.pdf` |
+| The Art of War | `https://archive.org/download/artofwaroldestmi00suntuoft/artofwaroldestmi00suntuoft.pdf` |
+| Master Key System | `https://archive.org/download/masterkeysystem1919haan/masterkeysystem1919haan.pdf` |
+| Acres of Diamonds | `https://archive.org/download/acresofdiamondsl00conw/acresofdiamondsl00conw.pdf` |
+| Game of Life (Shinn) | `https://archive.org/download/gameoflifehowtop00shin/gameoflifehowtop00shin.pdf` |
+| The Prophet (Gibran) | `https://archive.org/download/TheProphetByKhalilGibran/The_Prophet_by_Khalil_Gibran.pdf` |
+| The Strangest Secret | `https://archive.org/download/strangestsecret0000earl/strangestsecret0000earl.pdf` |
+| Letters from a Stoic | `https://archive.org/download/adluciliumepistu01seneuoft/adluciliumepistu01seneuoft.pdf` |
+| Self-Reliance (Emerson) | `https://archive.org/download/selfreliance00emer/selfreliance00emer.pdf` |
+| Power of Concentration | `https://archive.org/download/powerofconcentra00dumo/powerofconcentra00dumo.pdf` |
+
+---
+
 ## Affiliate Linkler
 
 ```
