@@ -569,6 +569,266 @@ https://amzn.to/greatmentalmodels  → The Great Mental Models – Shane Parrish
 
 ---
 
+---
+
+## Sosyal Medya İçerik Sistemi
+
+### Genel Kurallar
+- Tüm platformlar **İngilizce**
+- UTM parametreleri her linke eklenir
+- Görseller HTML/CSS olarak üretilir → tarayıcıda screenshot ile PNG alınır
+- Reddit'te asla link paylaşılmaz
+
+---
+
+### PROMPT 1 — Blog Yazısı Sosyal Medya Paketi
+
+```
+You are a social media content expert. Goal: drive traffic to successodysseyhub.com for AdSense approval and organic growth.
+
+Blog Title: [TITLE]
+Blog URL: https://successodysseyhub.com/blog/[SLUG]
+Summary: [2-3 sentences about the post]
+Hook / Main Message: [STRONGEST STAT, FACT, OR CONTRAST]
+Target Audience: [e.g. professionals, entrepreneurs, self-improvement seekers]
+Tone: [e.g. scientific & genuine | philosophical & deep | motivational & practical]
+
+---
+
+FACEBOOK (150-250 words)
+- Open with a curiosity-driven or counterintuitive sentence
+- Include 2-3 concrete facts, examples, or research findings
+- Natural storytelling — not a summary
+- End with: "Read the full breakdown here 👉
+  https://successodysseyhub.com/blog/[SLUG]?utm_source=facebook&utm_medium=social&utm_campaign=organic"
+
+INSTAGRAM (100-150 words)
+- Short punchy sentences, one idea per line
+- Empty line between every 2-3 lines for readability
+- End with: "Full article — link in bio → successodysseyhub.com"
+- Then: 30 hashtags in English
+  · 10 large (1M+ posts): e.g. #selfimprovement #mindset #success
+  · 10 medium (100K–1M): e.g. #growthmindset #successmindset
+  · 10 niche (<100K): e.g. #cognitivebias #mentalmodesl #deepwork
+
+TWITTER / X — Thread (4 tweets, each under 280 characters)
+Tweet 1: Hook — bold statement or surprising fact
+  + link: https://successodysseyhub.com/blog/[SLUG]?utm_source=twitter
+Tweet 2: Concrete example or relatable story (no link)
+Tweet 3: Key data point or research finding (no link)
+Tweet 4: Actionable takeaway + link again
+(Post tweet 1, then reply to your own tweet with 2 → 3 → 4)
+
+LINKEDIN (200-250 words)
+- Professional tone, but personal and direct
+- Open with a bold claim or observation about the workplace/career
+- Include 1-2 data points or named examples
+- End with a genuine engagement question (e.g. "What's your experience with this?")
+- Final line: "Full article: https://successodysseyhub.com/blog/[SLUG]?utm_source=linkedin"
+
+REDDIT (150-200 words) — ABSOLUTELY NO LINKS
+- Write as if you just discovered this insight and want to discuss it
+- "I've been thinking about [topic] lately and came across something interesting..."
+- Share the core idea with genuine depth — add value, not promotion
+- End with an open-ended question that invites discussion
+- Suggest 5 relevant subreddits where this fits naturally
+
+PINTEREST
+- Pin Title (max 100 chars, lead with main keyword):
+  e.g. "Cognitive Biases That Destroy Success — Psychology Explained"
+- Description (150-200 words): keyword-rich, written in natural sentences,
+  include the blog URL with UTM: ?utm_source=pinterest
+- 10-15 keywords (comma-separated list)
+- Board (choose one):
+  1. Self Improvement & Personal Growth
+  2. Productivity & Time Management
+  3. Habit Building & Daily Routines
+  4. Morning Routine & Wellness
+  5. Success Mindset & Psychology
+  6. Career & Professional Development
+  7. Sleep & Health Science
+  8. Motivation & Inspiration
+
+VISUAL 1 — Square 1080×1080px (Instagram, Facebook, Twitter, LinkedIn)
+- Output: complete HTML/CSS code block (will be screenshotted as PNG)
+- Dark background (#0f0f1a or similar), minimal design
+- Feature the most striking stat or contrast from the blog in large bold text
+- Subtext: 1 short supporting line
+- Bottom right: successodysseyhub.com (small, subtle)
+- Use Google Fonts via CDN (e.g. Inter or Playfair Display)
+
+VISUAL 2 — Pinterest Vertical 1000×1500px
+- Output: complete HTML/CSS code block (screenshot-ready)
+- Same dark design language, vertical layout
+- Top section: blog title or hook question
+- Middle section: key stat or quote in large text
+- Bottom section: "Read More → successodysseyhub.com" + topic tag
+```
+
+---
+
+### PROMPT 2 — Ücretsiz Kitap Tanıtım Paketi
+
+```
+You are a social media content expert. Goal: grow the successodysseyhub.com email list
+by promoting free public domain book downloads.
+
+Book Title: [BOOK TITLE]
+Author: [AUTHOR NAME]
+Year Published: [YEAR]
+Free Download Page: https://successodysseyhub.com/free/[SLUG]
+(Visitors enter email → instantly receive PDF download link. 100% free.)
+One powerful quote from the book: "[QUOTE]"
+Why it still matters today: [1-2 sentences]
+Target Audience: [e.g. ambitious professionals, self-improvement seekers]
+Tone: [e.g. timeless & inspiring | philosophical | practical & direct]
+
+---
+
+FACEBOOK (150-250 words)
+- Open with the quote or a provocative question tied to the book's core theme
+- 2-3 sentences on why this book written in [YEAR] is still relevant today
+- Mention clearly: free PDF, public domain, just enter your email
+- End with: "Get your free copy 👉
+  https://successodysseyhub.com/free/[SLUG]?utm_source=facebook&utm_medium=social&utm_campaign=freebook"
+
+INSTAGRAM (100-150 words)
+- Open with the quote, formatted with line breaks for visual impact
+- 2-3 short lines explaining the book's most powerful idea
+- "Free PDF download — link in bio → successodysseyhub.com"
+- 30 hashtags in English:
+  · 10 large: #selfimprovement #reading #books #mindset #personaldevelopment
+  · 10 medium: #classicbooks #freebooks #selfhelp #growthmindset #bookstagram
+  · 10 niche: e.g. #publicdomain #[author]quotes #[topic]mindset
+
+TWITTER / X — Thread (4 tweets, each under 280 characters)
+Tweet 1: Bold quote from the book + link with UTM ?utm_source=twitter
+Tweet 2: Historical context — "Written in [YEAR], [author] said something
+  we're still figuring out today..."
+Tweet 3: The single most actionable idea from the book
+Tweet 4: "It's public domain. I'm giving away the full PDF — no catch.
+  Just your email. 👇" + link
+
+LINKEDIN (200-250 words)
+- Frame it professionally: "Every ambitious person should read this before [milestone]"
+- 2 key lessons from the book with direct modern application
+- Mention it's free (public domain PDF via email)
+- Engagement question about the book's theme
+- End: "Free PDF link in the comments 👇" then add link as first comment
+
+REDDIT (150-200 words) — NO LINKS, NO PROMOTION
+- "I was reading [Book Title] and this passage genuinely stopped me:"
+- Paste 2-4 sentences from the book (public domain — safe to quote)
+- React to it briefly in your own words
+- Ask a genuine philosophical or practical question based on it
+- Do NOT mention your website or that you're giving it away
+- Suggest 5 relevant subreddits (e.g. r/philosophy, r/selfimprovement,
+  r/stoicism, r/books, r/productivity)
+
+PINTEREST
+- Pin Title (max 100 chars): "[Book Title] Free PDF Download — [Core Theme]"
+- Description (150-200 words): what the book is about, why it's timeless,
+  mention free download + email required, include URL with UTM ?utm_source=pinterest
+- 10-15 keywords
+- Board: Self Improvement & Personal Growth OR Success Mindset & Psychology
+
+VISUAL 1 — Square 1080×1080px
+- Output: complete HTML/CSS (screenshot-ready PNG)
+- Dark elegant background
+- Large: the book quote in italic
+- Below: — [Author Name], [Book Title] ([Year])
+- Bottom bar: "Free Download → successodysseyhub.com/free/[SLUG]"
+
+VISUAL 2 — Pinterest Vertical 1000×1500px
+- Output: complete HTML/CSS (screenshot-ready)
+- Top: "[Book Title]" in large serif font
+- Middle: the quote
+- Lower middle: "Written in [YEAR] · Still life-changing"
+- Bottom: "Free PDF · successodysseyhub.com/free/[SLUG]"
+```
+
+---
+
+### 2 Aylık Sosyal Medya Takvimi (60 Gün)
+
+**Format:** Tek sayılı günler = Blog yazısı | Çift sayılı günler = Ücretsiz kitap
+
+| Gün | Tür | İçerik | Slug / Sayfa |
+|-----|-----|---------|--------------|
+| 1 | 📝 Blog | Cognitive Biases That Sabotage Success | `cognitive-biases-success` |
+| 2 | 📚 Kitap | Think and Grow Rich — Napoleon Hill | `/free/think-and-grow-rich` |
+| 3 | 📝 Blog | Growth Mindset vs Fixed Mindset | `growth-mindset-vs-fixed` |
+| 4 | 📚 Kitap | As a Man Thinketh — James Allen | `/free/as-a-man-thinketh` |
+| 5 | 📝 Blog | Why Discipline Beats Motivation | `discipline-beats-motivation` |
+| 6 | 📚 Kitap | The Science of Getting Rich — Wattles | `/free/science-of-getting-rich` |
+| 7 | 📝 Blog | Impostor Syndrome | `impostor-syndrome` |
+| 8 | 📚 Kitap | The Richest Man in Babylon — Clason | `/free/richest-man-in-babylon` |
+| 9 | 📝 Blog | Does Visualization Actually Work? | `visualization-success` |
+| 10 | 📚 Kitap | Meditations — Marcus Aurelius | `/free/meditations-marcus-aurelius` |
+| 11 | 📝 Blog | The Power of Delayed Gratification | `delayed-gratification` |
+| 12 | 📚 Kitap | The Art of War — Sun Tzu | `/free/art-of-war` |
+| 13 | 📝 Blog | Flow State: Peak Performance | `flow-state-productivity` |
+| 14 | 📚 Kitap | The Master Key System — Haanel | `/free/master-key-system` |
+| 15 | 📝 Blog | A Simple Framework for Better Decisions | `decision-making-framework` |
+| 16 | 📚 Kitap | Acres of Diamonds — Conwell | `/free/acres-of-diamonds` |
+| 17 | 📝 Blog | How Successful People Handle Fear | `fear-of-failure-success` |
+| 18 | 📚 Kitap | The Game of Life — Florence Scovel Shinn | `/free/game-of-life` |
+| 19 | 📝 Blog | The Psychology of Resilience | `resilience-psychology` |
+| 20 | 📚 Kitap | The Prophet — Kahlil Gibran | `/free/the-prophet` |
+| 21 | 📝 Blog | Atomic Habits: Key Lessons | `atomic-habits-summary` |
+| 22 | 📚 Kitap | The Strangest Secret — Earl Nightingale | `/free/strangest-secret` |
+| 23 | 📝 Blog | The Habit Loop Explained | `habit-loop-explained` |
+| 24 | 📚 Kitap | Letters from a Stoic — Seneca | `/free/letters-from-a-stoic` |
+| 25 | 📝 Blog | First Principles Thinking | `first-principles-thinking` |
+| 26 | 📚 Kitap | Self-Reliance — Ralph Waldo Emerson | `/free/self-reliance-emerson` |
+| 27 | 📝 Blog | The Inversion Mental Model | `inversion-mental-model` |
+| 28 | 📚 Kitap | The Power of Concentration — Dumont | `/free/power-of-concentration` |
+| 29 | 📝 Blog | Emotional Intelligence and Success | `emotional-intelligence-success` |
+| 30 | 📚 Kitap | Think and Grow Rich — Napoleon Hill *(2. tur)* | `/free/think-and-grow-rich` |
+| 31 | 📝 Blog | The Sunk Cost Fallacy | `sunk-cost-fallacy` |
+| 32 | 📚 Kitap | As a Man Thinketh — James Allen *(2. tur)* | `/free/as-a-man-thinketh` |
+| 33 | 📝 Blog | Self-Efficacy: Believe You Can | `self-efficacy-success` |
+| 34 | 📚 Kitap | The Science of Getting Rich *(2. tur)* | `/free/science-of-getting-rich` |
+| 35 | 📝 Blog | Grit: Why Persistence Matters | `grit-persistence` |
+| 36 | 📚 Kitap | The Richest Man in Babylon *(2. tur)* | `/free/richest-man-in-babylon` |
+| 37 | 📝 Blog | Intrinsic vs Extrinsic Motivation | `intrinsic-motivation` |
+| 38 | 📚 Kitap | Meditations — Marcus Aurelius *(2. tur)* | `/free/meditations-marcus-aurelius` |
+| 39 | 📝 Blog | The Psychology of Procrastination | `psychology-procrastination` |
+| 40 | 📚 Kitap | The Art of War *(2. tur)* | `/free/art-of-war` |
+| 41 | 📝 Blog | Internal vs External Locus of Control | `locus-of-control` |
+| 42 | 📚 Kitap | The Master Key System *(2. tur)* | `/free/master-key-system` |
+| 43 | 📝 Blog | Stoicism and Success | `stoicism-success` |
+| 44 | 📚 Kitap | Acres of Diamonds *(2. tur)* | `/free/acres-of-diamonds` |
+| 45 | 📝 Blog | Marcus Aurelius and the Meditations | `marcus-aurelius-meditations` |
+| 46 | 📚 Kitap | The Game of Life *(2. tur)* | `/free/game-of-life` |
+| 47 | 📝 Blog | Napoleon Hill's Think and Grow Rich | `napoleon-hill-lessons` |
+| 48 | 📚 Kitap | The Prophet *(2. tur)* | `/free/the-prophet` |
+| 49 | 📝 Blog | Morning Routines of Successful People | `morning-routine-successful-people` |
+| 50 | 📚 Kitap | The Strangest Secret *(2. tur)* | `/free/strangest-secret` |
+| 51 | 📝 Blog | Deep Work Strategy | `deep-work-strategy` |
+| 52 | 📚 Kitap | Letters from a Stoic *(2. tur)* | `/free/letters-from-a-stoic` |
+| 53 | 📝 Blog | The Compound Effect | `compound-effect-success` |
+| 54 | 📚 Kitap | Self-Reliance *(2. tur)* | `/free/self-reliance-emerson` |
+| 55 | 📝 Blog | Second-Order Thinking | `second-order-thinking` |
+| 56 | 📚 Kitap | The Power of Concentration *(2. tur)* | `/free/power-of-concentration` |
+| 57 | 📝 Blog | The Psychology of Success | `psychology-of-success` |
+| 58 | 📚 Kitap | Think and Grow Rich *(3. tur)* | `/free/think-and-grow-rich` |
+| 59 | 📝 Blog | Identity-Based Success | `identity-based-success` |
+| 60 | 📚 Kitap | As a Man Thinketh *(3. tur)* | `/free/as-a-man-thinketh` |
+
+---
+
+### Nasıl Kullanılır
+
+1. Takvimden günü bul → Blog mu, Kitap mı olduğunu kontrol et
+2. İlgili promptu kopyala (Prompt 1 veya Prompt 2)
+3. Köşeli parantezleri doldur: `[TITLE]`, `[SLUG]`, `[QUOTE]`, vb.
+4. Claude'a ver → 6 platform içeriği + 2 HTML/CSS görsel gelir
+5. Görseller için: HTML'i tarayıcıda aç → F11 tam ekran → screenshot al
+6. UTM linkleri sayesinde Google Analytics'te hangi platformun trafik getirdiğini takip edebilirsin
+
+---
+
 ## Günlük Çalışma Akışı
 
 1. Bu dokümanı Claude'a yapıştır
